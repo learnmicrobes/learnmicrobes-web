@@ -1,0 +1,649 @@
+/* General Styles */
+:root {
+    --primary-color: #245c69;
+    --primary-strong: #1d4a54;
+    --secondary-color: #dce8de;
+    --accent-color: #c8a24d;
+    --accent-warm: #c96b4b;
+    --light-color: #faf7f0;
+    --surface-color: #f4efe4;
+    --dark-color: #1c2733;
+    --muted-color: #5f6b77;
+    --border-color: rgba(36, 92, 105, 0.14);
+    --error-color: #b64b36;
+    --success-color: #4f8f67;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin: 0 0 1.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h3 {
+    color: var(--secondary-color);
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 0.3rem;
+}
+
+/* Form Styles */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.test-category {
+    background: rgba(111, 185, 143, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: all 0.2s ease;
+}
+
+label:hover {
+    color: var(--primary-color);
+}
+
+/* Custom Round Checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--secondary-color);
+}
+
+input[type="checkbox"]:checked {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Button Styles */
+.button-group {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.identify-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.identify-btn:hover {
+    background: #235f5a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reset-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #e07d2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Result Section */
+.result-container {
+    background: rgba(44, 120, 115, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+#result-text {
+    font-weight: 500;
+    color: var(--dark-color);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Footer Styles */
+footer {
+    background: var(--primary-color); /* Matches header gradient */
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.social-links {
+    margin-top: 0.5rem;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.social-links i {
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        justify-content: center;
+    }
+}
+
+/* Mode selector */
+.mode-selector {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .mode-btn {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--dark-color);
+  }
+
+  .mode-btn.active {
+    border-bottom: 3px solid var(--accent-color);
+    color: var(--primary-color);
+  }
+
+  /* Quiz mode */
+  .quiz-container {
+    background: rgba(111, 185, 143, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+
+  #quiz-tests {
+    margin: 15px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+  }
+
+  #quiz-tests span {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  #guess-input {
+    padding: 10px;
+    width: 300px;
+    max-width: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  /* Touch targets */
+button, .test-option, .quiz-option {
+    min-height: 44px; /* Recommended minimum touch target size */
+    touch-action: manipulation; /* Disables double-tap zoom */
+  }
+
+  /* Larger tap targets for mobile */
+  @media (max-width: 768px) {
+    .test-btn {
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
+    }
+
+    .quiz-option {
+      padding: 1rem;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+
+/* Mobile-first responsive styles */
+@media (max-width: 768px) {
+    /* General layout adjustments */
+    .bio-calculator {
+      padding: 0 10px;
+    }
+
+    .header-content h1 {
+      font-size: 1.8rem;
+    }
+
+    /* Mode selector */
+    .mode-selector {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mode-btn {
+      width: 100%;
+    }
+
+    /* Test groups */
+    .test-group {
+      grid-template-columns: 1fr;
+    }
+
+    /* Calculator sections */
+    section {
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    /* Quiz container */
+    .quiz-container {
+      padding: 1rem;
+    }
+
+    /* Button groups */
+    .button-group, .quiz-actions {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .button-group button,
+    .quiz-actions button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Tool cards on home page */
+    .tool-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tool-card {
+      width: 100%;
+      max-width: none;
+    }
+
+    /* Navigation */
+    .app-nav {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .nav-links {
+      margin-top: 1rem;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-links button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Footer */
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Gram Positive Roadmap Styles */
+.roadmap-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roadmap-step {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.roadmap-step h3 {
+  color: #6fb98f;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.roadmap-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.roadmap-option {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.roadmap-option:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.option-tests {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+  background: rgba(108, 117, 125, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.roadmap-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.roadmap-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #6fb98f;
+  color: white;
+  cursor: pointer;
+}
+
+.roadmap-actions button:disabled {
+  background: #ced4da;
+  cursor: not-allowed;
+}
+
+.roadmap-conclusion {
+  background: #f8f9fa;
+  border-left: 4px solid #6fb98f;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.roadmap-conclusion h4 {
+  margin-top: 0;
+  color: #2c7873;
+}
+
+.roadmap-image {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.roadmap-image img {
+  max-width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .roadmap-step {
+    padding: 1rem;
+  }
+
+  .roadmap-option {
+    padding: 0.8rem;
+  }
+}
+
+  /* Smaller mobile devices */
+  @media (max-width: 480px) {
+    /* Header */
+    .header-content h1 {
+      font-size: 1.5rem;
+    }
+
+    /* Test options */
+    .test-option {
+      margin-right: 0.5rem;
+    }
+
+    .test-btn {
+      padding: 0.2rem 0.6rem;
+    }
+
+    /* Quiz options */
+    .quiz-options {
+      grid-template-columns: 1fr;
+    }
+
+    /* Result text */
+    #result-text {
+      font-size: 0.9rem;
+    }
+
+    /* Hide some decorative elements */
+    .bio-calculator header::before {
+      display: none;
+    }
+  }
+
+  /* Mobile form inputs */
+@media (max-width: 768px) {
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 28px;
+      height: 28px;
+    }
+
+    fieldset {
+      padding: 1rem;
+    }
+
+    legend {
+      font-size: 1rem;
+    }
+  }
+
+  /* Performance optimizations */
+* {
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+    box-sizing: border-box; /* Better sizing calculations */
+  }
+
+  body {
+    overscroll-behavior-y: contain; /* Prevent pull-to-refresh */
+  }
+
+  /* Hardware acceleration for animations */
+  button, .tool-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* QOL Improvements: Animations & Badges */
+  @keyframes slideFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-step {
+    animation: slideFadeIn 0.3s ease-out forwards;
+  }
+
+  .option-card {
+    position: relative; /* For badge positioning */
+  }
+
+  .option-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .option-card:hover .option-badge {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.6);
+  }

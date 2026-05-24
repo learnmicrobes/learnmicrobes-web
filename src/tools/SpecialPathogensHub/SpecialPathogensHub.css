@@ -1,0 +1,259 @@
+.special-pathogens-page {
+  width: 100%;
+  color: var(--dark-color);
+}
+
+.special-pathogens-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: end;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, var(--surface-color));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.special-pathogens-kicker {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.special-pathogens-hero h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--dark-color);
+}
+
+.special-pathogens-hero p {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.special-pathogens-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.special-pathogens-actions button,
+.special-pathogen-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.special-pathogens-actions button {
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+}
+
+.special-pathogen-open {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.special-pathogens-actions button:hover,
+.special-pathogen-open:hover {
+  transform: translateY(-1px);
+  border-color: rgba(36, 92, 105, 0.34);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.special-pathogens-checkpoints {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.special-pathogens-checkpoints > div {
+  min-height: 132px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  text-align: left;
+}
+
+.special-pathogens-checkpoints svg {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.special-pathogens-checkpoints span {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--dark-color);
+  font-weight: 800;
+}
+
+.special-pathogens-checkpoints p {
+  margin: 0.4rem 0 0;
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.special-pathogens-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.special-pathogen-card {
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  text-align: left;
+}
+
+.special-pathogen-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.special-pathogen-id {
+  display: inline-flex;
+  color: #b6533a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.special-pathogen-card h2 {
+  margin: 0.25rem 0 0;
+  color: var(--dark-color);
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.special-pathogen-subtitle {
+  margin: 0.9rem 0 1rem;
+  color: var(--muted-color);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.special-pathogen-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.special-pathogen-columns h3 {
+  margin: 0 0 0.55rem;
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.special-pathogen-columns ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--dark-color);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.special-pathogen-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.special-pathogen-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(36, 92, 105, 0.08);
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+body.dark-mode .special-pathogens-hero,
+body.dark-mode .special-pathogens-checkpoints > div,
+body.dark-mode .special-pathogen-card,
+body.dark-mode .special-pathogens-actions button,
+body.dark-mode .special-pathogen-open {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .special-pathogens-hero h1,
+body.dark-mode .special-pathogens-checkpoints span,
+body.dark-mode .special-pathogen-card h2,
+body.dark-mode .special-pathogen-columns ul {
+  color: #f9fafb;
+}
+
+body.dark-mode .special-pathogens-hero p,
+body.dark-mode .special-pathogens-checkpoints p,
+body.dark-mode .special-pathogen-subtitle {
+  color: #cbd5e1;
+}
+
+body.dark-mode .special-pathogen-tags span {
+  background: rgba(45, 212, 191, 0.12);
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  .special-pathogens-hero,
+  .special-pathogens-checkpoints,
+  .special-pathogens-grid,
+  .special-pathogen-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .special-pathogens-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .special-pathogens-hero {
+    padding: 1.25rem;
+  }
+
+  .special-pathogen-card {
+    padding: 1rem;
+  }
+}

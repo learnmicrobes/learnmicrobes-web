@@ -1,0 +1,326 @@
+.do-not-culture-page {
+  width: 100%;
+  color: var(--dark-color);
+}
+
+.do-not-culture-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.36fr);
+  gap: 1.25rem;
+  align-items: stretch;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, var(--surface-color));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.do-not-culture-kicker {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: #b83232;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.do-not-culture-hero h1 {
+  margin: 0;
+  max-width: 760px;
+  color: var(--dark-color);
+  font-size: clamp(2rem, 5vw, 3.05rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.do-not-culture-hero p {
+  max-width: 780px;
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.do-not-culture-hero-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(184, 50, 50, 0.24);
+  border-left: 5px solid #b83232;
+  border-radius: 10px;
+  background: #fff8f6;
+}
+
+.do-not-culture-hero-card svg {
+  color: #b83232;
+  font-size: 1.55rem;
+}
+
+.do-not-culture-hero-card strong {
+  color: var(--dark-color);
+  font-size: 1rem;
+}
+
+.do-not-culture-hero-card span {
+  color: var(--muted-color);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.do-not-culture-rule {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.do-not-culture-rule > div,
+.do-not-culture-card {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  text-align: left;
+}
+
+.do-not-culture-rule > div {
+  min-height: 132px;
+  padding: 1rem;
+}
+
+.do-not-culture-rule svg {
+  color: var(--primary-color);
+  font-size: 1.15rem;
+}
+
+.do-not-culture-rule span {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--dark-color);
+  font-weight: 900;
+}
+
+.do-not-culture-rule p {
+  margin: 0.4rem 0 0;
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.do-not-culture-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.do-not-culture-filters button,
+.culture-open-link,
+.do-not-culture-footer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.do-not-culture-filters button {
+  min-height: 38px;
+  padding: 0.55rem 0.8rem;
+}
+
+.do-not-culture-filters button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.do-not-culture-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.do-not-culture-card {
+  padding: 1.2rem;
+}
+
+.do-not-culture-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.culture-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 28px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.level-stop {
+  background: rgba(184, 50, 50, 0.1);
+  color: #b83232;
+}
+
+.level-special {
+  background: rgba(36, 92, 105, 0.1);
+  color: var(--primary-color);
+}
+
+.level-refer {
+  background: rgba(180, 83, 9, 0.12);
+  color: #9a4a10;
+}
+
+.do-not-culture-card h2 {
+  margin: 0.55rem 0 0;
+  color: var(--dark-color);
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.culture-open-link {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.culture-trigger {
+  margin: 1rem 0;
+  padding: 0.85rem 0.95rem;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  background: rgba(36, 92, 105, 0.06);
+}
+
+.culture-trigger span,
+.culture-card-columns h3 {
+  display: block;
+  color: var(--primary-color);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.culture-trigger p {
+  margin: 0.35rem 0 0;
+  color: var(--dark-color);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.culture-card-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.culture-card-columns h3 {
+  margin: 0 0 0.55rem;
+}
+
+.culture-card-columns ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--dark-color);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.culture-pearl {
+  margin: 1rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.do-not-culture-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.do-not-culture-footer button {
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+}
+
+body.dark-mode .do-not-culture-hero,
+body.dark-mode .do-not-culture-rule > div,
+body.dark-mode .do-not-culture-card,
+body.dark-mode .do-not-culture-filters button,
+body.dark-mode .culture-open-link,
+body.dark-mode .do-not-culture-footer button {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .do-not-culture-hero h1,
+body.dark-mode .do-not-culture-hero-card strong,
+body.dark-mode .do-not-culture-rule span,
+body.dark-mode .do-not-culture-card h2,
+body.dark-mode .culture-trigger p,
+body.dark-mode .culture-card-columns ul {
+  color: #f9fafb;
+}
+
+body.dark-mode .do-not-culture-hero p,
+body.dark-mode .do-not-culture-hero-card span,
+body.dark-mode .do-not-culture-rule p,
+body.dark-mode .culture-pearl {
+  color: #cbd5e1;
+}
+
+body.dark-mode .do-not-culture-hero-card {
+  background: rgba(184, 50, 50, 0.12);
+}
+
+body.dark-mode .culture-trigger {
+  background: rgba(45, 212, 191, 0.08);
+}
+
+body.dark-mode .do-not-culture-filters button.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+  .do-not-culture-hero,
+  .do-not-culture-rule,
+  .do-not-culture-grid,
+  .culture-card-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .do-not-culture-hero,
+  .do-not-culture-card {
+    padding: 1rem;
+  }
+}

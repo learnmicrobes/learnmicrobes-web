@@ -1,0 +1,297 @@
+.syndrome-path-page {
+  width: 100%;
+  color: var(--dark-color);
+}
+
+.syndrome-path-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: end;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, var(--surface-color));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+}
+
+.syndrome-path-kicker {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.syndrome-path-hero h1 {
+  margin: 0;
+  max-width: 780px;
+  color: var(--dark-color);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.syndrome-path-hero p {
+  max-width: 820px;
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.syndrome-path-hero button,
+.syndrome-path-links button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.syndrome-path-hero button {
+  padding: 0.75rem 1rem;
+}
+
+.syndrome-path-links button {
+  padding: 0.7rem 0.9rem;
+}
+
+.syndrome-path-hero button:hover,
+.syndrome-path-links button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(36, 92, 105, 0.34);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.syndrome-path-layout {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+
+.syndrome-path-picker,
+.syndrome-path-result {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.syndrome-path-picker {
+  position: sticky;
+  top: 96px;
+  padding: 1rem;
+}
+
+.syndrome-path-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.syndrome-path-filter button {
+  min-height: 34px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--muted-color);
+  padding: 0.4rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.syndrome-path-filter button.active {
+  border-color: rgba(36, 92, 105, 0.34);
+  background: rgba(36, 92, 105, 0.1);
+  color: var(--primary-color);
+}
+
+.syndrome-path-options {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.syndrome-path-options button {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  min-height: 66px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--dark-color);
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.syndrome-path-options button span {
+  color: #b6533a;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.syndrome-path-options button.active {
+  border-color: rgba(36, 92, 105, 0.42);
+  box-shadow: inset 4px 0 0 var(--primary-color);
+}
+
+.syndrome-path-result {
+  padding: 1.25rem;
+}
+
+.syndrome-path-result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.syndrome-path-result-header span {
+  color: #b6533a;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.syndrome-path-result-header h2 {
+  margin: 0.25rem 0 0;
+  color: var(--dark-color);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+}
+
+.syndrome-path-result-header p {
+  margin: 0.65rem 0 0;
+  color: var(--muted-color);
+  line-height: 1.55;
+}
+
+.syndrome-path-result-header > svg {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  flex: 0 0 auto;
+}
+
+.syndrome-path-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.syndrome-path-panels section,
+.syndrome-path-safety {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #fbfcfd;
+}
+
+.syndrome-path-panels h3,
+.syndrome-path-safety h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.syndrome-path-panels ul,
+.syndrome-path-safety ul {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.syndrome-path-safety {
+  margin-top: 1rem;
+  border-left: 4px solid #b6533a;
+}
+
+.syndrome-path-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+body.dark-mode .syndrome-path-hero,
+body.dark-mode .syndrome-path-picker,
+body.dark-mode .syndrome-path-result,
+body.dark-mode .syndrome-path-options button,
+body.dark-mode .syndrome-path-filter button,
+body.dark-mode .syndrome-path-hero button,
+body.dark-mode .syndrome-path-links button {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .syndrome-path-panels section,
+body.dark-mode .syndrome-path-safety {
+  background: #111827;
+  border-color: #374151;
+}
+
+body.dark-mode .syndrome-path-hero h1,
+body.dark-mode .syndrome-path-result-header h2,
+body.dark-mode .syndrome-path-options button,
+body.dark-mode .syndrome-path-panels ul,
+body.dark-mode .syndrome-path-safety ul {
+  color: #f9fafb;
+}
+
+body.dark-mode .syndrome-path-hero p,
+body.dark-mode .syndrome-path-result-header p {
+  color: #cbd5e1;
+}
+
+@media (max-width: 980px) {
+  .syndrome-path-hero,
+  .syndrome-path-layout,
+  .syndrome-path-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .syndrome-path-picker {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .syndrome-path-hero,
+  .syndrome-path-result {
+    padding: 1rem;
+  }
+}

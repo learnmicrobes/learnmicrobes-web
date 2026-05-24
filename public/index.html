@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/brand-mark.svg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="theme-color" content="#2c7873" />
+    <title>Learn Microbes - Clinical Bench Reference</title>
+    <meta name="description" content="Learn Microbes is an alpha-stage educational platform for microbiology bench workflows, diagnostic strategy, organism identification, quizzes, and clinical laboratory study tools." />
+    <meta name="keywords" content="microbiology education, clinical microbiology, ASCP microbiology review, biochemical tests, bacteriology, parasitology, mycology, virology, diagnostic microbiology, lab bench reference" />
+    <link rel="canonical" href="https://learnmicrobes.com/" />
+    <meta property="og:title" content="Learn Microbes - Clinical Bench Reference" />
+    <meta property="og:description" content="Interactive microbiology learning tools for bench workflows, diagnostic methods, organism identification, quizzes, and clinical laboratory review." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://learnmicrobes.com/" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M85ZTJD2ER"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M85ZTJD2ER');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Learn Microbes",
+      "url": "https://learnmicrobes.com/",
+      "description": "Educational web app for microbiology bench workflows, diagnostic strategy, organism identification, quizzes, and clinical laboratory review.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://learnmicrobes.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script>
+      (function () {
+        var redirectPath = sessionStorage.getItem('learnmicrobes_redirect_path');
+        if (redirectPath) {
+          sessionStorage.removeItem('learnmicrobes_redirect_path');
+          window.history.replaceState(null, '', redirectPath);
+        }
+      }());
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

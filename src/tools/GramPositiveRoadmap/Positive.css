@@ -1,0 +1,271 @@
+.roadmap-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.positive-roadmap {
+  --roadmap-accent: var(--primary-color);
+  --roadmap-accent-strong: var(--primary-strong);
+  --roadmap-tint: rgba(36, 92, 105, 0.08);
+  --roadmap-border: rgba(36, 92, 105, 0.16);
+}
+
+.positive-roadmap .roadmap-status-bar {
+  display: grid;
+  grid-template-columns: minmax(74px, 0.24fr) minmax(0, 1fr) minmax(250px, 0.68fr);
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: start;
+}
+
+.positive-roadmap .roadmap-status-bar > div {
+  background: var(--roadmap-tint);
+  border: 1px solid var(--roadmap-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.positive-roadmap .status-label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--roadmap-accent);
+  margin-bottom: 0.35rem;
+}
+
+.positive-roadmap .roadmap-status-bar strong {
+  color: var(--dark-color, #2c3e50);
+  line-height: 1.4;
+}
+
+.positive-roadmap .roadmap-history-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0.95rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--roadmap-border);
+}
+
+.positive-roadmap .history-chip {
+  border: 1px solid var(--roadmap-border);
+  background: #ffffff;
+  color: var(--dark-color);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.positive-roadmap .history-chip:hover,
+.positive-roadmap .history-chip.active {
+  border-color: rgba(36, 92, 105, 0.35);
+  background: var(--roadmap-tint);
+}
+
+/* Question Styling */
+.positive-roadmap .current-question {
+  text-align: center;
+  margin: 0.2rem 0 0.75rem;
+  display: flex;
+  justify-content: center;
+}
+
+.positive-roadmap .current-question h3 {
+  color: var(--roadmap-accent);
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0;
+  background: #ffffff;
+  border: 0;
+  border-radius: 0;
+  display: inline-block;
+  box-shadow: none;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Options Container - Fixed Layout */
+.positive-roadmap .options-container {
+  display: grid;
+  gap: 1rem;
+  margin: 0.75rem 0;
+}
+
+.positive-roadmap .binary-layout {
+  grid-template-columns: 1fr 1fr;
+}
+
+.positive-roadmap .grid-layout {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.positive-roadmap .option-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 18px rgba(28, 39, 51, 0.05);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 108px;
+  width: 100%;
+}
+
+.positive-roadmap .option-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(36, 92, 105, 0.14);
+  border-color: rgba(36, 92, 105, 0.34);
+}
+
+.positive-roadmap .option-card h3 {
+  color: var(--dark-color);
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.positive-roadmap .option-tests {
+  color: var(--dark-color);
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Conclusion Panel */
+.positive-roadmap .conclusion-panel {
+  background: var(--roadmap-tint);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.positive-roadmap .conclusion-panel h3 {
+  color: var(--roadmap-accent);
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.positive-roadmap .result-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--roadmap-accent-strong);
+  margin: 0.5rem 0;
+  padding: 0.8rem 1.5rem;
+  background: #ffffff;
+  border-radius: 50px;
+  display: inline-block;
+  border: 1px solid var(--roadmap-border);
+}
+
+/* Navigation Buttons */
+.positive-roadmap .nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.85rem;
+}
+
+.positive-roadmap .nav-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.positive-roadmap .back-btn {
+  background: #ffffff;
+  color: var(--roadmap-accent);
+  border: 1px solid var(--roadmap-border);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.positive-roadmap .back-btn:hover:not(:disabled) {
+  background: var(--roadmap-tint);
+  border-color: var(--roadmap-accent);
+}
+
+.positive-roadmap .back-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f8f9fa;
+  color: #999;
+  border-color: #ddd;
+}
+
+.positive-roadmap .next-btn {
+  background: var(--roadmap-accent);
+  color: white;
+  box-shadow: 0 8px 18px rgba(36, 92, 105, 0.18);
+}
+
+.positive-roadmap .next-btn:hover {
+  background: var(--roadmap-accent-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(36, 92, 105, 0.24);
+}
+
+/* Conclusion Clinical Features list */
+.positive-roadmap .conclusion-tests-container {
+  margin-top: 1.5rem;
+  text-align: left;
+  background: #ffffff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--roadmap-border);
+}
+
+.positive-roadmap .conclusion-tests-container h4 {
+  color: var(--dark-color);
+  margin: 0 0 0.8rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--roadmap-border);
+  padding-bottom: 0.4rem;
+}
+
+.positive-roadmap .conclusion-tests-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.positive-roadmap .conclusion-tests-list li {
+  color: var(--dark-color);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .positive-roadmap.roadmap-container {
+    padding: 1rem;
+  }
+  .positive-roadmap .roadmap-status-bar {
+    grid-template-columns: 1fr;
+  }
+  .positive-roadmap .options-container {
+    grid-template-columns: 1fr !important;
+  }
+  .positive-roadmap .nav-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .positive-roadmap .nav-btn {
+    width: 100%;
+  }
+}

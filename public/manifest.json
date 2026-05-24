@@ -1,0 +1,21 @@
+{
+  "short_name": "Learn Microbes",
+  "name": "Learn Microbes - Clinical Bench Reference",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "brand-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#2c7873",
+  "background_color": "#ffffff"
+}

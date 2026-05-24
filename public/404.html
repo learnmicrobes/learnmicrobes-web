@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Learn Microbes</title>
+    <script>
+      (function () {
+        var redirectPath = window.location.pathname + window.location.search + window.location.hash;
+        sessionStorage.setItem('learnmicrobes_redirect_path', redirectPath);
+        window.location.replace('/');
+      }());
+    </script>
+  </head>
+  <body>
+    Redirecting to Learn Microbes...
+  </body>
+</html>
