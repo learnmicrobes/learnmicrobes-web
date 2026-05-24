@@ -1,16 +1,40 @@
+# Dependencies
 node_modules/
+jspm_packages/
+
+# Build/output folders
 build/
 dist/
 static/
+out/
+.next/
+.cache/
+.parcel-cache/
+
+# Local/test junk
 test_branch/
 test_branch.zip
+src/g_files/
+*.download
 
+# Environment files
 .env
-.env.local
+.env.*
+!.env.example
 
-.codesandbox/
+# Editor/system files
 .vscode/
+.codesandbox/
+.DS_Store
 
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Generated helper files
 asset-manifest.json
 debug_pdf.js
 extract_pdf_*.js
@@ -18,7 +42,9 @@ extract_pdf_*.txt
 extracted-*.txt
 generate_data.js
 
-.DS_Store
-
-src/g_files/
-*.download
+# TypeScript/cache
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.nyc_output
+coverage/
