@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound";
 import MicroBasics from "./components/Guides/MicroBasics";
 
 import GlobalSearch from "./components/Search/GlobalSearch";
+import JoinAlpha from "./components/JoinAlpha";
 
 export default function AppRoutes() {
   return (
@@ -25,6 +26,7 @@ export default function AppRoutes() {
         <Route path="about" element={<About />} />
         <Route path="guides" element={<MicroBasics />} />
         <Route path="search" element={<GlobalSearch />} />
+        <Route path="join-alpha" element={<JoinAlpha />} />
         <Route path="biochemical-calculator" element={<BioCalculator />} />
         <Route path="gram-positive-roadmap" element={<GramPositiveRoadmap />} />
         <Route path="gram-negative-roadmap" element={<GramNegativeRoadmap />} />

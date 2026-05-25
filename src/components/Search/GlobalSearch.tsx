@@ -6,6 +6,7 @@ import { biochemicalTestsData } from '../../tools/BiochemicalTests/biochemicalDa
 import { gramPositiveRoadmap } from '../../tools/GramPositiveRoadmap/data';
 import { glossaryEntries, type GlossaryEntry } from '../../data/glossaryData';
 import ToolBox from '../ToolBox/ToolBox';
+import { trackEvent } from '../../utils/analytics';
 import './GlobalSearch.css';
 
 type SearchResult = {
@@ -59,6 +60,7 @@ const GlobalSearch: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
+  const lastTrackedQueryRef = useRef('');
 
   const searchIndex = useMemo<SearchResult[]>(() => {
     const glossary: SearchResult[] = glossaryEntries.map((entry) => ({
@@ -1043,6 +1045,15 @@ const GlobalSearch: React.FC = () => {
 
     setResults(rankedResults);
     setSelectedIndex(0);
+
+    const trackedQuery = lowerQuery.trim();
+    if (trackedQuery !== lastTrackedQueryRef.current) {
+      trackEvent('search_used', {
+        search_term: trackedQuery,
+        results_count: rankedResults.length
+      });
+      lastTrackedQueryRef.current = trackedQuery;
+    }
   }, [query, searchIndex]);
 
   useEffect(() => {

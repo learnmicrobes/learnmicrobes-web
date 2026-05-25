@@ -1,0 +1,140 @@
+.join-alpha-page {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, var(--surface-color));
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  text-align: left;
+}
+
+.join-alpha-badge {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(36, 92, 105, 0.1);
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.join-alpha-page h1 {
+  margin: 1rem 0 0.8rem;
+  color: var(--dark-color);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.join-alpha-notice {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted-color);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.join-alpha-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.join-alpha-actions button {
+  min-height: 46px;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-weight: 800;
+}
+
+.join-alpha-primary {
+  border: 1px solid transparent;
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(36, 92, 105, 0.18);
+}
+
+.join-alpha-secondary {
+  border: 1px solid rgba(36, 92, 105, 0.2);
+  background: #ffffff;
+  color: var(--primary-color);
+}
+
+.join-alpha-external-icon {
+  font-size: 0.8rem;
+}
+
+.join-alpha-form-note {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.join-alpha-form-note h2 {
+  margin: 0 0 0.8rem;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.join-alpha-form-note ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 1rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--dark-color);
+  line-height: 1.45;
+}
+
+body.dark-mode .join-alpha-page {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .join-alpha-page h1,
+body.dark-mode .join-alpha-form-note ul {
+  color: #f9fafb;
+}
+
+body.dark-mode .join-alpha-notice {
+  color: #cbd5e1;
+}
+
+body.dark-mode .join-alpha-badge {
+  background: rgba(79, 209, 197, 0.12);
+  color: #5eead4;
+}
+
+body.dark-mode .join-alpha-secondary {
+  background: #111827;
+  border-color: #374151;
+  color: #5eead4;
+}
+
+@media (max-width: 640px) {
+  .join-alpha-page {
+    padding: 1.25rem;
+  }
+
+  .join-alpha-actions {
+    flex-direction: column;
+  }
+
+  .join-alpha-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .join-alpha-form-note ul {
+    grid-template-columns: 1fr;
+  }
+}

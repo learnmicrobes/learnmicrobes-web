@@ -1,49 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from '../../config/forms';
+import { trackEvent } from '../../utils/analytics';
 import './NewsletterSignup.css';
 
-type SubmissionState = 'idle' | 'loading' | 'success';
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const openExternalForm = (url: string) => {
+  window.open(url, '_blank', 'noopener,noreferrer');
+};
 
 const NewsletterSignup: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [status, setStatus] = useState<SubmissionState>('idle');
-  const timeoutRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current !== null) {
-        window.clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const normalizedEmail = email.trim();
-
-    if (!normalizedEmail || !EMAIL_REGEX.test(normalizedEmail)) {
-      setError('Please enter a valid email address');
-      setStatus('idle');
-      return;
-    }
-
-    setError('');
-    setStatus('loading');
-
-    timeoutRef.current = window.setTimeout(() => {
-      setStatus('success');
-      setEmail('');
-    }, 1250);
+  const handleJoinAlpha = () => {
+    trackEvent('alpha_signup_click', {
+      location: 'homepage_lab_list',
+      destination: ALPHA_SIGNUP_FORM_URL
+    });
+    openExternalForm(ALPHA_SIGNUP_FORM_URL);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-    if (error) {
-      setError('');
-    }
+  const handleFeedback = () => {
+    trackEvent('feedback_click', {
+      location: 'homepage_lab_list',
+      destination: FEEDBACK_FORM_URL
+    });
+    openExternalForm(FEEDBACK_FORM_URL);
   };
 
   return (
@@ -73,64 +51,27 @@ const NewsletterSignup: React.FC = () => {
           </div>
 
           <div className="newsletter-copy-text">
-            <span className="newsletter-kicker">Weekly Study Drops</span>
+            <span className="newsletter-kicker">Alpha tester list</span>
             <h2 id="newsletter-title">Join the Lab List</h2>
             <p>
-              Get weekly microbiology cheat sheets, high-yield bench exam tips, and early access
-              to new interactive calculators. No spam, ever.
+              Learn Microbes accounts are not active yet. Join the external alpha list for updates,
+              study-tool previews, and a say in what gets built next.
             </p>
           </div>
         </div>
 
         <div className="newsletter-form-shell">
-          {status === 'success' ? (
-            <div className="newsletter-success-card" role="status" aria-live="polite">
-              <span className="newsletter-success-badge">Subscribed</span>
-              <h3>Welcome to the bench! 🎉</h3>
-              <p>Check your inbox soon for your first micro cheat sheet.</p>
-            </div>
-          ) : (
-            <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
-              <label className="newsletter-sr-only" htmlFor="newsletter-email">
-                Email address
-              </label>
-              <div className="newsletter-form-row">
-                <input
-                  id="newsletter-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  className={`newsletter-input ${error ? 'has-error' : ''}`}
-                  placeholder="Enter your email..."
-                  value={email}
-                  onChange={handleChange}
-                  aria-invalid={error ? 'true' : 'false'}
-                  aria-describedby={error ? 'newsletter-error newsletter-privacy' : 'newsletter-privacy'}
-                  disabled={status === 'loading'}
-                />
-                <button
-                  type="submit"
-                  className="newsletter-submit"
-                  disabled={status === 'loading'}
-                  aria-busy={status === 'loading'}
-                >
-                  {status === 'loading' && <span className="newsletter-spinner" aria-hidden="true"></span>}
-                  <span>{status === 'loading' ? 'Securing your spot...' : 'Subscribe'}</span>
-                </button>
-              </div>
-
-              {error && (
-                <p id="newsletter-error" className="newsletter-error" role="alert">
-                  {error}
-                </p>
-              )}
-
-              <p id="newsletter-privacy" className="newsletter-privacy">
-                We respect your inbox. Unsubscribe anytime in one click.
-              </p>
-            </form>
-          )}
+          <div className="newsletter-form newsletter-alpha-actions" aria-label="Alpha list actions">
+            <button type="button" className="newsletter-submit" onClick={handleJoinAlpha}>
+              Join Alpha
+            </button>
+            <button type="button" className="newsletter-feedback-btn" onClick={handleFeedback}>
+              Send Feedback
+            </button>
+            <p id="newsletter-privacy" className="newsletter-privacy">
+              Opens an external form. No account or password is required.
+            </p>
+          </div>
         </div>
       </div>
     </section>

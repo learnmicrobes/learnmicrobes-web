@@ -191,6 +191,29 @@
   color: inherit;
 }
 
+.newsletter-alpha-actions {
+  gap: 0.75rem;
+}
+
+.newsletter-feedback-btn {
+  min-width: 172px;
+  min-height: 52px;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 800;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.newsletter-feedback-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(36, 92, 105, 0.34);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
 .newsletter-spinner {
   width: 16px;
   height: 16px;
@@ -372,6 +395,12 @@ body.dark-mode .newsletter-input:focus {
 body.dark-mode .newsletter-submit {
   background: linear-gradient(135deg, #319795, #245d5a);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+body.dark-mode .newsletter-feedback-btn {
+  background: #111827;
+  border-color: rgba(79, 209, 197, 0.18);
+  color: #5eead4;
 }
 
 body.dark-mode .newsletter-success-card h3 {

@@ -161,6 +161,60 @@
     border: 1px solid var(--border-color);
   }
 
+  .alpha-invite-card {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.25rem;
+    align-items: center;
+    margin: 0 auto 2rem;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    text-align: left;
+  }
+
+  .alpha-invite-kicker {
+    display: inline-flex;
+    margin-bottom: 0.45rem;
+    color: var(--primary-color);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .alpha-invite-card h2 {
+    display: block;
+    margin: 0 0 0.45rem;
+    color: var(--dark-color);
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .alpha-invite-card p {
+    max-width: 760px;
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .alpha-invite-card button {
+    min-height: 46px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 0.8rem 1.15rem;
+    background: var(--primary-color);
+    color: #ffffff;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 10px 24px rgba(36, 92, 105, 0.16);
+  }
+
   .hero-badge {
     background: rgba(36, 92, 105, 0.1);
     color: var(--primary-color);
@@ -346,9 +400,99 @@
     text-transform: uppercase;
   }
 
+  .student-tool-map,
+  .tool-lane {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    text-align: left;
+  }
+
+  .student-tool-map {
+    background: linear-gradient(145deg, #ffffff, rgba(220, 232, 222, 0.45));
+  }
+
+  .student-tool-map-header,
+  .tool-lane-header {
+    max-width: 780px;
+  }
+
+  .student-tool-map-kicker {
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .student-tool-map h2,
+  .tool-lane h2 {
+    display: block;
+    margin: 0 0 0.45rem;
+    color: var(--dark-color);
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .student-tool-map p,
+  .tool-lane-header p {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .student-situation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .student-situation-grid button {
+    min-height: 48px;
+    justify-content: flex-start;
+    border: 1px solid rgba(36, 92, 105, 0.16);
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--primary-color);
+    padding: 0.8rem 0.95rem;
+    text-align: left;
+    font-weight: 800;
+    line-height: 1.2;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
+  }
+
+  .student-situation-grid button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(36, 92, 105, 0.32);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+  }
+
+  .tool-lanes {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .tool-lane {
+    margin-bottom: 0;
+  }
+
+  .tool-lane .tool-cards {
+    margin-top: 1.1rem;
+  }
+
   .tool-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
     width: 100%;
@@ -358,61 +502,75 @@
   }
 
   .tool-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
+    --tool-accent: var(--primary-color);
+    background: #ffffff;
+    border-radius: 7px;
+    padding: 1.15rem 1.15rem 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    border: 1px solid rgba(36, 92, 105, 0.16);
+    border-left: 6px solid var(--tool-accent);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.055);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     position: relative;
-    min-height: 220px;
-    justify-content: center;
+    min-height: 190px;
+    justify-content: flex-start;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(36, 92, 105, 0.28);
+    box-shadow: 0 14px 26px rgba(15, 23, 42, 0.11);
+    background: #fffefb;
   }
 
   .tool-icon {
-    min-height: 44px;
+    min-height: 32px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
-    font-size: 1.35rem;
+    margin-bottom: 0.95rem;
+    padding: 0.25rem 0.55rem;
+    border: 1px solid rgba(36, 92, 105, 0.14);
+    border-radius: 5px;
+    background: rgba(36, 92, 105, 0.06);
+    color: var(--primary-strong);
+    font-size: 0.82rem;
     font-weight: 900;
-    letter-spacing: 0;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
   }
 
   .tool-card h3 {
     color: var(--primary-color);
-    font-size: 1.2rem;
-    margin: 0 0 0.8rem 0;
-    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0 0 0.65rem 0;
+    font-weight: 800;
+    line-height: 1.25;
   }
 
   .tool-card p {
     color: var(--muted-color);
     font-size: 0.85rem;
-    line-height: 1.4;
+    line-height: 1.45;
     margin: 0;
   }
 
-  /* Specific Top Borders for Roadmaps */
-  .tool-card.calculator { border-top: 4px solid #48bb78; }
-  .tool-card.start-here { border-top: 4px solid var(--accent-color); }
-  .tool-card.gram-positive { border-top: 4px solid #9f7aea; }
-  .tool-card.gram-negative { border-top: 4px solid #f56565; }
-  .tool-card.anaerobe { border-top: 4px solid #4299e1; }
-  .tool-card.biochemical-tests { border-top: 4px solid #ed8936; }
-.tool-card.unknown-isolate { border-top: 4px solid #319795; }
-.tool-card.special-pathogens { border-top: 4px solid #b6533a; }
-.tool-card.syndrome-path { border-top: 4px solid #245c69; }
-.tool-card.do-not-culture { border-top: 4px solid #b83232; }
-.tool-card.study-quiz { border-top: 4px solid #805ad5; }
-.tool-card.flashcards { border-top: 4px solid #38b2ac; }
+  /* Specific Accents for Tools */
+  .tool-card.calculator { --tool-accent: #3f8f65; }
+  .tool-card.start-here { --tool-accent: var(--accent-color); }
+  .tool-card.gram-positive { --tool-accent: #805ad5; }
+  .tool-card.gram-negative { --tool-accent: #c84b4b; }
+  .tool-card.anaerobe { --tool-accent: #2f7abf; }
+  .tool-card.biochemical-tests { --tool-accent: #d66f2f; }
+.tool-card.unknown-isolate { --tool-accent: #2f8f8f; }
+.tool-card.special-pathogens { --tool-accent: #a94f38; }
+.tool-card.syndrome-path { --tool-accent: #245c69; }
+.tool-card.do-not-culture { --tool-accent: #a83232; }
+.tool-card.study-quiz { --tool-accent: #7048c8; }
+.tool-card.flashcards { --tool-accent: #2f9189; }
 
   /* Mobile adjustment */
   @media (max-width: 900px) {
@@ -420,11 +578,23 @@
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-    
-    .hero-section {
-      padding: 1.5rem;
+
+    .student-situation-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+  .hero-section {
+    padding: 1.5rem;
   }
+
+  .alpha-invite-card {
+    grid-template-columns: 1fr;
+  }
+
+  .alpha-invite-card button {
+    width: fit-content;
+  }
+}
 
   .coming-soon-pill {
     position: absolute;
@@ -748,7 +918,7 @@
     color: #14564f;
   }
 
-  .nav-links.mobile-nav .nav-signin-btn {
+  .nav-links.mobile-nav .nav-alpha-btn {
     background: #2c7873 !important;
     color: #ffffff !important;
     border-radius: 0;
@@ -819,6 +989,17 @@
     gap: 0.55rem;
   }
 
+  .student-tool-map,
+  .tool-lane {
+    max-width: none;
+    padding: 1.15rem;
+  }
+
+  .student-situation-grid {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
   .tool-cards {
     grid-template-columns: 1fr;
     gap: 0.85rem;
@@ -830,13 +1011,13 @@
     max-width: none;
     min-height: 0;
     margin: 0;
-    padding: 1.1rem;
+    padding: 1rem;
     align-items: flex-start;
     text-align: left;
   }
 
   .tool-icon {
-    min-height: auto;
+    min-height: 30px;
     margin-bottom: 0.65rem;
   }
 
@@ -844,10 +1025,19 @@
   .tool-card p {
     text-align: left;
   }
+
+  .alpha-invite-card {
+    max-width: none;
+  }
+
+  .alpha-invite-card button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
-/* Sign In CTA Style */
-.nav-signin-btn {
+/* Join Alpha CTA Style */
+.nav-alpha-btn {
   background: white !important;
   color: var(--primary-color) !important;
   font-weight: bold;
@@ -855,97 +1045,29 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.nav-signin-btn:hover {
-  background: #f8f9fa !important;
-  transform: translateY(-1px);
-}
-
-.signin-notice-overlay {
+.persistent-feedback-btn {
   position: fixed;
-  inset: 0;
-  z-index: 2000;
-  display: grid;
-  place-items: center;
-  padding: 1.25rem;
-  background: rgba(18, 31, 36, 0.42);
-  backdrop-filter: blur(4px);
-}
-
-.signin-notice-card {
-  position: relative;
-  width: min(460px, 100%);
-  background: #ffffff;
-  border: 1px solid rgba(36, 92, 105, 0.18);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 24px 60px rgba(18, 31, 36, 0.24);
-  text-align: left;
-}
-
-.signin-notice-close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 8px;
-  background: #f8fbfb;
-  color: var(--primary-color);
-  font-size: 1.35rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.signin-notice-badge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 0.25rem 0.6rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1200;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  background: rgba(36, 92, 105, 0.1);
-  color: var(--primary-color);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.signin-notice-card h2 {
-  margin: 0.9rem 2rem 0.6rem 0;
-  color: var(--dark-color);
-  font-size: 1.45rem;
-  line-height: 1.2;
-}
-
-.signin-notice-card p {
-  margin: 0;
-  color: var(--muted-color);
-  font-size: 0.98rem;
-  line-height: 1.55;
-}
-
-.signin-notice-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.2rem;
-}
-
-.signin-notice-actions button {
-  min-height: 42px;
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
-  padding: 0.55rem 0.9rem;
+  padding: 0.75rem 1rem;
   background: var(--primary-color);
   color: #ffffff;
   font-weight: 800;
-  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
 }
 
-.signin-notice-actions .signin-notice-secondary {
-  background: #ffffff;
-  color: var(--primary-color);
+.persistent-feedback-btn:hover {
+  background: var(--primary-strong);
+  transform: translateY(-1px);
+}
+
+.nav-alpha-btn:hover {
+  background: #f8f9fa !important;
+  transform: translateY(-1px);
 }
 
 /* Disabled Card Styles */
@@ -1152,12 +1274,21 @@ body.dark-mode .stat-number {
 
 body.dark-mode .tool-card {
   background: #1e2532;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border-color: #2d3748;
+  border-left-color: var(--tool-accent);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.24);
 }
 
 body.dark-mode .tool-card:hover {
   background: #252d3a;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  border-color: #3f4a5c;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.38);
+}
+
+body.dark-mode .tool-icon {
+  background: rgba(79, 209, 197, 0.08);
+  border-color: rgba(79, 209, 197, 0.14);
+  color: #c5f7ef;
 }
 
 body.dark-mode .hero-primary-btn {
@@ -1174,36 +1305,54 @@ body.dark-mode .hero-link-chip:hover {
   border-color: #4fd1c5;
 }
 
+body.dark-mode .alpha-invite-card {
+  background: #1e2532;
+  border-color: #2d3748;
+}
+
+body.dark-mode .alpha-invite-card h2 {
+  color: #f9fafb;
+}
+
+body.dark-mode .alpha-invite-card p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .student-tool-map,
+body.dark-mode .tool-lane {
+  background: #1e2532;
+  border-color: #2d3748;
+}
+
+body.dark-mode .student-tool-map {
+  background: linear-gradient(145deg, #1e2532, rgba(36, 92, 105, 0.18));
+}
+
+body.dark-mode .student-tool-map h2,
+body.dark-mode .tool-lane h2 {
+  color: #f9fafb;
+}
+
+body.dark-mode .student-tool-map p,
+body.dark-mode .tool-lane-header p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .student-situation-grid button {
+  background: #111827;
+  border-color: #2d3748;
+  color: #5eead4;
+}
+
 /* Nav Links Auth */
-body.dark-mode .nav-signin-btn {
+body.dark-mode .nav-alpha-btn {
   background: #4fd1c5 !important;
   color: #1a202c !important;
 }
 
-body.dark-mode .signin-notice-overlay {
-  background: rgba(0, 0, 0, 0.58);
-}
-
-body.dark-mode .signin-notice-card {
-  background: #1a202c;
-  border-color: #2d3748;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-}
-
-body.dark-mode .signin-notice-close,
-body.dark-mode .signin-notice-actions .signin-notice-secondary {
-  background: #111827;
-  border-color: #2d3748;
-  color: #4fd1c5;
-}
-
-body.dark-mode .signin-notice-badge {
-  background: rgba(79, 209, 197, 0.12);
-  color: #4fd1c5;
-}
-
-body.dark-mode .signin-notice-card h2 {
-  color: #f9fafb;
+body.dark-mode .persistent-feedback-btn {
+  background: #4fd1c5;
+  color: #1a202c;
 }
 
 body.dark-mode .nav-settings-menu {
