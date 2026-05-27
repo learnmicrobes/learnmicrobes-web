@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faInfoCircle, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBook, faSearch, faInfoCircle, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import NewsletterSignup from './components/Newsletter/NewsletterSignup';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
+import { learnTopics } from './data/learnTopics';
 import './App.css';
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
     if (saved !== null) {
       return JSON.parse(saved);
     }
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return false;
   });
 
   useEffect(() => {
@@ -78,43 +79,56 @@ export default function App() {
                     ? 'Do Not Routine Culture'
                     : location.pathname.includes('study-quiz')
                       ? 'Study Quiz'
-                      : location.pathname.includes('guides')
-                        ? 'Guides'
-                        : location.pathname.includes('search')
-                          ? 'Search'
-                          : location.pathname.includes('join-alpha')
-                            ? 'Join Alpha'
-                            : location.pathname.includes('about')
-                              ? 'About'
-                              : null;
+                      : location.pathname.includes('certification-study-paths')
+                        ? 'Certification Study Paths'
+                        : location.pathname.includes('learn')
+                          ? 'Learn'
+                          : location.pathname.includes('guides')
+                            ? 'Guides'
+                            : location.pathname.includes('search')
+                              ? 'Search'
+                              : location.pathname.includes('join-alpha')
+                                ? 'Join Alpha'
+                                : location.pathname.includes('about')
+                                  ? 'About'
+                                  : null;
 
   const isHomeRoute = location.pathname === '/';
 
   const homeQuickLinks = useMemo(() => ([
-    { label: 'New learner? Start here', path: '/guides?guide=intro-to-microbiology' },
+    { label: 'New learner? Start here', path: '/learn/clinical-microbiology' },
+    { label: 'Learn the basics', path: '/learn' },
     { label: 'Search all content', path: '/search' },
     { label: 'Syndrome to test path', path: '/syndrome-diagnostic-path' },
     { label: 'Do not routine culture', path: '/do-not-routine-culture' },
     { label: 'Practice quiz', path: '/study-quiz' },
+    { label: 'M/SM study path', path: '/certification-study-paths' },
     { label: 'Special pathogens hub', path: '/special-pathogens' },
     { label: 'Open Gram positive roadmap', path: '/gram-positive-roadmap' },
     { label: 'Review bench tests', path: '/biochemical-tests' }
   ]), []);
 
   const quickStartPath = useMemo(() => ([
-    { step: '01', label: 'Start here', path: '/guides?guide=intro-to-microbiology' },
+    { step: '01', label: 'Start here', path: '/learn/clinical-microbiology' },
     { step: '02', label: 'Practice a roadmap', path: '/gram-positive-roadmap' },
     { step: '03', label: 'Review bench tests', path: '/biochemical-tests' }
   ]), []);
 
   const studentSituationLinks = useMemo(() => ([
-    { label: "I'm new", path: '/guides?guide=intro-to-microbiology' },
+    { label: "I'm new", path: '/learn/clinical-microbiology' },
     { label: 'I have an unknown organism', path: '/unknown-isolate-workup' },
     { label: 'I need Gram positive ID', path: '/gram-positive-roadmap' },
     { label: 'I need Gram negative ID', path: '/gram-negative-roadmap' },
+    { label: "I'm studying for M/SM", path: '/certification-study-paths' },
     { label: 'I have a syndrome question', path: '/syndrome-diagnostic-path' },
     { label: 'I want practice', path: '/study-quiz' }
   ]), []);
+
+  const featuredLearnTopics = useMemo(() => (
+    ['gram-stain', 'culture-media', 'macconkey-agar', 'catalase-test']
+      .map((slug) => learnTopics.find((topic) => topic.slug === slug))
+      .filter((topic): topic is NonNullable<typeof topic> => Boolean(topic))
+  ), []);
 
   const homeToolGroups = useMemo(() => ([
     {
@@ -124,9 +138,16 @@ export default function App() {
         {
           className: 'start-here',
           icon: 'START',
-          title: 'Start Here: Intro to Microbiology',
-          path: '/guides?guide=intro-to-microbiology',
-          description: 'Start here if you are new to clinical micro and need the bench sequence in plain language.'
+          title: 'Begin Learning',
+          path: '/learn/clinical-microbiology',
+          description: 'Start here if you are new to clinical micro and want a guided first-pass bench sequence.'
+        },
+        {
+          className: 'certification-path',
+          icon: 'M/SM',
+          title: 'Certification Study Paths',
+          path: '/certification-study-paths',
+          description: 'Study microbiology by exam goal: M(ASCP) for core certification prep or SM(ASCP) for advanced specialist review.'
         },
         {
           className: 'biochemical-tests',
@@ -242,6 +263,7 @@ export default function App() {
     {
       label: 'Practice',
       items: [
+        { label: 'Certification Study Paths', path: '/certification-study-paths' },
         { label: 'Syndrome Diagnostic Path', path: '/syndrome-diagnostic-path' },
         { label: 'Study Quiz', path: '/study-quiz' }
       ]
@@ -343,14 +365,24 @@ export default function App() {
         </div>
 
         {isMobile && (
-          <button
-            className="nav-menu-toggle"
-            onClick={() => setIsNavMenuOpen((open) => !open)}
-            aria-label={isNavMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={isNavMenuOpen}
-          >
-            <FontAwesomeIcon icon={isNavMenuOpen ? faXmark : faBars} />
-          </button>
+          <div className="mobile-nav-controls">
+            <button
+              className="mobile-theme-toggle"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+            </button>
+            <button
+              className="nav-menu-toggle"
+              onClick={() => setIsNavMenuOpen((open) => !open)}
+              aria-label={isNavMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isNavMenuOpen}
+            >
+              <FontAwesomeIcon icon={isNavMenuOpen ? faXmark : faBars} />
+            </button>
+          </div>
         )}
 
         <div className={`nav-links ${isMobile ? 'mobile-nav' : ''} ${isNavMenuOpen ? 'open' : ''}`}>
@@ -361,6 +393,13 @@ export default function App() {
             >
               <FontAwesomeIcon icon={faHome} />
               <span className="nav-text">Home</span>
+            </button>
+            <button
+              className={activeTool === 'Learn' ? 'active' : ''}
+              onClick={() => navigate('/learn')}
+            >
+              <FontAwesomeIcon icon={faGraduationCap} />
+              <span className="nav-text">Learn</span>
             </button>
             <button
               className={activeTool === 'Guides' ? 'active' : ''}
@@ -546,6 +585,30 @@ export default function App() {
               <button type="button" onClick={() => handleAlphaSignupClick('homepage_alpha_card')}>
                 Join Alpha
               </button>
+            </section>
+
+            <section className="learn-basics-card" aria-labelledby="learn-basics-title">
+              <div className="learn-basics-header">
+                <span className="learn-basics-kicker">Microbiology basics</span>
+                <h2 id="learn-basics-title">Browse the notes. Read at your own pace.</h2>
+                <p>
+                  Concise review pages for the fundamentals students search for: stains, media, bench tests, organism groups, and specimen quality.
+                </p>
+              </div>
+              <div className="learn-basics-links">
+                {featuredLearnTopics.map((topic) => (
+                  <button
+                    key={topic.slug}
+                    type="button"
+                    onClick={() => navigate(`/learn/${topic.slug}`)}
+                  >
+                    {topic.title}
+                  </button>
+                ))}
+                <button type="button" className="learn-basics-all" onClick={() => navigate('/learn')}>
+                  View all basics
+                </button>
+              </div>
             </section>
 
             <section className="student-tool-map" aria-labelledby="student-tool-map-title">

@@ -82,9 +82,13 @@
 }
 
 .special-pathogen-open {
-  width: 42px;
-  height: 42px;
+  min-height: 36px;
   flex: 0 0 auto;
+  padding: 0.5rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .special-pathogens-actions button:hover,
@@ -132,15 +136,16 @@
 .special-pathogens-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .special-pathogen-card {
-  padding: 1.25rem;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
+  padding: 1.25rem 1.2rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-left: 6px solid #b6533a;
+  border-radius: 7px;
   background: #ffffff;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.055);
   text-align: left;
 }
 
@@ -148,30 +153,22 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-}
-
-.special-pathogen-id {
-  display: inline-flex;
-  color: #b6533a;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: 0.9rem;
 }
 
 .special-pathogen-card h2 {
-  margin: 0.25rem 0 0;
+  margin: 0;
   color: var(--dark-color);
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   line-height: 1.25;
+  font-weight: 850;
 }
 
 .special-pathogen-subtitle {
-  margin: 0.9rem 0 1rem;
+  margin: 0.75rem 0 1rem;
   color: var(--muted-color);
   font-size: 0.94rem;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .special-pathogen-columns {
@@ -183,11 +180,11 @@
 }
 
 .special-pathogen-columns h3 {
-  margin: 0 0 0.55rem;
+  margin: 0 0 0.5rem;
   color: var(--primary-color);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 900;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -201,23 +198,23 @@
   line-height: 1.4;
 }
 
-.special-pathogen-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
+.special-pathogen-groups {
+  margin: 1rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
+  font-size: 0.86rem;
+  line-height: 1.5;
 }
 
-.special-pathogen-tags span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 0.35rem 0.55rem;
-  border-radius: 999px;
-  background: rgba(36, 92, 105, 0.08);
+.special-pathogen-groups span {
+  display: block;
+  margin-bottom: 0.25rem;
   color: var(--primary-color);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 body.dark-mode .special-pathogens-hero,
@@ -242,8 +239,11 @@ body.dark-mode .special-pathogen-subtitle {
   color: #cbd5e1;
 }
 
-body.dark-mode .special-pathogen-tags span {
-  background: rgba(45, 212, 191, 0.12);
+body.dark-mode .special-pathogen-groups {
+  color: #cbd5e1;
+}
+
+body.dark-mode .special-pathogen-groups span {
   color: #5eead4;
 }
 

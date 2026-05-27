@@ -215,6 +215,11 @@
   color: #6b46c1;
 }
 
+.result-badge.type-learn {
+  background: #dce8de;
+  color: #245c69;
+}
+
 .result-badge.type-roadmap {
   background: #c6f6d5;
   color: #276749;

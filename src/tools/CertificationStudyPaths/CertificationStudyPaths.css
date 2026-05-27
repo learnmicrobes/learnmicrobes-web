@@ -1,0 +1,335 @@
+.cert-path-page {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  color: var(--dark-color);
+}
+
+.cert-path-hero,
+.cert-path-how,
+.cert-area-section,
+.cert-source-note {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+}
+
+.cert-path-hero {
+  padding: 2rem;
+  background: linear-gradient(145deg, #ffffff, var(--surface-color));
+}
+
+.cert-path-kicker {
+  display: inline-flex;
+  margin-bottom: 0.7rem;
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cert-path-hero h1 {
+  max-width: 880px;
+  margin: 0;
+  color: var(--dark-color);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.cert-path-hero p,
+.cert-path-how p,
+.cert-area-heading p,
+.cert-source-note p {
+  max-width: 840px;
+  margin: 1rem 0 0;
+  color: var(--muted-color);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cert-path-choice {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.cert-exam-card,
+.cert-area-card {
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-left: 6px solid var(--primary-color);
+  border-radius: 7px;
+  background: #ffffff;
+  padding: 1.2rem;
+  text-align: left;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.055);
+}
+
+.cert-exam-card:nth-child(2) {
+  border-left-color: var(--accent-warm);
+}
+
+.cert-exam-badge {
+  display: inline-flex;
+  min-height: 32px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 5px;
+  background: rgba(36, 92, 105, 0.06);
+  color: var(--primary-strong);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.cert-exam-card h2,
+.cert-path-how h2,
+.cert-area-heading h2,
+.cert-source-note h2 {
+  display: block;
+  margin: 0.8rem 0 0.55rem;
+  color: var(--dark-color);
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.cert-exam-card p {
+  margin: 0;
+  color: var(--muted-color);
+  line-height: 1.55;
+}
+
+.cert-exam-card ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--dark-color);
+  line-height: 1.42;
+}
+
+.cert-path-how {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+}
+
+.cert-path-steps {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.cert-path-steps span {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 7px;
+  background: rgba(36, 92, 105, 0.05);
+  color: var(--primary-strong);
+  padding: 0.65rem 0.8rem;
+  font-weight: 800;
+}
+
+.cert-area-section {
+  padding: 1.5rem;
+}
+
+.cert-area-heading h2,
+.cert-area-heading p {
+  margin-top: 0;
+}
+
+.cert-area-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.cert-area-card {
+  border-left-color: var(--accent-color);
+}
+
+.cert-area-card-top {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cert-area-card h3 {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.cert-status {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 26px;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  background: rgba(36, 92, 105, 0.08);
+  color: var(--primary-strong);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.cert-status.covered {
+  background: rgba(79, 143, 103, 0.14);
+  color: #32603f;
+}
+
+.cert-status.partial {
+  background: rgba(201, 162, 77, 0.18);
+  color: #7a5b19;
+}
+
+.cert-status.coming-soon {
+  background: rgba(182, 75, 54, 0.12);
+  color: #8a3828;
+}
+
+.cert-level-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.cert-level-columns span {
+  display: block;
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cert-level-columns p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-color);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.cert-tool-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.cert-tool-links button,
+.cert-source-note a {
+  min-height: 36px;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 7px;
+  background: #ffffff;
+  color: var(--primary-color);
+  padding: 0.5rem 0.65rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cert-tool-links button:hover,
+.cert-source-note a:hover {
+  border-color: rgba(36, 92, 105, 0.32);
+  background: rgba(36, 92, 105, 0.05);
+}
+
+.cert-source-note {
+  margin-top: 1.25rem;
+  padding: 1.5rem;
+}
+
+.cert-source-note h2 {
+  margin-top: 0;
+}
+
+.cert-source-note div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+body.dark-mode .cert-path-hero,
+body.dark-mode .cert-path-how,
+body.dark-mode .cert-area-section,
+body.dark-mode .cert-source-note,
+body.dark-mode .cert-exam-card,
+body.dark-mode .cert-area-card {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .cert-path-hero {
+  background: linear-gradient(145deg, #1f2937, rgba(36, 92, 105, 0.18));
+}
+
+body.dark-mode .cert-path-hero h1,
+body.dark-mode .cert-exam-card h2,
+body.dark-mode .cert-path-how h2,
+body.dark-mode .cert-area-heading h2,
+body.dark-mode .cert-source-note h2,
+body.dark-mode .cert-exam-card ul {
+  color: #f9fafb;
+}
+
+body.dark-mode .cert-path-hero p,
+body.dark-mode .cert-path-how p,
+body.dark-mode .cert-area-heading p,
+body.dark-mode .cert-source-note p,
+body.dark-mode .cert-exam-card p,
+body.dark-mode .cert-level-columns p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .cert-exam-badge,
+body.dark-mode .cert-path-steps span,
+body.dark-mode .cert-tool-links button,
+body.dark-mode .cert-source-note a {
+  background: #111827;
+  border-color: #374151;
+  color: #5eead4;
+}
+
+body.dark-mode .cert-area-card h3,
+body.dark-mode .cert-level-columns span {
+  color: #5eead4;
+}
+
+@media (max-width: 900px) {
+  .cert-path-choice,
+  .cert-path-how,
+  .cert-area-grid,
+  .cert-level-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .cert-path-hero,
+  .cert-path-how,
+  .cert-area-section,
+  .cert-source-note {
+    padding: 1.15rem;
+  }
+
+  .cert-area-card-top {
+    flex-direction: column;
+  }
+}

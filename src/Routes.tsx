@@ -10,10 +10,12 @@ import SpecialPathogensHub from "./tools/SpecialPathogensHub/SpecialPathogensHub
 import SyndromeDiagnosticPath from "./tools/SyndromeDiagnosticPath/SyndromeDiagnosticPath";
 import DoNotRoutineCulture from "./tools/DoNotRoutineCulture/DoNotRoutineCulture";
 import StudyQuiz from "./tools/StudyQuiz/StudyQuiz";
+import CertificationStudyPaths from "./tools/CertificationStudyPaths/CertificationStudyPaths";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 
 import MicroBasics from "./components/Guides/MicroBasics";
+import { LearnArticle, LearnHub } from "./components/Learn/LearnHub";
 
 import GlobalSearch from "./components/Search/GlobalSearch";
 import JoinAlpha from "./components/JoinAlpha";
@@ -24,6 +26,8 @@ export default function AppRoutes() {
       <Route path="/" element={<App />}>
         <Route index element={null} />
         <Route path="about" element={<About />} />
+        <Route path="learn" element={<LearnHub />} />
+        <Route path="learn/:slug" element={<LearnArticle />} />
         <Route path="guides" element={<MicroBasics />} />
         <Route path="search" element={<GlobalSearch />} />
         <Route path="join-alpha" element={<JoinAlpha />} />
@@ -37,6 +41,7 @@ export default function AppRoutes() {
         <Route path="syndrome-diagnostic-path" element={<SyndromeDiagnosticPath />} />
         <Route path="do-not-routine-culture" element={<DoNotRoutineCulture />} />
         <Route path="study-quiz" element={<StudyQuiz />} />
+        <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

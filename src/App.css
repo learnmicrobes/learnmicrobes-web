@@ -215,6 +215,80 @@
     box-shadow: 0 10px 24px rgba(36, 92, 105, 0.16);
   }
 
+  .learn-basics-card {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    margin: 0 auto 2rem;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    text-align: left;
+  }
+
+  .learn-basics-kicker {
+    display: inline-flex;
+    margin-bottom: 0.45rem;
+    color: var(--primary-color);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .learn-basics-card h2 {
+    display: block;
+    margin: 0 0 0.45rem;
+    color: var(--dark-color);
+    font-size: 1.55rem;
+    line-height: 1.2;
+  }
+
+  .learn-basics-card p {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .learn-basics-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .learn-basics-links button {
+    min-height: 46px;
+    justify-content: flex-start;
+    border: 1px solid rgba(36, 92, 105, 0.16);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--primary-color);
+    padding: 0.75rem 0.85rem;
+    text-align: left;
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1.2;
+    box-shadow: 0 5px 12px rgba(15, 23, 42, 0.035);
+  }
+
+  .learn-basics-links button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(36, 92, 105, 0.3);
+    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.07);
+  }
+
+  .learn-basics-links .learn-basics-all {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: transparent;
+  }
+
   .hero-badge {
     background: rgba(36, 92, 105, 0.1);
     color: var(--primary-color);
@@ -561,6 +635,7 @@
   /* Specific Accents for Tools */
   .tool-card.calculator { --tool-accent: #3f8f65; }
   .tool-card.start-here { --tool-accent: var(--accent-color); }
+  .tool-card.certification-path { --tool-accent: #245c69; }
   .tool-card.gram-positive { --tool-accent: #805ad5; }
   .tool-card.gram-negative { --tool-accent: #c84b4b; }
   .tool-card.anaerobe { --tool-accent: #2f7abf; }
@@ -588,6 +663,14 @@
   }
 
   .alpha-invite-card {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-basics-card {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-basics-links {
     grid-template-columns: 1fr;
   }
 
@@ -697,6 +780,27 @@
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+}
+
+.mobile-nav-controls {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.mobile-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .nav-links-main {
@@ -833,8 +937,11 @@
 
   .nav-menu-toggle {
     display: inline-flex;
-    margin-left: auto;
     background: rgba(255, 255, 255, 0.14);
+  }
+
+  .mobile-nav-controls {
+    display: inline-flex;
   }
 
   .nav-links.mobile-nav {
@@ -1033,6 +1140,11 @@
   .alpha-invite-card button {
     width: 100%;
     justify-content: center;
+  }
+
+  .learn-basics-card {
+    max-width: none;
+    padding: 1.15rem;
   }
 }
 
@@ -1316,6 +1428,30 @@ body.dark-mode .alpha-invite-card h2 {
 
 body.dark-mode .alpha-invite-card p {
   color: #cbd5e1;
+}
+
+body.dark-mode .learn-basics-card {
+  background: #1e2532;
+  border-color: #2d3748;
+}
+
+body.dark-mode .learn-basics-card h2 {
+  color: #f9fafb;
+}
+
+body.dark-mode .learn-basics-card p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .learn-basics-links button {
+  background: #111827;
+  border-color: #2d3748;
+  color: #5eead4;
+}
+
+body.dark-mode .learn-basics-links .learn-basics-all {
+  background: #4fd1c5;
+  color: #1a202c;
 }
 
 body.dark-mode .student-tool-map,

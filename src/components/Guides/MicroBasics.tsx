@@ -36,7 +36,7 @@ type GuideNextStep = {
 const guides: Guide[] = [
   {
     id: 'intro-to-microbiology',
-    label: 'Start Here: Intro to Microbiology',
+    label: 'New Student Start: Intro to Microbiology',
     category: 'Core Basics',
     title: 'Intro to Clinical Microbiology for New Learners',
     summary: 'A starting module for students and new medical technologists who need the basic bench mindset before diving into roadmaps and organism details.',
@@ -6107,16 +6107,14 @@ const guides: Guide[] = [
   }
 ];
 
-const categories: GuideCategory[] = ['Core Basics', 'Bacteriology', 'Parasitology', 'Mycology', 'Virology', 'Organ System Diagnosis', 'Laboratory Management', 'Bench Workflows', 'Interpretation'];
-
 const guidePathways: Array<{ label: string; guideId: string; description: string }> = [
-  { label: 'Start Here', guideId: 'intro-to-microbiology', description: 'Core concepts and bench mindset' },
-  { label: 'Bacteriology', guideId: 'bacterial-identification-strategy', description: 'Organism ID strategy' },
-  { label: 'Parasitology', guideId: 'parasitology-lab-methods-overview', description: 'Parasite specimen and method logic' },
-  { label: 'Mycology', guideId: 'fungal-identification-overview', description: 'Fungal direct exam, culture, and safety' },
-  { label: 'Virology', guideId: 'virology-methods-overview', description: 'Viral specimens, NAAT, serology, and culture' },
-  { label: 'Organ Systems', guideId: 'bloodstream-infections', description: 'Syndrome and specimen workflows' },
-  { label: 'Lab Management', guideId: 'quality-clinical-microbiology-lab', description: 'Quality, infection control, and response' }
+  { label: 'New Student Start', guideId: 'intro-to-microbiology', description: 'Core concepts and bench mindset' },
+  { label: 'Bacteriology Study Strategy', guideId: 'bacterial-identification-strategy', description: 'Organism ID and separation logic' },
+  { label: 'Parasite Study Strategy', guideId: 'parasitology-lab-methods-overview', description: 'Specimen, stage, and method logic' },
+  { label: 'Fungal Study Strategy', guideId: 'fungal-identification-overview', description: 'Direct exam, culture, and safety' },
+  { label: 'Viral Testing Strategy', guideId: 'virology-methods-overview', description: 'Specimens, NAAT, serology, and culture' },
+  { label: 'Syndrome Review', guideId: 'bloodstream-infections', description: 'Body-system and specimen workflows' },
+  { label: 'Quality and Safety Review', guideId: 'quality-clinical-microbiology-lab', description: 'Quality, infection control, and response' }
 ];
 
 const parasitologyTopicLinks = [
@@ -7677,7 +7675,7 @@ const getNextSteps = (guideId: string): GuideNextStep[] => {
 
   return [
     {
-      title: 'Go to Start Here',
+      title: 'Go to New Student Start',
       body: 'Return to the broader beginner overview.',
       path: '/guides?guide=intro-to-microbiology'
     },
@@ -7694,7 +7692,6 @@ const MicroBasics: React.FC = () => {
   const location = useLocation();
   const [activeGuideId, setActiveGuideId] = useState(() => getGuideIdFromSearch(location.search));
   const [guideSearch, setGuideSearch] = useState('');
-  const [expandedCategories, setExpandedCategories] = useState<GuideCategory[]>(['Core Basics']);
 
   useEffect(() => {
     setActiveGuideId(getGuideIdFromSearch(location.search));
@@ -7706,12 +7703,6 @@ const MicroBasics: React.FC = () => {
   );
   const nextSteps = useMemo(() => getNextSteps(activeGuide.id), [activeGuide.id]);
   const normalizedGuideSearch = guideSearch.trim().toLowerCase();
-
-  useEffect(() => {
-    setExpandedCategories((current) => (
-      current.includes(activeGuide.category) ? current : [...current, activeGuide.category]
-    ));
-  }, [activeGuide.category]);
 
   const guideMatchesSearch = useCallback((guide: Guide) => {
     if (!normalizedGuideSearch) {
@@ -7731,40 +7722,25 @@ const MicroBasics: React.FC = () => {
     return searchableText.includes(normalizedGuideSearch);
   }, [normalizedGuideSearch]);
 
-  const guidesByCategory = useMemo(() => (
-    categories.map((category) => ({
-      category,
-      total: guides.filter((guide) => guide.category === category).length,
-      guides: guides.filter((guide) => guide.category === category && guideMatchesSearch(guide))
-    }))
-  ), [guideMatchesSearch]);
-
-  const totalFilteredGuides = guidesByCategory.reduce((sum, group) => sum + group.guides.length, 0);
+  const filteredGuides = useMemo(() => guides.filter((guide) => guideMatchesSearch(guide)), [guideMatchesSearch]);
+  const totalFilteredGuides = filteredGuides.length;
 
   const handleGuideChange = (guideId: string) => {
     setActiveGuideId(guideId);
     navigate(`/guides?guide=${guideId}`, { replace: true });
   };
 
-  const toggleCategory = (category: GuideCategory) => {
-    setExpandedCategories((current) => (
-      current.includes(category)
-        ? current.filter((item) => item !== category)
-        : [...current, category]
-    ));
-  };
-
   return (
     <ToolBox
-      title="Microbiology Basics and Guides"
+      title="Deep Study Guides"
       icon="GUIDE"
       onClose={() => navigate('/')}
     >
       <div className="basics-container">
         <aside className="basics-sidebar">
           <div className="guide-sidebar-intro">
-            <h3>Guide Library</h3>
-            <p>Bench basics, workflow guides, and fast interpretation references.</p>
+            <h3>Deep Guides</h3>
+            <p>Exam strategy, study pathways, and longer clinical microbiology walkthroughs.</p>
           </div>
 
           <div className="guide-sidebar-search">
@@ -7789,7 +7765,7 @@ const MicroBasics: React.FC = () => {
           </div>
 
           <div className="guide-pathways">
-            <div className="guide-pathway-title">Start Here Pathways</div>
+            <div className="guide-pathway-title">Choose a Study Strategy</div>
             {guidePathways.map((pathway) => (
               <button
                 key={pathway.guideId}
@@ -7803,44 +7779,21 @@ const MicroBasics: React.FC = () => {
             ))}
           </div>
 
-          <div className="guide-category-list">
-            {guidesByCategory.map((group) => {
-              if (normalizedGuideSearch && group.guides.length === 0) {
-                return null;
-              }
-
-              const isExpanded = Boolean(normalizedGuideSearch) || expandedCategories.includes(group.category);
-
-              return (
-                <div key={group.category} className="guide-group">
-                  <button
-                    type="button"
-                    className={`guide-group-toggle ${activeGuide.category === group.category ? 'active' : ''}`}
-                    onClick={() => toggleCategory(group.category)}
-                    aria-expanded={isExpanded}
-                  >
-                    <span className="guide-toggle-mark">{isExpanded ? '-' : '+'}</span>
-                    <span>{group.category}</span>
-                    <small>{normalizedGuideSearch ? `${group.guides.length}/${group.total}` : group.total}</small>
-                  </button>
-
-                  {isExpanded && (
-                    <div className="guide-topic-list">
-                      {group.guides.map((guide) => (
-                        <button
-                          key={guide.id}
-                          className={`topic-btn ${activeGuide.id === guide.id ? 'active' : ''}`}
-                          onClick={() => handleGuideChange(guide.id)}
-                        >
-                          {guide.label}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          {normalizedGuideSearch && (
+            <div className="guide-search-results">
+              <div className="guide-pathway-title">Search Results</div>
+              {filteredGuides.map((guide) => (
+                <button
+                  key={guide.id}
+                  className={`topic-btn ${activeGuide.id === guide.id ? 'active' : ''}`}
+                  onClick={() => handleGuideChange(guide.id)}
+                >
+                  <span>{guide.label}</span>
+                  <small>{guide.category}</small>
+                </button>
+              ))}
+            </div>
+          )}
 
           {normalizedGuideSearch && totalFilteredGuides === 0 && (
             <div className="guide-empty-state">

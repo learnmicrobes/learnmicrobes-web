@@ -84,7 +84,7 @@
 }
 
 .guide-pathways,
-.guide-category-list {
+.guide-search-results {
   display: grid;
   gap: 0.55rem;
 }
@@ -124,69 +124,11 @@
   line-height: 1.35;
 }
 
-.guide-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.guide-group-title {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--primary-color);
-}
-
-.guide-group-toggle {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  padding: 0.62rem 0.7rem;
-  background: rgba(15, 23, 42, 0.025);
-  color: var(--primary-strong);
-  text-align: left;
-  cursor: pointer;
-  font-weight: 800;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.guide-group-toggle:hover,
-.guide-group-toggle.active {
-  background: rgba(36, 92, 105, 0.07);
-  border-color: rgba(36, 92, 105, 0.14);
-}
-
-.guide-toggle-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 999px;
-  background: rgba(36, 92, 105, 0.1);
-  font-weight: 900;
-}
-
-.guide-group-toggle small {
-  color: var(--muted-color);
-  font-weight: 800;
-}
-
-.guide-topic-list {
-  display: grid;
-  gap: 0.18rem;
-  padding-left: 0.35rem;
-}
-
 .topic-btn {
   position: relative;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
   gap: 0.65rem;
   background: transparent;
   border: none;
@@ -202,6 +144,8 @@
 
 .topic-btn::before {
   content: "";
+  grid-row: span 2;
+  margin-top: 0.45rem;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -222,6 +166,14 @@
 
 .topic-btn.active::before {
   background: var(--primary-color);
+}
+
+.topic-btn small {
+  grid-column: 2;
+  color: var(--muted-color);
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.25;
 }
 
 .guide-empty-state {
@@ -610,20 +562,6 @@
     max-height: 52vh;
     overflow: auto;
     padding-bottom: 0.75rem;
-  }
-
-  .guide-group {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 0.2rem;
-  }
-
-  .guide-group-toggle {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background: var(--light-color);
   }
 
   .guide-search-row {

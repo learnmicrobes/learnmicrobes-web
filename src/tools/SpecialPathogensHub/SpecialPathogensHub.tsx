@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  faArrowRight,
   faBookOpen,
   faFlaskVial,
   faMicroscope,
@@ -129,23 +128,20 @@ const SpecialPathogensHub: React.FC = () => {
         {specialPathogenCards.map((card) => (
           <article className="special-pathogen-card" key={card.id}>
             <div className="special-pathogen-card-header">
-              <div>
-                <span className="special-pathogen-id">{card.id}</span>
-                <h2>{card.title}</h2>
-              </div>
+              <h2>{card.title}</h2>
               <button
                 className="special-pathogen-open"
                 onClick={() => navigate(card.guidePath)}
-                aria-label={`Open ${card.title} guide`}
+                aria-label={`Open guide for ${card.title}`}
               >
-                <FontAwesomeIcon icon={faArrowRight} />
+                Open guide
               </button>
             </div>
             <p className="special-pathogen-subtitle">{card.subtitle}</p>
 
             <div className="special-pathogen-columns">
               <div>
-                <h3>Use when</h3>
+                <h3>When this applies</h3>
                 <ul>
                   {card.whenToUse.map((item) => (
                     <li key={item}>{item}</li>
@@ -153,7 +149,7 @@ const SpecialPathogensHub: React.FC = () => {
                 </ul>
               </div>
               <div>
-                <h3>Test focus</h3>
+                <h3>Methods to think about</h3>
                 <ul>
                   {card.testFocus.map((item) => (
                     <li key={item}>{item}</li>
@@ -162,11 +158,10 @@ const SpecialPathogensHub: React.FC = () => {
               </div>
             </div>
 
-            <div className="special-pathogen-tags" aria-label={`${card.title} organism groups`}>
-              {card.organismGroups.map((group) => (
-                <span key={group}>{group}</span>
-              ))}
-            </div>
+            <p className="special-pathogen-groups">
+              <span>Organism groups covered</span>
+              {card.organismGroups.join(', ')}
+            </p>
           </article>
         ))}
       </section>

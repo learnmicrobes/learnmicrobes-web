@@ -5,6 +5,7 @@ import { faSearch, faArrowRight, faFlask, faBookOpen, faSitemap } from '@fortawe
 import { biochemicalTestsData } from '../../tools/BiochemicalTests/biochemicalData';
 import { gramPositiveRoadmap } from '../../tools/GramPositiveRoadmap/data';
 import { glossaryEntries, type GlossaryEntry } from '../../data/glossaryData';
+import { learnTopics } from '../../data/learnTopics';
 import ToolBox from '../ToolBox/ToolBox';
 import { trackEvent } from '../../utils/analytics';
 import './GlobalSearch.css';
@@ -12,7 +13,7 @@ import './GlobalSearch.css';
 type SearchResult = {
   id: string;
   title: string;
-  type: 'Test' | 'Guide' | 'Roadmap' | 'Tool' | 'Bench Term';
+  type: 'Test' | 'Guide' | 'Roadmap' | 'Tool' | 'Bench Term' | 'Learn';
   snippet: string;
   path: string;
   keywords: string;
@@ -26,7 +27,8 @@ const cleanSearchText = (value: string, maxLength = 210) => {
 };
 
 const getDestinationLabel = (path: string) => {
-  if (path.startsWith('/guides')) return 'Guide Library';
+  if (path.startsWith('/learn')) return 'Learn Basics';
+  if (path.startsWith('/guides')) return 'Deep Guides';
   if (path === '/biochemical-tests') return 'Biochemical Tests';
   if (path === '/biochemical-calculator') return 'Enterics Calculator';
   if (path.includes('roadmap')) return 'Interactive Roadmap';
@@ -45,6 +47,8 @@ const getResultActionLabel = (type: SearchResult['type']) => {
       return 'Open test reference';
     case 'Guide':
       return 'Open guide';
+    case 'Learn':
+      return 'Read basics page';
     case 'Roadmap':
       return 'Open roadmap';
     case 'Tool':
@@ -100,6 +104,32 @@ const GlobalSearch: React.FC = () => {
         test.expectedResults
       ].join(' ').toLowerCase(),
       priority: 4
+    }));
+
+    const learnBasics: SearchResult[] = learnTopics.map((topic) => ({
+      id: `learn-${topic.slug}`,
+      title: topic.title,
+      type: 'Learn',
+      snippet: topic.summary,
+      path: `/learn/${topic.slug}`,
+      keywords: [
+        topic.title,
+        topic.category,
+        topic.summary,
+        topic.whyItMatters,
+        topic.principle,
+        topic.studentShortcut,
+        ...topic.basicSteps,
+        ...topic.interpretation,
+        ...topic.commonMistakes,
+        ...(topic.tables ?? []).flatMap((table) => [
+          table.title,
+          ...table.columns,
+          ...table.rows.flat()
+        ]),
+        ...topic.keywords
+      ].join(' ').toLowerCase(),
+      priority: 5
     }));
 
     const guides: SearchResult[] = [
@@ -969,6 +999,15 @@ const GlobalSearch: React.FC = () => {
         path: '/study-quiz',
         keywords: 'study quiz flashcards practice questions best next test organism profile qc expected result biochemical test roadmap safety escalation exam mode bench mode',
         priority: 2
+      },
+      {
+        id: 'r10',
+        title: 'Certification Study Paths',
+        type: 'Tool',
+        snippet: 'M(ASCP) and SM(ASCP) microbiology study map connecting certification content areas to Learn Microbes tools and weak-topic review.',
+        path: '/certification-study-paths',
+        keywords: 'certification study paths ascp m sm scientist specialist microbiology exam prep content guideline bacteriology mycology parasitology virology mycobacteriology molecular laboratory operations quality control weak area tracker',
+        priority: 3
       }
     ];
 
@@ -1010,7 +1049,7 @@ const GlobalSearch: React.FC = () => {
       return [questionEntry, ...conclusionEntries];
     });
 
-    return [...glossary, ...tests, ...guides, ...roadmapSummaries, ...gramPositiveNodes];
+    return [...glossary, ...learnBasics, ...tests, ...guides, ...roadmapSummaries, ...gramPositiveNodes];
   }, []);
 
   useEffect(() => {
@@ -1087,6 +1126,8 @@ const GlobalSearch: React.FC = () => {
       case 'Test':
         return faFlask;
       case 'Bench Term':
+        return faBookOpen;
+      case 'Learn':
         return faBookOpen;
       case 'Guide':
         return faBookOpen;
