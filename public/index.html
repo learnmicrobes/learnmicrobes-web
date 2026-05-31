@@ -45,10 +45,28 @@
     </script>
     <script>
       (function () {
-        var redirectPath = sessionStorage.getItem('learnmicrobes_redirect_path');
+        var params = new URLSearchParams(window.location.search);
+        var queryRedirectPath = params.get('lm_path');
+        var redirectPath = queryRedirectPath;
+
+        if (!redirectPath) {
+          try {
+            redirectPath = sessionStorage.getItem('learnmicrobes_redirect_path');
+          } catch (error) {
+            redirectPath = null;
+          }
+        }
+
         if (redirectPath) {
-          sessionStorage.removeItem('learnmicrobes_redirect_path');
-          window.history.replaceState(null, '', redirectPath);
+          try {
+            sessionStorage.removeItem('learnmicrobes_redirect_path');
+          } catch (error) {
+            // Storage may be unavailable in some social/in-app browsers.
+          }
+
+          if (redirectPath.charAt(0) === '/') {
+            window.history.replaceState(null, '', redirectPath);
+          }
         }
       }());
     </script>

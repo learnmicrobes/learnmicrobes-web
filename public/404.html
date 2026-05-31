@@ -6,8 +6,12 @@
     <script>
       (function () {
         var redirectPath = window.location.pathname + window.location.search + window.location.hash;
-        sessionStorage.setItem('learnmicrobes_redirect_path', redirectPath);
-        window.location.replace('/');
+        try {
+          sessionStorage.setItem('learnmicrobes_redirect_path', redirectPath);
+        } catch (error) {
+          // Some in-app/social browsers restrict storage. The query fallback still carries the route.
+        }
+        window.location.replace('/?lm_path=' + encodeURIComponent(redirectPath));
       }());
     </script>
   </head>
