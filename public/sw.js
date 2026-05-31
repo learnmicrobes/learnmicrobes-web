@@ -1,4 +1,4 @@
-const CACHE_NAME = 'learn-microbes-cache-v1';
+const CACHE_NAME = 'learn-microbes-cache-v2';
 
 // Install event: cache root
 self.addEventListener('install', event => {

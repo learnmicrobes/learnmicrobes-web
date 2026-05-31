@@ -45,6 +45,32 @@
     </script>
     <script>
       (function () {
+        function cleanRedirectPath(path) {
+          var parsedUrl;
+
+          try {
+            parsedUrl = new URL(path, window.location.origin);
+          } catch (error) {
+            return null;
+          }
+
+          if (parsedUrl.origin !== window.location.origin) {
+            return null;
+          }
+
+          ['fbclid', 'gclid', 'msclkid'].forEach(function (key) {
+            parsedUrl.searchParams.delete(key);
+          });
+
+          Array.from(parsedUrl.searchParams.keys()).forEach(function (key) {
+            if (key.indexOf('utm_') === 0) {
+              parsedUrl.searchParams.delete(key);
+            }
+          });
+
+          return parsedUrl.pathname + parsedUrl.search + parsedUrl.hash;
+        }
+
         var params = new URLSearchParams(window.location.search);
         var queryRedirectPath = params.get('lm_path');
         var redirectPath = queryRedirectPath;
@@ -58,13 +84,15 @@
         }
 
         if (redirectPath) {
+          redirectPath = cleanRedirectPath(redirectPath);
+
           try {
             sessionStorage.removeItem('learnmicrobes_redirect_path');
           } catch (error) {
             // Storage may be unavailable in some social/in-app browsers.
           }
 
-          if (redirectPath.charAt(0) === '/') {
+          if (redirectPath && redirectPath.charAt(0) === '/') {
             window.history.replaceState(null, '', redirectPath);
           }
         }

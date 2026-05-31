@@ -5,7 +5,26 @@
     <title>Learn Microbes</title>
     <script>
       (function () {
-        var redirectPath = window.location.pathname + window.location.search + window.location.hash;
+        var ignoredParams = {
+          fbclid: true,
+          gclid: true,
+          msclkid: true
+        };
+        var params = new URLSearchParams(window.location.search);
+        var cleanedParams = new URLSearchParams();
+
+        params.forEach(function (value, key) {
+          if (ignoredParams[key] || key.indexOf('utm_') === 0) {
+            return;
+          }
+          cleanedParams.append(key, value);
+        });
+
+        var cleanedSearch = cleanedParams.toString();
+        var redirectPath = window.location.pathname +
+          (cleanedSearch ? '?' + cleanedSearch : '') +
+          window.location.hash;
+
         try {
           sessionStorage.setItem('learnmicrobes_redirect_path', redirectPath);
         } catch (error) {
