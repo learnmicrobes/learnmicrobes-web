@@ -2184,6 +2184,11 @@ body.dark-mode .result-icon-box {
     min-height: auto;
   }
 
+  .dashboard-search-card,
+  .dashboard-cover-actions {
+    width: 100%;
+  }
+
   .dashboard-alpha-actions,
   .dashboard-alpha-actions button,
   .dashboard-featured-card button,
