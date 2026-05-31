@@ -2149,6 +2149,19 @@ body.dark-mode .result-icon-box {
 }
 
 @media (max-width: 620px) {
+  .app-main {
+    padding-bottom: 5.25rem;
+  }
+
+  .persistent-feedback-btn {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    min-height: 40px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.84rem;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
+  }
+
   .dashboard-cover-hero,
   .dashboard-panel,
   .dashboard-alpha-panel {
