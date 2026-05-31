@@ -5,6 +5,7 @@ import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmar
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
 import { atlasPages } from './components/VisualAtlas/VisualAtlas';
+import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import './App.css';
 
 export default function App() {
@@ -189,7 +190,7 @@ export default function App() {
   };
 
   const handleAlphaSignupClick = (locationName: string) => {
-    trackEvent('alpha_signup_click', {
+    trackEvent('join_alpha_click', {
       location: locationName,
       destination: ALPHA_SIGNUP_FORM_URL
     });
@@ -500,23 +501,11 @@ export default function App() {
               </div>
             </section>
 
-            <section className="dashboard-alpha-panel" aria-labelledby="dashboard-alpha-title">
-              <div>
-                <span className="dashboard-kicker">Alpha 1.1</span>
-                <h2 id="dashboard-alpha-title">Help shape the bench cards and study paths.</h2>
-                <p>
-                  Join the alpha or send feedback when something is missing, confusing, or genuinely useful.
-                </p>
-              </div>
-              <div className="dashboard-alpha-actions">
-                <button type="button" onClick={() => handleAlphaSignupClick('homepage_dashboard_alpha')}>
-                  Join Alpha
-                </button>
-                <button type="button" onClick={() => handleFeedbackClick('homepage_dashboard_feedback')}>
-                  Send Feedback
-                </button>
-              </div>
-            </section>
+            <AlphaValidationCTA
+              location="homepage_dashboard"
+              title="Help shape the bench cards and study paths"
+              body="Tell us what feels useful, what is missing, and whether saved progress or bookmarks would help your study workflow."
+            />
           </div>
         ) : (
           <Outlet />

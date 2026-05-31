@@ -10,6 +10,7 @@ import { expandedLearnTopics } from '../../data/learnExpansionTopics';
 import { getSearchAliases } from '../../data/searchAliases';
 import { atlasPages } from '../VisualAtlas/VisualAtlas';
 import ToolBox from '../ToolBox/ToolBox';
+import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
 import { trackEvent } from '../../utils/analytics';
 import './GlobalSearch.css';
 
@@ -1325,6 +1326,12 @@ const GlobalSearch: React.FC = () => {
             </div>
           )}
         </div>
+
+        <AlphaValidationCTA
+          location="search_page"
+          title="Help improve search rescue"
+          body="Tell us what you searched for, what was missing, and whether saved searches, bookmarks, or progress tracking would help."
+        />
       </div>
     </ToolBox>
   );

@@ -20,7 +20,7 @@ const openExternalForm = (url: string) => {
 
 const JoinAlpha: React.FC = () => {
   const handleJoinAlpha = () => {
-    trackEvent('alpha_signup_click', {
+    trackEvent('join_alpha_click', {
       location: 'join_alpha_page',
       destination: ALPHA_SIGNUP_FORM_URL
     });
@@ -41,7 +41,8 @@ const JoinAlpha: React.FC = () => {
       <h1 id="join-alpha-title">Help shape Learn Microbes.</h1>
       <p className="join-alpha-notice">
         Learn Microbes is currently in alpha. Account sync and user accounts are not active yet. Join the alpha
-        tester list to get updates and help shape the product.
+        tester list to get updates and help shape the product. Tell us in the form whether saved progress or
+        bookmarks would help your study workflow.
       </p>
 
       <div className="join-alpha-actions">

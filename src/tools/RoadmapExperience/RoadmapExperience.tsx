@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
+import AlphaValidationCTA from '../../components/AlphaValidationCTA/AlphaValidationCTA';
+import { trackEvent } from '../../utils/analytics';
 import './RoadmapExperience.css';
 
 export interface RoadmapStep {
@@ -348,6 +350,13 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   const [detailMode, setDetailMode] = useState<RoadmapDetailMode>(normalizeSavedMode(savedMode));
   const [hotkeysEnabled, setHotkeysEnabled] = useState(savedHotkeys ? JSON.parse(savedHotkeys) : true);
   const [roadmapSearch, setRoadmapSearch] = useState('');
+
+  useEffect(() => {
+    trackEvent('roadmap_started', {
+      roadmap_title: title,
+      roadmap_key: storageKey
+    });
+  }, [storageKey, title]);
 
   const currentStep = roadmap.find((step) => step.id === currentStepId) || roadmap[0];
   const historyQuestions = history
@@ -767,6 +776,12 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
             </div>
           )}
         </section>
+
+        <AlphaValidationCTA
+          location={`roadmap_${storageKey}`}
+          title="Help improve this roadmap"
+          body="Tell us where the branch logic helped, where it got confusing, and whether saved progress or bookmarks would make roadmaps more useful."
+        />
       </div>
     </ToolBox>
   );

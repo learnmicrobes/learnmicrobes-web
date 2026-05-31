@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { learnTopics, getLearnTopicBySlug } from '../../data/learnTopics';
 import { atlasPages } from '../VisualAtlas/VisualAtlas';
+import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
 import './Learn.css';
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -381,6 +382,14 @@ export const LearnArticle: React.FC = () => {
             </div>
           </div>
         </section>
+      )}
+
+      {isBeginnerStart && (
+        <AlphaValidationCTA
+          location="clinical_bench_reference"
+          title="Help validate the clinical bench reference path"
+          body="Tell us whether this starting path matches your class, rotation, or exam prep, and whether saved progress or bookmarks would help."
+        />
       )}
 
       <div className="learn-article-layout">

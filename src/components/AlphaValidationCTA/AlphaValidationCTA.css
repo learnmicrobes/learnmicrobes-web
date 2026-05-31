@@ -1,0 +1,109 @@
+.alpha-validation-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
+}
+
+.alpha-validation-cta span {
+  display: inline-flex;
+  color: var(--primary-color);
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.alpha-validation-cta h2 {
+  margin: 0.22rem 0 0.2rem;
+  color: var(--dark-color);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.alpha-validation-cta p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted-color);
+  font-size: 0.86rem;
+  line-height: 1.42;
+}
+
+.alpha-validation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: flex-end;
+}
+
+.alpha-validation-actions button {
+  min-height: 2.25rem;
+  padding: 0.48rem 0.68rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 5px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.alpha-validation-actions button:first-child {
+  background: var(--primary-color);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.alpha-validation-actions button:hover,
+.alpha-validation-actions button:focus-visible {
+  border-color: rgba(36, 92, 105, 0.34);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+}
+
+.global-search-container > .alpha-validation-cta,
+.roadmap-container > .alpha-validation-cta,
+.basics-content .alpha-validation-cta,
+.learn-article > .alpha-validation-cta,
+.cert-path-page > .alpha-validation-cta,
+.biochemical-container .alpha-validation-cta {
+  margin-top: 1rem;
+}
+
+body.dark-mode .alpha-validation-cta {
+  background: #1e2532;
+  border-color: #2d3748;
+}
+
+body.dark-mode .alpha-validation-cta p {
+  color: #cbd5e1;
+}
+
+body.dark-mode .alpha-validation-actions button {
+  background: #111827;
+  border-color: #2d3748;
+  color: #5eead4;
+}
+
+body.dark-mode .alpha-validation-actions button:first-child {
+  background: #4fd1c5;
+  color: #1a202c;
+}
+
+@media (max-width: 720px) {
+  .alpha-validation-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .alpha-validation-actions {
+    justify-content: flex-start;
+  }
+
+  .alpha-validation-actions,
+  .alpha-validation-actions button {
+    width: 100%;
+  }
+}

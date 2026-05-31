@@ -9,7 +9,7 @@ const openExternalForm = (url: string) => {
 
 const NewsletterSignup: React.FC = () => {
   const handleJoinAlpha = () => {
-    trackEvent('alpha_signup_click', {
+    trackEvent('join_alpha_click', {
       location: 'homepage_lab_list',
       destination: ALPHA_SIGNUP_FORM_URL
     });
@@ -55,7 +55,7 @@ const NewsletterSignup: React.FC = () => {
             <h2 id="newsletter-title">Join the Lab List</h2>
             <p>
               Learn Microbes accounts are not active yet. Join the external alpha list for updates,
-              study-tool previews, and a say in what gets built next.
+              study-tool previews, and a say in what gets built next, including saved progress or bookmarks.
             </p>
           </div>
         </div>

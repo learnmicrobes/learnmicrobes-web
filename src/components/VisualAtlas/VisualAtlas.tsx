@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getSearchAliases } from '../../data/searchAliases';
+import { trackEvent } from '../../utils/analytics';
 import './VisualAtlas.css';
 
 type TubeVisual = {
@@ -5361,7 +5362,12 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
   useEffect(() => {
     document.title = `${page.title} | Learn Microbes`;
-  }, [page.title]);
+    trackEvent('visual_card_opened', {
+      visual_slug: page.slug,
+      visual_title: page.title,
+      visual_type: page.visualType
+    });
+  }, [page.slug, page.title, page.visualType]);
 
   return (
     <div className="visual-atlas-shell">

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AlphaValidationCTA from '../../components/AlphaValidationCTA/AlphaValidationCTA';
+import { trackEvent } from '../../utils/analytics';
 import './CertificationStudyPaths.css';
 
 type ExamPath = {
@@ -134,6 +136,12 @@ const statusClass = (status: StudyArea['status']) => status.toLowerCase().replac
 const CertificationStudyPaths: React.FC = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    trackEvent('certification_path_opened', {
+      page: 'certification_study_paths'
+    });
+  }, []);
+
   return (
     <div className="cert-path-page">
       <header className="cert-path-hero">
@@ -237,6 +245,12 @@ const CertificationStudyPaths: React.FC = () => {
           </a>
         </div>
       </section>
+
+      <AlphaValidationCTA
+        location="certification_study_paths"
+        title="Help validate certification study paths"
+        body="Tell us which exam path you are studying for, which areas feel missing, and whether saved progress or bookmarks would help your review."
+      />
     </div>
   );
 };

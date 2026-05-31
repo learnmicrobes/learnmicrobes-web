@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
 import { atlasPages } from '../../components/VisualAtlas/VisualAtlas';
+import AlphaValidationCTA from '../../components/AlphaValidationCTA/AlphaValidationCTA';
 import { biochemicalTestsData, BiochemicalTest } from './biochemicalData';
 import './BiochemicalTests.css';
 
@@ -111,6 +112,11 @@ const BiochemicalTests: React.FC = () => {
                 <div className="az-no-results">No tests found matching "{searchTerm}"</div>
               )}
             </div>
+            <AlphaValidationCTA
+              location="clinical_bench_reference_biochemical_tests"
+              title="Help validate the bench reference"
+              body="Tell us which test cards you use most, what is missing, and whether saved bookmarks would help you return to key reactions."
+            />
           </div>
         ) : (
           <div className="test-detail-view animate-step">
@@ -207,6 +213,11 @@ const BiochemicalTests: React.FC = () => {
                 </div>
               );
             })()}
+            <AlphaValidationCTA
+              location={`clinical_bench_reference_${selectedTest.id}`}
+              title="Help improve this reference card"
+              body="Tell us whether this procedure/QC page answered your question and whether saved bookmarks would help your bench review."
+            />
           </div>
         )}
       </div>

@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ToolBox from '../ToolBox/ToolBox';
+import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
+import { trackEvent } from '../../utils/analytics';
 import './MicroBasics.css';
 
 type GuideSection = {
@@ -7725,6 +7727,14 @@ const MicroBasics: React.FC = () => {
   const filteredGuides = useMemo(() => guides.filter((guide) => guideMatchesSearch(guide)), [guideMatchesSearch]);
   const totalFilteredGuides = filteredGuides.length;
 
+  useEffect(() => {
+    trackEvent('guide_opened', {
+      guide_id: activeGuide.id,
+      guide_title: activeGuide.title,
+      guide_category: activeGuide.category
+    });
+  }, [activeGuide]);
+
   const handleGuideChange = (guideId: string) => {
     setActiveGuideId(guideId);
     navigate(`/guides?guide=${guideId}`, { replace: true });
@@ -7971,6 +7981,12 @@ const MicroBasics: React.FC = () => {
                 ))}
               </div>
             </div>
+
+            <AlphaValidationCTA
+              location={`guides_${activeGuide.id}`}
+              title="Help tune the guide library"
+              body="Tell us which guide helped, what still feels unclear, and whether saved progress or bookmarks would help you return to long study paths."
+            />
           </div>
         </div>
       </div>
