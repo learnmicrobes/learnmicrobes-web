@@ -1,12 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faInfoCircle, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
-import NewsletterSignup from './components/Newsletter/NewsletterSignup';
-import StudentTestimonials from './components/Testimonials/StudentTestimonials';
+import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
-import { learnTopics } from './data/learnTopics';
+import { atlasPages } from './components/VisualAtlas/VisualAtlas';
 import './App.css';
 
 export default function App() {
@@ -81,164 +79,76 @@ export default function App() {
                       ? 'Study Quiz'
                       : location.pathname.includes('certification-study-paths')
                         ? 'Certification Study Paths'
-                        : location.pathname.includes('learn')
-                          ? 'Learn'
-                          : location.pathname.includes('guides')
-                            ? 'Guides'
-                            : location.pathname.includes('search')
-                              ? 'Search'
-                              : location.pathname.includes('join-alpha')
-                                ? 'Join Alpha'
-                                : location.pathname.includes('about')
-                                  ? 'About'
-                                  : null;
+                        : location.pathname.includes('visuals')
+                          ? 'Visual Atlas'
+                          : location.pathname.includes('learn')
+                            ? 'Learn'
+                            : location.pathname.includes('guides')
+                              ? 'Guides'
+                              : location.pathname.includes('search')
+                                ? 'Search'
+                                : location.pathname.includes('join-alpha')
+                                  ? 'Join Alpha'
+                                  : location.pathname.includes('about')
+                                    ? 'About'
+                                    : null;
 
   const isHomeRoute = location.pathname === '/';
 
-  const homeQuickLinks = useMemo(() => ([
-    { label: 'New learner? Start here', path: '/learn/clinical-microbiology' },
-    { label: 'Learn the basics', path: '/learn' },
-    { label: 'Search all content', path: '/search' },
-    { label: 'Syndrome to test path', path: '/syndrome-diagnostic-path' },
-    { label: 'Do not routine culture', path: '/do-not-routine-culture' },
-    { label: 'Practice quiz', path: '/study-quiz' },
-    { label: 'M/SM study path', path: '/certification-study-paths' },
-    { label: 'Special pathogens hub', path: '/special-pathogens' },
-    { label: 'Open Gram positive roadmap', path: '/gram-positive-roadmap' },
-    { label: 'Review bench tests', path: '/biochemical-tests' }
+  const dashboardActions = useMemo(() => ([
+    {
+      label: 'Learn from scratch',
+      detail: 'Start with the beginner microbiology path.',
+      path: '/learn/clinical-microbiology',
+      code: '01'
+    },
+    {
+      label: 'Identify an unknown',
+      detail: 'Use Gram stain, colony clues, and branch tests.',
+      path: '/unknown-isolate-workup',
+      code: 'ID'
+    },
+    {
+      label: 'Review biochemical tests',
+      detail: 'Look up reactions, QC, and interpretation traps.',
+      path: '/biochemical-tests',
+      code: 'TEST'
+    },
+    {
+      label: 'Study for M(ASCP) / SM(ASCP)',
+      detail: 'Follow M(ASCP) and SM(ASCP) certification study paths.',
+      path: '/certification-study-paths',
+      code: 'M/SM'
+    },
+    {
+      label: 'Look up a visual',
+      detail: 'Browse original bench cards and reaction visuals.',
+      path: '/visuals',
+      code: 'VIS'
+    },
+    {
+      label: 'Practice questions',
+      detail: 'Check recall with bench and exam-style prompts.',
+      path: '/study-quiz',
+      code: 'Q'
+    }
   ]), []);
 
-  const quickStartPath = useMemo(() => ([
-    { step: '01', label: 'Start here', path: '/learn/clinical-microbiology' },
-    { step: '02', label: 'Practice a roadmap', path: '/gram-positive-roadmap' },
-    { step: '03', label: 'Review bench tests', path: '/biochemical-tests' }
+  const startPath = useMemo(() => ([
+    { step: '01', label: 'Read the beginner path', path: '/learn/clinical-microbiology' },
+    { step: '02', label: 'Practice an unknown', path: '/unknown-isolate-workup' },
+    { step: '03', label: 'Use a bench card', path: '/visuals/indole-production' }
   ]), []);
 
-  const studentSituationLinks = useMemo(() => ([
-    { label: "I'm new", path: '/learn/clinical-microbiology' },
-    { label: 'I have an unknown organism', path: '/unknown-isolate-workup' },
-    { label: 'I need Gram positive ID', path: '/gram-positive-roadmap' },
-    { label: 'I need Gram negative ID', path: '/gram-negative-roadmap' },
-    { label: "I'm studying for M/SM", path: '/certification-study-paths' },
-    { label: 'I have a syndrome question', path: '/syndrome-diagnostic-path' },
-    { label: 'I want practice', path: '/study-quiz' }
-  ]), []);
-
-  const featuredLearnTopics = useMemo(() => (
-    ['gram-stain', 'culture-media', 'macconkey-agar', 'catalase-test']
-      .map((slug) => learnTopics.find((topic) => topic.slug === slug))
-      .filter((topic): topic is NonNullable<typeof topic> => Boolean(topic))
+  const featuredBenchCard = useMemo(() => (
+    atlasPages.find((page) => page.slug === 'indole-production') ?? atlasPages[0]
   ), []);
 
-  const homeToolGroups = useMemo(() => ([
-    {
-      title: 'Start Learning',
-      note: 'Build the bench vocabulary before the organism workup gets busy.',
-      tools: [
-        {
-          className: 'start-here',
-          icon: 'START',
-          title: 'Begin Learning',
-          path: '/learn/clinical-microbiology',
-          description: 'Start here if you are new to clinical micro and want a guided first-pass bench sequence.'
-        },
-        {
-          className: 'certification-path',
-          icon: 'M/SM',
-          title: 'Certification Study Paths',
-          path: '/certification-study-paths',
-          description: 'Study microbiology by exam goal: M(ASCP) for core certification prep or SM(ASCP) for advanced specialist review.'
-        },
-        {
-          className: 'biochemical-tests',
-          icon: 'TEST',
-          title: 'Biochemical Tests',
-          path: '/biochemical-tests',
-          description: 'Look up what a test means, how it works, and which organisms it helps separate.'
-        }
-      ]
-    },
-    {
-      title: 'Identify an Unknown',
-      note: 'Use these when you have Gram stain, colony clues, or early bench reactions.',
-      tools: [
-        {
-          className: 'unknown-isolate',
-          icon: 'ID',
-          title: 'Unknown Isolate Workup',
-          path: '/unknown-isolate-workup',
-          description: 'Start here when you have Gram stain, colony morphology, and need the next test.'
-        },
-        {
-          className: 'gram-positive',
-          icon: 'G+',
-          title: 'Gram Positive Roadmap',
-          path: '/gram-positive-roadmap',
-          description: 'Work through Staph, Strep, Bacillus-like rods, coryneforms, and other Gram-positive branches.'
-        },
-        {
-          className: 'gram-negative',
-          icon: 'G-',
-          title: 'Gram Negative Roadmap',
-          path: '/gram-negative-roadmap',
-          description: 'Work up enterics, oxidase-positive rods, fastidious organisms, and nonfermenters by branch logic.'
-        },
-        {
-          className: 'anaerobe',
-          icon: 'AN',
-          title: 'Obligate Anaerobe Roadmap',
-          path: '/obligate-anaerobe-roadmap',
-          description: 'Use when oxygen tolerance, specimen quality, colony clues, and anaerobic setup drive the answer.'
-        },
-        {
-          className: 'calculator',
-          icon: 'CALC',
-          title: 'Enterics Biochemical Calculator',
-          path: '/biochemical-calculator',
-          description: 'Enter reaction patterns and narrow likely Enterobacteriaceae matches from 24 biochemical tests.'
-        }
-      ]
-    },
-    {
-      title: 'Choose the Diagnostic Path',
-      note: 'Use these when the question is specimen, method, safety, or when routine culture is the wrong move.',
-      tools: [
-        {
-          className: 'syndrome-path',
-          icon: 'DX',
-          title: 'Syndrome to Diagnostic Path',
-          path: '/syndrome-diagnostic-path',
-          description: 'Start with the patient presentation and choose the best specimen, method, and safety note.'
-        },
-        {
-          className: 'do-not-culture',
-          icon: 'STOP',
-          title: 'Do Not Routine Culture',
-          path: '/do-not-routine-culture',
-          description: 'Recognize cases where escalation, NAAT, serology, special culture, or reference testing fits best.'
-        },
-        {
-          className: 'special-pathogens',
-          icon: 'SP',
-          title: 'Special Pathogens Hub',
-          path: '/special-pathogens',
-          description: 'Use when routine Gram stain and plate logic may fail: AFB, anaerobes, intracellular agents, spirochetes, and Mycoplasma.'
-        }
-      ]
-    },
-    {
-      title: 'Practice + Review',
-      note: 'Check whether the bench logic is sticking and circle back to weak spots.',
-      tools: [
-        {
-          className: 'study-quiz',
-          icon: 'QUIZ',
-          title: 'Study Quiz',
-          path: '/study-quiz',
-          description: 'Practice bench tests, organism profiles, QC reactions, expected results, and safety escalation logic.'
-        }
-      ]
-    }
+  const homeSecondaryLinks = useMemo(() => ([
+    { label: 'Search all content', path: '/search' },
+    { label: 'Gram positive roadmap', path: '/gram-positive-roadmap' },
+    { label: 'Gram negative roadmap', path: '/gram-negative-roadmap' },
+    { label: 'Syndrome path', path: '/syndrome-diagnostic-path' }
   ]), []);
 
   const toolGroups = useMemo(() => ([
@@ -402,11 +312,11 @@ export default function App() {
               <span className="nav-text">Learn</span>
             </button>
             <button
-              className={activeTool === 'Guides' ? 'active' : ''}
-              onClick={() => navigate('/guides')}
+              className={activeTool === 'Visual Atlas' ? 'active' : ''}
+              onClick={() => navigate('/visuals')}
             >
-              <FontAwesomeIcon icon={faBook} />
-              <span className="nav-text">Guides</span>
+              <FontAwesomeIcon icon={faImages} />
+              <span className="nav-text">Visuals</span>
             </button>
             <div className="nav-tools">
               <button
@@ -443,11 +353,11 @@ export default function App() {
               )}
             </div>
             <button
-              className={activeTool === 'About' ? 'active' : ''}
-              onClick={() => navigate('/about')}
+              className={activeTool === 'Guides' ? 'active' : ''}
+              onClick={() => navigate('/guides')}
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              <span className="nav-text">About</span>
+              <FontAwesomeIcon icon={faBook} />
+              <span className="nav-text">Guides</span>
             </button>
             <button
               className={activeTool === 'Search' ? 'active' : ''}
@@ -506,164 +416,107 @@ export default function App() {
 
       <main className="app-main">
         {isHomeRoute ? (
-          <div className="home-page">
-            <div className="hero-section">
-              <div className="hero-content">
-                <span className="hero-badge">Student-First Microbiology Learning</span>
-                <h2>Your digital microbiology bench companion.</h2>
+          <div className="home-page home-dashboard">
+            <section className="dashboard-cover-hero" aria-labelledby="dashboard-title">
+              <picture className="dashboard-cover-media" aria-hidden="true">
+                <img
+                  className="dashboard-cover-image"
+                  src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.png`}
+                  alt="Learn Microbes clinical microbiology study desk with reaction tubes, agar plate, Gram stain card, and bench card"
+                />
+              </picture>
+              <div className="dashboard-cover-content">
+                <span className="dashboard-kicker">Clinical bench reference</span>
+                <h1 id="dashboard-title">Learn Microbes</h1>
                 <p>
-                  Learn microbiology with a clear starting point, practical bench logic, and interactive tools that help you understand what to look at, what it means, and what to do next.
+                  Visual bench cards, study paths, and practical microbiology tools for MLS students, ASCP review, and new clinical bench learners.
                 </p>
-
-                <div className="hero-stats">
-                  <div className="stat-item">
-                    <span className="stat-icon" aria-hidden="true">TEST</span>
-                    <div className="stat-text">
-                      <span className="stat-number">41+</span>
-                      <span className="stat-label">Bench Tests</span>
-                    </div>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-icon" aria-hidden="true">MAP</span>
-                    <div className="stat-text">
-                      <span className="stat-number">3</span>
-                      <span className="stat-label">Diagnostic Roadmaps</span>
-                    </div>
-                  </div>
-                  <div className="stat-item">
-                    <span className="stat-icon" aria-hidden="true">CALC</span>
-                    <div className="stat-text">
-                      <span className="stat-number">24</span>
-                      <span className="stat-label">Reaction Calculators</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hero-actions">
-                  <button className="hero-primary-btn" onClick={() => navigate('/search')}>
-                    Search the database
-                  </button>
-                  <div className="hero-quick-links" aria-label="Quick links">
-                    {homeQuickLinks.map((link) => (
-                      <button
-                        key={link.path}
-                        className="hero-link-chip"
-                        onClick={() => navigate(link.path)}
-                      >
-                        {link.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="hero-start-strip" aria-label="How to start">
-                  <span className="hero-start-label">How to start</span>
-                  <div className="hero-start-steps">
-                    {quickStartPath.map((item) => (
-                      <button
-                        key={item.step}
-                        className="hero-start-step"
-                        onClick={() => navigate(item.path)}
-                      >
-                        <span className="hero-start-number">{item.step}</span>
-                        <span>{item.label}</span>
-                      </button>
-                    ))}
+                <div className="dashboard-search-card">
+                  <span>Need one thing fast?</span>
+                  <div className="dashboard-cover-actions">
+                    <button type="button" onClick={() => navigate('/search')}>
+                      Search
+                    </button>
+                    <button type="button" onClick={() => navigate('/learn/clinical-microbiology')}>
+                      Start learning
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <section className="alpha-invite-card" aria-labelledby="alpha-invite-title">
-              <div>
-                <span className="alpha-invite-kicker">Alpha testers</span>
-                <h2 id="alpha-invite-title">Help shape Learn Microbes</h2>
-                <p>
-                  We're looking for med tech students, exam takers, and new lab professionals to test the site and tell us what to build next.
-                </p>
-              </div>
-              <button type="button" onClick={() => handleAlphaSignupClick('homepage_alpha_card')}>
-                Join Alpha
-              </button>
             </section>
 
-            <section className="learn-basics-card" aria-labelledby="learn-basics-title">
-              <div className="learn-basics-header">
-                <span className="learn-basics-kicker">Microbiology basics</span>
-                <h2 id="learn-basics-title">Browse the notes. Read at your own pace.</h2>
-                <p>
-                  Concise review pages for the fundamentals students search for: stains, media, bench tests, organism groups, and specimen quality.
-                </p>
+            <section className="dashboard-intro" aria-label="Study task chooser">
+              <span className="dashboard-kicker">What are you trying to do?</span>
+              <p>Choose the closest study task and jump straight to the Learn page, bench card, roadmap, or practice tool that fits.</p>
+            </section>
+
+            <section className="dashboard-action-grid" aria-label="Primary study tasks">
+              {dashboardActions.map((action) => (
+                <button
+                  type="button"
+                  key={action.label}
+                  className="dashboard-action-card"
+                  onClick={() => handleHomeToolCardClick(action.label, action.path)}
+                >
+                  <span className="dashboard-action-code">{action.code}</span>
+                  <strong>{action.label}</strong>
+                  <small>{action.detail}</small>
+                </button>
+              ))}
+            </section>
+
+            <section className="dashboard-lower-grid" aria-label="Start path and featured bench card">
+              <div className="dashboard-panel dashboard-start-path">
+                <span className="dashboard-kicker">Start path</span>
+                <h2>Three good first clicks</h2>
+                <div className="dashboard-step-list">
+                  {startPath.map((step) => (
+                    <button type="button" key={step.step} onClick={() => navigate(step.path)}>
+                      <span>{step.step}</span>
+                      {step.label}
+                    </button>
+                  ))}
+                </div>
               </div>
-              <div className="learn-basics-links">
-                {featuredLearnTopics.map((topic) => (
-                  <button
-                    key={topic.slug}
-                    type="button"
-                    onClick={() => navigate(`/learn/${topic.slug}`)}
-                  >
-                    {topic.title}
-                  </button>
-                ))}
-                <button type="button" className="learn-basics-all" onClick={() => navigate('/learn')}>
-                  View all basics
+
+              <div className="dashboard-panel dashboard-featured-card">
+                <span className="dashboard-kicker">Featured bench card</span>
+                <h2>{featuredBenchCard.title}</h2>
+                <p>{featuredBenchCard.summary}</p>
+                <button type="button" onClick={() => navigate(`/visuals/${featuredBenchCard.slug}`)}>
+                  Open bench card
                 </button>
               </div>
             </section>
 
-            <section className="student-tool-map" aria-labelledby="student-tool-map-title">
-              <div className="student-tool-map-header">
-                <span className="student-tool-map-kicker">Choose your situation</span>
-                <h2 id="student-tool-map-title">What are you trying to solve?</h2>
-                <p>
-                  Pick the closest bench problem first. Each lane below points you toward the tool that matches your next move.
-                </p>
-              </div>
-
-              <div className="student-situation-grid" aria-label="Student situations">
-                {studentSituationLinks.map((link) => (
-                  <button
-                    key={link.label}
-                    type="button"
-                    onClick={() => handleHomeToolCardClick(link.label, link.path)}
-                  >
+            <section className="dashboard-panel dashboard-secondary" aria-label="Common secondary routes">
+              <span className="dashboard-kicker">Common routes</span>
+              <div className="dashboard-secondary-links">
+                {homeSecondaryLinks.map((link) => (
+                  <button type="button" key={link.path} onClick={() => navigate(link.path)}>
                     {link.label}
                   </button>
                 ))}
               </div>
             </section>
 
-            <div className="tool-lanes">
-              {homeToolGroups.map((group) => {
-                const laneTitleId = `${group.title.toLowerCase().replace(/\s|\+/g, '-')}-title`;
-
-                return (
-                  <section className="tool-lane" key={group.title} aria-labelledby={laneTitleId}>
-                    <div className="tool-lane-header">
-                      <h2 id={laneTitleId}>{group.title}</h2>
-                      <p>{group.note}</p>
-                    </div>
-
-                    <div className="tool-cards">
-                      {group.tools.map((tool) => (
-                        <button
-                          key={tool.title}
-                          className={`tool-card ${tool.className}`}
-                          onClick={() => handleHomeToolCardClick(tool.title, tool.path)}
-                        >
-                          <span className="tool-icon" aria-hidden="true">{tool.icon}</span>
-                          <h3>{tool.title}</h3>
-                          <p>{tool.description}</p>
-                        </button>
-                      ))}
-                    </div>
-                  </section>
-                );
-              })}
-            </div>
-
-            <StudentTestimonials />
-            <NewsletterSignup />
+            <section className="dashboard-alpha-panel" aria-labelledby="dashboard-alpha-title">
+              <div>
+                <span className="dashboard-kicker">Alpha 1.1</span>
+                <h2 id="dashboard-alpha-title">Help shape the bench cards and study paths.</h2>
+                <p>
+                  Join the alpha or send feedback when something is missing, confusing, or genuinely useful.
+                </p>
+              </div>
+              <div className="dashboard-alpha-actions">
+                <button type="button" onClick={() => handleAlphaSignupClick('homepage_dashboard_alpha')}>
+                  Join Alpha
+                </button>
+                <button type="button" onClick={() => handleFeedbackClick('homepage_dashboard_feedback')}>
+                  Send Feedback
+                </button>
+              </div>
+            </section>
           </div>
         ) : (
           <Outlet />
@@ -690,6 +543,9 @@ export default function App() {
           <div className="sleek-footer-divider"></div>
           <div className="sleek-footer-bottom">
             &copy; 2026 LearnMicrobes.com | Made for educational purposes
+          </div>
+          <div className="sleek-footer-links">
+            <button type="button" onClick={() => navigate('/about')}>About Learn Microbes</button>
           </div>
         </div>
       </footer>

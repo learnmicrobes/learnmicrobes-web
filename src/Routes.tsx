@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound";
 
 import MicroBasics from "./components/Guides/MicroBasics";
 import { LearnArticle, LearnHub } from "./components/Learn/LearnHub";
+import VisualAtlas from "./components/VisualAtlas/VisualAtlas";
 
 import GlobalSearch from "./components/Search/GlobalSearch";
 import JoinAlpha from "./components/JoinAlpha";
@@ -28,6 +29,8 @@ export default function AppRoutes() {
         <Route path="about" element={<About />} />
         <Route path="learn" element={<LearnHub />} />
         <Route path="learn/:slug" element={<LearnArticle />} />
+        <Route path="visuals" element={<VisualAtlas />} />
+        <Route path="visuals/:slug" element={<VisualAtlas />} />
         <Route path="guides" element={<MicroBasics />} />
         <Route path="search" element={<GlobalSearch />} />
         <Route path="join-alpha" element={<JoinAlpha />} />

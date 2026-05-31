@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { learnTopics, getLearnTopicBySlug } from '../../data/learnTopics';
+import { atlasPages } from '../VisualAtlas/VisualAtlas';
 import './Learn.css';
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -273,6 +274,8 @@ export const LearnArticle: React.FC = () => {
       return [];
     }
 
+    const relatedVisuals = atlasPages.filter((page) => page.relatedLearnSlug === topic.slug);
+
     return [
       { id: 'core-idea', label: 'Core idea' },
       { id: 'principle', label: 'Principle' },
@@ -281,11 +284,15 @@ export const LearnArticle: React.FC = () => {
       { id: 'how-to-read-it', label: 'How to read it' },
       { id: 'common-mistakes', label: 'Common mistakes' },
       { id: 'student-shortcut', label: 'Student shortcut' },
+      ...(relatedVisuals.length > 0 ? [{ id: 'related-bench-cards', label: 'Bench cards' }] : []),
       { id: 'related-reading', label: 'Related reading' }
     ];
   }, [topic]);
 
   const isBeginnerStart = topic?.slug === 'clinical-microbiology';
+  const relatedVisuals = useMemo(() => (
+    topic ? atlasPages.filter((page) => page.relatedLearnSlug === topic.slug) : []
+  ), [topic]);
 
   if (!topic) {
     return (
@@ -455,6 +462,17 @@ export const LearnArticle: React.FC = () => {
           <h2>Student shortcut</h2>
           <p>{topic.studentShortcut}</p>
         </section>
+
+        {relatedVisuals.length > 0 && (
+          <section className="learn-note-section learn-bench-card-links" id="related-bench-cards">
+            <h2>Related bench cards</h2>
+            <div className="learn-related-stack">
+              {relatedVisuals.map((page) => (
+                <Link key={page.slug} to={`/visuals/${page.slug}`}>{page.title}</Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="learn-note-section learn-related-reading" id="related-reading">
           <h2>Related reading</h2>

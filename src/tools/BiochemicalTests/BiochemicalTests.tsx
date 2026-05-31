@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
+import { atlasPages } from '../../components/VisualAtlas/VisualAtlas';
 import { biochemicalTestsData, BiochemicalTest } from './biochemicalData';
 import './BiochemicalTests.css';
 
@@ -8,6 +9,31 @@ const BiochemicalTests: React.FC = () => {
   const [selectedTest, setSelectedTest] = useState<BiochemicalTest | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectTest = (test: BiochemicalTest | null) => {
+    setSelectedTest(test);
+
+    if (test) {
+      setSearchParams({ test: test.id });
+    } else {
+      setSearchParams({});
+    }
+  };
+
+  useEffect(() => {
+    const requestedTest = searchParams.get('test');
+
+    if (!requestedTest) {
+      return;
+    }
+
+    const matchingTest = biochemicalTestsData.find((test) => test.id === requestedTest);
+
+    if (matchingTest) {
+      setSelectedTest(matchingTest);
+    }
+  }, [searchParams]);
 
   // Scroll to top when test selection changes
   useEffect(() => {
@@ -32,7 +58,7 @@ const BiochemicalTests: React.FC = () => {
       icon="TEST"
       onClose={() => navigate('/')}
       showBackButton={selectedTest !== null}
-      onBack={() => setSelectedTest(null)}
+      onBack={() => selectTest(null)}
     >
       <div className="biochemical-container">
         {!selectedTest ? (
@@ -72,7 +98,7 @@ const BiochemicalTests: React.FC = () => {
                   <div 
                     key={test.id} 
                     className="az-test-card animate-step"
-                    onClick={() => setSelectedTest(test)}
+                    onClick={() => selectTest(test)}
                   >
                     <h3>{test.name}</h3>
                     <span className="az-test-category">{test.category}</span>
@@ -91,6 +117,23 @@ const BiochemicalTests: React.FC = () => {
             <div className="test-header">
               <span className="test-category-label large">{selectedTest.category}</span>
               <h2>{selectedTest.name}</h2>
+              {(() => {
+                const matchingVisual = atlasPages.find((page) => page.biochemicalTestId === selectedTest.id);
+
+                if (!matchingVisual) {
+                  return null;
+                }
+
+                return (
+                  <button
+                    type="button"
+                    className="test-visual-link"
+                    onClick={() => navigate(`/visuals/${matchingVisual.slug}`)}
+                  >
+                    Open visual bench card
+                  </button>
+                );
+              })()}
             </div>
             
             <div className="test-content">
@@ -141,7 +184,7 @@ const BiochemicalTests: React.FC = () => {
                   <button 
                     className="detail-nav-btn prev"
                     disabled={!prevTest}
-                    onClick={() => prevTest && setSelectedTest(prevTest)}
+                    onClick={() => prevTest && selectTest(prevTest)}
                   >
                     <span className="nav-arrow">←</span>
                     <div className="nav-text">
@@ -153,7 +196,7 @@ const BiochemicalTests: React.FC = () => {
                   <button 
                     className="detail-nav-btn next"
                     disabled={!nextTest}
-                    onClick={() => nextTest && setSelectedTest(nextTest)}
+                    onClick={() => nextTest && selectTest(nextTest)}
                   >
                     <div className="nav-text right">
                       <span className="nav-label">Next Test</span>

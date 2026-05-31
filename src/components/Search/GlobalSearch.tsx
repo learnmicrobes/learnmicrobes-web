@@ -6,6 +6,9 @@ import { biochemicalTestsData } from '../../tools/BiochemicalTests/biochemicalDa
 import { gramPositiveRoadmap } from '../../tools/GramPositiveRoadmap/data';
 import { glossaryEntries, type GlossaryEntry } from '../../data/glossaryData';
 import { learnTopics } from '../../data/learnTopics';
+import { expandedLearnTopics } from '../../data/learnExpansionTopics';
+import { getSearchAliases } from '../../data/searchAliases';
+import { atlasPages } from '../VisualAtlas/VisualAtlas';
 import ToolBox from '../ToolBox/ToolBox';
 import { trackEvent } from '../../utils/analytics';
 import './GlobalSearch.css';
@@ -13,7 +16,7 @@ import './GlobalSearch.css';
 type SearchResult = {
   id: string;
   title: string;
-  type: 'Test' | 'Guide' | 'Roadmap' | 'Tool' | 'Bench Term' | 'Learn';
+  type: 'Test' | 'Guide' | 'Roadmap' | 'Tool' | 'Bench Term' | 'Learn' | 'Visual';
   snippet: string;
   path: string;
   keywords: string;
@@ -26,7 +29,10 @@ const cleanSearchText = (value: string, maxLength = 210) => {
   return normalized.length > maxLength ? `${normalized.slice(0, maxLength).trim()}...` : normalized;
 };
 
+const suggestedSearches = ['Gram stain', 'MacConkey', 'LAP', 'Pink ring', '42 degrees', 'Kovac', 'Durham', 'Black tube'];
+
 const getDestinationLabel = (path: string) => {
+  if (path.startsWith('/visuals')) return 'Visual Atlas';
   if (path.startsWith('/learn')) return 'Learn Basics';
   if (path.startsWith('/guides')) return 'Deep Guides';
   if (path === '/biochemical-tests') return 'Biochemical Tests';
@@ -49,6 +55,8 @@ const getResultActionLabel = (type: SearchResult['type']) => {
       return 'Open guide';
     case 'Learn':
       return 'Read basics page';
+    case 'Visual':
+      return 'Open visual guide';
     case 'Roadmap':
       return 'Open roadmap';
     case 'Tool':
@@ -101,12 +109,17 @@ const GlobalSearch: React.FC = () => {
         test.procedure,
         test.qcPositive,
         test.qcNegative,
-        test.expectedResults
+        test.expectedResults,
+        ...getSearchAliases(test.id, test.name)
       ].join(' ').toLowerCase(),
       priority: 4
     }));
 
-    const learnBasics: SearchResult[] = learnTopics.map((topic) => ({
+    const allLearnTopics = [...learnTopics, ...expandedLearnTopics].filter(
+      (topic, index, topics) => topics.findIndex((candidate) => candidate.slug === topic.slug) === index
+    );
+
+    const learnBasics: SearchResult[] = allLearnTopics.map((topic) => ({
       id: `learn-${topic.slug}`,
       title: topic.title,
       type: 'Learn',
@@ -127,9 +140,38 @@ const GlobalSearch: React.FC = () => {
           ...table.columns,
           ...table.rows.flat()
         ]),
-        ...topic.keywords
+        ...topic.keywords,
+        ...getSearchAliases(topic.slug, topic.title)
       ].join(' ').toLowerCase(),
       priority: 5
+    }));
+
+    const visuals: SearchResult[] = atlasPages.map((page) => ({
+      id: `visual-${page.slug}`,
+      title: page.title,
+      type: 'Visual',
+      snippet: page.summary,
+      path: `/visuals/${page.slug}`,
+      keywords: [
+        page.title,
+        page.eyebrow,
+        page.summary,
+        page.boardTitle,
+        page.boardNote,
+        page.readoutTitle,
+        page.trapTitle,
+        page.trapBody,
+        page.interpretationTitle,
+        page.remember,
+        page.visualType,
+        ...(page.tubes ?? []).flatMap((tube) => [tube.label, tube.name, tube.note]),
+        ...page.readoutRows.flat(),
+        ...page.trapBullets,
+        ...page.interpretationRows.flat(),
+        ...page.takeaways,
+        ...getSearchAliases(page.slug, page.title)
+      ].join(' ').toLowerCase(),
+      priority: 6
     }));
 
     const guides: SearchResult[] = [
@@ -1049,7 +1091,7 @@ const GlobalSearch: React.FC = () => {
       return [questionEntry, ...conclusionEntries];
     });
 
-    return [...glossary, ...learnBasics, ...tests, ...guides, ...roadmapSummaries, ...gramPositiveNodes];
+    return [...glossary, ...visuals, ...learnBasics, ...tests, ...guides, ...roadmapSummaries, ...gramPositiveNodes];
   }, []);
 
   useEffect(() => {
@@ -1129,6 +1171,8 @@ const GlobalSearch: React.FC = () => {
         return faBookOpen;
       case 'Learn':
         return faBookOpen;
+      case 'Visual':
+        return faFlask;
       case 'Guide':
         return faBookOpen;
       case 'Roadmap':
@@ -1142,31 +1186,45 @@ const GlobalSearch: React.FC = () => {
 
   return (
     <ToolBox
-      title="Global Database Search"
+      title="Search Learn Microbes"
       icon="SEARCH"
       onClose={() => navigate('/')}
     >
       <div className="global-search-container">
-        <div className="search-input-wrapper">
-          <FontAwesomeIcon icon={faSearch} className="search-icon-inside" />
-          <input
-            ref={inputRef}
-            type="text"
-            className="massive-search-input"
-            placeholder="Search for a pathogen, test, media, or clinical rule..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            aria-label="Global site search"
-          />
-          {query && (
-            <button className="clear-search-btn" onClick={() => setQuery('')} aria-label="Clear search">
-              ×
-            </button>
-          )}
-        </div>
+        <div className="search-panel">
+          <div className="search-panel-heading">
+            <span>Bench Reference Search</span>
+            <p>Find Learn pages, Visual Atlas cards, bench tests, guides, tools, and quick definitions.</p>
+          </div>
+          <div className="search-input-wrapper">
+            <FontAwesomeIcon icon={faSearch} className="search-icon-inside" />
+            <input
+              ref={inputRef}
+              type="text"
+              className="massive-search-input"
+              placeholder="Try oxidase, MacConkey, indole, NAAT, anaerobe..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Global site search"
+            />
+            {query && (
+              <button className="clear-search-btn" onClick={() => setQuery('')} aria-label="Clear search">
+                ×
+              </button>
+            )}
+          </div>
 
-        <div className="search-helper-row">
-          <span>Bench terms appear before tools when the search term matches. Press Up/Down, then Enter to open the selected source.</span>
+          <div className="search-suggestion-row" aria-label="Suggested searches">
+            {suggestedSearches.map((suggestion) => (
+              <button key={suggestion} type="button" onClick={() => setQuery(suggestion)}>
+                {suggestion}
+              </button>
+            ))}
+          </div>
+
+          <div className="search-helper-row">
+            <span>Use Up/Down to move through results, then Enter to open the selected source.</span>
+          </div>
         </div>
 
         <div className="search-results-container">
