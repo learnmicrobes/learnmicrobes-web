@@ -63,6 +63,20 @@ const cleanQuestion = (question: string) => (
     .replace(/:$/, '')
 );
 
+const getOptionMorphologyClass = (text: string) => {
+  const normalized = text.toLowerCase();
+
+  if (/\b(cocci|coccus|coccal)\b/.test(normalized)) {
+    return 'has-cocci-visual';
+  }
+
+  if (/\b(rod|rods|bacilli|bacillus|coccobacilli|coccobacillus)\b/.test(normalized)) {
+    return 'has-rod-visual';
+  }
+
+  return '';
+};
+
 const getQuestionHint = (question: string) => {
   const q = question.toLowerCase();
 
@@ -350,6 +364,8 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   const [detailMode, setDetailMode] = useState<RoadmapDetailMode>(normalizeSavedMode(savedMode));
   const [hotkeysEnabled, setHotkeysEnabled] = useState(savedHotkeys ? JSON.parse(savedHotkeys) : true);
   const [roadmapSearch, setRoadmapSearch] = useState('');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   useEffect(() => {
     trackEvent('roadmap_started', {
@@ -359,9 +375,21 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   }, [storageKey, title]);
 
   const currentStep = roadmap.find((step) => step.id === currentStepId) || roadmap[0];
-  const historyQuestions = history
-    .map((stepId) => roadmap.find((step) => step.id === stepId)?.question)
-    .filter((question): question is string => Boolean(question));
+  const breadcrumbItems = history
+    .map((stepId, index) => {
+      const step = roadmap.find((candidate) => candidate.id === stepId);
+
+      if (!step) {
+        return null;
+      }
+
+      return {
+        id: stepId,
+        label: index === 0 ? 'Start' : cleanQuestion(step.question),
+        stepNumber: index + 1
+      };
+    })
+    .filter((item): item is { id: string; label: string; stepNumber: number } => item !== null);
 
   const currentHint = useMemo(() => getModeBranchHint(detailMode, currentStep.question), [detailMode, currentStep.question]);
   const nextPrompt = useMemo(() => getModeNextPrompt(detailMode, currentStep.question), [detailMode, currentStep.question]);
@@ -498,7 +526,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   }, [currentConclusion, currentStep, history, hotkeysEnabled]);
 
   const renderOptions = () => (
-    <div className={`options-container ${currentStep.options.length > 2 ? 'grid-layout' : 'binary-layout'}`}>
+    <div className={`options-container ${currentStep.options.length > 2 ? 'grid-layout' : 'binary-layout'} options-count-${currentStep.options.length}`}>
       {currentStep.options.map((option, index) => {
         const optionParts = splitOptionText(option.text);
         const detailItems = [
@@ -512,7 +540,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
           <button
             key={`${option.text}-${index}`}
             type="button"
-            className="option-card"
+            className={`option-card ${getOptionMorphologyClass(option.text)}`}
             onClick={() => handleOptionSelect(option.nextStep, option.conclusion, option.tests)}
           >
             {hotkeysEnabled && <div className="option-badge">{index + 1}</div>}
@@ -529,7 +557,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
                 className="option-details"
                 onClick={(event) => event.stopPropagation()}
               >
-                <summary>{detailMode === 'exam' ? 'Show exam clues' : 'Show bench criteria'}</summary>
+                <summary>{detailMode === 'exam' ? 'Show exam clues' : 'Show branch clues'}</summary>
                 <ul>
                   {collapsedDetails.map((detail) => (
                     <li key={detail}>{detail}</li>
@@ -541,7 +569,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
               <span className="option-footnote">Classic features at result</span>
             )}
             {detailMode === 'bench' && option.tests && option.tests.length > 0 && (
-              <span className="option-footnote">{option.tests.length} bench criteria</span>
+              <span className="option-footnote">{option.tests.length} branch clues</span>
             )}
           </button>
         );
@@ -553,21 +581,59 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
     <ToolBox
       title={title}
       icon={icon}
-      onClose={() => navigate('/')}
+      showCloseButton={false}
     >
       <div className={`roadmap-container ${variantClass} roadmap-experience`}>
-        <div className="roadmap-status-bar">
-          <div>
-            <span className="status-label">Step</span>
-            <strong>{history.length}</strong>
-          </div>
-          <div>
-            <span className="status-label">Current focus</span>
-            <strong>{currentConclusion ? 'Conclusion' : cleanQuestion(currentStep.question)}</strong>
-          </div>
-          <div>
-            <span className="status-label">Learning mode</span>
-            <div className="roadmap-mode-toggle" aria-label="Roadmap mode">
+        <div className="roadmap-top-row">
+          <nav className="roadmap-breadcrumbs" aria-label="Roadmap progress path">
+            <ol>
+              {breadcrumbItems.map((item, index) => {
+                const isActive = index === breadcrumbItems.length - 1 && !currentConclusion;
+
+                return (
+                  <li key={`${item.id}-${index}`}>
+                    <button
+                      type="button"
+                      className={isActive ? 'active' : ''}
+                      aria-current={isActive ? 'step' : undefined}
+                      onClick={() => handleResumeFrom(index)}
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                );
+              })}
+              {currentConclusion && (
+                <li>
+                  <span className="roadmap-breadcrumb-end" aria-current="step">
+                    Endpoint
+                  </span>
+                </li>
+              )}
+            </ol>
+            <span className="roadmap-step-pill">
+              Step {history.length}{currentConclusion ? ' / Endpoint' : ''}
+            </span>
+          </nav>
+
+          <div className={`roadmap-settings-corner ${isSettingsOpen ? 'open' : ''}`}>
+            <button
+              type="button"
+              className="roadmap-settings-trigger"
+              aria-label="Roadmap settings"
+              aria-expanded={isSettingsOpen}
+              aria-controls={`${storageKey}-roadmap-settings`}
+              onClick={() => setIsSettingsOpen((open) => !open)}
+            >
+              <span aria-hidden="true">⚙</span>
+            </button>
+            <div
+              id={`${storageKey}-roadmap-settings`}
+              className="roadmap-settings-drawer"
+              aria-hidden={!isSettingsOpen}
+            >
+              <span className="status-label">Learning mode</span>
+              <div className="roadmap-mode-toggle" aria-label="Roadmap mode">
               <button
                 type="button"
                 className={detailMode === 'exam' ? 'active' : ''}
@@ -583,12 +649,12 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
                 Bench
               </button>
             </div>
-            <span className="roadmap-mode-description">
+              <span className="roadmap-mode-description">
               {detailMode === 'exam'
                 ? 'Classic differentiators and memory-friendly clues.'
                 : 'Specimen, safety, confirmation, and reporting logic.'}
             </span>
-            <label className="roadmap-hotkey-toggle">
+              <label className="roadmap-hotkey-toggle">
               <input
                 type="checkbox"
                 checked={hotkeysEnabled}
@@ -601,6 +667,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
                 Press 1-{currentStep.options.length} to choose, Backspace to go back, Esc to reset.
               </span>
             )}
+            </div>
           </div>
         </div>
 
@@ -710,68 +777,66 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
             </div>
 
             <div className="roadmap-guidance-panel">
-              <div>
-                <span className="guidance-label">{detailMode === 'exam' ? 'Exam clue' : 'Why this branch matters'}</span>
-                <p>{currentHint}</p>
-              </div>
-              <div>
-                <span className="guidance-label">{detailMode === 'exam' ? 'Classic differentiator' : 'Next-test thinking'}</span>
-                <p>{nextPrompt}</p>
-              </div>
+              <span className="guidance-label">Lab notebook note</span>
+              <p>
+                <strong>{detailMode === 'exam' ? 'Exam clue' : 'Why this branch matters'}:</strong> {currentHint}
+              </p>
+              <p>
+                <strong>{detailMode === 'exam' ? 'Classic differentiator' : 'Next-test thinking'}:</strong> {nextPrompt}
+              </p>
             </div>
           </div>
         )}
 
-        {historyQuestions.length > 1 && (
-          <div className="roadmap-history-strip" aria-label="Visited steps">
-            {historyQuestions.map((question, index) => (
-              <button
-                key={`${history[index]}-${index}`}
-                type="button"
-                className={`history-chip ${index === history.length - 1 && !currentConclusion ? 'active' : ''}`}
-                onClick={() => handleResumeFrom(index)}
-              >
-                {cleanQuestion(question)}
-              </button>
-            ))}
-          </div>
-        )}
-
-        <section className="roadmap-search-box" aria-label="Search this roadmap">
-          <label htmlFor={`${storageKey}-roadmap-search`}>Search this roadmap</label>
-          <div className="roadmap-search-input-row">
-            <input
-              id={`${storageKey}-roadmap-search`}
-              type="search"
-              value={roadmapSearch}
-              onChange={(event) => setRoadmapSearch(event.target.value)}
-              placeholder="Try oxidase, coagulase, Bacteroides, lecithinase..."
-            />
-            {roadmapSearch && (
-              <button type="button" onClick={() => setRoadmapSearch('')}>
-                Clear
-              </button>
-            )}
-          </div>
-          {showRoadmapSearchResults && (
-            <div className="roadmap-search-results" role="list">
-              {roadmapSearchResults.length > 0 ? (
-                roadmapSearchResults.map((result) => (
-                  <button
-                    key={result.id}
-                    type="button"
-                    className="roadmap-search-result"
-                    onClick={() => handleRoadmapSearchSelect(result)}
-                    role="listitem"
-                  >
-                    <span className="roadmap-search-result-type">{result.type}</span>
-                    <strong>{result.label}</strong>
-                    <span>{result.meta}</span>
-                    {result.snippet && <small>{result.snippet}</small>}
+        <section className={`roadmap-search-box ${isSearchExpanded ? 'expanded' : 'collapsed'}`} aria-label="Search this roadmap">
+          <button
+            type="button"
+            className="roadmap-search-trigger"
+            aria-expanded={isSearchExpanded}
+            aria-controls={`${storageKey}-roadmap-search-panel`}
+            onClick={() => setIsSearchExpanded((open) => !open)}
+          >
+            🔍 Search this roadmap
+          </button>
+          {isSearchExpanded && (
+            <div id={`${storageKey}-roadmap-search-panel`} className="roadmap-search-panel">
+              <label htmlFor={`${storageKey}-roadmap-search`}>Search this roadmap</label>
+              <div className="roadmap-search-input-row">
+                <input
+                  id={`${storageKey}-roadmap-search`}
+                  type="search"
+                  value={roadmapSearch}
+                  onChange={(event) => setRoadmapSearch(event.target.value)}
+                  placeholder="Try oxidase, coagulase, Bacteroides, lecithinase..."
+                  autoFocus
+                />
+                {roadmapSearch && (
+                  <button type="button" onClick={() => setRoadmapSearch('')}>
+                    Clear
                   </button>
-                ))
-              ) : (
-                <div className="roadmap-search-empty">No roadmap matches yet.</div>
+                )}
+              </div>
+              {showRoadmapSearchResults && (
+                <div className="roadmap-search-results" role="list">
+                  {roadmapSearchResults.length > 0 ? (
+                    roadmapSearchResults.map((result) => (
+                      <button
+                        key={result.id}
+                        type="button"
+                        className="roadmap-search-result"
+                        onClick={() => handleRoadmapSearchSelect(result)}
+                        role="listitem"
+                      >
+                        <span className="roadmap-search-result-type">{result.type}</span>
+                        <strong>{result.label}</strong>
+                        <span>{result.meta}</span>
+                        {result.snippet && <small>{result.snippet}</small>}
+                      </button>
+                    ))
+                  ) : (
+                    <div className="roadmap-search-empty">No roadmap matches yet.</div>
+                  )}
+                </div>
               )}
             </div>
           )}

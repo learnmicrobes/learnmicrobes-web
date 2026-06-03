@@ -1,18 +1,91 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
+import { useAuth } from './context/AuthContext';
 import { atlasPages } from './components/VisualAtlas/VisualAtlas';
+import { learnTopics } from './data/learnTopics';
+import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import './App.css';
+
+type DashboardSearchItem = {
+  id: string;
+  title: string;
+  category: 'Guide' | 'Learn' | 'Roadmap' | 'Test' | 'Tool' | 'Visual';
+  snippet: string;
+  path: string;
+  keywords: string;
+  priority: number;
+};
+
+type DailyRiddleChoice = {
+  id: string;
+  label: string;
+  correct: boolean;
+};
+
+type DailyRiddleResult = {
+  selectedId: string;
+  completedDate: string;
+};
+
+const normalizeDashboardSearchText = (value: string) => (
+  value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+);
+
+const getLocalDateStamp = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const getDailyRiddleStorageKey = () => `learnmicrobes_daily_riddle_${getLocalDateStamp()}`;
+
+const readDailyRiddleResult = (): DailyRiddleResult | null => {
+  try {
+    const savedResult = localStorage.getItem(getDailyRiddleStorageKey());
+
+    if (!savedResult) {
+      return null;
+    }
+
+    const parsedResult = JSON.parse(savedResult) as Partial<DailyRiddleResult>;
+
+    if (!parsedResult.selectedId || !parsedResult.completedDate) {
+      return null;
+    }
+
+    return {
+      selectedId: parsedResult.selectedId,
+      completedDate: parsedResult.completedDate
+    };
+  } catch (error) {
+    return null;
+  }
+};
+
+const dailyMicrobeRiddle = {
+  prompt: 'I am a Gram-positive coccus, catalase-negative, alpha-hemolytic, optochin susceptible, and bile soluble. Who am I?',
+  answerPath: '/learn/streptococcus-enterococcus',
+  explanation: 'Optochin susceptibility plus bile solubility points to Streptococcus pneumoniae among alpha-hemolytic streptococci.',
+  choices: [
+    { id: 'a', label: 'A) Streptococcus pneumoniae', correct: true },
+    { id: 'b', label: 'B) Streptococcus agalactiae', correct: false },
+    { id: 'c', label: 'C) Enterococcus faecalis', correct: false }
+  ] satisfies DailyRiddleChoice[]
+};
 
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
   const [isMobile, setIsMobile] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
 
@@ -39,6 +112,14 @@ export default function App() {
     } else {
       navigate(tool.toLowerCase().replace(/\s+/g, '-'));
     }
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    setIsAccountMenuOpen(false);
+    setIsToolsOpen(false);
+    setIsNavMenuOpen(false);
+    navigate('/');
   };
 
   useEffect(() => {
@@ -88,11 +169,15 @@ export default function App() {
                               ? 'Guides'
                               : location.pathname.includes('search')
                                 ? 'Search'
-                                : location.pathname.includes('join-alpha')
-                                  ? 'Join Alpha'
-                                  : location.pathname.includes('about')
-                                    ? 'About'
-                                    : null;
+                                : location.pathname.includes('account')
+                                  ? 'Account'
+                                  : location.pathname.includes('auth')
+                                    ? 'Sign In'
+                                    : location.pathname.includes('join-alpha')
+                                      ? 'Join Alpha'
+                                      : location.pathname.includes('about')
+                                        ? 'About'
+                                        : null;
 
   const isHomeRoute = location.pathname === '/';
 
@@ -185,6 +270,260 @@ export default function App() {
     toolGroups.some((group) => group.items.some((item) => item.path === location.pathname))
   ), [location.pathname, toolGroups]);
 
+  const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
+  const [isDashboardSearchOpen, setIsDashboardSearchOpen] = useState(false);
+  const [selectedDashboardSearchIndex, setSelectedDashboardSearchIndex] = useState(0);
+  const [dailyRiddleResult, setDailyRiddleResult] = useState<DailyRiddleResult | null>(() => readDailyRiddleResult());
+  const dashboardSearchRef = useRef<HTMLDivElement | null>(null);
+
+  const dashboardSearchIndex = useMemo<DashboardSearchItem[]>(() => {
+    const getRouteCategory = (path: string): DashboardSearchItem['category'] => {
+      if (path.startsWith('/learn')) return 'Learn';
+      if (path.startsWith('/visuals')) return 'Visual';
+      if (path.includes('roadmap')) return 'Roadmap';
+      if (path === '/biochemical-tests') return 'Test';
+      if (path.startsWith('/guides')) return 'Guide';
+      return 'Tool';
+    };
+
+    const guideItems: DashboardSearchItem[] = [
+      {
+        id: 'guide-intro',
+        title: 'Intro to Clinical Microbiology',
+        category: 'Guide',
+        snippet: 'Start-here bench mindset, specimens, Gram stain, media, and first-pass workup logic.',
+        path: '/guides?guide=intro-to-microbiology',
+        keywords: 'guide intro clinical microbiology beginner bench mindset gram stain media workup',
+        priority: 7
+      },
+      {
+        id: 'guide-bacterial-id',
+        title: 'Bacterial ID Strategy',
+        category: 'Guide',
+        snippet: 'Specimen context, colony morphology, branch-point tests, and escalation strategy.',
+        path: '/guides?guide=bacterial-identification-strategy',
+        keywords: 'guide bacterial identification strategy unknown isolate colony morphology catalase oxidase bench',
+        priority: 7
+      },
+      {
+        id: 'guide-strep-enterococcus',
+        title: 'Streptococcus and Enterococcus',
+        category: 'Guide',
+        snippet: 'Catalase-negative cocci, hemolysis, PYR, CAMP, optochin, bile solubility, and bile esculin.',
+        path: '/guides?guide=streptococcus-enterococcus',
+        keywords: 'guide streptococcus enterococcus pneumoniae agalactiae pyogenes faecalis optochin bile solubility pyr camp',
+        priority: 8
+      },
+      {
+        id: 'guide-enterics',
+        title: 'Enterobacteriaceae',
+        category: 'Guide',
+        snippet: 'Oxidase-negative Gram-negative rods, MacConkey patterns, IMViC, H2S, urease, and enteric workflow.',
+        path: '/guides?guide=enterobacteriaceae',
+        keywords: 'guide enterobacteriaceae enterobacterales enterics macconkey lactose indole citrate h2s urease oxidase',
+        priority: 6
+      },
+      {
+        id: 'guide-gram-stain',
+        title: 'Gram Stain',
+        category: 'Guide',
+        snippet: 'Microscopy, stain sequence, morphology, arrangement, and common false Gram patterns.',
+        path: '/guides?guide=gram-stain',
+        keywords: 'guide gram stain crystal violet iodine safranin decolorizer cocci rods morphology',
+        priority: 7
+      }
+    ];
+
+    const learnItems: DashboardSearchItem[] = learnTopics.map((topic) => ({
+      id: `learn-${topic.slug}`,
+      title: topic.title,
+      category: 'Learn',
+      snippet: topic.summary,
+      path: `/learn/${topic.slug}`,
+      keywords: [
+        topic.title,
+        topic.category,
+        topic.summary,
+        topic.whyItMatters,
+        topic.principle,
+        topic.studentShortcut,
+        ...topic.keywords
+      ].join(' '),
+      priority: 6
+    }));
+
+    const testItems: DashboardSearchItem[] = biochemicalTestsData.map((test) => ({
+      id: `test-${test.id}`,
+      title: test.name,
+      category: 'Test',
+      snippet: test.principle,
+      path: '/biochemical-tests',
+      keywords: [
+        test.name,
+        test.category,
+        test.principle,
+        test.reagents,
+        test.procedure,
+        test.expectedResults
+      ].join(' '),
+      priority: 5
+    }));
+
+    const visualItems: DashboardSearchItem[] = atlasPages.map((page) => ({
+      id: `visual-${page.slug}`,
+      title: page.title,
+      category: 'Visual',
+      snippet: page.summary,
+      path: `/visuals/${page.slug}`,
+      keywords: [
+        page.title,
+        page.eyebrow,
+        page.summary,
+        page.boardTitle,
+        page.boardNote,
+        page.readoutTitle,
+        page.trapTitle,
+        ...page.trapBullets,
+        ...page.interpretationRows.flat(),
+        ...page.takeaways
+      ].join(' '),
+      priority: 5
+    }));
+
+    const routeItems: DashboardSearchItem[] = [
+      ...dashboardActions.map((action, index) => ({
+        id: `action-${index}`,
+        title: action.label,
+        category: getRouteCategory(action.path),
+        snippet: action.detail,
+        path: action.path,
+        keywords: `${action.label} ${action.detail} ${action.code}`,
+        priority: action.path === '/certification-study-paths' ? 8 : 6
+      })),
+      ...homeSecondaryLinks.map((link, index) => ({
+        id: `secondary-${index}`,
+        title: link.label,
+        category: getRouteCategory(link.path),
+        snippet: 'Common Learn Microbes route.',
+        path: link.path,
+        keywords: link.label,
+        priority: 4
+      })),
+      ...toolGroups.flatMap((group) => group.items.map((item) => ({
+        id: `tool-${group.label}-${item.path}`,
+        title: item.label,
+        category: getRouteCategory(item.path),
+        snippet: `${group.label} tool.`,
+        path: item.path,
+        keywords: `${group.label} ${item.label}`,
+        priority: 5
+      })))
+    ];
+
+    const uniqueItems = new Map<string, DashboardSearchItem>();
+
+    [...routeItems, ...guideItems, ...learnItems, ...testItems, ...visualItems].forEach((item) => {
+      const key = `${item.path}::${item.title}`;
+      if (!uniqueItems.has(key)) {
+        uniqueItems.set(key, item);
+      }
+    });
+
+    return Array.from(uniqueItems.values());
+  }, [dashboardActions, homeSecondaryLinks, toolGroups]);
+
+  const dashboardSearchResults = useMemo<DashboardSearchItem[]>(() => {
+    const query = normalizeDashboardSearchText(dashboardSearchQuery);
+    const terms = query.split(' ').filter(Boolean);
+    const scoredResults = dashboardSearchIndex
+      .map((item) => {
+        const title = normalizeDashboardSearchText(item.title);
+        const haystack = normalizeDashboardSearchText(`${item.title} ${item.category} ${item.snippet} ${item.keywords}`);
+
+        if (!query) {
+          return { item, score: item.priority };
+        }
+
+        if (!terms.every((term) => haystack.includes(term))) {
+          return null;
+        }
+
+        let score = item.priority;
+
+        if (title.startsWith(query)) score += 7;
+        if (title.includes(query)) score += 4;
+        if (normalizeDashboardSearchText(item.path).includes(query)) score += 2;
+
+        return { item, score };
+      })
+      .filter((result): result is { item: DashboardSearchItem; score: number } => result !== null);
+
+    return scoredResults
+      .sort((first, second) => second.score - first.score || first.item.title.localeCompare(second.item.title))
+      .slice(0, 6)
+      .map((result) => result.item);
+  }, [dashboardSearchIndex, dashboardSearchQuery]);
+
+  const selectedRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.id === dailyRiddleResult?.selectedId);
+  const correctRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.correct);
+  const isDailyRiddleCorrect = selectedRiddleChoice?.correct ?? false;
+
+  const handleDashboardSearchSelect = (item: DashboardSearchItem) => {
+    setDashboardSearchQuery('');
+    setIsDashboardSearchOpen(false);
+    setSelectedDashboardSearchIndex(0);
+    navigate(item.path);
+  };
+
+  const handleDashboardSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!dashboardSearchResults.length) {
+      return;
+    }
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setIsDashboardSearchOpen(true);
+      setSelectedDashboardSearchIndex((index) => Math.min(index + 1, dashboardSearchResults.length - 1));
+      return;
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setIsDashboardSearchOpen(true);
+      setSelectedDashboardSearchIndex((index) => Math.max(index - 1, 0));
+      return;
+    }
+
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleDashboardSearchSelect(dashboardSearchResults[selectedDashboardSearchIndex] ?? dashboardSearchResults[0]);
+      return;
+    }
+
+    if (event.key === 'Escape') {
+      setIsDashboardSearchOpen(false);
+    }
+  };
+
+  const handleDailyRiddleChoice = (choiceId: string) => {
+    if (dailyRiddleResult) {
+      return;
+    }
+
+    const result: DailyRiddleResult = {
+      selectedId: choiceId,
+      completedDate: getLocalDateStamp()
+    };
+
+    setDailyRiddleResult(result);
+
+    try {
+      localStorage.setItem(getDailyRiddleStorageKey(), JSON.stringify(result));
+    } catch (error) {
+      // The riddle still works for the current session if storage is unavailable.
+    }
+  };
+
   const openExternalForm = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -225,14 +564,44 @@ export default function App() {
   }, [activeTool, isHomeRoute]);
 
   useEffect(() => {
+    setSelectedDashboardSearchIndex(0);
+  }, [dashboardSearchQuery]);
+
+  useEffect(() => {
+    if (selectedDashboardSearchIndex >= dashboardSearchResults.length) {
+      setSelectedDashboardSearchIndex(0);
+    }
+  }, [dashboardSearchResults.length, selectedDashboardSearchIndex]);
+
+  useEffect(() => {
+    if (!isDashboardSearchOpen) {
+      return undefined;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+
+      if (target instanceof Node && !dashboardSearchRef.current?.contains(target)) {
+        setIsDashboardSearchOpen(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [isDashboardSearchOpen]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     setIsNavMenuOpen(false);
-    setIsSettingsOpen(false);
+    setIsAccountMenuOpen(false);
     setIsToolsOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!isSettingsOpen && !isToolsOpen) {
+    if (!isAccountMenuOpen && !isToolsOpen) {
       return undefined;
     }
 
@@ -242,8 +611,8 @@ export default function App() {
         return;
       }
 
-      if (!target.closest('.nav-settings')) {
-        setIsSettingsOpen(false);
+      if (!target.closest('.nav-account-menu-shell')) {
+        setIsAccountMenuOpen(false);
       }
 
       if (!target.closest('.nav-tools')) {
@@ -256,7 +625,7 @@ export default function App() {
     return () => {
       document.removeEventListener('mousedown', handlePointerDown);
     };
-  }, [isSettingsOpen, isToolsOpen]);
+  }, [isAccountMenuOpen, isToolsOpen]);
 
   return (
     <div className="app-container">
@@ -323,7 +692,7 @@ export default function App() {
               <button
                 className={`nav-tools-trigger ${isToolPathActive ? 'active' : ''}`}
                 onClick={() => {
-                  setIsSettingsOpen(false);
+                  setIsAccountMenuOpen(false);
                   setIsToolsOpen((open) => !open);
                 }}
                 aria-expanded={isToolsOpen}
@@ -368,49 +737,75 @@ export default function App() {
               <span className="nav-text">Search</span>
             </button>
           </div>
-          <div className="nav-links-auth nav-settings">
-            <button
-              className="nav-settings-trigger"
-              onClick={() => {
-                setIsToolsOpen(false);
-                setIsSettingsOpen((open) => !open);
-              }}
-              aria-label="Open settings"
-              aria-expanded={isSettingsOpen}
-              aria-haspopup="menu"
-              title="Settings"
-            >
-              <FontAwesomeIcon icon={faGear} />
-              <span className="nav-text">Settings</span>
-            </button>
-            {isSettingsOpen && (
-              <div className="nav-settings-menu" role="menu" aria-label="Settings menu">
+          <div className="nav-links-auth">
+            {user ? (
+              <div className="nav-account-menu-shell">
                 <button
-                  className="theme-toggle-btn"
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  role="menuitem"
-                  title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                  className={`nav-account-trigger ${activeTool === 'Account' ? 'active' : ''}`}
+                  onClick={() => {
+                    setIsToolsOpen(false);
+                    setIsAccountMenuOpen((open) => !open);
+                  }}
+                  aria-label="Open account menu"
+                  aria-expanded={isAccountMenuOpen}
+                  aria-haspopup="menu"
+                  title={user.email ?? 'Signed in'}
                 >
-                  <span>Theme</span>
-                  <span className="theme-toggle-value">
-                    <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-                    {isDarkMode ? 'Light mode' : 'Dark mode'}
-                  </span>
+                  <FontAwesomeIcon icon={faUser} />
+                  <span className="nav-text">Account</span>
+                  <FontAwesomeIcon icon={faChevronDown} className={`nav-chevron ${isAccountMenuOpen ? 'open' : ''}`} />
                 </button>
+                {isAccountMenuOpen && (
+                  <div className="nav-account-menu" role="menu" aria-label="Account menu">
+                    <div className="nav-account-menu-header">
+                      <span>Signed in</span>
+                      <strong>{user.email ?? 'Learn Microbes account'}</strong>
+                    </div>
+                    <button
+                      onClick={() => navigate('/account')}
+                      role="menuitem"
+                    >
+                      <FontAwesomeIcon icon={faUser} />
+                      <span>Your study account</span>
+                    </button>
+                    <button
+                      className="theme-toggle-btn"
+                      onClick={() => setIsDarkMode(!isDarkMode)}
+                      role="menuitem"
+                      title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                    >
+                      <FontAwesomeIcon icon={faGear} />
+                      <span>Settings</span>
+                      <span className="theme-toggle-value">
+                        <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+                        {isDarkMode ? 'Light mode' : 'Dark mode'}
+                      </span>
+                    </button>
+                    <button
+                      className="nav-account-signout"
+                      onClick={handleSignOut}
+                      role="menuitem"
+                    >
+                      <FontAwesomeIcon icon={faRightFromBracket} />
+                      <span>Sign out</span>
+                    </button>
+                  </div>
+                )}
               </div>
+            ) : (
+              <button
+                className="nav-signin-btn"
+                onClick={() => {
+                  setIsAccountMenuOpen(false);
+                  setIsToolsOpen(false);
+                  setIsNavMenuOpen(false);
+                  navigate('/auth');
+                }}
+              >
+                <FontAwesomeIcon icon={faRightToBracket} />
+                <span className="nav-text">Sign in</span>
+              </button>
             )}
-            <button
-              className="nav-alpha-btn"
-              onClick={() => {
-                setIsSettingsOpen(false);
-                setIsToolsOpen(false);
-                setIsNavMenuOpen(false);
-                navigate('/join-alpha');
-              }}
-            >
-              <FontAwesomeIcon icon={faUser} />
-              <span className="nav-text">Join Alpha</span>
-            </button>
           </div>
         </div>
       </nav>
@@ -432,16 +827,55 @@ export default function App() {
                 <p>
                   Visual bench cards, study paths, and practical microbiology tools for MLS students, ASCP review, and new clinical bench learners.
                 </p>
-                <div className="dashboard-search-card">
-                  <span>Need one thing fast?</span>
-                  <div className="dashboard-cover-actions">
-                    <button type="button" onClick={() => navigate('/search')}>
-                      Search
-                    </button>
-                    <button type="button" onClick={() => navigate('/learn/clinical-microbiology')}>
-                      Start learning
-                    </button>
+                <div className="dashboard-hero-search" ref={dashboardSearchRef}>
+                  <label htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
+                  <div className="dashboard-hero-search-box">
+                    <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
+                    <input
+                      id="dashboard-hero-search-input"
+                      type="search"
+                      value={dashboardSearchQuery}
+                      placeholder="Search tests, guides, roadmaps..."
+                      role="combobox"
+                      aria-expanded={isDashboardSearchOpen}
+                      aria-controls="dashboard-hero-search-results"
+                      aria-activedescendant={
+                        isDashboardSearchOpen && dashboardSearchResults[selectedDashboardSearchIndex]
+                          ? `dashboard-hero-search-option-${dashboardSearchResults[selectedDashboardSearchIndex].id}`
+                          : undefined
+                      }
+                      onChange={(event) => {
+                        setDashboardSearchQuery(event.target.value);
+                        setIsDashboardSearchOpen(true);
+                      }}
+                      onFocus={() => setIsDashboardSearchOpen(true)}
+                      onKeyDown={handleDashboardSearchKeyDown}
+                    />
                   </div>
+                  {isDashboardSearchOpen && (
+                    <div className="dashboard-hero-search-menu" id="dashboard-hero-search-results" role="listbox">
+                      {dashboardSearchResults.length > 0 ? (
+                        dashboardSearchResults.map((result, index) => (
+                          <button
+                            type="button"
+                            id={`dashboard-hero-search-option-${result.id}`}
+                            key={result.id}
+                            className={`dashboard-hero-search-option ${index === selectedDashboardSearchIndex ? 'active' : ''}`}
+                            role="option"
+                            aria-selected={index === selectedDashboardSearchIndex}
+                            onMouseEnter={() => setSelectedDashboardSearchIndex(index)}
+                            onClick={() => handleDashboardSearchSelect(result)}
+                          >
+                            <span>{result.category}</span>
+                            <strong>{result.title}</strong>
+                            <small>{result.snippet}</small>
+                          </button>
+                        ))
+                      ) : (
+                        <div className="dashboard-hero-search-empty">No close matches yet.</div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </section>
@@ -452,21 +886,26 @@ export default function App() {
             </section>
 
             <section className="dashboard-action-grid" aria-label="Primary study tasks">
-              {dashboardActions.map((action) => (
-                <button
-                  type="button"
-                  key={action.label}
-                  className="dashboard-action-card"
-                  onClick={() => handleHomeToolCardClick(action.label, action.path)}
-                >
-                  <span className="dashboard-action-code">{action.code}</span>
-                  <strong>{action.label}</strong>
-                  <small>{action.detail}</small>
-                </button>
-              ))}
+              {dashboardActions.map((action) => {
+                const isAscpAction = action.path === '/certification-study-paths';
+
+                return (
+                  <button
+                    type="button"
+                    key={action.label}
+                    className={`dashboard-action-card ${isAscpAction ? 'ascp-high-yield' : ''}`}
+                    onClick={() => handleHomeToolCardClick(action.label, action.path)}
+                  >
+                    {isAscpAction && <span className="dashboard-action-ribbon">High yield</span>}
+                    <span className="dashboard-action-code">{action.code}</span>
+                    <strong>{action.label}</strong>
+                    <small>{action.detail}</small>
+                  </button>
+                );
+              })}
             </section>
 
-            <section className="dashboard-lower-grid" aria-label="Start path and featured bench card">
+            <section className="dashboard-lower-grid" aria-label="Start path, daily riddle, and featured bench card">
               <div className="dashboard-panel dashboard-start-path">
                 <span className="dashboard-kicker">Start path</span>
                 <h2>Three good first clicks</h2>
@@ -478,6 +917,49 @@ export default function App() {
                     </button>
                   ))}
                 </div>
+              </div>
+
+              <div className={`dashboard-panel dashboard-riddle-card ${dailyRiddleResult ? (isDailyRiddleCorrect ? 'correct' : 'incorrect') : ''}`}>
+                <span className="dashboard-kicker">Riddle of the day</span>
+                <h2>Diagnostic quick hit</h2>
+                <p className="dashboard-riddle-prompt">{dailyMicrobeRiddle.prompt}</p>
+                <div className="dashboard-riddle-options" role="radiogroup" aria-label="Daily microbe riddle choices">
+                  {dailyMicrobeRiddle.choices.map((choice) => {
+                    const isSelected = choice.id === dailyRiddleResult?.selectedId;
+                    const choiceStatusClass = dailyRiddleResult && choice.correct
+                      ? 'correct'
+                      : dailyRiddleResult && isSelected
+                        ? 'incorrect'
+                        : '';
+
+                    return (
+                      <button
+                        type="button"
+                        key={choice.id}
+                        className={`dashboard-riddle-choice ${isSelected ? 'selected' : ''} ${choiceStatusClass}`}
+                        role="radio"
+                        aria-checked={isSelected}
+                        disabled={Boolean(dailyRiddleResult)}
+                        onClick={() => handleDailyRiddleChoice(choice.id)}
+                      >
+                        {choice.label}
+                      </button>
+                    );
+                  })}
+                </div>
+                {dailyRiddleResult && selectedRiddleChoice && (
+                  <div className="dashboard-riddle-feedback" aria-live="polite">
+                    <strong>{isDailyRiddleCorrect ? 'Correct.' : 'Not this one.'}</strong>
+                    <p>
+                      {isDailyRiddleCorrect
+                        ? dailyMicrobeRiddle.explanation
+                        : `Correct choice: ${correctRiddleChoice?.label.replace(/^A\)\s*/, '') ?? 'Streptococcus pneumoniae'}. ${dailyMicrobeRiddle.explanation}`}
+                    </p>
+                    <button type="button" onClick={() => navigate(dailyMicrobeRiddle.answerPath)}>
+                      {isDailyRiddleCorrect ? 'Read full guide' : 'Review guide'}
+                    </button>
+                  </div>
+                )}
               </div>
 
               <div className="dashboard-panel dashboard-featured-card">

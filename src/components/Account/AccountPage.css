@@ -1,0 +1,731 @@
+.account-page {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.account-hero,
+.account-card,
+.account-message {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+}
+
+.account-hero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.account-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(36, 92, 105, 0.12), rgba(200, 162, 77, 0.14)),
+    #f8fbfa;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.account-kicker {
+  display: inline-flex;
+  margin-bottom: 0.4rem;
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.account-hero h1,
+.account-card h2 {
+  margin: 0;
+  color: var(--dark-color);
+  line-height: 1.16;
+  letter-spacing: 0;
+}
+
+.account-hero h1 {
+  font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+}
+
+.account-card h2 {
+  font-size: 1.15rem;
+}
+
+.account-hero p,
+.account-card p,
+.account-summary dd,
+.account-summary dt {
+  margin: 0;
+  color: var(--muted-color);
+  line-height: 1.5;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.account-main-column {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.account-card {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  padding: 1.15rem;
+}
+
+.account-card-header {
+  display: grid;
+  grid-template-columns: 2.9rem minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: center;
+}
+
+.account-icon-tile,
+.account-bookmark-icon {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #f0f5f3;
+  color: var(--primary-color);
+  flex: 0 0 auto;
+}
+
+.account-icon-tile {
+  inline-size: 2.9rem;
+  block-size: 2.9rem;
+}
+
+.account-icon-tile svg {
+  inline-size: 1.22rem;
+  block-size: 1.22rem;
+}
+
+.account-form {
+  grid-template-columns: 1fr;
+}
+
+.account-form label {
+  display: grid;
+  gap: 0.36rem;
+  padding: 0;
+  color: var(--dark-color);
+  font-size: 0.86rem;
+  font-weight: 900;
+  cursor: default;
+}
+
+.account-form input,
+.account-form textarea {
+  width: 100%;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--dark-color);
+  font: inherit;
+  font-weight: 650;
+  resize: vertical;
+}
+
+.account-form input {
+  min-height: 2.8rem;
+}
+
+.account-form textarea {
+  min-height: 7rem;
+}
+
+.account-form input:focus,
+.account-form textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(36, 92, 105, 0.14);
+}
+
+.account-save-btn,
+.account-signout-btn {
+  justify-content: center;
+  min-height: 2.8rem;
+  padding: 0.72rem 0.95rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-weight: 900;
+}
+
+.account-save-btn {
+  width: fit-content;
+  min-width: 9.5rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(36, 92, 105, 0.16);
+}
+
+.account-save-btn:hover:not(:disabled),
+.account-signout-btn:hover {
+  transform: translateY(-1px);
+}
+
+.account-save-btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.account-summary dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.account-summary dl > div {
+  display: grid;
+  gap: 0.16rem;
+  padding-bottom: 0.72rem;
+  border-bottom: 1px solid rgba(36, 92, 105, 0.1);
+}
+
+.account-summary dt {
+  color: var(--primary-color);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-summary dd {
+  min-width: 0;
+  color: var(--dark-color);
+  font-size: 0.88rem;
+  font-weight: 760;
+  overflow-wrap: anywhere;
+}
+
+.account-next-panel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.65rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(200, 162, 77, 0.26);
+  border-radius: 6px;
+  background: #fff8e5;
+}
+
+.account-next-panel svg {
+  margin-top: 0.16rem;
+  color: #8a5b0a;
+}
+
+.account-next-panel strong {
+  display: block;
+  margin-bottom: 0.18rem;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+}
+
+.account-next-panel p {
+  color: #6c4c10;
+  font-size: 0.84rem;
+}
+
+.account-signout-btn {
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.18);
+  color: var(--primary-color);
+}
+
+.account-bookmarks {
+  gap: 0.9rem;
+}
+
+.account-progress {
+  gap: 0.9rem;
+}
+
+.account-quiz-history {
+  gap: 0.9rem;
+}
+
+.account-progress-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.account-progress-stats div {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.78rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.account-progress-stats strong {
+  color: var(--dark-color);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.account-progress-stats span {
+  color: var(--primary-color);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-progress-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.account-progress-list a {
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.68rem 0.76rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.account-progress-list a:hover {
+  border-color: rgba(36, 92, 105, 0.28);
+  transform: translateY(-1px);
+}
+
+.account-progress-list span {
+  color: var(--primary-color);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-progress-list strong {
+  color: var(--dark-color);
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+.account-weak-areas {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.78rem;
+  border: 1px solid rgba(200, 162, 77, 0.24);
+  border-radius: 6px;
+  background: #fff8e5;
+}
+
+.account-weak-areas > span {
+  color: #8a5b0a;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-weak-areas div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.36rem;
+}
+
+.account-weak-areas small {
+  padding: 0.28rem 0.45rem;
+  border: 1px solid rgba(200, 162, 77, 0.24);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #6c4c10;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.account-quiz-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.account-quiz-card {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.72rem 0.78rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.account-quiz-card div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.account-quiz-card span {
+  color: var(--primary-color);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-quiz-card strong {
+  color: var(--dark-color);
+  font-size: 1.05rem;
+}
+
+.account-quiz-card p,
+.account-quiz-card small {
+  margin: 0;
+  color: var(--muted-color);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.account-bookmark-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.account-bookmark-card {
+  display: grid;
+  grid-template-columns: 2.65rem minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.74rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.account-bookmark-icon {
+  inline-size: 2.65rem;
+  block-size: 2.65rem;
+}
+
+.account-bookmark-icon svg {
+  inline-size: 1.18rem;
+  block-size: 1.18rem;
+}
+
+.account-bookmark-card div > span {
+  display: block;
+  color: var(--primary-color);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-bookmark-card a {
+  display: inline-block;
+  margin: 0.12rem 0 0.18rem;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1.25;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.account-bookmark-card a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.account-bookmark-card p,
+.account-muted-line {
+  margin: 0;
+  color: var(--muted-color);
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+.account-bookmark-card button {
+  justify-content: center;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0.45rem;
+  border: 1px solid rgba(182, 75, 54, 0.18);
+  border-radius: 6px;
+  background: #fff7f4;
+  color: var(--error-color);
+}
+
+.account-bookmark-card button:hover {
+  background: #fff1ea;
+  transform: translateY(-1px);
+}
+
+.account-empty-bookmarks,
+.account-inline-message {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.85rem;
+  border-radius: 6px;
+}
+
+.account-empty-bookmarks {
+  border: 1px dashed rgba(36, 92, 105, 0.22);
+  background: #fbfaf7;
+}
+
+.account-empty-bookmarks strong {
+  color: var(--dark-color);
+}
+
+.account-empty-bookmarks p {
+  margin: 0;
+}
+
+.account-empty-bookmarks div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.account-empty-bookmarks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.48rem 0.65rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.account-inline-message {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 820;
+}
+
+.account-inline-message.error {
+  border: 1px solid rgba(182, 75, 54, 0.24);
+  background: #fff1ea;
+  color: #7a2f22;
+}
+
+.account-message {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.85rem;
+  margin-bottom: 1rem;
+  font-weight: 820;
+}
+
+.account-message.error {
+  border-color: rgba(182, 75, 54, 0.24);
+  background: #fff1ea;
+  color: #7a2f22;
+}
+
+.account-message.success {
+  border-color: rgba(79, 143, 103, 0.26);
+  background: rgba(79, 143, 103, 0.1);
+  color: #2d6b49;
+}
+
+.account-loading {
+  justify-items: center;
+  padding: 2rem;
+  color: var(--muted-color);
+  font-weight: 800;
+}
+
+.account-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(36, 92, 105, 0.14);
+  border-top-color: var(--primary-color);
+  border-radius: 999px;
+  animation: accountSpin 800ms linear infinite;
+}
+
+@keyframes accountSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body.dark-mode .account-hero,
+body.dark-mode .account-card {
+  background: #22313f;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-avatar,
+body.dark-mode .account-icon-tile,
+body.dark-mode .account-bookmark-icon {
+  background: rgba(79, 209, 197, 0.08);
+  border-color: rgba(79, 209, 197, 0.14);
+  color: #5eead4;
+}
+
+body.dark-mode .account-hero h1,
+body.dark-mode .account-card h2,
+body.dark-mode .account-form label,
+body.dark-mode .account-summary dd,
+body.dark-mode .account-next-panel strong,
+body.dark-mode .account-form input,
+body.dark-mode .account-form textarea {
+  color: #f8fffd;
+}
+
+body.dark-mode .account-hero p,
+body.dark-mode .account-card p,
+body.dark-mode .account-summary dt {
+  color: #cbd5df;
+}
+
+body.dark-mode .account-form input,
+body.dark-mode .account-form textarea,
+body.dark-mode .account-signout-btn,
+body.dark-mode .account-bookmark-card,
+body.dark-mode .account-empty-bookmarks,
+body.dark-mode .account-empty-bookmarks a {
+  background: #1b2733;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-save-btn {
+  background: #3a8a86;
+}
+
+body.dark-mode .account-signout-btn {
+  color: #dffcf8;
+}
+
+body.dark-mode .account-bookmark-card a,
+body.dark-mode .account-empty-bookmarks strong {
+  color: #f8fffd;
+}
+
+body.dark-mode .account-bookmark-card p,
+body.dark-mode .account-muted-line {
+  color: #cbd5df;
+}
+
+body.dark-mode .account-progress-stats div,
+body.dark-mode .account-progress-list a,
+body.dark-mode .account-quiz-card {
+  background: #1b2733;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-progress-stats strong,
+body.dark-mode .account-progress-list strong,
+body.dark-mode .account-quiz-card strong {
+  color: #f8fffd;
+}
+
+body.dark-mode .account-quiz-card p,
+body.dark-mode .account-quiz-card small {
+  color: #cbd5df;
+}
+
+body.dark-mode .account-weak-areas {
+  background: #2f2a1c;
+  border-color: rgba(229, 199, 118, 0.26);
+}
+
+body.dark-mode .account-weak-areas > span,
+body.dark-mode .account-weak-areas small {
+  color: #f8d88a;
+}
+
+body.dark-mode .account-weak-areas small {
+  background: #1b2733;
+  border-color: rgba(229, 199, 118, 0.2);
+}
+
+body.dark-mode .account-bookmark-card button {
+  background: #3a2723;
+  border-color: rgba(240, 138, 115, 0.22);
+  color: #ffd2c7;
+}
+
+body.dark-mode .account-summary dl > div {
+  border-bottom-color: rgba(222, 232, 222, 0.1);
+}
+
+body.dark-mode .account-next-panel {
+  background: #2f2a1c;
+  border-color: rgba(229, 199, 118, 0.26);
+}
+
+body.dark-mode .account-next-panel p {
+  color: #f8d88a;
+}
+
+body.dark-mode .account-message.error {
+  background: #3a2723;
+  color: #ffd2c7;
+}
+
+body.dark-mode .account-inline-message.error {
+  background: #3a2723;
+  color: #ffd2c7;
+  border-color: rgba(240, 138, 115, 0.22);
+}
+
+body.dark-mode .account-message.success {
+  background: rgba(79, 143, 103, 0.18);
+  color: #d9fbe7;
+}
+
+@media (max-width: 760px) {
+  .account-hero,
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-bookmark-card {
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .account-bookmark-card button {
+    grid-column: 2;
+    width: fit-content;
+  }
+
+  .account-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.45rem;
+  }
+
+  .account-card {
+    padding: 1rem;
+  }
+}

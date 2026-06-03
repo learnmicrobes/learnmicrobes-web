@@ -5,9 +5,10 @@ interface ToolBoxProps {
   title: string;
   icon: string;
   children: React.ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
   showBackButton?: boolean;
   onBack?: () => void;
+  showCloseButton?: boolean;
 }
 
 const ToolBox: React.FC<ToolBoxProps> = ({
@@ -16,7 +17,8 @@ const ToolBox: React.FC<ToolBoxProps> = ({
   children,
   onClose,
   showBackButton = false,
-  onBack
+  onBack,
+  showCloseButton = true
 }) => {
   return (
     <div className="tool-box">
@@ -30,9 +32,11 @@ const ToolBox: React.FC<ToolBoxProps> = ({
           <span className="tool-box-title-icon" aria-hidden="true">{icon}</span>
           {title}
         </h2>
-        <button className="close-btn" onClick={onClose} aria-label="Close panel">
-          ×
-        </button>
+        {showCloseButton && onClose && (
+          <button className="close-btn" onClick={onClose} aria-label="Close panel">
+            ×
+          </button>
+        )}
       </div>
       <div className="tool-box-content">
         {children}

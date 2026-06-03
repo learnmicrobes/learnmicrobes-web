@@ -20,6 +20,8 @@ import VisualAtlas from "./components/VisualAtlas/VisualAtlas";
 
 import GlobalSearch from "./components/Search/GlobalSearch";
 import JoinAlpha from "./components/JoinAlpha";
+import AuthPage from "./components/Auth/AuthPage";
+import AccountPage from "./components/Account/AccountPage";
 
 export default function AppRoutes() {
   return (
@@ -33,6 +35,8 @@ export default function AppRoutes() {
         <Route path="visuals/:slug" element={<VisualAtlas />} />
         <Route path="guides" element={<MicroBasics />} />
         <Route path="search" element={<GlobalSearch />} />
+        <Route path="auth" element={<AuthPage />} />
+        <Route path="account" element={<AccountPage />} />
         <Route path="join-alpha" element={<JoinAlpha />} />
         <Route path="biochemical-calculator" element={<BioCalculator />} />
         <Route path="gram-positive-roadmap" element={<GramPositiveRoadmap />} />

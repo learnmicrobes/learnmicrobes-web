@@ -1,10 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { getSearchAliases } from '../../data/searchAliases';
 import { trackEvent } from '../../utils/analytics';
+import { useAuth } from '../../context/AuthContext';
+import { useBookmarks } from '../../hooks/useBookmarks';
 import './VisualAtlas.css';
 
-type TubeVisual = {
+export type TubeVisual = {
   id: string;
   label: string;
   name: string;
@@ -17,7 +21,7 @@ type TubeVisual = {
   growth?: 'heavy' | 'light' | 'none';
 };
 
-type AtlasPage = {
+export type AtlasPage = {
   slug: string;
   title: string;
   eyebrow: string;
@@ -5197,6 +5201,106 @@ function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
   );
 }
 
+const utilizationStageTypes: AtlasPage['visualType'][] = [
+  'utilization',
+  'esculin-hydrolysis',
+  'growth-temperature',
+  'bile-esculin',
+  'cetrimide',
+  'citrate',
+  'motility',
+  'mrs-broth',
+  'nitrite-reduction',
+  'onpg-test',
+  'phenylalanine-deaminase',
+  'pyruvate-broth',
+  'salt-tolerance',
+  'urease-test'
+];
+
+const diskStageTypes: AtlasPage['visualType'][] = [
+  'disk-susceptibility',
+  'optochin-test',
+  'lap-test',
+  'indole-production',
+  'hippurate-hydrolysis',
+  'gelatin-hydrolysis',
+  'bile-solubility',
+  'butyrate-disk',
+  'catalase',
+  'dnase',
+  'mug-test',
+  'microdase',
+  'oxidase-test',
+  'pyr-test',
+  'spot-indole'
+];
+
+const coagulaseStageTypes: AtlasPage['visualType'][] = [
+  'litmus-milk',
+  'flagella-stain',
+  'fermentation',
+  'coagulase',
+  'decarboxylase',
+  'mrvp',
+  'nitrate-reduction',
+  'tsi-test',
+  'xv-factor-test'
+];
+
+const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
+  if (utilizationStageTypes.includes(visualType)) {
+    return 'utilization-stage';
+  }
+
+  if (visualType === 'of-medium') {
+    return 'of-stage';
+  }
+
+  if (diskStageTypes.includes(visualType)) {
+    return 'disk-stage';
+  }
+
+  if (visualType === 'camp-test') {
+    return 'camp-stage';
+  }
+
+  if (coagulaseStageTypes.includes(visualType)) {
+    return 'coagulase-stage';
+  }
+
+  return '';
+};
+
+type MiniAtlasVisualProps = {
+  page?: AtlasPage;
+  slug?: string;
+};
+
+export function MiniAtlasVisual({ page: providedPage, slug }: MiniAtlasVisualProps) {
+  const page = providedPage ?? atlasPages.find((atlasPage) => atlasPage.slug === slug);
+
+  if (!page) {
+    return null;
+  }
+
+  return (
+    <aside className="mini-atlas-visual" aria-label={`${page.title} visual preview`}>
+      <div className="mini-atlas-copy">
+        <span>{page.eyebrow}</span>
+        <h3>{page.boardTitle}</h3>
+        <p>{page.boardNote}</p>
+      </div>
+      <div className={`lia-stage mini-atlas-stage ${getAtlasStageClass(page.visualType)}`} role="img" aria-label={page.ariaLabel}>
+        {page.tubes.map((tube) => renderTube(tube, page.visualType))}
+      </div>
+      <Link className="mini-atlas-link" to={`/visuals/${page.slug}`}>
+        Open full visual
+      </Link>
+    </aside>
+  );
+}
+
 function getVisualCategory(page: AtlasPage) {
   if (page.visualType === 'flagella-stain') {
     return 'Stains';
@@ -5293,6 +5397,7 @@ function VisualAtlasHub() {
           <button
             type="button"
             key={group.category}
+            aria-pressed={activeCategory === group.category}
             onClick={() => setActiveCategory(group.category)}
           >
             <span>{group.count}</span>
@@ -5318,6 +5423,7 @@ function VisualAtlasHub() {
               type="button"
               key={category}
               className={activeCategory === category ? 'active' : ''}
+              aria-pressed={activeCategory === category}
               onClick={() => setActiveCategory(category)}
             >
               {category}
@@ -5359,6 +5465,10 @@ function VisualAtlasHub() {
 
 function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { bookmarkError, isBookmarked, toggleBookmark } = useBookmarks();
+  const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
+  const isVisualBookmarked = isBookmarked('visual', page.slug);
 
   useEffect(() => {
     document.title = `${page.title} | Learn Microbes`;
@@ -5369,16 +5479,31 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     });
   }, [page.slug, page.title, page.visualType]);
 
+  const handleBookmarkClick = async () => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    setBookmarkStatusMessage('');
+
+    const result = await toggleBookmark({
+      itemType: 'visual',
+      itemSlug: page.slug,
+      itemTitle: page.title,
+      itemPath: `/visuals/${page.slug}`,
+      itemSummary: page.summary
+    });
+
+    setBookmarkStatusMessage(result.message);
+  };
+
   return (
     <div className="visual-atlas-shell">
       <header className="visual-atlas-hero">
         <span className="visual-kicker">{page.eyebrow}</span>
         <h1>{page.title}</h1>
         <p>{page.summary}</p>
-        <div className="visual-scope-note">
-          <span>Bench card</span>
-          <p>Use this page for visual readout and interpretation anchors. Use the reference page for procedure, reagents, QC, and expected-result wording.</p>
-        </div>
         <div className="visual-hero-actions">
           <button
             type="button"
@@ -5386,8 +5511,22 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           >
             Open procedure/QC reference
           </button>
+          <button
+            type="button"
+            className={`visual-bookmark-toggle ${isVisualBookmarked ? 'saved' : ''}`}
+            onClick={handleBookmarkClick}
+            aria-pressed={isVisualBookmarked}
+          >
+            <FontAwesomeIcon icon={faBookmark} />
+            {user ? (isVisualBookmarked ? 'Saved Bookmark' : 'Save Bookmark') : 'Sign in to Bookmark'}
+          </button>
           {page.relatedLearnSlug && <Link to={`/learn/${page.relatedLearnSlug}`}>Read concept page</Link>}
         </div>
+        {(bookmarkStatusMessage || bookmarkError) && (
+          <p className={`visual-bookmark-status ${bookmarkError ? 'error' : ''}`} role={bookmarkError ? 'alert' : 'status'}>
+            {bookmarkError || bookmarkStatusMessage}
+          </p>
+        )}
       </header>
 
       <section className="visual-board" aria-labelledby="visual-board-title">
@@ -5396,43 +5535,57 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
             <span className="visual-kicker">Bench card visual</span>
             <h2 id="visual-board-title">{page.boardTitle}</h2>
           </div>
+        </div>
+
+        <div className="visual-board-read-first">
+          <span>Read first</span>
           <p>{page.boardNote}</p>
         </div>
 
-        <div className={`lia-stage ${page.visualType === 'utilization' || page.visualType === 'esculin-hydrolysis' || page.visualType === 'growth-temperature' || page.visualType === 'bile-esculin' || page.visualType === 'cetrimide' || page.visualType === 'citrate' || page.visualType === 'motility' || page.visualType === 'mrs-broth' || page.visualType === 'nitrite-reduction' || page.visualType === 'onpg-test' || page.visualType === 'phenylalanine-deaminase' || page.visualType === 'pyruvate-broth' || page.visualType === 'salt-tolerance' || page.visualType === 'urease-test' ? 'utilization-stage' : page.visualType === 'of-medium' ? 'of-stage' : page.visualType === 'disk-susceptibility' || page.visualType === 'optochin-test' || page.visualType === 'lap-test' || page.visualType === 'indole-production' || page.visualType === 'hippurate-hydrolysis' || page.visualType === 'gelatin-hydrolysis' || page.visualType === 'bile-solubility' || page.visualType === 'butyrate-disk' || page.visualType === 'catalase' || page.visualType === 'dnase' || page.visualType === 'mug-test' || page.visualType === 'microdase' || page.visualType === 'oxidase-test' || page.visualType === 'pyr-test' || page.visualType === 'spot-indole' ? 'disk-stage' : page.visualType === 'camp-test' ? 'camp-stage' : page.visualType === 'litmus-milk' || page.visualType === 'flagella-stain' || page.visualType === 'fermentation' || page.visualType === 'coagulase' || page.visualType === 'decarboxylase' || page.visualType === 'mrvp' || page.visualType === 'nitrate-reduction' || page.visualType === 'tsi-test' || page.visualType === 'xv-factor-test' ? 'coagulase-stage' : ''}`} role="img" aria-label={page.ariaLabel}>
+        <div className={`lia-stage ${getAtlasStageClass(page.visualType)}`} role="img" aria-label={page.ariaLabel}>
           {page.tubes.map((tube) => renderTube(tube, page.visualType))}
+          <div className="visual-board-signature" aria-hidden="true">
+            Learn Microbes | learnmicrobes.com
+          </div>
+        </div>
+        <div className="visual-result-anchors" aria-label="Visual result anchors">
+          {page.tubes.map((tube) => (
+            <div className="visual-result-anchor" key={tube.id}>
+              <span>{tube.label}</span>
+              <strong>{tube.name}</strong>
+              <p>{tube.note}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <div className="visual-grid">
-        <section className="visual-panel">
-          <span className="visual-kicker">How to read it</span>
-          <h2>{page.readoutTitle}</h2>
-          <table className="visual-table">
-            <thead>
-              <tr>
-                {tableHeaders.map((heading) => <th key={heading}>{heading}</th>)}
+      <section className="visual-panel">
+        <span className="visual-kicker">What to look for</span>
+        <h2>{page.readoutTitle}</h2>
+        <table className="visual-table">
+          <thead>
+            <tr>
+              {tableHeaders.map((heading) => <th key={heading}>{heading}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {page.readoutRows.map((row) => (
+              <tr key={row[0]}>
+                {row.map((cell) => <td key={cell}>{cell}</td>)}
               </tr>
-            </thead>
-            <tbody>
-              {page.readoutRows.map((row) => (
-                <tr key={row[0]}>
-                  {row.map((cell) => <td key={cell}>{cell}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+            ))}
+          </tbody>
+        </table>
+      </section>
 
-        <aside className="visual-panel visual-callout">
-          <span className="visual-kicker">Common trap</span>
-          <h2>{page.trapTitle}</h2>
-          <p>{page.trapBody}</p>
-          <ul>
-            {page.trapBullets.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </aside>
-      </div>
+      <aside className="visual-panel visual-callout visual-trap-panel">
+        <span className="visual-kicker">Common trap</span>
+        <h2>{page.trapTitle}</h2>
+        <p>{page.trapBody}</p>
+        <ul>
+          {page.trapBullets.map((item) => <li key={item}>{item}</li>)}
+        </ul>
+      </aside>
 
       <section className="visual-panel">
         <span className="visual-kicker">Interpretation table</span>

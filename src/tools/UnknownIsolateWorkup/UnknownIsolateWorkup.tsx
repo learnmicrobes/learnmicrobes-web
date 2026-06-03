@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
 import './UnknownIsolateWorkup.css';
@@ -20,6 +20,14 @@ type WorkupState = {
 type Recommendation = {
   heading: string;
   items: string[];
+};
+
+type WorkupSynthesis = {
+  branch: string;
+  nextStep: string;
+  why: string;
+  watchOut: string;
+  organisms: string[];
 };
 
 type LinkCard = {
@@ -105,6 +113,152 @@ const fieldOptions: Array<{
 ];
 
 const hasAnySelection = (state: WorkupState) => Object.values(state).some(Boolean);
+
+const getSelectedObservations = (state: WorkupState) => (
+  fieldOptions
+    .map((field) => ({
+      label: field.label,
+      value: state[field.key]
+    }))
+    .filter((item) => Boolean(item.value))
+);
+
+const getMissingHighYieldFields = (state: WorkupState) => (
+  fieldOptions
+    .filter((field) => !state[field.key])
+    .slice(0, 3)
+    .map((field) => field.label)
+);
+
+const buildSynthesis = (state: WorkupState, recommendations: Recommendation[]): WorkupSynthesis => {
+  if (state.purity === 'Mixed culture' || state.purity === 'Primary plate only' || state.purity === 'Not sure') {
+    return {
+      branch: 'Purity checkpoint before organism narrowing',
+      nextStep: 'Pick or subculture a representative isolated colony before trusting biochemical reactions.',
+      why: 'Mixed growth and primary-plate-only workups can create conflicting reactions that look like a rare organism but are really more than one isolate.',
+      watchOut: 'Do not force an ID from a mixed culture, especially from sterile-site or blood culture material.',
+      organisms: ['Multiple colony types possible', 'Contaminant versus pathogen depends on source']
+    };
+  }
+
+  if (state.gramReaction === 'Gram positive' && state.morphology === 'Cocci') {
+    if (state.catalase === 'Positive') {
+      return {
+        branch: 'Gram-positive cocci, catalase-positive branch',
+        nextStep: 'Move to coagulase or latex testing when S. aureus is in the differential.',
+        why: 'Catalase-positive cocci usually move toward Staphylococcus/Micrococcus-like logic, then coagulase separates the most urgent routine branch.',
+        watchOut: 'Blood culture and sterile-site coagulase-negative staphylococci need clinical context before calling contamination.',
+        organisms: ['Staphylococcus aureus', 'Coagulase-negative staphylococci', 'Micrococcus-like organisms']
+      };
+    }
+
+    if (state.catalase === 'Negative') {
+      return {
+        branch: 'Gram-positive cocci, catalase-negative branch',
+        nextStep: 'Use hemolysis, PYR, bile esculin, salt tolerance, optochin, or CAMP based on colony pattern.',
+        why: 'Catalase-negative cocci move toward Streptococcus, Enterococcus, Aerococcus, and related groups where hemolysis and a few branch tests carry a lot of weight.',
+        watchOut: 'Alpha-hemolytic isolates are a common exam trap: optochin/bile solubility logic matters more than memorizing names alone.',
+        organisms: ['Streptococcus groups', 'Enterococcus', 'Aerococcus-like organisms']
+      };
+    }
+
+    return {
+      branch: 'First split for Gram-positive cocci',
+      nextStep: 'Run catalase from a clean colony, then branch by catalase result and arrangement.',
+      why: 'Catalase is the safest early split between staphylococcal-like and streptococcal/enterococcal-like workups.',
+      watchOut: 'Avoid dragging blood agar into the catalase reagent because it can create false bubbling.',
+      organisms: ['Staphylococcus-like cocci', 'Streptococcus-like cocci', 'Enterococcus-like cocci']
+    };
+  }
+
+  if (state.gramReaction === 'Gram positive' && state.morphology.includes('Rods')) {
+    return {
+      branch: 'Gram-positive rod branch',
+      nextStep: 'Decide whether rods are spore-forming, branching, palisading, beaded, or anaerobic.',
+      why: 'Gram-positive rods are not one workflow; morphology, oxygen tolerance, source, and biosafety clues decide which branch is appropriate.',
+      watchOut: 'Beaded rods or possible AFB organisms should move into mycobacterial or modified acid-fast workflow instead of routine open-bench panels.',
+      organisms: ['Bacillus-like rods', 'Clostridium-like rods', 'Coryneform organisms', 'Nocardia-like organisms']
+    };
+  }
+
+  if (state.gramReaction === 'Gram negative' && (state.morphology === 'Rods' || state.morphology === 'Coccobacilli')) {
+    if (state.oxidase === 'Negative' && state.macConkey !== 'No growth' && state.macConkey !== 'Not set up') {
+      return {
+        branch: 'Gram-negative rod, oxidase-negative with MacConkey growth',
+        nextStep: 'Use lactose reaction, indole, citrate, urease, motility, H2S, and decarboxylases to narrow the enteric branch.',
+        why: 'Oxidase-negative MacConkey growers often fit Enterobacterales-style logic, where a small set of reactions separates common groups.',
+        watchOut: 'Non-lactose fermenters need careful H2S, PAD, urease, motility, and specimen-context thinking before jumping to Salmonella/Shigella-like answers.',
+        organisms: ['E. coli', 'Klebsiella/Enterobacter-like organisms', 'Proteus/Morganella/Providencia-like organisms', 'Salmonella/Shigella-like branches']
+      };
+    }
+
+    if (state.oxidase === 'Positive') {
+      return {
+        branch: 'Gram-negative rod, oxidase-positive branch',
+        nextStep: 'Use MacConkey growth, OF glucose, pigment, odor, motility, atmosphere, and source to choose the next branch.',
+        why: 'Oxidase-positive rods include nonfermenters, water-associated organisms, fastidious organisms, and curved rods, so growth pattern matters before panels.',
+        watchOut: 'Tiny slow growers, animal exposure, water exposure, or curved rods can signal safety or special-media workflows.',
+        organisms: ['Pseudomonas-like nonfermenters', 'Vibrio/Aeromonas-like organisms', 'Campylobacter-like curved rods', 'Fastidious coccobacilli']
+      };
+    }
+
+    if (state.macConkey === 'No growth') {
+      return {
+        branch: 'Gram-negative rod with poor MacConkey growth',
+        nextStep: 'Check chocolate agar, CO2 or microaerophilic growth, oxidase, Gram stain quality, and specimen source.',
+        why: 'Poor MacConkey growth pushes the workup away from routine enteric assumptions and toward fastidious, anaerobic, or special-media organisms.',
+        watchOut: 'Do not use an enterics calculator until the growth requirements actually fit an enteric isolate.',
+        organisms: ['Haemophilus-like organisms', 'Campylobacter-like organisms', 'Anaerobic Gram-negative rods', 'Other fastidious branches']
+      };
+    }
+
+    return {
+      branch: 'First split for Gram-negative rods',
+      nextStep: 'Run oxidase and evaluate MacConkey growth before choosing a biochemical panel.',
+      why: 'Oxidase plus MacConkey behavior separates many routine enteric, nonfermenter, and fastidious pathways.',
+      watchOut: 'Curved, tiny, slow-growing, or fastidious isolates need atmosphere/media logic before routine biochemical logic.',
+      organisms: ['Enterobacterales-style rods', 'Nonfermenters', 'Fastidious Gram-negative rods']
+    };
+  }
+
+  if (state.gramReaction === 'Gram negative' && (state.morphology === 'Cocci' || state.arrangement === 'Diplococci')) {
+    return {
+      branch: 'Gram-negative cocci or diplococci branch',
+      nextStep: 'Correlate body site with chocolate/selective-media growth, oxidase, butyrate, DNase, and carbohydrate use.',
+      why: 'Neisseria- and Moraxella-like organisms require source-aware interpretation because direct smear findings may be clinically urgent.',
+      watchOut: 'Genital or sterile-site diplococci should follow local reporting and escalation policy.',
+      organisms: ['Neisseria-like organisms', 'Moraxella catarrhalis']
+    };
+  }
+
+  if (state.oxygen === 'Anaerobic only') {
+    return {
+      branch: 'Anaerobic isolate branch',
+      nextStep: 'Use oxygen tolerance, Gram morphology, spore status, bile, indole, special-potency disks, pigment, and fluorescence.',
+      why: 'Anaerobe workups depend on specimen quality, transport, oxygen exposure, and reduced media before organism-level narrowing.',
+      watchOut: 'A superficial swab or oxygen-exposed specimen may be a poor anaerobic culture source.',
+      organisms: ['Anaerobic Gram-positive rods', 'Anaerobic Gram-negative rods', 'Anaerobic cocci']
+    };
+  }
+
+  if (state.gramReaction === 'Yeast or fungal elements') {
+    return {
+      branch: 'Fungal or yeast workflow',
+      nextStep: 'Move away from bacterial biochemical logic and use fungal/yeast identification methods appropriate to the source.',
+      why: 'Yeast and fungal elements require different morphology, media, and reporting logic than bacterial unknowns.',
+      watchOut: 'Sterile-site yeast should be escalated according to laboratory policy.',
+      organisms: ['Yeast', 'Mold or fungal elements']
+    };
+  }
+
+  return {
+    branch: recommendations[0]?.heading ?? 'Build the next decision point',
+    nextStep: 'Add Gram reaction, morphology, culture purity, and either catalase or oxidase.',
+    why: 'The safest next step is usually the test that splits the largest likely organism group.',
+    watchOut: 'If the pattern feels contradictory, verify purity and repeat the Gram stain from an isolated colony.',
+    organisms: ['Not enough information yet']
+  };
+};
 
 const buildRecommendations = (state: WorkupState): Recommendation[] => {
   const recommendations: Recommendation[] = [];
@@ -357,17 +511,42 @@ const buildLinks = (state: WorkupState): LinkCard[] => {
 const UnknownIsolateWorkup: React.FC = () => {
   const navigate = useNavigate();
   const [workup, setWorkup] = useState<WorkupState>(initialState);
+  const [hasReviewedPath, setHasReviewedPath] = useState(false);
+  const resultRef = useRef<HTMLElement | null>(null);
 
   const recommendations = useMemo(() => buildRecommendations(workup), [workup]);
   const links = useMemo(() => buildLinks(workup), [workup]);
+  const selectedObservations = useMemo(() => getSelectedObservations(workup), [workup]);
+  const missingHighYieldFields = useMemo(() => getMissingHighYieldFields(workup), [workup]);
+  const synthesis = useMemo(() => buildSynthesis(workup, recommendations), [workup, recommendations]);
   const completedCount = Object.values(workup).filter(Boolean).length;
+  const neededObservationCount = Math.max(0, 3 - completedCount);
+  const canBuildPath = completedCount >= 3;
+  const buildPathButtonLabel = !canBuildPath
+    ? `Choose ${neededObservationCount} more clue${neededObservationCount === 1 ? '' : 's'}`
+    : hasReviewedPath
+      ? 'Update workup path'
+      : 'Build workup path';
 
   const updateField = (key: keyof WorkupState, value: string) => {
     setWorkup((current) => ({ ...current, [key]: current[key] === value ? '' : value }));
+    setHasReviewedPath(false);
   };
 
   const resetWorkup = () => {
     setWorkup(initialState);
+    setHasReviewedPath(false);
+  };
+
+  const reviewSuggestedPath = () => {
+    if (!canBuildPath) {
+      return;
+    }
+
+    setHasReviewedPath(true);
+    window.requestAnimationFrame(() => {
+      resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   };
 
   return (
@@ -380,9 +559,9 @@ const UnknownIsolateWorkup: React.FC = () => {
         <section className="unknown-hero">
           <div>
             <span className="unknown-kicker">Guided bench reasoning</span>
-            <h2>Build the next logical step from what you already know.</h2>
+            <h2>Choose what you know. Review the next bench move.</h2>
             <p>
-              Select the observations available from Gram stain, primary plates, and early bench tests. The tool suggests the safest workup path and related Learn Microbes tools.
+              Start with what is already available from the specimen, Gram stain, primary plates, and early bench tests. Then build a suggested workup path without treating it as a final organism ID.
             </p>
           </div>
           <div className="unknown-progress" aria-label={`${completedCount} observations selected`}>
@@ -392,64 +571,173 @@ const UnknownIsolateWorkup: React.FC = () => {
         </section>
 
         <div className="unknown-layout">
-          <section className="unknown-inputs" aria-label="Unknown isolate observations">
-            {fieldOptions.map((field) => (
-              <div className="unknown-field" key={field.key}>
-                <h3>{field.label}</h3>
-                <div className="unknown-chip-grid">
-                  {field.options.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      className={`unknown-chip ${workup[field.key] === option ? 'selected' : ''}`}
-                      onClick={() => updateField(field.key, option)}
-                    >
-                      {option}
-                    </button>
-                  ))}
+          <main className="unknown-main">
+            <section className="unknown-inputs" aria-label="Unknown isolate observations">
+              <div className="unknown-input-note">
+                <strong>Pick one clue per row.</strong>
+                <span>Three observations are enough for an initial path; more clues make the guidance sharper.</span>
+              </div>
+
+              {fieldOptions.map((field) => (
+                <div className="unknown-field" key={field.key}>
+                  <h3>{field.label}</h3>
+                  <div className="unknown-chip-grid">
+                    {field.options.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={`unknown-chip ${workup[field.key] === option ? 'selected' : ''}`}
+                        onClick={() => updateField(field.key, option)}
+                        aria-pressed={workup[field.key] === option}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
                 </div>
+              ))}
+
+              <div className="unknown-actions" aria-label="Unknown isolate workup actions">
+                <button
+                  className="unknown-review"
+                  type="button"
+                onClick={reviewSuggestedPath}
+                disabled={!canBuildPath}
+              >
+                  {buildPathButtonLabel}
+              </button>
+                <button className="unknown-reset" type="button" onClick={resetWorkup}>
+                  Reset workup
+                </button>
               </div>
-            ))}
+            </section>
 
-            <button className="unknown-reset" type="button" onClick={resetWorkup}>
-              Reset workup
-            </button>
-          </section>
-
-          <aside className="unknown-results" aria-label="Suggested workup path">
-            <div className="unknown-result-header">
-              <span>Suggested path</span>
-              <strong>{completedCount > 0 ? 'Updated live' : 'Waiting for observations'}</strong>
-            </div>
-
-            {recommendations.map((section) => (
-              <div className="unknown-result-card" key={section.heading}>
-                <h3>{section.heading}</h3>
-                <ul>
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+            <section className="unknown-results" aria-label="Suggested workup path" ref={resultRef}>
+              <div className="unknown-result-header">
+                <div>
+                  <span>Suggested workup path</span>
+                  <h3>
+                    {canBuildPath && hasReviewedPath ? 'Path ready' : 'Build the next decision point'}
+                  </h3>
+                </div>
+                <strong>
+                  {completedCount === 0 && 'Waiting for clues'}
+                  {completedCount > 0 && !canBuildPath && `${neededObservationCount} more needed`}
+                  {canBuildPath && !hasReviewedPath && 'Ready'}
+                  {canBuildPath && hasReviewedPath && 'Built'}
+                </strong>
               </div>
-            ))}
 
-            <div className="unknown-link-panel">
-              <h3>Open the supporting tool</h3>
-              <div className="unknown-link-list">
-                {links.map((link) => (
-                  <button
-                    key={`${link.title}-${link.path}`}
-                    type="button"
-                    className="unknown-link-card"
-                    onClick={() => navigate(link.path)}
-                  >
-                    <strong>{link.title}</strong>
-                    <span>{link.body}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </aside>
+              {!canBuildPath ? (
+                <div className="unknown-result-card unknown-missing-card">
+                  <h3>Add a few high-yield clues to unlock a useful path</h3>
+                  <p>
+                    Start with context, purity, Gram reaction, and morphology. The tool works best when the first branch point is clear.
+                  </p>
+                  <div className="unknown-missing-list" aria-label="Suggested observations to add">
+                    {missingHighYieldFields.map((field) => (
+                      <span key={field}>{field}</span>
+                    ))}
+                  </div>
+                </div>
+              ) : !hasReviewedPath ? (
+                <div className="unknown-result-card unknown-result-ready">
+                  <h3>Initial path is ready</h3>
+                  <p>
+                    Your observation set is enough to build a bench plan. Use the primary action above to reveal the suggested branch, next move, and common traps.
+                  </p>
+                  <div className="unknown-observation-list" aria-label="Selected observations preview">
+                    {selectedObservations.slice(0, 6).map((item) => (
+                      <span key={`${item.label}-${item.value}`}>
+                        <strong>{item.label}</strong>
+                        {item.value}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="unknown-path-reveal">
+                    <span className="unknown-path-kicker">Suggested path ready</span>
+                    <h3>Based on {completedCount} observations, your safest next branch is:</h3>
+                    <p>{synthesis.branch}</p>
+                  </div>
+
+                  <div className="unknown-synthesis-grid">
+                    <div className="unknown-step-card">
+                      <span>Next best move</span>
+                      <strong>{synthesis.nextStep}</strong>
+                    </div>
+                    <div className="unknown-step-card">
+                      <span>Why this fits</span>
+                      <strong>{synthesis.why}</strong>
+                    </div>
+                    <div className="unknown-step-card unknown-warning-card">
+                      <span>Watch-out</span>
+                      <strong>{synthesis.watchOut}</strong>
+                    </div>
+                  </div>
+
+                  <div className="unknown-result-card unknown-organism-card">
+                    <h3>Organisms in play</h3>
+                    <div className="unknown-organism-list">
+                      {synthesis.organisms.map((organism) => (
+                        <span key={organism}>{organism}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="unknown-link-panel">
+                    <h3>Open next</h3>
+                    <div className="unknown-link-list">
+                      {links.map((link) => (
+                        <button
+                          key={`${link.title}-${link.path}`}
+                          type="button"
+                          className="unknown-link-card"
+                          onClick={() => navigate(link.path)}
+                        >
+                          <strong>{link.title}</strong>
+                          <span>{link.body}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <details className="unknown-detail-drawer">
+                    <summary>Show detailed reasoning and selected clues</summary>
+                    <div className="unknown-detail-content">
+                      <section>
+                        <h3>Selected clues</h3>
+                        <div className="unknown-observation-list" aria-label="Selected observations">
+                          {selectedObservations.map((item) => (
+                            <span key={`${item.label}-${item.value}`}>
+                              <strong>{item.label}</strong>
+                              {item.value}
+                            </span>
+                          ))}
+                        </div>
+                      </section>
+
+                      <section>
+                        <h3>Bench reasoning</h3>
+                        {recommendations.map((section) => (
+                          <div className="unknown-reasoning-section" key={section.heading}>
+                            <h4>{section.heading}</h4>
+                            <ul>
+                              {section.items.map((item) => (
+                                <li key={item}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </section>
+                    </div>
+                  </details>
+                </>
+              )}
+            </section>
+          </main>
         </div>
       </div>
     </ToolBox>
