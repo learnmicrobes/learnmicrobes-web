@@ -654,6 +654,37 @@ export default function App() {
             >
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
             </button>
+            {user ? (
+              <button
+                className="mobile-auth-shortcut"
+                onClick={() => {
+                  setIsNavMenuOpen(false);
+                  setIsAccountMenuOpen(false);
+                  setIsToolsOpen(false);
+                  navigate('/account');
+                }}
+                aria-label="Open your study account"
+                title="Account"
+              >
+                <FontAwesomeIcon icon={faUser} />
+                <span>Account</span>
+              </button>
+            ) : (
+              <button
+                className="mobile-auth-shortcut"
+                onClick={() => {
+                  setIsNavMenuOpen(false);
+                  setIsAccountMenuOpen(false);
+                  setIsToolsOpen(false);
+                  navigate('/auth');
+                }}
+                aria-label="Sign in"
+                title="Sign in"
+              >
+                <FontAwesomeIcon icon={faRightToBracket} />
+                <span>Sign in</span>
+              </button>
+            )}
             <button
               className="nav-menu-toggle"
               onClick={() => setIsNavMenuOpen((open) => !open)}
