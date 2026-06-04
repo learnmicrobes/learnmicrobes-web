@@ -1200,8 +1200,8 @@ const BioCalculator = () => {
         const topResult = results[0];
         resultHTML = `
           <div class="results-header">
-            <h3>Top Match:</h3>
-            <div class="top-match">
+            <span class="result-kicker">Likely ID</span>
+            <div class="top-match-card">
               <strong>${topResult.bacteria}</strong> 
               <span class="match-percentage">${topResult.matchPercentage}% match</span>
               ${topResult.criticalMismatches.length > 0 ? 
@@ -1216,15 +1216,15 @@ const BioCalculator = () => {
         if (results.length > 1) {
           resultHTML += `
             <div class="other-matches">
-              <h4>Other Possible Matches:</h4>
-              <ul>
+              <h4>Other Possible Matches</h4>
+              <div class="other-match-strip" role="list">
                 ${results.slice(1, 5).map(result => `
-                  <li>
-                    ${result.bacteria}: 
+                  <div class="other-match-card" role="listitem">
+                    <strong>${result.bacteria}</strong>
                     <span class="match-percentage">${result.matchPercentage}% match</span>
-                  </li>
+                  </div>
                 `).join('')}
-              </ul>
+              </div>
             </div>
           `;
         }

@@ -131,13 +131,19 @@ const BiochemicalTests: React.FC = () => {
                 }
 
                 return (
-                  <button
-                    type="button"
-                    className="test-visual-link"
-                    onClick={() => navigate(`/visuals/${matchingVisual.slug}`)}
-                  >
-                    Open visual bench card
-                  </button>
+                  <div className="test-visual-companion">
+                    <div>
+                      <span>Visual companion</span>
+                      <p>{matchingVisual.title}</p>
+                    </div>
+                    <button
+                      type="button"
+                      className="test-visual-link"
+                      onClick={() => navigate(`/visuals/${matchingVisual.slug}`)}
+                    >
+                      Open visual bench card
+                    </button>
+                  </div>
                 );
               })()}
             </div>

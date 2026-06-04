@@ -771,6 +771,7 @@
   column-gap: 0.6rem;
   row-gap: 0.12rem;
   align-items: center;
+  min-width: 0;
   min-height: 2.6rem;
   padding: 0.48rem 0.55rem;
   border: 1px solid rgba(36, 92, 105, 0.14);
@@ -828,6 +829,7 @@
 .learn-arrow-link small,
 .learn-bottom-sequence small {
   display: block;
+  min-width: 0;
   color: var(--primary-color);
   font-size: 0.68rem;
   font-weight: 900;
@@ -838,6 +840,7 @@
 .learn-arrow-link strong,
 .learn-bottom-sequence strong {
   display: block;
+  min-width: 0;
   color: var(--dark-color);
   font-size: 0.9rem;
   line-height: 1.28;
@@ -872,6 +875,7 @@
   column-gap: 0.65rem;
   row-gap: 0.18rem;
   align-items: center;
+  min-width: 0;
   min-height: 4.2rem;
   padding: 0.72rem 0.8rem;
   border: 1px solid rgba(36, 92, 105, 0.16);
@@ -1609,11 +1613,29 @@
 
 .mini-atlas-visual {
   display: grid;
-  gap: 0.8rem;
+  grid-template-columns: minmax(0, 0.95fr) minmax(15rem, 1.05fr);
+  gap: 0.75rem;
+  align-items: center;
   padding: 0.9rem;
   border: 1px solid rgba(36, 92, 105, 0.16);
   border-radius: 6px;
   background: #fffdf8;
+}
+
+.mini-atlas-stage {
+  position: relative;
+  min-height: 12rem;
+}
+
+.mini-atlas-signature {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.45rem;
+  z-index: 3;
+  color: rgba(36, 92, 105, 0.36);
+  font-size: 0.62rem;
+  font-weight: 800;
+  pointer-events: none;
 }
 
 .mini-atlas-copy span {
@@ -1641,7 +1663,7 @@
 
 .mini-atlas-stage.lia-stage {
   width: 100%;
-  min-height: auto;
+  min-height: 12rem;
   max-height: none;
   padding: 0.75rem;
   border-radius: 6px;
@@ -2364,5 +2386,15 @@ body.dark-mode .learn-not-found button {
   .learn-area-progress {
     justify-self: start;
     text-align: left;
+  }
+
+  .mini-atlas-visual {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .mini-atlas-stage,
+  .mini-atlas-stage.lia-stage {
+    min-height: 10.5rem;
   }
 }

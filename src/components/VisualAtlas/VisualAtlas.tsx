@@ -5293,6 +5293,9 @@ export function MiniAtlasVisual({ page: providedPage, slug }: MiniAtlasVisualPro
       </div>
       <div className={`lia-stage mini-atlas-stage ${getAtlasStageClass(page.visualType)}`} role="img" aria-label={page.ariaLabel}>
         {page.tubes.map((tube) => renderTube(tube, page.visualType))}
+        <div className="mini-atlas-signature" aria-hidden="true">
+          Learn Microbes | learnmicrobes.com
+        </div>
       </div>
       <Link className="mini-atlas-link" to={`/visuals/${page.slug}`}>
         Open full visual
@@ -5469,6 +5472,16 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const { bookmarkError, isBookmarked, toggleBookmark } = useBookmarks();
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
   const isVisualBookmarked = isBookmarked('visual', page.slug);
+  const visualPosition = useMemo(() => {
+    const index = atlasPages.findIndex((item) => item.slug === page.slug);
+
+    return {
+      current: index + 1,
+      total: atlasPages.length,
+      previousPage: index > 0 ? atlasPages[index - 1] : null,
+      nextPage: index >= 0 && index < atlasPages.length - 1 ? atlasPages[index + 1] : null
+    };
+  }, [page.slug]);
 
   useEffect(() => {
     document.title = `${page.title} | Learn Microbes`;
@@ -5497,6 +5510,39 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
     setBookmarkStatusMessage(result.message);
   };
+
+  const renderVisualSequence = (placement: 'top' | 'bottom') => (
+    <nav className={`visual-sequence visual-sequence-${placement}`} aria-label="Previous and next Visual Atlas cards">
+      {visualPosition.previousPage ? (
+        <Link className="visual-sequence-link previous" to={`/visuals/${visualPosition.previousPage.slug}`}>
+          <small>Previous visual</small>
+          <strong>{visualPosition.previousPage.title}</strong>
+        </Link>
+      ) : (
+        <Link className="visual-sequence-link previous" to="/visuals">
+          <small>Back to atlas</small>
+          <strong>Visual Atlas index</strong>
+        </Link>
+      )}
+
+      <div className="visual-sequence-status" aria-label={`Visual ${visualPosition.current} of ${visualPosition.total}`}>
+        <span>Visual</span>
+        <strong>{visualPosition.current} / {visualPosition.total}</strong>
+      </div>
+
+      {visualPosition.nextPage ? (
+        <Link className="visual-sequence-link next" to={`/visuals/${visualPosition.nextPage.slug}`}>
+          <small>Next visual</small>
+          <strong>{visualPosition.nextPage.title}</strong>
+        </Link>
+      ) : (
+        <Link className="visual-sequence-link next" to="/visuals">
+          <small>Finished set</small>
+          <strong>Back to atlas</strong>
+        </Link>
+      )}
+    </nav>
+  );
 
   return (
     <div className="visual-atlas-shell">
@@ -5528,6 +5574,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           </p>
         )}
       </header>
+
+      {renderVisualSequence('top')}
 
       <section className="visual-board" aria-labelledby="visual-board-title">
         <div className="visual-board-heading">
@@ -5618,6 +5666,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           <p>{page.remember}</p>
         </div>
       </section>
+
+      {renderVisualSequence('bottom')}
     </div>
   );
 }

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /auth
+Disallow: /account
 
 Sitemap: https://learnmicrobes.com/sitemap.xml

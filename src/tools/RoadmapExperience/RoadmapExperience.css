@@ -736,6 +736,8 @@
 .roadmap-experience .conclusion-panel {
   text-align: left;
   border: 1px solid var(--roadmap-border);
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .roadmap-experience .result-text {
@@ -764,6 +766,17 @@
   padding: 0.9rem 1rem;
   box-shadow: 0 4px 14px rgba(28, 39, 51, 0.04);
   min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.roadmap-experience .endpoint-summary-card *,
+.roadmap-experience .endpoint-safety-panel *,
+.roadmap-experience .result-text,
+.roadmap-experience .guidance-label,
+.roadmap-experience .option-card,
+.roadmap-experience .roadmap-search-result {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .roadmap-experience .endpoint-summary-card p,

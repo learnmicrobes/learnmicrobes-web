@@ -10,6 +10,7 @@ import SpecialPathogensHub from "./tools/SpecialPathogensHub/SpecialPathogensHub
 import SyndromeDiagnosticPath from "./tools/SyndromeDiagnosticPath/SyndromeDiagnosticPath";
 import DoNotRoutineCulture from "./tools/DoNotRoutineCulture/DoNotRoutineCulture";
 import StudyQuiz from "./tools/StudyQuiz/StudyQuiz";
+import CaseStudySimulator from "./tools/CaseStudySimulator/CaseStudySimulator";
 import CertificationStudyPaths from "./tools/CertificationStudyPaths/CertificationStudyPaths";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
@@ -23,6 +24,7 @@ import JoinAlpha from "./components/JoinAlpha";
 import AuthPage from "./components/Auth/AuthPage";
 import AccountPage from "./components/Account/AccountPage";
 import ASCPReviewPage from "./components/ASCPReview/ASCPReviewPage";
+import PracticePage from "./components/Practice/PracticePage";
 
 export default function AppRoutes() {
   return (
@@ -35,6 +37,7 @@ export default function AppRoutes() {
         <Route path="visuals" element={<VisualAtlas />} />
         <Route path="visuals/:slug" element={<VisualAtlas />} />
         <Route path="guides" element={<MicroBasics />} />
+        <Route path="practice" element={<PracticePage />} />
         <Route path="search" element={<GlobalSearch />} />
         <Route path="auth" element={<AuthPage />} />
         <Route path="account" element={<AccountPage />} />
@@ -50,6 +53,7 @@ export default function AppRoutes() {
         <Route path="syndrome-diagnostic-path" element={<SyndromeDiagnosticPath />} />
         <Route path="do-not-routine-culture" element={<DoNotRoutineCulture />} />
         <Route path="study-quiz" element={<StudyQuiz />} />
+        <Route path="case-study-simulator" element={<CaseStudySimulator />} />
         <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
         <Route path="*" element={<NotFound />} />
       </Route>

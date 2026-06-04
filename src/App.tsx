@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
@@ -123,6 +123,16 @@ export default function App() {
     navigate('/');
   };
 
+  const closeMobileNavigation = useCallback(() => {
+    if (!isMobile) {
+      return;
+    }
+
+    setIsNavMenuOpen(false);
+    setIsAccountMenuOpen(false);
+    setIsToolsOpen(false);
+  }, [isMobile]);
+
   useEffect(() => {
     const checkIfMobile = () => {
       const mobile = window.innerWidth <= 900;
@@ -160,6 +170,10 @@ export default function App() {
                     ? 'Do Not Routine Culture'
                     : location.pathname.includes('ascp-microbiology-review')
                       ? 'ASCP Microbiology Review'
+                      : location.pathname.includes('case-study-simulator')
+                        ? 'Case Study Simulator'
+                      : location.pathname.includes('practice')
+                        ? 'Practice'
                       : location.pathname.includes('study-quiz')
                       ? 'Study Quiz'
                       : location.pathname.includes('certification-study-paths')
@@ -218,7 +232,7 @@ export default function App() {
     {
       label: 'Practice questions',
       detail: 'Check recall with bench and exam-style prompts.',
-      path: '/study-quiz',
+      path: '/practice',
       code: 'Q'
     }
   ]), []);
@@ -256,16 +270,8 @@ export default function App() {
         { label: 'Biochemical Tests', path: '/biochemical-tests' },
         { label: 'Enterics Calculator', path: '/biochemical-calculator' },
         { label: 'Special Pathogens Hub', path: '/special-pathogens' },
-        { label: 'Do Not Routine Culture', path: '/do-not-routine-culture' }
-      ]
-    },
-    {
-      label: 'Practice',
-      items: [
-        { label: 'ASCP Review Hub', path: '/ascp-microbiology-review' },
-        { label: 'Certification Study Paths', path: '/certification-study-paths' },
-        { label: 'Syndrome Diagnostic Path', path: '/syndrome-diagnostic-path' },
-        { label: 'Study Quiz', path: '/study-quiz' }
+        { label: 'Do Not Routine Culture', path: '/do-not-routine-culture' },
+        { label: 'Guides', path: '/guides' }
       ]
     }
   ]), []);
@@ -413,6 +419,33 @@ export default function App() {
         keywords: link.label,
         priority: 4
       })),
+      {
+        id: 'practice-hub',
+        title: 'Practice',
+        category: 'Tool',
+        snippet: 'Quiz, ASCP review, and future case study simulator practice.',
+        path: '/practice',
+        keywords: 'practice quiz ascp review case study simulator questions',
+        priority: 8
+      },
+      {
+        id: 'case-study-simulator',
+        title: 'Case Study Simulator',
+        category: 'Tool',
+        snippet: 'Future ASCP-style clinical microbiology case practice placeholder.',
+        path: '/case-study-simulator',
+        keywords: 'case study simulator ascp microbiology practice clinical scenario',
+        priority: 7
+      },
+      {
+        id: 'study-quiz-route',
+        title: 'Study Quiz',
+        category: 'Tool',
+        snippet: 'Practice clinical microbiology questions and save quiz history.',
+        path: '/study-quiz',
+        keywords: 'study quiz practice questions microbiology ascp review',
+        priority: 8
+      },
       ...toolGroups.flatMap((group) => group.items.map((item) => ({
         id: `tool-${group.label}-${item.path}`,
         title: item.label,
@@ -605,6 +638,20 @@ export default function App() {
   }, [location.pathname]);
 
   useEffect(() => {
+    if (!isMobile || !isNavMenuOpen) {
+      return undefined;
+    }
+
+    const handleScroll = () => closeMobileNavigation();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [closeMobileNavigation, isMobile, isNavMenuOpen]);
+
+  useEffect(() => {
     if (!isAccountMenuOpen && !isToolsOpen) {
       return undefined;
     }
@@ -695,7 +742,7 @@ export default function App() {
       };
     }
 
-    const routeMetadata: Record<string, { title: string; description: string }> = {
+    const routeMetadata: Record<string, { title: string; description: string; noIndex?: boolean }> = {
       '/': {
         title: baseTitle,
         description: baseDescription
@@ -711,6 +758,14 @@ export default function App() {
       '/study-quiz': {
         title: 'Clinical Microbiology Study Quiz | ASCP Review Practice | Learn Microbes',
         description: 'Practice clinical microbiology questions for ASCP review, MLS coursework, organism identification, bench tests, safety, mycology, parasitology, virology, and weak-area tracking.'
+      },
+      '/practice': {
+        title: 'Clinical Microbiology Practice | Quiz and ASCP Review | Learn Microbes',
+        description: 'Practice clinical microbiology with Study Quiz, ASCP review workflows, and future case-based simulator practice for MLS students and certification review.'
+      },
+      '/case-study-simulator': {
+        title: 'Case Study Simulator | ASCP Microbiology Practice | Learn Microbes',
+        description: 'Planned Learn Microbes case study simulator for ASCP-style clinical microbiology practice and scenario-based review.'
       },
       '/learn': {
         title: 'Clinical Microbiology Learn Hub | MLS and ASCP Review | Learn Microbes',
@@ -742,11 +797,13 @@ export default function App() {
       },
       '/auth': {
         title: 'Sign In | Learn Microbes',
-        description: 'Sign in to save clinical microbiology progress, bookmarks, quiz history, and your Learn Microbes study profile.'
+        description: 'Sign in to save clinical microbiology progress, bookmarks, quiz history, and your Learn Microbes study profile.',
+        noIndex: true
       },
       '/account': {
         title: 'Study Account | Learn Microbes',
-        description: 'View saved Learn Microbes progress, bookmarks, quiz history, weak areas, and clinical microbiology study account details.'
+        description: 'View saved Learn Microbes progress, bookmarks, quiz history, weak areas, and clinical microbiology study account details.',
+        noIndex: true
       }
     };
 
@@ -839,21 +896,30 @@ export default function App() {
           <div className="nav-links-main">
             <button
               className={isHomeRoute ? 'active' : ''}
-              onClick={() => handleToolChange(null)}
+              onClick={() => {
+                closeMobileNavigation();
+                handleToolChange(null);
+              }}
             >
               <FontAwesomeIcon icon={faHome} />
               <span className="nav-text">Home</span>
             </button>
             <button
               className={activeTool === 'Learn' ? 'active' : ''}
-              onClick={() => navigate('/learn')}
+              onClick={() => {
+                closeMobileNavigation();
+                navigate('/learn');
+              }}
             >
               <FontAwesomeIcon icon={faGraduationCap} />
               <span className="nav-text">Learn</span>
             </button>
             <button
               className={activeTool === 'Visual Atlas' ? 'active' : ''}
-              onClick={() => navigate('/visuals')}
+              onClick={() => {
+                closeMobileNavigation();
+                navigate('/visuals');
+              }}
             >
               <FontAwesomeIcon icon={faImages} />
               <span className="nav-text">Visuals</span>
@@ -881,7 +947,10 @@ export default function App() {
                         <button
                           key={item.path}
                           className={location.pathname === item.path ? 'active' : ''}
-                          onClick={() => navigate(item.path)}
+                          onClick={() => {
+                            closeMobileNavigation();
+                            navigate(item.path);
+                          }}
                           role="menuitem"
                         >
                           {item.label}
@@ -893,15 +962,21 @@ export default function App() {
               )}
             </div>
             <button
-              className={activeTool === 'Guides' ? 'active' : ''}
-              onClick={() => navigate('/guides')}
+              className={activeTool === 'Practice' || activeTool === 'Study Quiz' || activeTool === 'ASCP Microbiology Review' || activeTool === 'Case Study Simulator' || activeTool === 'Certification Study Paths' ? 'active' : ''}
+              onClick={() => {
+                closeMobileNavigation();
+                navigate('/practice');
+              }}
             >
               <FontAwesomeIcon icon={faBook} />
-              <span className="nav-text">Guides</span>
+              <span className="nav-text">Practice</span>
             </button>
             <button
               className={activeTool === 'Search' ? 'active' : ''}
-              onClick={() => navigate('/search')}
+              onClick={() => {
+                closeMobileNavigation();
+                navigate('/search');
+              }}
             >
               <FontAwesomeIcon icon={faSearch} />
               <span className="nav-text">Search</span>
@@ -932,7 +1007,10 @@ export default function App() {
                       <strong>{user.email ?? 'Learn Microbes account'}</strong>
                     </div>
                     <button
-                      onClick={() => navigate('/account')}
+                      onClick={() => {
+                        closeMobileNavigation();
+                        navigate('/account');
+                      }}
                       role="menuitem"
                     >
                       <FontAwesomeIcon icon={faUser} />
@@ -940,7 +1018,10 @@ export default function App() {
                     </button>
                     <button
                       className="theme-toggle-btn"
-                      onClick={() => setIsDarkMode(!isDarkMode)}
+                      onClick={() => {
+                        setIsDarkMode(!isDarkMode);
+                        closeMobileNavigation();
+                      }}
                       role="menuitem"
                       title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                     >
@@ -980,7 +1061,7 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="app-main">
+      <main className="app-main" onPointerDown={isNavMenuOpen ? closeMobileNavigation : undefined}>
         {isHomeRoute ? (
           <div className="home-page home-dashboard">
             <section className="dashboard-cover-hero" aria-labelledby="dashboard-title">

@@ -1,0 +1,62 @@
+.case-simulator-page {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.case-simulator-card {
+  padding: 1.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #fffefb;
+  box-shadow: 0 14px 34px rgba(25, 64, 68, 0.06);
+  text-align: left;
+}
+
+.case-simulator-card span {
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.case-simulator-card h1 {
+  margin: 0.35rem 0 0.55rem;
+  color: var(--dark-color);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  line-height: 1.12;
+}
+
+.case-simulator-card p {
+  margin: 0 0 1rem;
+  color: var(--muted-color);
+  line-height: 1.55;
+}
+
+.case-simulator-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.45rem;
+  padding: 0.58rem 0.85rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 6px;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+body.dark-mode .case-simulator-card {
+  background: #22313f;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .case-simulator-card h1 {
+  color: #f8fffd;
+}
+
+body.dark-mode .case-simulator-card p {
+  color: #cbd5df;
+}
+

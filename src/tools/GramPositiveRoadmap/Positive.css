@@ -165,6 +165,9 @@
   border-radius: 50px;
   display: inline-block;
   border: 1px solid var(--roadmap-border);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 /* Navigation Buttons */

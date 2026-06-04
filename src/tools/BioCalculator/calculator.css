@@ -228,27 +228,42 @@ legend {
 
 /* header */
 .results-header {
-  margin-bottom: 1.5rem;
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid rgba(36, 92, 105, 0.12);
+  border-bottom: 1px solid rgba(36, 92, 105, 0.12);
 }
 
-/* Header styles */
-.results-header h3 {
-  font-size: 1.3rem;
+.result-kicker {
+  display: block;
   color: var(--primary-color);
-  margin: 0 0 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(36, 92, 105, 0.14);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
-.top-match {
-  font-size: 1.1rem;
-  margin: 0 0 1.5rem;
+.top-match,
+.top-match-card {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 8px;
+  background: #fbfaf7;
+}
+
+.top-match strong,
+.top-match-card strong {
+  min-width: 0;
+  color: var(--dark-color);
+  font-size: 1.15rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .match-percentage {
@@ -329,24 +344,32 @@ legend {
   margin: 0 0 0.8rem;
 }
 
-.other-matches ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.other-matches li {
-  padding: 0.8rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+.other-match-strip {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.1rem 0 0.35rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
 }
 
-.other-matches li:last-child {
-  border-bottom: none;
+.other-match-card {
+  flex: 0 0 min(16rem, 82vw);
+  display: grid;
+  gap: 0.55rem;
+  scroll-snap-align: start;
+  padding: 0.8rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.other-match-card strong {
+  min-width: 0;
+  color: var(--dark-color);
+  font-size: 0.95rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .result-container {
@@ -357,6 +380,8 @@ legend {
   border-left: 4px solid var(--primary-color);
   font-size: 1rem; /* Uniform base font size */
   line-height: 1.6; /* Better line spacing */
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 #result-text ul {
@@ -824,6 +849,5 @@ button {
     padding: 1rem;
   }
 }
-
 
 

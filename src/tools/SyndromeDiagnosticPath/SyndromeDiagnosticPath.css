@@ -158,6 +158,15 @@
 
 .syndrome-path-result {
   padding: 1.25rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.syndrome-path-result *,
+.syndrome-path-panels section *,
+.syndrome-path-result-header * {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .syndrome-path-result-header {

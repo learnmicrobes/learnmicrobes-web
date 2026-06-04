@@ -5,6 +5,7 @@ type SEOProps = {
   description: string;
   canonicalPath?: string;
   ogType?: string;
+  noIndex?: boolean;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 };
 
@@ -31,11 +32,24 @@ const setCanonicalHref = (href: string) => {
   canonical.href = href;
 };
 
+const setRobotsContent = (content: string) => {
+  let robots = document.head.querySelector<HTMLMetaElement>('meta[name="robots"]');
+
+  if (!robots) {
+    robots = document.createElement('meta');
+    robots.name = 'robots';
+    document.head.appendChild(robots);
+  }
+
+  robots.content = content;
+};
+
 const SEO: FC<SEOProps> = ({
   title,
   description,
   canonicalPath = '/',
   ogType = 'website',
+  noIndex = false,
   structuredData
 }) => {
   useEffect(() => {
@@ -48,6 +62,7 @@ const SEO: FC<SEOProps> = ({
     setMetaContent('meta[property="og:type"]', ogType);
     setMetaContent('meta[property="og:url"]', canonicalUrl);
     setCanonicalHref(canonicalUrl);
+    setRobotsContent(noIndex ? 'noindex, nofollow' : 'index, follow');
 
     const existingStructuredData = document.getElementById(ROUTE_STRUCTURED_DATA_ID);
     existingStructuredData?.remove();
@@ -59,7 +74,7 @@ const SEO: FC<SEOProps> = ({
       script.text = JSON.stringify(structuredData);
       document.head.appendChild(script);
     }
-  }, [canonicalPath, description, ogType, structuredData, title]);
+  }, [canonicalPath, description, noIndex, ogType, structuredData, title]);
 
   return null;
 };
