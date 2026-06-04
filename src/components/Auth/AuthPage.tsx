@@ -96,7 +96,7 @@ const AuthPage: React.FC = () => {
           <h1 id="auth-title">Sign in to your study account.</h1>
           <p>
             Accounts save your progress, bookmarks, quiz history, and profile so your study workflow can follow you.
-            No freemium limits are being added right now.
+            Built for beta testers, MLS students, and ASCP review.
           </p>
         </div>
 

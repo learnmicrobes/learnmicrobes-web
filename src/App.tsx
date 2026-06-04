@@ -1185,7 +1185,10 @@ export default function App() {
             </div>
           </div>
           <div className="sleek-footer-bottom">
-            <span>&copy; 2026 LearnMicrobes.com | Made for educational purposes</span>
+            <span className="sleek-footer-legal">
+              <span className="sleek-footer-legal-full">&copy; 2026 LearnMicrobes.com | Made for educational purposes</span>
+              <span className="sleek-footer-legal-short">&copy; 2026 LearnMicrobes.com | Educational purposes</span>
+            </span>
             <span className="sleek-footer-bottom-divider" aria-hidden="true">|</span>
             <button type="button" onClick={() => navigate('/about')}>About Learn Microbes</button>
           </div>

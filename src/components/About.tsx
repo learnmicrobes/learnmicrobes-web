@@ -56,7 +56,7 @@ export default function About() {
         <div className="about-statement">
           <h3>Project Status</h3>
           <p>
-            Learn Microbes is currently an alpha-stage learning tool. The content and interface are actively being expanded, reviewed, and polished as the project grows.
+            Learn Microbes is currently a beta-stage learning tool. The content, study-loop features, and interface are actively being expanded, reviewed, and polished as the project grows.
           </p>
         </div>
       </div>

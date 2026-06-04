@@ -1096,12 +1096,12 @@ export const LearnArticle: React.FC = () => {
           <div className="learn-sequence-pager">
             {studyPosition.previousTopic ? (
               <Link className="learn-arrow-link previous" to={`/learn/${studyPosition.previousTopic.slug}`}>
-                <small>← Previous</small>
+                <small>Previous</small>
                 <strong>{studyPosition.previousTopic.title}</strong>
               </Link>
             ) : (
               <Link className="learn-arrow-link previous" to={`/learn#${studyPosition.categorySlug}`}>
-                <small>← Back to area</small>
+                <small>Back to area</small>
                 <strong>{topic.category}</strong>
               </Link>
             )}
@@ -1110,12 +1110,12 @@ export const LearnArticle: React.FC = () => {
             </Link>
             {studyPosition.nextTopic ? (
               <Link className="learn-arrow-link next" to={`/learn/${studyPosition.nextTopic.slug}`}>
-                <small>Next →</small>
+                <small>Next</small>
                 <strong>{studyPosition.nextTopic.title}</strong>
               </Link>
             ) : (
               <Link className="learn-arrow-link next" to="/learn">
-                <small>Finished area →</small>
+                <small>Finished area</small>
                 <strong>Back to Learn</strong>
               </Link>
             )}
@@ -1161,8 +1161,8 @@ export const LearnArticle: React.FC = () => {
           </div>
 
           <div className="learn-beginner-grid">
-            <div className="learn-beginner-panel">
-              <h3>Core lesson sequence</h3>
+            <details className="learn-beginner-panel learn-beginner-accordion">
+              <summary>Core lesson sequence</summary>
               <div className="learn-beginner-steps">
                 {beginnerLessonPath.map((lesson) => (
                   <Link key={lesson.step} to={lesson.path}>
@@ -1171,10 +1171,10 @@ export const LearnArticle: React.FC = () => {
                   </Link>
                 ))}
               </div>
-            </div>
+            </details>
 
-            <div className="learn-beginner-panel">
-              <h3>Self-checks</h3>
+            <details className="learn-beginner-panel learn-beginner-accordion">
+              <summary>Self-checks</summary>
               <div className="learn-self-checks">
                 {beginnerSelfChecks.map((check) => (
                   <details key={check.prompt}>
@@ -1183,17 +1183,9 @@ export const LearnArticle: React.FC = () => {
                   </details>
                 ))}
               </div>
-            </div>
+            </details>
           </div>
         </section>
-      )}
-
-      {isBeginnerStart && (
-        <AlphaValidationCTA
-          location="clinical_bench_reference"
-          title="Help validate the clinical bench reference path"
-          body="Tell us whether this starting path matches your class, rotation, or exam prep, and whether saved progress or bookmarks would help."
-        />
       )}
 
       <div className="learn-article-layout">
@@ -1332,6 +1324,33 @@ export const LearnArticle: React.FC = () => {
           </section>
         )}
 
+        {studyPosition && (
+          <nav className="learn-bottom-sequence" aria-label="Next and previous Learn topics">
+            {studyPosition.previousTopic ? (
+              <Link className="previous" to={`/learn/${studyPosition.previousTopic.slug}`}>
+                <small>Previous topic</small>
+                <strong>{studyPosition.previousTopic.title}</strong>
+              </Link>
+            ) : (
+              <Link className="previous" to={`/learn#${studyPosition.categorySlug}`}>
+                <small>Back to study area</small>
+                <strong>{topic.category}</strong>
+              </Link>
+            )}
+            {studyPosition.nextTopic ? (
+              <Link className="next" to={`/learn/${studyPosition.nextTopic.slug}`}>
+                <small>Next topic</small>
+                <strong>{studyPosition.nextTopic.title}</strong>
+              </Link>
+            ) : (
+              <Link className="next" to="/learn">
+                <small>Finished this area</small>
+                <strong>Back to Learn</strong>
+              </Link>
+            )}
+          </nav>
+        )}
+
         <section className="learn-note-section learn-related-reading" id="related-reading">
           <h2>Related reading</h2>
           <div className="learn-related-stack">
@@ -1340,35 +1359,16 @@ export const LearnArticle: React.FC = () => {
             ))}
           </div>
         </section>
-
-        {studyPosition && (
-          <nav className="learn-bottom-sequence" aria-label="Next and previous Learn topics">
-            {studyPosition.previousTopic ? (
-              <Link className="previous" to={`/learn/${studyPosition.previousTopic.slug}`}>
-                <small>← Previous topic</small>
-                <strong>{studyPosition.previousTopic.title}</strong>
-              </Link>
-            ) : (
-              <Link className="previous" to={`/learn#${studyPosition.categorySlug}`}>
-                <small>← Back to study area</small>
-                <strong>{topic.category}</strong>
-              </Link>
-            )}
-            {studyPosition.nextTopic ? (
-              <Link className="next" to={`/learn/${studyPosition.nextTopic.slug}`}>
-                <small>Next topic →</small>
-                <strong>{studyPosition.nextTopic.title}</strong>
-              </Link>
-            ) : (
-              <Link className="next" to="/learn">
-                <small>Finished this area →</small>
-                <strong>Back to Learn</strong>
-              </Link>
-            )}
-          </nav>
-        )}
         </div>
       </div>
+
+      {isBeginnerStart && (
+        <AlphaValidationCTA
+          location="clinical_bench_reference"
+          title="Help validate the clinical bench reference path"
+          body="Tell us whether this starting path matches your class, rotation, or exam prep, and whether saved progress or bookmarks would help."
+        />
+      )}
     </article>
   );
 };

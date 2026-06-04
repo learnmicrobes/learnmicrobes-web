@@ -450,7 +450,9 @@
   .dashboard-secondary-links button {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 0.65rem;
+    width: 100%;
     min-height: 2.55rem;
     border: 1px solid rgba(36, 92, 105, 0.16);
     border-radius: 5px;
@@ -510,7 +512,9 @@
   .dashboard-riddle-choice {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-start;
     gap: 0.45rem;
+    width: 100%;
     min-height: 2.6rem;
     border: 1px solid rgba(36, 92, 105, 0.16);
     border-radius: 5px;
@@ -1980,6 +1984,16 @@
   color: rgba(244, 239, 228, 0.88);
 }
 
+.sleek-footer-legal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sleek-footer-legal-short {
+  display: none;
+}
+
 .sleek-footer-bottom button {
   border: 0;
   background: transparent;
@@ -2662,5 +2676,78 @@ body.dark-mode .result-icon-box {
   .dashboard-featured-card button,
   .dashboard-search-card button {
     width: 100%;
+  }
+
+  .dashboard-step-list button,
+  .dashboard-riddle-choice {
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    transform: none;
+  }
+
+  .dashboard-riddle-choice:hover:not(:disabled),
+  .dashboard-riddle-choice:focus-visible:not(:disabled) {
+    transform: none;
+  }
+
+  .sleek-footer {
+    padding: 0.75rem 0 0.8rem;
+  }
+
+  .sleek-footer-content {
+    padding: 0 0.75rem;
+  }
+
+  .sleek-footer-top {
+    gap: 0.55rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .connect-text {
+    width: 100%;
+    text-align: center;
+    font-size: 0.76rem;
+  }
+
+  .sleek-footer-mini-divider {
+    display: none;
+  }
+
+  .sleek-social-icons {
+    gap: 0.45rem;
+  }
+
+  .sleek-social-icons a {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+  }
+
+  .sleek-footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.18rem;
+    font-size: 0.74rem;
+    line-height: 1.25;
+  }
+
+  .sleek-footer-legal {
+    white-space: nowrap;
+  }
+
+  .sleek-footer-legal-full,
+  .sleek-footer-bottom-divider {
+    display: none;
+  }
+
+  .sleek-footer-legal-short {
+    display: inline;
+  }
+
+  .sleek-footer-bottom button {
+    justify-self: center;
+    padding: 0;
+    font-size: 0.78rem;
   }
 }
