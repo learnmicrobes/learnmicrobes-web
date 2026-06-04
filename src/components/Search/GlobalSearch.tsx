@@ -1045,6 +1045,15 @@ const GlobalSearch: React.FC = () => {
       },
       {
         id: 'r10',
+        title: 'ASCP Microbiology Review',
+        type: 'Tool',
+        snippet: 'ASCP microbiology review hub for MLS students and M(ASCP) prep with study paths, quizzes, biochemical tests, organism ID workflows, safety traps, and visual bench cards.',
+        path: '/ascp-microbiology-review',
+        keywords: 'ascp microbiology review m ascp m(ascp) mls exam prep pass ascp clinical microbiology study guide certification review bacteriology mycology parasitology virology mycobacteriology biochemical tests organism id quiz visual atlas',
+        priority: 4
+      },
+      {
+        id: 'r11',
         title: 'Certification Study Paths',
         type: 'Tool',
         snippet: 'M(ASCP) and SM(ASCP) microbiology study map connecting certification content areas to Learn Microbes tools and weak-topic review.',

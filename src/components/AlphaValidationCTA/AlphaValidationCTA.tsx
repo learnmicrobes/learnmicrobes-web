@@ -15,7 +15,7 @@ const openExternalForm = (url: string) => {
 
 const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
   location,
-  title = 'Help shape Alpha 1.1',
+  title = 'Help shape the beta',
   body = 'Tell us what would help most next, including whether saved progress, bookmarks, or study history would be useful.'
 }) => {
   const handleJoinAlpha = () => {
@@ -37,12 +37,12 @@ const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
   return (
     <section className="alpha-validation-cta" aria-label={title}>
       <div>
-        <span>Alpha feedback</span>
+        <span>Beta feedback</span>
         <h2>{title}</h2>
         <p>{body}</p>
       </div>
       <div className="alpha-validation-actions">
-        <button type="button" onClick={handleJoinAlpha}>Join Alpha</button>
+        <button type="button" onClick={handleJoinAlpha}>Join Beta</button>
         <button type="button" onClick={handleFeedback}>Send Feedback</button>
       </div>
     </section>

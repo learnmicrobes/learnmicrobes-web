@@ -296,6 +296,8 @@
 .learn-book-map-grid button {
   display: grid;
   gap: 0.25rem;
+  justify-items: start;
+  align-items: start;
   width: 100%;
   padding: 0.68rem 0.75rem;
   border: 1px solid rgba(36, 92, 105, 0.16);
@@ -331,7 +333,7 @@
 
 .learn-area-progress {
   display: block !important;
-  width: 100%;
+  width: min(100%, 15rem);
   height: 0.32rem;
   margin-top: 0.3rem;
   overflow: hidden;
@@ -372,6 +374,7 @@
 
 .learn-category {
   padding: 1.05rem 1.2rem;
+  scroll-margin-top: 6rem;
 }
 
 .learn-category-heading {
@@ -2185,5 +2188,31 @@ body.dark-mode .learn-not-found button {
   .learn-reference-table th,
   .learn-reference-table td {
     min-width: 160px;
+  }
+}
+
+@media (max-width: 520px) {
+  .learn-book-map {
+    padding: 1rem;
+  }
+
+  .learn-book-map-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .learn-book-map-grid button {
+    min-height: 6.2rem;
+    padding: 0.85rem;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .learn-book-map-grid span,
+  .learn-book-map-grid strong,
+  .learn-book-map-grid small,
+  .learn-area-progress {
+    justify-self: start;
+    text-align: left;
   }
 }

@@ -107,6 +107,34 @@ const AccountPage: React.FC = () => {
     (displayName || user?.email || 'L').trim().charAt(0).toUpperCase()
   ), [displayName, user?.email]);
 
+  const nextStudyActions = useMemo(() => {
+    const resumeProgressRow = inProgressRows[0];
+    const firstBookmark = bookmarks[0];
+
+    return [
+      {
+        icon: faCheckCircle,
+        label: resumeProgressRow ? 'Resume Learn page' : 'Start Learn review',
+        detail: resumeProgressRow?.topic_title ?? 'Pick a Learn topic and mark it complete when ready.',
+        path: resumeProgressRow?.topic_path ?? '/learn'
+      },
+      {
+        icon: firstBookmark?.item_type === 'learn' ? faBookOpen : faBookmark,
+        label: firstBookmark ? 'Review saved item' : 'Save a reference',
+        detail: firstBookmark?.item_title ?? 'Bookmark a Learn page or Visual Atlas card for fast return.',
+        path: firstBookmark?.item_path ?? '/visuals'
+      },
+      {
+        icon: faTrophy,
+        label: quizAttempts.length > 0 ? 'Run another quiz set' : 'Take a Study Quiz',
+        detail: quizAttempts.length > 0
+          ? `${averageQuizScore}% current average across saved sessions.`
+          : 'Create your first saved quiz session.',
+        path: '/study-quiz'
+      }
+    ];
+  }, [averageQuizScore, bookmarks, inProgressRows, quizAttempts.length]);
+
   useEffect(() => {
     if (!isAuthReady) {
       return;
@@ -255,8 +283,7 @@ const AccountPage: React.FC = () => {
           <span className="account-kicker">Learn Microbes Beta</span>
           <h1 id="account-title">Your study account</h1>
           <p>
-            This is the first layer of personalization. Next, this profile can anchor saved progress,
-            bookmarks, quiz history, and certification paths.
+            Your profile anchors saved progress, bookmarks, quiz history, and future certification-path personalization.
           </p>
         </div>
       </section>
@@ -284,7 +311,7 @@ const AccountPage: React.FC = () => {
               </span>
               <div>
                 <h2>Profile</h2>
-                <p>Keep this simple for now. We can expand it when progress tracking lands.</p>
+                <p>Keep your name and current study goal aligned with how you are using Learn Microbes.</p>
               </div>
             </div>
 
@@ -474,7 +501,7 @@ const AccountPage: React.FC = () => {
                     </div>
                     <p>
                       {attempt.correct_count}/{attempt.question_count} correct
-                      {attempt.missed_count > 0 ? ` · ${attempt.missed_count} missed` : ' · no misses'}
+                      {attempt.missed_count > 0 ? ` - ${attempt.missed_count} missed` : ' - no misses'}
                     </p>
                     <small>{getFriendlyDate(attempt.completed_at)}</small>
                   </div>
@@ -519,12 +546,27 @@ const AccountPage: React.FC = () => {
           </dl>
 
           <div className="account-next-panel">
-              <FontAwesomeIcon icon={faBullseye} />
-              <div>
-                <strong>Study loop active</strong>
+            <FontAwesomeIcon icon={faBullseye} />
+            <div>
+              <strong>Study loop active</strong>
               <p>Progress, bookmarks, and quiz history now attach to this same user ID.</p>
-              </div>
             </div>
+          </div>
+
+          <div className="account-next-actions" aria-label="Recommended next study actions">
+            <h3>Next best actions</h3>
+            {nextStudyActions.map((action) => (
+              <Link to={action.path} key={action.label}>
+                <span aria-hidden="true">
+                  <FontAwesomeIcon icon={action.icon} />
+                </span>
+                <div>
+                  <strong>{action.label}</strong>
+                  <small>{action.detail}</small>
+                </div>
+              </Link>
+            ))}
+          </div>
 
           <button type="button" className="account-signout-btn" onClick={handleSignOut}>
             <FontAwesomeIcon icon={faRightFromBracket} />

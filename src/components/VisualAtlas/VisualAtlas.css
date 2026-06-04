@@ -215,6 +215,7 @@
 .bench-card-strip button {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.55rem;
   min-height: 2.75rem;
   padding: 0.55rem 0.65rem;
@@ -944,6 +945,16 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
   .visual-index-card {
     padding: 1rem;
     min-height: auto;
+  }
+
+  .bench-card-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .bench-card-strip button {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0.72rem 0.85rem;
   }
 
   .lia-stage {

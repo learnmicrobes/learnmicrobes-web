@@ -22,6 +22,7 @@ import GlobalSearch from "./components/Search/GlobalSearch";
 import JoinAlpha from "./components/JoinAlpha";
 import AuthPage from "./components/Auth/AuthPage";
 import AccountPage from "./components/Account/AccountPage";
+import ASCPReviewPage from "./components/ASCPReview/ASCPReviewPage";
 
 export default function AppRoutes() {
   return (
@@ -38,6 +39,7 @@ export default function AppRoutes() {
         <Route path="auth" element={<AuthPage />} />
         <Route path="account" element={<AccountPage />} />
         <Route path="join-alpha" element={<JoinAlpha />} />
+        <Route path="ascp-microbiology-review" element={<ASCPReviewPage />} />
         <Route path="biochemical-calculator" element={<BioCalculator />} />
         <Route path="gram-positive-roadmap" element={<GramPositiveRoadmap />} />
         <Route path="gram-negative-roadmap" element={<GramNegativeRoadmap />} />

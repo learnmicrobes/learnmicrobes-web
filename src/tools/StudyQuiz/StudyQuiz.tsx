@@ -459,10 +459,11 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
   const buildQuizAttemptPayload = useCallback(() => {
     const questionCount = Math.max(visibleAnsweredCount, 1);
-    const weakAreas = unique(visibleMissedQuestions.flatMap((question) => [
-      categoryLabels[question.category],
-      question.source
-    ])).slice(0, 6);
+    const missedCategoryLabels = unique(visibleMissedQuestions.map((question) => categoryLabels[question.category]));
+    const missedSourceLabels = unique(visibleMissedQuestions.map((question) => question.source));
+    const weakAreas = missedCategoryLabels.length > 0
+      ? missedCategoryLabels.slice(0, 4)
+      : missedSourceLabels.slice(0, 4);
 
     return {
       quizName: reviewMissedOnly ? 'Study Quiz - Missed Review' : 'Study Quiz',
@@ -483,6 +484,31 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     visibleMissedQuestions
   ]);
 
+  const currentAttemptSignature = useMemo(() => {
+    if (visibleAnsweredCount === 0) {
+      return '';
+    }
+
+    const payload = buildQuizAttemptPayload();
+
+    return [
+      payload.quizName,
+      payload.category,
+      payload.difficulty,
+      payload.questionCount,
+      payload.correctCount,
+      payload.missedCount,
+      answeredIds.filter((id) => visibleQuestionIds.has(id)).sort().join(',')
+    ].join('|');
+  }, [
+    answeredIds,
+    buildQuizAttemptPayload,
+    visibleAnsweredCount,
+    visibleQuestionIds
+  ]);
+
+  const hasSavedCurrentAttempt = currentAttemptSignature !== '' && lastSavedAttemptSignature.current === currentAttemptSignature;
+
   const saveCurrentQuizAttempt = useCallback(async (isAutomatic = false) => {
     if (visibleAnsweredCount === 0) {
       setQuizSaveMessage('Answer at least one question before saving a quiz session.');
@@ -497,17 +523,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     }
 
     const payload = buildQuizAttemptPayload();
-    const signature = [
-      payload.quizName,
-      payload.category,
-      payload.difficulty,
-      payload.questionCount,
-      payload.correctCount,
-      payload.missedCount,
-      answeredIds.filter((id) => visibleQuestionIds.has(id)).sort().join(',')
-    ].join('|');
+    const signature = currentAttemptSignature;
 
-    if (isAutomatic && lastSavedAttemptSignature.current === signature) {
+    if (lastSavedAttemptSignature.current === signature) {
+      if (!isAutomatic) {
+        setQuizSaveMessage('This quiz session is already saved.');
+      }
       return;
     }
 
@@ -524,13 +545,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     setQuizSaveMessage(result.message);
   }, [
-    answeredIds,
     buildQuizAttemptPayload,
+    currentAttemptSignature,
     navigate,
     saveQuizAttempt,
     user,
-    visibleAnsweredCount,
-    visibleQuestionIds
+    visibleAnsweredCount
   ]);
 
   useEffect(() => {
@@ -858,9 +878,9 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 type="button"
                 className="study-quiz-save"
                 onClick={() => saveCurrentQuizAttempt(false)}
-                disabled={visibleAnsweredCount === 0 || isSavingQuizAttempt}
+                disabled={visibleAnsweredCount === 0 || isSavingQuizAttempt || hasSavedCurrentAttempt}
               >
-                {isSavingQuizAttempt ? 'Saving...' : user ? 'Save session' : 'Sign in to save'}
+                {isSavingQuizAttempt ? 'Saving...' : hasSavedCurrentAttempt ? 'Session saved' : user ? 'Save session' : 'Sign in to save'}
               </button>
               <button
                 type="button"

@@ -5,7 +5,7 @@ import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from '../config/forms';
 import { trackEvent } from '../utils/analytics';
 import './JoinAlpha.css';
 
-const alphaFormFields = [
+const betaFormFields = [
   'Email',
   'Role',
   'Country',
@@ -37,18 +37,17 @@ const JoinAlpha: React.FC = () => {
 
   return (
     <section className="join-alpha-page" aria-labelledby="join-alpha-title">
-      <span className="join-alpha-badge">Alpha access</span>
+      <span className="join-alpha-badge">Beta access</span>
       <h1 id="join-alpha-title">Help shape Learn Microbes.</h1>
       <p className="join-alpha-notice">
-        Learn Microbes is currently in alpha. Account sync and user accounts are not active yet. Join the alpha
-        tester list to get updates and help shape the product. Tell us in the form whether saved progress or
-        bookmarks would help your study workflow.
+        Learn Microbes is currently in beta. Join the beta tester list to get updates and help shape the product.
+        Tell us in the form what would make saved progress, bookmarks, quiz history, and ASCP review more useful.
       </p>
 
       <div className="join-alpha-actions">
         <button type="button" className="join-alpha-primary" onClick={handleJoinAlpha}>
           <FontAwesomeIcon icon={faClipboardList} />
-          Join the Alpha Tester List
+          Join the Beta Tester List
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="join-alpha-external-icon" />
         </button>
         <button type="button" className="join-alpha-secondary" onClick={handleFeedback}>
@@ -58,9 +57,9 @@ const JoinAlpha: React.FC = () => {
       </div>
 
       <div className="join-alpha-form-note">
-        <h2>The alpha form will collect</h2>
+        <h2>The beta form will collect</h2>
         <ul>
-          {alphaFormFields.map((field) => (
+          {betaFormFields.map((field) => (
             <li key={field}>{field}</li>
           ))}
         </ul>

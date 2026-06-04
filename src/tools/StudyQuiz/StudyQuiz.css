@@ -902,12 +902,12 @@ body.dark-mode .study-quiz-timer-alert {
 
 @media (max-width: 767px) {
   .study-quiz-layout {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .study-quiz-left-rail,
   .study-quiz-main-rail {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .study-quiz-hero,
@@ -917,19 +917,34 @@ body.dark-mode .study-quiz-timer-alert {
   }
 
   .study-quiz-hero {
-    min-height: 260px;
+    min-height: 0;
+    padding-top: 3.65rem;
   }
 
   .study-quiz-score-card {
+    position: relative;
     top: auto;
-    right: 1rem;
-    bottom: 1rem;
-    width: 82px;
-    height: 82px;
+    right: auto;
+    bottom: auto;
+    justify-items: start;
+    width: 100%;
+    height: auto;
+    min-height: 54px;
+    margin-top: 1rem;
+    border-radius: 12px;
+    text-align: left;
   }
 
   .study-quiz-hero h1 {
     padding-right: 0;
+    font-size: 1.75rem;
+    line-height: 1.12;
+  }
+
+  .study-quiz-hero p {
+    margin-top: 0.72rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
 
   .study-quiz-card {
@@ -939,6 +954,13 @@ body.dark-mode .study-quiz-timer-alert {
   .study-quiz-actions,
   .study-quiz-utility-actions {
     display: grid;
+  }
+
+  .study-quiz-actions button,
+  .study-quiz-reset,
+  .study-quiz-save,
+  .study-quiz-review {
+    width: 100%;
   }
 }
 
@@ -957,5 +979,63 @@ body.dark-mode .study-quiz-timer-alert {
   .study-quiz-choices button {
     min-height: 0;
     padding: 0.82rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .study-quiz-page {
+    margin-inline: -0.15rem;
+  }
+
+  .study-quiz-hero,
+  .study-quiz-command-center,
+  .study-quiz-card,
+  .study-quiz-missed-panel {
+    border-radius: 10px;
+  }
+
+  .study-quiz-header-actions {
+    top: 0.72rem;
+    right: 0.72rem;
+  }
+
+  .study-quiz-icon-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .study-quiz-kicker {
+    margin-bottom: 0.52rem;
+    font-size: 0.68rem;
+  }
+
+  .study-quiz-command-center {
+    gap: 0.8rem;
+  }
+
+  .study-quiz-categories,
+  .study-quiz-difficulty {
+    gap: 0.42rem;
+  }
+
+  .study-quiz-categories button,
+  .study-quiz-difficulty button {
+    flex-basis: 100%;
+    min-height: 42px;
+  }
+
+  .study-quiz-card h2 {
+    font-size: 1.18rem;
+  }
+
+  .study-quiz-choices button {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 0.65rem;
+    font-size: 0.9rem;
+  }
+
+  .study-quiz-choice-letter {
+    width: 30px;
+    height: 30px;
   }
 }

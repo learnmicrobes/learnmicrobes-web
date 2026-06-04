@@ -9,6 +9,7 @@ import { atlasPages } from './components/VisualAtlas/VisualAtlas';
 import { learnTopics } from './data/learnTopics';
 import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
+import SEO from './components/SEO/SEO';
 import './App.css';
 
 type DashboardSearchItem = {
@@ -157,7 +158,9 @@ export default function App() {
                   ? 'Syndrome Diagnostic Path'
                   : location.pathname.includes('do-not-routine-culture')
                     ? 'Do Not Routine Culture'
-                    : location.pathname.includes('study-quiz')
+                    : location.pathname.includes('ascp-microbiology-review')
+                      ? 'ASCP Microbiology Review'
+                      : location.pathname.includes('study-quiz')
                       ? 'Study Quiz'
                       : location.pathname.includes('certification-study-paths')
                         ? 'Certification Study Paths'
@@ -174,7 +177,7 @@ export default function App() {
                                   : location.pathname.includes('auth')
                                     ? 'Sign In'
                                     : location.pathname.includes('join-alpha')
-                                      ? 'Join Alpha'
+                                      ? 'Join Beta'
                                       : location.pathname.includes('about')
                                         ? 'About'
                                         : null;
@@ -202,8 +205,8 @@ export default function App() {
     },
     {
       label: 'Study for M(ASCP) / SM(ASCP)',
-      detail: 'Follow M(ASCP) and SM(ASCP) certification study paths.',
-      path: '/certification-study-paths',
+      detail: 'Start an ASCP microbiology review loop with paths, quizzes, visuals, and bench tests.',
+      path: '/ascp-microbiology-review',
       code: 'M/SM'
     },
     {
@@ -231,10 +234,10 @@ export default function App() {
   ), []);
 
   const homeSecondaryLinks = useMemo(() => ([
+    { label: 'ASCP microbiology review', path: '/ascp-microbiology-review' },
     { label: 'Search all content', path: '/search' },
     { label: 'Gram positive roadmap', path: '/gram-positive-roadmap' },
-    { label: 'Gram negative roadmap', path: '/gram-negative-roadmap' },
-    { label: 'Syndrome path', path: '/syndrome-diagnostic-path' }
+    { label: 'Gram negative roadmap', path: '/gram-negative-roadmap' }
   ]), []);
 
   const toolGroups = useMemo(() => ([
@@ -259,6 +262,7 @@ export default function App() {
     {
       label: 'Practice',
       items: [
+        { label: 'ASCP Review Hub', path: '/ascp-microbiology-review' },
         { label: 'Certification Study Paths', path: '/certification-study-paths' },
         { label: 'Syndrome Diagnostic Path', path: '/syndrome-diagnostic-path' },
         { label: 'Study Quiz', path: '/study-quiz' }
@@ -398,7 +402,7 @@ export default function App() {
         snippet: action.detail,
         path: action.path,
         keywords: `${action.label} ${action.detail} ${action.code}`,
-        priority: action.path === '/certification-study-paths' ? 8 : 6
+        priority: action.path === '/ascp-microbiology-review' ? 9 : 6
       })),
       ...homeSecondaryLinks.map((link, index) => ({
         id: `secondary-${index}`,
@@ -627,8 +631,143 @@ export default function App() {
     };
   }, [isAccountMenuOpen, isToolsOpen]);
 
+  const seoMetadata = useMemo(() => {
+    const path = location.pathname;
+    const baseTitle = 'Learn Microbes - Clinical Bench Reference';
+    const baseDescription = 'Clinical microbiology study tools for MLS students, ASCP microbiology review, bench workflows, organism ID, biochemical tests, visual cards, and quiz practice.';
+    const learnSlug = path.match(/^\/learn\/([^/]+)$/)?.[1];
+    const visualSlug = path.match(/^\/visuals\/([^/]+)$/)?.[1];
+    const learnTopic = learnSlug ? learnTopics.find((topic) => topic.slug === learnSlug) : undefined;
+    const visualPage = visualSlug ? atlasPages.find((page) => page.slug === visualSlug) : undefined;
+
+    const breadcrumb = (items: Array<{ name: string; path: string }>) => ({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: `https://learnmicrobes.com${item.path}`
+      }))
+    });
+
+    if (learnTopic) {
+      return {
+        title: `${learnTopic.title} | Clinical Microbiology Review | Learn Microbes`,
+        description: `${learnTopic.summary} Learn this clinical microbiology topic for MLS coursework, ASCP review, and bench reference.`,
+        canonicalPath: `/learn/${learnTopic.slug}`,
+        ogType: 'article',
+        structuredData: [
+          breadcrumb([
+            { name: 'Learn Microbes', path: '/' },
+            { name: 'Learn', path: '/learn' },
+            { name: learnTopic.title, path: `/learn/${learnTopic.slug}` }
+          ]),
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: learnTopic.title,
+            description: learnTopic.summary,
+            author: {
+              '@type': 'Organization',
+              name: 'Learn Microbes'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Learn Microbes'
+            },
+            mainEntityOfPage: `https://learnmicrobes.com/learn/${learnTopic.slug}`
+          }
+        ]
+      };
+    }
+
+    if (visualPage) {
+      return {
+        title: `${visualPage.title} Visual Guide | Learn Microbes`,
+        description: `${visualPage.summary} Visual clinical microbiology bench card for students, ASCP review, and laboratory learning.`,
+        canonicalPath: `/visuals/${visualPage.slug}`,
+        structuredData: breadcrumb([
+          { name: 'Learn Microbes', path: '/' },
+          { name: 'Visual Atlas', path: '/visuals' },
+          { name: visualPage.title, path: `/visuals/${visualPage.slug}` }
+        ])
+      };
+    }
+
+    const routeMetadata: Record<string, { title: string; description: string }> = {
+      '/': {
+        title: baseTitle,
+        description: baseDescription
+      },
+      '/ascp-microbiology-review': {
+        title: 'ASCP Microbiology Review | M(ASCP) Study Hub | Learn Microbes',
+        description: 'ASCP microbiology review hub for MLS students and M(ASCP) prep: study paths, clinical microbiology quizzes, biochemical tests, organism ID workflows, safety traps, and visual bench cards.'
+      },
+      '/certification-study-paths': {
+        title: 'M(ASCP) and SM(ASCP) Microbiology Study Paths | Learn Microbes',
+        description: 'Map ASCP microbiology content areas into practical study passes for M(ASCP), SM(ASCP), MLS coursework, weak-area review, and clinical microbiology certification prep.'
+      },
+      '/study-quiz': {
+        title: 'Clinical Microbiology Study Quiz | ASCP Review Practice | Learn Microbes',
+        description: 'Practice clinical microbiology questions for ASCP review, MLS coursework, organism identification, bench tests, safety, mycology, parasitology, virology, and weak-area tracking.'
+      },
+      '/learn': {
+        title: 'Clinical Microbiology Learn Hub | MLS and ASCP Review | Learn Microbes',
+        description: 'Browse clinical microbiology Learn pages for MLS students, ASCP review, organism identification, bench workflows, Gram stain logic, and diagnostic microbiology foundations.'
+      },
+      '/visuals': {
+        title: 'Clinical Microbiology Visual Atlas | Learn Microbes',
+        description: 'Visual bench cards for clinical microbiology reactions, organism clues, interpretation traps, and ASCP review-friendly study visuals.'
+      },
+      '/biochemical-tests': {
+        title: 'Biochemical Tests Review | Clinical Microbiology | Learn Microbes',
+        description: 'Review clinical microbiology biochemical tests, principles, expected results, QC organisms, and exam-relevant interpretation traps.'
+      },
+      '/gram-positive-roadmap': {
+        title: 'Gram-Positive Organism ID Roadmap | Learn Microbes',
+        description: 'Practice Gram-positive organism identification using catalase, hemolysis, coagulase, PYR, optochin, bile solubility, and bench decision logic.'
+      },
+      '/gram-negative-roadmap': {
+        title: 'Gram-Negative Organism ID Roadmap | Learn Microbes',
+        description: 'Review Gram-negative organism identification with oxidase, lactose fermentation, biochemical patterns, and clinical microbiology workflow logic.'
+      },
+      '/do-not-routine-culture': {
+        title: 'Special Pathogen Safety Review | Do Not Routine Culture | Learn Microbes',
+        description: 'Review clinical microbiology safety escalation traps, special pathogens, and do-not-routine-culture workflows for bench learners and ASCP microbiology review.'
+      },
+      '/search': {
+        title: 'Search Clinical Microbiology Review Content | Learn Microbes',
+        description: 'Search Learn Microbes for clinical microbiology Learn pages, biochemical tests, organism ID roadmaps, ASCP review topics, visual cards, and study tools.'
+      },
+      '/auth': {
+        title: 'Sign In | Learn Microbes',
+        description: 'Sign in to save clinical microbiology progress, bookmarks, quiz history, and your Learn Microbes study profile.'
+      },
+      '/account': {
+        title: 'Study Account | Learn Microbes',
+        description: 'View saved Learn Microbes progress, bookmarks, quiz history, weak areas, and clinical microbiology study account details.'
+      }
+    };
+
+    const metadata = routeMetadata[path] ?? {
+      title: activeTool ? `${activeTool} | Learn Microbes` : baseTitle,
+      description: baseDescription
+    };
+
+    return {
+      ...metadata,
+      canonicalPath: path,
+      structuredData: breadcrumb([
+        { name: 'Learn Microbes', path: '/' },
+        { name: metadata.title.replace(/\s+\|\s+Learn Microbes.*$/, ''), path }
+      ])
+    };
+  }, [activeTool, location.pathname]);
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${activeTool === 'Study Quiz' ? 'study-quiz-route' : ''}`}>
+      <SEO {...seoMetadata} />
       <nav className="app-nav">
         <div className="nav-brand" onClick={() => handleToolChange(null)}>
           <img
@@ -918,7 +1057,7 @@ export default function App() {
 
             <section className="dashboard-action-grid" aria-label="Primary study tasks">
               {dashboardActions.map((action) => {
-                const isAscpAction = action.path === '/certification-study-paths';
+                const isAscpAction = action.path === '/ascp-microbiology-review';
 
                 return (
                   <button
@@ -1037,16 +1176,17 @@ export default function App() {
               <a href="https://www.facebook.com/profile.php?id=61575016503288" target="_blank" rel="noopener noreferrer" aria-label="Learn Microbes on Facebook">
                 <i className="fab fa-facebook-f"></i>
               </a>
+              <a href="https://x.com/learn_microbes" target="_blank" rel="noopener noreferrer" aria-label="Learn Microbes on X">
+                <i className="fab fa-twitter"></i>
+              </a>
               <a href="mailto:learnmicrobes@outlook.com?subject=Question%20About%20LearnMicrobes" aria-label="Email Learn Microbes">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>
           </div>
-          <div className="sleek-footer-divider"></div>
           <div className="sleek-footer-bottom">
-            &copy; 2026 LearnMicrobes.com | Made for educational purposes
-          </div>
-          <div className="sleek-footer-links">
+            <span>&copy; 2026 LearnMicrobes.com | Made for educational purposes</span>
+            <span className="sleek-footer-bottom-divider" aria-hidden="true">|</span>
             <button type="button" onClick={() => navigate('/about')}>About Learn Microbes</button>
           </div>
         </div>

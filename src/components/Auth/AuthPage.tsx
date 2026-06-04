@@ -95,8 +95,8 @@ const AuthPage: React.FC = () => {
           <span className="auth-kicker">Learn Microbes Beta</span>
           <h1 id="auth-title">Sign in to your study account.</h1>
           <p>
-            Accounts are the foundation for future saved progress, certification paths, streaks, and personal study tools.
-            No freemium limits are being added in this step.
+            Accounts save your progress, bookmarks, quiz history, and profile so your study workflow can follow you.
+            No freemium limits are being added right now.
           </p>
         </div>
 
