@@ -1,10 +1,10 @@
-.case-simulator-page {
+.flashcards-page {
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
 }
 
-.case-simulator-card {
+.flashcards-card {
   padding: 1.4rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -13,34 +13,34 @@
   text-align: left;
 }
 
-.case-simulator-card span {
+.flashcards-card span {
   color: var(--primary-color);
   font-size: 0.74rem;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.case-simulator-card h1 {
+.flashcards-card h1 {
   margin: 0.35rem 0 0.55rem;
   color: var(--dark-color);
   font-size: clamp(1.75rem, 3vw, 2.35rem);
   line-height: 1.12;
 }
 
-.case-simulator-card p {
+.flashcards-card p {
   margin: 0 0 1rem;
   color: var(--muted-color);
   line-height: 1.55;
 }
 
-.case-simulator-actions {
+.flashcards-actions {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.65rem;
 }
 
-.case-simulator-notify-btn {
+.flashcards-notify-btn {
   display: inline-flex;
   align-items: center;
   min-height: 2.45rem;
@@ -54,11 +54,11 @@
   cursor: pointer;
 }
 
-.case-simulator-notify-btn:hover {
+.flashcards-notify-btn:hover {
   opacity: 0.88;
 }
 
-.case-simulator-card a {
+.flashcards-card a {
   display: inline-flex;
   align-items: center;
   min-height: 2.45rem;
@@ -71,20 +71,19 @@
   text-decoration: none;
 }
 
-.case-simulator-card a:hover {
+.flashcards-card a:hover {
   background: rgba(44, 120, 115, 0.06);
 }
 
-body.dark-mode .case-simulator-card {
+body.dark-mode .flashcards-card {
   background: #22313f;
   border-color: rgba(222, 232, 222, 0.14);
 }
 
-body.dark-mode .case-simulator-card h1 {
+body.dark-mode .flashcards-card h1 {
   color: #f8fffd;
 }
 
-body.dark-mode .case-simulator-card p {
+body.dark-mode .flashcards-card p {
   color: #cbd5df;
 }
-

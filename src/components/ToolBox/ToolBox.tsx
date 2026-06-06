@@ -9,6 +9,7 @@ interface ToolBoxProps {
   showBackButton?: boolean;
   onBack?: () => void;
   showCloseButton?: boolean;
+  className?: string;
 }
 
 const ToolBox: React.FC<ToolBoxProps> = ({
@@ -18,10 +19,11 @@ const ToolBox: React.FC<ToolBoxProps> = ({
   onClose,
   showBackButton = false,
   onBack,
-  showCloseButton = true
+  showCloseButton = true,
+  className = ''
 }) => {
   return (
-    <div className="tool-box">
+    <div className={`tool-box ${className}`.trim()}>
       <div className="tool-box-header">
         {showBackButton && (
           <button className="back-btn" onClick={onBack} aria-label="Go back">

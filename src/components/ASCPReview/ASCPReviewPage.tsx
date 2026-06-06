@@ -78,33 +78,43 @@ const ASCPReviewPage: React.FC = () => (
       <div className="ascp-review-flow" aria-label="ASCP microbiology review flow">
         <svg viewBox="0 0 420 320" role="img" aria-labelledby="ascp-flow-title ascp-flow-desc">
           <title id="ascp-flow-title">Learn Microbes ASCP microbiology review flow</title>
-          <desc id="ascp-flow-desc">A flow from foundations to bench tests, organism ID, quiz review, and weak-area loop.</desc>
-          <rect x="18" y="20" width="384" height="260" rx="10" className="ascp-flow-paper" />
-          <path d="M80 92 H330 M330 92 V160 M330 160 H80 M80 160 V226 H330" className="ascp-flow-line" />
-          <g>
-            <rect x="42" y="60" width="116" height="64" rx="8" className="ascp-flow-card" />
-            <text x="100" y="86" textAnchor="middle">Foundations</text>
-            <text x="100" y="106" textAnchor="middle">Gram stain logic</text>
+          <desc id="ascp-flow-desc">A numbered study loop from foundations through reactions, organism ID, quiz practice, and weak-area review.</desc>
+          <rect x="18" y="20" width="384" height="260" rx="12" className="ascp-flow-paper" />
+          <circle cx="210" cy="150" r="72" className="ascp-flow-loop" />
+          <path d="M269 105 C296 131 296 169 269 195" className="ascp-flow-arrow" />
+          <path d="M151 195 C124 169 124 131 151 105" className="ascp-flow-arrow" />
+          <g className="ascp-flow-node">
+            <rect x="42" y="52" width="130" height="58" rx="8" />
+            <circle cx="66" cy="81" r="14" />
+            <text x="66" y="86" textAnchor="middle" className="ascp-flow-number">1</text>
+            <text x="92" y="76">Foundations</text>
+            <text x="92" y="94">Gram stain logic</text>
           </g>
-          <g>
-            <rect x="222" y="60" width="116" height="64" rx="8" className="ascp-flow-card" />
-            <text x="280" y="86" textAnchor="middle">Bench tests</text>
-            <text x="280" y="106" textAnchor="middle">QC + reactions</text>
+          <g className="ascp-flow-node">
+            <rect x="248" y="52" width="130" height="58" rx="8" />
+            <circle cx="272" cy="81" r="14" />
+            <text x="272" y="86" textAnchor="middle" className="ascp-flow-number">2</text>
+            <text x="298" y="76">Bench tests</text>
+            <text x="298" y="94">QC + reactions</text>
           </g>
-          <g>
-            <rect x="42" y="128" width="116" height="64" rx="8" className="ascp-flow-card" />
-            <text x="100" y="154" textAnchor="middle">Organism ID</text>
-            <text x="100" y="174" textAnchor="middle">Roadmaps</text>
+          <g className="ascp-flow-node">
+            <rect x="42" y="190" width="130" height="58" rx="8" />
+            <circle cx="66" cy="219" r="14" />
+            <text x="66" y="224" textAnchor="middle" className="ascp-flow-number">3</text>
+            <text x="92" y="214">Organism ID</text>
+            <text x="92" y="232">Roadmaps</text>
           </g>
-          <g>
-            <rect x="222" y="128" width="116" height="64" rx="8" className="ascp-flow-card" />
-            <text x="280" y="154" textAnchor="middle">Quiz reps</text>
-            <text x="280" y="174" textAnchor="middle">Saved history</text>
+          <g className="ascp-flow-node">
+            <rect x="248" y="190" width="130" height="58" rx="8" />
+            <circle cx="272" cy="219" r="14" />
+            <text x="272" y="224" textAnchor="middle" className="ascp-flow-number">4</text>
+            <text x="298" y="214">Quiz reps</text>
+            <text x="298" y="232">Saved misses</text>
           </g>
-          <g>
-            <rect x="132" y="200" width="136" height="64" rx="8" className="ascp-flow-card accent" />
-            <text x="200" y="226" textAnchor="middle">Weak-area loop</text>
-            <text x="200" y="246" textAnchor="middle">Review next</text>
+          <g className="ascp-flow-center">
+            <rect x="133" y="122" width="154" height="56" rx="8" />
+            <text x="210" y="145" textAnchor="middle">Weak-area loop</text>
+            <text x="210" y="164" textAnchor="middle">review next</text>
           </g>
           <text x="210" y="302" textAnchor="middle" className="ascp-flow-watermark">Learn Microbes | learnmicrobes.com</text>
         </svg>

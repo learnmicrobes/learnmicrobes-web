@@ -1102,11 +1102,18 @@ const BioCalculator = () => {
   const [quizFeedback, setQuizFeedback] = useState('');
   const [streak, setStreak] = useState(0);
   const [isAnswered, setIsAnswered] = useState(false);
+  const [showCalculatorHelp, setShowCalculatorHelp] = useState(() => (
+    localStorage.getItem('learnmicrobes_bio_calculator_help') === 'open'
+  ));
 
   // Auto-save calculator state
   useEffect(() => {
     localStorage.setItem('learnmicrobes_calc_state', JSON.stringify(testResults));
   }, [testResults]);
+
+  useEffect(() => {
+    localStorage.setItem('learnmicrobes_bio_calculator_help', showCalculatorHelp ? 'open' : 'closed');
+  }, [showCalculatorHelp]);
 
   useEffect(() => {
     // Prevent zooming on double-tap
@@ -1344,7 +1351,7 @@ const BioCalculator = () => {
       setStreak(prev => prev + 1);
       setQuizFeedback(`
         <div class="quiz-feedback-banner correct">
-          <p>✅ <strong>Correct!</strong> Your streak: 🔥 ${streak + 1}</p>
+          <p><strong>Correct.</strong> Current streak: ${streak + 1}</p>
         </div>
       `);
     } else {
@@ -1443,39 +1450,41 @@ const BioCalculator = () => {
     return (
       <fieldset>
         <legend>{legend}</legend>
-        <label className="test-option">
-          <input 
-            type="radio" 
-            name={testName} 
-            value="+" 
-            checked={testResults[testName] === '+'}
-            onClick={() => handleTestChange(testName, '+')}
-            onChange={() => {}} // Dummy to avoid React warning
-          />
-          <span className="test-btn positive">+</span>
-        </label>
-        <label className="test-option">
-          <input 
-            type="radio" 
-            name={testName} 
-            value="-" 
-            checked={testResults[testName] === '-'}
-            onClick={() => handleTestChange(testName, '-')}
-            onChange={() => {}} // Dummy to avoid React warning
-          />
-          <span className="test-btn negative">-</span>
-        </label>
-        <label className="test-option">
-          <input 
-            type="radio" 
-            name={testName} 
-            value="V" 
-            checked={testResults[testName] === 'V'}
-            onClick={() => handleTestChange(testName, 'V')}
-            onChange={() => {}} // Dummy to avoid React warning
-          />
-          <span className="test-btn variable">V</span>
-        </label>
+        <div className="test-choice-row">
+          <label className="test-option">
+            <input
+              type="radio"
+              name={testName}
+              value="+"
+              checked={testResults[testName] === '+'}
+              onClick={() => handleTestChange(testName, '+')}
+              onChange={() => {}} // Dummy to avoid React warning
+            />
+            <span className="test-btn positive">+</span>
+          </label>
+          <label className="test-option">
+            <input
+              type="radio"
+              name={testName}
+              value="-"
+              checked={testResults[testName] === '-'}
+              onClick={() => handleTestChange(testName, '-')}
+              onChange={() => {}} // Dummy to avoid React warning
+            />
+            <span className="test-btn negative">-</span>
+          </label>
+          <label className="test-option">
+            <input
+              type="radio"
+              name={testName}
+              value="V"
+              checked={testResults[testName] === 'V'}
+              onClick={() => handleTestChange(testName, 'V')}
+              onChange={() => {}} // Dummy to avoid React warning
+            />
+            <span className="test-btn variable">V</span>
+          </label>
+        </div>
       </fieldset>
     );
   };
@@ -1513,13 +1522,25 @@ const BioCalculator = () => {
 
         {mode === 'calculator' ? (
           <>
-            <div className="test-instructions">
-              <p>🔍 How to use:</p>
-              <ul>
-                <li>Select <span className="positive">+</span> or <span className="negative">-</span> for definitive results</li>
-                <li>Mark <span className="variable">V</span> only if the test result was ambiguous/unclear</li>
-                <li>Leave unselected if test was not performed</li>
-              </ul>
+            <div className={`calculator-help-shell ${showCalculatorHelp ? 'open' : ''}`}>
+              <button
+                type="button"
+                className="calculator-help-toggle"
+                aria-expanded={showCalculatorHelp}
+                onClick={() => setShowCalculatorHelp((current) => !current)}
+              >
+                <FontAwesomeIcon icon={faQuestionCircle} /> Need help?
+              </button>
+              {showCalculatorHelp && (
+                <div className="test-instructions">
+                  <p>How to use</p>
+                  <ul>
+                    <li>Select <span className="positive">+</span> or <span className="negative">-</span> for definitive results</li>
+                    <li>Mark <span className="variable">V</span> only if the test result was ambiguous/unclear</li>
+                    <li>Leave unselected if test was not performed</li>
+                  </ul>
+                </div>
+              )}
             </div>
 
             <section id="calculator">
@@ -1585,24 +1606,7 @@ const BioCalculator = () => {
                 <button type="button" className="reset-btn" onClick={resetTests}>
                   <i className="fas fa-redo"></i> Reset All Tests
                 </button>
-                <button type="button" className="export-btn" onClick={handleExportReport} style={{
-                  backgroundColor: '#4a5568',
-                  color: 'white',
-                  border: 'none',
-                  padding: '12px 24px',
-                  borderRadius: '8px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2d3748'}
-                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#4a5568'}
-                >
+                <button type="button" className="export-btn" onClick={handleExportReport}>
                   <i className="fas fa-file-export"></i> Export Lab Report
                 </button>
               </div>
@@ -1621,7 +1625,7 @@ const BioCalculator = () => {
             <section className="quiz-container">
               <div className="quiz-header">
                 <h2><FontAwesomeIcon icon={faQuestionCircle} /> Test Your Knowledge</h2>
-                <div className="quiz-streak">🔥 Streak: {streak}</div>
+                <div className="quiz-streak">Streak: {streak}</div>
               </div>
               
               <div className="quiz-question">

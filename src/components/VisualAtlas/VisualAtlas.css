@@ -172,11 +172,9 @@
 }
 
 .visual-sequence-link {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: 0.6rem;
-  row-gap: 0.12rem;
+  display: flex;
   align-items: center;
+  gap: 0.6rem;
   min-height: 3rem;
   padding: 0.55rem 0.65rem;
   border: 1px solid var(--va-border);
@@ -186,36 +184,28 @@
   text-decoration: none;
 }
 
-.visual-sequence-link::before {
+.visual-sequence-link.next {
+  flex-direction: row-reverse;
+}
+
+.visual-seq-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   width: 1.9rem;
   height: 1.9rem;
   border-radius: 4px;
   background: color-mix(in srgb, var(--va-primary) 9%, transparent);
   color: var(--va-primary);
-  font-weight: 900;
-  line-height: 1;
+  font-size: 0.78rem;
 }
 
-.visual-sequence-link.previous::before {
-  content: "<";
-}
-
-.visual-sequence-link.next {
-  grid-template-columns: minmax(0, 1fr) auto;
-}
-
-.visual-sequence-link.next::before {
-  content: ">";
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-
-.visual-sequence-link.next small,
-.visual-sequence-link.next strong {
-  grid-column: 1;
+.visual-seq-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
 }
 
 .visual-sequence-link small,
@@ -239,6 +229,15 @@
 .visual-sequence-link:hover,
 .visual-sequence-link:focus-visible {
   background: color-mix(in srgb, var(--va-primary) 6%, var(--va-card-strong));
+}
+
+@media (max-width: 480px) {
+  .visual-seq-text strong {
+    display: none;
+  }
+  .visual-sequence-status {
+    min-width: 4.2rem;
+  }
 }
 
 .visual-sequence-status {

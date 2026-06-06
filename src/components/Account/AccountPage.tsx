@@ -141,7 +141,7 @@ const AccountPage: React.FC = () => {
     }
 
     if (!user) {
-      navigate('/auth', { replace: true });
+      navigate('/login', { replace: true });
       return;
     }
 

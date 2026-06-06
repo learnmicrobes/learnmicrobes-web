@@ -1,29 +1,81 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faFlaskVial, faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faEye, faEyeSlash, faFlaskVial, faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { isSupabaseConfigured, supabase } from '../../lib/supabaseClient';
 import { useAuth } from '../../context/AuthContext';
 import './AuthPage.css';
 
-type AuthMode = 'sign-in' | 'sign-up';
+type AuthMode = 'sign-in' | 'sign-up' | 'reset-password' | 'update-password';
+
+const PASSWORD_REQUIREMENT_MESSAGE = 'Use at least 12 characters with uppercase, lowercase, a number, and a special character.';
+
+const isStrongPassword = (value: string) => (
+  value.length >= 12 &&
+  /[A-Z]/.test(value) &&
+  /[a-z]/.test(value) &&
+  /\d/.test(value) &&
+  /[^A-Za-z0-9]/.test(value)
+);
 
 const AuthPage: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, isAuthReady } = useAuth();
-  const [mode, setMode] = useState<AuthMode>('sign-in');
+  const [mode, setMode] = useState<AuthMode>(() => (location.pathname === '/register' ? 'sign-up' : 'sign-in'));
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false);
+  const [isResettingPassword, setIsResettingPassword] = useState(false);
 
   useEffect(() => {
-    if (isAuthReady && user) {
+    if (isAuthReady && user && mode !== 'update-password') {
       navigate('/account', { replace: true });
     }
-  }, [isAuthReady, navigate, user]);
+  }, [isAuthReady, mode, navigate, user]);
+
+  useEffect(() => {
+    if (mode !== 'sign-in' && mode !== 'sign-up') {
+      return;
+    }
+
+    if (location.pathname === '/register' && mode !== 'sign-up') {
+      setMode('sign-up');
+      setPassword('');
+      setErrorMessage('');
+      setStatusMessage('');
+    }
+
+    if (location.pathname === '/login' && mode !== 'sign-in') {
+      setMode('sign-in');
+      setPassword('');
+      setErrorMessage('');
+      setStatusMessage('');
+    }
+  }, [location.pathname, mode]);
+
+  useEffect(() => {
+    if (!supabase) {
+      return undefined;
+    }
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setMode('update-password');
+        setPassword('');
+        setErrorMessage('');
+        setStatusMessage('Enter a new password to finish account recovery.');
+      }
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,10 +89,46 @@ const AuthPage: React.FC = () => {
 
     setIsSubmitting(true);
 
+    if (mode === 'reset-password') {
+      await handlePasswordReset();
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (mode === 'update-password') {
+      setIsSubmitting(true);
+
+      if (!isStrongPassword(password)) {
+        setErrorMessage(PASSWORD_REQUIREMENT_MESSAGE);
+        setIsSubmitting(false);
+        return;
+      }
+
+      const { error } = await supabase.auth.updateUser({ password });
+
+      setIsSubmitting(false);
+
+      if (error) {
+        setErrorMessage(error.message);
+        return;
+      }
+
+      setStatusMessage('Password updated. Redirecting to your account.');
+      setPassword('');
+      navigate('/account', { replace: true });
+      return;
+    }
+
     const credentials = {
       email: email.trim(),
       password
     };
+
+    if (mode === 'sign-up' && !isStrongPassword(password)) {
+      setErrorMessage(PASSWORD_REQUIREMENT_MESSAGE);
+      setIsSubmitting(false);
+      return;
+    }
 
     const { data, error } = mode === 'sign-in'
       ? await supabase.auth.signInWithPassword(credentials)
@@ -57,6 +145,7 @@ const AuthPage: React.FC = () => {
       setStatusMessage('Account created. Check your email to confirm your address, then sign in.');
       setMode('sign-in');
       setPassword('');
+      navigate('/login', { replace: true });
       return;
     }
 
@@ -88,6 +177,50 @@ const AuthPage: React.FC = () => {
     }
   };
 
+  const handlePasswordReset = async () => {
+    setErrorMessage('');
+    setStatusMessage('');
+
+    if (!supabase) {
+      setErrorMessage('Supabase is not configured yet. Add the project URL and anon key to your local environment.');
+      return;
+    }
+
+    const trimmedEmail = email.trim();
+
+    if (!trimmedEmail) {
+      setErrorMessage('Enter your email address first, then request a password reset link.');
+      return;
+    }
+
+    setIsResettingPassword(true);
+
+    const { error } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
+      redirectTo: `${window.location.origin}/login`
+    });
+
+    setIsResettingPassword(false);
+
+    if (error) {
+      setErrorMessage(error.message);
+      return;
+    }
+
+    setStatusMessage('Password reset email sent. Check your inbox for the reset link.');
+    setMode('sign-in');
+    setPassword('');
+  };
+
+  const switchMode = (nextMode: AuthMode) => {
+    setMode(nextMode);
+    setErrorMessage('');
+    setStatusMessage('');
+    setShowPassword(false);
+    if (nextMode !== 'update-password') {
+      setPassword('');
+    }
+  };
+
   return (
     <div className="auth-page">
       <section className="auth-card" aria-labelledby="auth-title">
@@ -103,9 +236,12 @@ const AuthPage: React.FC = () => {
         <div className="auth-mode-tabs" role="tablist" aria-label="Authentication mode">
           <button
             type="button"
-            className={mode === 'sign-in' ? 'active' : ''}
-            onClick={() => setMode('sign-in')}
-            aria-pressed={mode === 'sign-in'}
+            className={mode === 'sign-in' || mode === 'reset-password' || mode === 'update-password' ? 'active' : ''}
+            onClick={() => {
+              switchMode('sign-in');
+              navigate('/login', { replace: true });
+            }}
+            aria-pressed={mode === 'sign-in' || mode === 'reset-password' || mode === 'update-password'}
           >
             <FontAwesomeIcon icon={faRightToBracket} />
             Sign in
@@ -113,7 +249,10 @@ const AuthPage: React.FC = () => {
           <button
             type="button"
             className={mode === 'sign-up' ? 'active' : ''}
-            onClick={() => setMode('sign-up')}
+            onClick={() => {
+              switchMode('sign-up');
+              navigate('/register', { replace: true });
+            }}
             aria-pressed={mode === 'sign-up'}
           >
             <FontAwesomeIcon icon={faUserPlus} />
@@ -142,42 +281,107 @@ const AuthPage: React.FC = () => {
         </button>
 
         <div className="auth-divider" role="separator">
-          <span>or use email</span>
+          <span>{mode === 'reset-password' ? 'recover account' : mode === 'update-password' ? 'set password' : 'or use email'}</span>
         </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              autoComplete="email"
-              placeholder="you@example.com"
-              required
-            />
-          </label>
+          {mode !== 'update-password' && (
+            <label>
+              Email
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                autoComplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+          )}
 
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete={mode === 'sign-in' ? 'current-password' : 'new-password'}
-              placeholder={mode === 'sign-in' ? 'Your password' : 'At least 6 characters'}
-              minLength={6}
-              required
-            />
-          </label>
+          {mode !== 'reset-password' && (
+            <label>
+              Password
+              <span className="auth-password-field">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  autoComplete={mode === 'sign-in' ? 'current-password' : 'new-password'}
+                  placeholder={mode === 'sign-in' ? 'Your password' : '12+ characters with symbols'}
+                  minLength={mode === 'sign-in' ? undefined : 12}
+                  required
+                />
+                <button
+                  type="button"
+                  className="auth-password-toggle"
+                  onClick={() => setShowPassword((visible) => !visible)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                </button>
+              </span>
+            </label>
+          )}
+
+          {mode === 'sign-in' && (
+            <p className="auth-helper-note">
+              <button
+                type="button"
+                className="auth-inline-action"
+                onClick={() => switchMode('reset-password')}
+              >
+                Need help signing in?
+              </button>
+            </p>
+          )}
+
+          {mode === 'reset-password' && (
+            <p className="auth-helper-note">
+              Enter your account email and we will send a reset link.
+            </p>
+          )}
+
+          {mode === 'update-password' && (
+            <p className="auth-helper-note">
+              {PASSWORD_REQUIREMENT_MESSAGE}
+            </p>
+          )}
+
+          {mode === 'sign-up' && (
+            <p className="auth-helper-note">
+              {PASSWORD_REQUIREMENT_MESSAGE}
+            </p>
+          )}
 
           {errorMessage && <p className="auth-message error" role="alert">{errorMessage}</p>}
           {statusMessage && <p className="auth-message success" role="status">{statusMessage}</p>}
 
-          <button type="submit" className="auth-submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? 'Working...' : mode === 'sign-in' ? 'Sign in' : 'Create account'}
+          <button type="submit" className="auth-submit-btn" disabled={isSubmitting || isResettingPassword}>
+            {isSubmitting || isResettingPassword
+              ? 'Working...'
+              : mode === 'sign-in'
+                ? 'Sign in'
+                : mode === 'sign-up'
+                  ? 'Create account'
+                  : mode === 'reset-password'
+                    ? 'Send reset link'
+                    : 'Update password'}
             <FontAwesomeIcon icon={faArrowRight} />
           </button>
+
+          {(mode === 'reset-password' || mode === 'update-password') && (
+            <button
+              type="button"
+              className="auth-secondary-btn"
+              onClick={() => {
+                switchMode('sign-in');
+                navigate('/login', { replace: true });
+              }}
+            >
+              Back to sign in
+            </button>
+          )}
         </form>
 
         <div className="auth-footer-note">

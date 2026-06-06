@@ -11,8 +11,10 @@ import SyndromeDiagnosticPath from "./tools/SyndromeDiagnosticPath/SyndromeDiagn
 import DoNotRoutineCulture from "./tools/DoNotRoutineCulture/DoNotRoutineCulture";
 import StudyQuiz from "./tools/StudyQuiz/StudyQuiz";
 import CaseStudySimulator from "./tools/CaseStudySimulator/CaseStudySimulator";
+import Flashcards from "./tools/Flashcards/Flashcards";
 import CertificationStudyPaths from "./tools/CertificationStudyPaths/CertificationStudyPaths";
 import About from "./components/About";
+import InfoPage from "./components/InfoPages";
 import NotFound from "./components/NotFound";
 
 import MicroBasics from "./components/Guides/MicroBasics";
@@ -32,6 +34,11 @@ export default function AppRoutes() {
       <Route path="/" element={<App />}>
         <Route index element={null} />
         <Route path="about" element={<About />} />
+        <Route path="disclaimer" element={<InfoPage page="disclaimer" />} />
+        <Route path="terms" element={<InfoPage page="terms" />} />
+        <Route path="privacy" element={<InfoPage page="privacy" />} />
+        <Route path="faq" element={<InfoPage page="faq" />} />
+        <Route path="mission" element={<InfoPage page="mission" />} />
         <Route path="learn" element={<LearnHub />} />
         <Route path="learn/:slug" element={<LearnArticle />} />
         <Route path="visuals" element={<VisualAtlas />} />
@@ -40,6 +47,8 @@ export default function AppRoutes() {
         <Route path="practice" element={<PracticePage />} />
         <Route path="search" element={<GlobalSearch />} />
         <Route path="auth" element={<AuthPage />} />
+        <Route path="login" element={<AuthPage />} />
+        <Route path="register" element={<AuthPage />} />
         <Route path="account" element={<AccountPage />} />
         <Route path="join-alpha" element={<JoinAlpha />} />
         <Route path="ascp-microbiology-review" element={<ASCPReviewPage />} />
@@ -54,6 +63,7 @@ export default function AppRoutes() {
         <Route path="do-not-routine-culture" element={<DoNotRoutineCulture />} />
         <Route path="study-quiz" element={<StudyQuiz />} />
         <Route path="case-study-simulator" element={<CaseStudySimulator />} />
+        <Route path="flashcards" element={<Flashcards />} />
         <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
         <Route path="*" element={<NotFound />} />
       </Route>

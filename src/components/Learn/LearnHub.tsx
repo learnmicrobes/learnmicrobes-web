@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { learnTopics, getLearnTopicBySlug } from '../../data/learnTopics';
@@ -63,23 +63,32 @@ const learningLaneMeta: Record<string, { number: string; description: string }> 
   }
 };
 
+const categoryDisplayNames: Record<string, string> = {
+  'Clinical Lab Principles': 'Clinical Lab Basics',
+  'Core Methods': 'Core Bench Methods',
+  'Molecular and Immunodiagnostics': 'Molecular and Immunodiagnostic Tools',
+  'Bench and Exam Integration': 'Bench and Exam Review'
+};
+
+const getCategoryDisplayName = (category: string) => categoryDisplayNames[category] ?? category;
+
 const studyPaths = [
   {
     label: 'New learner',
-    title: 'Start with the foundation set',
-    description: 'Naming, structure, specimen logic, stains, and culture basics before organism-heavy review.',
+    title: 'Start from foundations',
+    description: 'Build the naming, structure, specimen, stain, and culture basics first.',
     path: '/learn/microbial-taxonomy'
   },
   {
     label: 'Bench learner',
-    title: 'Follow the specimen-to-answer path',
-    description: 'Collection, safety, direct exam, culture conditions, branch tests, and reporting judgment.',
+    title: 'Work specimen to ID',
+    description: 'Move through collection, safety, direct exam, culture, branch tests, and reporting.',
     path: '/learn/specimen-collection-transport'
   },
   {
     label: 'ASCP review',
-    title: 'Use tables and syndrome anchors',
-    description: 'Organism comparisons, diagnostic traps, high-yield benches, and exam-style separation points.',
+    title: 'Review for exam logic',
+    description: 'Use comparison tables, syndrome anchors, high-yield benches, and common traps.',
     path: '/learn/syndrome-to-test-thinking'
   }
 ];
@@ -569,9 +578,11 @@ const ClassificationEvidenceMapVisual: React.FC = () => {
 };
 
 export const LearnHub: React.FC = () => {
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<LearnFilter[]>([]);
   const [openCategories, setOpenCategories] = useState(() => new Set(['Foundations', 'Clinical Lab Principles']));
+  const [isStudyOrderOpen, setIsStudyOrderOpen] = useState(false);
   const { completedTopicSlugs, progressRows } = useLearnProgress();
   const { masteredTopicSet } = useMasteredTopics();
   const completedTopicSet = progressRows.length > 0 ? completedTopicSlugs : masteredTopicSet;
@@ -601,6 +612,26 @@ export const LearnHub: React.FC = () => {
       topics: filteredTopics.filter((topic) => topic.category === category)
     })).filter((group) => group.topics.length > 0)
   ), [filteredTopics]);
+
+  useEffect(() => {
+    const categorySlug = location.hash.replace('#', '');
+
+    if (!categorySlug) {
+      return;
+    }
+
+    const matchingCategory = categoryOrder.find((category) => slugify(category) === categorySlug);
+
+    if (!matchingCategory) {
+      return;
+    }
+
+    setOpenCategories((current) => new Set(current).add(matchingCategory));
+
+    window.setTimeout(() => {
+      document.getElementById(categorySlug)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }, [location.hash]);
 
   const libraryStats = useMemo(() => {
     const tableCount = learnTopics.reduce((total, topic) => total + (topic.tables?.length ?? 0), 0);
@@ -712,20 +743,20 @@ export const LearnHub: React.FC = () => {
       <section className="learn-start-panel" aria-labelledby="learn-start-title">
         <div>
           <span className="learn-section-label">Begin Learning</span>
-          <h2 id="learn-start-title">Begin learning with the foundations.</h2>
+          <h2 id="learn-start-title">Start with the foundation set.</h2>
           <p>
-            Start with taxonomy and bacterial structure before jumping into stains, media, and organism comparisons.
+            A guided first pass through taxonomy, bacterial structure, stains, media, and organism comparisons.
           </p>
         </div>
         <Link className="learn-primary-link" to="/learn/microbial-taxonomy">
-          Start foundations
+          Begin foundations
         </Link>
       </section>
 
       <section className="learn-path-panel" aria-labelledby="learn-path-title">
         <div className="learn-path-heading">
           <span className="learn-section-label">Study paths</span>
-          <h2 id="learn-path-title">Pick the doorway that matches today.</h2>
+          <h2 id="learn-path-title">Choose the route that matches today.</h2>
         </div>
         <div className="learn-path-grid">
           {studyPaths.map((path) => (
@@ -784,34 +815,6 @@ export const LearnHub: React.FC = () => {
         </p>
       </section>
 
-      <section className="learn-book-map" aria-labelledby="learn-book-map-title">
-        <span className="learn-section-label">Study order</span>
-        <h2 id="learn-book-map-title">Browse by study area</h2>
-        <div className="learn-book-map-grid">
-          {topicsByCategory.map((group) => {
-            const meta = learningLaneMeta[group.category];
-            const categoryProgress = getCategoryProgress(group.category);
-
-            return (
-              <button
-                key={group.category}
-                type="button"
-                onClick={() => openStudyArea(group.category)}
-                aria-expanded={openCategories.has(group.category)}
-                aria-controls={`${slugify(group.category)}-topic-list`}
-              >
-                <span>Area {meta.number}</span>
-                <strong>{group.category}</strong>
-                <small>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</small>
-                <span className="learn-area-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered`}>
-                  <i style={{ width: `${categoryProgress.percent}%` }} />
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
       <div className="learn-category-list">
         {topicsByCategory.map((group) => {
           const isCategoryOpen = openCategories.has(group.category);
@@ -819,10 +822,10 @@ export const LearnHub: React.FC = () => {
 
           return (
             <section
-              className="learn-category"
+              className={`learn-category ${isCategoryOpen ? 'open' : 'collapsed'}`}
               key={group.category}
               id={slugify(group.category)}
-              aria-labelledby={`${group.category}-learn-title`}
+              aria-labelledby={`${slugify(group.category)}-learn-title`}
             >
             <div
               className="learn-category-heading"
@@ -838,13 +841,11 @@ export const LearnHub: React.FC = () => {
               aria-expanded={isCategoryOpen}
               aria-controls={`${slugify(group.category)}-topic-list`}
             >
-              <span className="learn-lane-number" aria-label={`Study area ${learningLaneMeta[group.category].number}`}>
-                <small>Study</small>
-                <strong>{learningLaneMeta[group.category].number}</strong>
-              </span>
               <div>
-                <span className="learn-section-label">{group.category}</span>
-                <h2 id={`${group.category}-learn-title`}>{group.category}</h2>
+                <div className="learn-category-title-row">
+                  <h2 id={`${slugify(group.category)}-learn-title`}>{getCategoryDisplayName(group.category)}</h2>
+                  <small>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</small>
+                </div>
                 <p>{learningLaneMeta[group.category].description}</p>
                 <div className="learn-category-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered in ${group.category}`}>
                   <span>
@@ -856,15 +857,14 @@ export const LearnHub: React.FC = () => {
                 </div>
               </div>
               <span className="learn-category-toggle" aria-hidden="true">
-                {isCategoryOpen ? 'Collapse' : 'Expand'}
+                {isCategoryOpen ? 'Hide topics' : 'Show topics'}
               </span>
             </div>
 
             {isCategoryOpen && (
               <div className="learn-lane-list" id={`${slugify(group.category)}-topic-list`}>
-                {group.topics.map((topic, topicIndex) => (
+                {group.topics.map((topic) => (
                   <Link className={`learn-topic-card ${completedTopicSet.has(topic.slug) ? 'mastered' : ''}`} to={`/learn/${topic.slug}`} key={topic.slug}>
-                    <span>{learningLaneMeta[group.category].number}-{String(topicIndex + 1).padStart(2, '0')}</span>
                     <div className="learn-topic-card-body">
                       <h3>
                         {topic.title}
@@ -885,6 +885,48 @@ export const LearnHub: React.FC = () => {
           );
         })}
       </div>
+
+      <section className={`learn-book-map ${isStudyOrderOpen ? 'open' : 'collapsed'}`} aria-labelledby="learn-book-map-title">
+        <button
+          type="button"
+          className="learn-book-map-toggle"
+          onClick={() => setIsStudyOrderOpen((current) => !current)}
+          aria-expanded={isStudyOrderOpen}
+          aria-controls="learn-book-map-grid"
+        >
+          <span>
+            <small className="learn-section-label">Learning map</small>
+            <strong id="learn-book-map-title">Browse all areas</strong>
+            <em>Use this when you want the full Learn Microbes sequence.</em>
+          </span>
+          <b>{isStudyOrderOpen ? 'Hide' : 'Show'}</b>
+        </button>
+        {isStudyOrderOpen && (
+          <div className="learn-book-map-grid" id="learn-book-map-grid">
+            {topicsByCategory.map((group) => {
+              const meta = learningLaneMeta[group.category];
+              const categoryProgress = getCategoryProgress(group.category);
+
+              return (
+                <button
+                  key={group.category}
+                  type="button"
+                  onClick={() => openStudyArea(group.category)}
+                  aria-expanded={openCategories.has(group.category)}
+                  aria-controls={`${slugify(group.category)}-topic-list`}
+                >
+                  <span>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</span>
+                  <strong>{getCategoryDisplayName(group.category)}</strong>
+                  <small>{meta.description}</small>
+                  <span className="learn-area-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered`}>
+                    <i style={{ width: `${categoryProgress.percent}%` }} />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </section>
     </div>
   );
 };
@@ -972,16 +1014,23 @@ export const LearnArticle: React.FC = () => {
     const categoryTopics = learnTopics.filter((item) => item.category === topic.category);
     const topicIndex = categoryTopics.findIndex((item) => item.slug === topic.slug);
     const categoryIndex = categoryOrder.indexOf(topic.category);
-    const meta = learningLaneMeta[topic.category];
+    const nextCategory = categoryOrder
+      .slice(categoryIndex + 1)
+      .find((category) => learnTopics.some((item) => item.category === category));
+    const nextCategoryTopics = nextCategory
+      ? learnTopics.filter((item) => item.category === nextCategory)
+      : [];
+    const nextAreaFirstTopic = nextCategoryTopics[0] ?? null;
 
     return {
       categoryTopics,
       topicIndex,
       topicNumber: topicIndex + 1,
       topicTotal: categoryTopics.length,
-      areaNumber: meta?.number ?? String(categoryIndex + 1).padStart(2, '0'),
       previousTopic: topicIndex > 0 ? categoryTopics[topicIndex - 1] : null,
       nextTopic: topicIndex < categoryTopics.length - 1 ? categoryTopics[topicIndex + 1] : null,
+      nextAreaFirstTopic,
+      nextAreaLabel: nextCategory ? getCategoryDisplayName(nextCategory) : null,
       categorySlug: slugify(topic.category)
     };
   }, [topic]);
@@ -1001,7 +1050,7 @@ export const LearnArticle: React.FC = () => {
 
   const handleBookmarkClick = async () => {
     if (!user) {
-      navigate('/auth');
+      navigate('/login');
       return;
     }
 
@@ -1020,7 +1069,7 @@ export const LearnArticle: React.FC = () => {
 
   const handleProgressClick = async () => {
     if (!user) {
-      navigate('/auth');
+      navigate('/login');
       return;
     }
 
@@ -1053,8 +1102,20 @@ export const LearnArticle: React.FC = () => {
         <span>{topic.title}</span>
       </nav>
 
+      {studyPosition && (
+        <div className="learn-article-return-row">
+          <Link className="learn-back-to-contents" to={`/learn#${studyPosition.categorySlug}`}>
+            <span aria-hidden="true">&larr;</span>
+            Back to Learn Contents
+          </Link>
+          <span>
+            {getCategoryDisplayName(topic.category)} / {studyPosition.topicNumber} of {studyPosition.topicTotal} topics
+          </span>
+        </div>
+      )}
+
       <header className="learn-article-hero">
-        <span className="learn-kicker">Microbiology Notes / {topic.category}</span>
+        <span className="learn-kicker">Microbiology Notes / {getCategoryDisplayName(topic.category)}</span>
         <h1>{topic.title}</h1>
         <p>{topic.summary}</p>
         <div className="learn-article-actions">
@@ -1087,10 +1148,10 @@ export const LearnArticle: React.FC = () => {
       {studyPosition && (
         <nav className="learn-sequence-panel" aria-label={`${topic.category} topic navigation`}>
           <div className="learn-sequence-status">
-            <span className="learn-section-label">Study Area {studyPosition.areaNumber}</span>
-            <strong>{topic.category}</strong>
+            <span className="learn-section-label">Current area</span>
+            <strong>{getCategoryDisplayName(topic.category)}</strong>
             <small>
-              Topic {studyPosition.topicNumber} of {studyPosition.topicTotal}
+              {studyPosition.topicNumber} of {studyPosition.topicTotal} topics
             </small>
           </div>
           <div className="learn-sequence-pager">
@@ -1102,20 +1163,26 @@ export const LearnArticle: React.FC = () => {
             ) : (
               <Link className="learn-arrow-link previous" to={`/learn#${studyPosition.categorySlug}`}>
                 <small>Back to area</small>
-                <strong>{topic.category}</strong>
+                <strong>{getCategoryDisplayName(topic.category)}</strong>
               </Link>
             )}
             <Link className="learn-area-chip" to={`/learn#${studyPosition.categorySlug}`}>
-              All {topic.category} topics
+              All {getCategoryDisplayName(topic.category)} topics
             </Link>
             {studyPosition.nextTopic ? (
               <Link className="learn-arrow-link next" to={`/learn/${studyPosition.nextTopic.slug}`}>
                 <small>Next</small>
                 <strong>{studyPosition.nextTopic.title}</strong>
               </Link>
+            ) : studyPosition.nextAreaFirstTopic ? (
+              <Link className="learn-arrow-link next next-area" to={`/learn/${studyPosition.nextAreaFirstTopic.slug}`}>
+                <small>Next study area</small>
+                <strong>{studyPosition.nextAreaFirstTopic.title}</strong>
+                {studyPosition.nextAreaLabel && <span>{studyPosition.nextAreaLabel}</span>}
+              </Link>
             ) : (
               <Link className="learn-arrow-link next" to="/learn">
-                <small>Finished area</small>
+                <small>Finished Learn path</small>
                 <strong>Back to Learn</strong>
               </Link>
             )}
@@ -1342,9 +1409,15 @@ export const LearnArticle: React.FC = () => {
                 <small>Next topic</small>
                 <strong>{studyPosition.nextTopic.title}</strong>
               </Link>
+            ) : studyPosition.nextAreaFirstTopic ? (
+              <Link className="next next-area" to={`/learn/${studyPosition.nextAreaFirstTopic.slug}`}>
+                <small>Next study area</small>
+                <strong>{studyPosition.nextAreaFirstTopic.title}</strong>
+                {studyPosition.nextAreaLabel && <span>{studyPosition.nextAreaLabel}</span>}
+              </Link>
             ) : (
               <Link className="next" to="/learn">
-                <small>Finished this area</small>
+                <small>Finished Learn path</small>
                 <strong>Back to Learn</strong>
               </Link>
             )}

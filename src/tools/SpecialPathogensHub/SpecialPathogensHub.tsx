@@ -87,7 +87,7 @@ const SpecialPathogensHub: React.FC = () => {
             <FontAwesomeIcon icon={faVialCircleCheck} />
             Syndrome path
           </button>
-          <button onClick={() => navigate('/do-not-routine-culture')}>
+          <button onClick={() => navigate('/do-not-routine-culture', { state: { from: 'special-pathogens' } })}>
             <FontAwesomeIcon icon={faShieldHalved} />
             Escalation guide
           </button>
@@ -126,16 +126,22 @@ const SpecialPathogensHub: React.FC = () => {
 
       <section className="special-pathogens-grid" aria-label="Special pathogen groups">
         {specialPathogenCards.map((card) => (
-          <article className="special-pathogen-card" key={card.id}>
+          <article
+            className="special-pathogen-card"
+            key={card.id}
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate(card.guidePath, { state: { from: 'special-pathogens' } })}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                navigate(card.guidePath, { state: { from: 'special-pathogens' } });
+              }
+            }}
+            aria-label={`Open guide for ${card.title}`}
+          >
             <div className="special-pathogen-card-header">
               <h2>{card.title}</h2>
-              <button
-                className="special-pathogen-open"
-                onClick={() => navigate(card.guidePath)}
-                aria-label={`Open guide for ${card.title}`}
-              >
-                Open guide
-              </button>
             </div>
             <p className="special-pathogen-subtitle">{card.subtitle}</p>
 
@@ -162,6 +168,10 @@ const SpecialPathogensHub: React.FC = () => {
               <span>Organism groups covered</span>
               {card.organismGroups.join(', ')}
             </p>
+            <div className="special-pathogen-card-footer">
+              <span>Open guide</span>
+              <span className="special-pathogen-arrow">→</span>
+            </div>
           </article>
         ))}
       </section>

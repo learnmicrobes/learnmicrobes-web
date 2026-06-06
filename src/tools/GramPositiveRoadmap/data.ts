@@ -47,11 +47,22 @@ export const gramPositiveRoadmap: RoadmapStep[] = [
     options: [
       {
         text: "Positive (Slide/Tube Coagulase +)",
-        nextStep: "coag-pos-pathway"
+        nextStep: null,
+        conclusion: "Staphylococcus aureus",
+        tests: [
+          "Catalase positive Gram-positive cocci in clusters",
+          "Coagulase positive is the core bench and exam split for S. aureus",
+          "Supporting clues may include beta-hemolysis, DNase/nuclease positivity, and mannitol salt agar yellowing",
+          "If slide coagulase is negative but suspicion remains, confirm with tube coagulase"
+        ]
       },
       {
         text: "Negative (Slide/Tube Coagulase -)",
-        nextStep: "oxidase-bacitracin"
+        nextStep: "novobiocin-test",
+        tests: [
+          "Coagulase-negative staphylococci are usually separated first with clinical source and novobiocin susceptibility",
+          "Microdase, bacitracin, furazolidone, PYR, ODC, and alkaline phosphatase are secondary/species-level clues"
+        ]
       }
     ]
   },
@@ -210,15 +221,29 @@ export const gramPositiveRoadmap: RoadmapStep[] = [
   // Novobiocin Susceptibility (PYR Negative) (Table 14-6 and Table 14-7)
   {
     id: "novobiocin-test",
-    question: "Novobiocin Susceptibility Pattern:",
+    question: "Novobiocin Result:",
     options: [
       {
         text: "Resistant (≤16mm zone)",
-        nextStep: "novobiocin-resistant-pathway"
+        nextStep: null,
+        conclusion: "Staphylococcus saprophyticus",
+        tests: [
+          "Coagulase-negative staphylococcus",
+          "Novobiocin resistant is the core split for S. saprophyticus",
+          "Classically associated with uncomplicated UTI in young females",
+          "Urease may support the identification, but it is not the main roadmap branch"
+        ]
       },
       {
         text: "Sensitive (>16mm zone)",
-        nextStep: "novobiocin-sensitive-pathway"
+        nextStep: null,
+        conclusion: "Staphylococcus epidermidis",
+        tests: [
+          "Classic teaching endpoint for novobiocin-susceptible CoNS",
+          "Most routine coagulase-negative staphylococci are novobiocin susceptible",
+          "Interpret significance by source: blood/device cultures deserve more attention than likely skin contaminants",
+          "Species-level tests such as alkaline phosphatase, urease, PYR, ODC, or Microdase belong in expanded/reference workup"
+        ]
       }
     ]
   },
@@ -350,9 +375,9 @@ export const gramPositiveRoadmap: RoadmapStep[] = [
     id: "hemolysis-test",
     question: "Hemolysis Pattern:",
     options: [
-      { text: "Alpha (Greening Hemolysis)", nextStep: "vancomycin-alpha" },
+      { text: "Alpha (Greening Hemolysis)", nextStep: "standard-chains-pathway" },
       { text: "Beta (Clear/Complete Hemolysis)", nextStep: "beta-strep-colony" },
-      { text: "Gamma (Non-Hemolytic)", nextStep: "vancomycin-gamma" }
+      { text: "Gamma (Non-Hemolytic)", nextStep: "standard-chains-bile-esculin" }
     ]
   },
 
@@ -1609,4 +1634,3 @@ export const gramPositiveRoadmap: RoadmapStep[] = [
     ]
   }
 ];
-

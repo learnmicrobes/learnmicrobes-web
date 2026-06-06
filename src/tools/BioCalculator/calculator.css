@@ -1,5 +1,3 @@
-/* calculator.css - Enhanced Styles */
-/* ===== Base Improvements ===== */
 .bio-calculator {
   background-color: var(--light-color);
   color: var(--dark-color);
@@ -9,109 +7,199 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== Header Enhancements ===== */
 .bio-calculator header {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-strong));
-  color: white;
-  padding: 1.5rem 0;
+  width: min(1200px, calc(100% - 2rem));
+  margin: 1.25rem auto 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--dark-color);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 10px 10px;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
 .bio-calculator header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+  content: none;
 }
 
-.header-content {
-  max-width: 1200px;
+.bio-calculator .header-content {
+  max-width: none;
   margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 1;
+  padding: 0;
 }
 
-/* ===== Mode Selector Styles ===== */
+.bio-calculator header h1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: var(--dark-color);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.bio-calculator main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 1rem auto 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .mode-selector {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.65rem;
+  margin: 1rem 0;
+  padding: 0.35rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.035);
 }
 
 .mode-btn {
-  padding: 0.8rem 1.5rem;
-  border: none;
+  flex: 1 1 0;
+  justify-content: center;
+  min-height: 2.65rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid transparent;
   border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
+  background-color: transparent;
+  color: var(--primary-strong);
+  font-size: 0.9rem;
+  font-weight: 850;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background-color: var(--light-color);
-  color: var(--dark-color);
-  border: 1px solid var(--border-color);
-  background-color: #ffffff;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .mode-btn.active {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-  box-shadow: 0 8px 18px rgba(36, 92, 105, 0.16);
+  background: rgba(36, 92, 105, 0.08);
+  color: var(--primary-strong);
+  border-color: rgba(36, 92, 105, 0.16);
+  box-shadow: none;
 }
 
-/* ===== Test Section Enhancements ===== */
 .test-category {
   background: #ffffff;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 10px 26px rgba(28, 39, 51, 0.06);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
+  border: 1px solid rgba(36, 92, 105, 0.14);
 }
 
 
 .test-category h3 {
-  color: var(--primary-color);
+  color: var(--dark-color);
   margin-top: 0;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(36, 92, 105, 0.12);
+  border-bottom: 1px solid rgba(36, 92, 105, 0.12);
 }
 
-.test-group {
+.bio-calculator .test-group {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
 
-fieldset {
-  border: 1px solid var(--border-color);
+.bio-calculator fieldset {
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  padding: 0.72rem;
+  margin: 0;
+  background: #fbfaf7;
+  min-width: 0;
+}
+
+.bio-calculator legend {
+  font-weight: 800;
+  color: var(--dark-color);
+  padding: 0 0.5rem;
+  font-size: 0.84rem;
+}
+
+.test-instructions {
+  margin: 1rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
   border-radius: 8px;
-  padding: 0.8rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.035);
+}
+
+.test-instructions p {
+  margin: 0 0 0.45rem;
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.test-instructions ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.test-instructions li {
+  color: var(--muted-color);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.calculator-help-shell {
+  display: grid;
+  justify-items: center;
+  gap: 0.65rem;
+  margin: 0.9rem 0 1rem;
+}
+
+.calculator-help-toggle {
+  min-height: 2.2rem;
+  padding: 0.42rem 0.85rem !important;
+  border: 1px solid rgba(36, 92, 105, 0.16) !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  color: var(--primary-strong) !important;
+  font-size: 0.86rem !important;
+  font-weight: 850 !important;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.035);
+}
+
+.calculator-help-toggle:hover,
+.calculator-help-toggle:focus-visible {
+  background: #fbfaf7 !important;
+  border-color: rgba(36, 92, 105, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+.calculator-help-shell .test-instructions {
+  width: 100%;
   margin: 0;
 }
 
-legend {
-  font-weight: 600;
-  color: var(--dark-color); /* Dark text */
-  padding: 0 0.5rem;
-  font-size: 0.9rem;
+.test-choice-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(2.4rem, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.45rem;
 }
 
-.test-option {
-  display: inline-flex;
+.bio-calculator .test-option {
+  display: flex;
   align-items: center;
-  margin-right: 1rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -121,33 +209,50 @@ legend {
 }
 
 .test-btn {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.25rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 4px;
-  font-weight: 600;
-  margin-left: 0.3rem;
-  color: var(--dark-color); /* Use dark text color */
-  border: 1px solid var(--border-color);
+  font-weight: 850;
+  margin-left: 0;
+  color: var(--primary-strong);
+  border: 1px solid rgba(36, 92, 105, 0.16);
   background: #ffffff;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
 }
 
-
+.test-option:hover .test-btn,
+.test-option:focus-within .test-btn {
+  transform: translateY(-1px);
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.3);
+  box-shadow: 0 5px 12px rgba(15, 23, 42, 0.05);
+}
 
 .test-option input[type="radio"]:checked + .test-btn {
-  background: var(--surface-color);
-  border-color: var(--dark-color); /* Darker border when selected */
+  background: rgba(36, 92, 105, 0.08);
+  border-color: rgba(36, 92, 105, 0.4);
 }
 
 .test-option input[type="radio"]:checked + .test-btn.positive {
-  background-color: var(--success-color);
+  background-color: rgba(79, 143, 103, 0.16);
+  border-color: rgba(79, 143, 103, 0.5);
+  color: #2e6040;
 }
 
 .test-option input[type="radio"]:checked + .test-btn.negative {
-  background-color: var(--error-color);
+  background-color: rgba(182, 75, 54, 0.12);
+  border-color: rgba(182, 75, 54, 0.45);
+  color: #8a3729;
 }
 
 .test-option input[type="radio"]:checked + .test-btn.variable {
-  background-color: var(--accent-color);
+  background-color: rgba(200, 162, 77, 0.16);
+  border-color: rgba(200, 162, 77, 0.5);
+  color: #735515;
 }
 
 .educational-notes {
@@ -177,20 +282,20 @@ legend {
   gap: 1.5rem;
 }
 
-.test-group h5 {
+.bio-calculator .test-group h5 {
   font-size: 1rem;
   color: var(--primary-strong);
   margin: 0 0 0.5rem;
   font-weight: 600;
 }
 
-.test-group ul {
+.bio-calculator .test-group ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.test-group li {
+.bio-calculator .test-group li {
   padding: 0.6rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
@@ -286,19 +391,19 @@ legend {
   gap: 1.5rem;
 }
 
-.test-group h5 {
+.bio-calculator .test-group h5 {
   color: var(--secondary-color);
   margin: 0.5rem 0;
   font-size: 1rem;
 }
 
-.test-group ul {
+.bio-calculator .test-group ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.test-group li {
+.bio-calculator .test-group li {
   padding: 0.5rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
@@ -374,12 +479,12 @@ legend {
 
 .result-container {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 10px 26px rgba(28, 39, 51, 0.06);
-  border-left: 4px solid var(--primary-color);
-  font-size: 1rem; /* Uniform base font size */
-  line-height: 1.6; /* Better line spacing */
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  font-size: 1rem;
+  line-height: 1.6;
   min-width: 0;
   overflow-wrap: anywhere;
 }
@@ -404,16 +509,15 @@ legend {
   border-radius: 6px;
   margin: 1rem 0;
   font-size: 0.95rem;
-  border-left: 3px solid var(--error-color);
+  border: 1px solid rgba(182, 75, 54, 0.22);
 }
 
-/* ===== Quiz Mode Enhancements ===== */
 .quiz-container {
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 10px 26px rgba(28, 39, 51, 0.08);
-  border-left: 4px solid var(--accent-color);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(36, 92, 105, 0.14);
 }
 
 .quiz-question {
@@ -427,7 +531,7 @@ legend {
   margin-bottom: 1.5rem;
 }
 
-.test-results {
+.bio-calculator .test-results {
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem;
@@ -447,21 +551,44 @@ legend {
   display: flex;
   gap: 1rem;
   margin: 1.5rem 0;
-  justify-content: center; /* Center the buttons */
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* Make all quiz buttons consistent */
 .submit-btn, .hint-btn, .new-question-btn {
-  min-width: 150px; /* Give them consistent minimum width */
+  min-width: 150px;
   justify-content: center;
 }
 
+.submit-btn {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+.submit-btn:hover {
+  background: var(--primary-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08);
+}
+
+.hint-btn {
+  background: #ffffff;
+  color: var(--primary-strong);
+  border: 1px solid rgba(36, 92, 105, 0.16);
+}
+
+.hint-btn:hover {
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08);
+}
+
 .new-question-btn {
-  background: var(--accent-color);
-  color: white;
+  background: #ffffff;
+  color: var(--primary-strong);
   padding: 0.8rem 1.5rem;
-  border: none;
+  border: 1px solid rgba(36, 92, 105, 0.16);
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
@@ -470,61 +597,34 @@ legend {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0; /* Remove any previous margin */
+  margin-top: 0;
+}
+
+.new-question-btn:hover {
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08);
 }
 
 
-/* Base Styles */
-body {
+.bio-calculator {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
   background-color: var(--light-color);
   color: var(--dark-color);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
-header {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-strong));
-  color: white;
-  padding: 1.5rem 0;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-  font-weight: 700;
-}
-
-main {
-  flex: 1;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 20px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-section {
+.bio-calculator section {
   margin: 1.5rem 0;
   padding: 1.5rem;
   background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 10px 26px rgba(28, 39, 51, 0.06);
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
-h2 {
+.bio-calculator h2 {
   color: var(--primary-color);
   margin: 0 0 1.5rem;
   font-size: 1.5rem;
@@ -533,18 +633,17 @@ h2 {
   gap: 0.5rem;
 }
 
-h3 {
+.bio-calculator h3 {
   color: var(--primary-strong);
   margin: 1rem 0 0.5rem;
   font-size: 1.1rem;
-  border-bottom: 2px solid var(--light-color);
+  border-bottom: 1px solid rgba(36, 92, 105, 0.12);
   padding-bottom: 0.3rem;
 }
 
-/* Form Styles */
-form {
+.bio-calculator form {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns by default */
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   width: 100%;
 }
@@ -554,10 +653,10 @@ form {
 /* ===== Quiz Mode 2.0 Enhancements ===== */
 .quiz-container {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 14px 32px rgba(28, 39, 51, 0.08);
-  border-left: 6px solid var(--accent-color);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(36, 92, 105, 0.14);
 }
 
 .quiz-header {
@@ -574,13 +673,14 @@ form {
 }
 
 .quiz-streak {
-  background: linear-gradient(135deg, var(--accent-color), var(--accent-warm));
-  color: white;
+  background: #fbfaf7;
+  color: var(--primary-strong);
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 8px 18px rgba(200, 162, 77, 0.24);
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  box-shadow: none;
 }
 
 .quiz-options {
@@ -688,7 +788,7 @@ form {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.test-results {
+.bio-calculator .test-results {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -714,7 +814,7 @@ form {
 }
 
 
-label {
+.bio-calculator label {
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -724,12 +824,11 @@ label {
   transition: all 0.2s ease;
 }
 
-label:hover {
+.bio-calculator label:hover {
   color: var(--primary-color);
 }
 
-/* Custom Round Checkbox */
-input[type="checkbox"] {
+.bio-calculator input[type="checkbox"] {
   appearance: none;
   width: 22px;
   height: 22px;
@@ -740,16 +839,16 @@ input[type="checkbox"] {
   transition: all 0.2s ease;
 }
 
-input[type="checkbox"]:hover {
+.bio-calculator input[type="checkbox"]:hover {
   border-color: var(--secondary-color);
 }
 
-input[type="checkbox"]:checked {
+.bio-calculator input[type="checkbox"]:checked {
   background: var(--primary-color);
   border-color: var(--primary-color);
 }
 
-input[type="checkbox"]:checked::after {
+.bio-calculator input[type="checkbox"]:checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -769,7 +868,7 @@ input[type="checkbox"]:checked::after {
   margin-top: 1rem;
 }
 
-button {
+.bio-calculator button {
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 6px;
@@ -794,25 +893,49 @@ button {
 }
 
 .reset-btn {
-  background: var(--accent-color);
-  color: white;
+  background: #ffffff;
+  color: var(--primary-strong);
+  border: 1px solid rgba(36, 92, 105, 0.16);
 }
 
 .reset-btn:hover {
-  background: #b88d35;
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.3);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.export-btn {
+  background: #ffffff;
+  color: var(--primary-strong);
+  border: 1px solid rgba(36, 92, 105, 0.16);
+}
+
+.export-btn:hover {
+  background: #fbfaf7;
+  border-color: rgba(36, 92, 105, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
 /* ===== Responsive Improvements ===== */
 @media (max-width: 768px) {
-  .test-group {
+  .bio-calculator .test-group {
     grid-template-columns: 1fr;
   }
 
-  .test-option {
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+  .bio-calculator header h1 {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .test-choice-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .bio-calculator .test-option {
+    margin: 0;
+    padding: 0;
   }
   
   .test-btn {
@@ -835,7 +958,7 @@ button {
     margin: 1rem 0;
   }
 
-  .test-results {
+  .bio-calculator .test-results {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -849,5 +972,3 @@ button {
     padding: 1rem;
   }
 }
-
-

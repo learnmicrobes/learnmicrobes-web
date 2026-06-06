@@ -1,6 +1,34 @@
 .do-not-culture-page {
   width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
   color: var(--dark-color);
+}
+
+.do-not-culture-back-row {
+  margin: 0 0 0.85rem;
+}
+
+.do-not-culture-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0.36rem 0.72rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.do-not-culture-back:hover {
+  transform: translateX(-2px);
+  background: var(--surface-color);
+  border-color: rgba(36, 92, 105, 0.3);
 }
 
 .do-not-culture-hero {
@@ -84,11 +112,19 @@
   background: #ffffff;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
   text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .do-not-culture-rule > div {
   min-height: 132px;
   padding: 1rem;
+}
+
+.do-not-culture-rule > div:hover,
+.do-not-culture-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(36, 92, 105, 0.28);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
 }
 
 .do-not-culture-rule svg {
@@ -198,6 +234,15 @@
   width: 42px;
   height: 42px;
   flex: 0 0 auto;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.culture-open-link:hover,
+.culture-open-link:focus-visible {
+  transform: translateX(3px);
+  border-color: rgba(36, 92, 105, 0.34);
+  background: var(--surface-color);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
 }
 
 .culture-trigger {
@@ -275,7 +320,8 @@ body.dark-mode .do-not-culture-rule > div,
 body.dark-mode .do-not-culture-card,
 body.dark-mode .do-not-culture-filters button,
 body.dark-mode .culture-open-link,
-body.dark-mode .do-not-culture-footer button {
+body.dark-mode .do-not-culture-footer button,
+body.dark-mode .do-not-culture-back {
   background: #1f2937;
   border-color: #374151;
 }
@@ -307,6 +353,10 @@ body.dark-mode .culture-trigger {
 body.dark-mode .do-not-culture-filters button.active {
   background: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+body.dark-mode .do-not-culture-back {
+  color: #e2e8f0;
 }
 
 @media (max-width: 900px) {

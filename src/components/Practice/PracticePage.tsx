@@ -17,8 +17,14 @@ const practiceLinks = [
   },
   {
     label: 'Case Study Simulator',
-    detail: 'Future ASCP-style case practice placeholder.',
+    detail: 'ASCP-style clinical microbiology case practice — step through a specimen, observations, and differential.',
     path: '/case-study-simulator',
+    status: 'Planned'
+  },
+  {
+    label: 'Flashcards',
+    detail: 'Rapid-recall flashcard practice for organism ID, biochemical tests, and bench interpretation patterns.',
+    path: '/flashcards',
     status: 'Planned'
   }
 ];
@@ -30,20 +36,27 @@ export default function PracticePage() {
         <span className="practice-kicker">Practice</span>
         <h1 id="practice-title">Quiz and simulator practice</h1>
         <p>
-          Use this area for active recall, ASCP review loops, and future case-based microbiology practice.
+          Active recall tools for MLS students and ASCP review. Use the quiz and review hub now — case simulator and flashcards are in development.
         </p>
       </section>
 
       <section className="practice-grid" aria-label="Practice options">
-        {practiceLinks.map((item) => (
-          <Link className="practice-card" to={item.path} key={item.path}>
-            <span>{item.status}</span>
-            <h2>{item.label}</h2>
-            <p>{item.detail}</p>
-          </Link>
-        ))}
+        {practiceLinks.map((item) =>
+          item.status === 'Active' ? (
+            <Link className="practice-card" to={item.path} key={item.path}>
+              <span className="practice-card-badge practice-card-badge--active">{item.status}</span>
+              <h2>{item.label}</h2>
+              <p>{item.detail}</p>
+            </Link>
+          ) : (
+            <div className="practice-card practice-card--planned" key={item.path} aria-disabled="true">
+              <span className="practice-card-badge practice-card-badge--planned">Coming Soon</span>
+              <h2>{item.label}</h2>
+              <p>{item.detail}</p>
+            </div>
+          )
+        )}
       </section>
     </main>
   );
 }
-

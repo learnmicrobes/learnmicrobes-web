@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
-import { atlasPages } from '../../components/VisualAtlas/VisualAtlas';
+import { atlasPages, MiniAtlasVisual } from '../../components/VisualAtlas/VisualAtlas';
 import AlphaValidationCTA from '../../components/AlphaValidationCTA/AlphaValidationCTA';
 import { biochemicalTestsData, BiochemicalTest } from './biochemicalData';
 import './BiochemicalTests.css';
@@ -9,11 +9,13 @@ import './BiochemicalTests.css';
 const BiochemicalTests: React.FC = () => {
   const [selectedTest, setSelectedTest] = useState<BiochemicalTest | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isVisualCompanionOpen, setIsVisualCompanionOpen] = useState(false);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const selectTest = (test: BiochemicalTest | null) => {
     setSelectedTest(test);
+    setIsVisualCompanionOpen(false);
 
     if (test) {
       setSearchParams({ test: test.id });
@@ -57,6 +59,7 @@ const BiochemicalTests: React.FC = () => {
     <ToolBox
       title="Biochemical Tests Reference"
       icon="TEST"
+      className="biochemical-tool-box"
       onClose={() => navigate('/')}
       showBackButton={selectedTest !== null}
       onBack={() => selectTest(null)}
@@ -139,14 +142,30 @@ const BiochemicalTests: React.FC = () => {
                     <button
                       type="button"
                       className="test-visual-link"
-                      onClick={() => navigate(`/visuals/${matchingVisual.slug}`)}
+                      onClick={() => setIsVisualCompanionOpen((open) => !open)}
+                      aria-expanded={isVisualCompanionOpen}
+                      aria-controls="test-inline-visual"
                     >
-                      Open visual bench card
+                      {isVisualCompanionOpen ? 'Hide visual bench card' : 'Open visual bench card'}
                     </button>
                   </div>
                 );
               })()}
             </div>
+
+            {(() => {
+              const matchingVisual = atlasPages.find((page) => page.biochemicalTestId === selectedTest.id);
+
+              if (!matchingVisual || !isVisualCompanionOpen) {
+                return null;
+              }
+
+              return (
+                <section className="test-inline-visual" id="test-inline-visual" aria-label={`${matchingVisual.title} visual companion`}>
+                  <MiniAtlasVisual page={matchingVisual} showFullLink={false} />
+                </section>
+              );
+            })()}
             
             <div className="test-content">
               <div className="content-section">

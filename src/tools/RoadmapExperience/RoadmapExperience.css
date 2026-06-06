@@ -230,6 +230,10 @@
   overflow: hidden;
 }
 
+.roadmap-search-box.expanded {
+  width: 100%;
+}
+
 .roadmap-search-box.collapsed {
   display: flex;
   justify-content: center;
@@ -257,12 +261,41 @@
   transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
+.roadmap-guidance-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.9rem;
+  padding: 0.28rem 0.58rem;
+  border: 1px solid rgba(36, 120, 115, 0.16);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--roadmap-accent);
+  font-size: 0.74rem;
+  font-weight: 850;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.roadmap-search-box.expanded .roadmap-search-trigger {
+  display: flex;
+  margin: 0.75rem auto;
+}
+
 .roadmap-search-trigger:hover,
 .roadmap-search-trigger:focus-visible {
   transform: translateY(-1px);
   border-color: rgba(36, 120, 115, 0.32);
   background: #f1f8f6;
   box-shadow: 0 10px 22px rgba(36, 120, 115, 0.09);
+}
+
+.roadmap-guidance-trigger:hover,
+.roadmap-guidance-trigger:focus-visible {
+  border-color: rgba(36, 120, 115, 0.34);
+  background: rgba(36, 120, 115, 0.06);
+  color: var(--roadmap-dark, var(--dark-color));
 }
 
 .roadmap-container.roadmap-experience > .alpha-validation-cta {
@@ -418,15 +451,15 @@
 .roadmap-guidance-panel {
   display: grid;
   gap: 0.38rem;
-  margin: 0.95rem 0 0;
-  padding: 0.85rem 0.95rem;
-  border: 1px solid rgba(196, 151, 55, 0.22);
-  border-left: 4px solid #c49737;
+  margin-top: 0.55rem;
+  padding: 0.68rem 0.78rem;
+  border: 1px solid rgba(36, 120, 115, 0.18);
+  border-left: 3px solid var(--roadmap-accent);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(196, 151, 55, 0.12), rgba(255, 255, 255, 0) 52%),
-    #fffaf0;
-  box-shadow: 0 8px 20px rgba(111, 78, 20, 0.06);
+    linear-gradient(135deg, rgba(36, 120, 115, 0.08), rgba(255, 255, 255, 0) 52%),
+    #fbfaf7;
+  box-shadow: 0 5px 14px rgba(28, 39, 51, 0.035);
 }
 
 .roadmap-guidance-panel p {
@@ -440,15 +473,72 @@
   color: var(--roadmap-dark, var(--dark-color));
 }
 
+.roadmap-shortlist-panel {
+  max-width: 860px;
+  width: 100%;
+  margin-top: 0.55rem;
+  padding: 0.68rem 0.78rem;
+  border: 1px solid rgba(36, 120, 115, 0.14);
+  border-radius: 8px;
+  background: rgba(251, 250, 247, 0.78);
+  box-shadow: 0 5px 14px rgba(28, 39, 51, 0.03);
+}
+
+.roadmap-shortlist-groups {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.roadmap-shortlist-group {
+  display: grid;
+  gap: 0.28rem;
+}
+
+.roadmap-shortlist-group strong {
+  color: var(--roadmap-dark, var(--dark-color));
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.roadmap-shortlist-group div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.32rem;
+}
+
+.roadmap-shortlist-group span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid rgba(36, 120, 115, 0.14);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--muted-color);
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
 .roadmap-experience .current-question {
   margin: 0.2rem 0 0.75rem;
+}
+
+.roadmap-question-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 860px;
+  width: 100%;
 }
 
 .roadmap-experience.positive-roadmap .current-question h3,
 .roadmap-experience.negative-roadmap .current-question h3,
 .roadmap-experience.anaerobe-roadmap .current-question h3 {
   max-width: 860px;
-  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
   background: transparent;
   border: 0;
   box-shadow: none;
@@ -840,6 +930,7 @@ body.dark-mode .roadmap-step-pill,
 body.dark-mode .roadmap-settings-trigger,
 body.dark-mode .roadmap-settings-drawer,
 body.dark-mode .roadmap-search-box,
+body.dark-mode .roadmap-guidance-trigger,
 body.dark-mode .roadmap-search-input-row input,
 body.dark-mode .roadmap-search-result,
 body.dark-mode .roadmap-experience .endpoint-summary-card,
@@ -859,19 +950,33 @@ body.dark-mode .roadmap-hotkey-toggle {
 
 body.dark-mode .roadmap-guidance-panel {
   background:
-    linear-gradient(135deg, rgba(214, 171, 80, 0.12), rgba(30, 37, 50, 0) 52%),
+    linear-gradient(135deg, rgba(79, 209, 197, 0.08), rgba(30, 37, 50, 0) 52%),
     #1e2532;
-  border-color: rgba(214, 171, 80, 0.28);
-  border-left-color: #d6ab50;
+  border-color: rgba(79, 209, 197, 0.2);
+  border-left-color: var(--roadmap-accent);
+}
+
+body.dark-mode .roadmap-shortlist-panel {
+  background: rgba(30, 37, 50, 0.82);
+  border-color: rgba(79, 209, 197, 0.16);
 }
 
 body.dark-mode .roadmap-search-input-row input,
 body.dark-mode .roadmap-search-result,
-body.dark-mode .roadmap-search-result strong {
+body.dark-mode .roadmap-search-result strong,
+body.dark-mode .roadmap-shortlist-group strong {
   color: #f9fafb;
 }
 
+body.dark-mode .roadmap-shortlist-group span {
+  background: #1b2733;
+  border-color: rgba(79, 209, 197, 0.14);
+  color: #cbd5df;
+}
+
 body.dark-mode .roadmap-search-input-row button,
+body.dark-mode .roadmap-guidance-trigger:hover,
+body.dark-mode .roadmap-guidance-trigger:focus-visible,
 body.dark-mode .roadmap-search-trigger:hover,
 body.dark-mode .roadmap-search-trigger:focus-visible {
   background: #171d28;
@@ -889,6 +994,11 @@ body.dark-mode .roadmap-search-trigger {
   border-color: #2d3748;
   color: #5eead4;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+body.dark-mode .roadmap-guidance-trigger {
+  color: #5eead4;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 body.dark-mode .roadmap-search-trigger:hover,
@@ -1033,6 +1143,12 @@ body.dark-mode .roadmap-container.roadmap-experience > .alpha-validation-cta p {
   .roadmap-experience.negative-roadmap .current-question h3,
   .roadmap-experience.anaerobe-roadmap .current-question h3 {
     font-size: 1.2rem;
+  }
+
+  .roadmap-question-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.45rem;
   }
 
   .roadmap-experience .binary-layout,

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
 import { useAuth } from './context/AuthContext';
@@ -10,6 +10,7 @@ import { learnTopics } from './data/learnTopics';
 import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import SEO from './components/SEO/SEO';
+import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import './App.css';
 
 type DashboardSearchItem = {
@@ -28,9 +29,18 @@ type DailyRiddleChoice = {
   correct: boolean;
 };
 
+type DailyMicrobeRiddle = {
+  id: string;
+  prompt: string;
+  answerPath: string;
+  explanation: string;
+  choices: DailyRiddleChoice[];
+};
+
 type DailyRiddleResult = {
   selectedId: string;
   completedDate: string;
+  riddleId: string;
 };
 
 const normalizeDashboardSearchText = (value: string) => (
@@ -45,11 +55,16 @@ const getLocalDateStamp = () => {
   return `${year}-${month}-${day}`;
 };
 
-const getDailyRiddleStorageKey = () => `learnmicrobes_daily_riddle_${getLocalDateStamp()}`;
+const getDateDayNumber = (dateStamp: string) => {
+  const [year, month, day] = dateStamp.split('-').map(Number);
+  return Math.floor(Date.UTC(year, month - 1, day) / 86_400_000);
+};
 
-const readDailyRiddleResult = (): DailyRiddleResult | null => {
+const getDailyRiddleStorageKey = (riddleId: string) => `learnmicrobes_daily_riddle_${getLocalDateStamp()}_${riddleId}`;
+
+const readDailyRiddleResult = (riddleId: string): DailyRiddleResult | null => {
   try {
-    const savedResult = localStorage.getItem(getDailyRiddleStorageKey());
+    const savedResult = localStorage.getItem(getDailyRiddleStorageKey(riddleId));
 
     if (!savedResult) {
       return null;
@@ -63,23 +78,101 @@ const readDailyRiddleResult = (): DailyRiddleResult | null => {
 
     return {
       selectedId: parsedResult.selectedId,
-      completedDate: parsedResult.completedDate
+      completedDate: parsedResult.completedDate,
+      riddleId
     };
   } catch (error) {
     return null;
   }
 };
 
-const dailyMicrobeRiddle = {
-  prompt: 'I am a Gram-positive coccus, catalase-negative, alpha-hemolytic, optochin susceptible, and bile soluble. Who am I?',
-  answerPath: '/learn/streptococcus-enterococcus',
-  explanation: 'Optochin susceptibility plus bile solubility points to Streptococcus pneumoniae among alpha-hemolytic streptococci.',
-  choices: [
-    { id: 'a', label: 'A) Streptococcus pneumoniae', correct: true },
-    { id: 'b', label: 'B) Streptococcus agalactiae', correct: false },
-    { id: 'c', label: 'C) Enterococcus faecalis', correct: false }
-  ] satisfies DailyRiddleChoice[]
+const dailyMicrobeRiddles: DailyMicrobeRiddle[] = [
+  {
+    id: 'pneumococcus-optochin-bile',
+    prompt: 'I am a Gram-positive coccus, catalase-negative, alpha-hemolytic, optochin susceptible, and bile soluble. Who am I?',
+    answerPath: '/learn/streptococcus-enterococcus',
+    explanation: 'Optochin susceptibility plus bile solubility points to Streptococcus pneumoniae among alpha-hemolytic streptococci.',
+    choices: [
+      { id: 'a', label: 'A) Streptococcus pneumoniae', correct: true },
+      { id: 'b', label: 'B) Streptococcus agalactiae', correct: false },
+      { id: 'c', label: 'C) Enterococcus faecalis', correct: false }
+    ]
+  },
+  {
+    id: 'staph-aureus-coagulase',
+    prompt: 'I am a Gram-positive coccus in clusters, catalase-positive, coagulase-positive, and often golden on culture. Who am I?',
+    answerPath: '/learn/staphylococcus-micrococcus',
+    explanation: 'Coagulase positivity is the classic bench split that separates Staphylococcus aureus from most other staphylococci.',
+    choices: [
+      { id: 'a', label: 'A) Staphylococcus epidermidis', correct: false },
+      { id: 'b', label: 'B) Staphylococcus aureus', correct: true },
+      { id: 'c', label: 'C) Micrococcus luteus', correct: false }
+    ]
+  },
+  {
+    id: 'enterobacterales-lactose-oxidase',
+    prompt: 'I am a Gram-negative rod, oxidase-negative, ferment glucose, and usually grow well on MacConkey agar. Which group do I fit best?',
+    answerPath: '/learn/enterobacterales',
+    explanation: 'Oxidase-negative glucose-fermenting Gram-negative rods that grow on MacConkey point toward Enterobacterales.',
+    choices: [
+      { id: 'a', label: 'A) Enterobacterales', correct: true },
+      { id: 'b', label: 'B) Neisseria species', correct: false },
+      { id: 'c', label: 'C) Pseudomonas aeruginosa', correct: false }
+    ]
+  },
+  {
+    id: 'neisseria-oxidase-diplococci',
+    prompt: 'I am an oxidase-positive Gram-negative diplococcus; chocolate agar and CO2 make me happier than MacConkey. Which guide should you review?',
+    answerPath: '/learn/neisseria-moraxella',
+    explanation: 'Oxidase-positive Gram-negative diplococci with enriched media needs fit the Neisseria and Moraxella bench pattern.',
+    choices: [
+      { id: 'a', label: 'A) Enterobacterales', correct: false },
+      { id: 'b', label: 'B) Neisseria and Moraxella', correct: true },
+      { id: 'c', label: 'C) Anaerobic bacteria', correct: false }
+    ]
+  },
+  {
+    id: 'yeast-germ-tube',
+    prompt: 'I am a yeast that can make germ tubes quickly in serum and is a common cause of mucosal candidiasis. Who am I?',
+    answerPath: '/learn/yeasts',
+    explanation: 'A rapid germ tube-positive yeast pattern supports Candida albicans or Candida dubliniensis, with Candida albicans as the classic teaching answer.',
+    choices: [
+      { id: 'a', label: 'A) Cryptococcus neoformans', correct: false },
+      { id: 'b', label: 'B) Candida albicans', correct: true },
+      { id: 'c', label: 'C) Trichosporon asahii', correct: false }
+    ]
+  },
+  {
+    id: 'mycobacteria-acid-fast',
+    prompt: 'My waxy cell wall helps me resist routine Gram stain interpretation, but acid-fast staining brings me into focus. Which group am I?',
+    answerPath: '/learn/mycobacteria-actinomycetes',
+    explanation: 'Mycolic acid-rich cell walls and acid-fast staining are core clues for mycobacteria and related aerobic actinomycetes.',
+    choices: [
+      { id: 'a', label: 'A) Mycobacteria and aerobic actinomycetes', correct: true },
+      { id: 'b', label: 'B) Streptococcus and Enterococcus', correct: false },
+      { id: 'c', label: 'C) Enterobacterales', correct: false }
+    ]
+  },
+  {
+    id: 'bacillus-spore-forming',
+    prompt: 'I am a large Gram-positive rod that can form spores, grow aerobically, and may require safety-aware workup depending on the isolate. Which overview fits?',
+    answerPath: '/learn/gram-positive-bacilli-overview',
+    explanation: 'Large aerobic spore-forming Gram-positive rods fit the Bacillus-style branch within the Gram-positive bacilli overview.',
+    choices: [
+      { id: 'a', label: 'A) Curved water-associated Gram-negative rods', correct: false },
+      { id: 'b', label: 'B) Gram-positive bacilli overview', correct: true },
+      { id: 'c', label: 'C) Yeasts', correct: false }
+    ]
+  }
+];
+
+const getDailyMicrobeRiddle = () => {
+  const dayNumber = getDateDayNumber(getLocalDateStamp());
+  const riddleIndex = Math.abs(dayNumber) % dailyMicrobeRiddles.length;
+  return dailyMicrobeRiddles[riddleIndex];
 };
+
+const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replace(/^[A-Z]\)\s*/, '') ?? 'the correct guide';
 
 export default function App() {
   const location = useLocation();
@@ -89,6 +182,13 @@ export default function App() {
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+  const [isHomeScreenHintDismissed, setIsHomeScreenHintDismissed] = useState(
+    () => localStorage.getItem('learnmicrobes_home_screen_hint_dismissed') === 'true'
+  );
+  const [showDepthNudge, setShowDepthNudge] = useState(false);
+  const [isNudgeDismissed, setIsNudgeDismissed] = useState(
+    () => sessionStorage.getItem('lm_nudge_dismissed') === 'true'
+  );
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
@@ -106,6 +206,48 @@ export default function App() {
       document.body.classList.remove('dark-mode');
     }
   }, [isDarkMode]);
+
+  useEffect(() => {
+    if (user || isNudgeDismissed) {
+      return;
+    }
+
+    const highIntentPaths = [
+      '/visuals',
+      '/study-quiz',
+      '/practice',
+      '/tools',
+      '/gram-positive-roadmap',
+      '/gram-negative-roadmap',
+      '/obligate-anaerobe-roadmap',
+      '/unknown-isolate-workup',
+      '/biochemical-calculator',
+      '/case-study-simulator',
+      '/do-not-routine-culture',
+      '/special-pathogens'
+    ];
+    const isHighIntentPath = highIntentPaths.some((path) => (
+      location.pathname === path || location.pathname.startsWith(`${path}/`)
+    ));
+
+    if (!isHighIntentPath) {
+      setShowDepthNudge(false);
+      return;
+    }
+
+    const raw = sessionStorage.getItem('lm_page_count') ?? '0';
+    const count = parseInt(raw, 10) + 1;
+    sessionStorage.setItem('lm_page_count', String(count));
+
+    if (count >= 6) {
+      setShowDepthNudge(true);
+    }
+  }, [location.pathname, isNudgeDismissed, user]);
+
+  const dismissHomeScreenHint = () => {
+    localStorage.setItem('learnmicrobes_home_screen_hint_dismissed', 'true');
+    setIsHomeScreenHintDismissed(true);
+  };
 
   const handleToolChange = (tool: string | null) => {
     if (!tool) {
@@ -172,6 +314,8 @@ export default function App() {
                       ? 'ASCP Microbiology Review'
                       : location.pathname.includes('case-study-simulator')
                         ? 'Case Study Simulator'
+                      : location.pathname.includes('flashcards')
+                        ? 'Flashcards'
                       : location.pathname.includes('practice')
                         ? 'Practice'
                       : location.pathname.includes('study-quiz')
@@ -188,13 +332,25 @@ export default function App() {
                                 ? 'Search'
                                 : location.pathname.includes('account')
                                   ? 'Account'
-                                  : location.pathname.includes('auth')
+                                  : location.pathname.includes('auth') || location.pathname.includes('login')
                                     ? 'Sign In'
-                                    : location.pathname.includes('join-alpha')
-                                      ? 'Join Beta'
-                                      : location.pathname.includes('about')
+                                    : location.pathname.includes('register')
+                                      ? 'Create Account'
+                                      : location.pathname.includes('join-alpha')
+                                        ? 'Join Beta'
+                                        : location.pathname.includes('about')
                                         ? 'About'
-                                        : null;
+                                        : location.pathname.includes('mission')
+                                          ? 'Mission'
+                                          : location.pathname.includes('faq')
+                                            ? 'FAQ'
+                                            : location.pathname.includes('disclaimer')
+                                              ? 'Disclaimer'
+                                              : location.pathname.includes('terms')
+                                                ? 'Terms of Use'
+                                                : location.pathname.includes('privacy')
+                                                  ? 'Privacy Policy'
+                                                  : null;
 
   const isHomeRoute = location.pathname === '/';
 
@@ -203,37 +359,37 @@ export default function App() {
       label: 'Learn from scratch',
       detail: 'Start with the beginner microbiology path.',
       path: '/learn/clinical-microbiology',
-      code: '01'
+      icon: faGraduationCap
     },
     {
       label: 'Identify an unknown',
       detail: 'Use Gram stain, colony clues, and branch tests.',
       path: '/unknown-isolate-workup',
-      code: 'ID'
+      icon: faMicroscope
     },
     {
       label: 'Review biochemical tests',
       detail: 'Look up reactions, QC, and interpretation traps.',
       path: '/biochemical-tests',
-      code: 'TEST'
+      icon: faFlask
     },
     {
       label: 'Study for M(ASCP) / SM(ASCP)',
       detail: 'Start an ASCP microbiology review loop with paths, quizzes, visuals, and bench tests.',
       path: '/ascp-microbiology-review',
-      code: 'M/SM'
+      icon: faBook
     },
     {
       label: 'Look up a visual',
       detail: 'Browse original bench cards and reaction visuals.',
       path: '/visuals',
-      code: 'VIS'
+      icon: faImages
     },
     {
       label: 'Practice questions',
       detail: 'Check recall with bench and exam-style prompts.',
       path: '/practice',
-      code: 'Q'
+      icon: faClipboardList
     }
   ]), []);
 
@@ -283,7 +439,8 @@ export default function App() {
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
   const [isDashboardSearchOpen, setIsDashboardSearchOpen] = useState(false);
   const [selectedDashboardSearchIndex, setSelectedDashboardSearchIndex] = useState(0);
-  const [dailyRiddleResult, setDailyRiddleResult] = useState<DailyRiddleResult | null>(() => readDailyRiddleResult());
+  const dailyMicrobeRiddle = useMemo(() => getDailyMicrobeRiddle(), []);
+  const [dailyRiddleResult, setDailyRiddleResult] = useState<DailyRiddleResult | null>(() => readDailyRiddleResult(dailyMicrobeRiddle.id));
   const dashboardSearchRef = useRef<HTMLDivElement | null>(null);
 
   const dashboardSearchIndex = useMemo<DashboardSearchItem[]>(() => {
@@ -407,7 +564,7 @@ export default function App() {
         category: getRouteCategory(action.path),
         snippet: action.detail,
         path: action.path,
-        keywords: `${action.label} ${action.detail} ${action.code}`,
+        keywords: `${action.label} ${action.detail}`,
         priority: action.path === '/ascp-microbiology-review' ? 9 : 6
       })),
       ...homeSecondaryLinks.map((link, index) => ({
@@ -435,6 +592,15 @@ export default function App() {
         snippet: 'Future ASCP-style clinical microbiology case practice placeholder.',
         path: '/case-study-simulator',
         keywords: 'case study simulator ascp microbiology practice clinical scenario',
+        priority: 7
+      },
+      {
+        id: 'flashcards',
+        title: 'Flashcards',
+        category: 'Tool',
+        snippet: 'Future rapid-recall microbiology flashcard practice placeholder.',
+        path: '/flashcards',
+        keywords: 'flashcards microbiology ascp review organism identification biochemical tests',
         priority: 7
       },
       {
@@ -549,13 +715,14 @@ export default function App() {
 
     const result: DailyRiddleResult = {
       selectedId: choiceId,
-      completedDate: getLocalDateStamp()
+      completedDate: getLocalDateStamp(),
+      riddleId: dailyMicrobeRiddle.id
     };
 
     setDailyRiddleResult(result);
 
     try {
-      localStorage.setItem(getDailyRiddleStorageKey(), JSON.stringify(result));
+      localStorage.setItem(getDailyRiddleStorageKey(dailyMicrobeRiddle.id), JSON.stringify(result));
     } catch (error) {
       // The riddle still works for the current session if storage is unavailable.
     }
@@ -680,7 +847,7 @@ export default function App() {
 
   const seoMetadata = useMemo(() => {
     const path = location.pathname;
-    const baseTitle = 'Learn Microbes - Clinical Bench Reference';
+    const baseTitle = 'Learn Microbes - Clinical Microbiology & ASCP Review';
     const baseDescription = 'Clinical microbiology study tools for MLS students, ASCP microbiology review, bench workflows, organism ID, biochemical tests, visual cards, and quiz practice.';
     const learnSlug = path.match(/^\/learn\/([^/]+)$/)?.[1];
     const visualSlug = path.match(/^\/visuals\/([^/]+)$/)?.[1];
@@ -747,6 +914,30 @@ export default function App() {
         title: baseTitle,
         description: baseDescription
       },
+      '/about': {
+        title: 'About Learn Microbes | Clinical Microbiology Study Platform',
+        description: 'Learn about the Learn Microbes clinical microbiology study platform, mission, study tools, organism ID roadmaps, visual reactions, and beta product direction.'
+      },
+      '/mission': {
+        title: 'Mission and Vision | Learn Microbes',
+        description: 'Learn Microbes mission and vision for practical clinical microbiology learning, bench logic, visual reactions, saved progress, and study workflows.'
+      },
+      '/faq': {
+        title: 'FAQ | Learn Microbes',
+        description: 'Frequently asked questions about Learn Microbes accounts, ASCP review, beta tools, usernames, saved progress, and clinical microbiology study content.'
+      },
+      '/disclaimer': {
+        title: 'Disclaimer | Learn Microbes',
+        description: 'Learn Microbes educational disclaimer for clinical microbiology review, ASCP study support, certification requirements, and clinical decision limits.'
+      },
+      '/terms': {
+        title: 'Terms of Use | Learn Microbes',
+        description: 'Plain-language Learn Microbes terms of use for beta clinical microbiology study tools, educational content, and acceptable platform use.'
+      },
+      '/privacy': {
+        title: 'Privacy Policy | Learn Microbes',
+        description: 'Learn how Learn Microbes uses account data, Supabase authentication, saved bookmarks, Learn progress, quiz history, and feedback during beta.'
+      },
       '/ascp-microbiology-review': {
         title: 'ASCP Microbiology Review | M(ASCP) Study Hub | Learn Microbes',
         description: 'ASCP microbiology review hub for MLS students and M(ASCP) prep: study paths, clinical microbiology quizzes, biochemical tests, organism ID workflows, safety traps, and visual bench cards.'
@@ -766,6 +957,10 @@ export default function App() {
       '/case-study-simulator': {
         title: 'Case Study Simulator | ASCP Microbiology Practice | Learn Microbes',
         description: 'Planned Learn Microbes case study simulator for ASCP-style clinical microbiology practice and scenario-based review.'
+      },
+      '/flashcards': {
+        title: 'Clinical Microbiology Flashcards | ASCP Review | Learn Microbes',
+        description: 'Planned Learn Microbes flashcards for clinical microbiology rapid recall, ASCP review, organism identification, biochemical tests, and bench interpretation patterns.'
       },
       '/learn': {
         title: 'Clinical Microbiology Learn Hub | MLS and ASCP Review | Learn Microbes',
@@ -798,6 +993,16 @@ export default function App() {
       '/auth': {
         title: 'Sign In | Learn Microbes',
         description: 'Sign in to save clinical microbiology progress, bookmarks, quiz history, and your Learn Microbes study profile.',
+        noIndex: true
+      },
+      '/login': {
+        title: 'Sign In | Learn Microbes',
+        description: 'Sign in to save clinical microbiology progress, bookmarks, quiz history, and your Learn Microbes study profile.',
+        noIndex: true
+      },
+      '/register': {
+        title: 'Create Account | Learn Microbes',
+        description: 'Create a Learn Microbes account to save clinical microbiology progress, bookmarks, quiz history, and your study profile.',
         noIndex: true
       },
       '/account': {
@@ -835,7 +1040,7 @@ export default function App() {
           {!isMobile && (
             <span className="nav-brand-text">
               <span className="nav-brand-name">Learn Microbes</span>
-              <span className="nav-brand-tagline">Clinical Bench Reference</span>
+              <span className="nav-brand-tagline">Clinical Microbiology &amp; ASCP Review</span>
             </span>
           )}
         </div>
@@ -872,7 +1077,7 @@ export default function App() {
                   setIsNavMenuOpen(false);
                   setIsAccountMenuOpen(false);
                   setIsToolsOpen(false);
-                  navigate('/auth');
+                  navigate('/login');
                 }}
                 aria-label="Sign in"
                 title="Sign in"
@@ -962,7 +1167,7 @@ export default function App() {
               )}
             </div>
             <button
-              className={activeTool === 'Practice' || activeTool === 'Study Quiz' || activeTool === 'ASCP Microbiology Review' || activeTool === 'Case Study Simulator' || activeTool === 'Certification Study Paths' ? 'active' : ''}
+              className={activeTool === 'Practice' || activeTool === 'Study Quiz' || activeTool === 'ASCP Microbiology Review' || activeTool === 'Case Study Simulator' || activeTool === 'Flashcards' || activeTool === 'Certification Study Paths' ? 'active' : ''}
               onClick={() => {
                 closeMobileNavigation();
                 navigate('/practice');
@@ -1044,18 +1249,20 @@ export default function App() {
                 )}
               </div>
             ) : (
-              <button
-                className="nav-signin-btn"
-                onClick={() => {
-                  setIsAccountMenuOpen(false);
-                  setIsToolsOpen(false);
-                  setIsNavMenuOpen(false);
-                  navigate('/auth');
-                }}
-              >
-                <FontAwesomeIcon icon={faRightToBracket} />
-                <span className="nav-text">Sign in</span>
-              </button>
+              <div className="nav-links-auth-guest">
+                <button
+                  className="nav-signin-btn"
+                  onClick={() => {
+                    setIsAccountMenuOpen(false);
+                    setIsToolsOpen(false);
+                    setIsNavMenuOpen(false);
+                    navigate('/login');
+                  }}
+                >
+                  <FontAwesomeIcon icon={faRightToBracket} />
+                  <span className="nav-text">Sign in</span>
+                </button>
+              </div>
             )}
           </div>
         </div>
@@ -1073,7 +1280,7 @@ export default function App() {
                 />
               </picture>
               <div className="dashboard-cover-content">
-                <span className="dashboard-kicker">Clinical bench reference</span>
+                <span className="dashboard-kicker">Clinical microbiology &amp; ASCP review</span>
                 <h1 id="dashboard-title">Learn Microbes</h1>
                 <p>
                   Visual bench cards, study paths, and practical microbiology tools for MLS students, ASCP review, and new clinical bench learners.
@@ -1131,29 +1338,39 @@ export default function App() {
               </div>
             </section>
 
+            {isMobile && !isHomeScreenHintDismissed && (
+              <section className="dashboard-home-screen-hint" aria-label="Add Learn Microbes to your phone">
+                <div>
+                  <span className="dashboard-kicker">Mobile study shortcut</span>
+                  <h2>Save Learn Microbes to your phone.</h2>
+                  <p>
+                    Open it like an app from your Home Screen. On iPhone Safari, tap Share then Add to Home Screen. On Android Chrome, tap the menu then Add to Home screen or Install app.
+                  </p>
+                </div>
+                <button type="button" onClick={dismissHomeScreenHint} aria-label="Dismiss Add to Home Screen hint">
+                  Dismiss
+                </button>
+              </section>
+            )}
+
             <section className="dashboard-intro" aria-label="Study task chooser">
               <span className="dashboard-kicker">What are you trying to do?</span>
               <p>Choose the closest study task and jump straight to the Learn page, bench card, roadmap, or practice tool that fits.</p>
             </section>
 
             <section className="dashboard-action-grid" aria-label="Primary study tasks">
-              {dashboardActions.map((action) => {
-                const isAscpAction = action.path === '/ascp-microbiology-review';
-
-                return (
-                  <button
-                    type="button"
-                    key={action.label}
-                    className={`dashboard-action-card ${isAscpAction ? 'ascp-high-yield' : ''}`}
-                    onClick={() => handleHomeToolCardClick(action.label, action.path)}
-                  >
-                    {isAscpAction && <span className="dashboard-action-ribbon">High yield</span>}
-                    <span className="dashboard-action-code">{action.code}</span>
-                    <strong>{action.label}</strong>
-                    <small>{action.detail}</small>
-                  </button>
-                );
-              })}
+              {dashboardActions.map((action) => (
+                <button
+                  type="button"
+                  key={action.label}
+                  className="dashboard-action-card"
+                  onClick={() => handleHomeToolCardClick(action.label, action.path)}
+                >
+                  <span className="dashboard-action-code"><FontAwesomeIcon icon={action.icon} /></span>
+                  <strong>{action.label}</strong>
+                  <small>{action.detail}</small>
+                </button>
+              ))}
             </section>
 
             <section className="dashboard-lower-grid" aria-label="Start path, daily riddle, and featured bench card">
@@ -1204,7 +1421,7 @@ export default function App() {
                     <p>
                       {isDailyRiddleCorrect
                         ? dailyMicrobeRiddle.explanation
-                        : `Correct choice: ${correctRiddleChoice?.label.replace(/^A\)\s*/, '') ?? 'Streptococcus pneumoniae'}. ${dailyMicrobeRiddle.explanation}`}
+                        : `Correct choice: ${getRiddleChoiceName(correctRiddleChoice)}. ${dailyMicrobeRiddle.explanation}`}
                     </p>
                     <button type="button" onClick={() => navigate(dailyMicrobeRiddle.answerPath)}>
                       {isDailyRiddleCorrect ? 'Read full guide' : 'Review guide'}
@@ -1233,6 +1450,8 @@ export default function App() {
                 ))}
               </div>
             </section>
+
+            <StudentTestimonials />
 
             <AlphaValidationCTA
               location="homepage_dashboard"
@@ -1267,11 +1486,18 @@ export default function App() {
           </div>
           <div className="sleek-footer-bottom">
             <span className="sleek-footer-legal">
-              <span className="sleek-footer-legal-full">&copy; 2026 LearnMicrobes.com | Made for educational purposes</span>
-              <span className="sleek-footer-legal-short">&copy; 2026 LearnMicrobes.com | Educational purposes</span>
+              <span className="sleek-footer-legal-full">&copy; 2026 LearnMicrobes.com</span>
+              <span className="sleek-footer-legal-short">&copy; 2026 LearnMicrobes.com</span>
             </span>
-            <span className="sleek-footer-bottom-divider" aria-hidden="true">|</span>
-            <button type="button" onClick={() => navigate('/about')}>About Learn Microbes</button>
+            <nav className="sleek-footer-links" aria-label="Footer links">
+              <Link to="/about">About</Link>
+              <Link to="/mission">Mission</Link>
+              <Link to="/faq">FAQ</Link>
+              <Link to="/disclaimer">Disclaimer</Link>
+              <Link to="/terms">Terms</Link>
+              <Link to="/privacy">Privacy</Link>
+              <a href={ALPHA_SIGNUP_FORM_URL} target="_blank" rel="noopener noreferrer">Join Beta</a>
+            </nav>
           </div>
         </div>
       </footer>
@@ -1282,6 +1508,35 @@ export default function App() {
       >
         Send feedback
       </button>
+      {showDepthNudge && !isNudgeDismissed && !user && (
+        <div className="depth-nudge" role="status" aria-live="polite">
+          <div className="depth-nudge-inner">
+            <span>Sign in to save your progress and study history.</span>
+            <button
+              type="button"
+              className="depth-nudge-cta"
+              onClick={() => {
+                setShowDepthNudge(false);
+                navigate('/login');
+              }}
+            >
+              Sign in
+            </button>
+            <button
+              type="button"
+              className="depth-nudge-dismiss"
+              aria-label="Dismiss"
+              onClick={() => {
+                setShowDepthNudge(false);
+                setIsNudgeDismissed(true);
+                sessionStorage.setItem('lm_nudge_dismissed', 'true');
+              }}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

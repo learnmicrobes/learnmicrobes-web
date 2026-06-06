@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { getSearchAliases } from '../../data/searchAliases';
 import { trackEvent } from '../../utils/analytics';
 import { useAuth } from '../../context/AuthContext';
@@ -2526,6 +2526,10 @@ export const atlasPages: AtlasPage[] = [
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
   }
 ];
+
+const getAlphabetizedAtlasPages = () => (
+  [...atlasPages].sort((a, b) => a.title.localeCompare(b.title))
+);
 
 const tableHeaders = ['Visual clue', 'Meaning', 'Student shorthand'];
 const interpretationHeaders = ['Pattern', 'What to call it', 'How to think about it'];
@@ -5275,9 +5279,10 @@ const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
 type MiniAtlasVisualProps = {
   page?: AtlasPage;
   slug?: string;
+  showFullLink?: boolean;
 };
 
-export function MiniAtlasVisual({ page: providedPage, slug }: MiniAtlasVisualProps) {
+export function MiniAtlasVisual({ page: providedPage, slug, showFullLink = true }: MiniAtlasVisualProps) {
   const page = providedPage ?? atlasPages.find((atlasPage) => atlasPage.slug === slug);
 
   if (!page) {
@@ -5297,9 +5302,11 @@ export function MiniAtlasVisual({ page: providedPage, slug }: MiniAtlasVisualPro
           Learn Microbes | learnmicrobes.com
         </div>
       </div>
-      <Link className="mini-atlas-link" to={`/visuals/${page.slug}`}>
-        Open full visual
-      </Link>
+      {showFullLink && (
+        <Link className="mini-atlas-link" to={`/visuals/${page.slug}`}>
+          Open full visual
+        </Link>
+      )}
     </aside>
   );
 }
@@ -5343,10 +5350,7 @@ function VisualAtlasHub() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const sortedAtlasPages = useMemo(
-    () => [...atlasPages].sort((a, b) => a.title.localeCompare(b.title)),
-    []
-  );
+  const sortedAtlasPages = useMemo(() => getAlphabetizedAtlasPages(), []);
 
   const categories = useMemo(
     () => ['All', ...Array.from(new Set(sortedAtlasPages.map((page) => getVisualCategory(page))))],
@@ -5473,13 +5477,14 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
   const isVisualBookmarked = isBookmarked('visual', page.slug);
   const visualPosition = useMemo(() => {
-    const index = atlasPages.findIndex((item) => item.slug === page.slug);
+    const sortedAtlasPages = getAlphabetizedAtlasPages();
+    const index = sortedAtlasPages.findIndex((item) => item.slug === page.slug);
 
     return {
       current: index + 1,
-      total: atlasPages.length,
-      previousPage: index > 0 ? atlasPages[index - 1] : null,
-      nextPage: index >= 0 && index < atlasPages.length - 1 ? atlasPages[index + 1] : null
+      total: sortedAtlasPages.length,
+      previousPage: index > 0 ? sortedAtlasPages[index - 1] : null,
+      nextPage: index >= 0 && index < sortedAtlasPages.length - 1 ? sortedAtlasPages[index + 1] : null
     };
   }, [page.slug]);
 
@@ -5494,7 +5499,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
   const handleBookmarkClick = async () => {
     if (!user) {
-      navigate('/auth');
+      navigate('/login');
       return;
     }
 
@@ -5515,13 +5520,19 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     <nav className={`visual-sequence visual-sequence-${placement}`} aria-label="Previous and next Visual Atlas cards">
       {visualPosition.previousPage ? (
         <Link className="visual-sequence-link previous" to={`/visuals/${visualPosition.previousPage.slug}`}>
-          <small>Previous visual</small>
-          <strong>{visualPosition.previousPage.title}</strong>
+          <span className="visual-seq-icon" aria-hidden="true"><FontAwesomeIcon icon={faChevronLeft} /></span>
+          <span className="visual-seq-text">
+            <small>Previous visual</small>
+            <strong>{visualPosition.previousPage.title}</strong>
+          </span>
         </Link>
       ) : (
         <Link className="visual-sequence-link previous" to="/visuals">
-          <small>Back to atlas</small>
-          <strong>Visual Atlas index</strong>
+          <span className="visual-seq-icon" aria-hidden="true"><FontAwesomeIcon icon={faChevronLeft} /></span>
+          <span className="visual-seq-text">
+            <small>Back to atlas</small>
+            <strong>Visual Atlas index</strong>
+          </span>
         </Link>
       )}
 
@@ -5532,13 +5543,19 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
       {visualPosition.nextPage ? (
         <Link className="visual-sequence-link next" to={`/visuals/${visualPosition.nextPage.slug}`}>
-          <small>Next visual</small>
-          <strong>{visualPosition.nextPage.title}</strong>
+          <span className="visual-seq-text">
+            <small>Next visual</small>
+            <strong>{visualPosition.nextPage.title}</strong>
+          </span>
+          <span className="visual-seq-icon" aria-hidden="true"><FontAwesomeIcon icon={faChevronRight} /></span>
         </Link>
       ) : (
         <Link className="visual-sequence-link next" to="/visuals">
-          <small>Finished set</small>
-          <strong>Back to atlas</strong>
+          <span className="visual-seq-text">
+            <small>Finished set</small>
+            <strong>Back to atlas</strong>
+          </span>
+          <span className="visual-seq-icon" aria-hidden="true"><FontAwesomeIcon icon={faChevronRight} /></span>
         </Link>
       )}
     </nav>

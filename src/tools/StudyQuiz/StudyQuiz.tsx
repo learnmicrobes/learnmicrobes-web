@@ -24,6 +24,7 @@ import { questionBank } from '../../data/questionBank';
 import type { QuestionBankArea } from '../../data/questionBank';
 import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
+import { supabase } from '../../lib/supabaseClient';
 import './StudyQuiz.css';
 
 type QuizCategory =
@@ -67,6 +68,30 @@ type SavedQuizState = {
   reviewMissedOnly?: boolean;
 };
 
+type LeaderboardEntry = {
+  rank: number;
+  displayName: string;
+  score: number;
+  userId?: string;
+};
+
+type LeaderboardUserRank = {
+  rank: number;
+  score: number;
+} | null;
+
+type LeaderboardAttemptRow = {
+  user_id: string;
+  correct_count: number | null;
+  score_percent: number | null;
+};
+
+type LeaderboardProfileRow = {
+  id: string;
+  email: string | null;
+  display_name: string | null;
+};
+
 const QUIZ_STORAGE_KEY = 'learnmicrobes_study_quiz_state';
 const STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_streak';
 const BEST_STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_best_streak';
@@ -86,6 +111,17 @@ const leaderboardPreview = [
   { rank: 3, displayName: 'Plate Reader', score: 9180 },
   { rank: 4, displayName: 'Catalase Champ', score: 8840 },
   { rank: 5, displayName: 'QC Master', score: 8610 }
+];
+
+const primaryCategoryKeys: QuizCategory[] = ['all', 'bench-tests', 'organism-id', 'safety'];
+const expandedCategoryKeys: QuizCategory[] = [
+  'preanalytics',
+  'bacteriology',
+  'mycobacteriology',
+  'virology',
+  'parasitology',
+  'mycology',
+  'postanalytics'
 ];
 
 const cleanText = (text: string) => text
@@ -372,6 +408,11 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [isSavingQuizAttempt, setIsSavingQuizAttempt] = useState(false);
   const [isMissedDrawerOpen, setIsMissedDrawerOpen] = useState(false);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
+  const [isCategoryExpanded, setIsCategoryExpanded] = useState(() => expandedCategoryKeys.includes(savedCategory));
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[] | null>(null);
+  const [leaderboardLoading, setLeaderboardLoading] = useState(false);
+  const [leaderboardUserRank, setLeaderboardUserRank] = useState<LeaderboardUserRank>(null);
   const lastSavedAttemptSignature = useRef('');
   const [isDarkMode, setIsDarkMode] = useState(() => (
     localStorage.getItem('learnmicrobes_study_quiz_dark_mode') === 'true'
@@ -447,6 +488,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const progressPercent = visibleQuestions.length > 0
     ? Math.round((visibleAnsweredCount / visibleQuestions.length) * 100)
     : 0;
+  const isQuizComplete = visibleQuestions.length > 0 && visibleAnsweredCount === visibleQuestions.length;
   const accuracyPercent = answeredIds.length > 0
     ? Math.round((correctIds.length / answeredIds.length) * 100)
     : 0;
@@ -517,7 +559,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     if (!user) {
       if (!isAutomatic) {
-        navigate('/auth');
+        navigate('/login');
       }
       return;
     }
@@ -552,6 +594,90 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     user,
     visibleAnsweredCount
   ]);
+
+  const loadLeaderboard = useCallback(async () => {
+    if (!user) {
+      setLeaderboardEntries([]);
+      setLeaderboardUserRank(null);
+      return;
+    }
+
+    if (!supabase) {
+      setLeaderboardEntries(leaderboardPreview);
+      setLeaderboardUserRank(null);
+      return;
+    }
+
+    setLeaderboardLoading(true);
+
+    const { data: attempts, error: attemptsError } = await supabase
+      .from('quiz_attempts')
+      .select('user_id, correct_count, score_percent')
+      .order('completed_at', { ascending: false })
+      .limit(1000);
+
+    if (attemptsError) {
+      setLeaderboardEntries(leaderboardPreview);
+      setLeaderboardUserRank(null);
+      setLeaderboardLoading(false);
+      return;
+    }
+
+    const scoreByUser = new Map<string, number>();
+    ((attempts ?? []) as LeaderboardAttemptRow[]).forEach((attempt) => {
+      const score = Number(attempt.correct_count ?? attempt.score_percent ?? 0);
+      scoreByUser.set(attempt.user_id, (scoreByUser.get(attempt.user_id) ?? 0) + score);
+    });
+
+    const rankedScores = Array.from(scoreByUser.entries())
+      .map(([userId, score]) => ({ userId, score }))
+      .sort((first, second) => second.score - first.score);
+
+    const profileByUser = new Map<string, LeaderboardProfileRow>();
+    const userIds = rankedScores.map((entry) => entry.userId);
+
+    if (userIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from('profiles')
+        .select('id, email, display_name')
+        .in('id', userIds);
+
+      ((profiles ?? []) as LeaderboardProfileRow[]).forEach((profile) => {
+        profileByUser.set(profile.id, profile);
+      });
+    }
+
+    const getDisplayName = (userId: string, rank: number) => {
+      const profile = profileByUser.get(userId);
+      const profileName = profile?.display_name?.trim();
+      const email = profile?.email || (userId === user.id ? user.email : '');
+
+      if (profileName) {
+        return profileName;
+      }
+
+      if (email) {
+        return email.split('@')[0] || `Learner ${rank}`;
+      }
+
+      return `Learner ${rank}`;
+    };
+
+    const rankedEntries = rankedScores.map((entry, index) => ({
+      rank: index + 1,
+      displayName: getDisplayName(entry.userId, index + 1),
+      score: entry.score,
+      userId: entry.userId
+    }));
+    const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
+
+    setLeaderboardEntries(rankedEntries.slice(0, 10));
+    setLeaderboardUserRank(currentUserEntry ? {
+      rank: currentUserEntry.rank,
+      score: currentUserEntry.score
+    } : null);
+    setLeaderboardLoading(false);
+  }, [user]);
 
   useEffect(() => {
     localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify({
@@ -615,6 +741,20 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     localStorage.setItem('learnmicrobes_study_quiz_dark_mode', String(isDarkMode));
     return undefined;
   }, [embedded, isDarkMode]);
+
+  useEffect(() => {
+    if (expandedCategoryKeys.includes(category)) {
+      setIsCategoryExpanded(true);
+    }
+  }, [category]);
+
+  useEffect(() => {
+    if (!isLeaderboardOpen || leaderboardEntries !== null) {
+      return;
+    }
+
+    loadLeaderboard();
+  }, [isLeaderboardOpen, leaderboardEntries, loadLeaderboard]);
 
   const handleCategoryChange = (nextCategory: QuizCategory) => {
     setCategory(nextCategory);
@@ -761,7 +901,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 type="button"
                 className="study-quiz-icon-button leaderboard"
                 onClick={() => setIsLeaderboardOpen(true)}
-                aria-label="Open leaderboard preview"
+                aria-label="Open quiz leaderboard"
               >
                 <FontAwesomeIcon icon={faTrophy} />
               </button>
@@ -799,13 +939,24 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             <span style={{ width: `${progressPercent}%` }} />
           </div>
 
-          <section className="study-quiz-command-center" aria-label="Quiz controls">
-            <div className={`study-quiz-streak-badge ${streak > 0 ? 'active' : ''}`} aria-label={`Current streak ${streak}. Best streak ${bestStreak}.`}>
-              <FontAwesomeIcon icon={faFire} />
-              <span>Streak</span>
-              <strong>{streak}</strong>
-              <small>Best {bestStreak}</small>
-            </div>
+          <section className={`study-quiz-command-center ${isSettingsOpen ? 'open' : ''}`} aria-label="Quiz controls">
+            <button
+              type="button"
+              className="study-quiz-settings-toggle"
+              onClick={() => setIsSettingsOpen((open) => !open)}
+              aria-expanded={isSettingsOpen}
+            >
+              <span>Quiz settings</span>
+              <strong>{categoryLabels[category]} / {difficultyLabels[difficulty]}</strong>
+            </button>
+
+            <div className="study-quiz-settings-body">
+              <div className={`study-quiz-streak-badge ${streak > 0 ? 'active' : ''}`} aria-label={`Current streak ${streak}. Best streak ${bestStreak}.`}>
+                <FontAwesomeIcon icon={faFire} />
+                <span>Streak</span>
+                <strong>{streak}</strong>
+                <small>Best {bestStreak}</small>
+              </div>
 
             {isTimedMode && (
               <div
@@ -834,7 +985,28 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             <div className="study-quiz-controls">
               <span className="study-quiz-control-label">Category</span>
               <div className="study-quiz-categories" role="group" aria-label="Question category">
-                {(Object.keys(categoryLabels) as QuizCategory[]).map((item) => (
+                {primaryCategoryKeys.map((item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    title={`${categoryCounts[item]} questions`}
+                    className={category === item ? 'active' : ''}
+                    onClick={() => handleCategoryChange(item)}
+                    aria-label={`${categoryLabels[item]}, ${categoryCounts[item]} questions`}
+                    aria-pressed={category === item}
+                  >
+                    <span>{categoryLabels[item]}</span>
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className="study-quiz-category-toggle"
+                  onClick={() => setIsCategoryExpanded((expanded) => !expanded)}
+                  aria-expanded={isCategoryExpanded}
+                >
+                  {isCategoryExpanded ? 'Fewer' : 'More categories'}
+                </button>
+                {isCategoryExpanded && expandedCategoryKeys.map((item) => (
                   <button
                     key={item}
                     type="button"
@@ -874,6 +1046,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 <FontAwesomeIcon icon={faRotateRight} />
                 Reset
               </button>
+              <button type="button" className="study-quiz-leaderboard-action" onClick={() => setIsLeaderboardOpen(true)}>
+                <FontAwesomeIcon icon={faTrophy} />
+                Leaderboard
+              </button>
               <button
                 type="button"
                 className="study-quiz-save"
@@ -897,6 +1073,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 {quizHistoryError || quizSaveMessage}
               </p>
             )}
+            </div>
           </section>
         </aside>
 
@@ -905,6 +1082,19 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             <span>{visibleAnsweredCount} / {visibleQuestions.length} answered</span>
             <span>{accuracyPercent}% accuracy</span>
           </div>
+
+          {isQuizComplete && !user && (
+            <div className="study-quiz-save-gate">
+              <p>Sign in to save your score, track missed questions, and keep your streak.</p>
+              <button
+                type="button"
+                className="study-quiz-save-gate-cta"
+                onClick={() => navigate('/login')}
+              >
+                Sign in to save
+              </button>
+            </div>
+          )}
 
           <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
             {showConfetti && (
@@ -979,11 +1169,6 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 Next question
                 <FontAwesomeIcon icon={faArrowRight} />
               </button>
-              {!embedded && (
-                <button type="button" onClick={() => navigate('/search')}>
-                  Search source material
-                </button>
-              )}
             </div>
           </main>
         </section>
@@ -1041,29 +1226,50 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
           <section className="study-quiz-leaderboard-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-leaderboard-title">
             <div className="study-quiz-modal-header">
               <div>
-                <span className="study-quiz-kicker">Future premium</span>
-                <h2 id="study-quiz-leaderboard-title">Leaderboard preview</h2>
+                <h2 id="study-quiz-leaderboard-title">Leaderboard</h2>
               </div>
-              <button type="button" className="study-quiz-icon-button" onClick={() => setIsLeaderboardOpen(false)} aria-label="Close leaderboard preview">
+              <button type="button" className="study-quiz-icon-button" onClick={() => setIsLeaderboardOpen(false)} aria-label="Close leaderboard">
                 <FontAwesomeIcon icon={faXmarkCircle} />
               </button>
             </div>
-            <ol className="study-quiz-leaderboard-list">
-              {leaderboardPreview.map((entry) => (
-                <li key={entry.rank}>
-                  <span>#{entry.rank}</span>
-                  <strong>{entry.displayName}</strong>
-                  <em>{entry.score.toLocaleString()}</em>
-                </li>
-              ))}
-            </ol>
-            <div className="study-quiz-user-rank">
-              <span>Your alpha rank</span>
-              <strong>#12</strong>
-            </div>
-            <button type="button" className="study-quiz-upgrade-cta">
-              Upgrade to see full leaderboard & streak chart
-            </button>
+            {!user ? (
+              <div className="study-quiz-leaderboard-auth">
+                <p>Sign in to appear on the leaderboard.</p>
+                <button type="button" onClick={() => navigate('/login')}>Sign in</button>
+              </div>
+            ) : leaderboardLoading ? (
+              <ol className="study-quiz-leaderboard-list loading" aria-label="Loading leaderboard">
+                {[1, 2, 3].map((item) => (
+                  <li key={item} className="study-quiz-leaderboard-skeleton">
+                    <span />
+                    <strong />
+                    <em />
+                  </li>
+                ))}
+              </ol>
+            ) : (
+              <>
+                <ol className="study-quiz-leaderboard-list">
+                  {(leaderboardEntries ?? []).map((entry) => (
+                    <li key={`${entry.rank}-${entry.displayName}`}>
+                      <span>#{entry.rank}</span>
+                      <strong>{entry.displayName}</strong>
+                      <em>{entry.score.toLocaleString()}</em>
+                    </li>
+                  ))}
+                </ol>
+                {leaderboardEntries?.length === 0 && (
+                  <p className="study-quiz-leaderboard-empty">No saved quiz sessions yet. Save a session to start the leaderboard.</p>
+                )}
+                {leaderboardUserRank && (
+                  <div className="study-quiz-user-rank">
+                    <span>Your rank</span>
+                    <strong>#{leaderboardUserRank.rank}</strong>
+                    <em>{leaderboardUserRank.score.toLocaleString()}</em>
+                  </div>
+                )}
+              </>
+            )}
           </section>
         </div>
       )}

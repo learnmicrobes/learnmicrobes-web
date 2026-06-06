@@ -1,9 +1,43 @@
 .basics-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   min-height: 680px;
+}
+
+.micro-basics-back-row {
+  flex: 0 0 100%;
+  margin-bottom: -1.15rem;
+}
+
+.micro-basics-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0.36rem 0.72rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-size: 0.76rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.micro-basics-back:hover {
+  transform: translateX(-2px);
+  background: var(--surface-color);
+  border-color: rgba(36, 92, 105, 0.3);
+}
+
+body.dark-mode .micro-basics-back {
+  background: #1f2937;
+  border-color: #374151;
+  color: #e2e8f0;
 }
 
 .basics-sidebar {

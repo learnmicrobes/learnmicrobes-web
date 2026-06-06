@@ -7692,6 +7692,12 @@ const getNextSteps = (guideId: string): GuideNextStep[] => {
 const MicroBasics: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const guideOrigin = (location.state as { from?: string } | null)?.from;
+  const backTarget = guideOrigin === 'special-pathogens'
+    ? { label: 'Special Pathogens', path: '/special-pathogens' }
+    : guideOrigin === 'do-not-routine-culture'
+      ? { label: 'Do Not Routine Culture', path: '/do-not-routine-culture' }
+      : null;
   const [activeGuideId, setActiveGuideId] = useState(() => getGuideIdFromSearch(location.search));
   const [guideSearch, setGuideSearch] = useState('');
 
@@ -7747,6 +7753,17 @@ const MicroBasics: React.FC = () => {
       onClose={() => navigate('/')}
     >
       <div className="basics-container">
+        {backTarget && (
+          <div className="micro-basics-back-row">
+            <button
+              className="micro-basics-back"
+              onClick={() => navigate(backTarget.path)}
+              type="button"
+            >
+              ← {backTarget.label}
+            </button>
+          </div>
+        )}
         <aside className="basics-sidebar">
           <div className="guide-sidebar-intro">
             <h3>Deep Guides</h3>

@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ToolBox from '../../components/ToolBox/ToolBox';
-import AlphaValidationCTA from '../../components/AlphaValidationCTA/AlphaValidationCTA';
 import { trackEvent } from '../../utils/analytics';
 import './RoadmapExperience.css';
 
@@ -27,6 +26,11 @@ type RoadmapSearchResult = {
   stepId: string;
   conclusion?: string;
   tests?: string[];
+};
+
+type RoadmapShortlistGroup = {
+  label: string;
+  items: string[];
 };
 
 interface RoadmapExperienceProps {
@@ -56,6 +60,89 @@ const getChoiceLabel = (text: string) => {
     .replace(/\s*\([^)]{18,}\)/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+};
+
+const getStepById = (roadmap: RoadmapStep[], stepId: string) => roadmap.find((step) => step.id === stepId);
+
+const collectEndpointLabels = (roadmap: RoadmapStep[], stepId: string | null, visited = new Set<string>()): string[] => {
+  if (!stepId || visited.has(stepId)) {
+    return [];
+  }
+
+  visited.add(stepId);
+  const step = getStepById(roadmap, stepId);
+
+  if (!step) {
+    return [];
+  }
+
+  return step.options.flatMap((option) => {
+    if (option.conclusion) {
+      return [splitOptionText(option.conclusion).title];
+    }
+
+    if (option.nextStep) {
+      return collectEndpointLabels(roadmap, option.nextStep, new Set(visited));
+    }
+
+    return [getChoiceLabel(option.text)];
+  });
+};
+
+const getOptionOutcomeLabels = (roadmap: RoadmapStep[], option: RoadmapStep['options'][number]) => {
+  if (option.conclusion) {
+    return [splitOptionText(option.conclusion).title];
+  }
+
+  const endpointLabels = collectEndpointLabels(roadmap, option.nextStep);
+  return endpointLabels.length > 0 ? endpointLabels : [getChoiceLabel(option.text)];
+};
+
+const compactUniqueLabels = (items: string[], limit = 4) => (
+  items
+    .map((item) => item.trim())
+    .filter(Boolean)
+    .filter((item, index, list) => list.indexOf(item) === index)
+    .slice(0, limit)
+);
+
+const getWorkingShortlist = (
+  roadmap: RoadmapStep[],
+  history: string[],
+  currentStep: RoadmapStep,
+  currentConclusion: string
+): RoadmapShortlistGroup[] => {
+  if (currentConclusion) {
+    const lookalikes = currentStep.options
+      .filter((option) => option.conclusion && option.conclusion !== currentConclusion)
+      .map((option) => splitOptionText(option.conclusion as string).title);
+
+    return [
+      { label: 'Likely', items: compactUniqueLabels([currentConclusion], 1) },
+      { label: 'Close lookalikes', items: compactUniqueLabels(lookalikes, 3) }
+    ].filter((group) => group.items.length > 0);
+  }
+
+  const possibleNow = compactUniqueLabels(
+    currentStep.options.flatMap((option) => getOptionOutcomeLabels(roadmap, option)),
+    5
+  );
+
+  const previousStepId = history.length > 1 ? history[history.length - 2] : null;
+  const previousStep = previousStepId ? getStepById(roadmap, previousStepId) : null;
+  const narrowedAway = previousStep
+    ? compactUniqueLabels(
+        previousStep.options
+          .filter((option) => option.nextStep !== currentStep.id)
+          .flatMap((option) => getOptionOutcomeLabels(roadmap, option)),
+        4
+      )
+    : [];
+
+  return [
+    { label: 'Possible now', items: possibleNow },
+    { label: 'Less likely after this branch', items: narrowedAway }
+  ].filter((group) => group.items.length > 0);
 };
 
 const cleanQuestion = (question: string) => (
@@ -356,6 +443,8 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   const savedState = getInitialState(storageKey);
   const savedMode = localStorage.getItem(`${storageKey}_mode`);
   const savedHotkeys = localStorage.getItem(`${storageKey}_hotkeys`);
+  const savedGuidance = localStorage.getItem(`${storageKey}_guidance`);
+  const savedShortlist = localStorage.getItem(`${storageKey}_shortlist`);
 
   const [currentStepId, setCurrentStepId] = useState<string>(savedState?.currentStepId ?? 'start');
   const [history, setHistory] = useState<string[]>(savedState?.history ?? ['start']);
@@ -366,6 +455,8 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   const [roadmapSearch, setRoadmapSearch] = useState('');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [isGuidanceExpanded, setIsGuidanceExpanded] = useState<boolean>(savedGuidance === 'true');
+  const [showWorkingShortlist, setShowWorkingShortlist] = useState<boolean>(savedShortlist === 'true');
 
   useEffect(() => {
     trackEvent('roadmap_started', {
@@ -393,6 +484,10 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
 
   const currentHint = useMemo(() => getModeBranchHint(detailMode, currentStep.question), [detailMode, currentStep.question]);
   const nextPrompt = useMemo(() => getModeNextPrompt(detailMode, currentStep.question), [detailMode, currentStep.question]);
+  const workingShortlist = useMemo(
+    () => getWorkingShortlist(roadmap, history, currentStep, currentConclusion),
+    [roadmap, history, currentStep, currentConclusion]
+  );
   const endpointActions = useMemo(
     () => detailMode === 'bench'
       ? getEndpointActions(currentConclusion, conclusionTests)
@@ -431,6 +526,14 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   useEffect(() => {
     localStorage.setItem(`${storageKey}_hotkeys`, JSON.stringify(hotkeysEnabled));
   }, [storageKey, hotkeysEnabled]);
+
+  useEffect(() => {
+    localStorage.setItem(`${storageKey}_guidance`, JSON.stringify(isGuidanceExpanded));
+  }, [storageKey, isGuidanceExpanded]);
+
+  useEffect(() => {
+    localStorage.setItem(`${storageKey}_shortlist`, JSON.stringify(showWorkingShortlist));
+  }, [storageKey, showWorkingShortlist]);
 
   const handleOptionSelect = (nextStep: string | null, conclusion?: string, tests?: string[]) => {
     if (nextStep) {
@@ -483,6 +586,30 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
     setCurrentConclusion(result.conclusion ?? '');
     setConclusionTests(result.tests ?? []);
     setRoadmapSearch('');
+  };
+
+  const renderWorkingShortlist = () => {
+    if (!showWorkingShortlist || workingShortlist.length === 0) {
+      return null;
+    }
+
+    return (
+      <aside className="roadmap-shortlist-panel" aria-label="Working shortlist">
+        <span className="guidance-label">Working shortlist</span>
+        <div className="roadmap-shortlist-groups">
+          {workingShortlist.map((group) => (
+            <section className="roadmap-shortlist-group" key={group.label}>
+              <strong>{group.label}</strong>
+              <div>
+                {group.items.map((item) => (
+                  <span key={`${group.label}-${item}`}>{item}</span>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </aside>
+    );
   };
 
   useEffect(() => {
@@ -654,6 +781,15 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
                 ? 'Classic differentiators and memory-friendly clues.'
                 : 'Specimen, safety, confirmation, and reporting logic.'}
             </span>
+              <span className="status-label">Learning supports</span>
+              <label className="roadmap-hotkey-toggle">
+              <input
+                type="checkbox"
+                checked={showWorkingShortlist}
+                onChange={(event) => setShowWorkingShortlist(event.target.checked)}
+              />
+              <span>Show working shortlist</span>
+            </label>
               <label className="roadmap-hotkey-toggle">
               <input
                 type="checkbox"
@@ -677,6 +813,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
             <div className="result-text">
               {currentConclusion}
             </div>
+            {renderWorkingShortlist()}
             <div className="endpoint-summary-grid">
               <section className="endpoint-summary-card">
                 <span className="guidance-label">Likely ID</span>
@@ -755,7 +892,29 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
         ) : (
           <div key={currentStepId} className="animate-step">
             <div className="current-question">
-              <h3>{cleanQuestion(currentStep.question)}</h3>
+              <div className="roadmap-question-heading">
+                <h3>{cleanQuestion(currentStep.question)}</h3>
+                <button
+                  type="button"
+                  className="roadmap-guidance-trigger"
+                  aria-expanded={isGuidanceExpanded}
+                  aria-controls={`${storageKey}-roadmap-guidance-panel`}
+                  onClick={() => setIsGuidanceExpanded((open) => !open)}
+                >
+                  Need help?
+                </button>
+              </div>
+              {isGuidanceExpanded && (
+                <div id={`${storageKey}-roadmap-guidance-panel`} className="roadmap-guidance-panel">
+                  <p>
+                    <strong>{detailMode === 'exam' ? 'Exam clue' : 'Why this branch matters'}:</strong> {currentHint}
+                  </p>
+                  <p>
+                    <strong>{detailMode === 'exam' ? 'Classic differentiator' : 'Next-test thinking'}:</strong> {nextPrompt}
+                  </p>
+                </div>
+              )}
+              {renderWorkingShortlist()}
             </div>
 
             {renderOptions()}
@@ -776,15 +935,6 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
               </button>
             </div>
 
-            <div className="roadmap-guidance-panel">
-              <span className="guidance-label">Lab notebook note</span>
-              <p>
-                <strong>{detailMode === 'exam' ? 'Exam clue' : 'Why this branch matters'}:</strong> {currentHint}
-              </p>
-              <p>
-                <strong>{detailMode === 'exam' ? 'Classic differentiator' : 'Next-test thinking'}:</strong> {nextPrompt}
-              </p>
-            </div>
           </div>
         )}
 
@@ -842,11 +992,6 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
           )}
         </section>
 
-        <AlphaValidationCTA
-          location={`roadmap_${storageKey}`}
-          title="Help improve this roadmap"
-          body="Tell us where the branch logic helped, where it got confusing, and whether saved progress or bookmarks would make roadmaps more useful."
-        />
       </div>
     </ToolBox>
   );

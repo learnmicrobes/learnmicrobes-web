@@ -125,12 +125,29 @@
   stroke-linejoin: round;
 }
 
-.ascp-flow-card {
+.ascp-flow-loop {
+  fill: none;
+  stroke: rgba(36, 92, 105, 0.18);
+  stroke-width: 12;
+}
+
+.ascp-flow-arrow {
+  fill: none;
+  stroke: rgba(36, 92, 105, 0.42);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.ascp-flow-node rect {
   fill: #f0f5f3;
   stroke: rgba(36, 92, 105, 0.2);
 }
 
-.ascp-flow-card.accent {
+.ascp-flow-node circle {
+  fill: var(--primary-color);
+}
+
+.ascp-flow-center rect {
   fill: #fff8e5;
   stroke: rgba(200, 162, 77, 0.34);
 }
@@ -142,10 +159,17 @@
   font-weight: 900;
 }
 
-.ascp-review-flow text:nth-of-type(2n) {
+.ascp-flow-node text:nth-of-type(3),
+.ascp-flow-center text:nth-of-type(2) {
   fill: var(--muted-color);
   font-size: 11px;
   font-weight: 750;
+}
+
+.ascp-review-flow .ascp-flow-number {
+  fill: #ffffff;
+  font-size: 12px;
+  font-weight: 950;
 }
 
 .ascp-flow-watermark {
@@ -212,6 +236,7 @@
 
 .ascp-review-module-grid article {
   display: grid;
+  grid-template-rows: auto auto 1fr auto;
   gap: 0.58rem;
   align-content: start;
   min-height: 100%;
@@ -239,7 +264,7 @@
 
 .ascp-review-module-grid a {
   align-self: end;
-  margin-top: 0.2rem;
+  margin-top: 0.35rem;
   padding: 0.52rem 0.65rem;
   border: 1px solid rgba(36, 92, 105, 0.18);
   background: #ffffff;
@@ -281,14 +306,20 @@
 .ascp-review-disclaimer {
   border-color: rgba(200, 162, 77, 0.28);
   background: #fff8e5;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
 }
 
 .ascp-review-disclaimer strong {
   color: var(--dark-color);
+  font-size: 0.82rem;
+  line-height: 1.25;
 }
 
 .ascp-review-disclaimer p {
   color: #6c4c10;
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 body.dark-mode .ascp-review-hero,
@@ -326,16 +357,34 @@ body.dark-mode .ascp-flow-paper {
   stroke: rgba(222, 232, 222, 0.14);
 }
 
-body.dark-mode .ascp-flow-card {
+body.dark-mode .ascp-flow-node rect {
   fill: rgba(79, 209, 197, 0.08);
   stroke: rgba(79, 209, 197, 0.14);
+}
+
+body.dark-mode .ascp-flow-loop {
+  stroke: rgba(94, 234, 212, 0.16);
+}
+
+body.dark-mode .ascp-flow-arrow {
+  stroke: rgba(94, 234, 212, 0.42);
+}
+
+body.dark-mode .ascp-flow-node circle {
+  fill: #2f9189;
+}
+
+body.dark-mode .ascp-flow-center rect {
+  fill: #2f2a1c;
+  stroke: rgba(229, 199, 118, 0.26);
 }
 
 body.dark-mode .ascp-review-flow text {
   fill: #f8fffd;
 }
 
-body.dark-mode .ascp-review-flow text:nth-of-type(2n) {
+body.dark-mode .ascp-flow-node text:nth-of-type(3),
+body.dark-mode .ascp-flow-center text:nth-of-type(2) {
   fill: #cbd5df;
 }
 

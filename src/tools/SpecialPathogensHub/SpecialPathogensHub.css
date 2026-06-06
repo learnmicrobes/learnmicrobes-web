@@ -56,8 +56,7 @@
   min-width: 0;
 }
 
-.special-pathogens-actions button,
-.special-pathogen-open {
+.special-pathogens-actions button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -81,18 +80,7 @@
   white-space: normal;
 }
 
-.special-pathogen-open {
-  min-height: 36px;
-  flex: 0 0 auto;
-  padding: 0.5rem 0.7rem;
-  border-radius: 7px;
-  font-size: 0.82rem;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.special-pathogens-actions button:hover,
-.special-pathogen-open:hover {
+.special-pathogens-actions button:hover {
   transform: translateY(-1px);
   border-color: rgba(36, 92, 105, 0.34);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
@@ -147,6 +135,19 @@
   background: #ffffff;
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.055);
   text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.special-pathogen-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(36, 92, 105, 0.28);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.11);
+}
+
+.special-pathogen-card:focus-visible {
+  outline: 3px solid rgba(36, 92, 105, 0.3);
+  outline-offset: 3px;
 }
 
 .special-pathogen-card-header {
@@ -217,11 +218,41 @@
   text-transform: uppercase;
 }
 
+.special-pathogen-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.special-pathogen-card:hover .special-pathogen-card-footer {
+  opacity: 1;
+}
+
+.special-pathogen-arrow {
+  font-size: 1rem;
+  font-weight: 400;
+  transition: transform 0.2s ease;
+}
+
+.special-pathogen-card:hover .special-pathogen-arrow {
+  transform: translateX(3px);
+}
+
 body.dark-mode .special-pathogens-hero,
 body.dark-mode .special-pathogens-checkpoints > div,
 body.dark-mode .special-pathogen-card,
-body.dark-mode .special-pathogens-actions button,
-body.dark-mode .special-pathogen-open {
+body.dark-mode .special-pathogens-actions button {
   background: #1f2937;
   border-color: #374151;
 }
@@ -245,6 +276,11 @@ body.dark-mode .special-pathogen-groups {
 
 body.dark-mode .special-pathogen-groups span {
   color: #5eead4;
+}
+
+body.dark-mode .special-pathogen-card-footer {
+  color: #5eead4;
+  border-top-color: #374151;
 }
 
 @media (max-width: 900px) {

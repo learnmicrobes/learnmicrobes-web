@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   faArrowRight,
   faBan,
@@ -154,6 +154,8 @@ const filters: Array<{ label: string; value: 'all' | EscalationLevel }> = [
 
 const DoNotRoutineCulture: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const fromSpecialPathogens = (location.state as { from?: string } | null)?.from === 'special-pathogens';
   const [activeFilter, setActiveFilter] = useState<'all' | EscalationLevel>('all');
 
   const visibleCards = useMemo(() => (
@@ -164,6 +166,17 @@ const DoNotRoutineCulture: React.FC = () => {
 
   return (
     <div className="do-not-culture-page">
+      {fromSpecialPathogens && (
+        <div className="do-not-culture-back-row">
+          <button
+            type="button"
+            className="do-not-culture-back"
+            onClick={() => navigate('/special-pathogens')}
+          >
+            ← Special Pathogens
+          </button>
+        </div>
+      )}
       <header className="do-not-culture-hero">
         <div>
           <span className="do-not-culture-kicker">Safety and diagnostic logic</span>
@@ -229,7 +242,7 @@ const DoNotRoutineCulture: React.FC = () => {
                   <button
                     type="button"
                     className="culture-open-link"
-                    onClick={() => navigate(card.relatedPath as string)}
+                    onClick={() => navigate(card.relatedPath as string, { state: { from: 'do-not-routine-culture' } })}
                     aria-label={`Open related ${card.organism} learning path`}
                   >
                     <FontAwesomeIcon icon={faArrowRight} />

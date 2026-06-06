@@ -5,6 +5,41 @@
   color: var(--dark-color);
 }
 
+.biochemical-tool-box {
+  border: 1px solid var(--border-color);
+  background: transparent;
+  box-shadow: none;
+}
+
+.biochemical-tool-box .tool-box-header {
+  margin-bottom: 1rem;
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--dark-color);
+  box-shadow: 0 12px 28px rgba(28, 39, 51, 0.06);
+}
+
+.biochemical-tool-box .tool-box-header h2 {
+  color: var(--dark-color) !important;
+  font-size: clamp(1.8rem, 4vw, 2.65rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.biochemical-tool-box .back-btn,
+.biochemical-tool-box .close-btn {
+  color: var(--primary-color);
+}
+
+.biochemical-tool-box .tool-box-content {
+  padding: 0;
+  background: transparent;
+}
+
 /* A-Z List Header & Legend */
 .az-header {
   background: #ffffff;
@@ -211,6 +246,109 @@
   background: rgba(36, 92, 105, 0.07);
 }
 
+.test-inline-visual {
+  margin: 0 0 1.5rem;
+  padding: 1rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 8px;
+  background: #fbfaf7;
+  animation: biochemicalVisualIn 180ms ease;
+}
+
+.test-inline-visual .mini-atlas-visual {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.62fr) minmax(18rem, 1.38fr);
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.test-inline-visual .mini-atlas-copy span {
+  color: var(--primary-color);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.test-inline-visual .mini-atlas-copy h3 {
+  margin: 0.18rem 0 0.25rem;
+  color: var(--dark-color);
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.test-inline-visual .mini-atlas-copy p {
+  margin: 0;
+  color: var(--muted-color);
+  font-size: 0.78rem;
+  line-height: 1.32;
+}
+
+.test-inline-visual .mini-atlas-stage {
+  position: relative;
+  min-height: 13.5rem;
+  max-height: none;
+  padding: 0.55rem;
+  border-radius: 6px;
+  background: #fbfaf7;
+  overflow: hidden;
+}
+
+.test-inline-visual .mini-atlas-stage.disk-stage {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  max-width: none;
+}
+
+.test-inline-visual .mini-atlas-stage.coagulase-stage {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.42rem;
+  max-width: none;
+  justify-content: stretch;
+}
+
+.test-inline-visual .mini-atlas-stage .lia-tube-card {
+  min-width: 0;
+  gap: 0.24rem;
+}
+
+.test-inline-visual .mini-atlas-stage .lia-letter {
+  font-size: 1.28rem;
+}
+
+.test-inline-visual .mini-atlas-stage .lia-plate-svg,
+.test-inline-visual .mini-atlas-stage .lia-tube-svg {
+  max-width: 100%;
+}
+
+.test-inline-visual .mini-atlas-stage .lia-tube-card strong {
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.test-inline-visual .mini-atlas-stage .lia-tube-card span,
+.test-inline-visual .mini-atlas-stage .lia-tube-card p {
+  font-size: 0.64rem;
+  line-height: 1.18;
+}
+
+@keyframes biochemicalVisualIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .test-category-label {
   background: rgba(200, 162, 77, 0.14);
   color: var(--accent-color);
@@ -363,6 +501,12 @@
   .qc-grid {
     grid-template-columns: 1fr;
   }
+  .biochemical-tool-box .tool-box-header {
+    padding: 1.15rem 1rem;
+  }
+  .biochemical-tool-box .tool-box-header h2 {
+    font-size: 1.65rem;
+  }
   .test-detail-view {
     padding: 1.5rem;
   }
@@ -379,4 +523,38 @@
   .detail-nav-btn {
     max-width: 100%;
   }
+}
+
+body.dark-mode .biochemical-tool-box .tool-box-header,
+body.dark-mode .az-header,
+body.dark-mode .az-test-card,
+body.dark-mode .test-detail-view,
+body.dark-mode .test-visual-link,
+body.dark-mode .test-inline-visual .mini-atlas-visual,
+body.dark-mode .detail-nav-btn {
+  background: #1e2532;
+  border-color: #2d3748;
+}
+
+body.dark-mode .biochemical-tool-box .tool-box-header h2,
+body.dark-mode .az-header h2,
+body.dark-mode .az-test-card h3,
+body.dark-mode .test-header h2,
+body.dark-mode .test-visual-companion p,
+body.dark-mode .content-section h3,
+body.dark-mode .nav-test-name {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .test-visual-companion,
+body.dark-mode .test-inline-visual,
+body.dark-mode .test-inline-visual .mini-atlas-stage,
+body.dark-mode .expected-results {
+  background: #111827;
+  border-color: #2d3748;
+}
+
+body.dark-mode .test-inline-visual .mini-atlas-copy h3,
+body.dark-mode .test-inline-visual .mini-atlas-copy p {
+  color: #e2e8f0;
 }
