@@ -234,64 +234,6 @@ body.dark-mode .study-quiz-page {
   opacity: 0.88;
 }
 
-.study-quiz-guest-limit {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--c-border);
-  border-radius: 14px;
-  background: var(--c-card-strong);
-  color: var(--c-text);
-  box-shadow: 0 8px 24px var(--c-shadow);
-}
-
-.study-quiz-guest-limit div {
-  min-width: 220px;
-  flex: 1 1 320px;
-}
-
-.study-quiz-guest-limit span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-bottom: 0.35rem;
-  color: var(--c-primary);
-  font-size: 0.76rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.study-quiz-guest-limit p {
-  margin: 0;
-  color: var(--c-muted);
-  line-height: 1.5;
-}
-
-.study-quiz-guest-limit button {
-  flex: 0 0 auto;
-  padding: 0.62rem 1.15rem;
-  border: none;
-  border-radius: 999px;
-  background: var(--c-primary);
-  color: #ffffff;
-  font-size: 0.86rem;
-  font-weight: 900;
-  cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
-}
-
-.study-quiz-guest-limit button:hover,
-.study-quiz-guest-limit button:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px var(--c-shadow);
-  opacity: 0.95;
-}
-
 .study-quiz-timer-meter span {
   display: block;
   height: 100%;
@@ -940,6 +882,101 @@ body.dark-mode .study-quiz-timer-alert {
   backdrop-filter: blur(6px);
 }
 
+.study-quiz-guest-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(7px);
+}
+
+.study-quiz-guest-modal {
+  width: min(440px, 100%);
+  padding: 1.35rem;
+  border: 1px solid var(--c-border);
+  border-radius: 18px;
+  background: var(--c-card-strong);
+  color: var(--c-text);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.22);
+  animation: studyQuizFadeIn 180ms ease;
+}
+
+.study-quiz-guest-modal-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.65rem;
+  color: var(--c-primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.study-quiz-guest-modal h2 {
+  margin: 0;
+  color: var(--c-text);
+  font-size: clamp(1.35rem, 6vw, 1.9rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.study-quiz-guest-modal p {
+  margin: 0.8rem 0 1.15rem;
+  color: var(--c-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.study-quiz-guest-modal-actions {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.study-quiz-guest-modal-actions button,
+.study-quiz-guest-modal-secondary {
+  min-height: 46px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.study-quiz-guest-modal-actions button:first-child {
+  border: none;
+  background: var(--c-primary);
+  color: #ffffff;
+  box-shadow: 0 10px 22px var(--c-shadow);
+}
+
+.study-quiz-guest-modal-actions button:last-child,
+.study-quiz-guest-modal-secondary {
+  border: 1px solid var(--c-border);
+  background: var(--c-card);
+  color: var(--c-primary);
+}
+
+.study-quiz-guest-modal-actions button:hover,
+.study-quiz-guest-modal-actions button:focus-visible,
+.study-quiz-guest-modal-secondary:hover,
+.study-quiz-guest-modal-secondary:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(36, 92, 105, 0.36);
+  box-shadow: 0 8px 18px var(--c-shadow);
+}
+
+.study-quiz-guest-modal-secondary {
+  width: 100%;
+  margin-top: 0.75rem;
+  background: transparent;
+  color: var(--c-muted);
+  box-shadow: none;
+}
+
 .study-quiz-leaderboard-modal {
   width: min(520px, 100%);
   padding: 1.15rem;
@@ -1073,7 +1110,9 @@ body.dark-mode .study-quiz-timer-alert {
 .study-quiz-timed-toggle:focus-visible,
 .study-quiz-icon-button:focus-visible,
 .study-quiz-settings-toggle:focus-visible,
-.study-quiz-leaderboard-auth button:focus-visible {
+.study-quiz-leaderboard-auth button:focus-visible,
+.study-quiz-guest-modal-actions button:focus-visible,
+.study-quiz-guest-modal-secondary:focus-visible {
   outline: 3px solid rgba(72, 209, 204, 0.5);
   outline-offset: 3px;
 }

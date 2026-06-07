@@ -417,6 +417,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [isCategoryExpanded, setIsCategoryExpanded] = useState(() => expandedCategoryKeys.includes(savedCategory));
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isGuestLimitModalOpen, setIsGuestLimitModalOpen] = useState(false);
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[] | null>(null);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [leaderboardUserRank, setLeaderboardUserRank] = useState<LeaderboardUserRank>(null);
@@ -827,7 +828,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
   const handleNext = () => {
     if (hasReachedGuestQuestionLimit) {
-      navigate('/login');
+      setIsGuestLimitModalOpen(true);
       return;
     }
 
@@ -838,6 +839,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const handlePrevious = () => {
     setQuestionIndex((index) => (index - 1 + visibleQuestions.length) % visibleQuestions.length);
     setSelectedAnswer('');
+    setIsGuestLimitModalOpen(false);
   };
 
   const handleRestart = () => {
@@ -847,6 +849,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     setCorrectIds([]);
     setMissedAttempts([]);
     setReviewMissedOnly(false);
+    setIsGuestLimitModalOpen(false);
     setStreak(0);
     setTimeRemaining(QUIZ_TIMER_SECONDS);
     localStorage.removeItem(QUIZ_STORAGE_KEY);
@@ -1119,21 +1122,6 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             </div>
           )}
 
-          {hasReachedGuestQuestionLimit && !user && (
-            <div className="study-quiz-guest-limit" role="status" aria-live="polite">
-              <div>
-                <span>
-                  <FontAwesomeIcon icon={faLock} />
-                  Guest practice checkpoint
-                </span>
-                <p>You have completed {GUEST_QUIZ_QUESTION_LIMIT} guest questions. Sign in to continue practicing and save your progress.</p>
-              </div>
-              <button type="button" onClick={() => navigate('/login')}>
-                Sign in to continue
-              </button>
-            </div>
-          )}
-
           <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
             {showConfetti && (
               <div className="study-quiz-confetti" aria-hidden="true">
@@ -1212,6 +1200,36 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
           </main>
         </section>
       </div>
+
+      {isGuestLimitModalOpen && !user && (
+        <div className="study-quiz-guest-modal-backdrop" role="presentation">
+          <section className="study-quiz-guest-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-guest-limit-title">
+            <span className="study-quiz-guest-modal-kicker">
+              <FontAwesomeIcon icon={faLock} />
+              Guest practice checkpoint
+            </span>
+            <h2 id="study-quiz-guest-limit-title">Continue practicing with a free account.</h2>
+            <p>
+              You have completed {GUEST_QUIZ_QUESTION_LIMIT} guest questions. Sign in to keep going and save your quiz history, missed review, and progress.
+            </p>
+            <div className="study-quiz-guest-modal-actions">
+              <button type="button" onClick={() => navigate('/login')}>
+                Sign in
+              </button>
+              <button type="button" onClick={() => navigate('/register')}>
+                Create account
+              </button>
+            </div>
+            <button
+              type="button"
+              className="study-quiz-guest-modal-secondary"
+              onClick={() => setIsGuestLimitModalOpen(false)}
+            >
+              Keep reviewing this question
+            </button>
+          </section>
+        </div>
+      )}
 
       <aside className={`study-quiz-missed-panel ${isMissedDrawerOpen ? 'open' : ''}`} aria-label="Missed question review list" aria-hidden={!isMissedDrawerOpen}>
           <div className="study-quiz-missed-header">
