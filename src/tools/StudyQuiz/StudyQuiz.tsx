@@ -87,6 +87,15 @@ type LeaderboardAttemptRow = {
   score_percent: number | null;
 };
 
+type LeaderboardRpcRow = {
+  user_id: string;
+  display_name: string | null;
+  total_score: number | string | null;
+  attempt_count: number | string | null;
+  accuracy_percent: number | null;
+  rank: number | string | null;
+};
+
 type LeaderboardProfileRow = {
   id: string;
   email: string | null;
@@ -593,6 +602,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     if (result.ok) {
       lastSavedAttemptSignature.current = signature;
+      setLeaderboardEntries(null);
+      setLeaderboardUserRank(null);
     }
 
     setQuizSaveMessage(result.message);
@@ -604,6 +615,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     user,
     visibleAnsweredCount
   ]);
+
+  const handleOpenLeaderboard = () => {
+    setLeaderboardEntries(null);
+    setLeaderboardUserRank(null);
+    setIsLeaderboardOpen(true);
+  };
 
   const loadLeaderboard = useCallback(async () => {
     if (!user) {
@@ -619,6 +636,27 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     }
 
     setLeaderboardLoading(true);
+
+    const { data: rpcRows, error: rpcError } = await supabase
+      .rpc('get_study_quiz_leaderboard', { row_limit: 1000 });
+
+    if (!rpcError && rpcRows) {
+      const rankedEntries = (rpcRows as LeaderboardRpcRow[]).map((entry, index) => ({
+        rank: Number(entry.rank ?? index + 1),
+        displayName: entry.display_name?.trim() || `Learner ${Number(entry.rank ?? index + 1)}`,
+        score: Number(entry.total_score ?? 0),
+        userId: entry.user_id
+      }));
+      const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
+
+      setLeaderboardEntries(rankedEntries.slice(0, 10));
+      setLeaderboardUserRank(currentUserEntry ? {
+        rank: currentUserEntry.rank,
+        score: currentUserEntry.score
+      } : null);
+      setLeaderboardLoading(false);
+      return;
+    }
 
     const { data: attempts, error: attemptsError } = await supabase
       .from('quiz_attempts')
@@ -926,7 +964,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
               <button
                 type="button"
                 className="study-quiz-icon-button leaderboard"
-                onClick={() => setIsLeaderboardOpen(true)}
+                onClick={handleOpenLeaderboard}
                 aria-label="Open quiz leaderboard"
               >
                 <FontAwesomeIcon icon={faTrophy} />
@@ -1072,7 +1110,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 <FontAwesomeIcon icon={faRotateRight} />
                 Reset
               </button>
-              <button type="button" className="study-quiz-leaderboard-action" onClick={() => setIsLeaderboardOpen(true)}>
+              <button type="button" className="study-quiz-leaderboard-action" onClick={handleOpenLeaderboard}>
                 <FontAwesomeIcon icon={faTrophy} />
                 Leaderboard
               </button>
@@ -1195,6 +1233,17 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
               <button type="button" onClick={handleNext}>
                 {hasReachedGuestQuestionLimit && !user ? 'Sign in to continue' : 'Next question'}
                 <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </div>
+
+            <div className="study-quiz-mobile-save-row">
+              <button
+                type="button"
+                className="study-quiz-save"
+                onClick={() => saveCurrentQuizAttempt(false)}
+                disabled={visibleAnsweredCount === 0 || isSavingQuizAttempt || hasSavedCurrentAttempt}
+              >
+                {isSavingQuizAttempt ? 'Saving...' : hasSavedCurrentAttempt ? 'Session saved' : user ? 'Save session' : 'Sign in to save'}
               </button>
             </div>
           </main>

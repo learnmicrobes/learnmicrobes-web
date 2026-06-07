@@ -9,17 +9,25 @@ const openExternalForm = (url: string) => {
 
 const NewsletterSignup: React.FC = () => {
   const handleJoinAlpha = () => {
-    trackEvent('join_alpha_click', {
+    trackEvent('alpha_join_clicked', {
       location: 'homepage_lab_list',
       destination: ALPHA_SIGNUP_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: 'homepage_lab_list',
+      form_name: 'beta_tester_form'
     });
     openExternalForm(ALPHA_SIGNUP_FORM_URL);
   };
 
   const handleFeedback = () => {
-    trackEvent('feedback_click', {
+    trackEvent('feedback_clicked', {
       location: 'homepage_lab_list',
       destination: FEEDBACK_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: 'homepage_lab_list',
+      form_name: 'feedback_form'
     });
     openExternalForm(FEEDBACK_FORM_URL);
   };

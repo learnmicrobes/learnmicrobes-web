@@ -142,7 +142,8 @@
 }
 
 .account-form input,
-.account-form textarea {
+.account-form textarea,
+.account-form select {
   width: 100%;
   padding: 0.72rem 0.85rem;
   border: 1px solid rgba(36, 92, 105, 0.18);
@@ -154,6 +155,15 @@
   resize: vertical;
 }
 
+.account-form select {
+  min-height: 2.8rem;
+  appearance: none;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--primary-color) 50%) right 0.95rem center / 0.45rem 0.45rem no-repeat,
+    linear-gradient(135deg, var(--primary-color) 50%, transparent 50%) right 0.68rem center / 0.45rem 0.45rem no-repeat,
+    #ffffff;
+}
+
 .account-form input {
   min-height: 2.8rem;
 }
@@ -163,10 +173,45 @@
 }
 
 .account-form input:focus,
-.account-form textarea:focus {
+.account-form textarea:focus,
+.account-form select:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(36, 92, 105, 0.14);
+}
+
+.account-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.account-checkbox-row {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: flex-start;
+  gap: 0.65rem !important;
+  padding: 0.75rem !important;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+  color: var(--muted-color) !important;
+  font-size: 0.84rem !important;
+  line-height: 1.45;
+}
+
+.account-checkbox-row input {
+  width: 1rem;
+  min-height: 1rem;
+  margin-top: 0.16rem;
+  padding: 0;
+  flex: 0 0 auto;
+  accent-color: var(--primary-color);
+}
+
+.account-checkbox-row span {
+  color: var(--muted-color);
+  font-weight: 750;
 }
 
 .account-save-btn,
@@ -659,7 +704,8 @@ body.dark-mode .account-form label,
 body.dark-mode .account-summary dd,
 body.dark-mode .account-next-panel strong,
 body.dark-mode .account-form input,
-body.dark-mode .account-form textarea {
+body.dark-mode .account-form textarea,
+body.dark-mode .account-form select {
   color: #f8fffd;
 }
 
@@ -671,12 +717,29 @@ body.dark-mode .account-summary dt {
 
 body.dark-mode .account-form input,
 body.dark-mode .account-form textarea,
+body.dark-mode .account-form select,
 body.dark-mode .account-signout-btn,
 body.dark-mode .account-bookmark-card,
 body.dark-mode .account-empty-bookmarks,
 body.dark-mode .account-empty-bookmarks a {
   background: #1b2733;
   border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-form select {
+  background:
+    linear-gradient(45deg, transparent 50%, #5eead4 50%) right 0.95rem center / 0.45rem 0.45rem no-repeat,
+    linear-gradient(135deg, #5eead4 50%, transparent 50%) right 0.68rem center / 0.45rem 0.45rem no-repeat,
+    #1b2733;
+}
+
+body.dark-mode .account-checkbox-row {
+  background: #1b2733;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-checkbox-row span {
+  color: #cbd5df;
 }
 
 body.dark-mode .account-save-btn {
@@ -817,6 +880,10 @@ body.dark-mode .account-message.success {
 
   .account-card {
     padding: 1rem;
+  }
+
+  .account-profile-grid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -20,34 +20,43 @@ const openExternalForm = (url: string) => {
 
 const JoinAlpha: React.FC = () => {
   const handleJoinAlpha = () => {
-    trackEvent('join_alpha_click', {
+    trackEvent('alpha_join_clicked', {
       location: 'join_alpha_page',
       destination: ALPHA_SIGNUP_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: 'join_alpha_page',
+      form_name: 'beta_tester_form'
     });
     openExternalForm(ALPHA_SIGNUP_FORM_URL);
   };
 
   const handleFeedback = () => {
-    trackEvent('feedback_click', {
+    trackEvent('feedback_clicked', {
       location: 'join_alpha_page',
       destination: FEEDBACK_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: 'join_alpha_page',
+      form_name: 'feedback_form'
     });
     openExternalForm(FEEDBACK_FORM_URL);
   };
 
   return (
     <section className="join-alpha-page" aria-labelledby="join-alpha-title">
-      <span className="join-alpha-badge">Beta access</span>
-      <h1 id="join-alpha-title">Help shape Learn Microbes.</h1>
+      <span className="join-alpha-badge">Free beta access</span>
+      <h1 id="join-alpha-title">Join the Micro Bench Beta.</h1>
       <p className="join-alpha-notice">
-        Learn Microbes is currently in beta. Join the beta tester list to get updates and help shape the product.
-        Tell us in the form what would make saved progress, bookmarks, quiz history, and ASCP review more useful.
+        Learn Microbes teaches clinical microbiology the way the bench thinks: specimen clues, Gram stain,
+        colony morphology, media, key tests, and safe next steps. Join the beta list to get updates and help shape
+        saved progress, bookmarks, quiz history, ASCP review, and future bench workflow tools.
       </p>
 
       <div className="join-alpha-actions">
         <button type="button" className="join-alpha-primary" onClick={handleJoinAlpha}>
           <FontAwesomeIcon icon={faClipboardList} />
-          Join the Beta Tester List
+          Join the Micro Bench Beta
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="join-alpha-external-icon" />
         </button>
         <button type="button" className="join-alpha-secondary" onClick={handleFeedback}>

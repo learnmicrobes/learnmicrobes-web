@@ -399,6 +399,29 @@ export default function App() {
     { step: '03', label: 'Use a bench card', path: '/visuals/indole-production' }
   ]), []);
 
+  const socialStartPaths = useMemo(() => ([
+    {
+      label: 'I am new to micro',
+      detail: 'Start with taxonomy, Gram stain logic, and the first bench clues.',
+      path: '/learn/clinical-microbiology'
+    },
+    {
+      label: 'I am reviewing for ASCP',
+      detail: 'Use the M(ASCP) review hub for quizzes, visuals, and weak-area loops.',
+      path: '/ascp-microbiology-review'
+    },
+    {
+      label: 'I am learning bench workflow',
+      detail: 'Follow an unknown from first observations to the safest next step.',
+      path: '/unknown-isolate-workup'
+    },
+    {
+      label: 'I need biochemical help',
+      detail: 'Look up reactions, QC organisms, expected results, and traps.',
+      path: '/biochemical-tests'
+    }
+  ]), []);
+
   const featuredBenchCard = useMemo(() => (
     atlasPages.find((page) => page.slug === 'indole-production') ?? atlasPages[0]
   ), []);
@@ -672,6 +695,12 @@ export default function App() {
   const isDailyRiddleCorrect = selectedRiddleChoice?.correct ?? false;
 
   const handleDashboardSearchSelect = (item: DashboardSearchItem) => {
+    trackEvent('search_used', {
+      location: 'home_hero_search',
+      search_term: dashboardSearchQuery.trim(),
+      result_title: item.title,
+      result_path: item.path
+    });
     setDashboardSearchQuery('');
     setIsDashboardSearchOpen(false);
     setSelectedDashboardSearchIndex(0);
@@ -733,17 +762,25 @@ export default function App() {
   };
 
   const handleAlphaSignupClick = (locationName: string) => {
-    trackEvent('join_alpha_click', {
+    trackEvent('alpha_join_clicked', {
       location: locationName,
       destination: ALPHA_SIGNUP_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: locationName,
+      form_name: 'beta_tester_form'
     });
     openExternalForm(ALPHA_SIGNUP_FORM_URL);
   };
 
   const handleFeedbackClick = (locationName: string) => {
-    trackEvent('feedback_click', {
+    trackEvent('feedback_clicked', {
       location: locationName,
       destination: FEEDBACK_FORM_URL
+    });
+    trackEvent('lead_form_viewed', {
+      location: locationName,
+      form_name: 'feedback_form'
     });
     openExternalForm(FEEDBACK_FORM_URL);
   };
@@ -755,6 +792,23 @@ export default function App() {
       path
     });
     navigate(path);
+  };
+
+  const handleStartHereClick = (label: string, path: string) => {
+    trackEvent('start_here_path_clicked', {
+      location: 'home_start_here',
+      path_label: label,
+      path
+    });
+    navigate(path);
+  };
+
+  const handleCreateAccountClick = (locationName: string) => {
+    trackEvent('signup_cta_clicked', {
+      location: locationName,
+      destination: '/register'
+    });
+    navigate('/register');
   };
 
   useEffect(() => {
@@ -1283,8 +1337,16 @@ export default function App() {
                 <span className="dashboard-kicker">Clinical microbiology &amp; ASCP review</span>
                 <h1 id="dashboard-title">Learn Microbes</h1>
                 <p>
-                  Visual bench cards, study paths, and practical microbiology tools for MLS students, ASCP review, and new clinical bench learners.
+                  Learn clinical microbiology the way the bench actually thinks: follow Gram stain, colony clues, media, key tests, and the next safest step.
                 </p>
+                <div className="dashboard-cover-actions" aria-label="Primary Learn Microbes actions">
+                  <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
+                    Create free beta account
+                  </button>
+                  <button type="button" onClick={() => handleAlphaSignupClick('home_hero')}>
+                    Join the Micro Bench Beta
+                  </button>
+                </div>
                 <div className="dashboard-hero-search" ref={dashboardSearchRef}>
                   <label htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
                   <div className="dashboard-hero-search-box">
@@ -1355,7 +1417,36 @@ export default function App() {
 
             <section className="dashboard-intro" aria-label="Study task chooser">
               <span className="dashboard-kicker">What are you trying to do?</span>
-              <p>Choose the closest study task and jump straight to the Learn page, bench card, roadmap, or practice tool that fits.</p>
+              <p>Stop memorizing isolated facts. Pick the closest route and study the workflow: clue by clue, test by test, bench decision by bench decision.</p>
+            </section>
+
+            <section className="dashboard-start-here-panel" aria-labelledby="dashboard-start-here-title">
+              <div className="dashboard-start-here-copy">
+                <span className="dashboard-kicker">New here?</span>
+                <h2 id="dashboard-start-here-title">Start with the path that matches your goal.</h2>
+                <p>
+                  Built for MedTech students, ASCP reviewees, and new micro bench learners by a working clinical lab scientist.
+                </p>
+              </div>
+              <div className="dashboard-start-here-grid">
+                {socialStartPaths.map((path) => (
+                  <button
+                    type="button"
+                    key={path.label}
+                    onClick={() => handleStartHereClick(path.label, path.path)}
+                  >
+                    <strong>{path.label}</strong>
+                    <span>{path.detail}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section className="dashboard-trust-note" aria-label="Educational use note">
+              <strong>Bench-first educational review.</strong>
+              <span>
+                Learn Microbes uses teaching content and de-identified educational visuals. Follow your facility SOPs, institutional policies, and official certification guidance for real clinical work.
+              </span>
             </section>
 
             <section className="dashboard-action-grid" aria-label="Primary study tasks">
@@ -1455,8 +1546,8 @@ export default function App() {
 
             <AlphaValidationCTA
               location="homepage_dashboard"
-              title="Help shape the bench cards and study paths"
-              body="Tell us what feels useful, what is missing, and whether saved progress or bookmarks would help your study workflow."
+              title="Free beta access for early Learn Microbes users"
+              body="Create an account to save progress, bookmarks, quiz history, and help shape what gets built next. The beta form asks your role, study goal, and hardest micro topic."
             />
           </div>
         ) : (
@@ -1496,7 +1587,23 @@ export default function App() {
               <Link to="/disclaimer">Disclaimer</Link>
               <Link to="/terms">Terms</Link>
               <Link to="/privacy">Privacy</Link>
-              <a href={ALPHA_SIGNUP_FORM_URL} target="_blank" rel="noopener noreferrer">Join Beta</a>
+              <a
+                href={ALPHA_SIGNUP_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackEvent('alpha_join_clicked', {
+                    location: 'footer',
+                    destination: ALPHA_SIGNUP_FORM_URL
+                  });
+                  trackEvent('lead_form_viewed', {
+                    location: 'footer',
+                    form_name: 'beta_tester_form'
+                  });
+                }}
+              >
+                Join Beta
+              </a>
             </nav>
           </div>
         </div>

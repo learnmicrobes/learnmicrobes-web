@@ -6,9 +6,21 @@ create table if not exists public.profiles (
   email text,
   display_name text,
   learning_goal text default 'Build my clinical microbiology confidence',
+  learner_role text,
+  country text,
+  hardest_topic text,
+  email_update_opt_in boolean not null default false,
+  last_active_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+alter table public.profiles
+  add column if not exists learner_role text,
+  add column if not exists country text,
+  add column if not exists hardest_topic text,
+  add column if not exists email_update_opt_in boolean not null default false,
+  add column if not exists last_active_at timestamptz;
 
 grant select, insert, update on public.profiles to authenticated;
 

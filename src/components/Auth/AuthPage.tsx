@@ -4,18 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faEye, faEyeSlash, faFlaskVial, faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { isSupabaseConfigured, supabase } from '../../lib/supabaseClient';
 import { useAuth } from '../../context/AuthContext';
+import { trackEvent } from '../../utils/analytics';
 import './AuthPage.css';
 
 type AuthMode = 'sign-in' | 'sign-up' | 'reset-password' | 'update-password';
 
 const PASSWORD_REQUIREMENT_MESSAGE = 'Use at least 12 characters with uppercase, lowercase, a number, and a special character.';
+const GENERIC_SIGN_IN_ERROR = 'Invalid login credentials. Check your email and password, then try again.';
+const GENERIC_RESET_MESSAGE = 'If an account exists for that email, we will send a password reset link.';
+
+const getPasswordRequirements = (value: string) => [
+  { label: 'At least 12 characters', met: value.length >= 12 },
+  { label: 'Uppercase letter', met: /[A-Z]/.test(value) },
+  { label: 'Lowercase letter', met: /[a-z]/.test(value) },
+  { label: 'Number', met: /\d/.test(value) },
+  { label: 'Special character', met: /[^A-Za-z0-9]/.test(value) }
+];
 
 const isStrongPassword = (value: string) => (
-  value.length >= 12 &&
-  /[A-Z]/.test(value) &&
-  /[a-z]/.test(value) &&
-  /\d/.test(value) &&
-  /[^A-Za-z0-9]/.test(value)
+  getPasswordRequirements(value).every((requirement) => requirement.met)
 );
 
 const AuthPage: React.FC = () => {
@@ -31,6 +38,7 @@ const AuthPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false);
   const [isResettingPassword, setIsResettingPassword] = useState(false);
+  const passwordRequirements = getPasswordRequirements(password);
 
   useEffect(() => {
     if (isAuthReady && user && mode !== 'update-password') {
@@ -137,16 +145,27 @@ const AuthPage: React.FC = () => {
     setIsSubmitting(false);
 
     if (error) {
-      setErrorMessage(error.message);
+      setErrorMessage(mode === 'sign-in' ? GENERIC_SIGN_IN_ERROR : error.message);
       return;
     }
 
     if (mode === 'sign-up' && !data.session) {
+      trackEvent('account_created', {
+        method: 'email',
+        confirmation_required: true
+      });
       setStatusMessage('Account created. Check your email to confirm your address, then sign in.');
       setMode('sign-in');
       setPassword('');
       navigate('/login', { replace: true });
       return;
+    }
+
+    if (mode === 'sign-up') {
+      trackEvent('account_created', {
+        method: 'email',
+        confirmation_required: false
+      });
     }
 
     setStatusMessage(mode === 'sign-in' ? 'Signed in successfully.' : 'Account created and signed in.');
@@ -163,6 +182,10 @@ const AuthPage: React.FC = () => {
     }
 
     setIsGoogleSubmitting(true);
+    trackEvent('signup_cta_clicked', {
+      location: 'auth_google_button',
+      destination: 'google_oauth'
+    });
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -173,7 +196,7 @@ const AuthPage: React.FC = () => {
 
     if (error) {
       setIsGoogleSubmitting(false);
-      setErrorMessage(error.message);
+      setErrorMessage('Google sign-in could not be completed. Please try again.');
     }
   };
 
@@ -202,13 +225,22 @@ const AuthPage: React.FC = () => {
     setIsResettingPassword(false);
 
     if (error) {
-      setErrorMessage(error.message);
+      setStatusMessage(GENERIC_RESET_MESSAGE);
+      setMode('sign-in');
+      setPassword('');
       return;
     }
 
-    setStatusMessage('Password reset email sent. Check your inbox for the reset link.');
+    setStatusMessage(GENERIC_RESET_MESSAGE);
     setMode('sign-in');
     setPassword('');
+  };
+
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    if (errorMessage === PASSWORD_REQUIREMENT_MESSAGE && isStrongPassword(value)) {
+      setErrorMessage('');
+    }
   };
 
   const switchMode = (nextMode: AuthMode) => {
@@ -306,10 +338,9 @@ const AuthPage: React.FC = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
-                  onChange={(event) => setPassword(event.target.value)}
+                  onChange={(event) => handlePasswordChange(event.target.value)}
                   autoComplete={mode === 'sign-in' ? 'current-password' : 'new-password'}
                   placeholder={mode === 'sign-in' ? 'Your password' : '12+ characters with symbols'}
-                  minLength={mode === 'sign-in' ? undefined : 12}
                   required
                 />
                 <button
@@ -343,15 +374,29 @@ const AuthPage: React.FC = () => {
           )}
 
           {mode === 'update-password' && (
-            <p className="auth-helper-note">
-              {PASSWORD_REQUIREMENT_MESSAGE}
-            </p>
+            <div className="auth-password-requirements" aria-live="polite">
+              <span>Password must include:</span>
+              <ul>
+                {passwordRequirements.map((requirement) => (
+                  <li className={requirement.met ? 'met' : ''} key={requirement.label}>
+                    {requirement.met ? '✓' : '•'} {requirement.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
           {mode === 'sign-up' && (
-            <p className="auth-helper-note">
-              {PASSWORD_REQUIREMENT_MESSAGE}
-            </p>
+            <div className="auth-password-requirements" aria-live="polite">
+              <span>Password must include:</span>
+              <ul>
+                {passwordRequirements.map((requirement) => (
+                  <li className={requirement.met ? 'met' : ''} key={requirement.label}>
+                    {requirement.met ? '✓' : '•'} {requirement.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
           {errorMessage && <p className="auth-message error" role="alert">{errorMessage}</p>}

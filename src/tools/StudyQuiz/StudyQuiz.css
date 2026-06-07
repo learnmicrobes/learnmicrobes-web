@@ -730,6 +730,10 @@ body.dark-mode .study-quiz-timer-alert {
   margin-top: 1rem;
 }
 
+.study-quiz-mobile-save-row {
+  display: none;
+}
+
 .study-quiz-confetti {
   position: absolute;
   inset: 0;
@@ -1301,6 +1305,16 @@ body.dark-mode .study-quiz-timer-alert {
   .study-quiz-save,
   .study-quiz-review {
     width: 100%;
+  }
+
+  .study-quiz-mobile-save-row {
+    display: block;
+    margin-top: 0.72rem;
+  }
+
+  .study-quiz-mobile-save-row .study-quiz-save {
+    min-height: 44px;
+    background: var(--c-card-strong);
   }
 }
 

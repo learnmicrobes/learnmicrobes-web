@@ -20,6 +20,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { useLearnProgress } from '../../hooks/useLearnProgress';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
+import { trackEvent } from '../../utils/analytics';
 import './AccountPage.css';
 
 type ProfileRow = {
@@ -27,11 +28,39 @@ type ProfileRow = {
   email: string | null;
   display_name: string | null;
   learning_goal: string | null;
+  learner_role: string | null;
+  country: string | null;
+  hardest_topic: string | null;
+  email_update_opt_in: boolean | null;
+  last_active_at: string | null;
   created_at: string | null;
   updated_at: string | null;
 };
 
 const defaultLearningGoal = 'Build my clinical microbiology confidence';
+
+const profileSelectFields = 'id, email, display_name, learning_goal, learner_role, country, hardest_topic, email_update_opt_in, last_active_at, created_at, updated_at';
+
+const learnerRoleOptions = [
+  'MedTech / MLS student',
+  'ASCP reviewee',
+  'Working MedTech / MLS',
+  'New micro bench learner',
+  'Educator',
+  'Other'
+];
+
+const hardestTopicOptions = [
+  'Gram positive organisms',
+  'Gram negative organisms',
+  'Biochemical tests',
+  'Unknown isolate workup',
+  'Mycology',
+  'Parasitology',
+  'ASCP review',
+  'Bench workflow',
+  'Other'
+];
 
 const getFriendlyDate = (value: string | null | undefined) => {
   if (!value) {
@@ -63,6 +92,10 @@ const AccountPage: React.FC = () => {
   const [profile, setProfile] = useState<ProfileRow | null>(null);
   const [displayName, setDisplayName] = useState('');
   const [learningGoal, setLearningGoal] = useState(defaultLearningGoal);
+  const [learnerRole, setLearnerRole] = useState('');
+  const [country, setCountry] = useState('');
+  const [hardestTopic, setHardestTopic] = useState('');
+  const [emailUpdateOptIn, setEmailUpdateOptIn] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
@@ -158,7 +191,7 @@ const AccountPage: React.FC = () => {
 
       const { data, error } = await supabase
         .from('profiles')
-        .select('id, email, display_name, learning_goal, created_at, updated_at')
+        .select(profileSelectFields)
         .eq('id', user.id)
         .maybeSingle();
 
@@ -176,6 +209,10 @@ const AccountPage: React.FC = () => {
         setProfile(data as ProfileRow);
         setDisplayName(data.display_name || getDefaultDisplayName(user.email));
         setLearningGoal(data.learning_goal || defaultLearningGoal);
+        setLearnerRole(data.learner_role || '');
+        setCountry(data.country || '');
+        setHardestTopic(data.hardest_topic || '');
+        setEmailUpdateOptIn(Boolean(data.email_update_opt_in));
         setIsLoadingProfile(false);
         return;
       }
@@ -184,13 +221,14 @@ const AccountPage: React.FC = () => {
         id: user.id,
         email: user.email ?? null,
         display_name: getDefaultDisplayName(user.email),
-        learning_goal: defaultLearningGoal
+        learning_goal: defaultLearningGoal,
+        last_active_at: new Date().toISOString()
       };
 
       const { data: createdProfile, error: createError } = await supabase
         .from('profiles')
         .upsert(starterProfile, { onConflict: 'id' })
-        .select('id, email, display_name, learning_goal, created_at, updated_at')
+        .select(profileSelectFields)
         .single();
 
       if (createError) {
@@ -199,6 +237,10 @@ const AccountPage: React.FC = () => {
         setProfile(createdProfile as ProfileRow);
         setDisplayName(starterProfile.display_name);
         setLearningGoal(starterProfile.learning_goal);
+        setLearnerRole('');
+        setCountry('');
+        setHardestTopic('');
+        setEmailUpdateOptIn(false);
       }
 
       setIsLoadingProfile(false);
@@ -225,9 +267,14 @@ const AccountPage: React.FC = () => {
         id: user.id,
         email: user.email ?? null,
         display_name: displayName.trim() || getDefaultDisplayName(user.email),
-        learning_goal: learningGoal.trim() || defaultLearningGoal
+        learning_goal: learningGoal.trim() || defaultLearningGoal,
+        learner_role: learnerRole || null,
+        country: country.trim() || null,
+        hardest_topic: hardestTopic || null,
+        email_update_opt_in: emailUpdateOptIn,
+        last_active_at: new Date().toISOString()
       }, { onConflict: 'id' })
-      .select('id, email, display_name, learning_goal, created_at, updated_at')
+      .select(profileSelectFields)
       .single();
 
     setIsSavingProfile(false);
@@ -239,6 +286,12 @@ const AccountPage: React.FC = () => {
 
     setProfile(data as ProfileRow);
     setStatusMessage('Profile saved.');
+    trackEvent('profile_updated', {
+      learner_role: learnerRole || 'not_set',
+      hardest_topic: hardestTopic || 'not_set',
+      has_country: Boolean(country.trim()),
+      email_update_opt_in: emailUpdateOptIn
+    });
   };
 
   const handleSignOut = async () => {
@@ -335,6 +388,48 @@ const AccountPage: React.FC = () => {
                 maxLength={240}
                 rows={4}
               />
+            </label>
+
+            <div className="account-profile-grid" aria-label="Beta learner profile">
+              <label>
+                What best describes you?
+                <select value={learnerRole} onChange={(event) => setLearnerRole(event.target.value)}>
+                  <option value="">Select a role</option>
+                  {learnerRoleOptions.map((option) => (
+                    <option value={option} key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label>
+                Hardest microbiology area
+                <select value={hardestTopic} onChange={(event) => setHardestTopic(event.target.value)}>
+                  <option value="">Select a topic</option>
+                  {hardestTopicOptions.map((option) => (
+                    <option value={option} key={option}>{option}</option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Country
+              <input
+                type="text"
+                value={country}
+                onChange={(event) => setCountry(event.target.value)}
+                placeholder="Optional, helps us understand where learners are using the site"
+                maxLength={80}
+              />
+            </label>
+
+            <label className="account-checkbox-row">
+              <input
+                type="checkbox"
+                checked={emailUpdateOptIn}
+                onChange={(event) => setEmailUpdateOptIn(event.target.checked)}
+              />
+              <span>Email me occasional Learn Microbes beta updates and study-tool news.</span>
             </label>
 
             <button type="submit" className="account-save-btn" disabled={isSavingProfile}>
@@ -538,6 +633,18 @@ const AccountPage: React.FC = () => {
             <div>
               <dt>Last updated</dt>
               <dd>{getFriendlyDate(profile?.updated_at)}</dd>
+            </div>
+            <div>
+              <dt>Learner role</dt>
+              <dd>{profile?.learner_role || 'Not set yet'}</dd>
+            </div>
+            <div>
+              <dt>Hardest area</dt>
+              <dd>{profile?.hardest_topic || 'Not set yet'}</dd>
+            </div>
+            <div>
+              <dt>Email updates</dt>
+              <dd>{profile?.email_update_opt_in ? 'Opted in' : 'Not opted in'}</dd>
             </div>
             <div>
               <dt>Account ID</dt>

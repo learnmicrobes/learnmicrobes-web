@@ -43,3 +43,48 @@ using ((select auth.uid()) = user_id);
 
 create index if not exists quiz_attempts_user_completed_at_idx
 on public.quiz_attempts (user_id, completed_at desc);
+
+create or replace function public.get_study_quiz_leaderboard(row_limit integer default 1000)
+returns table (
+  user_id uuid,
+  display_name text,
+  total_score bigint,
+  attempt_count bigint,
+  accuracy_percent integer,
+  rank bigint
+)
+language sql
+security definer
+set search_path = public
+as $$
+  with totals as (
+    select
+      quiz_attempts.user_id,
+      sum(quiz_attempts.correct_count)::bigint as total_score,
+      count(*)::bigint as attempt_count,
+      coalesce(round(avg(quiz_attempts.score_percent))::integer, 0) as accuracy_percent
+    from public.quiz_attempts
+    group by quiz_attempts.user_id
+  ),
+  ranked as (
+    select
+      totals.*,
+      row_number() over (
+        order by totals.total_score desc, totals.accuracy_percent desc, totals.attempt_count desc, totals.user_id
+      ) as rank
+    from totals
+  )
+  select
+    ranked.user_id,
+    coalesce(nullif(trim(profiles.display_name), ''), 'Learner ' || ranked.rank::text) as display_name,
+    ranked.total_score,
+    ranked.attempt_count,
+    ranked.accuracy_percent,
+    ranked.rank
+  from ranked
+  left join public.profiles on profiles.id = ranked.user_id
+  order by ranked.rank
+  limit least(greatest(row_limit, 1), 1000);
+$$;
+
+grant execute on function public.get_study_quiz_leaderboard(integer) to authenticated;

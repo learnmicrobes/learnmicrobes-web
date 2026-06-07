@@ -225,6 +225,33 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .dashboard-cover-actions button {
+    min-height: 2.55rem;
+    padding: 0.64rem 0.9rem;
+    border: 1px solid rgba(36, 92, 105, 0.2);
+    border-radius: 5px;
+    background: #ffffff;
+    color: var(--primary-color);
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  }
+
+  .dashboard-cover-actions button:first-child {
+    border-color: transparent;
+    background: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .dashboard-cover-actions button:hover,
+  .dashboard-cover-actions button:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(36, 92, 105, 0.36);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
   }
 
   .dashboard-search-card span {
@@ -362,6 +389,103 @@
     padding: 0.62rem 0.8rem;
     font-weight: 850;
     cursor: pointer;
+  }
+
+  .dashboard-start-here-panel {
+    display: grid;
+    grid-template-columns: minmax(210px, 0.78fr) minmax(0, 1.6fr);
+    gap: 0.8rem;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.035);
+  }
+
+  .dashboard-start-here-copy {
+    display: grid;
+    align-content: center;
+    padding: 0.75rem;
+    border-right: 1px solid rgba(36, 92, 105, 0.12);
+  }
+
+  .dashboard-start-here-copy h2 {
+    margin: 0.25rem 0 0.35rem;
+    color: var(--dark-color);
+    font-size: 1.28rem;
+    line-height: 1.18;
+    letter-spacing: 0;
+  }
+
+  .dashboard-start-here-copy p {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .dashboard-start-here-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .dashboard-start-here-grid button {
+    display: grid;
+    gap: 0.28rem;
+    min-height: 5.1rem;
+    padding: 0.8rem;
+    border: 1px solid rgba(36, 92, 105, 0.16);
+    border-radius: 6px;
+    background: #fbfaf7;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+
+  .dashboard-start-here-grid button:hover,
+  .dashboard-start-here-grid button:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(36, 92, 105, 0.32);
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .dashboard-start-here-grid strong {
+    color: var(--dark-color);
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .dashboard-start-here-grid span {
+    color: var(--muted-color);
+    font-size: 0.8rem;
+    line-height: 1.38;
+  }
+
+  .dashboard-trust-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0.72rem 0.95rem;
+    border: 1px solid rgba(36, 92, 105, 0.14);
+    border-radius: 6px;
+    background: #fbfaf7;
+    color: var(--muted-color);
+    font-size: 0.82rem;
+    line-height: 1.42;
+  }
+
+  .dashboard-trust-note strong {
+    color: var(--primary-color);
+    font-weight: 900;
   }
 
   .dashboard-action-grid {
@@ -1781,6 +1905,29 @@
     padding: 0;
   }
 
+  .dashboard-cover-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .dashboard-cover-actions button {
+    width: 100%;
+  }
+
+  .dashboard-start-here-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-start-here-copy {
+    border-right: 0;
+    border-bottom: 1px solid rgba(36, 92, 105, 0.12);
+  }
+
+  .dashboard-start-here-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero-section {
     padding: 1.25rem;
     margin-bottom: 1.25rem;
@@ -2307,6 +2454,8 @@ body.dark-mode .dashboard-action-grid,
 body.dark-mode .dashboard-panel,
 body.dark-mode .dashboard-alpha-panel,
 body.dark-mode .dashboard-home-screen-hint,
+body.dark-mode .dashboard-start-here-panel,
+body.dark-mode .dashboard-trust-note,
 body.dark-mode .dashboard-action-card {
   background: #1e2532;
   border-color: #2d3748;
@@ -2326,6 +2475,9 @@ body.dark-mode .dashboard-intro p,
 body.dark-mode .dashboard-panel p,
 body.dark-mode .dashboard-alpha-panel p,
 body.dark-mode .dashboard-home-screen-hint p,
+body.dark-mode .dashboard-start-here-copy p,
+body.dark-mode .dashboard-start-here-grid span,
+body.dark-mode .dashboard-trust-note,
 body.dark-mode .dashboard-action-card small,
 body.dark-mode .dashboard-hero-search-option small,
 body.dark-mode .dashboard-hero-search-empty {
@@ -2341,6 +2493,8 @@ body.dark-mode .dashboard-hero-search-box {
 body.dark-mode .dashboard-hero-search-box input,
 body.dark-mode .dashboard-hero-search-option strong,
 body.dark-mode .dashboard-home-screen-hint h2,
+body.dark-mode .dashboard-start-here-copy h2,
+body.dark-mode .dashboard-start-here-grid strong,
 body.dark-mode .dashboard-riddle-choice,
 body.dark-mode .dashboard-riddle-feedback strong {
   color: #f8fafc;
@@ -2362,6 +2516,8 @@ body.dark-mode .dashboard-hero-search-option.active {
 }
 
 body.dark-mode .dashboard-action-card:hover,
+body.dark-mode .dashboard-start-here-grid button:hover,
+body.dark-mode .dashboard-start-here-grid button:focus-visible,
 body.dark-mode .dashboard-step-list button:hover,
 body.dark-mode .dashboard-secondary-links button:hover {
   background: #252d3a;
@@ -2371,6 +2527,8 @@ body.dark-mode .dashboard-secondary-links button:hover {
 body.dark-mode .dashboard-step-list button,
 body.dark-mode .dashboard-secondary-links button,
 body.dark-mode .dashboard-home-screen-hint button,
+body.dark-mode .dashboard-start-here-grid button,
+body.dark-mode .dashboard-cover-actions button:last-child,
 body.dark-mode .dashboard-alpha-actions button:last-child {
   background: #111827;
   border-color: #2d3748;
