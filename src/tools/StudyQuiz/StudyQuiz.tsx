@@ -6,6 +6,7 @@ import {
   faClock,
   faFire,
   faFlaskVial,
+  faLock,
   faMoon,
   faRotateRight,
   faShieldHalved,
@@ -96,7 +97,9 @@ const QUIZ_STORAGE_KEY = 'learnmicrobes_study_quiz_state';
 const STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_streak';
 const BEST_STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_best_streak';
 const TIMED_MODE_STORAGE_KEY = 'learnmicrobes_study_quiz_timed_mode';
+const GUEST_QUIZ_COUNT_STORAGE_KEY = 'learnmicrobes_study_quiz_guest_answer_count';
 const QUIZ_TIMER_SECONDS = 60;
+const GUEST_QUIZ_QUESTION_LIMIT = 15;
 const CONFETTI_PIECES = 20;
 
 /**
@@ -397,6 +400,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [answeredIds, setAnsweredIds] = useState<string[]>((savedState?.answeredIds ?? []).filter((id) => validQuestionIds.has(id)));
   const [correctIds, setCorrectIds] = useState<string[]>((savedState?.correctIds ?? []).filter((id) => validQuestionIds.has(id)));
+  const [guestAnsweredCount, setGuestAnsweredCount] = useState(() => Math.max(
+    getSavedNumber(GUEST_QUIZ_COUNT_STORAGE_KEY),
+    (savedState?.answeredIds ?? []).filter((id) => validQuestionIds.has(id)).length
+  ));
   const [missedAttempts, setMissedAttempts] = useState<QuizAttempt[]>((savedState?.missedAttempts ?? []).filter((attempt) => validQuestionIds.has(attempt.questionId)));
   const [reviewMissedOnly, setReviewMissedOnly] = useState(hasInitialFilter ? false : Boolean(savedState?.reviewMissedOnly));
   const [streak, setStreak] = useState(() => getSavedNumber(STREAK_STORAGE_KEY));
@@ -476,6 +483,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const currentQuestion = visibleQuestions[questionIndex % visibleQuestions.length];
   const isAnswered = Boolean(selectedAnswer);
   const isCorrect = selectedAnswer === currentQuestion.answer;
+  const hasReachedGuestQuestionLimit = !user && guestAnsweredCount >= GUEST_QUIZ_QUESTION_LIMIT;
+  const isQuestionLockedForGuest = hasReachedGuestQuestionLimit && !isAnswered;
   const scoreText = `${correctIds.length}/${answeredIds.length || 0}`;
   const visibleAnsweredCount = visibleQuestions.filter((question) => answeredIds.includes(question.id)).length;
   const visibleQuestionIds = useMemo(() => new Set(visibleQuestions.map((question) => question.id)), [visibleQuestions]);
@@ -712,7 +721,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   }, [currentQuestion.id]);
 
   useEffect(() => {
-    if (!isTimedMode || isAnswered || timeRemaining <= 0) {
+    if (!isTimedMode || isAnswered || hasReachedGuestQuestionLimit || timeRemaining <= 0) {
       return undefined;
     }
 
@@ -721,7 +730,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [isAnswered, isTimedMode, timeRemaining]);
+  }, [hasReachedGuestQuestionLimit, isAnswered, isTimedMode, timeRemaining]);
 
   useEffect(() => {
     if (!showConfetti) {
@@ -771,12 +780,21 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   };
 
   const handleAnswer = (choice: string) => {
-    if (isAnswered) {
+    if (isAnswered || isQuestionLockedForGuest) {
       return;
     }
 
+    const isNewGuestAnswer = !user && !answeredIds.includes(currentQuestion.id);
     setSelectedAnswer(choice);
     setAnsweredIds((ids) => ids.includes(currentQuestion.id) ? ids : [...ids, currentQuestion.id]);
+    if (isNewGuestAnswer) {
+      setGuestAnsweredCount((count) => {
+        const nextCount = count + 1;
+        localStorage.setItem(GUEST_QUIZ_COUNT_STORAGE_KEY, String(nextCount));
+        return nextCount;
+      });
+    }
+
     if (choice === currentQuestion.answer) {
       setCorrectIds((ids) => ids.includes(currentQuestion.id) ? ids : [...ids, currentQuestion.id]);
       setMissedAttempts((attempts) => attempts.filter((attempt) => attempt.questionId !== currentQuestion.id));
@@ -808,6 +826,11 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   };
 
   const handleNext = () => {
+    if (hasReachedGuestQuestionLimit) {
+      navigate('/login');
+      return;
+    }
+
     setQuestionIndex((index) => (index + 1) % visibleQuestions.length);
     setSelectedAnswer('');
   };
@@ -1096,6 +1119,21 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             </div>
           )}
 
+          {hasReachedGuestQuestionLimit && !user && (
+            <div className="study-quiz-guest-limit" role="status" aria-live="polite">
+              <div>
+                <span>
+                  <FontAwesomeIcon icon={faLock} />
+                  Guest practice checkpoint
+                </span>
+                <p>You have completed {GUEST_QUIZ_QUESTION_LIMIT} guest questions. Sign in to continue practicing and save your progress.</p>
+              </div>
+              <button type="button" onClick={() => navigate('/login')}>
+                Sign in to continue
+              </button>
+            </div>
+          )}
+
           <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
             {showConfetti && (
               <div className="study-quiz-confetti" aria-hidden="true">
@@ -1136,6 +1174,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                     type="button"
                     className={className}
                     onClick={() => handleAnswer(choice)}
+                    disabled={isQuestionLockedForGuest}
                     aria-pressed={selectedAnswer === choice}
                   >
                     <span className="study-quiz-choice-letter">{String.fromCharCode(65 + index)}</span>
@@ -1166,7 +1205,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 Previous
               </button>
               <button type="button" onClick={handleNext}>
-                Next question
+                {hasReachedGuestQuestionLimit && !user ? 'Sign in to continue' : 'Next question'}
                 <FontAwesomeIcon icon={faArrowRight} />
               </button>
             </div>
