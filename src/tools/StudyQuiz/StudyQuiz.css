@@ -1393,3 +1393,34 @@ body.dark-mode .study-quiz-timer-alert {
     height: 30px;
   }
 }
+
+/* Dark mode overrides for hardcoded rgba whites */
+body.dark-mode .study-quiz-icon-button {
+  background: rgba(30, 41, 59, 0.72);
+  border-color: rgba(148, 163, 184, 0.24);
+}
+
+body.dark-mode .study-quiz-icon-button:hover,
+body.dark-mode .study-quiz-icon-button:focus-visible {
+  background: rgba(30, 41, 59, 0.92);
+}
+
+body.dark-mode .study-quiz-icon-button.leaderboard {
+  background: rgba(47, 42, 28, 0.72);
+  border-color: rgba(200, 162, 77, 0.28);
+  color: #f8d88a;
+}
+
+body.dark-mode .study-quiz-score-card {
+  background: rgba(15, 23, 42, 0.54);
+}
+
+body.dark-mode .study-quiz-feedback {
+  background: rgba(15, 23, 42, 0.54);
+  border-color: rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+body.dark-mode .study-quiz-missed-list article {
+  background: rgba(15, 23, 42, 0.54);
+}

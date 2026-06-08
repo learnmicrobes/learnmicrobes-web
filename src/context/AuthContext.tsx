@@ -28,6 +28,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return;
       }
 
+      // "Remember Me" enforcement: if user chose not to be remembered and
+      // this is a new browser session (sessionStorage cleared on close), sign out.
+      if (data.session) {
+        const rememberMe = localStorage.getItem('lm_remember_me');
+        const sessionMarker = sessionStorage.getItem('lm_session_marker');
+        if (rememberMe === 'false' && !sessionMarker) {
+          supabase!.auth.signOut();
+          localStorage.removeItem('lm_remember_me');
+          setIsAuthReady(true);
+          return;
+        }
+      }
+
       setSession(data.session);
       setIsAuthReady(true);
     });
@@ -52,6 +65,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return { error: null };
       }
 
+      localStorage.removeItem('lm_remember_me');
+      sessionStorage.removeItem('lm_session_marker');
       const { error } = await supabase.auth.signOut();
       return { error: error ? new Error(error.message) : null };
     }

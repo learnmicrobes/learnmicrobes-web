@@ -272,3 +272,86 @@
     width: 100%;
   }
 }
+
+/* Dark mode overrides */
+body.dark-mode .positive-roadmap .roadmap-status-bar > div {
+  background: rgba(30, 37, 50, 0.88);
+  border-color: rgba(79, 209, 197, 0.14);
+}
+
+body.dark-mode .positive-roadmap .roadmap-status-bar strong,
+body.dark-mode .positive-roadmap .current-question h3 {
+  color: #dff8f0;
+}
+
+body.dark-mode .positive-roadmap .current-question h3 {
+  background: transparent;
+}
+
+body.dark-mode .positive-roadmap .history-chip {
+  background: #1e2532;
+  border-color: rgba(79, 209, 197, 0.18);
+  color: #dff8f0;
+}
+
+body.dark-mode .positive-roadmap .history-chip:hover,
+body.dark-mode .positive-roadmap .history-chip.active {
+  background: rgba(79, 209, 197, 0.12);
+  border-color: rgba(79, 209, 197, 0.34);
+}
+
+body.dark-mode .positive-roadmap .option-card {
+  background: #1e2532;
+  border-color: rgba(79, 209, 197, 0.14);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-mode .positive-roadmap .option-card:hover {
+  background: #232d3e;
+  border-color: rgba(79, 209, 197, 0.34);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.38);
+}
+
+body.dark-mode .positive-roadmap .option-card h3 {
+  color: #dff8f0;
+}
+
+body.dark-mode .positive-roadmap .result-text {
+  background: #1e2532;
+  border-color: rgba(79, 209, 197, 0.22);
+  color: #5eead4;
+}
+
+body.dark-mode .positive-roadmap .conclusion-panel {
+  background: rgba(30, 37, 50, 0.72);
+}
+
+body.dark-mode .positive-roadmap .back-btn {
+  background: #1e2532;
+  border-color: rgba(79, 209, 197, 0.22);
+  color: #5eead4;
+}
+
+body.dark-mode .positive-roadmap .back-btn:hover:not(:disabled) {
+  background: rgba(79, 209, 197, 0.1);
+}
+
+body.dark-mode .positive-roadmap .back-btn:disabled {
+  background: #181e2a;
+  color: #4a5568;
+  border-color: rgba(79, 209, 197, 0.1);
+}
+
+body.dark-mode .positive-roadmap .conclusion-tests-container {
+  background: #1e2532;
+  border-color: rgba(79, 209, 197, 0.16);
+}
+
+body.dark-mode .positive-roadmap .conclusion-tests-container h4 {
+  color: #dff8f0;
+  border-bottom-color: rgba(79, 209, 197, 0.18);
+}
+
+body.dark-mode .positive-roadmap .conclusion-tests-list li {
+  color: #c8d2dc;
+}

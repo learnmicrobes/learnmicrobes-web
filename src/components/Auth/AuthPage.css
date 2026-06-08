@@ -247,6 +247,33 @@
   opacity: 0.72;
 }
 
+.auth-remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: -0.1rem;
+  color: var(--muted-color);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-remember-me input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+  border: 1px solid rgba(36, 92, 105, 0.28);
+  border-radius: 3px;
+}
+
+body.dark-mode .auth-remember-me {
+  color: #9ab2c0;
+}
+
 .auth-helper-note {
   display: flex;
   flex-wrap: wrap;

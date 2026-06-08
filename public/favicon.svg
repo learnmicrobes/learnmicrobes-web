@@ -6,7 +6,8 @@
     </linearGradient>
   </defs>
 
-  <!-- Background tile -->
+  <!-- Background tile — solid fill for reliable favicon rendering, gradient as visual enhancement -->
+  <rect width="64" height="64" rx="14" fill="#2c7873"/>
   <rect width="64" height="64" rx="14" fill="url(#fv-bg)"/>
 
   <!-- Notebook body, fold, and binding rings -->

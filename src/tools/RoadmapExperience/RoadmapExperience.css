@@ -939,6 +939,17 @@ body.dark-mode .roadmap-mode-toggle button {
   border-color: #2d3748;
 }
 
+/* All breadcrumb history steps use accent color in dark mode so they're visible */
+body.dark-mode .roadmap-breadcrumbs button {
+  color: var(--roadmap-accent);
+}
+
+/* Active/current step gets a highlighted background to distinguish it */
+body.dark-mode .roadmap-breadcrumbs button.active {
+  background: #252d3a;
+  border-color: var(--roadmap-accent);
+}
+
 body.dark-mode .roadmap-mode-toggle button.active {
   background: var(--roadmap-accent);
   border-color: var(--roadmap-accent);
@@ -1282,18 +1293,4 @@ body.dark .roadmap-guest-modal {
 }
 
 .roadmap-guest-modal-actions button:hover,
-.roadmap-guest-modal-actions button:focus-visible,
-.roadmap-guest-modal-secondary:hover,
-.roadmap-guest-modal-secondary:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(36, 92, 105, 0.36);
-  box-shadow: 0 8px 18px var(--c-shadow);
-}
-
-.roadmap-guest-modal-secondary {
-  width: 100%;
-  margin-top: 0.75rem;
-  background: transparent;
-  color: var(--c-muted);
-  box-shadow: none;
-}
+.roadmap-guest-modal-actions button:focus-visib

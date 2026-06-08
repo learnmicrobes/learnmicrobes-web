@@ -38,6 +38,7 @@ const AuthPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false);
   const [isResettingPassword, setIsResettingPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
   const passwordRequirements = getPasswordRequirements(password);
   const isCreatingAccount = mode === 'sign-up';
   const authTitle = isCreatingAccount ? 'Create your Learn Microbes account.' : 'Sign in to your study account.';
@@ -171,6 +172,12 @@ const AuthPage: React.FC = () => {
         method: 'email',
         confirmation_required: false
       });
+    }
+
+    // Persist "Remember Me" preference so AuthContext can enforce it on next browser session.
+    if (mode === 'sign-in') {
+      localStorage.setItem('lm_remember_me', rememberMe ? 'true' : 'false');
+      sessionStorage.setItem('lm_session_marker', 'true');
     }
 
     setStatusMessage(mode === 'sign-in' ? 'Signed in successfully.' : 'Account created and signed in.');
@@ -324,6 +331,17 @@ const AuthPage: React.FC = () => {
                   <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                 </button>
               </span>
+            </label>
+          )}
+
+          {mode === 'sign-in' && (
+            <label className="auth-remember-me">
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(event) => setRememberMe(event.target.checked)}
+              />
+              Remember me
             </label>
           )}
 

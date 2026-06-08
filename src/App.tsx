@@ -1241,6 +1241,19 @@ export default function App() {
               <span className="nav-text">Search</span>
             </button>
           </div>
+          {isMobile && user && (
+            <div className="mobile-nav-signout-section">
+              <div className="mobile-nav-signout-divider" aria-hidden="true" />
+              <button
+                className="mobile-nav-signout-btn"
+                onClick={handleSignOut}
+              >
+                <FontAwesomeIcon icon={faRightFromBracket} />
+                <span className="nav-text">Sign out</span>
+              </button>
+            </div>
+          )}
+
           <div className="nav-links-auth">
             {user ? (
               <div className="nav-account-menu-shell">
