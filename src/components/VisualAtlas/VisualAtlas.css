@@ -304,6 +304,37 @@
   text-transform: uppercase;
 }
 
+.visual-discipline-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.visual-discipline-tabs button {
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  background: var(--va-card-strong);
+  color: var(--va-muted);
+  font-size: 0.84rem;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.03);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.visual-discipline-tabs button.active {
+  border-color: var(--va-primary);
+  background: var(--va-primary);
+  color: #ffffff;
+}
+
+.visual-discipline-tabs button:not(.active):hover {
+  border-color: var(--va-border-strong);
+  color: var(--va-ink);
+}
+
 .bench-card-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -552,6 +583,77 @@
   line-height: 1.42;
 }
 
+/* DIVR diagnostic framework strip — parasitology pages only */
+.visual-divr-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 0.6rem 0 1.1rem;
+  border: 1px solid rgba(36, 92, 105, 0.16);
+  border-radius: 7px;
+  background: #fbfaf7;
+  overflow: hidden;
+}
+
+.divr-step {
+  padding: 0.7rem 0.85rem;
+  border-right: 1px solid rgba(36, 92, 105, 0.12);
+}
+
+.divr-step:last-child {
+  border-right: none;
+}
+
+.divr-label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.38rem;
+}
+
+.divr-badge {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.divr-title {
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--dark-color);
+}
+
+.divr-step p,
+.divr-step ul {
+  font-size: 0.8rem;
+  color: var(--muted-color);
+  margin: 0;
+  line-height: 1.44;
+  font-weight: 720;
+}
+
+.divr-step ul {
+  padding-left: 1rem;
+}
+
+.divr-step li {
+  margin-bottom: 0.18rem;
+}
+
+.divr-step li:last-child {
+  margin-bottom: 0;
+}
+
 .lia-stage {
   position: relative;
   display: grid;
@@ -660,6 +762,13 @@
 .of-stage {
   grid-template-columns: repeat(6, minmax(110px, 1fr));
   max-width: 1040px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.parasite-stage {
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  max-width: 620px;
   margin: 0 auto;
   justify-content: center;
 }
@@ -851,7 +960,8 @@ body.dark-mode .visual-empty-state,
 body.dark-mode .bench-card-strip button,
 body.dark-mode .visual-scope-note,
 body.dark-mode .visual-board-read-first,
-body.dark-mode .visual-result-anchor {
+body.dark-mode .visual-result-anchor,
+body.dark-mode .visual-divr-strip {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
     var(--va-card);
@@ -880,12 +990,23 @@ body.dark-mode .visual-takeaways ul,
 body.dark-mode .lia-tube-card span,
 body.dark-mode .lia-tube-card p,
 body.dark-mode .visual-index-card p,
-body.dark-mode .visual-empty-state p {
+body.dark-mode .visual-empty-state p,
+body.dark-mode .divr-step p,
+body.dark-mode .divr-step ul,
+body.dark-mode .divr-step li {
   color: #cbd5df;
 }
 
 body.dark-mode .visual-result-anchor strong {
   color: #f8fffd;
+}
+
+body.dark-mode .divr-title {
+  color: #e8f4f0;
+}
+
+body.dark-mode .divr-step {
+  border-right-color: rgba(255, 255, 255, 0.07);
 }
 
 body.dark-mode .visual-board-signature,
@@ -1046,6 +1167,24 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
     grid-template-columns: 1fr;
   }
 
+  .visual-divr-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .divr-step {
+    border-right: none;
+    border-bottom: 1px solid rgba(36, 92, 105, 0.12);
+  }
+
+  .divr-step:nth-child(odd) {
+    border-right: 1px solid rgba(36, 92, 105, 0.12);
+  }
+
+  .divr-step:last-child,
+  .divr-step:nth-last-child(2):nth-child(odd) {
+    border-bottom: none;
+  }
+
   .visual-atlas-hero {
     padding: 1.2rem;
     margin-bottom: 0.75rem;
@@ -1139,6 +1278,10 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
     grid-template-columns: repeat(3, 110px);
     max-width: none;
     justify-content: center;
+  }
+
+  .parasite-stage {
+    grid-template-columns: minmax(180px, 1fr);
   }
 
   .visual-table {

@@ -39,6 +39,11 @@ const AuthPage: React.FC = () => {
   const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false);
   const [isResettingPassword, setIsResettingPassword] = useState(false);
   const passwordRequirements = getPasswordRequirements(password);
+  const isCreatingAccount = mode === 'sign-up';
+  const authTitle = isCreatingAccount ? 'Create your Learn Microbes account.' : 'Sign in to your study account.';
+  const authBody = isCreatingAccount
+    ? 'Save progress, bookmarks, quiz history, and profile details as you study clinical microbiology.'
+    : 'Access your saved progress, bookmarks, quiz history, and profile details.';
 
   useEffect(() => {
     if (isAuthReady && user && mode !== 'update-password') {
@@ -258,38 +263,8 @@ const AuthPage: React.FC = () => {
       <section className="auth-card" aria-labelledby="auth-title">
         <div className="auth-card-copy">
           <span className="auth-kicker">Learn Microbes Beta</span>
-          <h1 id="auth-title">Sign in to your study account.</h1>
-          <p>
-            Accounts save your progress, bookmarks, quiz history, and profile so your study workflow can follow you.
-            Built for beta testers, MLS students, and ASCP review.
-          </p>
-        </div>
-
-        <div className="auth-mode-tabs" role="tablist" aria-label="Authentication mode">
-          <button
-            type="button"
-            className={mode === 'sign-in' || mode === 'reset-password' || mode === 'update-password' ? 'active' : ''}
-            onClick={() => {
-              switchMode('sign-in');
-              navigate('/login', { replace: true });
-            }}
-            aria-pressed={mode === 'sign-in' || mode === 'reset-password' || mode === 'update-password'}
-          >
-            <FontAwesomeIcon icon={faRightToBracket} />
-            Sign in
-          </button>
-          <button
-            type="button"
-            className={mode === 'sign-up' ? 'active' : ''}
-            onClick={() => {
-              switchMode('sign-up');
-              navigate('/register', { replace: true });
-            }}
-            aria-pressed={mode === 'sign-up'}
-          >
-            <FontAwesomeIcon icon={faUserPlus} />
-            Create account
-          </button>
+          <h1 id="auth-title">{authTitle}</h1>
+          <p>{authBody}</p>
         </div>
 
         {!isSupabaseConfigured && (
@@ -301,20 +276,6 @@ const AuthPage: React.FC = () => {
             </div>
           </div>
         )}
-
-        <button
-          type="button"
-          className="auth-google-btn"
-          onClick={handleGoogleSignIn}
-          disabled={isGoogleSubmitting || !isSupabaseConfigured}
-        >
-          <span className="auth-google-mark" aria-hidden="true">G</span>
-          {isGoogleSubmitting ? 'Opening Google...' : 'Continue with Google'}
-        </button>
-
-        <div className="auth-divider" role="separator">
-          <span>{mode === 'reset-password' ? 'recover account' : mode === 'update-password' ? 'set password' : 'or use email'}</span>
-        </div>
 
         <form className="auth-form" onSubmit={handleSubmit}>
           {mode !== 'update-password' && (
@@ -333,7 +294,18 @@ const AuthPage: React.FC = () => {
 
           {mode !== 'reset-password' && (
             <label>
-              Password
+              <span className="auth-label-row">
+                Password
+                {mode === 'sign-in' && (
+                  <button
+                    type="button"
+                    className="auth-inline-action"
+                    onClick={() => switchMode('reset-password')}
+                  >
+                    Forgot password?
+                  </button>
+                )}
+              </span>
               <span className="auth-password-field">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -353,18 +325,6 @@ const AuthPage: React.FC = () => {
                 </button>
               </span>
             </label>
-          )}
-
-          {mode === 'sign-in' && (
-            <p className="auth-helper-note">
-              <button
-                type="button"
-                className="auth-inline-action"
-                onClick={() => switchMode('reset-password')}
-              >
-                Need help signing in?
-              </button>
-            </p>
           )}
 
           {mode === 'reset-password' && (
@@ -428,6 +388,38 @@ const AuthPage: React.FC = () => {
             </button>
           )}
         </form>
+
+        {(mode === 'sign-in' || mode === 'sign-up') && (
+          <>
+            <div className="auth-divider" role="separator">
+              <span>or continue with</span>
+            </div>
+
+            <button
+              type="button"
+              className="auth-google-btn"
+              onClick={handleGoogleSignIn}
+              disabled={isGoogleSubmitting || !isSupabaseConfigured}
+            >
+              <span className="auth-google-mark" aria-hidden="true">G</span>
+              {isGoogleSubmitting ? 'Opening Google...' : 'Google'}
+            </button>
+
+            <div className="auth-mode-footer">
+              <span>{isCreatingAccount ? 'Already have an account?' : 'New to Learn Microbes?'}</span>
+              <button
+                type="button"
+                onClick={() => {
+                  const nextMode = isCreatingAccount ? 'sign-in' : 'sign-up';
+                  switchMode(nextMode);
+                  navigate(isCreatingAccount ? '/login' : '/register', { replace: true });
+                }}
+              >
+                {isCreatingAccount ? 'Sign in' : 'Create account'}
+              </button>
+            </div>
+          </>
+        )}
 
         <div className="auth-footer-note">
           <Link to="/">Back to Learn Microbes</Link>

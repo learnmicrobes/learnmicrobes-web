@@ -1,6 +1,9 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToolBox from '../../components/ToolBox/ToolBox';
+import { useAuth } from '../../context/AuthContext';
 import './UnknownIsolateWorkup.css';
 
 type WorkupState = {
@@ -500,9 +503,11 @@ const buildRecommendations = (state: WorkupState): Recommendation[] => {
 
 const UnknownIsolateWorkup: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [workup, setWorkup] = useState<WorkupState>(initialState);
   const [hasReviewedPath, setHasReviewedPath] = useState(false);
   const [showSecondaryFields, setShowSecondaryFields] = useState(false);
+  const [isGuestIsolateModalOpen, setIsGuestIsolateModalOpen] = useState(false);
   const resultRef = useRef<HTMLElement | null>(null);
 
   const recommendations = useMemo(() => buildRecommendations(workup), [workup]);
@@ -535,6 +540,16 @@ const UnknownIsolateWorkup: React.FC = () => {
     }
 
     setHasReviewedPath(true);
+
+    if (!user) {
+      const countKey = 'learnmicrobes_unknown_isolate_guest_count';
+      const newCount = parseInt(localStorage.getItem(countKey) ?? '0', 10) + 1;
+      localStorage.setItem(countKey, String(newCount));
+      if (newCount >= 3) {
+        setIsGuestIsolateModalOpen(true);
+      }
+    }
+
     window.requestAnimationFrame(() => {
       resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
@@ -701,6 +716,36 @@ const UnknownIsolateWorkup: React.FC = () => {
           </main>
         </div>
       </div>
+
+      {isGuestIsolateModalOpen && !user && (
+        <div className="unknown-guest-modal-backdrop" role="presentation" onClick={() => setIsGuestIsolateModalOpen(false)}>
+          <section className="unknown-guest-modal" role="dialog" aria-modal="true" aria-labelledby="unknown-guest-modal-title" onClick={(e) => e.stopPropagation()}>
+            <span className="unknown-guest-modal-kicker">
+              <FontAwesomeIcon icon={faLock} />
+              Guest tool checkpoint
+            </span>
+            <h2 id="unknown-guest-modal-title">Continue exploring with a free account.</h2>
+            <p>
+              You have built 3 workup paths as a guest. Sign in to keep going and save your workup history and progress.
+            </p>
+            <div className="unknown-guest-modal-actions">
+              <button type="button" onClick={() => navigate('/login')}>
+                Sign in
+              </button>
+              <button type="button" onClick={() => navigate('/register')}>
+                Create account
+              </button>
+            </div>
+            <button
+              type="button"
+              className="unknown-guest-modal-secondary"
+              onClick={() => setIsGuestIsolateModalOpen(false)}
+            >
+              Keep using this tool
+            </button>
+          </section>
+        </div>
+      )}
     </ToolBox>
   );
 };

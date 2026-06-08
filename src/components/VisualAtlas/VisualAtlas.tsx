@@ -29,7 +29,7 @@ export type AtlasPage = {
   boardTitle: string;
   boardNote: string;
   ariaLabel: string;
-  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test';
+  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus';
   tubes: TubeVisual[];
   readoutTitle: string;
   readoutRows: string[][];
@@ -42,6 +42,12 @@ export type AtlasPage = {
   remember: string;
   biochemicalTestId?: string;
   relatedLearnSlug?: string;
+  divr?: {
+    detect: string;
+    identify: string[];
+    verify: string;
+    report: string;
+  };
 };
 
 export const atlasPages: AtlasPage[] = [
@@ -2524,6 +2530,1374 @@ export const atlasPages: AtlasPage[] = [
     remember: 'XV disk supports all Haemophilus. V disk supports parainfluenzae. X disk supports ducreyi. Negative means growth everywhere.',
     biochemicalTestId: 'xv-factor',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
+  },
+  {
+    slug: 'giardia-lamblia',
+    title: 'Giardia lamblia: Trophozoite and Cyst',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Giardia trophozoite and cyst morphology in wet preparations and stained stool concentrates, including median body placement and nuclear arrangement.',
+    boardTitle: 'Giardia lamblia: trophozoite and cyst',
+    boardNote: 'Trophozoite (en face): bilateral symmetry, paired nuclei ("owl eyes"), two comma-shaped median bodies, ventral sucking disc. Lateral view: "shepherd\'s crook" shape. Cyst: oval, up to 4 nuclei, retracted curved axonemes.',
+    ariaLabel: 'Illustrated Giardia lamblia trophozoite showing bilateral symmetry and paired nuclei, and cyst form showing four nuclei with retracted axonemes',
+    visualType: 'microscope-giardia',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trophozoite',
+        name: 'Bilateral symmetry, owl-eye nuclei, 2 comma-shaped median bodies',
+        colors: { slant: '#e4ded4', butt: '#7c6fa2', base: '#4a3060' },
+        note: '10–20 µm. En face: bilateral symmetry, two nuclei ("owl eyes"), two comma-shaped median bodies (Giardia-specific). Lateral view: "shepherd\'s crook." Falling-leaf motility in saline wet mount.'
+      },
+      {
+        id: 'B',
+        label: 'Cyst',
+        name: 'Oval cyst, curved axoneme fibrils on iodine',
+        colors: { slant: '#e8d48a', butt: '#c49a3a', base: '#5c3210' },
+        note: '8–14 µm oval. Mature: 4 nuclei; immature: 1–2. Curved axoneme fibrils visible on iodine stain. Chlorine-resistant, environmentally stable.'
+      }
+    ],
+    readoutTitle: 'What to look for by stage',
+    readoutRows: [
+      ['Pear shape, bilateral symmetry (en face)', 'Trophozoite', 'Mirror-symmetric from front to back when viewed face-on; most distinctive low-power clue'],
+      ['"Shepherd\'s crook" or spoon shape (lateral)', 'Trophozoite', 'Lateral view — sucking disc curves one face; aids ID when en-face view is unavailable'],
+      ['Paired anterior nuclei ("owl eyes")', 'Trophozoite', 'Two nuclei in anterior half, each with a small central karyosome; bilateral placement is key'],
+      ['Two comma-shaped median bodies', 'Trophozoite', 'Posterior to nuclei; claw- or comma-shaped; unique to Giardia among intestinal protozoa — best seen on trichrome'],
+      ['Oval cyst, ≤4 nuclei, retracted fibrils', 'Cyst', 'Mature cyst has 4 nuclei; curved axoneme fibrils visible on iodine; nuclei may cluster at one end in immature forms'],
+      ['Falling-leaf motility', 'Live trophozoite', 'Characteristic tumbling/rotating movement in saline wet mount; lost in cold or old specimens']
+    ],
+    trapTitle: 'Immature cysts with 1–2 nuclei are not a different species',
+    trapBody: 'Immature Giardia cysts frequently show only 1–2 visible nuclei. This is a maturation stage, not a separate organism. Never exclude Giardia based on nuclear count alone — examine the full slide.',
+    trapBullets: [
+      'Trophozoites predominate in watery diarrheal stool; formed stool more often yields cysts only.',
+      'Median bodies are Giardia-specific — no other intestinal protozoan has this structure.',
+      'EIA antigen test and multiplex molecular panels offer higher sensitivity than O&P microscopy alone; use when clinical suspicion is high.'
+    ],
+    interpretationTitle: 'Giardia morphology identification guide',
+    interpretationRows: [
+      ['Bilateral symmetry, 2 nuclei, comma-shaped median bodies', 'Trophozoite', 'Trichrome stain shows median bodies and flagellar detail; saline wet mount captures motility'],
+      ['Oval, ≤4 nuclei, curved axoneme fibrils, thick cyst wall', 'Cyst', 'Iodine highlights nuclei and retracted fibrils; concentration method (formalin-ethyl acetate) improves yield'],
+      ['Equivocal morphology or low-burden specimen', 'Confirm with EIA or NAAT', 'Antigen detection (EIA) and multiplex GI panels are more sensitive for light infections']
+    ],
+    takeaways: [
+      'Bilateral symmetry (en face) and "shepherd\'s crook" (lateral) are the two views to know.',
+      'Median bodies — comma-shaped, posterior to the nuclei — are unique to Giardia and confirm the identification.',
+      'Cysts are chlorine-resistant, environmentally stable, and the infective stage; trophozoites do not survive outside a host.'
+    ],
+    remember: 'Two eyes (nuclei) + two commas (median bodies) = Giardia trophozoite. Oval + curved fibrils = cyst.',
+    relatedLearnSlug: 'intestinal-protozoa',
+    divr: {
+      detect: 'Stool O&P — iodine wet prep (cysts), saline wet mount (trophozoite motility), or trichrome stain; formalin-ethyl acetate concentration',
+      identify: ['Trophozoite: bilateral symmetry, paired owl-eye nuclei, 2 comma-shaped median bodies (Giardia-specific)', 'Lateral view: shepherd\'s crook shape', 'Cyst: oval 8–14 µm, ≤4 nuclei, curved axoneme fibrils visible on iodine'],
+      verify: 'EIA antigen or multiplex GI PCR when morphology equivocal or clinical suspicion high',
+      report: 'Report stage (trophozoite or cyst); confirm per lab SOP; clinical correlation required'
+    }
+  },
+  {
+    slug: 'cryptosporidium-oocyst',
+    title: 'Cryptosporidium: Modified Acid-Fast Oocyst',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visual for recognizing Cryptosporidium oocysts on modified acid-fast stain: staining intensity variability, thick-wall vs. thin-wall biology, and yeast as the primary morphologic mimic.',
+    boardTitle: 'Cryptosporidium oocyst: modified AFB vs. yeast comparator',
+    boardNote: 'Oocysts stain pink-red (acid-fast positive) with variable intensity against malachite green. About 80% are thick-walled (passed in stool); about 20% are thin-walled (cause autoinfection). Yeast co-occurs and stays green.',
+    ariaLabel: 'Illustrated Cryptosporidium oocysts shown pink-red against a blue-green background, and yeast comparator cells shown in green',
+    visualType: 'microscope-cryptosporidium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Oocyst (AFB+)',
+        name: 'Round 4–6 µm, variable pink-red (AFB+)',
+        colors: { slant: '#b8d4d8', butt: '#c8345a', base: '#8a1840' },
+        note: '4–6 µm round. Modified AFB: pink-red staining varies from bright to faint "ghost" on the same slide — variable intensity is expected. Contains 4 sporozoites; thick-walled (80%) exit in feces, thin-walled (20%) cause autoinfection.'
+      },
+      {
+        id: 'B',
+        label: 'Yeast (non-AFB)',
+        name: 'Green, non-AFB — yeast mimic',
+        colors: { slant: '#b8d4d8', butt: '#4a8c58', base: '#2a5c38' },
+        note: '3–8 µm, non-acid-fast: retains green counterstain. May bud or form pseudohyphae. A slide with only green structures = no Cryptosporidium.'
+      }
+    ],
+    readoutTitle: 'What to look for on modified acid-fast stain',
+    readoutRows: [
+      ['Pink–red round structures, 4–6 µm', 'Cryptosporidium oocysts (positive)', 'Staining intensity varies on the same slide — scan multiple fields before calling negative'],
+      ['"Ghost" oocysts — correct size, no stain uptake', 'Possible over-decolorization or thin-walled oocysts', 'Thin-walled forms may not stain; IFA or molecular testing required for confirmation'],
+      ['Four internal sporozoites (faint crescents)', 'Sporulated mature oocyst', 'Visible in some preparations at oil immersion; confirms identity when seen'],
+      ['Green round structures, similar size', 'Non-acid-fast yeast (negative)', 'Retain malachite green counterstain; do not interpret as oocysts regardless of number or distribution'],
+      ['Budding or pseudohyphal chains', 'Yeast — exclude Cryptosporidium', 'Cryptosporidium oocysts never bud'],
+      ['Round structures >6 µm', 'Consider other coccidia', 'Cyclospora cayetanensis: 8–10 µm, acid-fast variable, autofluorescent; Cystoisospora belli: ~30 µm — use size to differentiate']
+    ],
+    trapTitle: 'Staining intensity varies markedly — "ghost" oocysts are still real',
+    trapBody: 'On the same modified AFB slide, some Cryptosporidium oocysts stain brightly, others faintly, and some appear nearly unstained. Scanning only for bright-pink structures causes false negatives. The correct approach is to scan the full smear and correlate size with a calibrated micrometer.',
+    trapBullets: [
+      'Always run positive and negative controls with every modified AFB batch — technique variation is the most common cause of false negatives.',
+      'IFA (immunofluorescence) is more sensitive and specific than modified AFB for low-burden specimens and is preferred when available.',
+      'Multiplex molecular GI panels (PCR) offer highest sensitivity, particularly in immunocompromised patients where thin-walled autoinfection cycles can cause massive oocyst shedding.'
+    ],
+    interpretationTitle: 'Cryptosporidium modified acid-fast interpretation',
+    interpretationRows: [
+      ['Pink–red (any intensity), round, 4–6 µm, no budding', 'Cryptosporidium oocyst — positive', 'Note staining intensity and internal sporozoite detail if visible; report with size estimate'],
+      ['Green, round, 3–8 µm, may bud', 'Yeast — non-acid-fast, negative for Cryptosporidium', 'Document presence if clinically relevant (immunocompromised host); not Cryptosporidium'],
+      ['Correct size, no staining, or equivocal', 'Indeterminate — confirm with IFA or molecular test', 'Do not report as negative based on morphology alone when clinical suspicion is high']
+    ],
+    takeaways: [
+      'Modified AFB staining intensity is variable — scan the full slide; don\'t rely on bright-pink structures only.',
+      'Thick-walled oocysts (80%) leave in stool → infect new hosts. Thin-walled (20%) excyst in intestine → autoinfection in immunocompromised patients.',
+      'IFA and multiplex GI PCR panels are substantially more sensitive than modified AFB for low-burden or equivocal specimens.'
+    ],
+    remember: '4–6 µm + any pink (even faint) + no budding = Cryptosporidium. Green = yeast. Variable staining on the same slide is expected.',
+    relatedLearnSlug: 'intestinal-protozoa',
+    divr: {
+      detect: 'Stool or respiratory specimen — modified acid-fast stain (Kinyoun cold method or modified Ziehl-Neelsen); always run positive control',
+      identify: ['Round 4–6 µm oocysts, pink-red on modified AFB — intensity varies from bright to ghost on the same slide', '4 sporozoites visible as faint internal crescents in some preparations', 'Yeast mimic: green (non-AFB), may bud — negative for Cryptosporidium'],
+      verify: 'IFA or multiplex GI PCR for equivocal or low-burden cases; IFA preferred when available',
+      report: 'Report as Cryptosporidium oocysts detected; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'entamoeba-histolytica',
+    title: 'Entamoeba histolytica: Trophozoite and Cyst',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing E. histolytica/dispar trophozoite and cyst morphology, with nuclear structure detail, erythrophagocytosis as the pathogenicity clue, and E. coli chromatoid comparison.',
+    boardTitle: 'Entamoeba histolytica: trophozoite and cyst',
+    boardNote: 'Trophozoite: ameboid, single nucleus (central karyosome, fine even peripheral chromatin), ingested RBCs = pathogenic E. histolytica. Cyst: round, ≤4 nuclei, chromatoidal bars with smooth blunt ends (vs. E. coli: splintered).',
+    ariaLabel: 'Illustrated Entamoeba histolytica trophozoite showing ameboid shape and ingested RBCs, and cyst form showing four nuclei and chromatoidal bars',
+    visualType: 'microscope-entamoeba',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trophozoite',
+        name: 'Ameboid — ingested RBCs = pathognomonic',
+        colors: { slant: '#dce8d0', butt: '#7898b8', base: '#3a5870' },
+        note: '12–60 µm ameboid. Ingested RBCs = E. histolytica (pathognomonic). Central karyosome + fine even peripheral chromatin. Explosive unidirectional pseudopod motility in fresh saline mount.'
+      },
+      {
+        id: 'B',
+        label: 'Cyst',
+        name: 'Round cyst, blunt chromatoid bars',
+        colors: { slant: '#e8d890', butt: '#c4a040', base: '#5c3210' },
+        note: '10–20 µm round. Mature: 4 nuclei with central karyosome, fine even chromatin. Chromatoidal bars: smooth blunt ends (vs. E. coli: splintered, pointed). Iodine stain shows glycogen mass in immature cysts.'
+      }
+    ],
+    readoutTitle: 'What to look for by stage',
+    readoutRows: [
+      ['Ingested RBCs in trophozoite cytoplasm', 'E. histolytica — pathogenic (treat)', 'Erythrophagocytosis is pathognomonic; the only morphologic feature separating histolytica from dispar'],
+      ['Central karyosome, fine even peripheral chromatin', 'E. histolytica/dispar nucleus', 'Compare to E. coli: eccentric karyosome + coarse, irregular peripheral chromatin — nucleus structure is the secondary level of ID'],
+      ['Ameboid, unidirectional pseudopods', 'Live trophozoite', 'Explosive, directional motility; non-directional tumbling = non-pathogenic amoebae'],
+      ['Round cyst, 1–4 nuclei, same nuclear structure', 'E. histolytica/dispar cyst', 'Mature cyst: 4 nuclei; immature: 1–2 with visible glycogen mass (brown on iodine, fades with maturation)'],
+      ['Chromatoidal bars — smooth, blunt, rounded ends', 'E. histolytica/dispar cyst (not E. coli)', 'Blunt ends = Entamoeba histolytica/dispar group; pointed, splintered, irregular ends = E. coli'],
+      ['Ingested bacteria or debris, no RBCs', 'Non-pathogenic amoeba or E. histolytica/dispar', 'Non-specific; bacteria ingestion does not confirm or exclude pathogenicity']
+    ],
+    trapTitle: 'E. histolytica and E. dispar are morphologically identical without ingested RBCs',
+    trapBody: 'E. dispar is morphologically indistinguishable from E. histolytica by O&P examination when erythrophagocytosis is absent. E. dispar is nonpathogenic and far more prevalent worldwide. Reporting as E. histolytica without RBC ingestion or confirmatory testing leads to unnecessary treatment.',
+    trapBullets: [
+      'E. hartmanni is a smaller nonpathogenic species: trophozoite <10 µm, cyst <8 µm — size alone differentiates it from E. histolytica/dispar.',
+      'Chromatoidal bar end-shape (blunt vs. splintered) is the most reliable cyst-level distinction from E. coli cysts.',
+      'E. histolytica EIA antigen or PCR is required for species-level confirmation; report as "E. histolytica/dispar complex" when molecular testing is unavailable and RBCs are not seen.'
+    ],
+    interpretationTitle: 'Entamoeba histolytica morphology identification guide',
+    interpretationRows: [
+      ['Ameboid trophozoite, ingested RBCs present', 'E. histolytica — pathogenic; report and treat', 'Erythrophagocytosis is morphologic proof of pathogenicity; no further testing needed before clinical action'],
+      ['Ameboid trophozoite, no RBCs, correct nuclear structure', 'E. histolytica/dispar complex', 'Morphology alone insufficient; send EIA antigen test or PCR for species-level identification'],
+      ['Round cyst, ≤4 nuclei, blunt chromatoids', 'E. histolytica/dispar cyst', 'Note nuclear count and chromatoid detail; confirm species before treatment; blunt ends rule out E. coli']
+    ],
+    takeaways: [
+      'Ingested RBCs in a trophozoite = E. histolytica — the only morphologic proof of pathogenicity.',
+      'Nuclear structure: central karyosome + fine even peripheral chromatin = E. histolytica/dispar group. Eccentric karyosome + coarse chromatin = E. coli.',
+      'Blunt chromatoidal bars = E. histolytica/dispar cyst; splintered/irregular = E. coli cyst.'
+    ],
+    remember: 'RBCs ingested = E. histolytica (treat). No RBCs = report as E. histolytica/dispar complex. Blunt bars vs. splintered bars = histolytica/dispar vs. E. coli.',
+    relatedLearnSlug: 'intestinal-protozoa',
+    divr: {
+      detect: 'Stool O&P — trichrome or iron-hematoxylin stain; iodine wet prep for cysts; fresh warm specimen for trophozoite motility',
+      identify: ['Trophozoite: ameboid, ingested RBCs = pathognomonic for E. histolytica (not E. dispar)', 'Nuclear structure: central karyosome + fine even peripheral chromatin (vs. E. coli: eccentric karyosome, coarse chromatin)', 'Cyst: round ≤4 nuclei, smooth blunt chromatoid bar ends'],
+      verify: 'Without RBCs, cannot distinguish E. histolytica from E. dispar by morphology — EIA antigen or PCR required for species ID',
+      report: 'RBCs present: report E. histolytica (pathogenic). No RBCs: report E. histolytica/dispar complex; confirm species per SOP before treatment decision'
+    }
+  },
+  {
+    slug: 'trichomonas-vaginalis',
+    title: 'Trichomonas vaginalis: Wet Mount and Stained',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Trichomonas vaginalis by wet mount motility pattern and stained morphology: 4 free anterior flagella, 1 recurrent flagellum forming the undulating membrane, and the rigid axostyle.',
+    boardTitle: 'Trichomonas vaginalis: wet mount vs. stained preparation',
+    boardNote: 'Trophozoite only, no cyst stage. Wet mount: tumbling/spinning motility, 4 free anterior flagella, undulating membrane (1 recurrent flagellum runs about 2/3 body length). Stained: pear shape, anterior nucleus, axostyle protrusion visible.',
+    ariaLabel: 'Illustrated Trichomonas vaginalis trophozoite in wet mount showing flagella and undulating membrane, and in stained preparation with more defined morphology',
+    visualType: 'microscope-trichomonas',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Wet Mount',
+        name: 'Tumbling motility, 4 anterior flagella',
+        colors: { slant: '#f0ede6', butt: '#9ab0c0', base: '#3a6070' },
+        note: '7–30 µm. Tumbling jerky motility: 4 free anterior flagella + undulating membrane (1 recurrent flagellum, ~2/3 body length). Axostyle protrudes from posterior end. Process within 30 min — motility lost rapidly.'
+      },
+      {
+        id: 'B',
+        label: 'Stained',
+        name: 'Pear shape, axostyle visible on stain',
+        colors: { slant: '#d4e4c8', butt: '#6a7ab4', base: '#2c3c78' },
+        note: 'Pear shape, single anterior nucleus, axostyle visible posteriorly. Flagella and undulating membrane countable on Giemsa or Pap stain. NAAT is the diagnostic standard; stain is backup when motility is lost.'
+      }
+    ],
+    readoutTitle: 'What to look for by preparation',
+    readoutRows: [
+      ['Tumbling, jerky, non-progressive motility', 'Live trophozoite — wet mount positive', 'Most reliable real-time clue; must process specimen within ~30 min of collection to preserve motility'],
+      ['4 free anterior flagella', 'Trophozoite', 'Four flagella project from the anterior end; individually countable on stained smear; confirm with undulating membrane'],
+      ['Undulating membrane (~2/3 body length)', 'Trophozoite', '1 recurrent flagellum forms the membrane edge; rippling movement contributes to rotational motility'],
+      ['Axostyle — posterior pointed protrusion', 'Trophozoite', 'Rigid rod runs longitudinally through the organism; protruding tip visible at posterior end on wet mount and stained preparations'],
+      ['Single anterior nucleus', 'Trophozoite', 'Vesicular chromatin; anterior placement; no cyst stage — only trophozoites are diagnostically relevant'],
+      ['No cyst found', 'Expected — T. vaginalis has no cyst stage', 'Absence of cysts is a feature, not a gap; cyst-forming species (Trichomonas tenax, T. hominis) are nonpathogenic commensals']
+    ],
+    trapTitle: 'Wet mount sensitivity is ~60–70% — a negative result does not exclude infection',
+    trapBody: 'Motility is lost within minutes to hours at low temperature or in old specimens. Many false negatives on wet mount are due to delayed processing, cold transport, or low parasite burden. A single negative wet mount should not be used to rule out T. vaginalis in a symptomatic patient.',
+    trapBullets: [
+      'NAAT (molecular testing) has sensitivity >95% and is the current standard of care recommended by CDC; wet mount is a screening tool only.',
+      'WBCs in vaginal specimens are motile and can be mistaken for trophozoites at low magnification — confirm pear shape and flagella at higher power.',
+      'T. vaginalis has no cyst stage; any round cyst-like structure in a vaginal specimen is a different organism (or artifact).'
+    ],
+    interpretationTitle: 'Trichomonas vaginalis identification guide',
+    interpretationRows: [
+      ['Tumbling motility + pear shape + flagella', 'T. vaginalis — positive; report and treat', 'Report immediately; process time is critical — motility lost rapidly'],
+      ['Pear shape, axostyle, 4 flagella on stain', 'T. vaginalis — stained morphology positive', 'Acceptable for diagnosis when wet mount is unavailable; confirm with NAAT if feasible'],
+      ['No motile organisms; no flagellated cells on stain', 'Wet mount / stain negative — not definitive', 'Do not exclude infection; send NAAT; clinical history of vaginal discharge, odor, or pH >4.5 increases pretest probability']
+    ],
+    takeaways: [
+      'Tumbling motility + 4 anterior flagella + undulating membrane = T. vaginalis on wet mount — process within 30 minutes.',
+      'No cyst stage: every motile flagellated cell in a vaginal saline prep is either T. vaginalis or a non-pathogenic flagellate — use size and motility pattern to discriminate.',
+      'NAAT sensitivity >95% vs. ~60% for wet mount; a negative wet mount must be followed by NAAT in symptomatic patients.'
+    ],
+    remember: 'Wet mount negative ≠ infection excluded. NAAT is the standard. 4 anterior flagella + undulating membrane = T. vaginalis.',
+    relatedLearnSlug: 'urogenital-parasites',
+    divr: {
+      detect: 'Vaginal or urethral swab — saline wet mount (process within 30 min of collection); Giemsa or Pap stain if motility is lost',
+      identify: ['Tumbling, jerky rotational motility on wet mount', '4 free anterior flagella + undulating membrane (~2/3 body length)', 'Axostyle protrudes from posterior end; no cyst stage'],
+      verify: 'NAAT (sensitivity >95%) is the diagnostic standard; negative wet mount alone does not exclude infection',
+      report: 'Wet mount positive: report T. vaginalis; negative wet mount — send NAAT per SOP before excluding; clinical correlation required'
+    }
+  },
+  {
+    slug: 'enterobius-vermicularis-egg',
+    title: 'Enterobius vermicularis: Perianal Tape Prep Egg',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Enterobius vermicularis (pinworm) eggs on perianal tape prep: asymmetric D-shape, thin colorless shell, and visible internal larva.',
+    boardTitle: 'Enterobius vermicularis egg: tape prep morphology',
+    boardNote: 'D-shaped (one flat side), thin colorless shell, 50–60 x 20–30 µm. Contains fully developed larva when freshly deposited. Collected by perianal tape prep (cellophane tape or Swube paddle), not routine O&P stool exam.',
+    ariaLabel: 'Illustrated Enterobius vermicularis egg showing asymmetric D-shape with visible internal larva on tape prep background',
+    visualType: 'microscope-enterobius',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Egg (fresh)',
+        name: 'D-shaped, thin colorless shell, visible larva inside',
+        colors: { slant: '#eee8d8', butt: '#b0a070', base: '#5a4820' },
+        note: '50–60 x 20–30 µm. Asymmetric: one side flat, one side curved — the definitive shape clue. Thin, colorless shell. Fully developed larva visible inside when freshly collected. NOT found by routine stool O&P — requires perianal tape prep.'
+      },
+      {
+        id: 'B',
+        label: 'Egg (hatched/older)',
+        name: 'Collapsed shell, larva absent or indistinct, may appear flattened',
+        colors: { slant: '#e4dcc8', butt: '#8a7858', base: '#3a2c10' },
+        note: 'Older or post-hatch eggs lose internal larval detail and the shell may appear wrinkled or collapsed. Still D-shaped in outline. Distinction from fresh egg is primarily internal content — shell outline persists. Correct collection timing (early morning, before bathing) maximizes fresh egg yield.'
+      }
+    ],
+    readoutTitle: 'What to look for on tape prep',
+    readoutRows: [
+      ['D-shaped egg, one flat side', 'Enterobius vermicularis', 'Asymmetric shape is pathognomonic — no other intestinal helminth egg has this morphology'],
+      ['Visible larva inside', 'Fresh egg — confirms identity', 'Larval detail fades in older preparations; shape alone is sufficient for ID'],
+      ['Thin colorless shell, 50–60 µm', 'E. vermicularis', 'Shell is much thinner than Ascaris or Trichuris; no thick outer coat'],
+      ['Round or oval symmetric eggs on tape', 'Not E. vermicularis', 'Symmetric oval eggs on tape prep may be environmental contaminants or artifact; pinworm eggs are D-shaped'],
+      ['No eggs on tape', 'Possible false negative', 'Collect 3 consecutive early-morning preps before calling negative; eggs deposited nocturnally']
+    ],
+    trapTitle: 'Pinworm eggs are not found on routine O&P stool exam',
+    trapBody: 'Enterobius eggs are deposited perianally, not in feces. Routine ova and parasite examination of stool will miss most infections. The correct method is perianal tape prep collected in the early morning before bathing or defecation, on 3 consecutive days.',
+    trapBullets: [
+      'Female worms migrate nocturnally to deposit eggs perianally — daytime collection significantly reduces yield.',
+      'D-shaped asymmetric outline is diagnostic; larvae inside confirm freshness but are not required for ID.',
+      'Most common helminth infection in the US; school-age children are the highest-risk group.'
+    ],
+    interpretationTitle: 'Enterobius tape prep interpretation guide',
+    interpretationRows: [
+      ['D-shaped egg, flat side, thin shell, larva inside', 'Enterobius vermicularis — positive', 'Report and treat; household contacts should also be evaluated given fecal-oral and environmental transmission'],
+      ['D-shaped outline, collapsed shell, no larval detail', 'Enterobius vermicularis — positive (older egg)', 'Shape alone is sufficient for ID; report as positive'],
+      ['No eggs on 1 tape prep', 'Indeterminate — false negative likely', 'Collect 3 consecutive early-morning preps; sensitivity increases to ~90% with 3 exams']
+    ],
+    takeaways: [
+      'D-shaped (asymmetric, one flat side) is the diagnostic clue — no other worm egg has this shape.',
+      'Tape prep only: routine stool O&P will miss Enterobius in virtually all cases.',
+      'Collect early morning on 3 consecutive days for best sensitivity.'
+    ],
+    remember: 'D-shape + thin shell + larva inside = Enterobius egg. Tape prep, not O&P.',
+    divr: {
+      detect: 'Perianal tape prep (cellophane tape or Swube paddle), early morning before bathing — NOT routine stool O&P',
+      identify: ['D-shaped egg: one flat side, one curved side — pathognomonic outline', 'Thin colorless shell, 50–60 × 20–30 µm', 'Larva visible inside in fresh preparations'],
+      verify: 'D-shape is pathognomonic; collect 3 consecutive early-morning preps for ~90% sensitivity',
+      report: 'Report as Enterobius vermicularis eggs present; note collection timing; do not report from single artifact-like structure'
+    }
+  },
+  {
+    slug: 'strongyloides-stercoralis-larva',
+    title: 'Strongyloides stercoralis: Rhabditiform Larva',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Strongyloides stercoralis rhabditiform larva in fresh stool: short buccal channel and visible genital primordium as the key morphologic clues against hookworm larval mimic.',
+    boardTitle: 'Strongyloides stercoralis: rhabditiform vs. filariform larva',
+    boardNote: 'Rhabditiform (passed in stool): short buccal channel (key vs. hookworm: long buccal channel), genital primordium visible. Filariform (infective): longer, notched tail, no genital primordium. Size ~250 µm (rhabditiform).',
+    ariaLabel: 'Illustrated Strongyloides stercoralis rhabditiform larva showing short buccal channel and genital primordium, with filariform comparator',
+    visualType: 'microscope-strongyloides',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Rhabditiform',
+        name: 'Short buccal channel, genital primordium visible, ~250 µm',
+        colors: { slant: '#e8f0e0', butt: '#6a9860', base: '#2a4820' },
+        note: '~250 µm. Short buccal channel is the primary clue vs. hookworm larvae (long buccal channel). Genital primordium: a cluster of cells visible in the mid-body — not present in hookworm rhabditiform larvae. Found in fresh stool; Baermann or agar plate method improves sensitivity. The stage passed in stool in primary infections.'
+      },
+      {
+        id: 'B',
+        label: 'Filariform',
+        name: 'Notched tail, ~550 µm, infective stage',
+        colors: { slant: '#d8e8d0', butt: '#4a7848', base: '#1a3810' },
+        note: '~550 µm. Infective stage — develops from rhabditiform in soil or intestine (autoinfection). Notched tail (vs. hookworm filariform: pointed tail). No genital primordium. Finding filariform larvae in stool suggests hyperinfection — a clinical emergency in immunocompromised patients.'
+      }
+    ],
+    readoutTitle: 'What to look for by larval stage',
+    readoutRows: [
+      ['Short buccal channel', 'Strongyloides rhabditiform', 'Most critical clue vs. hookworm rhabditiform larvae which have a longer buccal channel'],
+      ['Genital primordium (cell cluster, mid-body)', 'Strongyloides rhabditiform', 'Not present in hookworm larvae; confirms Strongyloides when visible'],
+      ['Notched tail', 'Strongyloides filariform larva', 'Hookworm filariform has a pointed tail — use tail shape to differentiate infective stages'],
+      ['~250 µm length, actively motile', 'Rhabditiform in fresh stool', 'Must examine fresh warm stool (within 1–2 hours) or use Baermann/agar plate method'],
+      ['Filariform larvae in stool (not soil-exposed)', 'Possible hyperinfection or dissemination', 'In immunocompromised hosts, finding filariform in stool or other sites warrants urgent evaluation']
+    ],
+    trapTitle: 'Hookworm rhabditiform larvae are the primary mimic',
+    trapBody: 'If hookworm eggs are also present (Strongyloides does not pass eggs in stool), larvae may hatch from hookworm eggs in old stool specimens. The short buccal channel and genital primordium of Strongyloides are the critical distinguishing features.',
+    trapBullets: [
+      'Strongyloides does not pass eggs in stool — finding rhabditiform larvae without eggs is expected for Strongyloides.',
+      'Hookworm passes eggs (not larvae) in fresh stool; larvae only appear if stool sits at room temperature >24 h.',
+      'Strongyloides serology (ELISA) is highly sensitive and often the preferred initial test; O&P sensitivity for Strongyloides is low in light infections.'
+    ],
+    interpretationTitle: 'Strongyloides larval identification guide',
+    interpretationRows: [
+      ['Rhabditiform larva, short buccal channel, genital primordium', 'Strongyloides stercoralis', 'Report and treat; evaluate for hyperinfection risk (immunosuppression, steroid use)'],
+      ['Rhabditiform larva, long buccal channel, no genital primordium', 'Hookworm rhabditiform (from hatched egg)', 'Confirm by finding hookworm eggs in the same specimen; examine fresh stool only'],
+      ['Filariform larva in stool, notched tail', 'Strongyloides filariform — possible hyperinfection', 'Urgent: assess immune status; filariform larvae may carry gut bacteria causing sepsis in hyperinfection syndrome']
+    ],
+    takeaways: [
+      'Short buccal channel + genital primordium = Strongyloides rhabditiform (vs. hookworm: long buccal channel, no genital primordium).',
+      'Strongyloides passes larvae, not eggs — rhabditiform larvae in stool without eggs = Strongyloides until proven otherwise.',
+      'Filariform larvae in stool = possible hyperinfection: assess immune status urgently.'
+    ],
+    remember: 'Short buccal channel + genital primordium = Strongyloides. Long buccal channel = hookworm. Filariform in stool = hyperinfection risk.',
+    divr: {
+      detect: 'Fresh stool (<2 h); Baermann funnel or agar plate culture improves sensitivity; serology (ELISA) for chronic or low-burden cases',
+      identify: ['Rhabditiform: short buccal channel (key vs. hookworm: long), genital primordium visible mid-body', 'Filariform: notched tail, longer (~550 µm), no genital primordium', 'Strongyloides passes larvae — not eggs — in stool'],
+      verify: 'Hookworm rhabditiform mimic: long buccal channel, no genital primordium; serology sensitive for chronic infections',
+      report: 'Report larval stage (rhabditiform or filariform); if filariform present in stool, note possible hyperinfection — clinical correlation required'
+    }
+  },
+  {
+    slug: 'hookworm-egg',
+    title: 'Hookworm: Oval Thin-Shelled Egg with Morula',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing hookworm eggs (Ancylostoma duodenale and Necator americanus) in stool: oval, thin-shelled, with segmented morula and a clear space between shell and embryo.',
+    boardTitle: 'Hookworm egg: thin shell, morula, clear space',
+    boardNote: 'Oval, 55–75 x 35–45 µm, thin colorless shell with a visible clear space between shell and embryo. Contains 2–8 cell morula in freshly passed stool. A. duodenale and N. americanus eggs are morphologically identical.',
+    ariaLabel: 'Illustrated hookworm egg showing thin colorless oval shell with segmented morula and clear space inside',
+    visualType: 'microscope-hookworm',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Fresh egg',
+        name: 'Oval, thin shell, morula, clear space',
+        colors: { slant: '#ece8d8', butt: '#a09068', base: '#4a3818' },
+        note: '55–75 x 35–45 µm. Oval. Thin, colorless shell. Clear (unstained) space between shell wall and embryo. Contains 2–8 cell morula in freshly passed stool. In old specimens, larva may develop and hatch — do not examine stool older than 24 h without refrigeration.'
+      },
+      {
+        id: 'B',
+        label: 'Embryonated egg',
+        name: 'Developed larva inside, shell intact, found in old or held specimens',
+        colors: { slant: '#e0dcc8', butt: '#7a6848', base: '#3a2810' },
+        note: 'If stool is not examined fresh, hookworm eggs embryonate and may hatch, releasing rhabditiform larvae that mimic Strongyloides. Key: fresh hookworm stool shows morula (not larvae). Finding larvae in fresh stool (not old specimen) = Strongyloides. Refrigerate stool if processing is delayed.'
+      }
+    ],
+    readoutTitle: 'What to look for in fresh stool',
+    readoutRows: [
+      ['Oval, thin colorless shell, 55–75 µm', 'Hookworm egg', 'Thin shell + clear space between shell and morula is the bench clue; size distinguishes from Strongyloides (no eggs in stool)'],
+      ['2–8 cell morula inside', 'Fresh hookworm egg', 'Morula = recently passed egg; well-developed larva inside = old specimen held at room temperature'],
+      ['Clear (unstained) space between shell and embryo', 'Hookworm — present in fresh specimens', 'Space shrinks as embryo develops; its presence confirms freshness'],
+      ['Thin shell without knobbed outer coat', 'Hookworm — not Ascaris', 'Ascaris lumbricoides eggs have a thick outer coat (fertile) or no outer coat (unfertile); hookworm has a thin, smooth shell'],
+      ['Larvae in fresh stool (no eggs)', 'Strongyloides, not hookworm', 'Hookworm larvae appear only in old stool; Strongyloides passes larvae in fresh stool']
+    ],
+    trapTitle: 'Old stool specimens produce hookworm larvae that mimic Strongyloides',
+    trapBody: 'Hookworm eggs hatch at room temperature within hours to days. If a stool specimen is not examined fresh, larvae present may be hookworm-derived — not Strongyloides. Always correlate with specimen age and storage conditions.',
+    trapBullets: [
+      'A. duodenale and N. americanus are morphologically identical — species differentiation requires larval culture or molecular testing.',
+      'Hookworm eggs stain poorly with iodine; wet preparation (normal saline or iodine) is standard for O&P.',
+      'Concentration methods (formalin-ethyl acetate sedimentation or zinc sulfate flotation) improve sensitivity for light infections.'
+    ],
+    interpretationTitle: 'Hookworm egg identification guide',
+    interpretationRows: [
+      ['Oval, thin shell, morula, clear space — fresh stool', 'Hookworm egg — positive', 'Report and treat; species ID (A. duodenale vs. N. americanus) not required clinically'],
+      ['Oval, thin shell, larvae inside — old stool', 'Hookworm egg (embryonated) — positive, note specimen age', 'Confirm specimen was not fresh; larvae in old stool from hookworm eggs do not indicate Strongyloides'],
+      ['Thin-shelled egg, no outer coat, similar size', 'Hookworm vs. other nematodes', 'Compare size and shell structure; Trichuris is barrel-shaped with bipolar plugs; Ascaris has thick coat']
+    ],
+    takeaways: [
+      'Thin colorless oval shell + morula + clear space = hookworm egg in fresh stool.',
+      'Never examine stool older than 24 h at room temperature for helminth larvae — hatched larvae may be mistaken for Strongyloides.',
+      'A. duodenale and N. americanus eggs cannot be morphologically distinguished; species ID is not clinically required.'
+    ],
+    remember: 'Oval + thin shell + morula + clear space = hookworm. Fresh stool only for larvae differentiation.',
+    divr: {
+      detect: 'Fresh stool (<24 h at room temp) — saline or iodine wet prep; formalin-ethyl acetate sedimentation concentration',
+      identify: ['Oval, thin colorless shell, 55–75 × 35–45 µm', 'Clear space between shell wall and embryo', '2–8 cell morula in freshly passed stool; larvae only appear in old or held specimens'],
+      verify: 'A. duodenale and N. americanus morphologically identical — species differentiation not clinically required; larvae in old stool may be hookworm-derived, not Strongyloides',
+      report: 'Report as hookworm eggs detected; note specimen freshness; clinical correlation required'
+    }
+  },
+  {
+    slug: 'trichuris-trichiura-egg',
+    title: 'Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end — one of the most visually distinctive helminth eggs.',
+    boardTitle: 'Trichuris trichiura egg: barrel shape and bipolar plugs',
+    boardNote: 'Barrel-shaped (football-shaped), golden-brown shell, 50–55 x 22–24 µm. Hyaline (colorless) plugs protrude from both poles. Unsegmented single cell inside when freshly passed. Eggs float with zinc sulfate but not with formalin-ethyl acetate sedimentation alone.',
+    ariaLabel: 'Illustrated Trichuris trichiura egg showing barrel shape with bipolar hyaline plugs at each end',
+    visualType: 'microscope-trichuris',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Egg',
+        name: 'Barrel shape, bipolar hyaline plugs',
+        colors: { slant: '#f0e4b0', butt: '#a07830', base: '#5c3c10' },
+        note: '50–55 x 22–24 µm. Barrel (football) shape is pathognomonic among intestinal helminth eggs. Golden-brown thick shell. Hyaline (colorless, refractile) plugs protrude from both poles. Interior contains a single unsegmented cell in freshly passed stool. Light infections may be missed — use concentration methods.'
+      },
+      {
+        id: 'B',
+        label: 'Embryonated egg',
+        name: 'Embryonated — plugs intact',
+        colors: { slant: '#e8d898', butt: '#886820', base: '#402808' },
+        note: 'In older or soil-derived specimens, the single cell develops into a fully formed larva. Bipolar plugs remain intact. The barrel outline and plug morphology are unchanged regardless of internal development stage — shape alone identifies this egg. Embryonated eggs are infective; handle with standard precautions.'
+      }
+    ],
+    readoutTitle: 'What to look for in stool',
+    readoutRows: [
+      ['Barrel (football) shape', 'Trichuris trichiura', 'Pathognomonic among intestinal helminths — no other common egg has this symmetric barrel outline'],
+      ['Bipolar hyaline plugs', 'T. trichiura — confirm', 'Colorless, refractile plugs at each pole; if absent, reconsider ID; plugs persist regardless of internal development stage'],
+      ['Golden-brown thick shell', 'T. trichiura', 'Shell color and thickness distinguish from thin-shelled hookworm; Ascaris has similar thickness but different shape'],
+      ['Single cell inside (fresh)', 'Unsegmented T. trichiura egg', 'No morula — unlike hookworm (2–8 cells); fully developed larva = older specimen or soil-derived'],
+      ['50–55 µm length', 'T. trichiura', 'Size eliminates most mimics; Capillaria hepatica and C. philippinensis have similar plugged eggs but different clinical context']
+    ],
+    trapTitle: 'Capillaria eggs are a size-matched mimic with bipolar plugs',
+    trapBody: 'Capillaria hepatica and C. philippinensis eggs also have bipolar plugs and a similar barrel shape but differ in size (C. hepatica: 51–67 µm, pitted shell) and clinical context (hepatic vs. intestinal vs. seafood exposure). Trichuris bipolar plugs are smoother and more protruding. Clinical history resolves most cases.',
+    trapBullets: [
+      'T. trichiura causes whipworm infection via fecal-oral route in warm climates; eggs require 3–4 weeks in soil to become infective.',
+      'Heavy infections cause rectal prolapse and iron-deficiency anemia, especially in children.',
+      'Zinc sulfate flotation (specific gravity 1.18) improves recovery; formalin-ethyl acetate alone may not float these denser eggs.'
+    ],
+    interpretationTitle: 'Trichuris trichiura egg identification guide',
+    interpretationRows: [
+      ['Barrel shape, bipolar plugs, golden-brown shell', 'Trichuris trichiura — positive', 'Report with approximate burden estimate (few, moderate, many eggs per low-power field)'],
+      ['Similar shape, pitted shell, different size', 'Capillaria spp. — rule out', 'Use clinical history (hepatic mass vs. intestinal symptoms vs. fish ingestion) and morphologic detail to differentiate'],
+      ['Barrel outline, no internal detail visible', 'T. trichiura — acceptable ID', 'Bipolar plugs alone are sufficient for positive report; internal cell stage does not affect ID']
+    ],
+    takeaways: [
+      'Barrel shape + bipolar hyaline plugs = Trichuris trichiura — one of the most morphologically distinctive helminth eggs.',
+      'Bipolar plugs are retained in all developmental stages — use shape + plugs regardless of internal content.',
+      'Capillaria spp. are the primary mimic; differentiate using plug texture, size, and clinical context.'
+    ],
+    remember: 'Barrel shape + bipolar plugs = Trichuris. No other common intestinal egg looks like this.',
+    divr: {
+      detect: 'Fresh or fixed stool — saline or iodine wet prep; zinc sulfate flotation (SG 1.18) concentration improves recovery',
+      identify: ['Barrel (football) shape, golden-brown shell, 50–55 × 22–24 µm', 'Bipolar hyaline plugs at both poles — retained in all developmental stages', 'Unsegmented single cell when freshly passed'],
+      verify: 'Shape + plugs are pathognomonic among common intestinal helminths; Capillaria spp. are size-matched mimics — use plug texture and clinical/geographic context',
+      report: 'Report as Trichuris trichiura eggs detected; estimate burden per low-power field per lab SOP; clinical correlation required'
+    }
+  },
+  {
+    slug: 'plasmodium-falciparum-smear',
+    title: 'Plasmodium falciparum: Thin Blood Smear',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Plasmodium falciparum on Giemsa-stained thin blood smear: delicate ring forms, multiple rings per RBC, accole (applique) forms, and banana-shaped gametocytes as diagnostic anchors.',
+    boardTitle: 'Plasmodium falciparum: ring forms and gametocyte',
+    boardNote: 'Ring forms: delicate, small (1/5 of RBC diameter), multiple per RBC, accole (peripheral placement). Double chromatin dots in some rings. RBC size is normal (not enlarged). Gametocyte: banana-shaped (crescent) — pathognomonic for P. falciparum. No visible schizonts on peripheral smear (sequestered).',
+    ariaLabel: 'Illustrated Plasmodium falciparum thin blood smear showing multiple delicate ring forms in a normal-sized RBC and a banana-shaped gametocyte',
+    visualType: 'microscope-plasmodium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Ring forms',
+        name: 'Delicate rings, accole forms, multiple per RBC',
+        colors: { slant: '#f4e0d8', butt: '#d4607880', base: '#7a1830' },
+        note: 'Ring diameter ~1/5 of RBC diameter (smaller than other Plasmodium). Multiple rings per RBC (>1 ring = strong P. falciparum clue). Accole (applique) forms: ring positioned at the very edge of the RBC membrane. Double chromatin dots in some rings. RBC not enlarged (Schuffner dots absent). Schizonts not visible on peripheral smear — sequestered in deep vessels.'
+      },
+      {
+        id: 'B',
+        label: 'Gametocyte',
+        name: 'Banana (crescent) shape, pathognomonic for P. falciparum',
+        colors: { slant: '#e8d0c8', butt: '#9848580', base: '#5a2028' },
+        note: 'Banana/crescent shape is pathognomonic — no other Plasmodium species produces crescent gametocytes. Appear 7–15 days into infection. Macro- (female) and microgametocytes (male) differ slightly in color and chromatin. Their presence alongside ring forms confirms P. falciparum. Peripheral smear may show gametocytes even after ring forms clear with treatment.'
+      }
+    ],
+    readoutTitle: 'What to look for on thin blood smear',
+    readoutRows: [
+      ['Multiple rings per RBC (>1)', 'P. falciparum — strong clue', 'Other Plasmodium species rarely show more than 1 ring per RBC; >1 ring per cell is a key P. falciparum feature'],
+      ['Accole (applique) ring at RBC margin', 'P. falciparum', 'Ring form adhered to the inner margin of the RBC — characteristic positioning; other species show central or random placement'],
+      ['Double chromatin dots in ring', 'P. falciparum ring (some)', 'Single chromatin dot is more common; when present, double dots are specific for P. falciparum'],
+      ['RBC normal size, no Schuffner dots', 'P. falciparum (not P. vivax or P. ovale)', 'P. vivax and P. ovale enlarge the RBC and show Schuffner dots; P. malariae has band-form trophozoites in normal RBCs'],
+      ['Banana-shaped gametocyte', 'P. falciparum — pathognomonic', 'Crescent/banana gametocyte is found only in P. falciparum; confirms species even without ring morphology details'],
+      ['No schizonts on peripheral smear', 'P. falciparum — expected', 'Schizonts are sequestered in deep capillaries; absence from blood smear does not exclude P. falciparum']
+    ],
+    trapTitle: 'High parasitemia on smear indicates severe malaria risk',
+    trapBody: 'P. falciparum causes the most severe malaria. Any parasitemia >5% (% of infected RBCs) suggests severe disease. The smear alone underestimates true parasitemia due to deep-vessel sequestration. Urgent clinical correlation and treatment are required even at low smear counts if P. falciparum is suspected.',
+    trapBullets: [
+      'RDT (rapid diagnostic test) and PCR are used alongside smear; thick smear is more sensitive for detecting low parasitemia.',
+      'P. knowlesi mimics P. malariae on smear but causes rapidly progressive severe disease — use PCR in returned travelers from Southeast Asia.',
+      'Giemsa stain (pH 7.2) is the gold standard; Wright-Giemsa is an acceptable alternative. Thin smear for species ID, thick smear for parasite count.'
+    ],
+    interpretationTitle: 'P. falciparum smear interpretation guide',
+    interpretationRows: [
+      ['Delicate rings, multiple/RBC, accole, ± double chromatin', 'P. falciparum ring stage — positive', 'Quantify parasitemia (% infected RBCs); report immediately; initiate treatment discussion'],
+      ['Banana-shaped gametocyte', 'P. falciparum gametocyte — species confirmed', 'Pathognomonic; report even if ring forms are absent or reduced after partial treatment'],
+      ['Ring forms, RBC not enlarged, no Schuffner dots, no schizonts', 'P. falciparum or P. malariae', 'P. malariae has band-form trophozoites and lower parasitemia; confirm with PCR if morphology is equivocal']
+    ],
+    takeaways: [
+      'Multiple rings per RBC + accole placement + delicate ring size = P. falciparum.',
+      'Banana gametocyte is pathognomonic for P. falciparum — report species confirmed when seen.',
+      'No schizonts on peripheral smear is expected (not a gap); quantify parasitemia and report urgently.'
+    ],
+    remember: 'Multiple delicate rings/RBC + accole + banana gametocyte = P. falciparum. Normal RBC size, no Schuffner dots, no schizonts on smear.',
+    divr: {
+      detect: 'EDTA peripheral blood — thick smear (sensitivity/count) + thin smear (species ID); Giemsa pH 7.2; oil immersion at 1000×',
+      identify: ['Delicate ring forms ~1/5 RBC diameter; multiple rings per RBC', 'Accole (applique) forms: ring at RBC membrane edge', 'Banana/crescent gametocyte — pathognomonic for P. falciparum', 'Normal RBC size; no Schuffner dots; no schizonts in peripheral blood'],
+      verify: 'RDT and PCR alongside smear; quantify parasitemia (% infected RBCs); thick smear for sensitivity',
+      report: 'Report species and parasitemia %; urgent notification required for P. falciparum; molecular or antigen testing may be used depending on method — clinical correlation required'
+    }
+  },
+  {
+    slug: 'babesia-ring-forms',
+    title: 'Babesia spp.: Ring Forms and Maltese Cross Tetrad',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Babesia spp. on Giemsa-stained thin blood smear: small pleomorphic ring forms, extracellular merozoites, and the pathognomonic Maltese cross (tetrad) arrangement.',
+    boardTitle: 'Babesia ring forms and tetrad (Maltese cross)',
+    boardNote: 'Ring forms smaller than P. falciparum (1–5 µm), often extracellular, up to 4 rings per RBC. Tetrad (Maltese cross): 4 merozoites in cross arrangement — pathognomonic for Babesia. No hemozoin (malaria pigment). RBC not enlarged. B. microti (US) vs. B. divergens (Europe) differ in severity but not reliably in morphology.',
+    ariaLabel: 'Illustrated Babesia ring forms in red blood cell showing multiple small rings, and Maltese cross tetrad arrangement',
+    visualType: 'microscope-babesia',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Ring forms',
+        name: 'Small pleomorphic rings, extracellular forms',
+        colors: { slant: '#f4e0d8', butt: '#c05870', base: '#6a1828' },
+        note: '1–5 µm. Smaller than P. falciparum rings. Pleomorphic — size and shape vary within a single smear. Multiple rings per RBC (up to 4). Extracellular ring forms (merozoites free in plasma) are a Babesia clue absent in Plasmodium. No hemozoin (malaria pigment). RBC not enlarged, no Schuffner dots.'
+      },
+      {
+        id: 'B',
+        label: 'Tetrad (Maltese cross)',
+        name: 'Maltese cross tetrad — pathognomonic',
+        colors: { slant: '#f0dcd0', butt: '#a84860', base: '#5a1020' },
+        note: '4 merozoites arranged in a cross (Maltese cross or tetrad) — pathognomonic for Babesia, never seen in Plasmodium. Not always visible; absence does not exclude Babesia. Scanning multiple low-power fields before calling negative is essential. When found, report as Babesia spp. and note the tetrad.'
+      }
+    ],
+    readoutTitle: 'What to look for on thin blood smear',
+    readoutRows: [
+      ['Tetrad (Maltese cross) — 4 merozoites in cross', 'Babesia — pathognomonic', 'Not always present; absence does not exclude Babesia; presence confirms species'],
+      ['Extracellular ring forms (free in plasma)', 'Babesia — strong clue', 'Plasmodium does not produce extracellular rings; finding rings outside RBCs strongly suggests Babesia'],
+      ['Multiple small rings/RBC, pleomorphic', 'Babesia or P. falciparum', 'Babesia rings are smaller and more pleomorphic; no malaria pigment; use tetrad/extracellular rings to differentiate'],
+      ['No hemozoin (malaria pigment)', 'Babesia — supports (Plasmodium: pigment in older stages)', 'Absence of brown/black pigment in late-stage cells is a Babesia clue; Plasmodium produces hemozoin from hemoglobin digestion'],
+      ['RBC not enlarged, no Schuffner dots', 'Babesia or P. falciparum/malariae', 'Enlarged RBC with Schuffner dots = P. vivax or P. ovale; normal size RBCs shared by Babesia and P. falciparum'],
+      ['Travel to endemic area (northeast US coast, splenectomy)', 'Babesia microti risk', 'B. microti is tick-borne (Ixodes scapularis); asplenic and immunocompromised patients are at highest risk for severe disease']
+    ],
+    trapTitle: 'Babesia rings mimic P. falciparum — use tetrad and extracellular forms to differentiate',
+    trapBody: 'Both Babesia and P. falciparum show multiple small rings per RBC in normal-sized cells without Schuffner dots. The Maltese cross (tetrad) and extracellular rings are the only morphologic features specific to Babesia. PCR is required for species-level confirmation and for distinguishing Babesia from P. falciparum when morphology is equivocal.',
+    trapBullets: [
+      'Splenectomized patients can develop severe life-threatening Babesia infections even with B. microti, which is typically self-limited in immunocompetent hosts.',
+      'B. divergens (Europe) is more virulent than B. microti; ring forms are similar but B. divergens often shows a higher percentage of infected RBCs.',
+      'PCR and serology (IFA) are the confirmatory methods; morphology alone is insufficient for species-level ID.'
+    ],
+    interpretationTitle: 'Babesia smear interpretation guide',
+    interpretationRows: [
+      ['Maltese cross tetrad present', 'Babesia spp. — confirmed', 'Report as Babesia spp.; send PCR for species confirmation; assess spleen status and immune function'],
+      ['Small pleomorphic rings, extracellular forms, no pigment', 'Babesia probable — confirm with PCR', 'Report as suspicious for Babesia; PCR is confirmatory; exclude P. falciparum by clinical history and morphology'],
+      ['Multiple small rings, RBC not enlarged, equivocal', 'Babesia vs. P. falciparum', 'Use travel history, tick exposure, splenectomy; send PCR and malaria RDT; do not delay treatment']
+    ],
+    takeaways: [
+      'Maltese cross tetrad is pathognomonic for Babesia — report if found even if rings are equivocal.',
+      'Extracellular ring forms (free in plasma) = Babesia; Plasmodium does not produce them.',
+      'No hemozoin, normal RBC size, no Schuffner dots — shared with P. falciparum; use tetrad + clinical context to differentiate.'
+    ],
+    remember: 'Tetrad (Maltese cross) + extracellular rings + no pigment = Babesia. PCR confirms species.',
+    divr: {
+      detect: 'EDTA peripheral blood — Giemsa thin smear; thick smear for low parasitemia; PCR for species confirmation',
+      identify: ['Small pleomorphic ring forms 1–5 µm — more variable in size than P. falciparum rings', 'Extracellular ring forms free in plasma (absent in Plasmodium)', 'Maltese cross (tetrad): 4 merozoites in cross arrangement — pathognomonic when present; no hemozoin (malaria pigment)'],
+      verify: 'PCR required for species confirmation; IFA serology; differentiate from P. falciparum by tetrad + extracellular rings + no hemozoin',
+      report: 'Report as Babesia spp. if morphology consistent; confirm with PCR; molecular or antigen testing may be used depending on method — clinical correlation required'
+    }
+  },
+  {
+    slug: 'trypanosoma-trypomastigote',
+    title: 'Trypanosoma cruzi: Trypomastigote in Blood Film',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Trypanosoma cruzi on Giemsa-stained thin blood film: C- or U-shaped trypomastigote with large posterior kinetoplast, undulating membrane, and single anterior flagellum.',
+    boardTitle: 'Trypanosoma cruzi: trypomastigote and amastigote',
+    boardNote: 'Trypomastigote (blood): C- or U-shaped, 16–20 µm, large posterior kinetoplast, undulating membrane, anterior free flagellum. Amastigote (tissue): round/oval, 1–4 µm, kinetoplast bar visible. T. brucei trypomastigote: smaller kinetoplast, more slender, no C-shape.',
+    ariaLabel: 'Illustrated Trypanosoma cruzi trypomastigote showing C-shape with large posterior kinetoplast and undulating membrane in blood film',
+    visualType: 'microscope-trypanosoma',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trypomastigote',
+        name: 'C-shape, large posterior kinetoplast',
+        colors: { slant: '#f8f0e8', butt: '#7858a0', base: '#3a2860' },
+        note: '16–20 µm. C- or U-shaped body in blood smear is the key low-power clue. Large round-to-oval posterior kinetoplast (filled with kinetoplast DNA) — larger than T. brucei. Undulating membrane runs along body length. Single anterior free flagellum. Found in blood during acute Chagas disease. T. brucei has a smaller kinetoplast and more slender, straight body.'
+      },
+      {
+        id: 'B',
+        label: 'Amastigote',
+        name: 'Round amastigotes in macrophage, two dark dots',
+        colors: { slant: '#e8dcd0', butt: '#6848a0', base: '#2c1858' },
+        note: '1–4 µm. Found intracellularly in cardiac muscle, smooth muscle, and macrophages during chronic Chagas disease. Round to oval, no external flagellum, small dark nucleus + bar-shaped kinetoplast side by side. Pseudocysts (nests of amastigotes) in cardiac tissue are the hallmark of chronic disease. Not typically found in blood smear — require tissue biopsy or PCR for diagnosis in chronic phase.'
+      }
+    ],
+    readoutTitle: 'What to look for in blood film and tissue',
+    readoutRows: [
+      ['C- or U-shape, large posterior kinetoplast', 'T. cruzi trypomastigote', 'C-shape in blood smear is the primary low-power clue; T. brucei is more slender and straight'],
+      ['Large round posterior kinetoplast', 'T. cruzi (vs. T. brucei: small subterminal)', 'Kinetoplast size and position differ: T. cruzi = large posterior; T. brucei = small, subterminal'],
+      ['Undulating membrane + anterior free flagellum', 'Trypomastigote (both species)', 'Present in all Trypanosoma blood forms; distinguishes from Leishmania (amastigote, no flagellum in tissue)'],
+      ['Round cells 1–4 µm with nucleus + kinetoplast bar, intracellular', 'Amastigote in tissue', 'Pseudocysts in cardiac muscle are characteristic of chronic Chagas; not found in peripheral blood smear'],
+      ['No trypomastigotes in blood, cardiac symptoms, Latin American exposure', 'Chronic Chagas — consider PCR/serology', 'Parasitemia is low or absent in chronic phase; diagnosis requires serology (2 different tests) or PCR']
+    ],
+    trapTitle: 'T. cruzi and T. brucei trypomastigotes differ in shape and kinetoplast size',
+    trapBody: 'T. cruzi: C- or U-shaped, large posterior kinetoplast. T. brucei (African trypanosomiasis): more slender, straight or slightly curved, small subterminal kinetoplast. Clinical and geographic context is essential — Chagas disease (Americas, Triatoma bug vector) vs. sleeping sickness (sub-Saharan Africa, tsetse fly vector).',
+    trapBullets: [
+      'Acute Chagas: trypomastigotes visible in blood smear; chronic phase requires serology (two tests) or PCR.',
+      'T. brucei rhodesiense (East African) causes rapidly fatal sleeping sickness; T. brucei gambiense (West African) has a slower course.',
+      'Congenital Chagas is an important route of transmission in non-endemic countries; screen pregnant women from endemic areas.'
+    ],
+    interpretationTitle: 'Trypanosoma identification guide',
+    interpretationRows: [
+      ['C/U-shaped trypomastigote, large posterior kinetoplast', 'T. cruzi — acute Chagas disease', 'Report urgently; begin evaluation for cardiac involvement; benznidazole or nifurtimox indicated'],
+      ['Slender trypomastigote, small subterminal kinetoplast', 'T. brucei — African trypanosomiasis', 'Report urgently; CSF examination required to stage disease (hemolymphatic vs. CNS stage)'],
+      ['Intracellular amastigotes, round + kinetoplast bar, cardiac tissue', 'T. cruzi chronic Chagas', 'Tissue diagnosis; confirm with serology; PCR used in chronic and congenital cases']
+    ],
+    takeaways: [
+      'C/U-shape + large posterior kinetoplast = T. cruzi trypomastigote in blood.',
+      'T. brucei: slender, straight, small subterminal kinetoplast — geographic context (Africa) confirms.',
+      'Chronic Chagas: parasitemia absent; use serology (2 tests required) or PCR.'
+    ],
+    remember: 'C-shape + large posterior kinetoplast = T. cruzi. Slender + small kinetoplast = T. brucei. Geographic context always applies.',
+    divr: {
+      detect: 'EDTA peripheral blood (acute phase) — Giemsa thin or thick smear; buffy coat concentration; tissue biopsy for chronic phase',
+      identify: ['Trypomastigote: C- or U-shaped body, 16–20 µm, large round posterior kinetoplast', 'Undulating membrane + anterior free flagellum', 'Amastigote in tissue: round 1–4 µm, nucleus + bar-shaped kinetoplast, intracellular in cardiac or smooth muscle'],
+      verify: 'Serology (2 different assays required for diagnosis); PCR for chronic and congenital cases; morphology alone is insufficient for species-level ID',
+      report: 'Report trypomastigote morphology and stain method; confirm per lab SOP; clinical correlation required'
+    }
+  },
+  {
+    slug: 'toxoplasma-gondii-tachyzoite',
+    title: 'Toxoplasma gondii: Tachyzoite and Tissue Cyst',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Toxoplasma gondii tachyzoites and bradyzoite-filled tissue cysts: crescent-shaped tachyzoites, nucleus toward the broad end, and bradyzoites in PAS-positive tissue cysts.',
+    boardTitle: 'Toxoplasma gondii: tachyzoite and tissue cyst with bradyzoites',
+    boardNote: 'Tachyzoite: crescent/banana shape, 2–3 µm wide x 4–8 µm long, Giemsa: pale blue cytoplasm, red nucleus at broad end. Bradyzoites: within tissue cysts (up to 100 µm), cyst wall PAS-positive. Brain, eye, heart, and skeletal muscle are primary tissue cyst locations.',
+    ariaLabel: 'Illustrated Toxoplasma gondii tachyzoite showing crescent shape with nucleus at broad end, and tissue cyst containing bradyzoites',
+    visualType: 'microscope-toxoplasma',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Tachyzoite',
+        name: 'Crescent 4–8 µm, nucleus at broad end',
+        colors: { slant: '#f0e8d8', butt: '#9878b8', base: '#4a2858' },
+        note: '2–3 µm wide x 4–8 µm long. Crescent or banana shape. Giemsa: cytoplasm stains pale blue, nucleus stains red toward the broader end. One end is more pointed than the other. Found in acute infections, immunocompromised hosts, and congenital toxoplasmosis. Multiply rapidly (acute phase) by endodyogeny. Seen in BAL, CSF, peritoneal washings, and tissue impression smears.'
+      },
+      {
+        id: 'B',
+        label: 'Tissue cyst',
+        name: 'Tissue cyst up to 100 µm, bradyzoites inside',
+        colors: { slant: '#e8dcc8', butt: '#c09868', base: '#603818' },
+        note: 'Tissue cyst: up to 100 µm, thin but distinct wall, PAS-positive. Contains hundreds of bradyzoites (slow-multiplying form, chronic stage). Bradyzoites are morphologically similar to tachyzoites but smaller and within the cyst. Preferentially located in brain, retina, cardiac and skeletal muscle. Cysts persist lifelong; reactivate under immunosuppression (CD4 <100 cells/µL).'
+      }
+    ],
+    readoutTitle: 'What to look for in stained preparations',
+    readoutRows: [
+      ['Crescent/banana shape, 4–8 µm, nucleus at broad end', 'Toxoplasma tachyzoite', 'Giemsa or Wright stain shows pale blue cytoplasm and red nucleus; BAL or CSF are the most common diagnostic specimens'],
+      ['One pointed end, one rounded end', 'Tachyzoite morphology', 'Asymmetry is the key shape clue; distinguishes from Leishmania amastigotes (round, smaller, intracellular)'],
+      ['Round cyst up to 100 µm, PAS+ wall, many organisms inside', 'Tissue cyst with bradyzoites', 'Hematoxylin-eosin shows cyst outline; PAS highlights cyst wall; bradyzoites visible at high magnification'],
+      ['Intracellular clusters in macrophages (acute)', 'Tachyzoites or early tissue cysts', 'In acute phase, tachyzoites replicate in any nucleated cell; in immunocompromised, brain cysts reactivate'],
+      ['No diagnostic stage in feces from human', 'Oocysts only from cats', 'Humans shed no diagnostic stages in stool; serology (IgM/IgG) and PCR are primary diagnostic tools']
+    ],
+    trapTitle: 'Serology, not morphology, is the primary diagnostic tool for toxoplasmosis',
+    trapBody: 'Toxoplasma tachyzoites are rarely seen on smear in immunocompetent hosts. The primary diagnostic approach is serology (IgM for acute, IgG for past infection, IgG avidity for timing). PCR on CSF, amniotic fluid, or BAL is used for CNS, congenital, and immunocompromised cases. Morphology is confirmatory when organisms are seen.',
+    trapBullets: [
+      'Reactivation in HIV (CD4 <100) produces encephalitis; brain imaging shows ring-enhancing lesions; CSF PCR is the preferred diagnostic test.',
+      'Congenital toxoplasmosis: fetal infection from primary maternal infection — IgM in newborn serum or PCR of amniotic fluid for diagnosis.',
+      'Oocysts in cat feces are infective after 1–5 days sporulation; avoid changing cat litter during pregnancy.'
+    ],
+    interpretationTitle: 'Toxoplasma gondii identification guide',
+    interpretationRows: [
+      ['Crescent tachyzoites, pale blue cytoplasm, red nucleus at broad end', 'T. gondii tachyzoites — active infection', 'Report with specimen source; confirm with PCR and serology; urgent in CNS or congenital cases'],
+      ['Round cyst, PAS+ wall, bradyzoites inside, in brain/muscle tissue', 'T. gondii tissue cyst — latent infection', 'Indicates seropositive/past infection; reactivation risk under immunosuppression; no treatment unless reactivation occurs'],
+      ['Equivocal morphology', 'Confirm with PCR or serology', 'Tachyzoites may be confused with other intracellular organisms; PCR on specimen is definitive']
+    ],
+    takeaways: [
+      'Crescent shape + nucleus at broad end = T. gondii tachyzoite on Giemsa/Wright stain.',
+      'Tissue cyst (up to 100 µm, PAS+ wall, bradyzoites inside) in brain/muscle = latent toxoplasmosis.',
+      'Serology and PCR are the primary diagnostic tools; morphology is confirmatory when organisms are visualized.'
+    ],
+    remember: 'Crescent tachyzoite = acute. PAS+ tissue cyst with bradyzoites = latent/chronic. Serology and PCR drive diagnosis, not smear.',
+    divr: {
+      detect: 'BAL, CSF, peritoneal fluid, or tissue impression smear — Giemsa or Wright stain; serology for most cases (IgM/IgG)',
+      identify: ['Tachyzoite: crescent 4–8 µm, pale blue cytoplasm, red nucleus at broad end (Giemsa)', 'One pointed end, one rounded end — asymmetric shape', 'Tissue cyst: round up to 100 µm, PAS-positive wall, bradyzoites packed inside'],
+      verify: 'PCR on CSF/BAL/amniotic fluid for CNS/congenital; IgM + IgG serology; IgG avidity for timing of primary infection',
+      report: 'Report tachyzoites with specimen source and stain; do not report from single artifact-like structure; confirm per SOP; clinical correlation required'
+    }
+  },
+  {
+    slug: 'leishmania-amastigotes',
+    title: 'Leishmania spp.: Amastigotes in Tissue',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Leishmania donovani amastigotes (Leishman-Donovan bodies) in macrophages/Kupffer cells on Giemsa stain: small round organisms with nucleus and rod-shaped kinetoplast side by side.',
+    boardTitle: 'Leishmania amastigote (LD body) and promastigote',
+    boardNote: 'Amastigote (LD body): 2–4 µm, round/oval, intracellular in macrophages/Kupffer cells. Giemsa: pale blue cytoplasm, purple nucleus, rod-shaped kinetoplast at right angle to nucleus. No external flagellum. Promastigote (culture/sand fly): elongated 15–25 µm, anterior flagellum, kinetoplast anterior.',
+    ariaLabel: 'Illustrated Leishmania amastigotes in Kupffer cell showing nucleus and rod-shaped kinetoplast, and promastigote form with anterior flagellum',
+    visualType: 'microscope-leishmania',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Amastigote (LD body)',
+        name: 'Round 2–4 µm — nucleus + kinetoplast bar (LD body)',
+        colors: { slant: '#f4e8e0', butt: '#c07858', base: '#602820' },
+        note: '2–4 µm. Round to oval. No external flagellum. Giemsa: cytoplasm pale blue, round purple nucleus + bar-shaped kinetoplast (at roughly right angle to nucleus or perpendicular — "two dark dots" per cell). Found in macrophages, Kupffer cells (liver), spleen, bone marrow, and skin macrophages depending on species. L. donovani = visceral (kala-azar); L. major/tropica = cutaneous; L. braziliensis = mucocutaneous.'
+      },
+      {
+        id: 'B',
+        label: 'Promastigote',
+        name: 'Elongated, anterior flagellum — culture form',
+        colors: { slant: '#e8f0d8', butt: '#7898a0', base: '#285860' },
+        note: '15–25 µm elongated body. Anterior kinetoplast. Single anterior free flagellum. This is the form found in the sand fly vector (Lutzomyia in New World; Phlebotomus in Old World) and in NNN (Novy-MacNeal-Nicolle) culture medium. Not found in tissue smears from patients. Identifying promastigotes in culture confirms Leishmania but species-level ID requires molecular methods or isoenzyme analysis.'
+      }
+    ],
+    readoutTitle: 'What to look for in tissue smears and biopsies',
+    readoutRows: [
+      ['Round 2–4 µm organisms in macrophage cytoplasm', 'Leishmania amastigotes (LD bodies)', 'Giemsa on tissue impression smear or aspirate; bone marrow and spleen aspirate for visceral disease'],
+      ['Nucleus + rod-shaped kinetoplast per organism', '"Two dark dots" pattern per amastigote', 'Both nucleus and kinetoplast stain dark purple on Giemsa; perpendicular arrangement distinguishes from Histoplasma or other round intracellular fungi'],
+      ['No external flagellum visible in tissue forms', 'Amastigote — expected', 'Flagellum present only in promastigote (insect stage); absence in tissue is a feature, not a gap'],
+      ['Elongated, anterior flagellum, anterior kinetoplast', 'Promastigote — culture or sand fly form', 'Seen in cultures; confirms Leishmania genus; molecular testing needed for species ID'],
+      ['Macrophage rupture, free amastigotes', 'High burden infection', 'Free amastigotes may be seen in smears when parasitized macrophages rupture; count associated cells for burden estimate']
+    ],
+    trapTitle: 'Leishmania amastigotes mimic Histoplasma capsulatum in tissue',
+    trapBody: 'Both Leishmania amastigotes and Histoplasma capsulatum appear as small round organisms within macrophages on H&E. Key distinction: Leishmania has a visible kinetoplast (bar-shaped dark structure) on Giemsa — Histoplasma does not have a kinetoplast and is GMS/PAS positive (fungal cell wall). Giemsa is essential for Leishmania diagnosis; GMS/PAS for fungi.',
+    trapBullets: [
+      'Visceral leishmaniasis (kala-azar): fever, splenomegaly, weight loss, pancytopenia — bone marrow or spleen aspirate for diagnosis.',
+      'Cutaneous leishmaniasis: ulcerating skin lesion; aspirate from lesion margin (not center); rk39 antigen test available for L. donovani complex.',
+      'Species identification matters for treatment (L. braziliensis requires systemic therapy); PCR on tissue is the most reliable method.'
+    ],
+    interpretationTitle: 'Leishmania identification guide',
+    interpretationRows: [
+      ['Round 2–4 µm in macrophages, nucleus + kinetoplast on Giemsa', 'Leishmania amastigotes — positive', 'Report with specimen source and abundance; send PCR for species ID; clinical syndrome guides treatment selection'],
+      ['Similar cells without kinetoplast, GMS/PAS positive', 'Histoplasma capsulatum — not Leishmania', 'Kinetoplast presence is the decisive feature; run GMS if fungi are suspected alongside Leishmania'],
+      ['Promastigotes in culture or sand fly form', 'Leishmania spp. — genus confirmed', 'Culture on NNN medium at 22–26°C; species ID by PCR/RFLP or isoenzyme electrophoresis']
+    ],
+    takeaways: [
+      'Amastigote (LD body): round 2–4 µm in macrophages, nucleus + bar-shaped kinetoplast at right angle = Leishmania on Giemsa.',
+      'Kinetoplast is the key differentiator from Histoplasma — Histoplasma lacks a kinetoplast on Giemsa.',
+      'Promastigotes (elongated + anterior flagellum) are the culture/insect form — not seen in tissue from patients.'
+    ],
+    remember: 'Two dark dots (nucleus + kinetoplast) in macrophage on Giemsa = Leishmania LD body. No kinetoplast = not Leishmania.',
+    divr: {
+      detect: 'Bone marrow aspirate (visceral), skin lesion margin biopsy (cutaneous), or spleen aspirate — Giemsa stain; NNN culture at 22–26°C',
+      identify: ['Amastigote (LD body): round 2–4 µm, intracellular in macrophages or Kupffer cells', 'Two dark dots per cell: round nucleus + bar-shaped kinetoplast at roughly right angle', 'No external flagellum in tissue forms'],
+      verify: 'Kinetoplast on Giemsa distinguishes from Histoplasma (no kinetoplast; GMS/PAS positive fungi); PCR for species-level ID',
+      report: 'Report as Leishmania amastigotes with specimen source; do not report from single artifact-like structure; confirm per SOP; clinical correlation required'
+    }
+  },
+  {
+    slug: 'ascaris-lumbricoides-egg',
+    title: 'Ascaris lumbricoides: Mammillated and Decorticate Eggs',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg — the most recognizable helminth egg in clinical parasitology — and the decorticate variant that has lost its outer coat.',
+    boardTitle: 'Ascaris lumbricoides egg: fertile mammillated vs. decorticate/infertile',
+    boardNote: 'Fertile egg: oval 45–70 µm, thick bile-stained mammillated outer coat (bumpy), thick inner shell, unsegmented single cell. Decorticate: same fertile egg without mammillated coat — smooth surface, common after zinc sulfate flotation. Infertile: elongated 80–90 µm, irregular outline, disorganized granular content — hardest form to identify.',
+    ariaLabel: 'Illustrated Ascaris lumbricoides fertile egg showing bile-stained mammillated bumpy outer coat and inner shell, beside a decorticate or infertile egg without outer coat',
+    visualType: 'microscope-ascaris',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Fertile egg',
+        name: 'Oval 45–70 µm, mammillated outer coat',
+        colors: { slant: '#f5e8c8', butt: '#c8880a', base: '#6a3808' },
+        note: '45–70 µm. Oval. Thick bile-stained (golden-brown) mammillated outer coat — the bumpy exterior is pathognomonic. Thick inner shell. Single unsegmented cell inside. The most common and recognizable form in clinical stool. High daily egg output (up to 200,000/day) means concentration is often not necessary for heavy infections.'
+      },
+      {
+        id: 'B',
+        label: 'Decorticate / infertile',
+        name: 'Smooth surface or irregular elongated content',
+        colors: { slant: '#ece4c0', butt: '#9a7028', base: '#50280a' },
+        note: 'Decorticate: fertile egg that has lost its mammillated coat — oval, thick inner shell, smooth surface. Common after zinc sulfate flotation or mechanical processing. Infertile: more elongated (80–90 µm), irregular outline, disorganized granular content — the most difficult Ascaris egg to recognize. Finding classic mammillated eggs in the same specimen is the best confirmation for decorticate and infertile forms.'
+      }
+    ],
+    readoutTitle: 'What to look for in stool',
+    readoutRows: [
+      ['Oval, thick mammillated (bumpy) outer coat, bile-stained, 45–70 µm', 'Ascaris lumbricoides fertile egg', 'Pathognomonic — no other common intestinal helminth egg has a thick bumpy outer coat at this size'],
+      ['Oval, thick inner shell, smooth outer surface', 'Decorticate Ascaris egg', 'Coat lost during concentration; look for classic mammillated eggs in same prep for confirmation'],
+      ['Elongated, irregular outline, disorganized granular content', 'Possible infertile Ascaris egg', 'Hardest form to ID alone; correlate with clinical context and presence of fertile eggs in specimen'],
+      ['Single unsegmented (non-segmented) cell', 'Ascaris fertile egg feature', 'No morula or larva — unlike hookworm (morula inside) or Enterobius (larva inside)'],
+      ['No outer coat, thick inner shell, oval outline', 'Decorticate vs. other helminth eggs', 'Decorticate Ascaris egg can resemble hookworm or other thin-shelled eggs — size (larger, 45–70 µm) helps distinguish']
+    ],
+    trapTitle: 'Decorticate and infertile Ascaris eggs are commonly misidentified',
+    trapBody: 'Decorticate eggs (lacking the mammillated coat) are common after zinc sulfate flotation and can resemble other thick-shelled eggs. Infertile eggs are elongated with disorganized content and may not be recognized as Ascaris without context. Finding classic mammillated fertile eggs in the same specimen is the best confirmation strategy.',
+    trapBullets: [
+      'Ascaris is the most prevalent intestinal helminth worldwide — endemic in areas with poor sanitation and soil contamination.',
+      'High daily egg output (up to 200,000 eggs/day per female) means most infections are detected without concentration.',
+      'A. lumbricoides eggs are the largest of the common intestinal helminth eggs — use this to anchor the ID when the outer coat is absent.'
+    ],
+    interpretationTitle: 'Ascaris lumbricoides egg identification guide',
+    interpretationRows: [
+      ['Oval, thick mammillated outer coat, bile-stained, 45–70 µm', 'Ascaris lumbricoides fertile egg — positive', 'Report and treat; anthelmintic therapy indicated; screen household contacts in endemic settings'],
+      ['Oval, smooth outer surface, thick inner shell', 'Decorticate Ascaris egg — consistent with positive', 'Confirm by finding mammillated eggs in same prep; report as A. lumbricoides consistent with; clinical correlation required'],
+      ['Elongated, irregular, disorganized granular content', 'Possible infertile Ascaris egg', 'Do not report on single infertile egg alone; correlate with clinical context and presence of fertile eggs; confirm per lab SOP']
+    ],
+    takeaways: [
+      'Mammillated (bumpy) bile-stained outer coat on an oval egg = Ascaris lumbricoides fertile egg — pathognomonic.',
+      'Decorticate eggs (smooth, no outer coat) are common after concentration methods — look for classic eggs in the same prep.',
+      'Infertile eggs are elongated and irregular — difficult to ID alone; clinical context and co-detection of fertile eggs is required.'
+    ],
+    remember: 'Bumpy bile-stained oval = Ascaris. Decorticate (smooth oval, thick shell) = common after flotation. Infertile = elongated and irregular. Largest common intestinal helminth egg.',
+    divr: {
+      detect: 'Fresh or fixed stool — saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation (may decorticate eggs)',
+      identify: ['Fertile: oval 45–70 µm, thick bile-stained mammillated (bumpy) outer coat, single unsegmented cell inside', 'Decorticate: oval, smooth surface, thick inner shell — coat lost during concentration', 'Infertile: elongated 80–90 µm, irregular outline, disorganized granular content'],
+      verify: 'Mammillated coat on fertile egg is pathognomonic; confirm decorticate/infertile by finding classic fertile eggs in same specimen; size (45–70 µm, largest common helminth egg) supports ID when coat is absent',
+      report: 'Report as Ascaris lumbricoides eggs detected; note egg type if relevant; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'trichostrongylus-egg',
+    title: 'Trichostrongylus spp.: Elongated Hookworm-Like Egg',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Trichostrongylus spp. eggs: larger, more elongated, and with at least one tapered end compared to hookworm. Advanced morula when passed. A size-matched hookworm mimic that requires careful measurement to distinguish.',
+    boardTitle: 'Trichostrongylus egg vs. hookworm comparator',
+    boardNote: 'Trichostrongylus: elongated oval, 73–95 × 40–50 µm, asymmetric, one or both ends tapered. Advanced morula (~16 cells) when freshly passed. Hookworm (comparator): rounder oval, 55–75 µm, symmetric blunt ends, early morula (4–8 cells). Both have thin shells and a clear space.',
+    ariaLabel: 'Illustrated Trichostrongylus egg showing elongated oval with tapered end and advanced morula, compared to rounder hookworm egg with early morula',
+    visualType: 'microscope-trichostrongylus',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trichostrongylus',
+        name: 'Elongated oval 73–95 µm, tapered end, advanced morula',
+        colors: { slant: '#eae8dc', butt: '#907858', base: '#3a2818' },
+        note: '73–95 × 40–50 µm. More elongated than hookworm. One or both ends tapered or pointed. Advanced morula (often 16+ cells, or near larval stage) when freshly passed — more developed than hookworm at time of passing. Thin shell with clear space between shell and embryo. A zoonotic infection from soil or plant contamination in regions with sheep, goats, and other grazing animals (Asia, Middle East, Africa, rural South America).'
+      },
+      {
+        id: 'B',
+        label: 'Hookworm (comparator)',
+        name: 'Rounder oval 55–75 µm, blunt ends, early morula',
+        colors: { slant: '#e4e0d4', butt: '#786848', base: '#302010' },
+        note: '55–75 × 35–45 µm. Rounder, symmetric oval with blunt ends at both poles. Early morula (2–8 cells) when freshly passed — less developed than Trichostrongylus at time of passing. Thin shell with clear space between shell and embryo. Differentiation from Trichostrongylus requires careful size measurement and assessment of end shape and morula cell count.'
+      }
+    ],
+    readoutTitle: 'Trichostrongylus vs. hookworm — key discriminators',
+    readoutRows: [
+      ['More elongated oval, asymmetric outline', 'Trichostrongylus, not hookworm', 'Higher length-to-width ratio; one end typically more tapered — key low-power shape clue'],
+      ['73–95 µm long (larger than hookworm)', 'Trichostrongylus', 'Size overlap exists; use calibrated ocular micrometer for critical ID — key discriminator in practice'],
+      ['One or both ends tapered or pointed', 'Trichostrongylus morphology', 'Hookworm ends are blunt and rounded; pointed or tapered ends increase suspicion for Trichostrongylus'],
+      ['Advanced morula when passed (16+ cells)', 'Trichostrongylus — more developed', 'Hookworm morula is at 4–8 cell stage at time of passing; Trichostrongylus is further along in embryonation'],
+      ['Thin shell, clear space between shell and embryo', 'Feature shared with hookworm — not discriminating', 'Both Trichostrongylus and hookworm share thin shell and clear space; use size, shape, and morula stage for ID']
+    ],
+    trapTitle: 'Trichostrongylus eggs are frequently misreported as hookworm',
+    trapBody: 'Trichostrongylus eggs are found in routine stool specimens and commonly misidentified as hookworm due to similar morphology. Clinical consequences are minor as both respond to similar anthelmintics, but accurate identification matters in epidemiologic surveys and for distinguishing from other elongated eggs such as Capillaria philippinensis.',
+    trapBullets: [
+      'Geographic and exposure context: Trichostrongylus is more common in Asia, Middle East, and rural regions with grazing animals — zoonotic transmission.',
+      'Capillaria philippinensis is another elongated egg mimic (~45 µm, smaller) with less prominent polar plugs; associated with freshwater fish ingestion in endemic areas.',
+      'Concentration methods (formalin-ethyl acetate sedimentation, zinc sulfate flotation) are both effective; larval culture on charcoal can provide species-level ID.'
+    ],
+    interpretationTitle: 'Trichostrongylus egg identification guide',
+    interpretationRows: [
+      ['Elongated oval, tapered end(s), 73–95 µm, advanced morula', 'Trichostrongylus spp. — positive', 'Report with size measurement; clinical correlation required; anthelmintic treatment as clinically indicated'],
+      ['Rounder oval, blunt ends, 55–75 µm, early morula', 'Hookworm (Ancylostoma or Necator)', 'Differentiate by size and end shape; both respond to similar anthelmintics; report with clinical context'],
+      ['Elongated egg, uncertain species', 'Trichostrongylus vs. hookworm — equivocal', 'Measure carefully; report with morphologic description; larval culture or molecular testing for definitive species ID; confirm per lab SOP']
+    ],
+    takeaways: [
+      'Elongated oval + tapered end(s) + advanced morula = Trichostrongylus over hookworm.',
+      'Size (73–95 µm vs. 55–75 µm for hookworm) is the most reliable discriminating feature — use a calibrated ocular micrometer.',
+      'Both species respond to similar anthelmintic treatment; precise species ID is primarily of epidemiologic importance.'
+    ],
+    remember: 'Elongated + pointed end(s) + advanced morula = Trichostrongylus. Rounder + blunt ends + small morula = hookworm. Measure both.',
+    divr: {
+      detect: 'Fresh stool — saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation; larval culture on charcoal for species confirmation',
+      identify: ['Elongated oval, 73–95 µm — larger and more elongated than hookworm (55–75 µm)', 'One or both ends tapered or pointed; advanced morula when freshly passed (vs. hookworm: early morula, blunt ends)', 'Thin shell with clear space between shell and embryo'],
+      verify: 'Calibrated ocular micrometer measurement is the most reliable tool; geographic exposure (grazing animals) supports Trichostrongylus; larval culture for definitive species ID',
+      report: 'Report as Trichostrongylus spp. eggs detected with morphologic description and size; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'trichinella-spiralis-larva',
+    title: 'Trichinella spiralis: Encysted Larva in Striated Muscle',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Trichinella spiralis diagnosis: the coiled larva encapsulated in a nurse cell within striated muscle, seen on compressed muscle squash preparation and on H&E tissue section.',
+    boardTitle: 'Trichinella spiralis: nurse cell capsule in striated muscle',
+    boardNote: 'Muscle squash: coiled larva visible within an oval nurse cell capsule in the muscle fiber. H&E section: spindle-shaped fibrous capsule with coiled larva, surrounded by eosinophilic inflammatory infiltrate. Deltoid muscle is the preferred biopsy site. Not detected by routine stool O&P — Trichinella does not produce eggs passed in stool.',
+    ariaLabel: 'Illustrated Trichinella spiralis coiled larva in oval nurse cell capsule within striated muscle, plus H&E section showing inflammatory capsule',
+    visualType: 'microscope-trichinella',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Muscle squash',
+        name: 'Coiled larva in oval nurse cell capsule',
+        colors: { slant: '#f8eed8', butt: '#c09050', base: '#503010' },
+        note: 'Compressed muscle squash (between two slides): oval to spindle nurse cell capsule containing a tightly coiled (1–2 turns) larva. Larva is bright curved worm within the clear capsule space. Examine fresh or after HCl-pepsin digestion. The capsule forms from the host\'s modified muscle fiber cells. Deltoid muscle is the preferred biopsy site — taken from the most tender area.'
+      },
+      {
+        id: 'B',
+        label: 'H&E section',
+        name: 'Spindle capsule, eosinophilic infiltrate',
+        colors: { slant: '#f5e0e8', butt: '#b87898', base: '#582838' },
+        note: 'H&E tissue section: spindle-shaped fibrous capsule (pale pink) surrounding a coiled larva in cross or longitudinal profile. Eosinophilic inflammatory infiltrate during acute infection; fibrosis and eventual calcification in chronic/resolved infection. Adult worms are in the small intestinal mucosa during weeks 1–2 of infection — rarely recovered in tissue biopsy. Calcified cysts may be incidentally noted on X-ray in old resolved infections.'
+      }
+    ],
+    readoutTitle: 'What to look for in muscle biopsy',
+    readoutRows: [
+      ['Oval nurse cell capsule with coiled larva in muscle fiber', 'T. spiralis — diagnostic', 'Muscle squash is most sensitive; HCl-pepsin digestion releases larvae for identification and larval burden count (LPG)'],
+      ['Spindle fibrous capsule, coiled larva, eosinophilic infiltrate', 'T. spiralis on H&E', 'Dense inflammatory cuff in early/heavy infection; fibrosis develops over weeks; calcification begins ~6–18 months'],
+      ['Coiled larva 1 mm × 36 µm', 'Trichinella larva dimensions', 'Count larvae per gram (LPG) in digested muscle — guides severity assessment; >200 LPG = severe infection'],
+      ['No eggs or larvae in stool', 'Trichinella — not a stool-detectable infection', 'Stool O&P is NOT appropriate for trichinosis diagnosis; muscle biopsy or serology required'],
+      ['Calcified spindle capsule, no viable larva', 'Old/resolved T. spiralis infection', 'Remote infection; larvae may remain viable for years before calcification; not necessarily indicative of active disease']
+    ],
+    trapTitle: 'Trichinella is not detected by routine stool O&P — a common ordering error',
+    trapBody: 'Ordering stool O&P for suspected trichinosis is a common error. Trichinella spiralis does not produce eggs passed in stool. Diagnosis requires muscle biopsy (squash or H&E section) or serology (ELISA for anti-Trichinella IgG). Serology becomes positive ~3–5 weeks post-infection.',
+    trapBullets: [
+      'Undercooked pork, bear, or walrus meat is the most common exposure — cooking to 160°F (71°C) destroys all larvae.',
+      'Clinical triad: periorbital edema + myalgia + eosinophilia after ingestion of suspect meat strongly supports trichinosis.',
+      'Preferred biopsy site is the deltoid muscle from the most tender area; examine both as squash prep and H&E section.'
+    ],
+    interpretationTitle: 'Trichinella spiralis diagnosis guide',
+    interpretationRows: [
+      ['Coiled larva in oval nurse cell capsule in muscle fiber', 'T. spiralis — positive', 'Confirm with serology; report larval burden (LPG); anthelmintic + corticosteroids as clinically indicated'],
+      ['Positive anti-Trichinella IgG ELISA', 'Probable T. spiralis infection', 'Serology is most practical; muscle biopsy if high suspicion and serology negative; serology may be negative in first 3–5 weeks'],
+      ['Calcified spindle capsule, no viable larva', 'Old/resolved T. spiralis infection', 'Remote infection; clinical context required; not necessarily indicative of active disease requiring treatment']
+    ],
+    takeaways: [
+      'Coiled larva in oval nurse cell capsule within striated muscle = Trichinella spiralis — diagnostic.',
+      'Routine stool O&P is NOT appropriate — Trichinella does not pass eggs in stool; use muscle biopsy or serology.',
+      'Clinical context: periorbital edema + myalgia + eosinophilia + undercooked meat ingestion = trichinosis until proven otherwise.'
+    ],
+    remember: 'Coiled worm in oval muscle capsule = Trichinella. Not in stool. Muscle squash + serology. Deltoid biopsy.',
+    divr: {
+      detect: 'Deltoid muscle biopsy — compressed squash prep (fresh or HCl-pepsin digestion) or H&E section; serology (anti-Trichinella IgG ELISA) is most practical after 3–5 weeks',
+      identify: ['Oval to spindle-shaped nurse cell capsule within striated muscle fiber', 'Coiled larva (1–2 turns) inside capsule; ~1 mm × 36 µm when uncoiled', 'Eosinophilic inflammatory infiltrate and fibrous capsule on H&E'],
+      verify: 'HCl-pepsin digestion releases free larvae for count (LPG); serology confirms infection in most cases; muscle biopsy if serology negative with high clinical suspicion',
+      report: 'Report as Trichinella spiralis larvae identified with specimen source and larval burden (LPG); clinical correlation required'
+    }
+  },
+  {
+    slug: 'microfilariae-blood-smear',
+    title: 'Microfilariae: Sheathed vs. Unsheathed — Blood Smear',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for distinguishing microfilariae in thick blood smears: sheath presence and nuclei in the tail differentiate Wuchereria bancrofti (sheathed, no tail nuclei) from Loa loa (sheathed, nuclei to tail tip). Brugia malayi and Onchocerca volvulus noted for comparison.',
+    boardTitle: 'Microfilaria ID: sheath + tail nuclei — the two critical features',
+    boardNote: 'W. bancrofti: sheathed (sheath stains faintly or not on Giemsa), no nuclei in tail tip. Loa loa: sheathed (pink-red sheath on Giemsa), nuclei extend continuously to tail tip. Brugia malayi: sheathed (pink-red sheath), two discrete nuclei at tail tip separated by a clear space. Onchocerca volvulus: unsheathed, no tail nuclei — in skin snip, not blood.',
+    ariaLabel: 'Illustrated microfilaria of Wuchereria bancrofti in blood smear showing sheath and clean tail, compared to Loa loa with sheath and continuous nuclei to tail tip',
+    visualType: 'microscope-microfilaria',
+    tubes: [
+      {
+        id: 'A',
+        label: 'W. bancrofti',
+        name: 'Sheathed, no tail nuclei — nocturnal periodicity',
+        colors: { slant: '#f8e8e0', butt: '#a87070', base: '#482018' },
+        note: '244–296 µm long. Gently curved. Sheath present but stains faintly or not on Giemsa (Delafield hematoxylin stains sheath better). Tail tapered and clean — no nuclei in distal tip. Nocturnal periodicity (peak in peripheral blood 10 pm–2 am); collect blood at night. Causes lymphedema, elephantiasis, and hydrocele in chronic infection.'
+      },
+      {
+        id: 'B',
+        label: 'Loa loa',
+        name: 'Sheathed, nuclei to tail tip — diurnal periodicity',
+        colors: { slant: '#f0e8d8', butt: '#907050', base: '#402010' },
+        note: '250–300 µm long. Sheath present and stains pink-red on Giemsa. Body nuclei extend continuously all the way to the tail tip — key differentiator. Diurnal periodicity (peak 10 am–2 pm); collect blood mid-day. Transmitted by Chrysops (deer fly) in Central/West Africa. Do NOT administer DEC or ivermectin without caution in high microfilaria burden — risk of encephalopathy.'
+      }
+    ],
+    readoutTitle: 'Microfilaria species — key discriminators',
+    readoutRows: [
+      ['Sheathed, no nuclei in tail tip', 'W. bancrofti or B. malayi', 'Both sheathed with no nuclei at tip; W. bancrofti: smooth tapered tail; B. malayi: two discrete terminal nuclei + secondary kink in body'],
+      ['Sheathed, nuclei continuous to tail tip', 'Loa loa', 'Nuclei run uninterrupted to the very last cell at the tip — most reliable single differentiating feature'],
+      ['Sheath stains pink-red on Giemsa', 'Loa loa or Brugia malayi', 'W. bancrofti sheath stains faintly or not at all on Giemsa — pink-red sheath shifts toward Loa or Brugia'],
+      ['Unsheathed, no tail nuclei, from skin snip', 'Onchocerca volvulus', 'Skin snip (iliac crest or scapular area) incubated in saline — not blood draw; O. volvulus is absent from blood'],
+      ['Secondary curve/kink + two discrete terminal tail nuclei', 'Brugia malayi', 'Characteristic body kink not in W. bancrofti; two discrete tail nuclei (not continuous) with a clear space between them']
+    ],
+    trapTitle: 'Collecting blood at the wrong time of day is the most common reason microfilariae are missed',
+    trapBody: 'W. bancrofti and B. malayi are nocturnally periodic — draw blood at midnight. Loa loa is diurnally periodic — draw blood at noon. O. volvulus microfilariae are in skin, not blood — order skin snip, not blood draw. Knott\'s concentration (blood + 2% formalin, centrifuged) increases detection sensitivity and preserves sheath morphology.',
+    trapBullets: [
+      'Thick blood smear with Giemsa + Delafield hematoxylin staining is the standard method — thick smear concentrates the organisms.',
+      'Do NOT administer DEC to patients with Loa loa microfilaremia >8,000 microfilariae/mL — risk of fatal encephalopathy.',
+      'Antigen detection (OG4C3 for W. bancrofti) is available in some reference labs and does not require timed blood collection.'
+    ],
+    interpretationTitle: 'Microfilaria species identification guide',
+    interpretationRows: [
+      ['Sheathed, no tail nuclei, nocturnal blood', 'Wuchereria bancrofti', 'Report; diethylcarbamazine (DEC) or ivermectin + albendazole per guidelines; clinical correlation required'],
+      ['Sheathed, nuclei to tail tip, diurnal blood, pink sheath', 'Loa loa', 'Report; check microfilaria density before treatment; DEC and ivermectin require caution at high densities; refer to infectious disease'],
+      ['Sheathed, two discrete tail nuclei, pink sheath', 'Brugia malayi or B. timori', 'Report as Brugia spp. with morphologic findings; species-level PCR available at reference labs'],
+      ['Unsheathed, no tail nuclei, skin snip', 'Onchocerca volvulus', 'Report from skin snip only; ivermectin is treatment of choice; do not administer DEC — risk of Mazzotti reaction']
+    ],
+    takeaways: [
+      'Sheath absent = Onchocerca (skin snip). Sheath + no tail nuclei = W. bancrofti or B. malayi. Sheath + nuclei to tip = Loa loa.',
+      'Sheath stain on Giemsa: faint/absent = W. bancrofti; pink-red = Loa loa or Brugia — key reagent tip.',
+      'Timing of blood draw is critical: W. bancrofti/Brugia = midnight; Loa loa = noon.'
+    ],
+    remember: 'No sheath = O. volvulus (skin snip only). Sheath + clean tail = W. bancrofti. Sheath + nuclei to tip = Loa loa. Draw blood at the right time.',
+    divr: {
+      detect: 'Thick blood smear (Giemsa + Delafield hematoxylin) drawn at correct time of day; Knott\'s concentration for low-density; skin snip for Onchocerca volvulus only',
+      identify: ['Sheath present or absent — first discriminating feature', 'Tail nuclei: none (W. bancrofti, Brugia, Onchocerca), continuous to tip (Loa loa), two discrete terminal (Brugia malayi)', 'Sheath staining on Giemsa: faint (W. bancrofti) vs. pink-red (Loa loa, Brugia)'],
+      verify: 'Species confirmed by sheath, tail nuclei pattern, periodicity, and collection time; PCR for species-level ID in reference labs',
+      report: 'Report as [species] microfilariae with stain used, collection time, and density estimate; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'taenia-spp-egg',
+    title: 'Taenia spp. Egg and Gravid Proglottid',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Taenia species identification: the round radially-striated embryophore egg (morphologically identical between T. solium and T. saginata) and the gravid proglottid uterine branch count that separates the two clinically critical species.',
+    boardTitle: 'Taenia egg (species indeterminate) + proglottid branch count for species ID',
+    boardNote: 'Taenia spp. egg: round, 30–45 µm, thick radially striated embryophore, inner oncosphere with 3 hooklet pairs. T. solium vs. T. saginata: identical by egg — distinguish by gravid proglottid. T. saginata: >13 lateral uterine branches per side. T. solium: 8–13 lateral branches. T. solium eggs can cause cysticercosis — species distinction has major clinical consequence.',
+    ariaLabel: 'Illustrated Taenia spp. egg with thick radially striated embryophore and hooklets, plus gravid proglottid comparison showing many uterine branches for T. saginata versus fewer branches for T. solium',
+    visualType: 'microscope-taenia-egg',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Taenia egg',
+        name: 'Round 30–45 µm, radially striated embryophore',
+        colors: { slant: '#f5e8c8', butt: '#907048', base: '#3a2010' },
+        note: '30–45 µm. Nearly round. Thick outer embryophore with prominent radial striations (spoke-like pattern). Inner oncosphere: round with 3 pairs (6) of hooklets. Eggs of T. solium and T. saginata are morphologically identical. Also indistinguishable from Echinococcus granulosus eggs — clinical context is critical. When T. solium is possible, alert the clinician: cysticercosis risk to contacts who ingest eggs.'
+      },
+      {
+        id: 'B',
+        label: 'Gravid proglottid',
+        name: 'Uterine branches: >13 = T. saginata; 8–13 = T. solium',
+        colors: { slant: '#e8e0d0', butt: '#706048', base: '#302010' },
+        note: 'Gravid proglottid (excreted segment): inject with India ink through uterine pore to visualize lateral uterine branches. T. saginata: >13 lateral branches per side — dichotomously branching, thin. T. solium: 8–13 branches per side — fewer, thicker. Species distinction is critical: T. solium tapeworm carriers shed eggs that can cause cysticercosis (CNS, eye, muscle) in contacts and in the patient themselves via autoinfection.'
+      }
+    ],
+    readoutTitle: 'What to look for in stool',
+    readoutRows: [
+      ['Round, thick radially striated embryophore, 30–45 µm', 'Taenia spp. egg — cannot determine species by egg alone', 'Also indistinguishable from Echinococcus granulosus eggs; clinical context is essential'],
+      ['Inner oncosphere with 3 hooklet pairs (6 hooklets)', 'Taenia or Echinococcus cestode egg feature', 'Hooklet pairs distinguish cestode eggs from other helminth eggs; clinical context separates Taenia from Echinococcus'],
+      ['>13 lateral uterine branches per side', 'T. saginata gravid proglottid', 'India ink injection to fill uterine branches; count from uterine stem to proglottid margin; dichotomous branching pattern'],
+      ['8–13 lateral uterine branches per side', 'T. solium gravid proglottid', 'Fewer, thicker branches; immediately alert clinician — cysticercosis risk and public health implications'],
+      ['Scolex: 4 suckers + rostellum with hooks', 'T. solium scolex ("armed")', 'T. saginata scolex: 4 suckers, no rostellum ("unarmed"); rostellum with hooks confirms T. solium if scolex recovered']
+    ],
+    trapTitle: 'T. solium eggs in environment pose cysticercosis risk to contacts and to the patient',
+    trapBody: 'T. solium tapeworm carriers shed eggs that can be ingested by contacts (and via autoinfection by the carrier), causing cysticercosis — larval cysts in brain (neurocysticercosis), eye, or other tissues. Neurocysticercosis is the most common cause of adult-onset seizures in many endemic regions. When T. solium is identified or suspected, notify the clinician immediately.',
+    trapBullets: [
+      'Taenia eggs in stool are infectious and environmentally stable — handle with appropriate precautions.',
+      'T. saginata causes only intestinal infection (taeniasis); T. solium causes both taeniasis and cysticercosis — the distinction is life-critical.',
+      'India ink injection: 28-gauge needle at uterine pore end of proglottid; inject slowly; clear in glycerol before counting branches.'
+    ],
+    interpretationTitle: 'Taenia species identification guide',
+    interpretationRows: [
+      ['Taenia eggs in stool, no proglottid available', 'Taenia spp. — species indeterminate', 'Report as Taenia spp. eggs; alert clinician to T. solium possibility; request proglottid or scolex for species ID'],
+      ['Proglottid: >13 lateral uterine branches', 'Taenia saginata', 'Report as T. saginata; praziquantel or niclosamide; lower public health concern than T. solium'],
+      ['Proglottid: 8–13 lateral uterine branches', 'Taenia solium', 'Report as T. solium; urgent clinician notification; praziquantel; follow local public health protocols for cysticercosis risk']
+    ],
+    takeaways: [
+      'Taenia spp. egg: round, thick radially striated — species cannot be determined from the egg alone.',
+      'Species determination requires gravid proglottid India ink branch count: >13 = T. saginata; 8–13 = T. solium.',
+      'T. solium identification is a critical alert — immediate clinician communication for cysticercosis risk assessment.'
+    ],
+    remember: 'Taenia egg = species indeterminate. Proglottid decides: >13 branches = T. saginata (beef). 8–13 branches = T. solium (pork, cysticercosis risk).',
+    divr: {
+      detect: 'Stool O&P (saline or iodine wet prep; formalin-ethyl acetate concentration); proglottid segments often found grossly in stool or on perianal skin',
+      identify: ['Round egg, 30–45 µm, thick radially striated embryophore, 3 hooklet pairs inside — species indeterminate by egg', 'Gravid proglottid India ink branch count: >13 = T. saginata; 8–13 = T. solium', 'Scolex with rostellum + hooks = T. solium ("armed"); no rostellum = T. saginata ("unarmed")'],
+      verify: 'India ink proglottid branch count is the standard method; PCR for species-level confirmation; scolex examination if recovered',
+      report: 'Report as Taenia spp. eggs (species indeterminate) if only eggs present; report species if proglottid confirms; clinical correlation required'
+    }
+  },
+  {
+    slug: 'paragonimus-westermani-egg',
+    title: 'Paragonimus westermani and Clonorchis sinensis Eggs',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for lung and liver trematode eggs: Paragonimus westermani (large, golden-brown, operculated with shouldered rim) found in sputum or stool, and Clonorchis sinensis (tiny flask-shaped, operculated with prominent shoulders and abopercular knob) found in stool.',
+    boardTitle: 'Trematode eggs: Paragonimus (large, shouldered) vs. Clonorchis (tiny, vase-shaped)',
+    boardNote: 'Paragonimus westermani: 80–120 × 45–60 µm — large, ovoid, golden-brown, shouldered opercular rim, thickened abopercular shell. In sputum (rust-colored) or stool. Clonorchis sinensis: 28–34 × 12–19 µm — very small, flask-shaped, yellow-brown, prominent opercular shoulders (inner ridge at opercular rim), small abopercular knob, embryonated when passed. In stool.',
+    ariaLabel: 'Illustrated Paragonimus westermani egg showing large oval operculated egg with shouldered opercular rim and thickened abopercular wall, beside tiny Clonorchis sinensis flask-shaped egg with opercular shoulders',
+    visualType: 'microscope-paragonimus',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Paragonimus westermani',
+        name: 'Large 80–120 µm, shouldered operculum, thickened abopercular shell',
+        colors: { slant: '#f0e4c0', butt: '#b89050', base: '#5a3010' },
+        note: '80–120 × 45–60 µm. Large, broadly ovoid, golden-brown. Shouldered operculum — the egg wall thickens and forms a rim (shoulder) where the operculum meets the shell; the operculum appears to sit in a groove. Abopercular shell is notably thickened. Unembryonated when passed (uniform granular content). Found in: sputum (characteristic rust-colored hemoptysis) or stool (if sputum swallowed). Lung fluke — acquired by ingestion of raw or undercooked freshwater crabs or crayfish.'
+      },
+      {
+        id: 'B',
+        label: 'Clonorchis sinensis',
+        name: 'Tiny 28–34 µm, flask-shaped, opercular shoulders, abopercular knob',
+        colors: { slant: '#e8e0c8', butt: '#9a7838', base: '#3a2810' },
+        note: '28–34 × 12–19 µm. Very small — the smallest common trematode egg. Flask or vase-shaped (narrow at opercular end, widening toward the middle). Yellow-brown. Prominent opercular shoulders (inner ridge clearly visible at opercular rim — diagnostic). Small knob at the abopercular end. Embryonated (miracidium inside) when passed. Found in stool. Bile duct fluke — acquired from raw or undercooked freshwater fish. Opisthorchis viverrini (Southeast Asia) is morphologically identical.'
+      }
+    ],
+    readoutTitle: 'Trematode egg differential — what to look for',
+    readoutRows: [
+      ['Large ovoid egg, 80–120 µm, shouldered operculum, golden-brown, thickened abopercular shell', 'Paragonimus westermani', 'Largest common trematode egg in sputum; shouldered operculum + abopercular thickening = diagnostic pattern'],
+      ['Small flask-shaped egg, 28–34 µm, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Smallest common trematode egg; prominent shoulders + tiny knob at both poles; requires concentration method and high-power exam'],
+      ['Rust-colored sputum + operculated egg', 'Paragonimus — paragonimiasis', 'Rust-colored "coffee-ground" hemoptysis is characteristic; examine both sputum and stool for eggs'],
+      ['Operculated egg, 58–76 µm, no pronounced shoulder', 'Diphyllobothrium latum (cestode, not trematode)', 'D. latum: operculated, yellowish-brown, smooth rim without shoulder, small knob — rule out by size and shoulder absence'],
+      ['Very large operculated egg, 130–150 µm, no shoulder', 'Fasciola hepatica (sheep liver fluke)', 'Fasciola eggs are larger than Paragonimus and lack the shouldered opercular rim; geographic exposure to sheep pastures or watercress']
+    ],
+    trapTitle: 'Paragonimus eggs confused with D. latum; Clonorchis eggs missed due to their tiny size',
+    trapBody: 'Paragonimus eggs in sputum may be overlooked or confused with Diphyllobothrium latum (fish tapeworm) — D. latum is operculated but lacks the shouldered rim and is a cestode, not a trematode. Clonorchis eggs are the smallest common trematode egg and require careful concentration (formalin-ethyl acetate sedimentation) and high-power examination.',
+    trapBullets: [
+      'Always examine sputum AND stool for Paragonimus — sputum may be positive when stool concentration is negative.',
+      'Fasciola hepatica: 130–150 × 65–90 µm — larger than Paragonimus, lacks shouldered opercular rim; geographic exposure to sheep, watercress, or freshwater vegetation.',
+      'Clonorchis/Opisthorchis geography: C. sinensis (East Asia, China, Korea); O. viverrini (Southeast Asia, Thailand, Laos) — morphologically indistinguishable.'
+    ],
+    interpretationTitle: 'Trematode egg identification guide',
+    interpretationRows: [
+      ['Large ovoid 80–120 µm, shouldered opercular rim, abopercular thickening', 'Paragonimus westermani — positive', 'Report with specimen source (sputum or stool); praziquantel treatment; clinical correlation and imaging recommended'],
+      ['Small flask-shaped 28–34 µm, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Report with geographic context; praziquantel treatment; liver function tests and biliary imaging recommended'],
+      ['Operculated egg not matching above patterns', 'Trematode egg — consult reference table', 'Measure carefully; consult species-specific size table; consider Fasciola (larger, no shoulder), D. latum (no shoulder, cestode)']
+    ],
+    takeaways: [
+      'Paragonimus: large 80–120 µm, golden-brown, shouldered opercular rim + thickened abopercular shell — in sputum or stool.',
+      'Clonorchis: tiny 28–34 µm, flask-shaped, prominent opercular shoulders + abopercular knob — smallest common trematode egg.',
+      'Fasciola (130–150 µm) is larger than Paragonimus and lacks the shouldered rim — the largest common operculated trematode egg.'
+    ],
+    remember: 'Paragonimus: large, shouldered, in sputum or stool. Clonorchis: tiny, vase-shaped with knob. Fasciola: largest operculated egg, no shoulder.',
+    divr: {
+      detect: 'Formalin-ethyl acetate sedimentation (method of choice); direct saline prep; sputum exam for Paragonimus — examine concentrated sediment from spontaneous or induced sputum',
+      identify: ['Paragonimus: 80–120 µm, ovoid, shouldered opercular rim, thickened abopercular shell, golden-brown, unembryonated', 'Clonorchis: 28–34 µm, flask-shaped, prominent opercular shoulders, abopercular knob, embryonated, yellow-brown', 'Measure with calibrated ocular micrometer — size is the primary discriminator among operculated eggs'],
+      verify: 'Calibrated micrometer; reference size table for operculated eggs; clinical and geographic context; serology available for Paragonimus (ELISA) and Fasciola',
+      report: 'Report as [species] eggs with specimen source and measured size; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'schistosoma-egg',
+    title: 'Schistosoma spp. Eggs: Spine Location by Species',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Schistosoma species identification by egg spine position: S. mansoni (large, prominent lateral spine), S. haematobium (terminal spine), and S. japonicum (small, rudimentary lateral spine or none).',
+    boardTitle: 'Schistosoma egg spine: lateral = S. mansoni, terminal = S. haematobium, small/absent = S. japonicum',
+    boardNote: 'S. mansoni: 140–240 × 50–80 µm — large, prominent lateral spine. In stool. S. haematobium: 110–170 × 40–70 µm — terminal spine. In urine (or stool). S. japonicum: 70–100 × 55–65 µm — smallest, nearly round, small rudimentary lateral spine (may be absent). In stool. All eggs are non-operculated, acid-fast negative, and contain a fully developed miracidium when fresh.',
+    ariaLabel: 'Illustrated Schistosoma mansoni egg with prominent lateral spine and Schistosoma haematobium egg with terminal spine',
+    visualType: 'microscope-schistosoma',
+    tubes: [
+      {
+        id: 'A',
+        label: 'S. mansoni',
+        name: 'Large lateral spine — in stool',
+        colors: { slant: '#f0e8d4', butt: '#9a7850', base: '#402810' },
+        note: '140–240 × 50–80 µm. Large, elongated. Prominent lateral spine at roughly the middle-to-posterior portion — this is the most recognizable feature. Contains a fully developed miracidium (embryonated). Found in stool — blood flukes in mesenteric venules of the large intestine. Endemic in Africa, Brazil, Caribbean, and Middle East. S. mansoni is also acid-fast positive in some preparations — do not confuse with AFB organisms.'
+      },
+      {
+        id: 'B',
+        label: 'S. haematobium',
+        name: 'Terminal spine — in urine',
+        colors: { slant: '#e8e0d0', butt: '#887050', base: '#382010' },
+        note: '110–170 × 40–70 µm. Elongated, pointed at one end. Terminal spine at the abopercular (posterior) pole — the spine projects from the very tip. Found primarily in urine (bladder venule worms) — collect urine at noon when egg excretion peaks; may also be found in stool. Associated with urinary schistosomiasis, hematuria, and bladder cancer risk in endemic regions. Endemic in Africa and Middle East.'
+      }
+    ],
+    readoutTitle: 'Schistosoma species — what to look for',
+    readoutRows: [
+      ['Large elongated egg, prominent lateral spine, in stool', 'Schistosoma mansoni', 'Lateral spine at mid-to-posterior portion is pathognomonic for S. mansoni; examine stool with concentration method'],
+      ['Elongated egg, pointed terminal spine at one pole, in urine', 'Schistosoma haematobium', 'Terminal spine at the posterior tip; collect urine at noon peak; filter 10 mL urine through membrane filter for best yield'],
+      ['Small, nearly round egg, rudimentary or no visible spine', 'Schistosoma japonicum', '70–100 × 55–65 µm — smallest and most round; small lateral spine may be absent or barely visible; found in stool; Far East distribution'],
+      ['Embryonated egg (miracidium visible inside)', 'Schistosoma egg — eggs are embryonated when passed', 'All Schistosoma eggs contain a fully developed miracidium when freshly passed — this distinguishes them from unembryonated trematode eggs'],
+      ['No operculum', 'Schistosoma feature — not an operculated trematode egg', 'Schistosoma eggs have no operculum — all other common trematode eggs (Paragonimus, Clonorchis, Fasciola, D. latum) are operculated']
+    ],
+    trapTitle: 'S. japonicum eggs may be missed due to their small size and subtle spine',
+    trapBody: 'S. japonicum eggs are the smallest Schistosoma eggs and have a rudimentary or absent lateral spine — they may be overlooked or confused with other round organisms. Multiple stool examinations may be needed. Rectal biopsy has higher sensitivity for S. japonicum than stool exam in low-burden infections.',
+    trapBullets: [
+      'For S. haematobium: collect urine midday (10 am–2 pm) — egg excretion peaks at noon; filter 10 mL through a 10-µm membrane filter.',
+      'Katayama fever (acute schistosomiasis): occurs 2–8 weeks post-exposure — serology is more sensitive than stool/urine at this stage.',
+      'Schistosoma eggs in tissue biopsy: rectal snip or bladder biopsy increases diagnostic yield for chronic low-density infections.'
+    ],
+    interpretationTitle: 'Schistosoma species identification guide',
+    interpretationRows: [
+      ['Large egg, prominent lateral spine, in stool', 'Schistosoma mansoni — positive', 'Report; praziquantel treatment; clinical correlation; baseline CBC and liver function'],
+      ['Elongated egg, terminal spine, in urine or stool', 'Schistosoma haematobium — positive', 'Report; praziquantel; urinalysis, renal function; imaging if long-standing infection (bladder wall changes)'],
+      ['Small nearly-round egg, small/no spine, in stool', 'Schistosoma japonicum — positive', 'Report; praziquantel (higher dose than other species); hepatic ultrasound in heavy or chronic infection']
+    ],
+    takeaways: [
+      'S. mansoni: large + prominent lateral spine + in stool. S. haematobium: terminal spine + in urine. S. japonicum: smallest + nearly round + minimal spine.',
+      'No operculum on any Schistosoma egg — the absence of an operculum distinguishes Schistosoma from all common operculated trematode eggs.',
+      'Collect at the right time from the right specimen: stool for S. mansoni/japonicum; urine at noon for S. haematobium.'
+    ],
+    remember: 'Lateral spine = S. mansoni (stool). Terminal spine = S. haematobium (urine). Small, round, tiny spine = S. japonicum (stool). No operculum on any.',
+    divr: {
+      detect: 'Stool O&P with concentration (S. mansoni, S. japonicum); urine filtration at midday (S. haematobium); rectal or bladder biopsy for low-burden or chronic infection',
+      identify: ['Lateral spine (mid-to-posterior): S. mansoni, 140–240 µm', 'Terminal spine: S. haematobium, 110–170 µm; in urine primarily', 'Small, nearly round, minimal spine: S. japonicum, 70–100 µm; in stool; Far East'],
+      verify: 'Egg morphology and spine position are usually sufficient; serology (ELISA) for early infection or low-burden; PCR at reference labs for species confirmation',
+      report: 'Report as Schistosoma [species] eggs with specimen source; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'hymenolepis-nana-egg',
+    title: 'Hymenolepis nana and H. diminuta Eggs',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for dwarf and rat tapeworm egg identification: H. nana (thin-shelled, 6 hooklets, polar filaments in the space between oncosphere and eggshell — diagnostic) versus H. diminuta (same size range but no polar filaments, larger eggs).',
+    boardTitle: 'Hymenolepis eggs: polar filaments (H. nana) vs. no polar filaments (H. diminuta)',
+    boardNote: 'H. nana: 30–47 µm, round to oval, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments in the space between the oncosphere and outer shell — pathognomonic. H. diminuta: 70–85 µm, larger, round, thick shell, inner oncosphere with 3 hooklet pairs, NO polar filaments, yellowish color. H. nana is the most common tapeworm in the US (direct fecal-oral transmission, no intermediate host required).',
+    ariaLabel: 'Illustrated Hymenolepis nana egg showing thin shell, oncosphere with hooklets, and polar filaments, compared to Hymenolepis diminuta egg with no polar filaments',
+    visualType: 'microscope-hymenolepis',
+    tubes: [
+      {
+        id: 'A',
+        label: 'H. nana',
+        name: 'Round 30–47 µm, polar filaments — diagnostic',
+        colors: { slant: '#f5ecd0', butt: '#988050', base: '#383010' },
+        note: '30–47 µm. Round to broadly oval. Thin outer shell. Inner oncosphere with 3 hooklet pairs (6 hooklets). Polar filaments in the space between the oncosphere and the outer shell — 4–8 thread-like filaments running from each pole of the oncosphere — this is the pathognomonic feature that distinguishes H. nana from all other cestode eggs. Most common tapeworm in the US. Direct fecal-oral transmission — no intermediate host required. Common in children and institutions.'
+      },
+      {
+        id: 'B',
+        label: 'H. diminuta',
+        name: 'Larger 70–85 µm, no polar filaments, yellowish',
+        colors: { slant: '#ece4c0', butt: '#8a7038', base: '#382808' },
+        note: '70–85 µm. Larger than H. nana. Round to oval, yellow-brown outer shell. Inner oncosphere with 3 hooklet pairs. NO polar filaments between oncosphere and outer shell — clear space is empty. Transmitted via accidental ingestion of insect intermediate hosts (flour beetles, grain beetles) — rare human infection. Rats and mice are the natural definitive hosts. H. diminuta infection in humans is uncommon and typically mild.'
+      }
+    ],
+    readoutTitle: 'Hymenolepis egg differential',
+    readoutRows: [
+      ['Small round egg 30–47 µm, thin shell, polar filaments in clear space', 'Hymenolepis nana', 'Polar filaments (thread-like strands between oncosphere and outer shell) are pathognomonic for H. nana'],
+      ['Larger round egg 70–85 µm, yellow-brown shell, no polar filaments', 'Hymenolepis diminuta', 'Clear space between oncosphere and outer shell is empty (no filaments); size distinguishes from H. nana'],
+      ['3 hooklet pairs (6 hooklets) inside oncosphere', 'Hymenolepis or other cestode egg feature', 'Hooklets in inner oncosphere are shared with Taenia eggs; size and filament presence distinguish'],
+      ['Taenia egg (30–45 µm) vs. H. nana (30–47 µm)', 'Overlap in size — use shell and filaments', 'Taenia egg has thick radially striated embryophore; H. nana has thin shell + polar filaments; both about the same size'],
+      ['Direct fecal-oral transmission, no intermediate host', 'H. nana biology', 'H. nana is unique among tapeworms — eggs are infectious when swallowed directly; autoinfection can occur; no insect needed']
+    ],
+    trapTitle: 'H. nana polar filaments may be subtle — use good optics and concentration',
+    trapBody: 'The polar filaments of H. nana can be difficult to see on direct wet prep, especially in fixed specimens. Formalin-ethyl acetate concentration and iodine staining improve visualization. The filaments are thread-like structures running from the poles of the inner oncosphere to the outer shell — do not mistake the clear space for simply having "no filaments."',
+    trapBullets: [
+      'H. nana has no intermediate host — children can have large worm burdens from autoinfection; treat all household contacts in institutions.',
+      'H. diminuta requires an insect intermediate host (grain beetle) — human infections are rare and typically self-limited.',
+      'Niclosamide or praziquantel are both effective for H. nana; repeat stool exam 3–4 weeks post-treatment to confirm clearance.'
+    ],
+    interpretationTitle: 'Hymenolepis species identification guide',
+    interpretationRows: [
+      ['Small round 30–47 µm, thin shell, polar filaments', 'Hymenolepis nana — positive', 'Report; praziquantel; treat household contacts and institutional contacts; repeat stool exam post-treatment'],
+      ['Larger round 70–85 µm, yellow-brown shell, no filaments', 'Hymenolepis diminuta — positive', 'Report; praziquantel; inquire about grain beetle exposure; typically mild infection'],
+      ['Round cestode egg, filaments or no filaments uncertain', 'Hymenolepis spp. — needs clarification', 'Measure carefully; use concentration and iodine stain to look for filaments; consult reference material; report with description']
+    ],
+    takeaways: [
+      'H. nana: small 30–47 µm, thin shell, polar filaments between oncosphere and outer shell — pathognomonic.',
+      'H. diminuta: larger 70–85 µm, yellow-brown shell, NO polar filaments — clear space between oncosphere and shell is empty.',
+      'H. nana is the most common US tapeworm — direct fecal-oral transmission, no insect needed; H. diminuta requires a beetle intermediate host.'
+    ],
+    remember: 'Polar filaments = H. nana (pathognomonic). No filaments + larger + yellow-brown = H. diminuta. Size + filaments = the two distinguishing features.',
+    divr: {
+      detect: 'Stool O&P with formalin-ethyl acetate concentration (method of choice); iodine wet prep to visualize hooklets and filaments; direct saline prep adequate for heavy infections',
+      identify: ['H. nana: round 30–47 µm, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments (thread-like) in the space between oncosphere and outer shell', 'H. diminuta: round 70–85 µm, yellow-brown shell, 3 hooklet pairs, NO polar filaments — empty clear space', 'Polar filament presence/absence is the key discriminating feature'],
+      verify: 'Iodine stain and concentration improve visualization of filaments; measure carefully (size discriminates H. nana from H. diminuta); repeat exam if negative and high suspicion',
+      report: 'Report as Hymenolepis nana or H. diminuta eggs; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'diphyllobothrium-latum-egg',
+    title: 'Diphyllobothrium latum: Operculated Fish Tapeworm Egg',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for the fish tapeworm egg: Diphyllobothrium latum produces the largest egg of the common intestinal cestodes — broadly oval, operculated, yellow-brown, with a small knob at the abopercular end and an unembryonated interior.',
+    boardTitle: 'D. latum egg: operculated, smooth-rimmed, yellow-brown, 58–76 µm',
+    boardNote: 'D. latum: 58–76 × 40–50 µm — broadly oval, yellow-brown, thin shell. Operculum at one pole (flat lid, no shoulder). Small knob (abopercular button) at the opposite pole. Unembryonated when passed. Found in stool. Acquired from raw or undercooked freshwater fish (salmon, pike, perch). Associated with vitamin B₁₂ deficiency/megaloblastic anemia in heavy infections.',
+    ariaLabel: 'Illustrated Diphyllobothrium latum egg showing broadly oval operculated egg with smooth opercular rim, yellow-brown shell, and small abopercular knob',
+    visualType: 'microscope-diphyllobothrium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'D. latum egg',
+        name: 'Oval 58–76 µm, operculated, smooth rim, abopercular knob',
+        colors: { slant: '#f0e8d0', butt: '#a88848', base: '#4a2810' },
+        note: '58–76 × 40–50 µm. Broadly oval. Yellow-brown thin shell. Operculum at one pole — a flat lid with a smooth rim (no shoulder or prominent ridge at the opercular junction — key difference from Paragonimus). Small abopercular knob (button-like) at the opposite pole. Unembryonated when passed. Found in stool. The largest common intestinal cestode egg. Acquired by ingestion of raw or undercooked freshwater fish. May cause megaloblastic anemia via vitamin B₁₂ competition.'
+      },
+      {
+        id: 'B',
+        label: 'Key comparators',
+        name: 'Paragonimus (shouldered rim) vs. Fasciola (no knob, larger)',
+        colors: { slant: '#e8e0cc', butt: '#907848', base: '#3a2810' },
+        note: 'Paragonimus westermani (80–120 µm): larger, prominent shouldered opercular rim (the operculum sits in a groove with a widened shell rim — absent in D. latum). Fasciola hepatica (130–150 µm): largest operculated egg, no opercular shoulder, no abopercular knob, very large. Clonorchis sinensis (28–34 µm): much smaller, vase-shaped with prominent shoulder and knob. D. latum occupies the middle size range with a smooth rim and small knob — no other common trematode/cestode occupies this morphologic space.'
+      }
+    ],
+    readoutTitle: 'D. latum vs. operculated trematode eggs',
+    readoutRows: [
+      ['Broadly oval, 58–76 µm, smooth opercular rim, small abopercular knob', 'Diphyllobothrium latum (cestode)', 'The smooth rim (no shoulder) + small knob + intermediate size = D. latum; not a trematode'],
+      ['Shouldered opercular rim (groove at opercular junction)', 'Paragonimus westermani (trematode)', 'Paragonimus is larger (80–120 µm) and has a prominent shouldered rim; D. latum rim is smooth'],
+      ['Very large operculated egg (130–150 µm), no shoulder, no knob', 'Fasciola hepatica (trematode)', 'Fasciola is the largest common operculated egg; lacks both opercular shoulder and abopercular knob'],
+      ['Very small flask-shaped egg (28–34 µm), prominent shoulders', 'Clonorchis sinensis (trematode)', 'Much smaller than D. latum; prominent opercular shoulders; abopercular knob present'],
+      ['Vitamin B₁₂ deficiency + operculated egg in stool', 'D. latum — fish tapeworm', 'D. latum competes for vitamin B₁₂ in the terminal ileum — megaloblastic anemia is a complication in heavy infection']
+    ],
+    trapTitle: 'D. latum is a cestode (tapeworm), not a trematode — treat differently',
+    trapBody: 'D. latum eggs resemble operculated trematode eggs but this is a cestode (tapeworm). Treatment is praziquantel or niclosamide — the same drugs that treat other tapeworms. The key clinical association is vitamin B₁₂ deficiency with megaloblastic anemia in heavy infections. Recheck stool 3–6 weeks after treatment.',
+    trapBullets: [
+      'Endemic regions: Great Lakes (US), Scandinavia, Siberia, Far East — wherever raw freshwater fish (salmon, pike, perch) is consumed.',
+      'Proglottids (segments) are much wider than long (≥3 × 11 mm) — the opposite of Taenia proglottids; the broad proglottid is how D. latum got its name ("latum" = broad).',
+      'Plerocercoid larva in freshwater fish is the infective stage — cooking to 60°C (140°F) or freezing at −20°C for 24 hours kills the larva.'
+    ],
+    interpretationTitle: 'Diphyllobothrium latum identification guide',
+    interpretationRows: [
+      ['Broadly oval 58–76 µm, smooth opercular rim, abopercular knob', 'Diphyllobothrium latum — positive', 'Report; praziquantel; measure vitamin B₁₂; dietary history (raw freshwater fish); avoid raw fish going forward'],
+      ['Similar egg without knob or with shoulder', 'Reconsider — see comparator table', 'With shoulder = Paragonimus; much larger = Fasciola; much smaller = Clonorchis; measure and re-examine'],
+      ['Broad proglottid (wider than long) in stool', 'D. latum proglottid', 'Typical proglottid is 2–4 mm wide × 10–15 mm long; much wider than long — distinctive cestode segment morphology']
+    ],
+    takeaways: [
+      'D. latum: broadly oval 58–76 µm, smooth opercular rim (no shoulder), small abopercular knob, yellow-brown — the largest common intestinal cestode egg.',
+      'Smooth rim (no shoulder) distinguishes D. latum from Paragonimus; smaller size distinguishes it from Fasciola.',
+      'Vitamin B₁₂ deficiency + megaloblastic anemia in a fish-eating patient = D. latum until proven otherwise.'
+    ],
+    remember: 'D. latum: smooth rim + small knob + yellow-brown + 58–76 µm. No shoulder (≠ Paragonimus). Freshwater fish source. May deplete vitamin B₁₂.',
+    divr: {
+      detect: 'Stool O&P with formalin-ethyl acetate concentration; direct saline prep if heavy infection; proglottid examination if segments passed',
+      identify: ['Broadly oval, 58–76 µm, yellow-brown thin shell', 'Operculum at one pole — smooth rim with no prominent shoulder or groove', 'Small abopercular knob (button) at opposite pole; unembryonated interior'],
+      verify: 'Measure carefully — size and rim morphology distinguish D. latum from Paragonimus (80–120 µm, shouldered) and Fasciola (130–150 µm); proglottid morphology confirms if segments recovered',
+      report: 'Report as Diphyllobothrium latum eggs with measured size; vitamin B₁₂ level recommended; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'echinococcus-granulosus-hydatid',
+    title: 'Echinococcus granulosus: Hydatid Sand and Protoscoleces',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Bench-card visuals for Echinococcus granulosus (hydatid disease) laboratory findings: protoscoleces in hydatid fluid (with suckers and hooklets), brood capsules, and the thick laminated cyst wall in tissue — not detected by routine stool O&P.',
+    boardTitle: 'Echinococcus granulosus: protoscolex in hydatid fluid + thick laminated cyst wall',
+    boardNote: 'Hydatid disease: fluid from surgically excised or aspirated hydatid cyst contains "hydatid sand" — protoscoleces (immature scoleces with 4 suckers + rostellum with 2 rows of hooklets) and free hooklets. Brood capsules may also be present. Cyst wall on histology: thick laminated (wavy, acellular) outer wall + inner germinal (nucleated) layer. Stool O&P is NOT appropriate — E. granulosus eggs are not passed in human stool.',
+    ariaLabel: 'Illustrated Echinococcus granulosus protoscolex showing suckers and hooklets in hydatid fluid, plus laminated cyst wall showing layered structure',
+    visualType: 'microscope-echinococcus',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Protoscolex (hydatid sand)',
+        name: '4 suckers + rostellum with 2 rows of hooklets',
+        colors: { slant: '#f0ecd8', butt: '#a09060', base: '#3a2810' },
+        note: 'Protoscolex: small (170–220 µm), invaginated or evaginated. 4 suckers (cup-shaped, clearly visible on evaginated forms). Rostellum with 2 rows of hooks (large and small alternating). Free hooklets may be seen in fluid (20–40 µm, curved with a pointed blade). Hydatid sand = fluid containing protoscoleces + free hooklets + brood capsules — aspirated from cyst under image guidance or at surgery. Handle with care — cyst rupture can cause anaphylaxis and seeding of secondary cysts.'
+      },
+      {
+        id: 'B',
+        label: 'Laminated cyst wall',
+        name: 'Thick wavy acellular outer layer + germinal inner layer',
+        colors: { slant: '#e8e4d4', butt: '#888068', base: '#302818' },
+        note: 'Histology of cyst wall: thick outer laminated layer (wavy, acellular, eosinophilic — like a stack of membranes or "frosted glass" appearance) and a thin inner germinal (nucleated epithelial) layer from which protoscoleces and brood capsules bud. A fibrous host-derived pericyst surrounds the laminated wall. The laminated wall is pathognomonic for Echinococcus — Entamoeba hepatic abscess and pyogenic abscess lack this structure. PAS stain highlights the laminated wall.'
+      }
+    ],
+    readoutTitle: 'What to look for in hydatid fluid or tissue',
+    readoutRows: [
+      ['Small oval structures with suckers and hooklets in fluid', 'Echinococcus protoscoleces (hydatid sand)', 'Evaginated forms show 4 suckers and rostellar hooklets clearly; invaginated forms appear as granular ovals — look for free hooklets to confirm'],
+      ['Free hooklets (20–40 µm, curved with blade and handle)', 'Echinococcus granulosus hooklets', 'Hooklets persist long after protoscolex degeneration — a single hooklet in cyst fluid is diagnostic of echinococcal cyst'],
+      ['Thick wavy acellular eosinophilic outer layer on H&E', 'Laminated cyst wall — pathognomonic for Echinococcus', 'PAS stain highlights the laminated wall; no germinal cells in the outer layer; host fibrous pericyst visible outside'],
+      ['No eggs in stool', 'Expected — E. granulosus does not produce eggs in human hosts', 'Humans are accidental intermediate hosts; eggs are passed only by definitive hosts (dogs); stool O&P is not appropriate'],
+      ['Thick-walled hepatic lesion with daughter cysts on imaging', 'Hydatid cyst — suspect E. granulosus', 'Imaging appearance (cysts within cysts, calcified wall) precedes laboratory diagnosis; serology confirms; avoid percutaneous drainage without treatment']
+    ],
+    trapTitle: 'Accidental cyst rupture during aspiration or surgery can cause anaphylaxis and dissemination',
+    trapBody: 'Hydatid cyst fluid is highly allergenic — rupture can cause severe anaphylaxis. The PAIR procedure (Puncture-Aspiration-Injection-Re-aspiration) under albendazole cover is now an accepted technique with appropriate precautions. Avoid aspiration without surgery or PAIR protocol. Secondary cyst seeding from spillage can occur — handle all cyst specimens with extreme care.',
+    trapBullets: [
+      'Serologic tests (ELISA, Western blot for E. granulosus antigen B) are the first-line diagnostic in most settings — more practical than fluid analysis.',
+      'E. multilocularis (alveolar echinococcosis) produces an infiltrative, tumor-like cyst without a smooth wall — more invasive and harder to treat.',
+      'Definitive hosts (dogs, wolves) pass eggs in stool — humans are infected by ingesting eggs from contaminated soil, water, or food in contact with dogs.'
+    ],
+    interpretationTitle: 'Echinococcus granulosus laboratory identification guide',
+    interpretationRows: [
+      ['Protoscoleces with suckers + hooklets, or free hooklets, in cyst fluid', 'Echinococcus granulosus — positive', 'Report; albendazole therapy; surgical or PAIR intervention per guidelines; infectious disease and surgery consultation'],
+      ['Thick laminated eosinophilic acellular wall on histology', 'Echinococcal cyst — pathognomonic', 'Report with histologic description; PAS stain confirms; serology for confirmation; no viable protoscoleces needed for diagnosis'],
+      ['Positive serology (ELISA/Western blot for echinococcal antigen)', 'Probable E. granulosus infection', 'Most practical first-line test; confirm with imaging; fluid/tissue analysis if cyst accessible; clinical correlation required']
+    ],
+    takeaways: [
+      'Hydatid sand (protoscoleces + free hooklets in cyst fluid) = Echinococcus granulosus — diagnostic.',
+      'Laminated acellular cyst wall on H&E is pathognomonic for Echinococcus — no other hepatic lesion has this structure.',
+      'Routine stool O&P is NOT appropriate — humans are intermediate hosts; E. granulosus eggs are not passed in human stool.'
+    ],
+    remember: 'Hydatid sand (suckers + hooklets in cyst fluid) = Echinococcus. Laminated wavy wall on histology = pathognomonic. Not in stool. Serology first.',
+    divr: {
+      detect: 'Hydatid cyst fluid (at surgery or PAIR under albendazole cover) — direct examination for protoscoleces and free hooklets; histology of cyst wall; serology (ELISA) is first-line non-invasive test',
+      identify: ['Protoscolex: oval 170–220 µm, 4 suckers + rostellum with 2 rows of hooklets', 'Free hooklets: 20–40 µm, curved, blade and handle visible — single hooklet is diagnostic', 'Laminated cyst wall: thick, wavy, acellular eosinophilic outer layer + thin nucleated germinal inner layer'],
+      verify: 'Serology (ELISA for antigen B, Western blot) confirms; imaging shows characteristic cyst morphology; histology with PAS stain confirms laminated wall',
+      report: 'Report as Echinococcus granulosus with specimen source and findings; clinical correlation and imaging required; urgent consultation recommended; confirm per lab SOP'
+    }
   }
 ];
 
@@ -4813,7 +6187,6 @@ function renderSpotIndole(tube: TubeVisual) {
 function renderTSITest(tube: TubeVisual) {
   const isA = tube.id === 'A';
   const isB = tube.id === 'B';
-  const isC = tube.id === 'C';
   const isD = tube.id === 'D';
 
   const slantColor = isA ? '#fbbf24' : '#dc2626';
@@ -4959,7 +6332,6 @@ function renderUreaseTest(tube: TubeVisual) {
 }
 
 function renderXVFactorTest(tube: TubeVisual) {
-  const requiresBoth = tube.id === 'A';
   const requiresV = tube.id === 'B';
   const requiresX = tube.id === 'C';
   const requiresNone = tube.id === 'D';
@@ -5042,6 +6414,1340 @@ function renderXVFactorTest(tube: TubeVisual) {
         {/* Glass Reflection Highlight */}
         <circle cx="100" cy="100" r="93" fill="none" stroke={`url(#xv-dish-rim-${tube.id})`} strokeWidth="3" opacity="0.9" />
         <path d="M 25,45 A 75,75 0 0,1 175,45" fill="none" stroke="#ffffff" strokeWidth="2.5" opacity="0.25" strokeLinecap="round" />
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderGiardia(tube: TubeVisual) {
+  const isTrophozoite = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`giardia-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.72" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`giardia-glow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.3" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#giardia-bg-${tube.id})`} stroke="#c4beb2" strokeWidth="1.2" />
+        <circle cx="34" cy="40" r="5" fill="#b8b0a0" opacity="0.2" />
+        <circle cx="166" cy="46" r="4" fill="#b8b0a0" opacity="0.16" />
+        <circle cx="164" cy="162" r="5" fill="#b8b0a0" opacity="0.14" />
+        {isTrophozoite ? (
+          <g filter={`url(#giardia-glow-${tube.id})`}>
+            <path d="M 100 44 C 140 44, 158 68, 156 98 C 154 126, 134 150, 100 156 C 66 150, 46 126, 44 98 C 42 68, 60 44, 100 44" fill={body} fillOpacity="0.8" stroke="#3a2d6a" strokeWidth="1.5" />
+            <path d="M 68 58 C 56 72, 48 88, 50 106" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.28" strokeLinecap="round" />
+            <line x1="100" y1="62" x2="100" y2="150" stroke="#ffffff" strokeWidth="1.6" opacity="0.5" />
+            <ellipse cx="84" cy="72" rx="13" ry="11" fill="#ffffff" fillOpacity="0.32" stroke={detail} strokeWidth="1.6" />
+            <circle cx="84" cy="72" r="4" fill={detail} opacity="0.9" />
+            <ellipse cx="116" cy="72" rx="13" ry="11" fill="#ffffff" fillOpacity="0.32" stroke={detail} strokeWidth="1.6" />
+            <circle cx="116" cy="72" r="4" fill={detail} opacity="0.9" />
+            <ellipse cx="88" cy="112" rx="8" ry="5" fill="#ffffff" fillOpacity="0.38" stroke={detail} strokeWidth="1.2" transform="rotate(-25 88 112)" />
+            <ellipse cx="112" cy="112" rx="8" ry="5" fill="#ffffff" fillOpacity="0.38" stroke={detail} strokeWidth="1.2" transform="rotate(25 112 112)" />
+            <path d="M 94 48 C 88 36, 84 26, 80 14" fill="none" stroke={detail} strokeWidth="1.3" opacity="0.62" strokeLinecap="round" />
+            <path d="M 106 48 C 112 36, 116 26, 120 14" fill="none" stroke={detail} strokeWidth="1.3" opacity="0.62" strokeLinecap="round" />
+            <path d="M 46 92 C 36 86, 24 82, 14 76" fill="none" stroke={detail} strokeWidth="1.1" opacity="0.48" strokeLinecap="round" />
+            <path d="M 154 92 C 164 86, 176 82, 186 76" fill="none" stroke={detail} strokeWidth="1.1" opacity="0.48" strokeLinecap="round" />
+            <path d="M 94 152 C 88 164, 82 174, 78 186" fill="none" stroke={detail} strokeWidth="1.3" opacity="0.58" strokeLinecap="round" />
+            <path d="M 106 152 C 112 164, 118 174, 122 186" fill="none" stroke={detail} strokeWidth="1.3" opacity="0.58" strokeLinecap="round" />
+          </g>
+        ) : (
+          <g filter={`url(#giardia-glow-${tube.id})`}>
+            <ellipse cx="100" cy="102" rx="55" ry="43" fill="none" stroke={body} strokeWidth="2.5" opacity="0.45" />
+            <ellipse cx="100" cy="102" rx="52" ry="40" fill={body} fillOpacity="0.74" stroke={detail} strokeWidth="1.8" />
+            <path d="M 62 80 C 72 72, 84 70, 92 72" fill="none" stroke="#ffffff" strokeWidth="2.5" opacity="0.36" strokeLinecap="round" />
+            <ellipse cx="82" cy="83" rx="10" ry="9" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.8" />
+            <circle cx="82" cy="83" r="3.5" fill={detail} opacity="0.9" />
+            <ellipse cx="118" cy="83" rx="10" ry="9" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.8" />
+            <circle cx="118" cy="83" r="3.5" fill={detail} opacity="0.9" />
+            <ellipse cx="82" cy="121" rx="10" ry="9" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.8" />
+            <circle cx="82" cy="121" r="3.5" fill={detail} opacity="0.9" />
+            <ellipse cx="118" cy="121" rx="10" ry="9" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.8" />
+            <circle cx="118" cy="121" r="3.5" fill={detail} opacity="0.9" />
+            <path d="M 66 96 C 80 92, 100 102, 120 96" fill="none" stroke="#ffffff" strokeWidth="1.4" opacity="0.42" />
+            <path d="M 68 110 C 82 106, 100 112, 122 108" fill="none" stroke="#ffffff" strokeWidth="1.2" opacity="0.3" />
+          </g>
+        )}
+        <text x="100" y="193" textAnchor="middle" fill="#3a2d6a" fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderCryptosporidium(tube: TubeVisual) {
+  const isOocyst = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const fill = tube.colors.butt;
+  const edge = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`crypto-bg-${tube.id}`} cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.82" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#crypto-bg-${tube.id})`} stroke="#8aaab0" strokeWidth="1.2" />
+        {isOocyst ? (
+          <>
+            <circle cx="100" cy="96" r="18" fill={fill} fillOpacity="0.9" stroke={edge} strokeWidth="1.8" />
+            <path d="M 88 90 C 92 85, 108 85, 112 90" fill="none" stroke={edge} strokeWidth="1.4" opacity="0.55" />
+            <path d="M 88 102 C 92 97, 108 97, 112 102" fill="none" stroke={edge} strokeWidth="1.4" opacity="0.4" />
+            <path d="M 76 90 C 80 86, 86 86, 90 90" fill="none" stroke="#ffffff" strokeWidth="1.5" opacity="0.38" strokeLinecap="round" />
+            <circle cx="58" cy="72" r="15" fill={fill} fillOpacity="0.84" stroke={edge} strokeWidth="1.6" />
+            <path d="M 48 68 C 52 64, 58 64, 62 68" fill="none" stroke="#ffffff" strokeWidth="1.4" opacity="0.34" strokeLinecap="round" />
+            <circle cx="144" cy="78" r="16" fill={fill} fillOpacity="0.82" stroke={edge} strokeWidth="1.6" />
+            <circle cx="68" cy="136" r="15" fill={fill} fillOpacity="0.80" stroke={edge} strokeWidth="1.5" />
+            <circle cx="140" cy="134" r="14" fill={fill} fillOpacity="0.78" stroke={edge} strokeWidth="1.5" />
+            <circle cx="166" cy="152" r="11" fill={fill} fillOpacity="0.38" stroke={edge} strokeWidth="1" />
+          </>
+        ) : (
+          <>
+            <ellipse cx="96" cy="98" rx="20" ry="18" fill={fill} fillOpacity="0.82" stroke={edge} strokeWidth="1.8" />
+            <ellipse cx="118" cy="86" rx="11" ry="10" fill={fill} fillOpacity="0.78" stroke={edge} strokeWidth="1.6" />
+            <path d="M 82 92 C 86 88, 92 88, 94 92" fill="none" stroke="#ffffff" strokeWidth="1.5" opacity="0.32" strokeLinecap="round" />
+            <ellipse cx="60" cy="70" rx="18" ry="16" fill={fill} fillOpacity="0.74" stroke={edge} strokeWidth="1.6" />
+            <ellipse cx="148" cy="80" rx="17" ry="15" fill={fill} fillOpacity="0.72" stroke={edge} strokeWidth="1.5" />
+            <ellipse cx="148" cy="65" rx="9" ry="8" fill={fill} fillOpacity="0.65" stroke={edge} strokeWidth="1.4" />
+            <ellipse cx="64" cy="140" rx="18" ry="17" fill={fill} fillOpacity="0.70" stroke={edge} strokeWidth="1.5" />
+            <ellipse cx="140" cy="146" rx="16" ry="15" fill={fill} fillOpacity="0.68" stroke={edge} strokeWidth="1.4" />
+          </>
+        )}
+        <text x="100" y="193" textAnchor="middle" fill={isOocyst ? '#8a1840' : '#2a5c38'} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderEntamoeba(tube: TubeVisual) {
+  const isTrophozoite = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`ameba-bg-${tube.id}`} cx="48%" cy="44%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.68" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`ameba-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#ameba-bg-${tube.id})`} stroke="#b4c4a4" strokeWidth="1.2" />
+        <circle cx="36" cy="44" r="4" fill="#9aae8a" opacity="0.2" />
+        <circle cx="164" cy="52" r="3" fill="#9aae8a" opacity="0.16" />
+        {isTrophozoite ? (
+          <g filter={`url(#ameba-shadow-${tube.id})`}>
+            <path d="M 100 44 C 130 40, 155 56, 160 78 C 165 100, 156 126, 142 140 C 126 154, 100 158, 80 150 C 60 142, 46 120, 48 98 C 50 76, 68 56, 84 48 L 78 42 Z" fill={body} fillOpacity="0.76" stroke="#2a4a60" strokeWidth="1.5" />
+            <path d="M 84 48 C 78 38, 70 28, 60 20" fill={body} fillOpacity="0.62" stroke="#2a4a60" strokeWidth="1.2" />
+            <path d="M 68 60 C 58 74, 50 88, 52 106" fill="none" stroke="#ffffff" strokeWidth="2.5" opacity="0.26" strokeLinecap="round" />
+            <circle cx="106" cy="96" r="22" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.8" />
+            {([0, 45, 90, 135, 180, 225, 270, 315] as number[]).map((angle) => {
+              const rad = (angle * Math.PI) / 180;
+              const nx = 106 + 19 * Math.cos(rad);
+              const ny = 96 + 19 * Math.sin(rad);
+              return <circle key={angle} cx={nx} cy={ny} r="2.5" fill={detail} opacity="0.82" />;
+            })}
+            <circle cx="106" cy="96" r="5" fill={detail} opacity="0.95" />
+            <circle cx="86" cy="122" r="7" fill="#c83838" fillOpacity="0.72" stroke="#8c2828" strokeWidth="1" />
+            <circle cx="124" cy="118" r="6" fill="#c83838" fillOpacity="0.62" stroke="#8c2828" strokeWidth="0.9" />
+            <circle cx="106" cy="130" r="5" fill="#c83838" fillOpacity="0.52" stroke="#8c2828" strokeWidth="0.8" />
+          </g>
+        ) : (
+          <g filter={`url(#ameba-shadow-${tube.id})`}>
+            <circle cx="100" cy="100" r="52" fill={body} fillOpacity="0.76" stroke={detail} strokeWidth="2" />
+            <path d="M 62 72 C 72 62, 86 58, 96 60" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.34" strokeLinecap="round" />
+            {([{ cx: 80, cy: 80 }, { cx: 120, cy: 80 }, { cx: 80, cy: 120 }, { cx: 120, cy: 120 }] as Array<{ cx: number; cy: number }>).map(({ cx, cy }) => (
+              <g key={`${cx}-${cy}`}>
+                <circle cx={cx} cy={cy} r="13" fill="#ffffff" fillOpacity="0.26" stroke={detail} strokeWidth="1.6" />
+                {([0, 60, 120, 180, 240, 300] as number[]).map((angle) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const nx = cx + 10 * Math.cos(rad);
+                  const ny = cy + 10 * Math.sin(rad);
+                  return <circle key={angle} cx={nx} cy={ny} r="2" fill={detail} opacity="0.78" />;
+                })}
+                <circle cx={cx} cy={cy} r="4" fill={detail} opacity="0.94" />
+              </g>
+            ))}
+            <rect x="84" y="97" width="32" height="7" rx="3" fill={detail} opacity="0.5" transform="rotate(-14 100 100)" />
+            <rect x="80" y="104" width="24" height="6" rx="2.5" fill={detail} opacity="0.38" transform="rotate(18 92 107)" />
+          </g>
+        )}
+        <text x="100" y="193" textAnchor="middle" fill="#2a4858" fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTrichomonas(tube: TubeVisual) {
+  const isWetMount = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`trich-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity={isWetMount ? '0.55' : '0.72'} />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`trich-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.24" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#trich-bg-${tube.id})`} stroke="#b8c8b0" strokeWidth="1.2" />
+        <ellipse cx="38" cy="156" rx="22" ry="18" fill="#d4c8a8" fillOpacity="0.3" stroke="#b0a880" strokeWidth="0.8" />
+        <ellipse cx="164" cy="152" rx="24" ry="19" fill="#d4c8a8" fillOpacity="0.26" stroke="#b0a880" strokeWidth="0.8" />
+        <g filter={`url(#trich-shadow-${tube.id})`}>
+          <path d="M 100 46 C 130 46, 150 62, 150 90 C 150 116, 132 142, 110 150 C 104 152, 96 152, 90 150 C 68 142, 50 116, 50 90 C 50 62, 70 46, 100 46" fill={body} fillOpacity={isWetMount ? '0.74' : '0.82'} stroke={detail} strokeWidth="1.6" />
+          <path d="M 68 64 C 76 56, 86 52, 94 54" fill="none" stroke="#ffffff" strokeWidth="2.8" opacity={isWetMount ? '0.28' : '0.38'} strokeLinecap="round" />
+          <ellipse cx="96" cy="84" rx="18" ry="14" fill="#ffffff" fillOpacity="0.28" stroke={detail} strokeWidth="1.6" />
+          <ellipse cx="96" cy="84" rx="8" ry="6" fill={detail} opacity="0.72" />
+          <path d="M 142 62 C 150 70, 150 80, 142 90 C 134 100, 134 112, 142 122 C 150 132, 150 142, 142 150" fill="none" stroke={detail} strokeWidth={isWetMount ? '1.8' : '2.2'} opacity="0.55" strokeLinecap="round" />
+          {!isWetMount && (
+            <path d="M 136 62 C 144 70, 144 80, 136 90 C 128 100, 128 112, 136 122" fill="none" stroke={detail} strokeWidth="1.2" opacity="0.35" strokeLinecap="round" strokeDasharray="3 3" />
+          )}
+          <path d="M 88 50 C 84 38, 80 26, 74 14" fill="none" stroke={detail} strokeWidth="1.5" opacity="0.68" strokeLinecap="round" />
+          <path d="M 96 48 C 94 36, 92 22, 88 10" fill="none" stroke={detail} strokeWidth="1.5" opacity="0.68" strokeLinecap="round" />
+          <path d="M 104 48 C 106 36, 108 22, 112 10" fill="none" stroke={detail} strokeWidth="1.5" opacity="0.62" strokeLinecap="round" />
+          <path d="M 112 50 C 116 38, 120 26, 126 14" fill="none" stroke={detail} strokeWidth="1.5" opacity="0.62" strokeLinecap="round" />
+          <path d="M 100 150 L 100 184" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.58" strokeLinecap="round" />
+          <circle cx="100" cy="185" r="1.8" fill={detail} opacity="0.5" />
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderEnterobius(tube: TubeVisual) {
+  const isFresh = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`entero-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`entero-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.24" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#entero-bg-${tube.id})`} stroke="#c8c0a0" strokeWidth="1.2" />
+        <g filter={`url(#entero-shadow-${tube.id})`}>
+          {/* D-shaped egg: flat left side, curved right */}
+          <path d="M 72 58 L 72 142 C 72 162, 92 170, 108 162 C 148 148, 162 126, 160 100 C 158 74, 142 50, 108 40 C 92 34, 72 38, 72 58" fill={shell} fillOpacity="0.22" stroke={shell} strokeWidth="2.8" />
+          {/* Flat side indicator */}
+          <line x1="72" y1="60" x2="72" y2="140" stroke={shell} strokeWidth="2.8" strokeLinecap="round" opacity="0.6" />
+          {isFresh ? (
+            <>
+              {/* Larva inside — coiled shape */}
+              <path d="M 104 72 C 130 78, 138 95, 128 110 C 118 125, 98 124, 94 108 C 90 92, 108 88, 118 100" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.65" strokeLinecap="round" />
+              <circle cx="104" cy="70" r="3.5" fill={detail} opacity="0.6" />
+            </>
+          ) : (
+            /* Collapsed/older — faint outline only */
+            <ellipse cx="112" cy="100" rx="26" ry="34" fill={detail} fillOpacity="0.1" stroke={detail} strokeWidth="1.2" strokeDasharray="4 3" opacity="0.5" />
+          )}
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderStrongyloides(tube: TubeVisual) {
+  const isRhabditiform = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`strongy-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.45" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`strongy-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.2" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#strongy-bg-${tube.id})`} stroke="#c0c8b8" strokeWidth="1.2" />
+        <g filter={`url(#strongy-shadow-${tube.id})`}>
+          {/* Larval body — elongated worm */}
+          <path d={isRhabditiform ? 'M 100 28 C 102 60, 104 90, 100 118 C 96 148, 98 162, 100 175' : 'M 100 22 C 103 55, 105 88, 100 118 C 95 148, 97 164, 100 180'} fill="none" stroke={body} strokeWidth="13" strokeLinecap="round" opacity="0.72" />
+          <path d={isRhabditiform ? 'M 100 28 C 102 60, 104 90, 100 118 C 96 148, 98 162, 100 175' : 'M 100 22 C 103 55, 105 88, 100 118 C 95 148, 97 164, 100 180'} fill="none" stroke={bg} strokeWidth="7" strokeLinecap="round" opacity="0.45" />
+          {isRhabditiform ? (
+            <>
+              {/* Short buccal channel */}
+              <rect x="93" y="28" width="14" height="10" rx="3" fill={detail} opacity="0.75" />
+              {/* Genital primordium (cell cluster mid-body) */}
+              <ellipse cx="100" cy="112" rx="9" ry="6" fill={detail} opacity="0.68" />
+              <text x="118" y="115" fill={detail} fontSize="8" fontFamily="sans-serif" opacity="0.65">GP</text>
+            </>
+          ) : (
+            <>
+              {/* Longer esophagus (filariform) */}
+              <rect x="93" y="22" width="14" height="26" rx="3" fill={detail} opacity="0.62" />
+              {/* Notched tail */}
+              <path d="M 96 172 C 94 178, 100 182, 104 178 C 100 174, 96 172, 96 172" fill={detail} opacity="0.65" stroke={detail} strokeWidth="1" />
+            </>
+          )}
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderHookworm(tube: TubeVisual) {
+  const isFresh = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`hook-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`hook-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#hook-bg-${tube.id})`} stroke="#c8b8a0" strokeWidth="1.2" />
+        <g filter={`url(#hook-shadow-${tube.id})`}>
+          {/* Oval egg shell */}
+          <ellipse cx="100" cy="100" rx="44" ry="57" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2.5" />
+          {/* Clear space */}
+          <ellipse cx="100" cy="100" rx="37" ry="50" fill={bg} fillOpacity="0.65" stroke="none" />
+          {isFresh ? (
+            <>
+              {/* 4-cell morula */}
+              <circle cx="87" cy="88" r="12" fill={detail} fillOpacity="0.42" stroke={detail} strokeWidth="1.2" />
+              <circle cx="113" cy="88" r="12" fill={detail} fillOpacity="0.42" stroke={detail} strokeWidth="1.2" />
+              <circle cx="87" cy="113" r="12" fill={detail} fillOpacity="0.42" stroke={detail} strokeWidth="1.2" />
+              <circle cx="113" cy="113" r="12" fill={detail} fillOpacity="0.42" stroke={detail} strokeWidth="1.2" />
+              <line x1="100" y1="76" x2="100" y2="125" stroke={detail} strokeWidth="1" opacity="0.35" />
+              <line x1="75" y1="100" x2="125" y2="100" stroke={detail} strokeWidth="1" opacity="0.35" />
+            </>
+          ) : (
+            /* Embryonated — larva curled inside */
+            <path d="M 100 62 C 128 70, 136 90, 122 108 C 108 126, 84 122, 82 104 C 80 86, 100 82, 108 96" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
+          )}
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTrichurisEgg(tube: TubeVisual) {
+  const isEmbryonated = tube.id === 'B';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`trichuris-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`trichuris-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#trichuris-bg-${tube.id})`} stroke="#b8a880" strokeWidth="1.2" />
+        <g filter={`url(#trichuris-shadow-${tube.id})`}>
+          {/* Barrel body */}
+          <rect x="50" y="68" width="100" height="64" rx="22" fill={shell} fillOpacity="0.28" stroke={shell} strokeWidth="2.8" />
+          {/* Inner content */}
+          {isEmbryonated ? (
+            <path d="M 88 82 C 110 85, 118 96, 108 108 C 98 120, 82 116, 82 104 C 82 92, 96 90, 104 100" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.58" strokeLinecap="round" />
+          ) : (
+            <ellipse cx="100" cy="100" rx="28" ry="22" fill={detail} fillOpacity="0.28" stroke={detail} strokeWidth="1" />
+          )}
+          {/* Left bipolar hyaline plug */}
+          <ellipse cx="50" cy="100" rx="15" ry="13" fill="#f8f2d8" stroke={shell} strokeWidth="2" opacity="0.92" />
+          {/* Right bipolar hyaline plug */}
+          <ellipse cx="150" cy="100" rx="15" ry="13" fill="#f8f2d8" stroke={shell} strokeWidth="2" opacity="0.92" />
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderPlasmodium(tube: TubeVisual) {
+  const isRingForm = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const rbc = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`plasmo-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <radialGradient id={`plasmo-rbc-${tube.id}`} cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor={rbc} stopOpacity="0.18" />
+            <stop offset="100%" stopColor={rbc} stopOpacity="0.42" />
+          </radialGradient>
+          <filter id={`plasmo-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={rbc} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#plasmo-bg-${tube.id})`} stroke="#c0a8a0" strokeWidth="1.2" />
+        {isRingForm ? (
+          <g filter={`url(#plasmo-shadow-${tube.id})`}>
+            {/* RBC */}
+            <ellipse cx="100" cy="100" rx="66" ry="56" fill={`url(#plasmo-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
+            {/* Central pallor */}
+            <ellipse cx="100" cy="100" rx="28" ry="24" fill={bg} fillOpacity="0.55" stroke="none" />
+            {/* Ring 1 — accole at edge */}
+            <circle cx="55" cy="80" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.85" />
+            <circle cx="53" cy="77" r="3" fill={detail} opacity="0.85" />
+            {/* Ring 2 — double chromatin */}
+            <circle cx="138" cy="86" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.82" />
+            <circle cx="134" cy="83" r="2.2" fill={detail} opacity="0.82" />
+            <circle cx="141" cy="83" r="2.2" fill={detail} opacity="0.82" />
+            {/* Ring 3 — accole at bottom edge */}
+            <circle cx="88" cy="148" r="9" fill="none" stroke={detail} strokeWidth="2" opacity="0.75" />
+            <circle cx="86" cy="146" r="2.5" fill={detail} opacity="0.75" />
+          </g>
+        ) : (
+          <g filter={`url(#plasmo-shadow-${tube.id})`}>
+            {/* Banana/crescent gametocyte */}
+            <path d="M 62 108 C 64 66, 96 46, 134 62 C 162 76, 158 122, 134 140 C 106 158, 62 150, 62 108" fill={detail} fillOpacity="0.52" stroke={detail} strokeWidth="2.2" />
+            {/* Highlight */}
+            <path d="M 78 104 C 80 72, 98 58, 124 70 C 144 80, 142 118, 124 132 C 104 146, 80 142, 78 104" fill={rbc} fillOpacity="0.28" stroke="none" />
+            {/* Nucleus */}
+            <ellipse cx="100" cy="96" rx="11" ry="9" fill={detail} opacity="0.72" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderBabesia(tube: TubeVisual) {
+  const isTetrad = tube.id === 'B';
+  const bg = tube.colors.slant;
+  const rbc = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`bab-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <radialGradient id={`bab-rbc-${tube.id}`} cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stopColor={rbc} stopOpacity="0.18" />
+            <stop offset="100%" stopColor={rbc} stopOpacity="0.40" />
+          </radialGradient>
+          <filter id={`bab-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={rbc} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#bab-bg-${tube.id})`} stroke="#c0a8a0" strokeWidth="1.2" />
+        {isTetrad ? (
+          <g filter={`url(#bab-shadow-${tube.id})`}>
+            {/* RBC */}
+            <ellipse cx="100" cy="100" rx="64" ry="54" fill={`url(#bab-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
+            <ellipse cx="100" cy="100" rx="26" ry="22" fill={bg} fillOpacity="0.5" stroke="none" />
+            {/* Maltese cross tetrad — 4 pear-shaped merozoites */}
+            <circle cx="100" cy="78" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
+            <circle cx="100" cy="76" r="3" fill={detail} opacity="0.88" />
+            <circle cx="100" cy="122" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
+            <circle cx="100" cy="124" r="3" fill={detail} opacity="0.88" />
+            <circle cx="78" cy="100" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
+            <circle cx="76" cy="100" r="3" fill={detail} opacity="0.88" />
+            <circle cx="122" cy="100" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
+            <circle cx="124" cy="100" r="3" fill={detail} opacity="0.88" />
+            {/* Cross lines connecting them */}
+            <line x1="100" y1="88" x2="100" y2="112" stroke={detail} strokeWidth="1.2" opacity="0.4" />
+            <line x1="88" y1="100" x2="112" y2="100" stroke={detail} strokeWidth="1.2" opacity="0.4" />
+          </g>
+        ) : (
+          <g filter={`url(#bab-shadow-${tube.id})`}>
+            {/* RBC with multiple small rings */}
+            <ellipse cx="100" cy="100" rx="65" ry="55" fill={`url(#bab-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
+            <ellipse cx="100" cy="100" rx="27" ry="23" fill={bg} fillOpacity="0.5" stroke="none" />
+            {/* Ring 1 */}
+            <circle cx="70" cy="84" r="8" fill="none" stroke={detail} strokeWidth="2" opacity="0.85" />
+            <circle cx="69" cy="82" r="2.2" fill={detail} opacity="0.85" />
+            {/* Ring 2 */}
+            <circle cx="128" cy="88" r="8" fill="none" stroke={detail} strokeWidth="2" opacity="0.82" />
+            <circle cx="127" cy="86" r="2.2" fill={detail} opacity="0.82" />
+            {/* Ring 3 */}
+            <circle cx="82" cy="120" r="7" fill="none" stroke={detail} strokeWidth="2" opacity="0.78" />
+            <circle cx="81" cy="118" r="2" fill={detail} opacity="0.78" />
+            {/* Extracellular ring — outside RBC */}
+            <circle cx="150" cy="140" r="7" fill="none" stroke={detail} strokeWidth="2" opacity="0.7" />
+            <circle cx="149" cy="138" r="2" fill={detail} opacity="0.7" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTrypanosoma(tube: TubeVisual) {
+  const isTrypomastigote = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`tryp-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`tryp-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#tryp-bg-${tube.id})`} stroke="#c0b0d0" strokeWidth="1.2" />
+        {isTrypomastigote ? (
+          <g filter={`url(#tryp-shadow-${tube.id})`}>
+            {/* C-shaped body */}
+            <path d="M 60 148 C 44 130, 44 80, 60 56 C 74 36, 100 30, 118 40 C 138 52, 148 72, 142 92" fill="none" stroke={body} strokeWidth="10" strokeLinecap="round" opacity="0.75" />
+            <path d="M 60 148 C 44 130, 44 80, 60 56 C 74 36, 100 30, 118 40 C 138 52, 148 72, 142 92" fill="none" stroke={bg} strokeWidth="4" strokeLinecap="round" opacity="0.4" />
+            {/* Undulating membrane */}
+            <path d="M 62 144 C 50 126, 48 96, 56 72 C 62 56, 76 44, 96 38" fill="none" stroke={detail} strokeWidth="1.5" strokeDasharray="4 2" opacity="0.55" />
+            {/* Large posterior kinetoplast */}
+            <ellipse cx="63" cy="148" rx="9" ry="7" fill={detail} opacity="0.82" />
+            {/* Anterior free flagellum */}
+            <path d="M 142 90 C 152 78, 162 64, 170 48" fill="none" stroke={detail} strokeWidth="2" opacity="0.65" strokeLinecap="round" />
+            {/* Nucleus — mid body */}
+            <ellipse cx="88" cy="96" rx="9" ry="7" fill={detail} fillOpacity="0.55" stroke={detail} strokeWidth="1" />
+          </g>
+        ) : (
+          <g filter={`url(#tryp-shadow-${tube.id})`}>
+            {/* Cell (macrophage outline) */}
+            <ellipse cx="100" cy="100" rx="72" ry="62" fill={body} fillOpacity="0.12" stroke={body} strokeWidth="1.8" strokeDasharray="5 3" />
+            {/* Amastigotes — small round cells with nucleus + kinetoplast */}
+            {[
+              [78, 80], [100, 78], [122, 80],
+              [70, 100], [92, 100], [114, 100], [134, 100],
+              [78, 120], [100, 120], [122, 120]
+            ].map(([cx, cy], i) => (
+              <g key={i}>
+                <circle cx={cx} cy={cy} r="8" fill={body} fillOpacity="0.28" stroke={detail} strokeWidth="1.2" />
+                <circle cx={cx - 1} cy={cy - 1} r="2.2" fill={detail} opacity="0.75" />
+                <rect x={cx + 2} y={cy + 1} width="5" height="2.5" rx="1" fill={detail} opacity="0.68" />
+              </g>
+            ))}
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderToxoplasma(tube: TubeVisual) {
+  const isTachyzoite = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`toxo-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`toxo-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#toxo-bg-${tube.id})`} stroke="#c0b0d0" strokeWidth="1.2" />
+        {isTachyzoite ? (
+          <g filter={`url(#toxo-shadow-${tube.id})`}>
+            {/* Crescent tachyzoites — group of 2-3 */}
+            {/* Tachyzoite 1 */}
+            <path d="M 70 88 C 74 72, 94 68, 108 76 C 120 84, 120 100, 108 106 C 94 112, 74 108, 70 92" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="1.5" />
+            <ellipse cx="102" cy="96" rx="7" ry="5" fill={detail} opacity="0.72" />
+            {/* Tachyzoite 2 — adjacent, slightly rotated */}
+            <path d="M 82 116 C 86 100, 106 96, 120 104 C 132 112, 132 128, 120 134 C 106 140, 86 136, 82 120" fill={body} fillOpacity="0.50" stroke={detail} strokeWidth="1.5" />
+            <ellipse cx="114" cy="124" rx="7" ry="5" fill={detail} opacity="0.68" />
+            {/* Tachyzoite 3 — partial */}
+            <path d="M 48 96 C 52 82, 66 78, 74 86 C 80 94, 78 106, 70 108 C 60 110, 46 104, 48 98" fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="1.5" />
+            <ellipse cx="66" cy="97" rx="5" ry="4" fill={detail} opacity="0.62" />
+          </g>
+        ) : (
+          <g filter={`url(#toxo-shadow-${tube.id})`}>
+            {/* Tissue cyst — large round with bradyzoites inside */}
+            <circle cx="100" cy="100" rx="64" r="62" fill={bg} fillOpacity="0.4" stroke={detail} strokeWidth="2.5" />
+            {/* Bradyzoites — small crescent shapes inside cyst */}
+            {[
+              [74, 80, 0], [94, 75, 15], [114, 80, -15], [130, 92, -30],
+              [135, 110, -45], [122, 126, -55], [104, 132, 0], [84, 128, 20],
+              [68, 115, 35], [65, 96, 45]
+            ].map(([cx, cy, rot], i) => (
+              <ellipse key={i} cx={cx} cy={cy} rx="9" ry="4" fill={body} fillOpacity="0.48" stroke={detail} strokeWidth="1" transform={`rotate(${rot} ${cx} ${cy})`} />
+            ))}
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderLeishmania(tube: TubeVisual) {
+  const isAmastigote = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`leish-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`leish-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={body} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#leish-bg-${tube.id})`} stroke="#c0a898" strokeWidth="1.2" />
+        {isAmastigote ? (
+          <g filter={`url(#leish-shadow-${tube.id})`}>
+            {/* Macrophage/Kupffer cell outline */}
+            <ellipse cx="100" cy="100" rx="72" ry="65" fill={body} fillOpacity="0.14" stroke={body} strokeWidth="2" />
+            {/* Host nucleus */}
+            <ellipse cx="138" cy="72" rx="16" ry="12" fill={body} fillOpacity="0.25" stroke={body} strokeWidth="1.5" />
+            {/* Amastigotes — small round with nucleus + kinetoplast */}
+            {[
+              [68, 80], [88, 80], [108, 80],
+              [60, 100], [80, 100], [100, 100], [120, 100],
+              [68, 120], [88, 120], [108, 120], [128, 120]
+            ].map(([cx, cy], i) => (
+              <g key={i}>
+                <circle cx={cx} cy={cy} r="8.5" fill={body} fillOpacity="0.30" stroke={detail} strokeWidth="1.2" />
+                {/* Nucleus */}
+                <circle cx={cx - 1} cy={cy - 1} r="2.8" fill={detail} opacity="0.78" />
+                {/* Kinetoplast bar — perpendicular to nucleus */}
+                <rect x={cx + 2} y={cy - 1} width="5.5" height="2.5" rx="1" fill={detail} opacity="0.72" />
+              </g>
+            ))}
+          </g>
+        ) : (
+          <g filter={`url(#leish-shadow-${tube.id})`}>
+            {/* Promastigote — elongated with anterior flagellum */}
+            <path d="M 100 160 C 98 130, 96 100, 100 70 C 102 50, 104 36, 100 24" fill="none" stroke={body} strokeWidth="11" strokeLinecap="round" opacity="0.72" />
+            <path d="M 100 160 C 98 130, 96 100, 100 70 C 102 50, 104 36, 100 24" fill="none" stroke={bg} strokeWidth="6" strokeLinecap="round" opacity="0.4" />
+            {/* Anterior kinetoplast */}
+            <ellipse cx="100" cy="62" rx="8" ry="6" fill={detail} opacity="0.78" />
+            {/* Nucleus — mid-body */}
+            <ellipse cx="100" cy="100" rx="9" ry="7" fill={detail} fillOpacity="0.55" stroke={detail} strokeWidth="1" />
+            {/* Anterior flagellum */}
+            <path d="M 100 24 C 108 14, 118 8, 128 4" fill="none" stroke={detail} strokeWidth="2" opacity="0.68" strokeLinecap="round" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderAscaris(tube: TubeVisual) {
+  const isFertile = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  const bumps = Array.from({ length: 18 }, (_, i) => {
+    const a = (i / 18) * Math.PI * 2;
+    return { cx: Math.round(100 + 55 * Math.cos(a)), cy: Math.round(100 + 65 * Math.sin(a)) };
+  });
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`asc-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`asc-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#asc-bg-${tube.id})`} stroke="#c8b090" strokeWidth="1.2" />
+        {isFertile ? (
+          <g filter={`url(#asc-shadow-${tube.id})`}>
+            {/* Mammillated (bumpy) outer coat */}
+            {bumps.map((b, i) => (
+              <circle key={i} cx={b.cx} cy={b.cy} r="6.5" fill={shell} fillOpacity="0.55" />
+            ))}
+            <ellipse cx="100" cy="100" rx="52" ry="62" fill={shell} fillOpacity="0.28" />
+            {/* Inner shell — smooth, thick */}
+            <ellipse cx="100" cy="100" rx="43" ry="53" fill={bg} fillOpacity="0.85" stroke={shell} strokeWidth="3" />
+            {/* Unsegmented cell content */}
+            <ellipse cx="100" cy="102" rx="33" ry="42" fill={shell} fillOpacity="0.28" stroke={detail} strokeWidth="1.2" />
+            <ellipse cx="100" cy="103" rx="22" ry="30" fill={detail} fillOpacity="0.26" />
+          </g>
+        ) : (
+          <g filter={`url(#asc-shadow-${tube.id})`}>
+            {/* Decorticate / infertile — elongated oval, no outer coat */}
+            <ellipse cx="100" cy="100" rx="42" ry="62" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2.5" />
+            {/* Disorganized granular content */}
+            <ellipse cx="84" cy="76" rx="14" ry="11" fill={detail} fillOpacity="0.26" stroke={detail} strokeWidth="1" />
+            <ellipse cx="116" cy="88" rx="12" ry="9" fill={detail} fillOpacity="0.26" stroke={detail} strokeWidth="1" />
+            <ellipse cx="88" cy="108" rx="15" ry="10" fill={detail} fillOpacity="0.24" stroke={detail} strokeWidth="1" />
+            <ellipse cx="115" cy="120" rx="12" ry="11" fill={detail} fillOpacity="0.26" stroke={detail} strokeWidth="1" />
+            <ellipse cx="97" cy="140" rx="11" ry="8" fill={detail} fillOpacity="0.22" stroke={detail} strokeWidth="1" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTrichostrongylus(tube: TubeVisual) {
+  const isTss = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`tss-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`tss-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#tss-bg-${tube.id})`} stroke="#b8a888" strokeWidth="1.2" />
+        {isTss ? (
+          <g filter={`url(#tss-shadow-${tube.id})`}>
+            {/* Trichostrongylus: elongated, asymmetric — one end tapered */}
+            <path d="M 100 30 C 130 30, 152 52, 152 90 C 152 130, 134 162, 100 172 C 80 172, 58 152, 50 118 C 44 90, 54 50, 100 30 Z" fill={bg} fillOpacity="0.82" stroke={shell} strokeWidth="2.5" />
+            <path d="M 100 40 C 126 40, 144 60, 144 92 C 144 128, 128 156, 100 164 C 82 164, 62 146, 56 116 C 50 90, 62 56, 100 40 Z" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.4" />
+            {/* Advanced morula — ~15 cells */}
+            {([
+              [90, 58], [110, 58],
+              [76, 80], [96, 78], [116, 80],
+              [72, 102], [92, 100], [112, 100], [130, 102],
+              [76, 124], [96, 122], [116, 124],
+              [84, 144], [104, 144], [120, 142]
+            ] as [number, number][]).map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r="11" fill={shell} fillOpacity="0.32" stroke={detail} strokeWidth="1" />
+            ))}
+          </g>
+        ) : (
+          <g filter={`url(#tss-shadow-${tube.id})`}>
+            {/* Hookworm comparator: rounder oval, symmetric blunt ends */}
+            <ellipse cx="100" cy="100" rx="50" ry="60" fill={bg} fillOpacity="0.82" stroke={shell} strokeWidth="2.5" />
+            <ellipse cx="100" cy="100" rx="44" ry="54" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.4" />
+            {/* Early morula — 7 cells */}
+            {([
+              [88, 78], [112, 78],
+              [80, 100], [100, 98], [120, 100],
+              [88, 122], [112, 122]
+            ] as [number, number][]).map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r="12" fill={shell} fillOpacity="0.32" stroke={detail} strokeWidth="1" />
+            ))}
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTrichinella(tube: TubeVisual) {
+  const isSquash = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`trich-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`trich-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#trich-bg-${tube.id})`} stroke="#c0a880" strokeWidth="1.2" />
+        {isSquash ? (
+          <g filter={`url(#trich-shadow-${tube.id})`}>
+            {/* Striated muscle fibers in background */}
+            {[38, 54, 70, 86, 102, 118, 134, 150, 166].map(y => (
+              <line key={y} x1="10" y1={y} x2="190" y2={y} stroke={shell} strokeWidth="0.8" strokeOpacity="0.28" />
+            ))}
+            {/* Nurse cell capsule — oval */}
+            <ellipse cx="100" cy="100" rx="72" ry="38" fill={bg} fillOpacity="0.92" stroke={shell} strokeWidth="2.5" />
+            <ellipse cx="100" cy="100" rx="66" ry="32" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.3" />
+            {/* Coiled larva inside */}
+            <path d="M 40 96 C 58 78, 80 76, 96 88 C 112 100, 130 118, 152 106 C 158 102, 158 90, 152 84" fill="none" stroke={detail} strokeWidth="5.5" strokeLinecap="round" />
+            <path d="M 40 96 C 58 78, 80 76, 96 88 C 112 100, 130 118, 152 106 C 158 102, 158 90, 152 84" fill="none" stroke={bg} strokeWidth="2.5" strokeLinecap="round" strokeOpacity="0.5" />
+          </g>
+        ) : (
+          <g filter={`url(#trich-shadow-${tube.id})`}>
+            {/* H&E section: spindle capsule + inflammatory cells */}
+            <ellipse cx="100" cy="100" rx="74" ry="36" fill={bg} fillOpacity="0.72" stroke={shell} strokeWidth="2" />
+            <ellipse cx="100" cy="100" rx="66" ry="29" fill={bg} fillOpacity="0.85" stroke={shell} strokeWidth="1.5" strokeDasharray="3,2" />
+            {/* Coiled larva */}
+            <path d="M 36 104 C 56 82, 80 80, 97 92 C 114 104, 134 120, 160 100 C 164 96, 162 86, 156 80" fill="none" stroke={detail} strokeWidth="5" strokeLinecap="round" />
+            <path d="M 36 104 C 56 82, 80 80, 97 92 C 114 104, 134 120, 160 100 C 164 96, 162 86, 156 80" fill="none" stroke={bg} strokeWidth="2" strokeLinecap="round" strokeOpacity="0.4" />
+            {/* Inflammatory cells */}
+            {([
+              [100,65],[78,68],[122,68],[62,78],[138,78],
+              [55,92],[145,92],[55,108],[145,108],
+              [62,122],[138,122],[78,132],[122,132],[100,135]
+            ] as [number,number][]).map(([cx,cy],i) => (
+              <circle key={i} cx={cx} cy={cy} r="4" fill={shell} fillOpacity="0.62" />
+            ))}
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderMicrofilaria(tube: TubeVisual) {
+  const isWb = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  const wbNuclei: [number,number][] = [
+    [22,152],[30,144],[40,136],[50,128],[61,120],
+    [72,113],[83,106],[94,100],[106,94],[118,89],
+    [130,85],[142,82],[154,80]
+  ];
+  const loaNuclei: [number,number][] = [
+    [22,152],[30,144],[40,136],[50,128],[61,120],
+    [72,113],[83,106],[94,100],[106,94],[118,89],
+    [130,85],[142,82],[154,80],[163,76],[170,72],[177,67]
+  ];
+  const nuclei = isWb ? wbNuclei : loaNuclei;
+  const wormPath = "M 16 156 C 38 136, 58 112, 88 96 C 118 80, 148 80, 178 64";
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`mf-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#mf-bg-${tube.id})`} stroke="#c8a898" strokeWidth="1.2" />
+        {/* RBC background */}
+        {([
+          [35,42],[65,38],[95,44],[125,40],[155,46],
+          [40,68],[70,72],[100,66],[130,70],[160,65],
+          [35,96],[65,90],[95,98],[125,92],[155,100],
+          [45,125],[75,130],[105,124],[135,128],[165,120],
+          [50,155],[80,160],[110,154],[140,158],[170,152]
+        ] as [number,number][]).map(([cx,cy],i) => (
+          <ellipse key={i} cx={cx} cy={cy} rx="13" ry="9" fill={body} fillOpacity="0.22" stroke={body} strokeWidth="0.5" strokeOpacity="0.28" />
+        ))}
+        {/* Sheath */}
+        <path d={wormPath} fill="none" stroke={body} strokeWidth="14" strokeLinecap="round" strokeOpacity="0.32" />
+        {/* Worm body */}
+        <path d={wormPath} fill="none" stroke={detail} strokeWidth="7" strokeLinecap="round" />
+        {/* Nuclei */}
+        {nuclei.map(([cx,cy],i) => (
+          <circle key={i} cx={cx} cy={cy} r="2.2" fill={bg} opacity="0.85" />
+        ))}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderTaeniaEgg(tube: TubeVisual) {
+  const isEgg = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  const striations = Array.from({ length: 18 }, (_, i) => {
+    const a = (i / 18) * Math.PI * 2;
+    return {
+      x1: Math.round(100 + 35 * Math.cos(a)),
+      y1: Math.round(100 + 35 * Math.sin(a)),
+      x2: Math.round(100 + 52 * Math.cos(a)),
+      y2: Math.round(100 + 52 * Math.sin(a))
+    };
+  });
+  const hooklets = Array.from({ length: 6 }, (_, i) => {
+    const a = (i / 6) * Math.PI * 2;
+    return {
+      x1: Math.round(100 + 8 * Math.cos(a)),
+      y1: Math.round(100 + 8 * Math.sin(a)),
+      x2: Math.round(100 + 22 * Math.cos(a)),
+      y2: Math.round(100 + 22 * Math.sin(a))
+    };
+  });
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`tae-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`tae-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#tae-bg-${tube.id})`} stroke="#c0a870" strokeWidth="1.2" />
+        {isEgg ? (
+          <g filter={`url(#tae-shadow-${tube.id})`}>
+            {/* Outer embryophore */}
+            <circle cx="100" cy="100" r="52" fill={shell} fillOpacity="0.28" stroke={shell} strokeWidth="3.5" />
+            {/* Radial striations */}
+            {striations.map((s, i) => (
+              <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke={shell} strokeWidth="1.5" strokeOpacity="0.7" />
+            ))}
+            {/* Inner oncosphere */}
+            <circle cx="100" cy="100" r="33" fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="2" />
+            {/* 6 hooklets */}
+            {hooklets.map((h, i) => (
+              <line key={i} x1={h.x1} y1={h.y1} x2={h.x2} y2={h.y2} stroke={detail} strokeWidth="1.8" strokeLinecap="round" />
+            ))}
+          </g>
+        ) : (
+          <g filter={`url(#tae-shadow-${tube.id})`}>
+            {/* Gravid proglottid comparison */}
+            <line x1="100" y1="28" x2="100" y2="172" stroke={shell} strokeWidth="1" strokeOpacity="0.45" strokeDasharray="4,3" />
+            {/* T. saginata — left half */}
+            <rect x="16" y="32" width="80" height="136" rx="4" fill={shell} fillOpacity="0.14" stroke={shell} strokeWidth="1.5" />
+            <line x1="56" y1="32" x2="56" y2="168" stroke={detail} strokeWidth="2" />
+            {[42,50,58,66,74,82,90,98,106,114,122,130,138,146,154,162].map((y,i) => (
+              <g key={i}>
+                <line x1="18" y1={y} x2="56" y2={y} stroke={detail} strokeWidth="1" strokeOpacity="0.65" />
+                <line x1="56" y1={y} x2="94" y2={y} stroke={detail} strokeWidth="1" strokeOpacity="0.65" />
+              </g>
+            ))}
+            {/* T. solium — right half */}
+            <rect x="104" y="32" width="80" height="136" rx="4" fill={shell} fillOpacity="0.14" stroke={shell} strokeWidth="1.5" />
+            <line x1="144" y1="32" x2="144" y2="168" stroke={detail} strokeWidth="2" />
+            {[48,62,76,90,104,118,132,146,160].map((y,i) => (
+              <g key={i}>
+                <line x1="106" y1={y} x2="144" y2={y} stroke={detail} strokeWidth="1.8" strokeOpacity="0.65" />
+                <line x1="144" y1={y} x2="182" y2={y} stroke={detail} strokeWidth="1.8" strokeOpacity="0.65" />
+              </g>
+            ))}
+            {/* Labels */}
+            <text x="56" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. saginata {'>'}13</text>
+            <text x="144" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. solium 8–13</text>
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderParagonimus(tube: TubeVisual) {
+  const isPara = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`par-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`par-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#par-bg-${tube.id})`} stroke="#c0a870" strokeWidth="1.2" />
+        {isPara ? (
+          <g filter={`url(#par-shadow-${tube.id})`}>
+            {/* Paragonimus: large ovoid, shouldered operculum */}
+            <ellipse cx="100" cy="108" rx="48" ry="62" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="3" />
+            {/* Shoulder rim at opercular end */}
+            <ellipse cx="100" cy="52" rx="42" ry="8" fill={shell} fillOpacity="0.45" stroke={shell} strokeWidth="2" />
+            {/* Operculum cap */}
+            <ellipse cx="100" cy="42" rx="28" ry="10" fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="2" />
+            {/* Thickened abopercular wall */}
+            <ellipse cx="100" cy="166" rx="42" ry="9" fill={shell} fillOpacity="0.38" stroke={shell} strokeWidth="2" />
+            {/* Unembryonated granular content */}
+            <ellipse cx="100" cy="110" rx="36" ry="48" fill={shell} fillOpacity="0.18" stroke={detail} strokeWidth="1" />
+          </g>
+        ) : (
+          <g filter={`url(#par-shadow-${tube.id})`}>
+            {/* Clonorchis: tiny flask-shaped, prominent opercular shoulders */}
+            <path d="M 100 44 C 122 44, 138 62, 138 84 C 138 114, 122 146, 100 154 C 78 146, 62 114, 62 84 C 62 62, 78 44, 100 44 Z" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
+            {/* Prominent opercular shoulder bumps */}
+            <ellipse cx="84" cy="56" rx="12" ry="7" fill={shell} fillOpacity="0.5" stroke={shell} strokeWidth="1.8" />
+            <ellipse cx="116" cy="56" rx="12" ry="7" fill={shell} fillOpacity="0.5" stroke={shell} strokeWidth="1.8" />
+            {/* Operculum cap */}
+            <ellipse cx="100" cy="46" rx="20" ry="9" fill={bg} fillOpacity="0.9" stroke={shell} strokeWidth="2" />
+            {/* Abopercular knob */}
+            <ellipse cx="100" cy="153" rx="11" ry="6" fill={shell} fillOpacity="0.6" stroke={shell} strokeWidth="1.5" />
+            {/* Embryonated inner content */}
+            <ellipse cx="100" cy="102" rx="30" ry="42" fill={detail} fillOpacity="0.18" stroke={detail} strokeWidth="1" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderSchistosoma(tube: TubeVisual) {
+  const isMansoni = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`sch-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`sch-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#sch-bg-${tube.id})`} stroke="#c0a870" strokeWidth="1.2" />
+        {isMansoni ? (
+          <g filter={`url(#sch-shadow-${tube.id})`}>
+            {/* S. mansoni: large elongated egg, prominent lateral spine */}
+            <ellipse cx="100" cy="100" rx="45" ry="62" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
+            {/* Embryonated inner content */}
+            <ellipse cx="100" cy="100" rx="36" ry="54" fill={shell} fillOpacity="0.16" stroke={detail} strokeWidth="1" />
+            {/* Prominent lateral spine — pointing to the right at mid-posterior */}
+            <path d="M 145 118 L 172 108 L 145 102 Z" fill={shell} fillOpacity="0.7" stroke={shell} strokeWidth="1.5" />
+            {/* Spine junction */}
+            <path d="M 144 110 L 144 110" fill="none" stroke={shell} strokeWidth="1" />
+          </g>
+        ) : (
+          <g filter={`url(#sch-shadow-${tube.id})`}>
+            {/* S. haematobium: elongated egg, terminal spine at one end */}
+            <ellipse cx="100" cy="100" rx="40" ry="58" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
+            {/* Embryonated inner content */}
+            <ellipse cx="100" cy="100" rx="32" ry="50" fill={shell} fillOpacity="0.16" stroke={detail} strokeWidth="1" />
+            {/* Terminal spine — at the bottom pole */}
+            <path d="M 92 158 L 100 182 L 108 158 Z" fill={shell} fillOpacity="0.7" stroke={shell} strokeWidth="1.5" />
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderHymenolepis(tube: TubeVisual) {
+  const isNana = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  const hooklets = Array.from({ length: 6 }, (_, i) => {
+    const a = (i / 6) * Math.PI * 2;
+    const r = isNana ? 18 : 22;
+    return {
+      x1: Math.round(100 + 8 * Math.cos(a)),
+      y1: Math.round(100 + 8 * Math.sin(a)),
+      x2: Math.round(100 + r * Math.cos(a)),
+      y2: Math.round(100 + r * Math.sin(a))
+    };
+  });
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`hym-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`hym-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#hym-bg-${tube.id})`} stroke="#c0a870" strokeWidth="1.2" />
+        <g filter={`url(#hym-shadow-${tube.id})`}>
+          {/* Outer shell */}
+          <circle cx="100" cy="100" r={isNana ? 48 : 60} fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth={isNana ? 2 : 3} />
+          {/* Inner oncosphere */}
+          <circle cx="100" cy="100" r={isNana ? 28 : 38} fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="2" />
+          {/* Hooklets inside oncosphere */}
+          {hooklets.map((h, i) => (
+            <line key={i} x1={h.x1} y1={h.y1} x2={h.x2} y2={h.y2} stroke={detail} strokeWidth="1.8" strokeLinecap="round" />
+          ))}
+          {isNana && (
+            /* Polar filaments — 4 thread-like filaments from each pole of oncosphere */
+            <>
+              {/* Top pole filaments */}
+              <line x1="96" y1="72" x2="92" y2="52" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="100" y1="72" x2="100" y2="52" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="104" y1="72" x2="108" y2="52" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="107" y1="74" x2="114" y2="55" stroke={detail} strokeWidth="1" strokeOpacity="0.6" strokeLinecap="round" />
+              {/* Bottom pole filaments */}
+              <line x1="96" y1="128" x2="92" y2="148" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="100" y1="128" x2="100" y2="148" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="104" y1="128" x2="108" y2="148" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
+              <line x1="107" y1="126" x2="114" y2="145" stroke={detail} strokeWidth="1" strokeOpacity="0.6" strokeLinecap="round" />
+            </>
+          )}
+        </g>
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderDiphyllobothrium(tube: TubeVisual) {
+  const isDlatum = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`dip-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`dip-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#dip-bg-${tube.id})`} stroke="#c0a870" strokeWidth="1.2" />
+        {isDlatum ? (
+          <g filter={`url(#dip-shadow-${tube.id})`}>
+            {/* D. latum: broadly oval egg, smooth opercular rim, abopercular knob */}
+            <ellipse cx="100" cy="100" rx="50" ry="62" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
+            {/* Smooth opercular rim at top — no shoulder (just flat) */}
+            <ellipse cx="100" cy="40" rx="32" ry="8" fill={bg} fillOpacity="0.92" stroke={shell} strokeWidth="2" />
+            {/* Unembryonated interior */}
+            <ellipse cx="100" cy="108" rx="38" ry="46" fill={shell} fillOpacity="0.15" stroke={detail} strokeWidth="1" />
+            {/* Abopercular knob — small button at bottom */}
+            <ellipse cx="100" cy="162" rx="12" ry="6" fill={shell} fillOpacity="0.65" stroke={shell} strokeWidth="1.5" />
+          </g>
+        ) : (
+          <g filter={`url(#dip-shadow-${tube.id})`}>
+            {/* Comparison card — draw 2 mini eggs for comparison */}
+            {/* Left mini: Paragonimus (shouldered, larger) */}
+            <ellipse cx="62" cy="95" rx="30" ry="38" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2" />
+            <ellipse cx="62" cy="59" rx="26" ry="5" fill={shell} fillOpacity="0.42" stroke={shell} strokeWidth="1.5" />
+            <ellipse cx="62" cy="53" rx="17" ry="7" fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="1.5" />
+            <ellipse cx="62" cy="130" rx="25" ry="6" fill={shell} fillOpacity="0.35" stroke={shell} strokeWidth="1.5" />
+            <text x="62" y="148" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">Paragoni.</text>
+            <text x="62" y="157" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">shouldered</text>
+            {/* Right mini: Fasciola (largest, no shoulder, no knob) */}
+            <ellipse cx="142" cy="90" rx="32" ry="48" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2" />
+            <ellipse cx="142" cy="44" rx="18" ry="7" fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="1.5" />
+            <text x="142" y="150" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">Fasciola</text>
+            <text x="142" y="159" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">largest, no spine</text>
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderEchinococcus(tube: TubeVisual) {
+  const isProtoscolex = tube.id === 'A';
+  const bg = tube.colors.slant;
+  const shell = tube.colors.butt;
+  const detail = tube.colors.base;
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`ech-bg-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.5" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`ech-shadow-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor={shell} floodOpacity="0.22" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#ech-bg-${tube.id})`} stroke="#b8a880" strokeWidth="1.2" />
+        {isProtoscolex ? (
+          <g filter={`url(#ech-shadow-${tube.id})`}>
+            {/* Protoscolex: oval body, 4 suckers, rostellar hooks */}
+            {/* Main body */}
+            <ellipse cx="100" cy="100" rx="52" ry="62" fill={shell} fillOpacity="0.22" stroke={shell} strokeWidth="2.5" />
+            {/* Rostellum at top */}
+            <ellipse cx="100" cy="50" rx="22" ry="14" fill={shell} fillOpacity="0.35" stroke={shell} strokeWidth="1.8" />
+            {/* 2 rows of hooks on rostellum */}
+            {[
+              [84,42],[92,38],[100,36],[108,38],[116,42],
+              [82,52],[91,48],[100,47],[109,48],[118,52]
+            ].map(([cx,cy],i) => (
+              <ellipse key={i} cx={cx} cy={cy} rx="3" ry="4.5" fill={detail} fillOpacity="0.7" stroke={detail} strokeWidth="0.5" />
+            ))}
+            {/* 4 suckers — positioned around the body */}
+            {[
+              [56, 80], [144, 80], [56, 120], [144, 120]
+            ].map(([cx,cy],i) => (
+              <g key={i}>
+                <ellipse cx={cx} cy={cy} rx="14" ry="11" fill={bg} fillOpacity="0.88" stroke={shell} strokeWidth="2" />
+                <ellipse cx={cx} cy={cy} rx="8" ry="6" fill={shell} fillOpacity="0.35" stroke={shell} strokeWidth="1" />
+              </g>
+            ))}
+            {/* Free hooklet */}
+            <path d="M 100 155 C 108 150, 118 152, 120 160 C 122 168, 115 172, 108 170" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="round" />
+          </g>
+        ) : (
+          <g filter={`url(#ech-shadow-${tube.id})`}>
+            {/* Laminated cyst wall cross-section */}
+            {/* Outer fibrous pericyst (host-derived) */}
+            <rect x="15" y="30" width="170" height="140" rx="8" fill={shell} fillOpacity="0.12" stroke={shell} strokeWidth="1.5" />
+            {/* Laminated layer — multiple wavy eosinophilic layers */}
+            {[0,1,2,3,4,5,6].map(n => (
+              <path key={n} d={`M 20 ${70+n*8} C 60 ${65+n*8}, 100 ${75+n*8}, 140 ${67+n*8} C 160 ${63+n*8}, 175 ${70+n*8}, 180 ${68+n*8}`} fill="none" stroke={shell} strokeWidth="1.8" strokeOpacity="0.75" />
+            ))}
+            <rect x="18" y="62" width="164" height="62" rx="4" fill={shell} fillOpacity="0.15" stroke={shell} strokeWidth="2.5" />
+            {/* Germinal layer — thin inner nucleated layer */}
+            <rect x="18" y="124" width="164" height="18" rx="2" fill={detail} fillOpacity="0.20" stroke={detail} strokeWidth="1.5" />
+            {/* Nuclei in germinal layer */}
+            {[30,55,80,105,130,155,170].map((x,i) => (
+              <circle key={i} cx={x} cy={132} r="4" fill={detail} fillOpacity="0.55" />
+            ))}
+            {/* Labels */}
+            <text x="100" y="55" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Laminated (acellular) layer</text>
+            <text x="100" y="151" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Germinal (nucleated) layer</text>
+          </g>
+        )}
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -5153,6 +7859,29 @@ function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
   if (visualType === 'xv-factor-test') {
     return renderXVFactorTest(tube);
   }
+  if (visualType === 'microscope-giardia') return renderGiardia(tube);
+  if (visualType === 'microscope-cryptosporidium') return renderCryptosporidium(tube);
+  if (visualType === 'microscope-entamoeba') return renderEntamoeba(tube);
+  if (visualType === 'microscope-trichomonas') return renderTrichomonas(tube);
+  if (visualType === 'microscope-enterobius') return renderEnterobius(tube);
+  if (visualType === 'microscope-strongyloides') return renderStrongyloides(tube);
+  if (visualType === 'microscope-hookworm') return renderHookworm(tube);
+  if (visualType === 'microscope-trichuris') return renderTrichurisEgg(tube);
+  if (visualType === 'microscope-plasmodium') return renderPlasmodium(tube);
+  if (visualType === 'microscope-babesia') return renderBabesia(tube);
+  if (visualType === 'microscope-trypanosoma') return renderTrypanosoma(tube);
+  if (visualType === 'microscope-toxoplasma') return renderToxoplasma(tube);
+  if (visualType === 'microscope-leishmania') return renderLeishmania(tube);
+  if (visualType === 'microscope-ascaris') return renderAscaris(tube);
+  if (visualType === 'microscope-trichostrongylus') return renderTrichostrongylus(tube);
+  if (visualType === 'microscope-trichinella') return renderTrichinella(tube);
+  if (visualType === 'microscope-microfilaria') return renderMicrofilaria(tube);
+  if (visualType === 'microscope-taenia-egg') return renderTaeniaEgg(tube);
+  if (visualType === 'microscope-paragonimus') return renderParagonimus(tube);
+  if (visualType === 'microscope-schistosoma') return renderSchistosoma(tube);
+  if (visualType === 'microscope-hymenolepis') return renderHymenolepis(tube);
+  if (visualType === 'microscope-diphyllobothrium') return renderDiphyllobothrium(tube);
+  if (visualType === 'microscope-echinococcus') return renderEchinococcus(tube);
   const growth = tube.growth ?? 'none';
   const isSlant = visualType === 'utilization' || visualType === 'esculin-hydrolysis' || visualType === 'growth-temperature' || visualType === 'bile-esculin' || visualType === 'cetrimide' || visualType === 'citrate';
   // microdase handled above
@@ -5273,6 +8002,10 @@ const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
     return 'coagulase-stage';
   }
 
+  if (visualType === 'microscope-giardia' || visualType === 'microscope-cryptosporidium' || visualType === 'microscope-entamoeba' || visualType === 'microscope-trichomonas' || visualType === 'microscope-enterobius' || visualType === 'microscope-strongyloides' || visualType === 'microscope-hookworm' || visualType === 'microscope-trichuris' || visualType === 'microscope-plasmodium' || visualType === 'microscope-babesia' || visualType === 'microscope-trypanosoma' || visualType === 'microscope-toxoplasma' || visualType === 'microscope-leishmania' || visualType === 'microscope-ascaris' || visualType === 'microscope-trichostrongylus' || visualType === 'microscope-trichinella' || visualType === 'microscope-microfilaria' || visualType === 'microscope-taenia-egg' || visualType === 'microscope-paragonimus' || visualType === 'microscope-schistosoma' || visualType === 'microscope-hymenolepis' || visualType === 'microscope-diphyllobothrium' || visualType === 'microscope-echinococcus') {
+    return 'parasite-stage';
+  }
+
   return '';
 };
 
@@ -5292,7 +8025,7 @@ export function MiniAtlasVisual({ page: providedPage, slug, showFullLink = true 
   return (
     <aside className="mini-atlas-visual" aria-label={`${page.title} visual preview`}>
       <div className="mini-atlas-copy">
-        <span>{page.eyebrow}</span>
+        <span>{getDiscipline(page) === 'parasitology' ? 'Visual Atlas / Parasitology' : 'Visual Atlas / Bacteriology'}</span>
         <h3>{page.boardTitle}</h3>
         <p>{page.boardNote}</p>
       </div>
@@ -5328,7 +8061,42 @@ function getVisualCategory(page: AtlasPage) {
     return 'Media reactions';
   }
 
+  if (page.visualType === 'microscope-giardia' || page.visualType === 'microscope-cryptosporidium' || page.visualType === 'microscope-entamoeba' || page.visualType === 'microscope-enterobius' || page.visualType === 'microscope-strongyloides' || page.visualType === 'microscope-hookworm' || page.visualType === 'microscope-trichuris' || page.visualType === 'microscope-ascaris' || page.visualType === 'microscope-trichostrongylus' || page.visualType === 'microscope-taenia-egg' || page.visualType === 'microscope-hymenolepis' || page.visualType === 'microscope-diphyllobothrium') {
+    return 'Intestinal Parasites';
+  }
+
+  if (page.visualType === 'microscope-trichomonas') {
+    return 'Urogenital Parasites';
+  }
+
+  if (page.visualType === 'microscope-plasmodium' || page.visualType === 'microscope-babesia' || page.visualType === 'microscope-trypanosoma' || page.visualType === 'microscope-microfilaria' || page.visualType === 'microscope-schistosoma') {
+    return 'Blood Parasites';
+  }
+
+  if (page.visualType === 'microscope-toxoplasma' || page.visualType === 'microscope-leishmania' || page.visualType === 'microscope-trichinella' || page.visualType === 'microscope-echinococcus') {
+    return 'Tissue Parasites';
+  }
+
+  if (page.visualType === 'microscope-paragonimus') {
+    return 'Trematode Eggs';
+  }
+
   return 'Biochemical tests';
+}
+
+function getDiscipline(page: AtlasPage): 'bacteriology' | 'parasitology' {
+  const parasiteTypes: AtlasPage['visualType'][] = [
+    'microscope-giardia', 'microscope-cryptosporidium',
+    'microscope-entamoeba', 'microscope-trichomonas',
+    'microscope-enterobius', 'microscope-strongyloides',
+    'microscope-hookworm', 'microscope-trichuris',
+    'microscope-plasmodium', 'microscope-babesia',
+    'microscope-trypanosoma', 'microscope-toxoplasma',
+    'microscope-leishmania', 'microscope-ascaris', 'microscope-trichostrongylus',
+    'microscope-trichinella', 'microscope-microfilaria', 'microscope-taenia-egg', 'microscope-paragonimus',
+    'microscope-schistosoma', 'microscope-hymenolepis', 'microscope-diphyllobothrium', 'microscope-echinococcus'
+  ];
+  return parasiteTypes.includes(page.visualType) ? 'parasitology' : 'bacteriology';
 }
 
 function groupPagesByFirstLetter(pages: AtlasPage[]) {
@@ -5347,20 +8115,26 @@ function groupPagesByFirstLetter(pages: AtlasPage[]) {
 }
 
 function VisualAtlasHub() {
+  const [discipline, setDiscipline] = useState<'bacteriology' | 'parasitology'>('bacteriology');
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   const sortedAtlasPages = useMemo(() => getAlphabetizedAtlasPages(), []);
 
+  const disciplinePages = useMemo(
+    () => sortedAtlasPages.filter((page) => getDiscipline(page) === discipline),
+    [sortedAtlasPages, discipline]
+  );
+
   const categories = useMemo(
-    () => ['All', ...Array.from(new Set(sortedAtlasPages.map((page) => getVisualCategory(page))))],
-    [sortedAtlasPages]
+    () => ['All', ...Array.from(new Set(disciplinePages.map((page) => getVisualCategory(page))))],
+    [disciplinePages]
   );
 
   const filteredPages = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
-    return sortedAtlasPages.filter((page) => {
+    return disciplinePages.filter((page) => {
       const category = getVisualCategory(page);
       const categoryMatches = activeCategory === 'All' || category === activeCategory;
       const searchableText = [
@@ -5376,18 +8150,18 @@ function VisualAtlasHub() {
 
       return categoryMatches && (!normalizedQuery || searchableText.includes(normalizedQuery));
     });
-  }, [activeCategory, searchQuery, sortedAtlasPages]);
+  }, [activeCategory, searchQuery, disciplinePages]);
 
   const groupedPages = useMemo(() => groupPagesByFirstLetter(filteredPages), [filteredPages]);
-  const availableLetters = useMemo(() => groupPagesByFirstLetter(sortedAtlasPages).map((group) => group.letter), [sortedAtlasPages]);
+  const availableLetters = useMemo(() => groupPagesByFirstLetter(disciplinePages).map((group) => group.letter), [disciplinePages]);
   const benchCardGroups = useMemo(() => (
     categories
       .filter((category) => category !== 'All')
       .map((category) => ({
         category,
-        count: sortedAtlasPages.filter((page) => getVisualCategory(page) === category).length
+        count: disciplinePages.filter((page) => getVisualCategory(page) === category).length
       }))
-  ), [categories, sortedAtlasPages]);
+  ), [categories, disciplinePages]);
 
   return (
     <div className="visual-atlas-shell">
@@ -5398,6 +8172,20 @@ function VisualAtlasHub() {
           Original Learn Microbes cards for media reactions, biochemical patterns, stains, growth clues, and practical interpretation anchors.
         </p>
       </header>
+
+      <div className="visual-discipline-tabs" role="tablist" aria-label="Visual section">
+        {(['bacteriology', 'parasitology'] as const).map((d) => (
+          <button
+            key={d}
+            role="tab"
+            aria-selected={discipline === d}
+            className={discipline === d ? 'active' : ''}
+            onClick={() => { setDiscipline(d); setActiveCategory('All'); setSearchQuery(''); }}
+          >
+            {d === 'bacteriology' ? 'Bacteriology' : 'Parasitology'}
+          </button>
+        ))}
+      </div>
 
       <section className="bench-card-strip" aria-label="Bench card collections">
         {benchCardGroups.map((group) => (
@@ -5421,7 +8209,7 @@ function VisualAtlasHub() {
             type="search"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Try indole, purple, Durham, 42 C, blackening..."
+            placeholder={discipline === 'parasitology' ? 'Try cyst, trophozoite, acid-fast, egg, ring form...' : 'Try indole, purple, Durham, 42 C, blackening...'}
           />
         </div>
         <div className="visual-filter-chips" aria-label="Filter visual categories">
@@ -5477,7 +8265,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
   const isVisualBookmarked = isBookmarked('visual', page.slug);
   const visualPosition = useMemo(() => {
-    const sortedAtlasPages = getAlphabetizedAtlasPages();
+    const pageDiscipline = getDiscipline(page);
+    const sortedAtlasPages = getAlphabetizedAtlasPages().filter((p) => getDiscipline(p) === pageDiscipline);
     const index = sortedAtlasPages.findIndex((item) => item.slug === page.slug);
 
     return {
@@ -5561,19 +8350,25 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     </nav>
   );
 
+  const disciplineKicker = getDiscipline(page) === 'parasitology'
+    ? 'Visual Atlas / Parasitology'
+    : 'Visual Atlas / Bacteriology';
+
   return (
     <div className="visual-atlas-shell">
       <header className="visual-atlas-hero">
-        <span className="visual-kicker">{page.eyebrow}</span>
+        <span className="visual-kicker">{disciplineKicker}</span>
         <h1>{page.title}</h1>
         <p>{page.summary}</p>
         <div className="visual-hero-actions">
-          <button
-            type="button"
-            onClick={() => navigate(page.biochemicalTestId ? `/biochemical-tests?test=${page.biochemicalTestId}` : '/biochemical-tests')}
-          >
-            Open procedure/QC reference
-          </button>
+          {getDiscipline(page) === 'bacteriology' && (
+            <button
+              type="button"
+              onClick={() => navigate(page.biochemicalTestId ? `/biochemical-tests?test=${page.biochemicalTestId}` : '/biochemical-tests')}
+            >
+              Open procedure/QC reference
+            </button>
+          )}
           <button
             type="button"
             className={`visual-bookmark-toggle ${isVisualBookmarked ? 'saved' : ''}`}
@@ -5593,6 +8388,39 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       </header>
 
       {renderVisualSequence('top')}
+
+      {getDiscipline(page) === 'parasitology' && page.divr && (
+        <div className="visual-divr-strip" aria-label="DIVR diagnostic framework">
+          <div className="divr-step">
+            <div className="divr-label-row">
+              <span className="divr-badge">D</span>
+              <span className="divr-title">Detect</span>
+            </div>
+            <p>{page.divr.detect}</p>
+          </div>
+          <div className="divr-step">
+            <div className="divr-label-row">
+              <span className="divr-badge">I</span>
+              <span className="divr-title">Identify</span>
+            </div>
+            <ul>{page.divr.identify.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+          <div className="divr-step">
+            <div className="divr-label-row">
+              <span className="divr-badge">V</span>
+              <span className="divr-title">Verify</span>
+            </div>
+            <p>{page.divr.verify}</p>
+          </div>
+          <div className="divr-step">
+            <div className="divr-label-row">
+              <span className="divr-badge">R</span>
+              <span className="divr-title">Report</span>
+            </div>
+            <p>{page.divr.report}</p>
+          </div>
+        </div>
+      )}
 
       <section className="visual-board" aria-labelledby="visual-board-title">
         <div className="visual-board-heading">

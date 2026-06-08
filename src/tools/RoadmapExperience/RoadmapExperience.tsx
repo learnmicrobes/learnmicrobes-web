@@ -1,6 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToolBox from '../../components/ToolBox/ToolBox';
+import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
 import './RoadmapExperience.css';
 
@@ -440,6 +443,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   variantClass
 }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const savedState = getInitialState(storageKey);
   const savedMode = localStorage.getItem(`${storageKey}_mode`);
   const savedHotkeys = localStorage.getItem(`${storageKey}_hotkeys`);
@@ -457,6 +461,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [isGuidanceExpanded, setIsGuidanceExpanded] = useState<boolean>(savedGuidance === 'true');
   const [showWorkingShortlist, setShowWorkingShortlist] = useState<boolean>(savedShortlist === 'true');
+  const [isGuestRoadmapModalOpen, setIsGuestRoadmapModalOpen] = useState(false);
 
   useEffect(() => {
     trackEvent('roadmap_started', {
@@ -547,6 +552,14 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
     if (conclusion) {
       setCurrentConclusion(conclusion);
       setConclusionTests(tests || []);
+      if (!user) {
+        const countKey = `${storageKey}_guest_endpoint_count`;
+        const newCount = parseInt(localStorage.getItem(countKey) ?? '0', 10) + 1;
+        localStorage.setItem(countKey, String(newCount));
+        if (newCount >= 5) {
+          setIsGuestRoadmapModalOpen(true);
+        }
+      }
     }
   };
 
@@ -993,6 +1006,36 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
         </section>
 
       </div>
+
+      {isGuestRoadmapModalOpen && !user && (
+        <div className="roadmap-guest-modal-backdrop" role="presentation" onClick={() => setIsGuestRoadmapModalOpen(false)}>
+          <section className="roadmap-guest-modal" role="dialog" aria-modal="true" aria-labelledby="roadmap-guest-modal-title" onClick={(e) => e.stopPropagation()}>
+            <span className="roadmap-guest-modal-kicker">
+              <FontAwesomeIcon icon={faLock} />
+              Guest tool checkpoint
+            </span>
+            <h2 id="roadmap-guest-modal-title">Continue exploring with a free account.</h2>
+            <p>
+              You have reached 5 identification endpoints in this roadmap. Sign in to keep going and track your progress.
+            </p>
+            <div className="roadmap-guest-modal-actions">
+              <button type="button" onClick={() => navigate('/login')}>
+                Sign in
+              </button>
+              <button type="button" onClick={() => navigate('/register')}>
+                Create account
+              </button>
+            </div>
+            <button
+              type="button"
+              className="roadmap-guest-modal-secondary"
+              onClick={() => setIsGuestRoadmapModalOpen(false)}
+            >
+              Keep using this tool
+            </button>
+          </section>
+        </div>
+      )}
     </ToolBox>
   );
 };

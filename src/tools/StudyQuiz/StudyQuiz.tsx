@@ -1251,8 +1251,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       </div>
 
       {isGuestLimitModalOpen && !user && (
-        <div className="study-quiz-guest-modal-backdrop" role="presentation">
-          <section className="study-quiz-guest-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-guest-limit-title">
+        <div className="study-quiz-guest-modal-backdrop" role="presentation" onClick={() => setIsGuestLimitModalOpen(false)}>
+          <section className="study-quiz-guest-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-guest-limit-title" onClick={(e) => e.stopPropagation()}>
             <span className="study-quiz-guest-modal-kicker">
               <FontAwesomeIcon icon={faLock} />
               Guest practice checkpoint

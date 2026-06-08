@@ -38,13 +38,6 @@
   line-height: 1.55;
 }
 
-.auth-mode-tabs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.55rem;
-}
-
-.auth-mode-tabs button,
 .auth-submit-btn {
   display: inline-flex;
   align-items: center;
@@ -60,7 +53,6 @@
   text-align: center;
 }
 
-.auth-mode-tabs button.active,
 .auth-submit-btn {
   border-color: transparent;
   background: var(--primary-color);
@@ -168,6 +160,13 @@
   font-size: 0.86rem;
   font-weight: 900;
   cursor: default;
+}
+
+.auth-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .auth-form input {
@@ -311,6 +310,36 @@
   text-decoration: underline;
 }
 
+.auth-mode-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(36, 92, 105, 0.1);
+  border-radius: 6px;
+  background: #fbfaf7;
+  color: var(--muted-color);
+  font-size: 0.88rem;
+  font-weight: 760;
+}
+
+.auth-mode-footer button {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-color);
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.auth-mode-footer button:hover,
+.auth-mode-footer button:focus-visible {
+  text-decoration: underline;
+}
+
 .auth-secondary-btn {
   display: inline-flex;
   align-items: center;
@@ -360,7 +389,6 @@ body.dark-mode .auth-card p {
   color: #cbd5df;
 }
 
-body.dark-mode .auth-mode-tabs button,
 body.dark-mode .auth-form input,
 body.dark-mode .auth-google-btn,
 body.dark-mode .auth-secondary-btn {
@@ -368,10 +396,15 @@ body.dark-mode .auth-secondary-btn {
   border-color: rgba(222, 232, 222, 0.14);
 }
 
-body.dark-mode .auth-mode-tabs button,
 body.dark-mode .auth-google-btn,
 body.dark-mode .auth-secondary-btn {
   color: #dffcf8;
+}
+
+body.dark-mode .auth-mode-footer {
+  background: #1b2733;
+  border-top-color: rgba(222, 232, 222, 0.1);
+  color: #cbd5df;
 }
 
 body.dark-mode .auth-google-btn:hover:not(:disabled) {
@@ -397,7 +430,6 @@ body.dark-mode .auth-divider::after {
   background: rgba(222, 232, 222, 0.14);
 }
 
-body.dark-mode .auth-mode-tabs button.active,
 body.dark-mode .auth-submit-btn {
   background: #3a8a86;
   color: #ffffff;
@@ -444,8 +476,9 @@ body.dark-mode .auth-message.success {
     padding: 1rem;
   }
 
-  .auth-mode-tabs {
-    grid-template-columns: 1fr;
+  .auth-mode-footer {
+    align-items: center;
+    flex-direction: column;
   }
 
   .auth-password-requirements ul {
