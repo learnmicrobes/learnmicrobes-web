@@ -7,7 +7,49 @@ import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
 import './AuthPage.css';
 
-type AuthMode = 'sign-in' | 'sign-up' | 'reset-password' | 'update-password';
+type AuthMode = 'sign-in' | 'sign-up' | 'reset-password' | 'update-password' | 'email-sent';
+
+interface EmailSentPanelProps {
+  email: string;
+  onTryAgain: () => void;
+  onGoToSignIn: () => void;
+}
+
+const EmailSentPanel: React.FC<EmailSentPanelProps> = ({ email, onTryAgain, onGoToSignIn }) => (
+  <div className="auth-page">
+    <section className="auth-card auth-card--confirmation" aria-labelledby="auth-title">
+      <div className="auth-card-copy">
+        <span className="auth-kicker">Learn Microbes Beta</span>
+        <h1 id="auth-title">Check your email</h1>
+        <p>
+          We sent a confirmation link to <strong>{email}</strong>. Open it to activate your
+          account, then come back to sign in.
+        </p>
+      </div>
+      <div className="auth-confirmation-steps">
+        <ol>
+          <li>Open the email from Learn Microbes</li>
+          <li>Click <strong>Confirm your email</strong></li>
+          <li>Return here and sign in</li>
+        </ol>
+      </div>
+      <p className="auth-confirmation-hint">
+        Didn't get it? Check your spam folder, or{' '}
+        <button type="button" className="auth-inline-action" onClick={onTryAgain}>
+          try again with a different email
+        </button>
+        .
+      </p>
+      <button type="button" className="auth-submit-btn" onClick={onGoToSignIn}>
+        Go to sign in
+        <FontAwesomeIcon icon={faArrowRight} />
+      </button>
+      <div className="auth-footer-note">
+        <Link to="/">Back to Learn Microbes</Link>
+      </div>
+    </section>
+  </div>
+);
 
 const PASSWORD_REQUIREMENT_MESSAGE = 'Use at least 12 characters with uppercase, lowercase, a number, and a special character.';
 const GENERIC_SIGN_IN_ERROR = 'Invalid login credentials. Check your email and password, then try again.';
@@ -160,10 +202,8 @@ const AuthPage: React.FC = () => {
         method: 'email',
         confirmation_required: true
       });
-      setStatusMessage('Account created. Check your email to confirm your address, then sign in.');
-      setMode('sign-in');
+      setMode('email-sent');
       setPassword('');
-      navigate('/login', { replace: true });
       return;
     }
 
@@ -264,6 +304,16 @@ const AuthPage: React.FC = () => {
       setPassword('');
     }
   };
+
+  if (mode === 'email-sent') {
+    return (
+      <EmailSentPanel
+        email={email}
+        onTryAgain={() => { setMode('sign-up'); setPassword(''); setStatusMessage(''); }}
+        onGoToSignIn={() => { setMode('sign-in'); setPassword(''); navigate('/login', { replace: true }); }}
+      />
+    );
+  }
 
   return (
     <div className="auth-page">
@@ -447,4 +497,4 @@ const AuthPage: React.FC = () => {
   );
 };
 
-export default AuthPage;
+export default AuthPage;

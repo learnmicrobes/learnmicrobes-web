@@ -1354,10 +1354,10 @@ export default function App() {
                 </p>
                 <div className="dashboard-cover-actions" aria-label="Primary Learn Microbes actions">
                   <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
-                    Create free beta account
+                    Create free account
                   </button>
                   <button type="button" onClick={() => handleAlphaSignupClick('home_hero')}>
-                    Join the Micro Bench Beta
+                    Join the waitlist
                   </button>
                 </div>
                 <div className="dashboard-hero-search" ref={dashboardSearchRef}>

@@ -512,3 +512,45 @@ body.dark-mode .auth-message.success {
     grid-template-columns: 1fr;
   }
 }
+
+/* Email confirmation screen */
+.auth-confirmation-steps {
+  background: #f0f9f4;
+  border: 1px solid #c3e6d2;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.auth-confirmation-steps ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.auth-confirmation-steps li {
+  font-size: 0.9rem;
+  color: #2d5a42;
+  line-height: 1.4;
+}
+
+.auth-confirmation-hint {
+  font-size: 0.85rem;
+  color: #6b7a6e;
+  margin-bottom: 1.25rem;
+}
+
+body.dark-mode .auth-confirmation-steps {
+  background: rgba(79, 143, 103, 0.12);
+  border-color: rgba(79, 143, 103, 0.3);
+}
+
+body.dark-mode .auth-confirmation-steps li {
+  color: #a8dfc0;
+}
+
+body.dark-mode .auth-confirmation-hint {
+  color: #8fa999;
+}
