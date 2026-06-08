@@ -1292,3 +1292,35 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
     overflow-x: auto;
   }
 }
+
+body.dark-mode .visual-table {
+  background: #1b2733;
+}
+
+body.dark-mode .visual-table th {
+  background: #1e3040;
+  color: #5eead4;
+  border-color: rgba(94, 234, 212, 0.16);
+}
+
+body.dark-mode .visual-table td {
+  border-color: rgba(222, 232, 222, 0.1);
+}
+
+body.dark-mode .visual-table tbody tr:nth-child(even) td {
+  background: #1e2532;
+}
+
+body.dark-mode .visual-callout {
+  background: rgba(30, 41, 59, 0.72);
+  border-left-color: #5eead4;
+}
+
+body.dark-mode .visual-remember {
+  background: rgba(47, 42, 28, 0.72);
+  border-color: rgba(229, 199, 118, 0.26);
+}
+
+body.dark-mode .visual-remember strong {
+  color: #f8d88a;
+}
