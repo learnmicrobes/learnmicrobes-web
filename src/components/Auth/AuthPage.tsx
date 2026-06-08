@@ -80,7 +80,7 @@ const AuthPage: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isGoogleSubmitting, setIsGoogleSubmitting] = useState(false);
   const [isResettingPassword, setIsResettingPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
+  const [rememberMe, setRememberMe] = useState(false);
   const passwordRequirements = getPasswordRequirements(password);
   const isCreatingAccount = mode === 'sign-up';
   const authTitle = isCreatingAccount ? 'Create your Learn Microbes account.' : 'Sign in to your study account.';
