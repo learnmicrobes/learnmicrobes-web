@@ -1356,9 +1356,6 @@ export default function App() {
                   <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
                     Create free account
                   </button>
-                  <button type="button" onClick={() => handleAlphaSignupClick('home_hero')}>
-                    Join the waitlist
-                  </button>
                 </div>
                 <div className="dashboard-hero-search" ref={dashboardSearchRef}>
                   <label htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
