@@ -1616,6 +1616,7 @@ export default function App() {
               </a>
             </nav>
           </div>
+          <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.5rem', textAlign: 'center' }}>For study purposes only. Not a substitute for clinical judgment or official references.</p>
         </div>
       </footer>
       <button
