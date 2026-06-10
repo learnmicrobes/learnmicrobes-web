@@ -173,9 +173,21 @@
     padding-top: 0.5rem;
   }
 
+  /* Switch from CSS-animation marquee to native touch scroll on mobile */
+  .testimonials-marquee {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .testimonials-marquee::before,
   .testimonials-marquee::after {
     width: 2rem;
+  }
+
+  /* Stop the translateX animation so the track stays in place for manual swiping */
+  .testimonials-track {
+    animation: none;
+    touch-action: pan-x;
   }
 
   .testimonial-card {
