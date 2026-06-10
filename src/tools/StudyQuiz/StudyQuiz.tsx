@@ -815,6 +815,17 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     loadLeaderboard();
   }, [isLeaderboardOpen, leaderboardEntries, loadLeaderboard]);
+  useEffect(() => {
+    if (isLeaderboardOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isLeaderboardOpen]);
+
 
   const handleCategoryChange = (nextCategory: QuizCategory) => {
     setCategory(nextCategory);
@@ -1234,7 +1245,6 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                   <strong>{isCorrect ? 'Correct' : 'Incorrect'}</strong>
                 </div>
                 <p>{currentQuestion.explanation}</p>
-                <span>Source: {currentQuestion.source}</span>
               </div>
             )}
 
@@ -1278,7 +1288,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 Sign in
               </button>
               <button type="button" onClick={() => navigate('/register')}>
-                Create account
+                Register for free
               </button>
             </div>
             <button
@@ -1340,8 +1350,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       />
 
       {isLeaderboardOpen && (
-        <div className="study-quiz-modal-backdrop" role="presentation">
-          <section className="study-quiz-leaderboard-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-leaderboard-title">
+        <div className="study-quiz-modal-backdrop" role="presentation" onClick={() => setIsLeaderboardOpen(false)}>
+          <section className="study-quiz-leaderboard-modal" role="dialog" aria-modal="true" aria-labelledby="study-quiz-leaderboard-title" onClick={e => e.stopPropagation()}>
             <div className="study-quiz-modal-header">
               <div>
                 <h2 id="study-quiz-leaderboard-title">Leaderboard</h2>
@@ -1396,3 +1406,4 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 };
 
 export default StudyQuiz;
+                                                              
