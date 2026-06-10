@@ -397,7 +397,19 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const navigate = useNavigate();
   const { user } = useAuth();
   const { quizHistoryError, saveQuizAttempt } = useQuizHistory();
-  const allQuestions = useMemo(() => buildQuizQuestions(), []);
+
+  const shuffleChoices = (question: QuizQuestion): QuizQuestion => {
+    const choices = [...question.choices];
+    for (let i = choices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = choices[i];
+      choices[i] = choices[j];
+      choices[j] = temp;
+    }
+    return { ...question, choices };
+  };
+
+  const allQuestions = useMemo(() => buildQuizQuestions().map(shuffleChoices), []);
   const savedState = useMemo(() => getSavedQuizState(), []);
   const validQuestionIds = useMemo(() => new Set(allQuestions.map((question) => question.id)), [allQuestions]);
   const hasInitialFilter = Boolean(initialCategory || initialDifficulty);
