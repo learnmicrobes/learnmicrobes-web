@@ -1406,4 +1406,3 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 };
 
 export default StudyQuiz;
-                                                              
