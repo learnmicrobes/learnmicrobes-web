@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faUser, faMoon, faSun, faGear, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBook, faSearch, faUser, faMoon, faSun, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
 import { useAuth } from './context/AuthContext';
@@ -1028,6 +1028,14 @@ export default function App() {
         title: 'Clinical Microbiology Visual Atlas | Learn Microbes',
         description: 'Visual bench cards for clinical microbiology reactions, organism clues, interpretation traps, and ASCP review-friendly study visuals.'
       },
+      '/visuals/bacteriology': {
+        title: 'Bacteriology Visual Atlas | Learn Microbes',
+        description: 'Bacteriology visual bench cards for biochemical reactions, media patterns, growth clues, and clinical microbiology review.'
+      },
+      '/visuals/parasitology': {
+        title: 'Parasitology Visual Atlas | Learn Microbes',
+        description: 'Parasitology visual bench cards for ova, cysts, trophozoites, blood parasites, stains, and morphology-based clinical microbiology review.'
+      },
       '/biochemical-tests': {
         title: 'Biochemical Tests Review | Clinical Microbiology | Learn Microbes',
         description: 'Review clinical microbiology biochemical tests, principles, expected results, QC organisms, and exam-relevant interpretation traps.'
@@ -1259,6 +1267,16 @@ export default function App() {
           )}
 
           <div className="nav-links-auth">
+            {!isMobile && (
+              <button
+                className="nav-theme-toggle"
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
+              </button>
+            )}
             {user ? (
               <div className="nav-account-menu-shell">
                 <button
@@ -1291,22 +1309,6 @@ export default function App() {
                     >
                       <FontAwesomeIcon icon={faUser} />
                       <span>Your study account</span>
-                    </button>
-                    <button
-                      className="theme-toggle-btn"
-                      onClick={() => {
-                        setIsDarkMode(!isDarkMode);
-                        closeMobileNavigation();
-                      }}
-                      role="menuitem"
-                      title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                    >
-                      <FontAwesomeIcon icon={faGear} />
-                      <span>Settings</span>
-                      <span className="theme-toggle-value">
-                        <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-                        {isDarkMode ? 'Light mode' : 'Dark mode'}
-                      </span>
                     </button>
                     <button
                       className="nav-account-signout"

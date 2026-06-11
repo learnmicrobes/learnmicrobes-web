@@ -996,6 +996,42 @@ body.dark-mode .study-quiz-timer-alert {
   margin-bottom: 1rem;
 }
 
+.study-quiz-leaderboard-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+  margin-bottom: 0.7rem;
+  padding: 0.25rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.study-quiz-leaderboard-tabs button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--c-muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.study-quiz-leaderboard-tabs button.active {
+  background: var(--c-card-strong);
+  color: var(--c-primary);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.study-quiz-leaderboard-note {
+  margin: 0 0 0.85rem;
+  color: var(--c-muted);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
 .study-quiz-leaderboard-list {
   display: grid;
   gap: 0.6rem;
@@ -1024,7 +1060,17 @@ body.dark-mode .study-quiz-timer-alert {
 
 .study-quiz-leaderboard-list strong,
 .study-quiz-user-rank strong {
+  display: grid;
+  gap: 0.16rem;
   color: var(--c-text);
+}
+
+.study-quiz-leaderboard-list small,
+.study-quiz-user-rank small {
+  color: var(--c-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .study-quiz-leaderboard-list em {
@@ -1115,6 +1161,7 @@ body.dark-mode .study-quiz-timer-alert {
 .study-quiz-icon-button:focus-visible,
 .study-quiz-settings-toggle:focus-visible,
 .study-quiz-leaderboard-auth button:focus-visible,
+.study-quiz-leaderboard-tabs button:focus-visible,
 .study-quiz-guest-modal-actions button:focus-visible,
 .study-quiz-guest-modal-secondary:focus-visible {
   outline: 3px solid rgba(72, 209, 204, 0.5);
@@ -1328,6 +1375,17 @@ body.dark-mode .study-quiz-timer-alert {
   .study-quiz-set-meta {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .study-quiz-leaderboard-list li,
+  .study-quiz-user-rank {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .study-quiz-leaderboard-list em,
+  .study-quiz-user-rank em {
+    grid-column: 2;
+    justify-self: start;
   }
 
   .study-quiz-choices button {

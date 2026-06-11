@@ -2546,48 +2546,48 @@ export const atlasPages: AtlasPage[] = [
         label: 'Trophozoite',
         name: 'Bilateral symmetry, owl-eye nuclei, 2 comma-shaped median bodies',
         colors: { slant: '#e4ded4', butt: '#7c6fa2', base: '#4a3060' },
-        note: '10–20 µm. En face: bilateral symmetry, two nuclei ("owl eyes"), two comma-shaped median bodies (Giardia-specific). Lateral view: "shepherd\'s crook." Falling-leaf motility in saline wet mount.'
+        note: '10-20 um. En face: bilateral symmetry, two nuclei ("owl eyes"), two comma-shaped median bodies (Giardia-specific). Lateral view: "shepherd\'s crook." Falling-leaf motility in saline wet mount.'
       },
       {
         id: 'B',
         label: 'Cyst',
         name: 'Oval cyst, curved axoneme fibrils on iodine',
         colors: { slant: '#e8d48a', butt: '#c49a3a', base: '#5c3210' },
-        note: '8–14 µm oval. Mature: 4 nuclei; immature: 1–2. Curved axoneme fibrils visible on iodine stain. Chlorine-resistant, environmentally stable.'
+        note: '8-14 um oval. Mature: 4 nuclei; immature: 1-2. Curved axoneme fibrils visible on iodine stain. Chlorine-resistant, environmentally stable.'
       }
     ],
     readoutTitle: 'What to look for by stage',
     readoutRows: [
       ['Pear shape, bilateral symmetry (en face)', 'Trophozoite', 'Mirror-symmetric from front to back when viewed face-on; most distinctive low-power clue'],
-      ['"Shepherd\'s crook" or spoon shape (lateral)', 'Trophozoite', 'Lateral view — sucking disc curves one face; aids ID when en-face view is unavailable'],
+      ['"Shepherd\'s crook" or spoon shape (lateral)', 'Trophozoite', 'Lateral view - sucking disc curves one face; aids ID when en-face view is unavailable'],
       ['Paired anterior nuclei ("owl eyes")', 'Trophozoite', 'Two nuclei in anterior half, each with a small central karyosome; bilateral placement is key'],
-      ['Two comma-shaped median bodies', 'Trophozoite', 'Posterior to nuclei; claw- or comma-shaped; unique to Giardia among intestinal protozoa — best seen on trichrome'],
-      ['Oval cyst, ≤4 nuclei, retracted fibrils', 'Cyst', 'Mature cyst has 4 nuclei; curved axoneme fibrils visible on iodine; nuclei may cluster at one end in immature forms'],
+      ['Two comma-shaped median bodies', 'Trophozoite', 'Posterior to nuclei; claw- or comma-shaped; unique to Giardia among intestinal protozoa - best seen on trichrome'],
+      ['Oval cyst, <=4 nuclei, retracted fibrils', 'Cyst', 'Mature cyst has 4 nuclei; curved axoneme fibrils visible on iodine; nuclei may cluster at one end in immature forms'],
       ['Falling-leaf motility', 'Live trophozoite', 'Characteristic tumbling/rotating movement in saline wet mount; lost in cold or old specimens']
     ],
-    trapTitle: 'Immature cysts with 1–2 nuclei are not a different species',
-    trapBody: 'Immature Giardia cysts frequently show only 1–2 visible nuclei. This is a maturation stage, not a separate organism. Never exclude Giardia based on nuclear count alone — examine the full slide.',
+    trapTitle: 'Immature cysts with 1-2 nuclei are not a different species',
+    trapBody: 'Immature Giardia cysts frequently show only 1-2 visible nuclei. This is a maturation stage, not a separate organism. Never exclude Giardia based on nuclear count alone - examine the full slide.',
     trapBullets: [
       'Trophozoites predominate in watery diarrheal stool; formed stool more often yields cysts only.',
-      'Median bodies are Giardia-specific — no other intestinal protozoan has this structure.',
+      'Median bodies are Giardia-specific - no other intestinal protozoan has this structure.',
       'EIA antigen test and multiplex molecular panels offer higher sensitivity than O&P microscopy alone; use when clinical suspicion is high.'
     ],
     interpretationTitle: 'Giardia morphology identification guide',
     interpretationRows: [
       ['Bilateral symmetry, 2 nuclei, comma-shaped median bodies', 'Trophozoite', 'Trichrome stain shows median bodies and flagellar detail; saline wet mount captures motility'],
-      ['Oval, ≤4 nuclei, curved axoneme fibrils, thick cyst wall', 'Cyst', 'Iodine highlights nuclei and retracted fibrils; concentration method (formalin-ethyl acetate) improves yield'],
+      ['Oval, <=4 nuclei, curved axoneme fibrils, thick cyst wall', 'Cyst', 'Iodine highlights nuclei and retracted fibrils; concentration method (formalin-ethyl acetate) improves yield'],
       ['Equivocal morphology or low-burden specimen', 'Confirm with EIA or NAAT', 'Antigen detection (EIA) and multiplex GI panels are more sensitive for light infections']
     ],
     takeaways: [
       'Bilateral symmetry (en face) and "shepherd\'s crook" (lateral) are the two views to know.',
-      'Median bodies — comma-shaped, posterior to the nuclei — are unique to Giardia and confirm the identification.',
+      'Median bodies - comma-shaped, posterior to the nuclei - are unique to Giardia and confirm the identification.',
       'Cysts are chlorine-resistant, environmentally stable, and the infective stage; trophozoites do not survive outside a host.'
     ],
     remember: 'Two eyes (nuclei) + two commas (median bodies) = Giardia trophozoite. Oval + curved fibrils = cyst.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Stool O&P — iodine wet prep (cysts), saline wet mount (trophozoite motility), or trichrome stain; formalin-ethyl acetate concentration',
-      identify: ['Trophozoite: bilateral symmetry, paired owl-eye nuclei, 2 comma-shaped median bodies (Giardia-specific)', 'Lateral view: shepherd\'s crook shape', 'Cyst: oval 8–14 µm, ≤4 nuclei, curved axoneme fibrils visible on iodine'],
+      detect: 'Stool O&P - iodine wet prep (cysts), saline wet mount (trophozoite motility), or trichrome stain; formalin-ethyl acetate concentration',
+      identify: ['Trophozoite: bilateral symmetry, paired owl-eye nuclei, 2 comma-shaped median bodies (Giardia-specific)', 'Lateral view: shepherd\'s crook shape', 'Cyst: oval 8-14 um, <=4 nuclei, curved axoneme fibrils visible on iodine'],
       verify: 'EIA antigen or multiplex GI PCR when morphology equivocal or clinical suspicion high',
       report: 'Report stage (trophozoite or cyst); confirm per lab SOP; clinical correlation required'
     }
@@ -2605,50 +2605,50 @@ export const atlasPages: AtlasPage[] = [
       {
         id: 'A',
         label: 'Oocyst (AFB+)',
-        name: 'Round 4–6 µm, variable pink-red (AFB+)',
+        name: 'Round 4-6 um, variable pink-red (AFB+)',
         colors: { slant: '#b8d4d8', butt: '#c8345a', base: '#8a1840' },
-        note: '4–6 µm round. Modified AFB: pink-red staining varies from bright to faint "ghost" on the same slide — variable intensity is expected. Contains 4 sporozoites; thick-walled (80%) exit in feces, thin-walled (20%) cause autoinfection.'
+        note: '4-6 um round. Modified AFB: pink-red staining varies from bright to faint "ghost" on the same slide - variable intensity is expected. Contains 4 sporozoites; thick-walled (80%) exit in feces, thin-walled (20%) cause autoinfection.'
       },
       {
         id: 'B',
         label: 'Yeast (non-AFB)',
-        name: 'Green, non-AFB — yeast mimic',
+        name: 'Green, non-AFB - yeast mimic',
         colors: { slant: '#b8d4d8', butt: '#4a8c58', base: '#2a5c38' },
-        note: '3–8 µm, non-acid-fast: retains green counterstain. May bud or form pseudohyphae. A slide with only green structures = no Cryptosporidium.'
+        note: '3-8 um, non-acid-fast: retains green counterstain. May bud or form pseudohyphae. A slide with only green structures = no Cryptosporidium.'
       }
     ],
     readoutTitle: 'What to look for on modified acid-fast stain',
     readoutRows: [
-      ['Pink–red round structures, 4–6 µm', 'Cryptosporidium oocysts (positive)', 'Staining intensity varies on the same slide — scan multiple fields before calling negative'],
-      ['"Ghost" oocysts — correct size, no stain uptake', 'Possible over-decolorization or thin-walled oocysts', 'Thin-walled forms may not stain; IFA or molecular testing required for confirmation'],
+      ['Pink-red round structures, 4-6 um', 'Cryptosporidium oocysts (positive)', 'Staining intensity varies on the same slide - scan multiple fields before calling negative'],
+      ['"Ghost" oocysts - correct size, no stain uptake', 'Possible over-decolorization or thin-walled oocysts', 'Thin-walled forms may not stain; IFA or molecular testing required for confirmation'],
       ['Four internal sporozoites (faint crescents)', 'Sporulated mature oocyst', 'Visible in some preparations at oil immersion; confirms identity when seen'],
       ['Green round structures, similar size', 'Non-acid-fast yeast (negative)', 'Retain malachite green counterstain; do not interpret as oocysts regardless of number or distribution'],
-      ['Budding or pseudohyphal chains', 'Yeast — exclude Cryptosporidium', 'Cryptosporidium oocysts never bud'],
-      ['Round structures >6 µm', 'Consider other coccidia', 'Cyclospora cayetanensis: 8–10 µm, acid-fast variable, autofluorescent; Cystoisospora belli: ~30 µm — use size to differentiate']
+      ['Budding or pseudohyphal chains', 'Yeast - exclude Cryptosporidium', 'Cryptosporidium oocysts never bud'],
+      ['Round structures >6 um', 'Consider other coccidia', 'Cyclospora cayetanensis: 8-10 um, acid-fast variable, autofluorescent; Cystoisospora belli: ~30 um - use size to differentiate']
     ],
-    trapTitle: 'Staining intensity varies markedly — "ghost" oocysts are still real',
+    trapTitle: 'Staining intensity varies markedly - "ghost" oocysts are still real',
     trapBody: 'On the same modified AFB slide, some Cryptosporidium oocysts stain brightly, others faintly, and some appear nearly unstained. Scanning only for bright-pink structures causes false negatives. The correct approach is to scan the full smear and correlate size with a calibrated micrometer.',
     trapBullets: [
-      'Always run positive and negative controls with every modified AFB batch — technique variation is the most common cause of false negatives.',
+      'Always run positive and negative controls with every modified AFB batch - technique variation is the most common cause of false negatives.',
       'IFA (immunofluorescence) is more sensitive and specific than modified AFB for low-burden specimens and is preferred when available.',
       'Multiplex molecular GI panels (PCR) offer highest sensitivity, particularly in immunocompromised patients where thin-walled autoinfection cycles can cause massive oocyst shedding.'
     ],
     interpretationTitle: 'Cryptosporidium modified acid-fast interpretation',
     interpretationRows: [
-      ['Pink–red (any intensity), round, 4–6 µm, no budding', 'Cryptosporidium oocyst — positive', 'Note staining intensity and internal sporozoite detail if visible; report with size estimate'],
-      ['Green, round, 3–8 µm, may bud', 'Yeast — non-acid-fast, negative for Cryptosporidium', 'Document presence if clinically relevant (immunocompromised host); not Cryptosporidium'],
-      ['Correct size, no staining, or equivocal', 'Indeterminate — confirm with IFA or molecular test', 'Do not report as negative based on morphology alone when clinical suspicion is high']
+      ['Pink-red (any intensity), round, 4-6 um, no budding', 'Cryptosporidium oocyst - positive', 'Note staining intensity and internal sporozoite detail if visible; report with size estimate'],
+      ['Green, round, 3-8 um, may bud', 'Yeast - non-acid-fast, negative for Cryptosporidium', 'Document presence if clinically relevant (immunocompromised host); not Cryptosporidium'],
+      ['Correct size, no staining, or equivocal', 'Indeterminate - confirm with IFA or molecular test', 'Do not report as negative based on morphology alone when clinical suspicion is high']
     ],
     takeaways: [
-      'Modified AFB staining intensity is variable — scan the full slide; don\'t rely on bright-pink structures only.',
-      'Thick-walled oocysts (80%) leave in stool → infect new hosts. Thin-walled (20%) excyst in intestine → autoinfection in immunocompromised patients.',
+      'Modified AFB staining intensity is variable - scan the full slide; don\'t rely on bright-pink structures only.',
+      'Thick-walled oocysts (80%) leave in stool -> infect new hosts. Thin-walled (20%) excyst in intestine -> autoinfection in immunocompromised patients.',
       'IFA and multiplex GI PCR panels are substantially more sensitive than modified AFB for low-burden or equivocal specimens.'
     ],
-    remember: '4–6 µm + any pink (even faint) + no budding = Cryptosporidium. Green = yeast. Variable staining on the same slide is expected.',
+    remember: '4-6 um + any pink (even faint) + no budding = Cryptosporidium. Green = yeast. Variable staining on the same slide is expected.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Stool or respiratory specimen — modified acid-fast stain (Kinyoun cold method or modified Ziehl-Neelsen); always run positive control',
-      identify: ['Round 4–6 µm oocysts, pink-red on modified AFB — intensity varies from bright to ghost on the same slide', '4 sporozoites visible as faint internal crescents in some preparations', 'Yeast mimic: green (non-AFB), may bud — negative for Cryptosporidium'],
+      detect: 'Stool or respiratory specimen - modified acid-fast stain (Kinyoun cold method or modified Ziehl-Neelsen); always run positive control',
+      identify: ['Round 4-6 um oocysts, pink-red on modified AFB - intensity varies from bright to ghost on the same slide', '4 sporozoites visible as faint internal crescents in some preparations', 'Yeast mimic: green (non-AFB), may bud - negative for Cryptosporidium'],
       verify: 'IFA or multiplex GI PCR for equivocal or low-burden cases; IFA preferred when available',
       report: 'Report as Cryptosporidium oocysts detected; clinical correlation required; confirm per lab SOP'
     }
@@ -2659,58 +2659,58 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing E. histolytica/dispar trophozoite and cyst morphology, with nuclear structure detail, erythrophagocytosis as the pathogenicity clue, and E. coli chromatoid comparison.',
     boardTitle: 'Entamoeba histolytica: trophozoite and cyst',
-    boardNote: 'Trophozoite: ameboid, single nucleus (central karyosome, fine even peripheral chromatin), ingested RBCs = pathogenic E. histolytica. Cyst: round, ≤4 nuclei, chromatoidal bars with smooth blunt ends (vs. E. coli: splintered).',
+    boardNote: 'Trophozoite: ameboid, single nucleus (central karyosome, fine even peripheral chromatin), ingested RBCs = pathogenic E. histolytica. Cyst: round, <=4 nuclei, chromatoidal bars with smooth blunt ends (vs. E. coli: splintered).',
     ariaLabel: 'Illustrated Entamoeba histolytica trophozoite showing ameboid shape and ingested RBCs, and cyst form showing four nuclei and chromatoidal bars',
     visualType: 'microscope-entamoeba',
     tubes: [
       {
         id: 'A',
         label: 'Trophozoite',
-        name: 'Ameboid — ingested RBCs = pathognomonic',
+        name: 'Ameboid - ingested RBCs = pathognomonic',
         colors: { slant: '#dce8d0', butt: '#7898b8', base: '#3a5870' },
-        note: '12–60 µm ameboid. Ingested RBCs = E. histolytica (pathognomonic). Central karyosome + fine even peripheral chromatin. Explosive unidirectional pseudopod motility in fresh saline mount.'
+        note: '12-60 um ameboid. Ingested RBCs = E. histolytica (pathognomonic). Central karyosome + fine even peripheral chromatin. Explosive unidirectional pseudopod motility in fresh saline mount.'
       },
       {
         id: 'B',
         label: 'Cyst',
         name: 'Round cyst, blunt chromatoid bars',
         colors: { slant: '#e8d890', butt: '#c4a040', base: '#5c3210' },
-        note: '10–20 µm round. Mature: 4 nuclei with central karyosome, fine even chromatin. Chromatoidal bars: smooth blunt ends (vs. E. coli: splintered, pointed). Iodine stain shows glycogen mass in immature cysts.'
+        note: '10-20 um round. Mature: 4 nuclei with central karyosome, fine even chromatin. Chromatoidal bars: smooth blunt ends (vs. E. coli: splintered, pointed). Iodine stain shows glycogen mass in immature cysts.'
       }
     ],
     readoutTitle: 'What to look for by stage',
     readoutRows: [
-      ['Ingested RBCs in trophozoite cytoplasm', 'E. histolytica — pathogenic (treat)', 'Erythrophagocytosis is pathognomonic; the only morphologic feature separating histolytica from dispar'],
-      ['Central karyosome, fine even peripheral chromatin', 'E. histolytica/dispar nucleus', 'Compare to E. coli: eccentric karyosome + coarse, irregular peripheral chromatin — nucleus structure is the secondary level of ID'],
+      ['Ingested RBCs in trophozoite cytoplasm', 'E. histolytica - pathogenic (treat)', 'Erythrophagocytosis is pathognomonic; the only morphologic feature separating histolytica from dispar'],
+      ['Central karyosome, fine even peripheral chromatin', 'E. histolytica/dispar nucleus', 'Compare to E. coli: eccentric karyosome + coarse, irregular peripheral chromatin - nucleus structure is the secondary level of ID'],
       ['Ameboid, unidirectional pseudopods', 'Live trophozoite', 'Explosive, directional motility; non-directional tumbling = non-pathogenic amoebae'],
-      ['Round cyst, 1–4 nuclei, same nuclear structure', 'E. histolytica/dispar cyst', 'Mature cyst: 4 nuclei; immature: 1–2 with visible glycogen mass (brown on iodine, fades with maturation)'],
-      ['Chromatoidal bars — smooth, blunt, rounded ends', 'E. histolytica/dispar cyst (not E. coli)', 'Blunt ends = Entamoeba histolytica/dispar group; pointed, splintered, irregular ends = E. coli'],
+      ['Round cyst, 1-4 nuclei, same nuclear structure', 'E. histolytica/dispar cyst', 'Mature cyst: 4 nuclei; immature: 1-2 with visible glycogen mass (brown on iodine, fades with maturation)'],
+      ['Chromatoidal bars - smooth, blunt, rounded ends', 'E. histolytica/dispar cyst (not E. coli)', 'Blunt ends = Entamoeba histolytica/dispar group; pointed, splintered, irregular ends = E. coli'],
       ['Ingested bacteria or debris, no RBCs', 'Non-pathogenic amoeba or E. histolytica/dispar', 'Non-specific; bacteria ingestion does not confirm or exclude pathogenicity']
     ],
     trapTitle: 'E. histolytica and E. dispar are morphologically identical without ingested RBCs',
     trapBody: 'E. dispar is morphologically indistinguishable from E. histolytica by O&P examination when erythrophagocytosis is absent. E. dispar is nonpathogenic and far more prevalent worldwide. Reporting as E. histolytica without RBC ingestion or confirmatory testing leads to unnecessary treatment.',
     trapBullets: [
-      'E. hartmanni is a smaller nonpathogenic species: trophozoite <10 µm, cyst <8 µm — size alone differentiates it from E. histolytica/dispar.',
+      'E. hartmanni is a smaller nonpathogenic species: trophozoite <10 um, cyst <8 um - size alone differentiates it from E. histolytica/dispar.',
       'Chromatoidal bar end-shape (blunt vs. splintered) is the most reliable cyst-level distinction from E. coli cysts.',
       'E. histolytica EIA antigen or PCR is required for species-level confirmation; report as "E. histolytica/dispar complex" when molecular testing is unavailable and RBCs are not seen.'
     ],
     interpretationTitle: 'Entamoeba histolytica morphology identification guide',
     interpretationRows: [
-      ['Ameboid trophozoite, ingested RBCs present', 'E. histolytica — pathogenic; report and treat', 'Erythrophagocytosis is morphologic proof of pathogenicity; no further testing needed before clinical action'],
+      ['Ameboid trophozoite, ingested RBCs present', 'E. histolytica - pathogenic; report and treat', 'Erythrophagocytosis is morphologic proof of pathogenicity; no further testing needed before clinical action'],
       ['Ameboid trophozoite, no RBCs, correct nuclear structure', 'E. histolytica/dispar complex', 'Morphology alone insufficient; send EIA antigen test or PCR for species-level identification'],
-      ['Round cyst, ≤4 nuclei, blunt chromatoids', 'E. histolytica/dispar cyst', 'Note nuclear count and chromatoid detail; confirm species before treatment; blunt ends rule out E. coli']
+      ['Round cyst, <=4 nuclei, blunt chromatoids', 'E. histolytica/dispar cyst', 'Note nuclear count and chromatoid detail; confirm species before treatment; blunt ends rule out E. coli']
     ],
     takeaways: [
-      'Ingested RBCs in a trophozoite = E. histolytica — the only morphologic proof of pathogenicity.',
+      'Ingested RBCs in a trophozoite = E. histolytica - the only morphologic proof of pathogenicity.',
       'Nuclear structure: central karyosome + fine even peripheral chromatin = E. histolytica/dispar group. Eccentric karyosome + coarse chromatin = E. coli.',
       'Blunt chromatoidal bars = E. histolytica/dispar cyst; splintered/irregular = E. coli cyst.'
     ],
     remember: 'RBCs ingested = E. histolytica (treat). No RBCs = report as E. histolytica/dispar complex. Blunt bars vs. splintered bars = histolytica/dispar vs. E. coli.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Stool O&P — trichrome or iron-hematoxylin stain; iodine wet prep for cysts; fresh warm specimen for trophozoite motility',
-      identify: ['Trophozoite: ameboid, ingested RBCs = pathognomonic for E. histolytica (not E. dispar)', 'Nuclear structure: central karyosome + fine even peripheral chromatin (vs. E. coli: eccentric karyosome, coarse chromatin)', 'Cyst: round ≤4 nuclei, smooth blunt chromatoid bar ends'],
-      verify: 'Without RBCs, cannot distinguish E. histolytica from E. dispar by morphology — EIA antigen or PCR required for species ID',
+      detect: 'Stool O&P - trichrome or iron-hematoxylin stain; iodine wet prep for cysts; fresh warm specimen for trophozoite motility',
+      identify: ['Trophozoite: ameboid, ingested RBCs = pathognomonic for E. histolytica (not E. dispar)', 'Nuclear structure: central karyosome + fine even peripheral chromatin (vs. E. coli: eccentric karyosome, coarse chromatin)', 'Cyst: round <=4 nuclei, smooth blunt chromatoid bar ends'],
+      verify: 'Without RBCs, cannot distinguish E. histolytica from E. dispar by morphology - EIA antigen or PCR required for species ID',
       report: 'RBCs present: report E. histolytica (pathogenic). No RBCs: report E. histolytica/dispar complex; confirm species per SOP before treatment decision'
     }
   },
@@ -2729,7 +2729,7 @@ export const atlasPages: AtlasPage[] = [
         label: 'Wet Mount',
         name: 'Tumbling motility, 4 anterior flagella',
         colors: { slant: '#f0ede6', butt: '#9ab0c0', base: '#3a6070' },
-        note: '7–30 µm. Tumbling jerky motility: 4 free anterior flagella + undulating membrane (1 recurrent flagellum, ~2/3 body length). Axostyle protrudes from posterior end. Process within 30 min — motility lost rapidly.'
+        note: '7-30 um. Tumbling jerky motility: 4 free anterior flagella + undulating membrane (1 recurrent flagellum, ~2/3 body length). Axostyle protrudes from posterior end. Process within 30 min - motility lost rapidly.'
       },
       {
         id: 'B',
@@ -2741,38 +2741,38 @@ export const atlasPages: AtlasPage[] = [
     ],
     readoutTitle: 'What to look for by preparation',
     readoutRows: [
-      ['Tumbling, jerky, non-progressive motility', 'Live trophozoite — wet mount positive', 'Most reliable real-time clue; must process specimen within ~30 min of collection to preserve motility'],
+      ['Tumbling, jerky, non-progressive motility', 'Live trophozoite - wet mount positive', 'Most reliable real-time clue; must process specimen within ~30 min of collection to preserve motility'],
       ['4 free anterior flagella', 'Trophozoite', 'Four flagella project from the anterior end; individually countable on stained smear; confirm with undulating membrane'],
       ['Undulating membrane (~2/3 body length)', 'Trophozoite', '1 recurrent flagellum forms the membrane edge; rippling movement contributes to rotational motility'],
-      ['Axostyle — posterior pointed protrusion', 'Trophozoite', 'Rigid rod runs longitudinally through the organism; protruding tip visible at posterior end on wet mount and stained preparations'],
-      ['Single anterior nucleus', 'Trophozoite', 'Vesicular chromatin; anterior placement; no cyst stage — only trophozoites are diagnostically relevant'],
-      ['No cyst found', 'Expected — T. vaginalis has no cyst stage', 'Absence of cysts is a feature, not a gap; cyst-forming species (Trichomonas tenax, T. hominis) are nonpathogenic commensals']
+      ['Axostyle - posterior pointed protrusion', 'Trophozoite', 'Rigid rod runs longitudinally through the organism; protruding tip visible at posterior end on wet mount and stained preparations'],
+      ['Single anterior nucleus', 'Trophozoite', 'Vesicular chromatin; anterior placement; no cyst stage - only trophozoites are diagnostically relevant'],
+      ['No cyst found', 'Expected - T. vaginalis has no cyst stage', 'Absence of cysts is a feature, not a gap; cyst-forming species (Trichomonas tenax, T. hominis) are nonpathogenic commensals']
     ],
-    trapTitle: 'Wet mount sensitivity is ~60–70% — a negative result does not exclude infection',
+    trapTitle: 'Wet mount sensitivity is ~60-70% - a negative result does not exclude infection',
     trapBody: 'Motility is lost within minutes to hours at low temperature or in old specimens. Many false negatives on wet mount are due to delayed processing, cold transport, or low parasite burden. A single negative wet mount should not be used to rule out T. vaginalis in a symptomatic patient.',
     trapBullets: [
       'NAAT (molecular testing) has sensitivity >95% and is the current standard of care recommended by CDC; wet mount is a screening tool only.',
-      'WBCs in vaginal specimens are motile and can be mistaken for trophozoites at low magnification — confirm pear shape and flagella at higher power.',
+      'WBCs in vaginal specimens are motile and can be mistaken for trophozoites at low magnification - confirm pear shape and flagella at higher power.',
       'T. vaginalis has no cyst stage; any round cyst-like structure in a vaginal specimen is a different organism (or artifact).'
     ],
     interpretationTitle: 'Trichomonas vaginalis identification guide',
     interpretationRows: [
-      ['Tumbling motility + pear shape + flagella', 'T. vaginalis — positive; report and treat', 'Report immediately; process time is critical — motility lost rapidly'],
-      ['Pear shape, axostyle, 4 flagella on stain', 'T. vaginalis — stained morphology positive', 'Acceptable for diagnosis when wet mount is unavailable; confirm with NAAT if feasible'],
-      ['No motile organisms; no flagellated cells on stain', 'Wet mount / stain negative — not definitive', 'Do not exclude infection; send NAAT; clinical history of vaginal discharge, odor, or pH >4.5 increases pretest probability']
+      ['Tumbling motility + pear shape + flagella', 'T. vaginalis - positive; report and treat', 'Report immediately; process time is critical - motility lost rapidly'],
+      ['Pear shape, axostyle, 4 flagella on stain', 'T. vaginalis - stained morphology positive', 'Acceptable for diagnosis when wet mount is unavailable; confirm with NAAT if feasible'],
+      ['No motile organisms; no flagellated cells on stain', 'Wet mount / stain negative - not definitive', 'Do not exclude infection; send NAAT; clinical history of vaginal discharge, odor, or pH >4.5 increases pretest probability']
     ],
     takeaways: [
-      'Tumbling motility + 4 anterior flagella + undulating membrane = T. vaginalis on wet mount — process within 30 minutes.',
-      'No cyst stage: every motile flagellated cell in a vaginal saline prep is either T. vaginalis or a non-pathogenic flagellate — use size and motility pattern to discriminate.',
+      'Tumbling motility + 4 anterior flagella + undulating membrane = T. vaginalis on wet mount - process within 30 minutes.',
+      'No cyst stage: every motile flagellated cell in a vaginal saline prep is either T. vaginalis or a non-pathogenic flagellate - use size and motility pattern to discriminate.',
       'NAAT sensitivity >95% vs. ~60% for wet mount; a negative wet mount must be followed by NAAT in symptomatic patients.'
     ],
     remember: 'Wet mount negative ≠ infection excluded. NAAT is the standard. 4 anterior flagella + undulating membrane = T. vaginalis.',
     relatedLearnSlug: 'urogenital-parasites',
     divr: {
-      detect: 'Vaginal or urethral swab — saline wet mount (process within 30 min of collection); Giemsa or Pap stain if motility is lost',
+      detect: 'Vaginal or urethral swab - saline wet mount (process within 30 min of collection); Giemsa or Pap stain if motility is lost',
       identify: ['Tumbling, jerky rotational motility on wet mount', '4 free anterior flagella + undulating membrane (~2/3 body length)', 'Axostyle protrudes from posterior end; no cyst stage'],
       verify: 'NAAT (sensitivity >95%) is the diagnostic standard; negative wet mount alone does not exclude infection',
-      report: 'Wet mount positive: report T. vaginalis; negative wet mount — send NAAT per SOP before excluding; clinical correlation required'
+      report: 'Wet mount positive: report T. vaginalis; negative wet mount - send NAAT per SOP before excluding; clinical correlation required'
     }
   },
   {
@@ -2781,7 +2781,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Enterobius vermicularis (pinworm) eggs on perianal tape prep: asymmetric D-shape, thin colorless shell, and visible internal larva.',
     boardTitle: 'Enterobius vermicularis egg: tape prep morphology',
-    boardNote: 'D-shaped (one flat side), thin colorless shell, 50–60 x 20–30 µm. Contains fully developed larva when freshly deposited. Collected by perianal tape prep (cellophane tape or Swube paddle), not routine O&P stool exam.',
+    boardNote: 'D-shaped (one flat side), thin colorless shell, 50-60 x 20-30 um. Contains fully developed larva when freshly deposited. Collected by perianal tape prep (cellophane tape or Swube paddle), not routine O&P stool exam.',
     ariaLabel: 'Illustrated Enterobius vermicularis egg showing asymmetric D-shape with visible internal larva on tape prep background',
     visualType: 'microscope-enterobius',
     tubes: [
@@ -2790,46 +2790,46 @@ export const atlasPages: AtlasPage[] = [
         label: 'Egg (fresh)',
         name: 'D-shaped, thin colorless shell, visible larva inside',
         colors: { slant: '#eee8d8', butt: '#b0a070', base: '#5a4820' },
-        note: '50–60 x 20–30 µm. Asymmetric: one side flat, one side curved — the definitive shape clue. Thin, colorless shell. Fully developed larva visible inside when freshly collected. NOT found by routine stool O&P — requires perianal tape prep.'
+        note: '50-60 x 20-30 um. Asymmetric: one side flat, one side curved - the definitive shape clue. Thin, colorless shell. Fully developed larva visible inside when freshly collected. NOT found by routine stool O&P - requires perianal tape prep.'
       },
       {
         id: 'B',
         label: 'Egg (hatched/older)',
         name: 'Collapsed shell, larva absent or indistinct, may appear flattened',
         colors: { slant: '#e4dcc8', butt: '#8a7858', base: '#3a2c10' },
-        note: 'Older or post-hatch eggs lose internal larval detail and the shell may appear wrinkled or collapsed. Still D-shaped in outline. Distinction from fresh egg is primarily internal content — shell outline persists. Correct collection timing (early morning, before bathing) maximizes fresh egg yield.'
+        note: 'Older or post-hatch eggs lose internal larval detail and the shell may appear wrinkled or collapsed. Still D-shaped in outline. Distinction from fresh egg is primarily internal content - shell outline persists. Correct collection timing (early morning, before bathing) maximizes fresh egg yield.'
       }
     ],
     readoutTitle: 'What to look for on tape prep',
     readoutRows: [
-      ['D-shaped egg, one flat side', 'Enterobius vermicularis', 'Asymmetric shape is pathognomonic — no other intestinal helminth egg has this morphology'],
-      ['Visible larva inside', 'Fresh egg — confirms identity', 'Larval detail fades in older preparations; shape alone is sufficient for ID'],
-      ['Thin colorless shell, 50–60 µm', 'E. vermicularis', 'Shell is much thinner than Ascaris or Trichuris; no thick outer coat'],
+      ['D-shaped egg, one flat side', 'Enterobius vermicularis', 'Asymmetric shape is pathognomonic - no other intestinal helminth egg has this morphology'],
+      ['Visible larva inside', 'Fresh egg - confirms identity', 'Larval detail fades in older preparations; shape alone is sufficient for ID'],
+      ['Thin colorless shell, 50-60 um', 'E. vermicularis', 'Shell is much thinner than Ascaris or Trichuris; no thick outer coat'],
       ['Round or oval symmetric eggs on tape', 'Not E. vermicularis', 'Symmetric oval eggs on tape prep may be environmental contaminants or artifact; pinworm eggs are D-shaped'],
       ['No eggs on tape', 'Possible false negative', 'Collect 3 consecutive early-morning preps before calling negative; eggs deposited nocturnally']
     ],
     trapTitle: 'Pinworm eggs are not found on routine O&P stool exam',
     trapBody: 'Enterobius eggs are deposited perianally, not in feces. Routine ova and parasite examination of stool will miss most infections. The correct method is perianal tape prep collected in the early morning before bathing or defecation, on 3 consecutive days.',
     trapBullets: [
-      'Female worms migrate nocturnally to deposit eggs perianally — daytime collection significantly reduces yield.',
+      'Female worms migrate nocturnally to deposit eggs perianally - daytime collection significantly reduces yield.',
       'D-shaped asymmetric outline is diagnostic; larvae inside confirm freshness but are not required for ID.',
       'Most common helminth infection in the US; school-age children are the highest-risk group.'
     ],
     interpretationTitle: 'Enterobius tape prep interpretation guide',
     interpretationRows: [
-      ['D-shaped egg, flat side, thin shell, larva inside', 'Enterobius vermicularis — positive', 'Report and treat; household contacts should also be evaluated given fecal-oral and environmental transmission'],
-      ['D-shaped outline, collapsed shell, no larval detail', 'Enterobius vermicularis — positive (older egg)', 'Shape alone is sufficient for ID; report as positive'],
-      ['No eggs on 1 tape prep', 'Indeterminate — false negative likely', 'Collect 3 consecutive early-morning preps; sensitivity increases to ~90% with 3 exams']
+      ['D-shaped egg, flat side, thin shell, larva inside', 'Enterobius vermicularis - positive', 'Report and treat; household contacts should also be evaluated given fecal-oral and environmental transmission'],
+      ['D-shaped outline, collapsed shell, no larval detail', 'Enterobius vermicularis - positive (older egg)', 'Shape alone is sufficient for ID; report as positive'],
+      ['No eggs on 1 tape prep', 'Indeterminate - false negative likely', 'Collect 3 consecutive early-morning preps; sensitivity increases to ~90% with 3 exams']
     ],
     takeaways: [
-      'D-shaped (asymmetric, one flat side) is the diagnostic clue — no other worm egg has this shape.',
+      'D-shaped (asymmetric, one flat side) is the diagnostic clue - no other worm egg has this shape.',
       'Tape prep only: routine stool O&P will miss Enterobius in virtually all cases.',
       'Collect early morning on 3 consecutive days for best sensitivity.'
     ],
     remember: 'D-shape + thin shell + larva inside = Enterobius egg. Tape prep, not O&P.',
     divr: {
-      detect: 'Perianal tape prep (cellophane tape or Swube paddle), early morning before bathing — NOT routine stool O&P',
-      identify: ['D-shaped egg: one flat side, one curved side — pathognomonic outline', 'Thin colorless shell, 50–60 × 20–30 µm', 'Larva visible inside in fresh preparations'],
+      detect: 'Perianal tape prep (cellophane tape or Swube paddle), early morning before bathing - NOT routine stool O&P',
+      identify: ['D-shaped egg: one flat side, one curved side - pathognomonic outline', 'Thin colorless shell, 50-60 x 20-30 um', 'Larva visible inside in fresh preparations'],
       verify: 'D-shape is pathognomonic; collect 3 consecutive early-morning preps for ~90% sensitivity',
       report: 'Report as Enterobius vermicularis eggs present; note collection timing; do not report from single artifact-like structure'
     }
@@ -2840,37 +2840,37 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Strongyloides stercoralis rhabditiform larva in fresh stool: short buccal channel and visible genital primordium as the key morphologic clues against hookworm larval mimic.',
     boardTitle: 'Strongyloides stercoralis: rhabditiform vs. filariform larva',
-    boardNote: 'Rhabditiform (passed in stool): short buccal channel (key vs. hookworm: long buccal channel), genital primordium visible. Filariform (infective): longer, notched tail, no genital primordium. Size ~250 µm (rhabditiform).',
+    boardNote: 'Rhabditiform (passed in stool): short buccal channel (key vs. hookworm: long buccal channel), genital primordium visible. Filariform (infective): longer, notched tail, no genital primordium. Size ~250 um (rhabditiform).',
     ariaLabel: 'Illustrated Strongyloides stercoralis rhabditiform larva showing short buccal channel and genital primordium, with filariform comparator',
     visualType: 'microscope-strongyloides',
     tubes: [
       {
         id: 'A',
         label: 'Rhabditiform',
-        name: 'Short buccal channel, genital primordium visible, ~250 µm',
+        name: 'Short buccal channel, genital primordium visible, ~250 um',
         colors: { slant: '#e8f0e0', butt: '#6a9860', base: '#2a4820' },
-        note: '~250 µm. Short buccal channel is the primary clue vs. hookworm larvae (long buccal channel). Genital primordium: a cluster of cells visible in the mid-body — not present in hookworm rhabditiform larvae. Found in fresh stool; Baermann or agar plate method improves sensitivity. The stage passed in stool in primary infections.'
+        note: '~250 um. Short buccal channel is the primary clue vs. hookworm larvae (long buccal channel). Genital primordium: a cluster of cells visible in the mid-body - not present in hookworm rhabditiform larvae. Found in fresh stool; Baermann or agar plate method improves sensitivity. The stage passed in stool in primary infections.'
       },
       {
         id: 'B',
         label: 'Filariform',
-        name: 'Notched tail, ~550 µm, infective stage',
+        name: 'Notched tail, ~550 um, infective stage',
         colors: { slant: '#d8e8d0', butt: '#4a7848', base: '#1a3810' },
-        note: '~550 µm. Infective stage — develops from rhabditiform in soil or intestine (autoinfection). Notched tail (vs. hookworm filariform: pointed tail). No genital primordium. Finding filariform larvae in stool suggests hyperinfection — a clinical emergency in immunocompromised patients.'
+        note: '~550 um. Infective stage - develops from rhabditiform in soil or intestine (autoinfection). Notched tail (vs. hookworm filariform: pointed tail). No genital primordium. Finding filariform larvae in stool suggests hyperinfection - a clinical emergency in immunocompromised patients.'
       }
     ],
     readoutTitle: 'What to look for by larval stage',
     readoutRows: [
       ['Short buccal channel', 'Strongyloides rhabditiform', 'Most critical clue vs. hookworm rhabditiform larvae which have a longer buccal channel'],
       ['Genital primordium (cell cluster, mid-body)', 'Strongyloides rhabditiform', 'Not present in hookworm larvae; confirms Strongyloides when visible'],
-      ['Notched tail', 'Strongyloides filariform larva', 'Hookworm filariform has a pointed tail — use tail shape to differentiate infective stages'],
-      ['~250 µm length, actively motile', 'Rhabditiform in fresh stool', 'Must examine fresh warm stool (within 1–2 hours) or use Baermann/agar plate method'],
+      ['Notched tail', 'Strongyloides filariform larva', 'Hookworm filariform has a pointed tail - use tail shape to differentiate infective stages'],
+      ['~250 um length, actively motile', 'Rhabditiform in fresh stool', 'Must examine fresh warm stool (within 1-2 hours) or use Baermann/agar plate method'],
       ['Filariform larvae in stool (not soil-exposed)', 'Possible hyperinfection or dissemination', 'In immunocompromised hosts, finding filariform in stool or other sites warrants urgent evaluation']
     ],
     trapTitle: 'Hookworm rhabditiform larvae are the primary mimic',
     trapBody: 'If hookworm eggs are also present (Strongyloides does not pass eggs in stool), larvae may hatch from hookworm eggs in old stool specimens. The short buccal channel and genital primordium of Strongyloides are the critical distinguishing features.',
     trapBullets: [
-      'Strongyloides does not pass eggs in stool — finding rhabditiform larvae without eggs is expected for Strongyloides.',
+      'Strongyloides does not pass eggs in stool - finding rhabditiform larvae without eggs is expected for Strongyloides.',
       'Hookworm passes eggs (not larvae) in fresh stool; larvae only appear if stool sits at room temperature >24 h.',
       'Strongyloides serology (ELISA) is highly sensitive and often the preferred initial test; O&P sensitivity for Strongyloides is low in light infections.'
     ],
@@ -2878,19 +2878,19 @@ export const atlasPages: AtlasPage[] = [
     interpretationRows: [
       ['Rhabditiform larva, short buccal channel, genital primordium', 'Strongyloides stercoralis', 'Report and treat; evaluate for hyperinfection risk (immunosuppression, steroid use)'],
       ['Rhabditiform larva, long buccal channel, no genital primordium', 'Hookworm rhabditiform (from hatched egg)', 'Confirm by finding hookworm eggs in the same specimen; examine fresh stool only'],
-      ['Filariform larva in stool, notched tail', 'Strongyloides filariform — possible hyperinfection', 'Urgent: assess immune status; filariform larvae may carry gut bacteria causing sepsis in hyperinfection syndrome']
+      ['Filariform larva in stool, notched tail', 'Strongyloides filariform - possible hyperinfection', 'Urgent: assess immune status; filariform larvae may carry gut bacteria causing sepsis in hyperinfection syndrome']
     ],
     takeaways: [
       'Short buccal channel + genital primordium = Strongyloides rhabditiform (vs. hookworm: long buccal channel, no genital primordium).',
-      'Strongyloides passes larvae, not eggs — rhabditiform larvae in stool without eggs = Strongyloides until proven otherwise.',
+      'Strongyloides passes larvae, not eggs - rhabditiform larvae in stool without eggs = Strongyloides until proven otherwise.',
       'Filariform larvae in stool = possible hyperinfection: assess immune status urgently.'
     ],
     remember: 'Short buccal channel + genital primordium = Strongyloides. Long buccal channel = hookworm. Filariform in stool = hyperinfection risk.',
     divr: {
       detect: 'Fresh stool (<2 h); Baermann funnel or agar plate culture improves sensitivity; serology (ELISA) for chronic or low-burden cases',
-      identify: ['Rhabditiform: short buccal channel (key vs. hookworm: long), genital primordium visible mid-body', 'Filariform: notched tail, longer (~550 µm), no genital primordium', 'Strongyloides passes larvae — not eggs — in stool'],
+      identify: ['Rhabditiform: short buccal channel (key vs. hookworm: long), genital primordium visible mid-body', 'Filariform: notched tail, longer (~550 um), no genital primordium', 'Strongyloides passes larvae - not eggs - in stool'],
       verify: 'Hookworm rhabditiform mimic: long buccal channel, no genital primordium; serology sensitive for chronic infections',
-      report: 'Report larval stage (rhabditiform or filariform); if filariform present in stool, note possible hyperinfection — clinical correlation required'
+      report: 'Report larval stage (rhabditiform or filariform); if filariform present in stool, note possible hyperinfection - clinical correlation required'
     }
   },
   {
@@ -2899,7 +2899,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing hookworm eggs (Ancylostoma duodenale and Necator americanus) in stool: oval, thin-shelled, with segmented morula and a clear space between shell and embryo.',
     boardTitle: 'Hookworm egg: thin shell, morula, clear space',
-    boardNote: 'Oval, 55–75 x 35–45 µm, thin colorless shell with a visible clear space between shell and embryo. Contains 2–8 cell morula in freshly passed stool. A. duodenale and N. americanus eggs are morphologically identical.',
+    boardNote: 'Oval, 55-75 x 35-45 um, thin colorless shell with a visible clear space between shell and embryo. Contains 2-8 cell morula in freshly passed stool. A. duodenale and N. americanus eggs are morphologically identical.',
     ariaLabel: 'Illustrated hookworm egg showing thin colorless oval shell with segmented morula and clear space inside',
     visualType: 'microscope-hookworm',
     tubes: [
@@ -2908,7 +2908,7 @@ export const atlasPages: AtlasPage[] = [
         label: 'Fresh egg',
         name: 'Oval, thin shell, morula, clear space',
         colors: { slant: '#ece8d8', butt: '#a09068', base: '#4a3818' },
-        note: '55–75 x 35–45 µm. Oval. Thin, colorless shell. Clear (unstained) space between shell wall and embryo. Contains 2–8 cell morula in freshly passed stool. In old specimens, larva may develop and hatch — do not examine stool older than 24 h without refrigeration.'
+        note: '55-75 x 35-45 um. Oval. Thin, colorless shell. Clear (unstained) space between shell wall and embryo. Contains 2-8 cell morula in freshly passed stool. In old specimens, larva may develop and hatch - do not examine stool older than 24 h without refrigeration.'
       },
       {
         id: 'B',
@@ -2920,35 +2920,35 @@ export const atlasPages: AtlasPage[] = [
     ],
     readoutTitle: 'What to look for in fresh stool',
     readoutRows: [
-      ['Oval, thin colorless shell, 55–75 µm', 'Hookworm egg', 'Thin shell + clear space between shell and morula is the bench clue; size distinguishes from Strongyloides (no eggs in stool)'],
-      ['2–8 cell morula inside', 'Fresh hookworm egg', 'Morula = recently passed egg; well-developed larva inside = old specimen held at room temperature'],
-      ['Clear (unstained) space between shell and embryo', 'Hookworm — present in fresh specimens', 'Space shrinks as embryo develops; its presence confirms freshness'],
-      ['Thin shell without knobbed outer coat', 'Hookworm — not Ascaris', 'Ascaris lumbricoides eggs have a thick outer coat (fertile) or no outer coat (unfertile); hookworm has a thin, smooth shell'],
+      ['Oval, thin colorless shell, 55-75 um', 'Hookworm egg', 'Thin shell + clear space between shell and morula is the bench clue; size distinguishes from Strongyloides (no eggs in stool)'],
+      ['2-8 cell morula inside', 'Fresh hookworm egg', 'Morula = recently passed egg; well-developed larva inside = old specimen held at room temperature'],
+      ['Clear (unstained) space between shell and embryo', 'Hookworm - present in fresh specimens', 'Space shrinks as embryo develops; its presence confirms freshness'],
+      ['Thin shell without knobbed outer coat', 'Hookworm - not Ascaris', 'Ascaris lumbricoides eggs have a thick outer coat (fertile) or no outer coat (unfertile); hookworm has a thin, smooth shell'],
       ['Larvae in fresh stool (no eggs)', 'Strongyloides, not hookworm', 'Hookworm larvae appear only in old stool; Strongyloides passes larvae in fresh stool']
     ],
     trapTitle: 'Old stool specimens produce hookworm larvae that mimic Strongyloides',
-    trapBody: 'Hookworm eggs hatch at room temperature within hours to days. If a stool specimen is not examined fresh, larvae present may be hookworm-derived — not Strongyloides. Always correlate with specimen age and storage conditions.',
+    trapBody: 'Hookworm eggs hatch at room temperature within hours to days. If a stool specimen is not examined fresh, larvae present may be hookworm-derived - not Strongyloides. Always correlate with specimen age and storage conditions.',
     trapBullets: [
-      'A. duodenale and N. americanus are morphologically identical — species differentiation requires larval culture or molecular testing.',
+      'A. duodenale and N. americanus are morphologically identical - species differentiation requires larval culture or molecular testing.',
       'Hookworm eggs stain poorly with iodine; wet preparation (normal saline or iodine) is standard for O&P.',
       'Concentration methods (formalin-ethyl acetate sedimentation or zinc sulfate flotation) improve sensitivity for light infections.'
     ],
     interpretationTitle: 'Hookworm egg identification guide',
     interpretationRows: [
-      ['Oval, thin shell, morula, clear space — fresh stool', 'Hookworm egg — positive', 'Report and treat; species ID (A. duodenale vs. N. americanus) not required clinically'],
-      ['Oval, thin shell, larvae inside — old stool', 'Hookworm egg (embryonated) — positive, note specimen age', 'Confirm specimen was not fresh; larvae in old stool from hookworm eggs do not indicate Strongyloides'],
+      ['Oval, thin shell, morula, clear space - fresh stool', 'Hookworm egg - positive', 'Report and treat; species ID (A. duodenale vs. N. americanus) not required clinically'],
+      ['Oval, thin shell, larvae inside - old stool', 'Hookworm egg (embryonated) - positive, note specimen age', 'Confirm specimen was not fresh; larvae in old stool from hookworm eggs do not indicate Strongyloides'],
       ['Thin-shelled egg, no outer coat, similar size', 'Hookworm vs. other nematodes', 'Compare size and shell structure; Trichuris is barrel-shaped with bipolar plugs; Ascaris has thick coat']
     ],
     takeaways: [
       'Thin colorless oval shell + morula + clear space = hookworm egg in fresh stool.',
-      'Never examine stool older than 24 h at room temperature for helminth larvae — hatched larvae may be mistaken for Strongyloides.',
+      'Never examine stool older than 24 h at room temperature for helminth larvae - hatched larvae may be mistaken for Strongyloides.',
       'A. duodenale and N. americanus eggs cannot be morphologically distinguished; species ID is not clinically required.'
     ],
     remember: 'Oval + thin shell + morula + clear space = hookworm. Fresh stool only for larvae differentiation.',
     divr: {
-      detect: 'Fresh stool (<24 h at room temp) — saline or iodine wet prep; formalin-ethyl acetate sedimentation concentration',
-      identify: ['Oval, thin colorless shell, 55–75 × 35–45 µm', 'Clear space between shell wall and embryo', '2–8 cell morula in freshly passed stool; larvae only appear in old or held specimens'],
-      verify: 'A. duodenale and N. americanus morphologically identical — species differentiation not clinically required; larvae in old stool may be hookworm-derived, not Strongyloides',
+      detect: 'Fresh stool (<24 h at room temp) - saline or iodine wet prep; formalin-ethyl acetate sedimentation concentration',
+      identify: ['Oval, thin colorless shell, 55-75 x 35-45 um', 'Clear space between shell wall and embryo', '2-8 cell morula in freshly passed stool; larvae only appear in old or held specimens'],
+      verify: 'A. duodenale and N. americanus morphologically identical - species differentiation not clinically required; larvae in old stool may be hookworm-derived, not Strongyloides',
       report: 'Report as hookworm eggs detected; note specimen freshness; clinical correlation required'
     }
   },
@@ -2956,9 +2956,9 @@ export const atlasPages: AtlasPage[] = [
     slug: 'trichuris-trichiura-egg',
     title: 'Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end — one of the most visually distinctive helminth eggs.',
+    summary: 'Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end - one of the most visually distinctive helminth eggs.',
     boardTitle: 'Trichuris trichiura egg: barrel shape and bipolar plugs',
-    boardNote: 'Barrel-shaped (football-shaped), golden-brown shell, 50–55 x 22–24 µm. Hyaline (colorless) plugs protrude from both poles. Unsegmented single cell inside when freshly passed. Eggs float with zinc sulfate but not with formalin-ethyl acetate sedimentation alone.',
+    boardNote: 'Barrel-shaped (football-shaped), golden-brown shell, 50-55 x 22-24 um. Hyaline (colorless) plugs protrude from both poles. Unsegmented single cell inside when freshly passed. Eggs float with zinc sulfate but not with formalin-ethyl acetate sedimentation alone.',
     ariaLabel: 'Illustrated Trichuris trichiura egg showing barrel shape with bipolar hyaline plugs at each end',
     visualType: 'microscope-trichuris',
     tubes: [
@@ -2967,47 +2967,47 @@ export const atlasPages: AtlasPage[] = [
         label: 'Egg',
         name: 'Barrel shape, bipolar hyaline plugs',
         colors: { slant: '#f0e4b0', butt: '#a07830', base: '#5c3c10' },
-        note: '50–55 x 22–24 µm. Barrel (football) shape is pathognomonic among intestinal helminth eggs. Golden-brown thick shell. Hyaline (colorless, refractile) plugs protrude from both poles. Interior contains a single unsegmented cell in freshly passed stool. Light infections may be missed — use concentration methods.'
+        note: '50-55 x 22-24 um. Barrel (football) shape is pathognomonic among intestinal helminth eggs. Golden-brown thick shell. Hyaline (colorless, refractile) plugs protrude from both poles. Interior contains a single unsegmented cell in freshly passed stool. Light infections may be missed - use concentration methods.'
       },
       {
         id: 'B',
         label: 'Embryonated egg',
-        name: 'Embryonated — plugs intact',
+        name: 'Embryonated - plugs intact',
         colors: { slant: '#e8d898', butt: '#886820', base: '#402808' },
-        note: 'In older or soil-derived specimens, the single cell develops into a fully formed larva. Bipolar plugs remain intact. The barrel outline and plug morphology are unchanged regardless of internal development stage — shape alone identifies this egg. Embryonated eggs are infective; handle with standard precautions.'
+        note: 'In older or soil-derived specimens, the single cell develops into a fully formed larva. Bipolar plugs remain intact. The barrel outline and plug morphology are unchanged regardless of internal development stage - shape alone identifies this egg. Embryonated eggs are infective; handle with standard precautions.'
       }
     ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
-      ['Barrel (football) shape', 'Trichuris trichiura', 'Pathognomonic among intestinal helminths — no other common egg has this symmetric barrel outline'],
-      ['Bipolar hyaline plugs', 'T. trichiura — confirm', 'Colorless, refractile plugs at each pole; if absent, reconsider ID; plugs persist regardless of internal development stage'],
+      ['Barrel (football) shape', 'Trichuris trichiura', 'Pathognomonic among intestinal helminths - no other common egg has this symmetric barrel outline'],
+      ['Bipolar hyaline plugs', 'T. trichiura - confirm', 'Colorless, refractile plugs at each pole; if absent, reconsider ID; plugs persist regardless of internal development stage'],
       ['Golden-brown thick shell', 'T. trichiura', 'Shell color and thickness distinguish from thin-shelled hookworm; Ascaris has similar thickness but different shape'],
-      ['Single cell inside (fresh)', 'Unsegmented T. trichiura egg', 'No morula — unlike hookworm (2–8 cells); fully developed larva = older specimen or soil-derived'],
-      ['50–55 µm length', 'T. trichiura', 'Size eliminates most mimics; Capillaria hepatica and C. philippinensis have similar plugged eggs but different clinical context']
+      ['Single cell inside (fresh)', 'Unsegmented T. trichiura egg', 'No morula - unlike hookworm (2-8 cells); fully developed larva = older specimen or soil-derived'],
+      ['50-55 um length', 'T. trichiura', 'Size eliminates most mimics; Capillaria hepatica and C. philippinensis have similar plugged eggs but different clinical context']
     ],
     trapTitle: 'Capillaria eggs are a size-matched mimic with bipolar plugs',
-    trapBody: 'Capillaria hepatica and C. philippinensis eggs also have bipolar plugs and a similar barrel shape but differ in size (C. hepatica: 51–67 µm, pitted shell) and clinical context (hepatic vs. intestinal vs. seafood exposure). Trichuris bipolar plugs are smoother and more protruding. Clinical history resolves most cases.',
+    trapBody: 'Capillaria hepatica and C. philippinensis eggs also have bipolar plugs and a similar barrel shape but differ in size (C. hepatica: 51-67 um, pitted shell) and clinical context (hepatic vs. intestinal vs. seafood exposure). Trichuris bipolar plugs are smoother and more protruding. Clinical history resolves most cases.',
     trapBullets: [
-      'T. trichiura causes whipworm infection via fecal-oral route in warm climates; eggs require 3–4 weeks in soil to become infective.',
+      'T. trichiura causes whipworm infection via fecal-oral route in warm climates; eggs require 3-4 weeks in soil to become infective.',
       'Heavy infections cause rectal prolapse and iron-deficiency anemia, especially in children.',
       'Zinc sulfate flotation (specific gravity 1.18) improves recovery; formalin-ethyl acetate alone may not float these denser eggs.'
     ],
     interpretationTitle: 'Trichuris trichiura egg identification guide',
     interpretationRows: [
-      ['Barrel shape, bipolar plugs, golden-brown shell', 'Trichuris trichiura — positive', 'Report with approximate burden estimate (few, moderate, many eggs per low-power field)'],
-      ['Similar shape, pitted shell, different size', 'Capillaria spp. — rule out', 'Use clinical history (hepatic mass vs. intestinal symptoms vs. fish ingestion) and morphologic detail to differentiate'],
-      ['Barrel outline, no internal detail visible', 'T. trichiura — acceptable ID', 'Bipolar plugs alone are sufficient for positive report; internal cell stage does not affect ID']
+      ['Barrel shape, bipolar plugs, golden-brown shell', 'Trichuris trichiura - positive', 'Report with approximate burden estimate (few, moderate, many eggs per low-power field)'],
+      ['Similar shape, pitted shell, different size', 'Capillaria spp. - rule out', 'Use clinical history (hepatic mass vs. intestinal symptoms vs. fish ingestion) and morphologic detail to differentiate'],
+      ['Barrel outline, no internal detail visible', 'T. trichiura - acceptable ID', 'Bipolar plugs alone are sufficient for positive report; internal cell stage does not affect ID']
     ],
     takeaways: [
-      'Barrel shape + bipolar hyaline plugs = Trichuris trichiura — one of the most morphologically distinctive helminth eggs.',
-      'Bipolar plugs are retained in all developmental stages — use shape + plugs regardless of internal content.',
+      'Barrel shape + bipolar hyaline plugs = Trichuris trichiura - one of the most morphologically distinctive helminth eggs.',
+      'Bipolar plugs are retained in all developmental stages - use shape + plugs regardless of internal content.',
       'Capillaria spp. are the primary mimic; differentiate using plug texture, size, and clinical context.'
     ],
     remember: 'Barrel shape + bipolar plugs = Trichuris. No other common intestinal egg looks like this.',
     divr: {
-      detect: 'Fresh or fixed stool — saline or iodine wet prep; zinc sulfate flotation (SG 1.18) concentration improves recovery',
-      identify: ['Barrel (football) shape, golden-brown shell, 50–55 × 22–24 µm', 'Bipolar hyaline plugs at both poles — retained in all developmental stages', 'Unsegmented single cell when freshly passed'],
-      verify: 'Shape + plugs are pathognomonic among common intestinal helminths; Capillaria spp. are size-matched mimics — use plug texture and clinical/geographic context',
+      detect: 'Fresh or fixed stool - saline or iodine wet prep; zinc sulfate flotation (SG 1.18) concentration improves recovery',
+      identify: ['Barrel (football) shape, golden-brown shell, 50-55 x 22-24 um', 'Bipolar hyaline plugs at both poles - retained in all developmental stages', 'Unsegmented single cell when freshly passed'],
+      verify: 'Shape + plugs are pathognomonic among common intestinal helminths; Capillaria spp. are size-matched mimics - use plug texture and clinical/geographic context',
       report: 'Report as Trichuris trichiura eggs detected; estimate burden per low-power field per lab SOP; clinical correlation required'
     }
   },
@@ -3017,7 +3017,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Plasmodium falciparum on Giemsa-stained thin blood smear: delicate ring forms, multiple rings per RBC, accole (applique) forms, and banana-shaped gametocytes as diagnostic anchors.',
     boardTitle: 'Plasmodium falciparum: ring forms and gametocyte',
-    boardNote: 'Ring forms: delicate, small (1/5 of RBC diameter), multiple per RBC, accole (peripheral placement). Double chromatin dots in some rings. RBC size is normal (not enlarged). Gametocyte: banana-shaped (crescent) — pathognomonic for P. falciparum. No visible schizonts on peripheral smear (sequestered).',
+    boardNote: 'Ring forms: delicate, small (1/5 of RBC diameter), multiple per RBC, accole (peripheral placement). Double chromatin dots in some rings. RBC size is normal (not enlarged). Gametocyte: banana-shaped (crescent) - pathognomonic for P. falciparum. No visible schizonts on peripheral smear (sequestered).',
     ariaLabel: 'Illustrated Plasmodium falciparum thin blood smear showing multiple delicate ring forms in a normal-sized RBC and a banana-shaped gametocyte',
     visualType: 'microscope-plasmodium',
     tubes: [
@@ -3026,49 +3026,49 @@ export const atlasPages: AtlasPage[] = [
         label: 'Ring forms',
         name: 'Delicate rings, accole forms, multiple per RBC',
         colors: { slant: '#f4e0d8', butt: '#d4607880', base: '#7a1830' },
-        note: 'Ring diameter ~1/5 of RBC diameter (smaller than other Plasmodium). Multiple rings per RBC (>1 ring = strong P. falciparum clue). Accole (applique) forms: ring positioned at the very edge of the RBC membrane. Double chromatin dots in some rings. RBC not enlarged (Schuffner dots absent). Schizonts not visible on peripheral smear — sequestered in deep vessels.'
+        note: 'Ring diameter ~1/5 of RBC diameter (smaller than other Plasmodium). Multiple rings per RBC (>1 ring = strong P. falciparum clue). Accole (applique) forms: ring positioned at the very edge of the RBC membrane. Double chromatin dots in some rings. RBC not enlarged (Schuffner dots absent). Schizonts not visible on peripheral smear - sequestered in deep vessels.'
       },
       {
         id: 'B',
         label: 'Gametocyte',
         name: 'Banana (crescent) shape, pathognomonic for P. falciparum',
         colors: { slant: '#e8d0c8', butt: '#9848580', base: '#5a2028' },
-        note: 'Banana/crescent shape is pathognomonic — no other Plasmodium species produces crescent gametocytes. Appear 7–15 days into infection. Macro- (female) and microgametocytes (male) differ slightly in color and chromatin. Their presence alongside ring forms confirms P. falciparum. Peripheral smear may show gametocytes even after ring forms clear with treatment.'
+        note: 'Banana/crescent shape is pathognomonic - no other Plasmodium species produces crescent gametocytes. Appear 7-15 days into infection. Macro- (female) and microgametocytes (male) differ slightly in color and chromatin. Their presence alongside ring forms confirms P. falciparum. Peripheral smear may show gametocytes even after ring forms clear with treatment.'
       }
     ],
     readoutTitle: 'What to look for on thin blood smear',
     readoutRows: [
-      ['Multiple rings per RBC (>1)', 'P. falciparum — strong clue', 'Other Plasmodium species rarely show more than 1 ring per RBC; >1 ring per cell is a key P. falciparum feature'],
-      ['Accole (applique) ring at RBC margin', 'P. falciparum', 'Ring form adhered to the inner margin of the RBC — characteristic positioning; other species show central or random placement'],
+      ['Multiple rings per RBC (>1)', 'P. falciparum - strong clue', 'Other Plasmodium species rarely show more than 1 ring per RBC; >1 ring per cell is a key P. falciparum feature'],
+      ['Accole (applique) ring at RBC margin', 'P. falciparum', 'Ring form adhered to the inner margin of the RBC - characteristic positioning; other species show central or random placement'],
       ['Double chromatin dots in ring', 'P. falciparum ring (some)', 'Single chromatin dot is more common; when present, double dots are specific for P. falciparum'],
       ['RBC normal size, no Schuffner dots', 'P. falciparum (not P. vivax or P. ovale)', 'P. vivax and P. ovale enlarge the RBC and show Schuffner dots; P. malariae has band-form trophozoites in normal RBCs'],
-      ['Banana-shaped gametocyte', 'P. falciparum — pathognomonic', 'Crescent/banana gametocyte is found only in P. falciparum; confirms species even without ring morphology details'],
-      ['No schizonts on peripheral smear', 'P. falciparum — expected', 'Schizonts are sequestered in deep capillaries; absence from blood smear does not exclude P. falciparum']
+      ['Banana-shaped gametocyte', 'P. falciparum - pathognomonic', 'Crescent/banana gametocyte is found only in P. falciparum; confirms species even without ring morphology details'],
+      ['No schizonts on peripheral smear', 'P. falciparum - expected', 'Schizonts are sequestered in deep capillaries; absence from blood smear does not exclude P. falciparum']
     ],
     trapTitle: 'High parasitemia on smear indicates severe malaria risk',
     trapBody: 'P. falciparum causes the most severe malaria. Any parasitemia >5% (% of infected RBCs) suggests severe disease. The smear alone underestimates true parasitemia due to deep-vessel sequestration. Urgent clinical correlation and treatment are required even at low smear counts if P. falciparum is suspected.',
     trapBullets: [
       'RDT (rapid diagnostic test) and PCR are used alongside smear; thick smear is more sensitive for detecting low parasitemia.',
-      'P. knowlesi mimics P. malariae on smear but causes rapidly progressive severe disease — use PCR in returned travelers from Southeast Asia.',
+      'P. knowlesi mimics P. malariae on smear but causes rapidly progressive severe disease - use PCR in returned travelers from Southeast Asia.',
       'Giemsa stain (pH 7.2) is the gold standard; Wright-Giemsa is an acceptable alternative. Thin smear for species ID, thick smear for parasite count.'
     ],
     interpretationTitle: 'P. falciparum smear interpretation guide',
     interpretationRows: [
-      ['Delicate rings, multiple/RBC, accole, ± double chromatin', 'P. falciparum ring stage — positive', 'Quantify parasitemia (% infected RBCs); report immediately; initiate treatment discussion'],
-      ['Banana-shaped gametocyte', 'P. falciparum gametocyte — species confirmed', 'Pathognomonic; report even if ring forms are absent or reduced after partial treatment'],
+      ['Delicate rings, multiple/RBC, accole, ± double chromatin', 'P. falciparum ring stage - positive', 'Quantify parasitemia (% infected RBCs); report immediately; initiate treatment discussion'],
+      ['Banana-shaped gametocyte', 'P. falciparum gametocyte - species confirmed', 'Pathognomonic; report even if ring forms are absent or reduced after partial treatment'],
       ['Ring forms, RBC not enlarged, no Schuffner dots, no schizonts', 'P. falciparum or P. malariae', 'P. malariae has band-form trophozoites and lower parasitemia; confirm with PCR if morphology is equivocal']
     ],
     takeaways: [
       'Multiple rings per RBC + accole placement + delicate ring size = P. falciparum.',
-      'Banana gametocyte is pathognomonic for P. falciparum — report species confirmed when seen.',
+      'Banana gametocyte is pathognomonic for P. falciparum - report species confirmed when seen.',
       'No schizonts on peripheral smear is expected (not a gap); quantify parasitemia and report urgently.'
     ],
     remember: 'Multiple delicate rings/RBC + accole + banana gametocyte = P. falciparum. Normal RBC size, no Schuffner dots, no schizonts on smear.',
     divr: {
-      detect: 'EDTA peripheral blood — thick smear (sensitivity/count) + thin smear (species ID); Giemsa pH 7.2; oil immersion at 1000×',
-      identify: ['Delicate ring forms ~1/5 RBC diameter; multiple rings per RBC', 'Accole (applique) forms: ring at RBC membrane edge', 'Banana/crescent gametocyte — pathognomonic for P. falciparum', 'Normal RBC size; no Schuffner dots; no schizonts in peripheral blood'],
+      detect: 'EDTA peripheral blood - thick smear (sensitivity/count) + thin smear (species ID); Giemsa pH 7.2; oil immersion at 1000x',
+      identify: ['Delicate ring forms ~1/5 RBC diameter; multiple rings per RBC', 'Accole (applique) forms: ring at RBC membrane edge', 'Banana/crescent gametocyte - pathognomonic for P. falciparum', 'Normal RBC size; no Schuffner dots; no schizonts in peripheral blood'],
       verify: 'RDT and PCR alongside smear; quantify parasitemia (% infected RBCs); thick smear for sensitivity',
-      report: 'Report species and parasitemia %; urgent notification required for P. falciparum; molecular or antigen testing may be used depending on method — clinical correlation required'
+      report: 'Report species and parasitemia %; urgent notification required for P. falciparum; molecular or antigen testing may be used depending on method - clinical correlation required'
     }
   },
   {
@@ -3077,7 +3077,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Babesia spp. on Giemsa-stained thin blood smear: small pleomorphic ring forms, extracellular merozoites, and the pathognomonic Maltese cross (tetrad) arrangement.',
     boardTitle: 'Babesia ring forms and tetrad (Maltese cross)',
-    boardNote: 'Ring forms smaller than P. falciparum (1–5 µm), often extracellular, up to 4 rings per RBC. Tetrad (Maltese cross): 4 merozoites in cross arrangement — pathognomonic for Babesia. No hemozoin (malaria pigment). RBC not enlarged. B. microti (US) vs. B. divergens (Europe) differ in severity but not reliably in morphology.',
+    boardNote: 'Ring forms smaller than P. falciparum (1-5 um), often extracellular, up to 4 rings per RBC. Tetrad (Maltese cross): 4 merozoites in cross arrangement - pathognomonic for Babesia. No hemozoin (malaria pigment). RBC not enlarged. B. microti (US) vs. B. divergens (Europe) differ in severity but not reliably in morphology.',
     ariaLabel: 'Illustrated Babesia ring forms in red blood cell showing multiple small rings, and Maltese cross tetrad arrangement',
     visualType: 'microscope-babesia',
     tubes: [
@@ -3086,26 +3086,26 @@ export const atlasPages: AtlasPage[] = [
         label: 'Ring forms',
         name: 'Small pleomorphic rings, extracellular forms',
         colors: { slant: '#f4e0d8', butt: '#c05870', base: '#6a1828' },
-        note: '1–5 µm. Smaller than P. falciparum rings. Pleomorphic — size and shape vary within a single smear. Multiple rings per RBC (up to 4). Extracellular ring forms (merozoites free in plasma) are a Babesia clue absent in Plasmodium. No hemozoin (malaria pigment). RBC not enlarged, no Schuffner dots.'
+        note: '1-5 um. Smaller than P. falciparum rings. Pleomorphic - size and shape vary within a single smear. Multiple rings per RBC (up to 4). Extracellular ring forms (merozoites free in plasma) are a Babesia clue absent in Plasmodium. No hemozoin (malaria pigment). RBC not enlarged, no Schuffner dots.'
       },
       {
         id: 'B',
         label: 'Tetrad (Maltese cross)',
-        name: 'Maltese cross tetrad — pathognomonic',
+        name: 'Maltese cross tetrad - pathognomonic',
         colors: { slant: '#f0dcd0', butt: '#a84860', base: '#5a1020' },
-        note: '4 merozoites arranged in a cross (Maltese cross or tetrad) — pathognomonic for Babesia, never seen in Plasmodium. Not always visible; absence does not exclude Babesia. Scanning multiple low-power fields before calling negative is essential. When found, report as Babesia spp. and note the tetrad.'
+        note: '4 merozoites arranged in a cross (Maltese cross or tetrad) - pathognomonic for Babesia, never seen in Plasmodium. Not always visible; absence does not exclude Babesia. Scanning multiple low-power fields before calling negative is essential. When found, report as Babesia spp. and note the tetrad.'
       }
     ],
     readoutTitle: 'What to look for on thin blood smear',
     readoutRows: [
-      ['Tetrad (Maltese cross) — 4 merozoites in cross', 'Babesia — pathognomonic', 'Not always present; absence does not exclude Babesia; presence confirms species'],
-      ['Extracellular ring forms (free in plasma)', 'Babesia — strong clue', 'Plasmodium does not produce extracellular rings; finding rings outside RBCs strongly suggests Babesia'],
+      ['Tetrad (Maltese cross) - 4 merozoites in cross', 'Babesia - pathognomonic', 'Not always present; absence does not exclude Babesia; presence confirms species'],
+      ['Extracellular ring forms (free in plasma)', 'Babesia - strong clue', 'Plasmodium does not produce extracellular rings; finding rings outside RBCs strongly suggests Babesia'],
       ['Multiple small rings/RBC, pleomorphic', 'Babesia or P. falciparum', 'Babesia rings are smaller and more pleomorphic; no malaria pigment; use tetrad/extracellular rings to differentiate'],
-      ['No hemozoin (malaria pigment)', 'Babesia — supports (Plasmodium: pigment in older stages)', 'Absence of brown/black pigment in late-stage cells is a Babesia clue; Plasmodium produces hemozoin from hemoglobin digestion'],
+      ['No hemozoin (malaria pigment)', 'Babesia - supports (Plasmodium: pigment in older stages)', 'Absence of brown/black pigment in late-stage cells is a Babesia clue; Plasmodium produces hemozoin from hemoglobin digestion'],
       ['RBC not enlarged, no Schuffner dots', 'Babesia or P. falciparum/malariae', 'Enlarged RBC with Schuffner dots = P. vivax or P. ovale; normal size RBCs shared by Babesia and P. falciparum'],
       ['Travel to endemic area (northeast US coast, splenectomy)', 'Babesia microti risk', 'B. microti is tick-borne (Ixodes scapularis); asplenic and immunocompromised patients are at highest risk for severe disease']
     ],
-    trapTitle: 'Babesia rings mimic P. falciparum — use tetrad and extracellular forms to differentiate',
+    trapTitle: 'Babesia rings mimic P. falciparum - use tetrad and extracellular forms to differentiate',
     trapBody: 'Both Babesia and P. falciparum show multiple small rings per RBC in normal-sized cells without Schuffner dots. The Maltese cross (tetrad) and extracellular rings are the only morphologic features specific to Babesia. PCR is required for species-level confirmation and for distinguishing Babesia from P. falciparum when morphology is equivocal.',
     trapBullets: [
       'Splenectomized patients can develop severe life-threatening Babesia infections even with B. microti, which is typically self-limited in immunocompetent hosts.',
@@ -3114,21 +3114,21 @@ export const atlasPages: AtlasPage[] = [
     ],
     interpretationTitle: 'Babesia smear interpretation guide',
     interpretationRows: [
-      ['Maltese cross tetrad present', 'Babesia spp. — confirmed', 'Report as Babesia spp.; send PCR for species confirmation; assess spleen status and immune function'],
-      ['Small pleomorphic rings, extracellular forms, no pigment', 'Babesia probable — confirm with PCR', 'Report as suspicious for Babesia; PCR is confirmatory; exclude P. falciparum by clinical history and morphology'],
+      ['Maltese cross tetrad present', 'Babesia spp. - confirmed', 'Report as Babesia spp.; send PCR for species confirmation; assess spleen status and immune function'],
+      ['Small pleomorphic rings, extracellular forms, no pigment', 'Babesia probable - confirm with PCR', 'Report as suspicious for Babesia; PCR is confirmatory; exclude P. falciparum by clinical history and morphology'],
       ['Multiple small rings, RBC not enlarged, equivocal', 'Babesia vs. P. falciparum', 'Use travel history, tick exposure, splenectomy; send PCR and malaria RDT; do not delay treatment']
     ],
     takeaways: [
-      'Maltese cross tetrad is pathognomonic for Babesia — report if found even if rings are equivocal.',
+      'Maltese cross tetrad is pathognomonic for Babesia - report if found even if rings are equivocal.',
       'Extracellular ring forms (free in plasma) = Babesia; Plasmodium does not produce them.',
-      'No hemozoin, normal RBC size, no Schuffner dots — shared with P. falciparum; use tetrad + clinical context to differentiate.'
+      'No hemozoin, normal RBC size, no Schuffner dots - shared with P. falciparum; use tetrad + clinical context to differentiate.'
     ],
     remember: 'Tetrad (Maltese cross) + extracellular rings + no pigment = Babesia. PCR confirms species.',
     divr: {
-      detect: 'EDTA peripheral blood — Giemsa thin smear; thick smear for low parasitemia; PCR for species confirmation',
-      identify: ['Small pleomorphic ring forms 1–5 µm — more variable in size than P. falciparum rings', 'Extracellular ring forms free in plasma (absent in Plasmodium)', 'Maltese cross (tetrad): 4 merozoites in cross arrangement — pathognomonic when present; no hemozoin (malaria pigment)'],
+      detect: 'EDTA peripheral blood - Giemsa thin smear; thick smear for low parasitemia; PCR for species confirmation',
+      identify: ['Small pleomorphic ring forms 1-5 um - more variable in size than P. falciparum rings', 'Extracellular ring forms free in plasma (absent in Plasmodium)', 'Maltese cross (tetrad): 4 merozoites in cross arrangement - pathognomonic when present; no hemozoin (malaria pigment)'],
       verify: 'PCR required for species confirmation; IFA serology; differentiate from P. falciparum by tetrad + extracellular rings + no hemozoin',
-      report: 'Report as Babesia spp. if morphology consistent; confirm with PCR; molecular or antigen testing may be used depending on method — clinical correlation required'
+      report: 'Report as Babesia spp. if morphology consistent; confirm with PCR; molecular or antigen testing may be used depending on method - clinical correlation required'
     }
   },
   {
@@ -3137,7 +3137,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Trypanosoma cruzi on Giemsa-stained thin blood film: C- or U-shaped trypomastigote with large posterior kinetoplast, undulating membrane, and single anterior flagellum.',
     boardTitle: 'Trypanosoma cruzi: trypomastigote and amastigote',
-    boardNote: 'Trypomastigote (blood): C- or U-shaped, 16–20 µm, large posterior kinetoplast, undulating membrane, anterior free flagellum. Amastigote (tissue): round/oval, 1–4 µm, kinetoplast bar visible. T. brucei trypomastigote: smaller kinetoplast, more slender, no C-shape.',
+    boardNote: 'Trypomastigote (blood): C- or U-shaped, 16-20 um, large posterior kinetoplast, undulating membrane, anterior free flagellum. Amastigote (tissue): round/oval, 1-4 um, kinetoplast bar visible. T. brucei trypomastigote: smaller kinetoplast, more slender, no C-shape.',
     ariaLabel: 'Illustrated Trypanosoma cruzi trypomastigote showing C-shape with large posterior kinetoplast and undulating membrane in blood film',
     visualType: 'microscope-trypanosoma',
     tubes: [
@@ -3146,14 +3146,14 @@ export const atlasPages: AtlasPage[] = [
         label: 'Trypomastigote',
         name: 'C-shape, large posterior kinetoplast',
         colors: { slant: '#f8f0e8', butt: '#7858a0', base: '#3a2860' },
-        note: '16–20 µm. C- or U-shaped body in blood smear is the key low-power clue. Large round-to-oval posterior kinetoplast (filled with kinetoplast DNA) — larger than T. brucei. Undulating membrane runs along body length. Single anterior free flagellum. Found in blood during acute Chagas disease. T. brucei has a smaller kinetoplast and more slender, straight body.'
+        note: '16-20 um. C- or U-shaped body in blood smear is the key low-power clue. Large round-to-oval posterior kinetoplast (filled with kinetoplast DNA) - larger than T. brucei. Undulating membrane runs along body length. Single anterior free flagellum. Found in blood during acute Chagas disease. T. brucei has a smaller kinetoplast and more slender, straight body.'
       },
       {
         id: 'B',
         label: 'Amastigote',
         name: 'Round amastigotes in macrophage, two dark dots',
         colors: { slant: '#e8dcd0', butt: '#6848a0', base: '#2c1858' },
-        note: '1–4 µm. Found intracellularly in cardiac muscle, smooth muscle, and macrophages during chronic Chagas disease. Round to oval, no external flagellum, small dark nucleus + bar-shaped kinetoplast side by side. Pseudocysts (nests of amastigotes) in cardiac tissue are the hallmark of chronic disease. Not typically found in blood smear — require tissue biopsy or PCR for diagnosis in chronic phase.'
+        note: '1-4 um. Found intracellularly in cardiac muscle, smooth muscle, and macrophages during chronic Chagas disease. Round to oval, no external flagellum, small dark nucleus + bar-shaped kinetoplast side by side. Pseudocysts (nests of amastigotes) in cardiac tissue are the hallmark of chronic disease. Not typically found in blood smear - require tissue biopsy or PCR for diagnosis in chronic phase.'
       }
     ],
     readoutTitle: 'What to look for in blood film and tissue',
@@ -3161,11 +3161,11 @@ export const atlasPages: AtlasPage[] = [
       ['C- or U-shape, large posterior kinetoplast', 'T. cruzi trypomastigote', 'C-shape in blood smear is the primary low-power clue; T. brucei is more slender and straight'],
       ['Large round posterior kinetoplast', 'T. cruzi (vs. T. brucei: small subterminal)', 'Kinetoplast size and position differ: T. cruzi = large posterior; T. brucei = small, subterminal'],
       ['Undulating membrane + anterior free flagellum', 'Trypomastigote (both species)', 'Present in all Trypanosoma blood forms; distinguishes from Leishmania (amastigote, no flagellum in tissue)'],
-      ['Round cells 1–4 µm with nucleus + kinetoplast bar, intracellular', 'Amastigote in tissue', 'Pseudocysts in cardiac muscle are characteristic of chronic Chagas; not found in peripheral blood smear'],
-      ['No trypomastigotes in blood, cardiac symptoms, Latin American exposure', 'Chronic Chagas — consider PCR/serology', 'Parasitemia is low or absent in chronic phase; diagnosis requires serology (2 different tests) or PCR']
+      ['Round cells 1-4 um with nucleus + kinetoplast bar, intracellular', 'Amastigote in tissue', 'Pseudocysts in cardiac muscle are characteristic of chronic Chagas; not found in peripheral blood smear'],
+      ['No trypomastigotes in blood, cardiac symptoms, Latin American exposure', 'Chronic Chagas - consider PCR/serology', 'Parasitemia is low or absent in chronic phase; diagnosis requires serology (2 different tests) or PCR']
     ],
     trapTitle: 'T. cruzi and T. brucei trypomastigotes differ in shape and kinetoplast size',
-    trapBody: 'T. cruzi: C- or U-shaped, large posterior kinetoplast. T. brucei (African trypanosomiasis): more slender, straight or slightly curved, small subterminal kinetoplast. Clinical and geographic context is essential — Chagas disease (Americas, Triatoma bug vector) vs. sleeping sickness (sub-Saharan Africa, tsetse fly vector).',
+    trapBody: 'T. cruzi: C- or U-shaped, large posterior kinetoplast. T. brucei (African trypanosomiasis): more slender, straight or slightly curved, small subterminal kinetoplast. Clinical and geographic context is essential - Chagas disease (Americas, Triatoma bug vector) vs. sleeping sickness (sub-Saharan Africa, tsetse fly vector).',
     trapBullets: [
       'Acute Chagas: trypomastigotes visible in blood smear; chronic phase requires serology (two tests) or PCR.',
       'T. brucei rhodesiense (East African) causes rapidly fatal sleeping sickness; T. brucei gambiense (West African) has a slower course.',
@@ -3173,19 +3173,19 @@ export const atlasPages: AtlasPage[] = [
     ],
     interpretationTitle: 'Trypanosoma identification guide',
     interpretationRows: [
-      ['C/U-shaped trypomastigote, large posterior kinetoplast', 'T. cruzi — acute Chagas disease', 'Report urgently; begin evaluation for cardiac involvement; benznidazole or nifurtimox indicated'],
-      ['Slender trypomastigote, small subterminal kinetoplast', 'T. brucei — African trypanosomiasis', 'Report urgently; CSF examination required to stage disease (hemolymphatic vs. CNS stage)'],
+      ['C/U-shaped trypomastigote, large posterior kinetoplast', 'T. cruzi - acute Chagas disease', 'Report urgently; begin evaluation for cardiac involvement; benznidazole or nifurtimox indicated'],
+      ['Slender trypomastigote, small subterminal kinetoplast', 'T. brucei - African trypanosomiasis', 'Report urgently; CSF examination required to stage disease (hemolymphatic vs. CNS stage)'],
       ['Intracellular amastigotes, round + kinetoplast bar, cardiac tissue', 'T. cruzi chronic Chagas', 'Tissue diagnosis; confirm with serology; PCR used in chronic and congenital cases']
     ],
     takeaways: [
       'C/U-shape + large posterior kinetoplast = T. cruzi trypomastigote in blood.',
-      'T. brucei: slender, straight, small subterminal kinetoplast — geographic context (Africa) confirms.',
+      'T. brucei: slender, straight, small subterminal kinetoplast - geographic context (Africa) confirms.',
       'Chronic Chagas: parasitemia absent; use serology (2 tests required) or PCR.'
     ],
     remember: 'C-shape + large posterior kinetoplast = T. cruzi. Slender + small kinetoplast = T. brucei. Geographic context always applies.',
     divr: {
-      detect: 'EDTA peripheral blood (acute phase) — Giemsa thin or thick smear; buffy coat concentration; tissue biopsy for chronic phase',
-      identify: ['Trypomastigote: C- or U-shaped body, 16–20 µm, large round posterior kinetoplast', 'Undulating membrane + anterior free flagellum', 'Amastigote in tissue: round 1–4 µm, nucleus + bar-shaped kinetoplast, intracellular in cardiac or smooth muscle'],
+      detect: 'EDTA peripheral blood (acute phase) - Giemsa thin or thick smear; buffy coat concentration; tissue biopsy for chronic phase',
+      identify: ['Trypomastigote: C- or U-shaped body, 16-20 um, large round posterior kinetoplast', 'Undulating membrane + anterior free flagellum', 'Amastigote in tissue: round 1-4 um, nucleus + bar-shaped kinetoplast, intracellular in cardiac or smooth muscle'],
       verify: 'Serology (2 different assays required for diagnosis); PCR for chronic and congenital cases; morphology alone is insufficient for species-level ID',
       report: 'Report trypomastigote morphology and stain method; confirm per lab SOP; clinical correlation required'
     }
@@ -3196,30 +3196,30 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Toxoplasma gondii tachyzoites and bradyzoite-filled tissue cysts: crescent-shaped tachyzoites, nucleus toward the broad end, and bradyzoites in PAS-positive tissue cysts.',
     boardTitle: 'Toxoplasma gondii: tachyzoite and tissue cyst with bradyzoites',
-    boardNote: 'Tachyzoite: crescent/banana shape, 2–3 µm wide x 4–8 µm long, Giemsa: pale blue cytoplasm, red nucleus at broad end. Bradyzoites: within tissue cysts (up to 100 µm), cyst wall PAS-positive. Brain, eye, heart, and skeletal muscle are primary tissue cyst locations.',
+    boardNote: 'Tachyzoite: crescent/banana shape, 2-3 um wide x 4-8 um long, Giemsa: pale blue cytoplasm, red nucleus at broad end. Bradyzoites: within tissue cysts (up to 100 um), cyst wall PAS-positive. Brain, eye, heart, and skeletal muscle are primary tissue cyst locations.',
     ariaLabel: 'Illustrated Toxoplasma gondii tachyzoite showing crescent shape with nucleus at broad end, and tissue cyst containing bradyzoites',
     visualType: 'microscope-toxoplasma',
     tubes: [
       {
         id: 'A',
         label: 'Tachyzoite',
-        name: 'Crescent 4–8 µm, nucleus at broad end',
+        name: 'Crescent 4-8 um, nucleus at broad end',
         colors: { slant: '#f0e8d8', butt: '#9878b8', base: '#4a2858' },
-        note: '2–3 µm wide x 4–8 µm long. Crescent or banana shape. Giemsa: cytoplasm stains pale blue, nucleus stains red toward the broader end. One end is more pointed than the other. Found in acute infections, immunocompromised hosts, and congenital toxoplasmosis. Multiply rapidly (acute phase) by endodyogeny. Seen in BAL, CSF, peritoneal washings, and tissue impression smears.'
+        note: '2-3 um wide x 4-8 um long. Crescent or banana shape. Giemsa: cytoplasm stains pale blue, nucleus stains red toward the broader end. One end is more pointed than the other. Found in acute infections, immunocompromised hosts, and congenital toxoplasmosis. Multiply rapidly (acute phase) by endodyogeny. Seen in BAL, CSF, peritoneal washings, and tissue impression smears.'
       },
       {
         id: 'B',
         label: 'Tissue cyst',
-        name: 'Tissue cyst up to 100 µm, bradyzoites inside',
+        name: 'Tissue cyst up to 100 um, bradyzoites inside',
         colors: { slant: '#e8dcc8', butt: '#c09868', base: '#603818' },
-        note: 'Tissue cyst: up to 100 µm, thin but distinct wall, PAS-positive. Contains hundreds of bradyzoites (slow-multiplying form, chronic stage). Bradyzoites are morphologically similar to tachyzoites but smaller and within the cyst. Preferentially located in brain, retina, cardiac and skeletal muscle. Cysts persist lifelong; reactivate under immunosuppression (CD4 <100 cells/µL).'
+        note: 'Tissue cyst: up to 100 um, thin but distinct wall, PAS-positive. Contains hundreds of bradyzoites (slow-multiplying form, chronic stage). Bradyzoites are morphologically similar to tachyzoites but smaller and within the cyst. Preferentially located in brain, retina, cardiac and skeletal muscle. Cysts persist lifelong; reactivate under immunosuppression (CD4 <100 cells/umL).'
       }
     ],
     readoutTitle: 'What to look for in stained preparations',
     readoutRows: [
-      ['Crescent/banana shape, 4–8 µm, nucleus at broad end', 'Toxoplasma tachyzoite', 'Giemsa or Wright stain shows pale blue cytoplasm and red nucleus; BAL or CSF are the most common diagnostic specimens'],
+      ['Crescent/banana shape, 4-8 um, nucleus at broad end', 'Toxoplasma tachyzoite', 'Giemsa or Wright stain shows pale blue cytoplasm and red nucleus; BAL or CSF are the most common diagnostic specimens'],
       ['One pointed end, one rounded end', 'Tachyzoite morphology', 'Asymmetry is the key shape clue; distinguishes from Leishmania amastigotes (round, smaller, intracellular)'],
-      ['Round cyst up to 100 µm, PAS+ wall, many organisms inside', 'Tissue cyst with bradyzoites', 'Hematoxylin-eosin shows cyst outline; PAS highlights cyst wall; bradyzoites visible at high magnification'],
+      ['Round cyst up to 100 um, PAS+ wall, many organisms inside', 'Tissue cyst with bradyzoites', 'Hematoxylin-eosin shows cyst outline; PAS highlights cyst wall; bradyzoites visible at high magnification'],
       ['Intracellular clusters in macrophages (acute)', 'Tachyzoites or early tissue cysts', 'In acute phase, tachyzoites replicate in any nucleated cell; in immunocompromised, brain cysts reactivate'],
       ['No diagnostic stage in feces from human', 'Oocysts only from cats', 'Humans shed no diagnostic stages in stool; serology (IgM/IgG) and PCR are primary diagnostic tools']
     ],
@@ -3227,24 +3227,24 @@ export const atlasPages: AtlasPage[] = [
     trapBody: 'Toxoplasma tachyzoites are rarely seen on smear in immunocompetent hosts. The primary diagnostic approach is serology (IgM for acute, IgG for past infection, IgG avidity for timing). PCR on CSF, amniotic fluid, or BAL is used for CNS, congenital, and immunocompromised cases. Morphology is confirmatory when organisms are seen.',
     trapBullets: [
       'Reactivation in HIV (CD4 <100) produces encephalitis; brain imaging shows ring-enhancing lesions; CSF PCR is the preferred diagnostic test.',
-      'Congenital toxoplasmosis: fetal infection from primary maternal infection — IgM in newborn serum or PCR of amniotic fluid for diagnosis.',
-      'Oocysts in cat feces are infective after 1–5 days sporulation; avoid changing cat litter during pregnancy.'
+      'Congenital toxoplasmosis: fetal infection from primary maternal infection - IgM in newborn serum or PCR of amniotic fluid for diagnosis.',
+      'Oocysts in cat feces are infective after 1-5 days sporulation; avoid changing cat litter during pregnancy.'
     ],
     interpretationTitle: 'Toxoplasma gondii identification guide',
     interpretationRows: [
-      ['Crescent tachyzoites, pale blue cytoplasm, red nucleus at broad end', 'T. gondii tachyzoites — active infection', 'Report with specimen source; confirm with PCR and serology; urgent in CNS or congenital cases'],
-      ['Round cyst, PAS+ wall, bradyzoites inside, in brain/muscle tissue', 'T. gondii tissue cyst — latent infection', 'Indicates seropositive/past infection; reactivation risk under immunosuppression; no treatment unless reactivation occurs'],
+      ['Crescent tachyzoites, pale blue cytoplasm, red nucleus at broad end', 'T. gondii tachyzoites - active infection', 'Report with specimen source; confirm with PCR and serology; urgent in CNS or congenital cases'],
+      ['Round cyst, PAS+ wall, bradyzoites inside, in brain/muscle tissue', 'T. gondii tissue cyst - latent infection', 'Indicates seropositive/past infection; reactivation risk under immunosuppression; no treatment unless reactivation occurs'],
       ['Equivocal morphology', 'Confirm with PCR or serology', 'Tachyzoites may be confused with other intracellular organisms; PCR on specimen is definitive']
     ],
     takeaways: [
       'Crescent shape + nucleus at broad end = T. gondii tachyzoite on Giemsa/Wright stain.',
-      'Tissue cyst (up to 100 µm, PAS+ wall, bradyzoites inside) in brain/muscle = latent toxoplasmosis.',
+      'Tissue cyst (up to 100 um, PAS+ wall, bradyzoites inside) in brain/muscle = latent toxoplasmosis.',
       'Serology and PCR are the primary diagnostic tools; morphology is confirmatory when organisms are visualized.'
     ],
     remember: 'Crescent tachyzoite = acute. PAS+ tissue cyst with bradyzoites = latent/chronic. Serology and PCR drive diagnosis, not smear.',
     divr: {
-      detect: 'BAL, CSF, peritoneal fluid, or tissue impression smear — Giemsa or Wright stain; serology for most cases (IgM/IgG)',
-      identify: ['Tachyzoite: crescent 4–8 µm, pale blue cytoplasm, red nucleus at broad end (Giemsa)', 'One pointed end, one rounded end — asymmetric shape', 'Tissue cyst: round up to 100 µm, PAS-positive wall, bradyzoites packed inside'],
+      detect: 'BAL, CSF, peritoneal fluid, or tissue impression smear - Giemsa or Wright stain; serology for most cases (IgM/IgG)',
+      identify: ['Tachyzoite: crescent 4-8 um, pale blue cytoplasm, red nucleus at broad end (Giemsa)', 'One pointed end, one rounded end - asymmetric shape', 'Tissue cyst: round up to 100 um, PAS-positive wall, bradyzoites packed inside'],
       verify: 'PCR on CSF/BAL/amniotic fluid for CNS/congenital; IgM + IgG serology; IgG avidity for timing of primary infection',
       report: 'Report tachyzoites with specimen source and stain; do not report from single artifact-like structure; confirm per SOP; clinical correlation required'
     }
@@ -3255,55 +3255,55 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Leishmania donovani amastigotes (Leishman-Donovan bodies) in macrophages/Kupffer cells on Giemsa stain: small round organisms with nucleus and rod-shaped kinetoplast side by side.',
     boardTitle: 'Leishmania amastigote (LD body) and promastigote',
-    boardNote: 'Amastigote (LD body): 2–4 µm, round/oval, intracellular in macrophages/Kupffer cells. Giemsa: pale blue cytoplasm, purple nucleus, rod-shaped kinetoplast at right angle to nucleus. No external flagellum. Promastigote (culture/sand fly): elongated 15–25 µm, anterior flagellum, kinetoplast anterior.',
+    boardNote: 'Amastigote (LD body): 2-4 um, round/oval, intracellular in macrophages/Kupffer cells. Giemsa: pale blue cytoplasm, purple nucleus, rod-shaped kinetoplast at right angle to nucleus. No external flagellum. Promastigote (culture/sand fly): elongated 15-25 um, anterior flagellum, kinetoplast anterior.',
     ariaLabel: 'Illustrated Leishmania amastigotes in Kupffer cell showing nucleus and rod-shaped kinetoplast, and promastigote form with anterior flagellum',
     visualType: 'microscope-leishmania',
     tubes: [
       {
         id: 'A',
         label: 'Amastigote (LD body)',
-        name: 'Round 2–4 µm — nucleus + kinetoplast bar (LD body)',
+        name: 'Round 2-4 um - nucleus + kinetoplast bar (LD body)',
         colors: { slant: '#f4e8e0', butt: '#c07858', base: '#602820' },
-        note: '2–4 µm. Round to oval. No external flagellum. Giemsa: cytoplasm pale blue, round purple nucleus + bar-shaped kinetoplast (at roughly right angle to nucleus or perpendicular — "two dark dots" per cell). Found in macrophages, Kupffer cells (liver), spleen, bone marrow, and skin macrophages depending on species. L. donovani = visceral (kala-azar); L. major/tropica = cutaneous; L. braziliensis = mucocutaneous.'
+        note: '2-4 um. Round to oval. No external flagellum. Giemsa: cytoplasm pale blue, round purple nucleus + bar-shaped kinetoplast (at roughly right angle to nucleus or perpendicular - "two dark dots" per cell). Found in macrophages, Kupffer cells (liver), spleen, bone marrow, and skin macrophages depending on species. L. donovani = visceral (kala-azar); L. major/tropica = cutaneous; L. braziliensis = mucocutaneous.'
       },
       {
         id: 'B',
         label: 'Promastigote',
-        name: 'Elongated, anterior flagellum — culture form',
+        name: 'Elongated, anterior flagellum - culture form',
         colors: { slant: '#e8f0d8', butt: '#7898a0', base: '#285860' },
-        note: '15–25 µm elongated body. Anterior kinetoplast. Single anterior free flagellum. This is the form found in the sand fly vector (Lutzomyia in New World; Phlebotomus in Old World) and in NNN (Novy-MacNeal-Nicolle) culture medium. Not found in tissue smears from patients. Identifying promastigotes in culture confirms Leishmania but species-level ID requires molecular methods or isoenzyme analysis.'
+        note: '15-25 um elongated body. Anterior kinetoplast. Single anterior free flagellum. This is the form found in the sand fly vector (Lutzomyia in New World; Phlebotomus in Old World) and in NNN (Novy-MacNeal-Nicolle) culture medium. Not found in tissue smears from patients. Identifying promastigotes in culture confirms Leishmania but species-level ID requires molecular methods or isoenzyme analysis.'
       }
     ],
     readoutTitle: 'What to look for in tissue smears and biopsies',
     readoutRows: [
-      ['Round 2–4 µm organisms in macrophage cytoplasm', 'Leishmania amastigotes (LD bodies)', 'Giemsa on tissue impression smear or aspirate; bone marrow and spleen aspirate for visceral disease'],
+      ['Round 2-4 um organisms in macrophage cytoplasm', 'Leishmania amastigotes (LD bodies)', 'Giemsa on tissue impression smear or aspirate; bone marrow and spleen aspirate for visceral disease'],
       ['Nucleus + rod-shaped kinetoplast per organism', '"Two dark dots" pattern per amastigote', 'Both nucleus and kinetoplast stain dark purple on Giemsa; perpendicular arrangement distinguishes from Histoplasma or other round intracellular fungi'],
-      ['No external flagellum visible in tissue forms', 'Amastigote — expected', 'Flagellum present only in promastigote (insect stage); absence in tissue is a feature, not a gap'],
-      ['Elongated, anterior flagellum, anterior kinetoplast', 'Promastigote — culture or sand fly form', 'Seen in cultures; confirms Leishmania genus; molecular testing needed for species ID'],
+      ['No external flagellum visible in tissue forms', 'Amastigote - expected', 'Flagellum present only in promastigote (insect stage); absence in tissue is a feature, not a gap'],
+      ['Elongated, anterior flagellum, anterior kinetoplast', 'Promastigote - culture or sand fly form', 'Seen in cultures; confirms Leishmania genus; molecular testing needed for species ID'],
       ['Macrophage rupture, free amastigotes', 'High burden infection', 'Free amastigotes may be seen in smears when parasitized macrophages rupture; count associated cells for burden estimate']
     ],
     trapTitle: 'Leishmania amastigotes mimic Histoplasma capsulatum in tissue',
-    trapBody: 'Both Leishmania amastigotes and Histoplasma capsulatum appear as small round organisms within macrophages on H&E. Key distinction: Leishmania has a visible kinetoplast (bar-shaped dark structure) on Giemsa — Histoplasma does not have a kinetoplast and is GMS/PAS positive (fungal cell wall). Giemsa is essential for Leishmania diagnosis; GMS/PAS for fungi.',
+    trapBody: 'Both Leishmania amastigotes and Histoplasma capsulatum appear as small round organisms within macrophages on H&E. Key distinction: Leishmania has a visible kinetoplast (bar-shaped dark structure) on Giemsa - Histoplasma does not have a kinetoplast and is GMS/PAS positive (fungal cell wall). Giemsa is essential for Leishmania diagnosis; GMS/PAS for fungi.',
     trapBullets: [
-      'Visceral leishmaniasis (kala-azar): fever, splenomegaly, weight loss, pancytopenia — bone marrow or spleen aspirate for diagnosis.',
+      'Visceral leishmaniasis (kala-azar): fever, splenomegaly, weight loss, pancytopenia - bone marrow or spleen aspirate for diagnosis.',
       'Cutaneous leishmaniasis: ulcerating skin lesion; aspirate from lesion margin (not center); rk39 antigen test available for L. donovani complex.',
       'Species identification matters for treatment (L. braziliensis requires systemic therapy); PCR on tissue is the most reliable method.'
     ],
     interpretationTitle: 'Leishmania identification guide',
     interpretationRows: [
-      ['Round 2–4 µm in macrophages, nucleus + kinetoplast on Giemsa', 'Leishmania amastigotes — positive', 'Report with specimen source and abundance; send PCR for species ID; clinical syndrome guides treatment selection'],
-      ['Similar cells without kinetoplast, GMS/PAS positive', 'Histoplasma capsulatum — not Leishmania', 'Kinetoplast presence is the decisive feature; run GMS if fungi are suspected alongside Leishmania'],
-      ['Promastigotes in culture or sand fly form', 'Leishmania spp. — genus confirmed', 'Culture on NNN medium at 22–26°C; species ID by PCR/RFLP or isoenzyme electrophoresis']
+      ['Round 2-4 um in macrophages, nucleus + kinetoplast on Giemsa', 'Leishmania amastigotes - positive', 'Report with specimen source and abundance; send PCR for species ID; clinical syndrome guides treatment selection'],
+      ['Similar cells without kinetoplast, GMS/PAS positive', 'Histoplasma capsulatum - not Leishmania', 'Kinetoplast presence is the decisive feature; run GMS if fungi are suspected alongside Leishmania'],
+      ['Promastigotes in culture or sand fly form', 'Leishmania spp. - genus confirmed', 'Culture on NNN medium at 22-26 degrees C; species ID by PCR/RFLP or isoenzyme electrophoresis']
     ],
     takeaways: [
-      'Amastigote (LD body): round 2–4 µm in macrophages, nucleus + bar-shaped kinetoplast at right angle = Leishmania on Giemsa.',
-      'Kinetoplast is the key differentiator from Histoplasma — Histoplasma lacks a kinetoplast on Giemsa.',
-      'Promastigotes (elongated + anterior flagellum) are the culture/insect form — not seen in tissue from patients.'
+      'Amastigote (LD body): round 2-4 um in macrophages, nucleus + bar-shaped kinetoplast at right angle = Leishmania on Giemsa.',
+      'Kinetoplast is the key differentiator from Histoplasma - Histoplasma lacks a kinetoplast on Giemsa.',
+      'Promastigotes (elongated + anterior flagellum) are the culture/insect form - not seen in tissue from patients.'
     ],
     remember: 'Two dark dots (nucleus + kinetoplast) in macrophage on Giemsa = Leishmania LD body. No kinetoplast = not Leishmania.',
     divr: {
-      detect: 'Bone marrow aspirate (visceral), skin lesion margin biopsy (cutaneous), or spleen aspirate — Giemsa stain; NNN culture at 22–26°C',
-      identify: ['Amastigote (LD body): round 2–4 µm, intracellular in macrophages or Kupffer cells', 'Two dark dots per cell: round nucleus + bar-shaped kinetoplast at roughly right angle', 'No external flagellum in tissue forms'],
+      detect: 'Bone marrow aspirate (visceral), skin lesion margin biopsy (cutaneous), or spleen aspirate - Giemsa stain; NNN culture at 22-26 degrees C',
+      identify: ['Amastigote (LD body): round 2-4 um, intracellular in macrophages or Kupffer cells', 'Two dark dots per cell: round nucleus + bar-shaped kinetoplast at roughly right angle', 'No external flagellum in tissue forms'],
       verify: 'Kinetoplast on Giemsa distinguishes from Histoplasma (no kinetoplast; GMS/PAS positive fungi); PCR for species-level ID',
       report: 'Report as Leishmania amastigotes with specimen source; do not report from single artifact-like structure; confirm per SOP; clinical correlation required'
     }
@@ -3312,58 +3312,58 @@ export const atlasPages: AtlasPage[] = [
     slug: 'ascaris-lumbricoides-egg',
     title: 'Ascaris lumbricoides: Mammillated and Decorticate Eggs',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg — the most recognizable helminth egg in clinical parasitology — and the decorticate variant that has lost its outer coat.',
+    summary: 'Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg - the most recognizable helminth egg in clinical parasitology - and the decorticate variant that has lost its outer coat.',
     boardTitle: 'Ascaris lumbricoides egg: fertile mammillated vs. decorticate/infertile',
-    boardNote: 'Fertile egg: oval 45–70 µm, thick bile-stained mammillated outer coat (bumpy), thick inner shell, unsegmented single cell. Decorticate: same fertile egg without mammillated coat — smooth surface, common after zinc sulfate flotation. Infertile: elongated 80–90 µm, irregular outline, disorganized granular content — hardest form to identify.',
+    boardNote: 'Fertile egg: oval 45-70 um, thick bile-stained mammillated outer coat (bumpy), thick inner shell, unsegmented single cell. Decorticate: same fertile egg without mammillated coat - smooth surface, common after zinc sulfate flotation. Infertile: elongated 80-90 um, irregular outline, disorganized granular content - hardest form to identify.',
     ariaLabel: 'Illustrated Ascaris lumbricoides fertile egg showing bile-stained mammillated bumpy outer coat and inner shell, beside a decorticate or infertile egg without outer coat',
     visualType: 'microscope-ascaris',
     tubes: [
       {
         id: 'A',
         label: 'Fertile egg',
-        name: 'Oval 45–70 µm, mammillated outer coat',
+        name: 'Oval 45-70 um, mammillated outer coat',
         colors: { slant: '#f5e8c8', butt: '#c8880a', base: '#6a3808' },
-        note: '45–70 µm. Oval. Thick bile-stained (golden-brown) mammillated outer coat — the bumpy exterior is pathognomonic. Thick inner shell. Single unsegmented cell inside. The most common and recognizable form in clinical stool. High daily egg output (up to 200,000/day) means concentration is often not necessary for heavy infections.'
+        note: '45-70 um. Oval. Thick bile-stained (golden-brown) mammillated outer coat - the bumpy exterior is pathognomonic. Thick inner shell. Single unsegmented cell inside. The most common and recognizable form in clinical stool. High daily egg output (up to 200,000/day) means concentration is often not necessary for heavy infections.'
       },
       {
         id: 'B',
         label: 'Decorticate / infertile',
         name: 'Smooth surface or irregular elongated content',
         colors: { slant: '#ece4c0', butt: '#9a7028', base: '#50280a' },
-        note: 'Decorticate: fertile egg that has lost its mammillated coat — oval, thick inner shell, smooth surface. Common after zinc sulfate flotation or mechanical processing. Infertile: more elongated (80–90 µm), irregular outline, disorganized granular content — the most difficult Ascaris egg to recognize. Finding classic mammillated eggs in the same specimen is the best confirmation for decorticate and infertile forms.'
+        note: 'Decorticate: fertile egg that has lost its mammillated coat - oval, thick inner shell, smooth surface. Common after zinc sulfate flotation or mechanical processing. Infertile: more elongated (80-90 um), irregular outline, disorganized granular content - the most difficult Ascaris egg to recognize. Finding classic mammillated eggs in the same specimen is the best confirmation for decorticate and infertile forms.'
       }
     ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
-      ['Oval, thick mammillated (bumpy) outer coat, bile-stained, 45–70 µm', 'Ascaris lumbricoides fertile egg', 'Pathognomonic — no other common intestinal helminth egg has a thick bumpy outer coat at this size'],
+      ['Oval, thick mammillated (bumpy) outer coat, bile-stained, 45-70 um', 'Ascaris lumbricoides fertile egg', 'Pathognomonic - no other common intestinal helminth egg has a thick bumpy outer coat at this size'],
       ['Oval, thick inner shell, smooth outer surface', 'Decorticate Ascaris egg', 'Coat lost during concentration; look for classic mammillated eggs in same prep for confirmation'],
       ['Elongated, irregular outline, disorganized granular content', 'Possible infertile Ascaris egg', 'Hardest form to ID alone; correlate with clinical context and presence of fertile eggs in specimen'],
-      ['Single unsegmented (non-segmented) cell', 'Ascaris fertile egg feature', 'No morula or larva — unlike hookworm (morula inside) or Enterobius (larva inside)'],
-      ['No outer coat, thick inner shell, oval outline', 'Decorticate vs. other helminth eggs', 'Decorticate Ascaris egg can resemble hookworm or other thin-shelled eggs — size (larger, 45–70 µm) helps distinguish']
+      ['Single unsegmented (non-segmented) cell', 'Ascaris fertile egg feature', 'No morula or larva - unlike hookworm (morula inside) or Enterobius (larva inside)'],
+      ['No outer coat, thick inner shell, oval outline', 'Decorticate vs. other helminth eggs', 'Decorticate Ascaris egg can resemble hookworm or other thin-shelled eggs - size (larger, 45-70 um) helps distinguish']
     ],
     trapTitle: 'Decorticate and infertile Ascaris eggs are commonly misidentified',
     trapBody: 'Decorticate eggs (lacking the mammillated coat) are common after zinc sulfate flotation and can resemble other thick-shelled eggs. Infertile eggs are elongated with disorganized content and may not be recognized as Ascaris without context. Finding classic mammillated fertile eggs in the same specimen is the best confirmation strategy.',
     trapBullets: [
-      'Ascaris is the most prevalent intestinal helminth worldwide — endemic in areas with poor sanitation and soil contamination.',
+      'Ascaris is the most prevalent intestinal helminth worldwide - endemic in areas with poor sanitation and soil contamination.',
       'High daily egg output (up to 200,000 eggs/day per female) means most infections are detected without concentration.',
-      'A. lumbricoides eggs are the largest of the common intestinal helminth eggs — use this to anchor the ID when the outer coat is absent.'
+      'A. lumbricoides eggs are the largest of the common intestinal helminth eggs - use this to anchor the ID when the outer coat is absent.'
     ],
     interpretationTitle: 'Ascaris lumbricoides egg identification guide',
     interpretationRows: [
-      ['Oval, thick mammillated outer coat, bile-stained, 45–70 µm', 'Ascaris lumbricoides fertile egg — positive', 'Report and treat; anthelmintic therapy indicated; screen household contacts in endemic settings'],
-      ['Oval, smooth outer surface, thick inner shell', 'Decorticate Ascaris egg — consistent with positive', 'Confirm by finding mammillated eggs in same prep; report as A. lumbricoides consistent with; clinical correlation required'],
+      ['Oval, thick mammillated outer coat, bile-stained, 45-70 um', 'Ascaris lumbricoides fertile egg - positive', 'Report and treat; anthelmintic therapy indicated; screen household contacts in endemic settings'],
+      ['Oval, smooth outer surface, thick inner shell', 'Decorticate Ascaris egg - consistent with positive', 'Confirm by finding mammillated eggs in same prep; report as A. lumbricoides consistent with; clinical correlation required'],
       ['Elongated, irregular, disorganized granular content', 'Possible infertile Ascaris egg', 'Do not report on single infertile egg alone; correlate with clinical context and presence of fertile eggs; confirm per lab SOP']
     ],
     takeaways: [
-      'Mammillated (bumpy) bile-stained outer coat on an oval egg = Ascaris lumbricoides fertile egg — pathognomonic.',
-      'Decorticate eggs (smooth, no outer coat) are common after concentration methods — look for classic eggs in the same prep.',
-      'Infertile eggs are elongated and irregular — difficult to ID alone; clinical context and co-detection of fertile eggs is required.'
+      'Mammillated (bumpy) bile-stained outer coat on an oval egg = Ascaris lumbricoides fertile egg - pathognomonic.',
+      'Decorticate eggs (smooth, no outer coat) are common after concentration methods - look for classic eggs in the same prep.',
+      'Infertile eggs are elongated and irregular - difficult to ID alone; clinical context and co-detection of fertile eggs is required.'
     ],
     remember: 'Bumpy bile-stained oval = Ascaris. Decorticate (smooth oval, thick shell) = common after flotation. Infertile = elongated and irregular. Largest common intestinal helminth egg.',
     divr: {
-      detect: 'Fresh or fixed stool — saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation (may decorticate eggs)',
-      identify: ['Fertile: oval 45–70 µm, thick bile-stained mammillated (bumpy) outer coat, single unsegmented cell inside', 'Decorticate: oval, smooth surface, thick inner shell — coat lost during concentration', 'Infertile: elongated 80–90 µm, irregular outline, disorganized granular content'],
-      verify: 'Mammillated coat on fertile egg is pathognomonic; confirm decorticate/infertile by finding classic fertile eggs in same specimen; size (45–70 µm, largest common helminth egg) supports ID when coat is absent',
+      detect: 'Fresh or fixed stool - saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation (may decorticate eggs)',
+      identify: ['Fertile: oval 45-70 um, thick bile-stained mammillated (bumpy) outer coat, single unsegmented cell inside', 'Decorticate: oval, smooth surface, thick inner shell - coat lost during concentration', 'Infertile: elongated 80-90 um, irregular outline, disorganized granular content'],
+      verify: 'Mammillated coat on fertile egg is pathognomonic; confirm decorticate/infertile by finding classic fertile eggs in same specimen; size (45-70 um, largest common helminth egg) supports ID when coat is absent',
       report: 'Report as Ascaris lumbricoides eggs detected; note egg type if relevant; clinical correlation required; confirm per lab SOP'
     }
   },
@@ -3373,55 +3373,55 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Trichostrongylus spp. eggs: larger, more elongated, and with at least one tapered end compared to hookworm. Advanced morula when passed. A size-matched hookworm mimic that requires careful measurement to distinguish.',
     boardTitle: 'Trichostrongylus egg vs. hookworm comparator',
-    boardNote: 'Trichostrongylus: elongated oval, 73–95 × 40–50 µm, asymmetric, one or both ends tapered. Advanced morula (~16 cells) when freshly passed. Hookworm (comparator): rounder oval, 55–75 µm, symmetric blunt ends, early morula (4–8 cells). Both have thin shells and a clear space.',
+    boardNote: 'Trichostrongylus: elongated oval, 73-95 x 40-50 um, asymmetric, one or both ends tapered. Advanced morula (~16 cells) when freshly passed. Hookworm (comparator): rounder oval, 55-75 um, symmetric blunt ends, early morula (4-8 cells). Both have thin shells and a clear space.',
     ariaLabel: 'Illustrated Trichostrongylus egg showing elongated oval with tapered end and advanced morula, compared to rounder hookworm egg with early morula',
     visualType: 'microscope-trichostrongylus',
     tubes: [
       {
         id: 'A',
         label: 'Trichostrongylus',
-        name: 'Elongated oval 73–95 µm, tapered end, advanced morula',
+        name: 'Elongated oval 73-95 um, tapered end, advanced morula',
         colors: { slant: '#eae8dc', butt: '#907858', base: '#3a2818' },
-        note: '73–95 × 40–50 µm. More elongated than hookworm. One or both ends tapered or pointed. Advanced morula (often 16+ cells, or near larval stage) when freshly passed — more developed than hookworm at time of passing. Thin shell with clear space between shell and embryo. A zoonotic infection from soil or plant contamination in regions with sheep, goats, and other grazing animals (Asia, Middle East, Africa, rural South America).'
+        note: '73-95 x 40-50 um. More elongated than hookworm. One or both ends tapered or pointed. Advanced morula (often 16+ cells, or near larval stage) when freshly passed - more developed than hookworm at time of passing. Thin shell with clear space between shell and embryo. A zoonotic infection from soil or plant contamination in regions with sheep, goats, and other grazing animals (Asia, Middle East, Africa, rural South America).'
       },
       {
         id: 'B',
         label: 'Hookworm (comparator)',
-        name: 'Rounder oval 55–75 µm, blunt ends, early morula',
+        name: 'Rounder oval 55-75 um, blunt ends, early morula',
         colors: { slant: '#e4e0d4', butt: '#786848', base: '#302010' },
-        note: '55–75 × 35–45 µm. Rounder, symmetric oval with blunt ends at both poles. Early morula (2–8 cells) when freshly passed — less developed than Trichostrongylus at time of passing. Thin shell with clear space between shell and embryo. Differentiation from Trichostrongylus requires careful size measurement and assessment of end shape and morula cell count.'
+        note: '55-75 x 35-45 um. Rounder, symmetric oval with blunt ends at both poles. Early morula (2-8 cells) when freshly passed - less developed than Trichostrongylus at time of passing. Thin shell with clear space between shell and embryo. Differentiation from Trichostrongylus requires careful size measurement and assessment of end shape and morula cell count.'
       }
     ],
-    readoutTitle: 'Trichostrongylus vs. hookworm — key discriminators',
+    readoutTitle: 'Trichostrongylus vs. hookworm - key discriminators',
     readoutRows: [
-      ['More elongated oval, asymmetric outline', 'Trichostrongylus, not hookworm', 'Higher length-to-width ratio; one end typically more tapered — key low-power shape clue'],
-      ['73–95 µm long (larger than hookworm)', 'Trichostrongylus', 'Size overlap exists; use calibrated ocular micrometer for critical ID — key discriminator in practice'],
+      ['More elongated oval, asymmetric outline', 'Trichostrongylus, not hookworm', 'Higher length-to-width ratio; one end typically more tapered - key low-power shape clue'],
+      ['73-95 um long (larger than hookworm)', 'Trichostrongylus', 'Size overlap exists; use calibrated ocular micrometer for critical ID - key discriminator in practice'],
       ['One or both ends tapered or pointed', 'Trichostrongylus morphology', 'Hookworm ends are blunt and rounded; pointed or tapered ends increase suspicion for Trichostrongylus'],
-      ['Advanced morula when passed (16+ cells)', 'Trichostrongylus — more developed', 'Hookworm morula is at 4–8 cell stage at time of passing; Trichostrongylus is further along in embryonation'],
-      ['Thin shell, clear space between shell and embryo', 'Feature shared with hookworm — not discriminating', 'Both Trichostrongylus and hookworm share thin shell and clear space; use size, shape, and morula stage for ID']
+      ['Advanced morula when passed (16+ cells)', 'Trichostrongylus - more developed', 'Hookworm morula is at 4-8 cell stage at time of passing; Trichostrongylus is further along in embryonation'],
+      ['Thin shell, clear space between shell and embryo', 'Feature shared with hookworm - not discriminating', 'Both Trichostrongylus and hookworm share thin shell and clear space; use size, shape, and morula stage for ID']
     ],
     trapTitle: 'Trichostrongylus eggs are frequently misreported as hookworm',
     trapBody: 'Trichostrongylus eggs are found in routine stool specimens and commonly misidentified as hookworm due to similar morphology. Clinical consequences are minor as both respond to similar anthelmintics, but accurate identification matters in epidemiologic surveys and for distinguishing from other elongated eggs such as Capillaria philippinensis.',
     trapBullets: [
-      'Geographic and exposure context: Trichostrongylus is more common in Asia, Middle East, and rural regions with grazing animals — zoonotic transmission.',
-      'Capillaria philippinensis is another elongated egg mimic (~45 µm, smaller) with less prominent polar plugs; associated with freshwater fish ingestion in endemic areas.',
+      'Geographic and exposure context: Trichostrongylus is more common in Asia, Middle East, and rural regions with grazing animals - zoonotic transmission.',
+      'Capillaria philippinensis is another elongated egg mimic (~45 um, smaller) with less prominent polar plugs; associated with freshwater fish ingestion in endemic areas.',
       'Concentration methods (formalin-ethyl acetate sedimentation, zinc sulfate flotation) are both effective; larval culture on charcoal can provide species-level ID.'
     ],
     interpretationTitle: 'Trichostrongylus egg identification guide',
     interpretationRows: [
-      ['Elongated oval, tapered end(s), 73–95 µm, advanced morula', 'Trichostrongylus spp. — positive', 'Report with size measurement; clinical correlation required; anthelmintic treatment as clinically indicated'],
-      ['Rounder oval, blunt ends, 55–75 µm, early morula', 'Hookworm (Ancylostoma or Necator)', 'Differentiate by size and end shape; both respond to similar anthelmintics; report with clinical context'],
-      ['Elongated egg, uncertain species', 'Trichostrongylus vs. hookworm — equivocal', 'Measure carefully; report with morphologic description; larval culture or molecular testing for definitive species ID; confirm per lab SOP']
+      ['Elongated oval, tapered end(s), 73-95 um, advanced morula', 'Trichostrongylus spp. - positive', 'Report with size measurement; clinical correlation required; anthelmintic treatment as clinically indicated'],
+      ['Rounder oval, blunt ends, 55-75 um, early morula', 'Hookworm (Ancylostoma or Necator)', 'Differentiate by size and end shape; both respond to similar anthelmintics; report with clinical context'],
+      ['Elongated egg, uncertain species', 'Trichostrongylus vs. hookworm - equivocal', 'Measure carefully; report with morphologic description; larval culture or molecular testing for definitive species ID; confirm per lab SOP']
     ],
     takeaways: [
       'Elongated oval + tapered end(s) + advanced morula = Trichostrongylus over hookworm.',
-      'Size (73–95 µm vs. 55–75 µm for hookworm) is the most reliable discriminating feature — use a calibrated ocular micrometer.',
+      'Size (73-95 um vs. 55-75 um for hookworm) is the most reliable discriminating feature - use a calibrated ocular micrometer.',
       'Both species respond to similar anthelmintic treatment; precise species ID is primarily of epidemiologic importance.'
     ],
     remember: 'Elongated + pointed end(s) + advanced morula = Trichostrongylus. Rounder + blunt ends + small morula = hookworm. Measure both.',
     divr: {
-      detect: 'Fresh stool — saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation; larval culture on charcoal for species confirmation',
-      identify: ['Elongated oval, 73–95 µm — larger and more elongated than hookworm (55–75 µm)', 'One or both ends tapered or pointed; advanced morula when freshly passed (vs. hookworm: early morula, blunt ends)', 'Thin shell with clear space between shell and embryo'],
+      detect: 'Fresh stool - saline or iodine wet prep; formalin-ethyl acetate sedimentation; zinc sulfate flotation; larval culture on charcoal for species confirmation',
+      identify: ['Elongated oval, 73-95 um - larger and more elongated than hookworm (55-75 um)', 'One or both ends tapered or pointed; advanced morula when freshly passed (vs. hookworm: early morula, blunt ends)', 'Thin shell with clear space between shell and embryo'],
       verify: 'Calibrated ocular micrometer measurement is the most reliable tool; geographic exposure (grazing animals) supports Trichostrongylus; larval culture for definitive species ID',
       report: 'Report as Trichostrongylus spp. eggs detected with morphologic description and size; clinical correlation required; confirm per lab SOP'
     }
@@ -3432,7 +3432,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Trichinella spiralis diagnosis: the coiled larva encapsulated in a nurse cell within striated muscle, seen on compressed muscle squash preparation and on H&E tissue section.',
     boardTitle: 'Trichinella spiralis: nurse cell capsule in striated muscle',
-    boardNote: 'Muscle squash: coiled larva visible within an oval nurse cell capsule in the muscle fiber. H&E section: spindle-shaped fibrous capsule with coiled larva, surrounded by eosinophilic inflammatory infiltrate. Deltoid muscle is the preferred biopsy site. Not detected by routine stool O&P — Trichinella does not produce eggs passed in stool.',
+    boardNote: 'Muscle squash: coiled larva visible within an oval nurse cell capsule in the muscle fiber. H&E section: spindle-shaped fibrous capsule with coiled larva, surrounded by eosinophilic inflammatory infiltrate. Deltoid muscle is the preferred biopsy site. Not detected by routine stool O&P - Trichinella does not produce eggs passed in stool.',
     ariaLabel: 'Illustrated Trichinella spiralis coiled larva in oval nurse cell capsule within striated muscle, plus H&E section showing inflammatory capsule',
     visualType: 'microscope-trichinella',
     tubes: [
@@ -3441,88 +3441,88 @@ export const atlasPages: AtlasPage[] = [
         label: 'Muscle squash',
         name: 'Coiled larva in oval nurse cell capsule',
         colors: { slant: '#f8eed8', butt: '#c09050', base: '#503010' },
-        note: 'Compressed muscle squash (between two slides): oval to spindle nurse cell capsule containing a tightly coiled (1–2 turns) larva. Larva is bright curved worm within the clear capsule space. Examine fresh or after HCl-pepsin digestion. The capsule forms from the host\'s modified muscle fiber cells. Deltoid muscle is the preferred biopsy site — taken from the most tender area.'
+        note: 'Compressed muscle squash (between two slides): oval to spindle nurse cell capsule containing a tightly coiled (1-2 turns) larva. Larva is bright curved worm within the clear capsule space. Examine fresh or after HCl-pepsin digestion. The capsule forms from the host\'s modified muscle fiber cells. Deltoid muscle is the preferred biopsy site - taken from the most tender area.'
       },
       {
         id: 'B',
         label: 'H&E section',
         name: 'Spindle capsule, eosinophilic infiltrate',
         colors: { slant: '#f5e0e8', butt: '#b87898', base: '#582838' },
-        note: 'H&E tissue section: spindle-shaped fibrous capsule (pale pink) surrounding a coiled larva in cross or longitudinal profile. Eosinophilic inflammatory infiltrate during acute infection; fibrosis and eventual calcification in chronic/resolved infection. Adult worms are in the small intestinal mucosa during weeks 1–2 of infection — rarely recovered in tissue biopsy. Calcified cysts may be incidentally noted on X-ray in old resolved infections.'
+        note: 'H&E tissue section: spindle-shaped fibrous capsule (pale pink) surrounding a coiled larva in cross or longitudinal profile. Eosinophilic inflammatory infiltrate during acute infection; fibrosis and eventual calcification in chronic/resolved infection. Adult worms are in the small intestinal mucosa during weeks 1-2 of infection - rarely recovered in tissue biopsy. Calcified cysts may be incidentally noted on X-ray in old resolved infections.'
       }
     ],
     readoutTitle: 'What to look for in muscle biopsy',
     readoutRows: [
-      ['Oval nurse cell capsule with coiled larva in muscle fiber', 'T. spiralis — diagnostic', 'Muscle squash is most sensitive; HCl-pepsin digestion releases larvae for identification and larval burden count (LPG)'],
-      ['Spindle fibrous capsule, coiled larva, eosinophilic infiltrate', 'T. spiralis on H&E', 'Dense inflammatory cuff in early/heavy infection; fibrosis develops over weeks; calcification begins ~6–18 months'],
-      ['Coiled larva 1 mm × 36 µm', 'Trichinella larva dimensions', 'Count larvae per gram (LPG) in digested muscle — guides severity assessment; >200 LPG = severe infection'],
-      ['No eggs or larvae in stool', 'Trichinella — not a stool-detectable infection', 'Stool O&P is NOT appropriate for trichinosis diagnosis; muscle biopsy or serology required'],
+      ['Oval nurse cell capsule with coiled larva in muscle fiber', 'T. spiralis - diagnostic', 'Muscle squash is most sensitive; HCl-pepsin digestion releases larvae for identification and larval burden count (LPG)'],
+      ['Spindle fibrous capsule, coiled larva, eosinophilic infiltrate', 'T. spiralis on H&E', 'Dense inflammatory cuff in early/heavy infection; fibrosis develops over weeks; calcification begins ~6-18 months'],
+      ['Coiled larva 1 mm x 36 um', 'Trichinella larva dimensions', 'Count larvae per gram (LPG) in digested muscle - guides severity assessment; >200 LPG = severe infection'],
+      ['No eggs or larvae in stool', 'Trichinella - not a stool-detectable infection', 'Stool O&P is NOT appropriate for trichinosis diagnosis; muscle biopsy or serology required'],
       ['Calcified spindle capsule, no viable larva', 'Old/resolved T. spiralis infection', 'Remote infection; larvae may remain viable for years before calcification; not necessarily indicative of active disease']
     ],
-    trapTitle: 'Trichinella is not detected by routine stool O&P — a common ordering error',
-    trapBody: 'Ordering stool O&P for suspected trichinosis is a common error. Trichinella spiralis does not produce eggs passed in stool. Diagnosis requires muscle biopsy (squash or H&E section) or serology (ELISA for anti-Trichinella IgG). Serology becomes positive ~3–5 weeks post-infection.',
+    trapTitle: 'Trichinella is not detected by routine stool O&P - a common ordering error',
+    trapBody: 'Ordering stool O&P for suspected trichinosis is a common error. Trichinella spiralis does not produce eggs passed in stool. Diagnosis requires muscle biopsy (squash or H&E section) or serology (ELISA for anti-Trichinella IgG). Serology becomes positive ~3-5 weeks post-infection.',
     trapBullets: [
-      'Undercooked pork, bear, or walrus meat is the most common exposure — cooking to 160°F (71°C) destroys all larvae.',
+      'Undercooked pork, bear, or walrus meat is the most common exposure - cooking to 160 degrees F (71 degrees C) destroys all larvae.',
       'Clinical triad: periorbital edema + myalgia + eosinophilia after ingestion of suspect meat strongly supports trichinosis.',
       'Preferred biopsy site is the deltoid muscle from the most tender area; examine both as squash prep and H&E section.'
     ],
     interpretationTitle: 'Trichinella spiralis diagnosis guide',
     interpretationRows: [
-      ['Coiled larva in oval nurse cell capsule in muscle fiber', 'T. spiralis — positive', 'Confirm with serology; report larval burden (LPG); anthelmintic + corticosteroids as clinically indicated'],
-      ['Positive anti-Trichinella IgG ELISA', 'Probable T. spiralis infection', 'Serology is most practical; muscle biopsy if high suspicion and serology negative; serology may be negative in first 3–5 weeks'],
+      ['Coiled larva in oval nurse cell capsule in muscle fiber', 'T. spiralis - positive', 'Confirm with serology; report larval burden (LPG); anthelmintic + corticosteroids as clinically indicated'],
+      ['Positive anti-Trichinella IgG ELISA', 'Probable T. spiralis infection', 'Serology is most practical; muscle biopsy if high suspicion and serology negative; serology may be negative in first 3-5 weeks'],
       ['Calcified spindle capsule, no viable larva', 'Old/resolved T. spiralis infection', 'Remote infection; clinical context required; not necessarily indicative of active disease requiring treatment']
     ],
     takeaways: [
-      'Coiled larva in oval nurse cell capsule within striated muscle = Trichinella spiralis — diagnostic.',
-      'Routine stool O&P is NOT appropriate — Trichinella does not pass eggs in stool; use muscle biopsy or serology.',
+      'Coiled larva in oval nurse cell capsule within striated muscle = Trichinella spiralis - diagnostic.',
+      'Routine stool O&P is NOT appropriate - Trichinella does not pass eggs in stool; use muscle biopsy or serology.',
       'Clinical context: periorbital edema + myalgia + eosinophilia + undercooked meat ingestion = trichinosis until proven otherwise.'
     ],
     remember: 'Coiled worm in oval muscle capsule = Trichinella. Not in stool. Muscle squash + serology. Deltoid biopsy.',
     divr: {
-      detect: 'Deltoid muscle biopsy — compressed squash prep (fresh or HCl-pepsin digestion) or H&E section; serology (anti-Trichinella IgG ELISA) is most practical after 3–5 weeks',
-      identify: ['Oval to spindle-shaped nurse cell capsule within striated muscle fiber', 'Coiled larva (1–2 turns) inside capsule; ~1 mm × 36 µm when uncoiled', 'Eosinophilic inflammatory infiltrate and fibrous capsule on H&E'],
+      detect: 'Deltoid muscle biopsy - compressed squash prep (fresh or HCl-pepsin digestion) or H&E section; serology (anti-Trichinella IgG ELISA) is most practical after 3-5 weeks',
+      identify: ['Oval to spindle-shaped nurse cell capsule within striated muscle fiber', 'Coiled larva (1-2 turns) inside capsule; ~1 mm x 36 um when uncoiled', 'Eosinophilic inflammatory infiltrate and fibrous capsule on H&E'],
       verify: 'HCl-pepsin digestion releases free larvae for count (LPG); serology confirms infection in most cases; muscle biopsy if serology negative with high clinical suspicion',
       report: 'Report as Trichinella spiralis larvae identified with specimen source and larval burden (LPG); clinical correlation required'
     }
   },
   {
     slug: 'microfilariae-blood-smear',
-    title: 'Microfilariae: Sheathed vs. Unsheathed — Blood Smear',
+    title: 'Microfilariae: Sheathed vs. Unsheathed - Blood Smear',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for distinguishing microfilariae in thick blood smears: sheath presence and nuclei in the tail differentiate Wuchereria bancrofti (sheathed, no tail nuclei) from Loa loa (sheathed, nuclei to tail tip). Brugia malayi and Onchocerca volvulus noted for comparison.',
-    boardTitle: 'Microfilaria ID: sheath + tail nuclei — the two critical features',
-    boardNote: 'W. bancrofti: sheathed (sheath stains faintly or not on Giemsa), no nuclei in tail tip. Loa loa: sheathed (pink-red sheath on Giemsa), nuclei extend continuously to tail tip. Brugia malayi: sheathed (pink-red sheath), two discrete nuclei at tail tip separated by a clear space. Onchocerca volvulus: unsheathed, no tail nuclei — in skin snip, not blood.',
+    boardTitle: 'Microfilaria ID: sheath + tail nuclei - the two critical features',
+    boardNote: 'W. bancrofti: sheathed (sheath stains faintly or not on Giemsa), no nuclei in tail tip. Loa loa: sheathed (pink-red sheath on Giemsa), nuclei extend continuously to tail tip. Brugia malayi: sheathed (pink-red sheath), two discrete nuclei at tail tip separated by a clear space. Onchocerca volvulus: unsheathed, no tail nuclei - in skin snip, not blood.',
     ariaLabel: 'Illustrated microfilaria of Wuchereria bancrofti in blood smear showing sheath and clean tail, compared to Loa loa with sheath and continuous nuclei to tail tip',
     visualType: 'microscope-microfilaria',
     tubes: [
       {
         id: 'A',
         label: 'W. bancrofti',
-        name: 'Sheathed, no tail nuclei — nocturnal periodicity',
+        name: 'Sheathed, no tail nuclei - nocturnal periodicity',
         colors: { slant: '#f8e8e0', butt: '#a87070', base: '#482018' },
-        note: '244–296 µm long. Gently curved. Sheath present but stains faintly or not on Giemsa (Delafield hematoxylin stains sheath better). Tail tapered and clean — no nuclei in distal tip. Nocturnal periodicity (peak in peripheral blood 10 pm–2 am); collect blood at night. Causes lymphedema, elephantiasis, and hydrocele in chronic infection.'
+        note: '244-296 um long. Gently curved. Sheath present but stains faintly or not on Giemsa (Delafield hematoxylin stains sheath better). Tail tapered and clean - no nuclei in distal tip. Nocturnal periodicity (peak in peripheral blood 10 pm-2 am); collect blood at night. Causes lymphedema, elephantiasis, and hydrocele in chronic infection.'
       },
       {
         id: 'B',
         label: 'Loa loa',
-        name: 'Sheathed, nuclei to tail tip — diurnal periodicity',
+        name: 'Sheathed, nuclei to tail tip - diurnal periodicity',
         colors: { slant: '#f0e8d8', butt: '#907050', base: '#402010' },
-        note: '250–300 µm long. Sheath present and stains pink-red on Giemsa. Body nuclei extend continuously all the way to the tail tip — key differentiator. Diurnal periodicity (peak 10 am–2 pm); collect blood mid-day. Transmitted by Chrysops (deer fly) in Central/West Africa. Do NOT administer DEC or ivermectin without caution in high microfilaria burden — risk of encephalopathy.'
+        note: '250-300 um long. Sheath present and stains pink-red on Giemsa. Body nuclei extend continuously all the way to the tail tip - key differentiator. Diurnal periodicity (peak 10 am-2 pm); collect blood mid-day. Transmitted by Chrysops (deer fly) in Central/West Africa. Do NOT administer DEC or ivermectin without caution in high microfilaria burden - risk of encephalopathy.'
       }
     ],
-    readoutTitle: 'Microfilaria species — key discriminators',
+    readoutTitle: 'Microfilaria species - key discriminators',
     readoutRows: [
       ['Sheathed, no nuclei in tail tip', 'W. bancrofti or B. malayi', 'Both sheathed with no nuclei at tip; W. bancrofti: smooth tapered tail; B. malayi: two discrete terminal nuclei + secondary kink in body'],
-      ['Sheathed, nuclei continuous to tail tip', 'Loa loa', 'Nuclei run uninterrupted to the very last cell at the tip — most reliable single differentiating feature'],
-      ['Sheath stains pink-red on Giemsa', 'Loa loa or Brugia malayi', 'W. bancrofti sheath stains faintly or not at all on Giemsa — pink-red sheath shifts toward Loa or Brugia'],
-      ['Unsheathed, no tail nuclei, from skin snip', 'Onchocerca volvulus', 'Skin snip (iliac crest or scapular area) incubated in saline — not blood draw; O. volvulus is absent from blood'],
+      ['Sheathed, nuclei continuous to tail tip', 'Loa loa', 'Nuclei run uninterrupted to the very last cell at the tip - most reliable single differentiating feature'],
+      ['Sheath stains pink-red on Giemsa', 'Loa loa or Brugia malayi', 'W. bancrofti sheath stains faintly or not at all on Giemsa - pink-red sheath shifts toward Loa or Brugia'],
+      ['Unsheathed, no tail nuclei, from skin snip', 'Onchocerca volvulus', 'Skin snip (iliac crest or scapular area) incubated in saline - not blood draw; O. volvulus is absent from blood'],
       ['Secondary curve/kink + two discrete terminal tail nuclei', 'Brugia malayi', 'Characteristic body kink not in W. bancrofti; two discrete tail nuclei (not continuous) with a clear space between them']
     ],
     trapTitle: 'Collecting blood at the wrong time of day is the most common reason microfilariae are missed',
-    trapBody: 'W. bancrofti and B. malayi are nocturnally periodic — draw blood at midnight. Loa loa is diurnally periodic — draw blood at noon. O. volvulus microfilariae are in skin, not blood — order skin snip, not blood draw. Knott\'s concentration (blood + 2% formalin, centrifuged) increases detection sensitivity and preserves sheath morphology.',
+    trapBody: 'W. bancrofti and B. malayi are nocturnally periodic - draw blood at midnight. Loa loa is diurnally periodic - draw blood at noon. O. volvulus microfilariae are in skin, not blood - order skin snip, not blood draw. Knott\'s concentration (blood + 2% formalin, centrifuged) increases detection sensitivity and preserves sheath morphology.',
     trapBullets: [
-      'Thick blood smear with Giemsa + Delafield hematoxylin staining is the standard method — thick smear concentrates the organisms.',
-      'Do NOT administer DEC to patients with Loa loa microfilaremia >8,000 microfilariae/mL — risk of fatal encephalopathy.',
+      'Thick blood smear with Giemsa + Delafield hematoxylin staining is the standard method - thick smear concentrates the organisms.',
+      'Do NOT administer DEC to patients with Loa loa microfilaremia >8,000 microfilariae/mL - risk of fatal encephalopathy.',
       'Antigen detection (OG4C3 for W. bancrofti) is available in some reference labs and does not require timed blood collection.'
     ],
     interpretationTitle: 'Microfilaria species identification guide',
@@ -3530,17 +3530,17 @@ export const atlasPages: AtlasPage[] = [
       ['Sheathed, no tail nuclei, nocturnal blood', 'Wuchereria bancrofti', 'Report; diethylcarbamazine (DEC) or ivermectin + albendazole per guidelines; clinical correlation required'],
       ['Sheathed, nuclei to tail tip, diurnal blood, pink sheath', 'Loa loa', 'Report; check microfilaria density before treatment; DEC and ivermectin require caution at high densities; refer to infectious disease'],
       ['Sheathed, two discrete tail nuclei, pink sheath', 'Brugia malayi or B. timori', 'Report as Brugia spp. with morphologic findings; species-level PCR available at reference labs'],
-      ['Unsheathed, no tail nuclei, skin snip', 'Onchocerca volvulus', 'Report from skin snip only; ivermectin is treatment of choice; do not administer DEC — risk of Mazzotti reaction']
+      ['Unsheathed, no tail nuclei, skin snip', 'Onchocerca volvulus', 'Report from skin snip only; ivermectin is treatment of choice; do not administer DEC - risk of Mazzotti reaction']
     ],
     takeaways: [
       'Sheath absent = Onchocerca (skin snip). Sheath + no tail nuclei = W. bancrofti or B. malayi. Sheath + nuclei to tip = Loa loa.',
-      'Sheath stain on Giemsa: faint/absent = W. bancrofti; pink-red = Loa loa or Brugia — key reagent tip.',
+      'Sheath stain on Giemsa: faint/absent = W. bancrofti; pink-red = Loa loa or Brugia - key reagent tip.',
       'Timing of blood draw is critical: W. bancrofti/Brugia = midnight; Loa loa = noon.'
     ],
     remember: 'No sheath = O. volvulus (skin snip only). Sheath + clean tail = W. bancrofti. Sheath + nuclei to tip = Loa loa. Draw blood at the right time.',
     divr: {
       detect: 'Thick blood smear (Giemsa + Delafield hematoxylin) drawn at correct time of day; Knott\'s concentration for low-density; skin snip for Onchocerca volvulus only',
-      identify: ['Sheath present or absent — first discriminating feature', 'Tail nuclei: none (W. bancrofti, Brugia, Onchocerca), continuous to tip (Loa loa), two discrete terminal (Brugia malayi)', 'Sheath staining on Giemsa: faint (W. bancrofti) vs. pink-red (Loa loa, Brugia)'],
+      identify: ['Sheath present or absent - first discriminating feature', 'Tail nuclei: none (W. bancrofti, Brugia, Onchocerca), continuous to tip (Loa loa), two discrete terminal (Brugia malayi)', 'Sheath staining on Giemsa: faint (W. bancrofti) vs. pink-red (Loa loa, Brugia)'],
       verify: 'Species confirmed by sheath, tail nuclei pattern, periodicity, and collection time; PCR for species-level ID in reference labs',
       report: 'Report as [species] microfilariae with stain used, collection time, and density estimate; clinical correlation required; confirm per lab SOP'
     }
@@ -3551,55 +3551,55 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Taenia species identification: the round radially-striated embryophore egg (morphologically identical between T. solium and T. saginata) and the gravid proglottid uterine branch count that separates the two clinically critical species.',
     boardTitle: 'Taenia egg (species indeterminate) + proglottid branch count for species ID',
-    boardNote: 'Taenia spp. egg: round, 30–45 µm, thick radially striated embryophore, inner oncosphere with 3 hooklet pairs. T. solium vs. T. saginata: identical by egg — distinguish by gravid proglottid. T. saginata: >13 lateral uterine branches per side. T. solium: 8–13 lateral branches. T. solium eggs can cause cysticercosis — species distinction has major clinical consequence.',
+    boardNote: 'Taenia spp. egg: round, 30-45 um, thick radially striated embryophore, inner oncosphere with 3 hooklet pairs. T. solium vs. T. saginata: identical by egg - distinguish by gravid proglottid. T. saginata: >13 lateral uterine branches per side. T. solium: 8-13 lateral branches. T. solium eggs can cause cysticercosis - species distinction has major clinical consequence.',
     ariaLabel: 'Illustrated Taenia spp. egg with thick radially striated embryophore and hooklets, plus gravid proglottid comparison showing many uterine branches for T. saginata versus fewer branches for T. solium',
     visualType: 'microscope-taenia-egg',
     tubes: [
       {
         id: 'A',
         label: 'Taenia egg',
-        name: 'Round 30–45 µm, radially striated embryophore',
+        name: 'Round 30-45 um, radially striated embryophore',
         colors: { slant: '#f5e8c8', butt: '#907048', base: '#3a2010' },
-        note: '30–45 µm. Nearly round. Thick outer embryophore with prominent radial striations (spoke-like pattern). Inner oncosphere: round with 3 pairs (6) of hooklets. Eggs of T. solium and T. saginata are morphologically identical. Also indistinguishable from Echinococcus granulosus eggs — clinical context is critical. When T. solium is possible, alert the clinician: cysticercosis risk to contacts who ingest eggs.'
+        note: '30-45 um. Nearly round. Thick outer embryophore with prominent radial striations (spoke-like pattern). Inner oncosphere: round with 3 pairs (6) of hooklets. Eggs of T. solium and T. saginata are morphologically identical. Also indistinguishable from Echinococcus granulosus eggs - clinical context is critical. When T. solium is possible, alert the clinician: cysticercosis risk to contacts who ingest eggs.'
       },
       {
         id: 'B',
         label: 'Gravid proglottid',
-        name: 'Uterine branches: >13 = T. saginata; 8–13 = T. solium',
+        name: 'Uterine branches: >13 = T. saginata; 8-13 = T. solium',
         colors: { slant: '#e8e0d0', butt: '#706048', base: '#302010' },
-        note: 'Gravid proglottid (excreted segment): inject with India ink through uterine pore to visualize lateral uterine branches. T. saginata: >13 lateral branches per side — dichotomously branching, thin. T. solium: 8–13 branches per side — fewer, thicker. Species distinction is critical: T. solium tapeworm carriers shed eggs that can cause cysticercosis (CNS, eye, muscle) in contacts and in the patient themselves via autoinfection.'
+        note: 'Gravid proglottid (excreted segment): inject with India ink through uterine pore to visualize lateral uterine branches. T. saginata: >13 lateral branches per side - dichotomously branching, thin. T. solium: 8-13 branches per side - fewer, thicker. Species distinction is critical: T. solium tapeworm carriers shed eggs that can cause cysticercosis (CNS, eye, muscle) in contacts and in the patient themselves via autoinfection.'
       }
     ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
-      ['Round, thick radially striated embryophore, 30–45 µm', 'Taenia spp. egg — cannot determine species by egg alone', 'Also indistinguishable from Echinococcus granulosus eggs; clinical context is essential'],
+      ['Round, thick radially striated embryophore, 30-45 um', 'Taenia spp. egg - cannot determine species by egg alone', 'Also indistinguishable from Echinococcus granulosus eggs; clinical context is essential'],
       ['Inner oncosphere with 3 hooklet pairs (6 hooklets)', 'Taenia or Echinococcus cestode egg feature', 'Hooklet pairs distinguish cestode eggs from other helminth eggs; clinical context separates Taenia from Echinococcus'],
       ['>13 lateral uterine branches per side', 'T. saginata gravid proglottid', 'India ink injection to fill uterine branches; count from uterine stem to proglottid margin; dichotomous branching pattern'],
-      ['8–13 lateral uterine branches per side', 'T. solium gravid proglottid', 'Fewer, thicker branches; immediately alert clinician — cysticercosis risk and public health implications'],
+      ['8-13 lateral uterine branches per side', 'T. solium gravid proglottid', 'Fewer, thicker branches; immediately alert clinician - cysticercosis risk and public health implications'],
       ['Scolex: 4 suckers + rostellum with hooks', 'T. solium scolex ("armed")', 'T. saginata scolex: 4 suckers, no rostellum ("unarmed"); rostellum with hooks confirms T. solium if scolex recovered']
     ],
     trapTitle: 'T. solium eggs in environment pose cysticercosis risk to contacts and to the patient',
-    trapBody: 'T. solium tapeworm carriers shed eggs that can be ingested by contacts (and via autoinfection by the carrier), causing cysticercosis — larval cysts in brain (neurocysticercosis), eye, or other tissues. Neurocysticercosis is the most common cause of adult-onset seizures in many endemic regions. When T. solium is identified or suspected, notify the clinician immediately.',
+    trapBody: 'T. solium tapeworm carriers shed eggs that can be ingested by contacts (and via autoinfection by the carrier), causing cysticercosis - larval cysts in brain (neurocysticercosis), eye, or other tissues. Neurocysticercosis is the most common cause of adult-onset seizures in many endemic regions. When T. solium is identified or suspected, notify the clinician immediately.',
     trapBullets: [
-      'Taenia eggs in stool are infectious and environmentally stable — handle with appropriate precautions.',
-      'T. saginata causes only intestinal infection (taeniasis); T. solium causes both taeniasis and cysticercosis — the distinction is life-critical.',
+      'Taenia eggs in stool are infectious and environmentally stable - handle with appropriate precautions.',
+      'T. saginata causes only intestinal infection (taeniasis); T. solium causes both taeniasis and cysticercosis - the distinction is life-critical.',
       'India ink injection: 28-gauge needle at uterine pore end of proglottid; inject slowly; clear in glycerol before counting branches.'
     ],
     interpretationTitle: 'Taenia species identification guide',
     interpretationRows: [
-      ['Taenia eggs in stool, no proglottid available', 'Taenia spp. — species indeterminate', 'Report as Taenia spp. eggs; alert clinician to T. solium possibility; request proglottid or scolex for species ID'],
+      ['Taenia eggs in stool, no proglottid available', 'Taenia spp. - species indeterminate', 'Report as Taenia spp. eggs; alert clinician to T. solium possibility; request proglottid or scolex for species ID'],
       ['Proglottid: >13 lateral uterine branches', 'Taenia saginata', 'Report as T. saginata; praziquantel or niclosamide; lower public health concern than T. solium'],
-      ['Proglottid: 8–13 lateral uterine branches', 'Taenia solium', 'Report as T. solium; urgent clinician notification; praziquantel; follow local public health protocols for cysticercosis risk']
+      ['Proglottid: 8-13 lateral uterine branches', 'Taenia solium', 'Report as T. solium; urgent clinician notification; praziquantel; follow local public health protocols for cysticercosis risk']
     ],
     takeaways: [
-      'Taenia spp. egg: round, thick radially striated — species cannot be determined from the egg alone.',
-      'Species determination requires gravid proglottid India ink branch count: >13 = T. saginata; 8–13 = T. solium.',
-      'T. solium identification is a critical alert — immediate clinician communication for cysticercosis risk assessment.'
+      'Taenia spp. egg: round, thick radially striated - species cannot be determined from the egg alone.',
+      'Species determination requires gravid proglottid India ink branch count: >13 = T. saginata; 8-13 = T. solium.',
+      'T. solium identification is a critical alert - immediate clinician communication for cysticercosis risk assessment.'
     ],
-    remember: 'Taenia egg = species indeterminate. Proglottid decides: >13 branches = T. saginata (beef). 8–13 branches = T. solium (pork, cysticercosis risk).',
+    remember: 'Taenia egg = species indeterminate. Proglottid decides: >13 branches = T. saginata (beef). 8-13 branches = T. solium (pork, cysticercosis risk).',
     divr: {
       detect: 'Stool O&P (saline or iodine wet prep; formalin-ethyl acetate concentration); proglottid segments often found grossly in stool or on perianal skin',
-      identify: ['Round egg, 30–45 µm, thick radially striated embryophore, 3 hooklet pairs inside — species indeterminate by egg', 'Gravid proglottid India ink branch count: >13 = T. saginata; 8–13 = T. solium', 'Scolex with rostellum + hooks = T. solium ("armed"); no rostellum = T. saginata ("unarmed")'],
+      identify: ['Round egg, 30-45 um, thick radially striated embryophore, 3 hooklet pairs inside - species indeterminate by egg', 'Gravid proglottid India ink branch count: >13 = T. saginata; 8-13 = T. solium', 'Scolex with rostellum + hooks = T. solium ("armed"); no rostellum = T. saginata ("unarmed")'],
       verify: 'India ink proglottid branch count is the standard method; PCR for species-level confirmation; scolex examination if recovered',
       report: 'Report as Taenia spp. eggs (species indeterminate) if only eggs present; report species if proglottid confirms; clinical correlation required'
     }
@@ -3610,55 +3610,55 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for lung and liver trematode eggs: Paragonimus westermani (large, golden-brown, operculated with shouldered rim) found in sputum or stool, and Clonorchis sinensis (tiny flask-shaped, operculated with prominent shoulders and abopercular knob) found in stool.',
     boardTitle: 'Trematode eggs: Paragonimus (large, shouldered) vs. Clonorchis (tiny, vase-shaped)',
-    boardNote: 'Paragonimus westermani: 80–120 × 45–60 µm — large, ovoid, golden-brown, shouldered opercular rim, thickened abopercular shell. In sputum (rust-colored) or stool. Clonorchis sinensis: 28–34 × 12–19 µm — very small, flask-shaped, yellow-brown, prominent opercular shoulders (inner ridge at opercular rim), small abopercular knob, embryonated when passed. In stool.',
+    boardNote: 'Paragonimus westermani: 80-120 x 45-60 um - large, ovoid, golden-brown, shouldered opercular rim, thickened abopercular shell. In sputum (rust-colored) or stool. Clonorchis sinensis: 28-34 x 12-19 um - very small, flask-shaped, yellow-brown, prominent opercular shoulders (inner ridge at opercular rim), small abopercular knob, embryonated when passed. In stool.',
     ariaLabel: 'Illustrated Paragonimus westermani egg showing large oval operculated egg with shouldered opercular rim and thickened abopercular wall, beside tiny Clonorchis sinensis flask-shaped egg with opercular shoulders',
     visualType: 'microscope-paragonimus',
     tubes: [
       {
         id: 'A',
         label: 'Paragonimus westermani',
-        name: 'Large 80–120 µm, shouldered operculum, thickened abopercular shell',
+        name: 'Large 80-120 um, shouldered operculum, thickened abopercular shell',
         colors: { slant: '#f0e4c0', butt: '#b89050', base: '#5a3010' },
-        note: '80–120 × 45–60 µm. Large, broadly ovoid, golden-brown. Shouldered operculum — the egg wall thickens and forms a rim (shoulder) where the operculum meets the shell; the operculum appears to sit in a groove. Abopercular shell is notably thickened. Unembryonated when passed (uniform granular content). Found in: sputum (characteristic rust-colored hemoptysis) or stool (if sputum swallowed). Lung fluke — acquired by ingestion of raw or undercooked freshwater crabs or crayfish.'
+        note: '80-120 x 45-60 um. Large, broadly ovoid, golden-brown. Shouldered operculum - the egg wall thickens and forms a rim (shoulder) where the operculum meets the shell; the operculum appears to sit in a groove. Abopercular shell is notably thickened. Unembryonated when passed (uniform granular content). Found in: sputum (characteristic rust-colored hemoptysis) or stool (if sputum swallowed). Lung fluke - acquired by ingestion of raw or undercooked freshwater crabs or crayfish.'
       },
       {
         id: 'B',
         label: 'Clonorchis sinensis',
-        name: 'Tiny 28–34 µm, flask-shaped, opercular shoulders, abopercular knob',
+        name: 'Tiny 28-34 um, flask-shaped, opercular shoulders, abopercular knob',
         colors: { slant: '#e8e0c8', butt: '#9a7838', base: '#3a2810' },
-        note: '28–34 × 12–19 µm. Very small — the smallest common trematode egg. Flask or vase-shaped (narrow at opercular end, widening toward the middle). Yellow-brown. Prominent opercular shoulders (inner ridge clearly visible at opercular rim — diagnostic). Small knob at the abopercular end. Embryonated (miracidium inside) when passed. Found in stool. Bile duct fluke — acquired from raw or undercooked freshwater fish. Opisthorchis viverrini (Southeast Asia) is morphologically identical.'
+        note: '28-34 x 12-19 um. Very small - the smallest common trematode egg. Flask or vase-shaped (narrow at opercular end, widening toward the middle). Yellow-brown. Prominent opercular shoulders (inner ridge clearly visible at opercular rim - diagnostic). Small knob at the abopercular end. Embryonated (miracidium inside) when passed. Found in stool. Bile duct fluke - acquired from raw or undercooked freshwater fish. Opisthorchis viverrini (Southeast Asia) is morphologically identical.'
       }
     ],
-    readoutTitle: 'Trematode egg differential — what to look for',
+    readoutTitle: 'Trematode egg differential - what to look for',
     readoutRows: [
-      ['Large ovoid egg, 80–120 µm, shouldered operculum, golden-brown, thickened abopercular shell', 'Paragonimus westermani', 'Largest common trematode egg in sputum; shouldered operculum + abopercular thickening = diagnostic pattern'],
-      ['Small flask-shaped egg, 28–34 µm, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Smallest common trematode egg; prominent shoulders + tiny knob at both poles; requires concentration method and high-power exam'],
-      ['Rust-colored sputum + operculated egg', 'Paragonimus — paragonimiasis', 'Rust-colored "coffee-ground" hemoptysis is characteristic; examine both sputum and stool for eggs'],
-      ['Operculated egg, 58–76 µm, no pronounced shoulder', 'Diphyllobothrium latum (cestode, not trematode)', 'D. latum: operculated, yellowish-brown, smooth rim without shoulder, small knob — rule out by size and shoulder absence'],
-      ['Very large operculated egg, 130–150 µm, no shoulder', 'Fasciola hepatica (sheep liver fluke)', 'Fasciola eggs are larger than Paragonimus and lack the shouldered opercular rim; geographic exposure to sheep pastures or watercress']
+      ['Large ovoid egg, 80-120 um, shouldered operculum, golden-brown, thickened abopercular shell', 'Paragonimus westermani', 'Largest common trematode egg in sputum; shouldered operculum + abopercular thickening = diagnostic pattern'],
+      ['Small flask-shaped egg, 28-34 um, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Smallest common trematode egg; prominent shoulders + tiny knob at both poles; requires concentration method and high-power exam'],
+      ['Rust-colored sputum + operculated egg', 'Paragonimus - paragonimiasis', 'Rust-colored "coffee-ground" hemoptysis is characteristic; examine both sputum and stool for eggs'],
+      ['Operculated egg, 58-76 um, no pronounced shoulder', 'Diphyllobothrium latum (cestode, not trematode)', 'D. latum: operculated, yellowish-brown, smooth rim without shoulder, small knob - rule out by size and shoulder absence'],
+      ['Very large operculated egg, 130-150 um, no shoulder', 'Fasciola hepatica (sheep liver fluke)', 'Fasciola eggs are larger than Paragonimus and lack the shouldered opercular rim; geographic exposure to sheep pastures or watercress']
     ],
     trapTitle: 'Paragonimus eggs confused with D. latum; Clonorchis eggs missed due to their tiny size',
-    trapBody: 'Paragonimus eggs in sputum may be overlooked or confused with Diphyllobothrium latum (fish tapeworm) — D. latum is operculated but lacks the shouldered rim and is a cestode, not a trematode. Clonorchis eggs are the smallest common trematode egg and require careful concentration (formalin-ethyl acetate sedimentation) and high-power examination.',
+    trapBody: 'Paragonimus eggs in sputum may be overlooked or confused with Diphyllobothrium latum (fish tapeworm) - D. latum is operculated but lacks the shouldered rim and is a cestode, not a trematode. Clonorchis eggs are the smallest common trematode egg and require careful concentration (formalin-ethyl acetate sedimentation) and high-power examination.',
     trapBullets: [
-      'Always examine sputum AND stool for Paragonimus — sputum may be positive when stool concentration is negative.',
-      'Fasciola hepatica: 130–150 × 65–90 µm — larger than Paragonimus, lacks shouldered opercular rim; geographic exposure to sheep, watercress, or freshwater vegetation.',
-      'Clonorchis/Opisthorchis geography: C. sinensis (East Asia, China, Korea); O. viverrini (Southeast Asia, Thailand, Laos) — morphologically indistinguishable.'
+      'Always examine sputum AND stool for Paragonimus - sputum may be positive when stool concentration is negative.',
+      'Fasciola hepatica: 130-150 x 65-90 um - larger than Paragonimus, lacks shouldered opercular rim; geographic exposure to sheep, watercress, or freshwater vegetation.',
+      'Clonorchis/Opisthorchis geography: C. sinensis (East Asia, China, Korea); O. viverrini (Southeast Asia, Thailand, Laos) - morphologically indistinguishable.'
     ],
     interpretationTitle: 'Trematode egg identification guide',
     interpretationRows: [
-      ['Large ovoid 80–120 µm, shouldered opercular rim, abopercular thickening', 'Paragonimus westermani — positive', 'Report with specimen source (sputum or stool); praziquantel treatment; clinical correlation and imaging recommended'],
-      ['Small flask-shaped 28–34 µm, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Report with geographic context; praziquantel treatment; liver function tests and biliary imaging recommended'],
-      ['Operculated egg not matching above patterns', 'Trematode egg — consult reference table', 'Measure carefully; consult species-specific size table; consider Fasciola (larger, no shoulder), D. latum (no shoulder, cestode)']
+      ['Large ovoid 80-120 um, shouldered opercular rim, abopercular thickening', 'Paragonimus westermani - positive', 'Report with specimen source (sputum or stool); praziquantel treatment; clinical correlation and imaging recommended'],
+      ['Small flask-shaped 28-34 um, prominent opercular shoulders, abopercular knob', 'Clonorchis sinensis or Opisthorchis spp.', 'Report with geographic context; praziquantel treatment; liver function tests and biliary imaging recommended'],
+      ['Operculated egg not matching above patterns', 'Trematode egg - consult reference table', 'Measure carefully; consult species-specific size table; consider Fasciola (larger, no shoulder), D. latum (no shoulder, cestode)']
     ],
     takeaways: [
-      'Paragonimus: large 80–120 µm, golden-brown, shouldered opercular rim + thickened abopercular shell — in sputum or stool.',
-      'Clonorchis: tiny 28–34 µm, flask-shaped, prominent opercular shoulders + abopercular knob — smallest common trematode egg.',
-      'Fasciola (130–150 µm) is larger than Paragonimus and lacks the shouldered rim — the largest common operculated trematode egg.'
+      'Paragonimus: large 80-120 um, golden-brown, shouldered opercular rim + thickened abopercular shell - in sputum or stool.',
+      'Clonorchis: tiny 28-34 um, flask-shaped, prominent opercular shoulders + abopercular knob - smallest common trematode egg.',
+      'Fasciola (130-150 um) is larger than Paragonimus and lacks the shouldered rim - the largest common operculated trematode egg.'
     ],
     remember: 'Paragonimus: large, shouldered, in sputum or stool. Clonorchis: tiny, vase-shaped with knob. Fasciola: largest operculated egg, no shoulder.',
     divr: {
-      detect: 'Formalin-ethyl acetate sedimentation (method of choice); direct saline prep; sputum exam for Paragonimus — examine concentrated sediment from spontaneous or induced sputum',
-      identify: ['Paragonimus: 80–120 µm, ovoid, shouldered opercular rim, thickened abopercular shell, golden-brown, unembryonated', 'Clonorchis: 28–34 µm, flask-shaped, prominent opercular shoulders, abopercular knob, embryonated, yellow-brown', 'Measure with calibrated ocular micrometer — size is the primary discriminator among operculated eggs'],
+      detect: 'Formalin-ethyl acetate sedimentation (method of choice); direct saline prep; sputum exam for Paragonimus - examine concentrated sediment from spontaneous or induced sputum',
+      identify: ['Paragonimus: 80-120 um, ovoid, shouldered opercular rim, thickened abopercular shell, golden-brown, unembryonated', 'Clonorchis: 28-34 um, flask-shaped, prominent opercular shoulders, abopercular knob, embryonated, yellow-brown', 'Measure with calibrated ocular micrometer - size is the primary discriminator among operculated eggs'],
       verify: 'Calibrated micrometer; reference size table for operculated eggs; clinical and geographic context; serology available for Paragonimus (ELISA) and Fasciola',
       report: 'Report as [species] eggs with specimen source and measured size; clinical correlation required; confirm per lab SOP'
     }
@@ -3669,55 +3669,55 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Schistosoma species identification by egg spine position: S. mansoni (large, prominent lateral spine), S. haematobium (terminal spine), and S. japonicum (small, rudimentary lateral spine or none).',
     boardTitle: 'Schistosoma egg spine: lateral = S. mansoni, terminal = S. haematobium, small/absent = S. japonicum',
-    boardNote: 'S. mansoni: 140–240 × 50–80 µm — large, prominent lateral spine. In stool. S. haematobium: 110–170 × 40–70 µm — terminal spine. In urine (or stool). S. japonicum: 70–100 × 55–65 µm — smallest, nearly round, small rudimentary lateral spine (may be absent). In stool. All eggs are non-operculated, acid-fast negative, and contain a fully developed miracidium when fresh.',
+    boardNote: 'S. mansoni: 140-240 x 50-80 um - large, prominent lateral spine. In stool. S. haematobium: 110-170 x 40-70 um - terminal spine. In urine (or stool). S. japonicum: 70-100 x 55-65 um - smallest, nearly round, small rudimentary lateral spine (may be absent). In stool. All eggs are non-operculated, acid-fast negative, and contain a fully developed miracidium when fresh.',
     ariaLabel: 'Illustrated Schistosoma mansoni egg with prominent lateral spine and Schistosoma haematobium egg with terminal spine',
     visualType: 'microscope-schistosoma',
     tubes: [
       {
         id: 'A',
         label: 'S. mansoni',
-        name: 'Large lateral spine — in stool',
+        name: 'Large lateral spine - in stool',
         colors: { slant: '#f0e8d4', butt: '#9a7850', base: '#402810' },
-        note: '140–240 × 50–80 µm. Large, elongated. Prominent lateral spine at roughly the middle-to-posterior portion — this is the most recognizable feature. Contains a fully developed miracidium (embryonated). Found in stool — blood flukes in mesenteric venules of the large intestine. Endemic in Africa, Brazil, Caribbean, and Middle East. S. mansoni is also acid-fast positive in some preparations — do not confuse with AFB organisms.'
+        note: '140-240 x 50-80 um. Large, elongated. Prominent lateral spine at roughly the middle-to-posterior portion - this is the most recognizable feature. Contains a fully developed miracidium (embryonated). Found in stool - blood flukes in mesenteric venules of the large intestine. Endemic in Africa, Brazil, Caribbean, and Middle East. S. mansoni is also acid-fast positive in some preparations - do not confuse with AFB organisms.'
       },
       {
         id: 'B',
         label: 'S. haematobium',
-        name: 'Terminal spine — in urine',
+        name: 'Terminal spine - in urine',
         colors: { slant: '#e8e0d0', butt: '#887050', base: '#382010' },
-        note: '110–170 × 40–70 µm. Elongated, pointed at one end. Terminal spine at the abopercular (posterior) pole — the spine projects from the very tip. Found primarily in urine (bladder venule worms) — collect urine at noon when egg excretion peaks; may also be found in stool. Associated with urinary schistosomiasis, hematuria, and bladder cancer risk in endemic regions. Endemic in Africa and Middle East.'
+        note: '110-170 x 40-70 um. Elongated, pointed at one end. Terminal spine at the abopercular (posterior) pole - the spine projects from the very tip. Found primarily in urine (bladder venule worms) - collect urine at noon when egg excretion peaks; may also be found in stool. Associated with urinary schistosomiasis, hematuria, and bladder cancer risk in endemic regions. Endemic in Africa and Middle East.'
       }
     ],
-    readoutTitle: 'Schistosoma species — what to look for',
+    readoutTitle: 'Schistosoma species - what to look for',
     readoutRows: [
       ['Large elongated egg, prominent lateral spine, in stool', 'Schistosoma mansoni', 'Lateral spine at mid-to-posterior portion is pathognomonic for S. mansoni; examine stool with concentration method'],
       ['Elongated egg, pointed terminal spine at one pole, in urine', 'Schistosoma haematobium', 'Terminal spine at the posterior tip; collect urine at noon peak; filter 10 mL urine through membrane filter for best yield'],
-      ['Small, nearly round egg, rudimentary or no visible spine', 'Schistosoma japonicum', '70–100 × 55–65 µm — smallest and most round; small lateral spine may be absent or barely visible; found in stool; Far East distribution'],
-      ['Embryonated egg (miracidium visible inside)', 'Schistosoma egg — eggs are embryonated when passed', 'All Schistosoma eggs contain a fully developed miracidium when freshly passed — this distinguishes them from unembryonated trematode eggs'],
-      ['No operculum', 'Schistosoma feature — not an operculated trematode egg', 'Schistosoma eggs have no operculum — all other common trematode eggs (Paragonimus, Clonorchis, Fasciola, D. latum) are operculated']
+      ['Small, nearly round egg, rudimentary or no visible spine', 'Schistosoma japonicum', '70-100 x 55-65 um - smallest and most round; small lateral spine may be absent or barely visible; found in stool; Far East distribution'],
+      ['Embryonated egg (miracidium visible inside)', 'Schistosoma egg - eggs are embryonated when passed', 'All Schistosoma eggs contain a fully developed miracidium when freshly passed - this distinguishes them from unembryonated trematode eggs'],
+      ['No operculum', 'Schistosoma feature - not an operculated trematode egg', 'Schistosoma eggs have no operculum - all other common trematode eggs (Paragonimus, Clonorchis, Fasciola, D. latum) are operculated']
     ],
     trapTitle: 'S. japonicum eggs may be missed due to their small size and subtle spine',
-    trapBody: 'S. japonicum eggs are the smallest Schistosoma eggs and have a rudimentary or absent lateral spine — they may be overlooked or confused with other round organisms. Multiple stool examinations may be needed. Rectal biopsy has higher sensitivity for S. japonicum than stool exam in low-burden infections.',
+    trapBody: 'S. japonicum eggs are the smallest Schistosoma eggs and have a rudimentary or absent lateral spine - they may be overlooked or confused with other round organisms. Multiple stool examinations may be needed. Rectal biopsy has higher sensitivity for S. japonicum than stool exam in low-burden infections.',
     trapBullets: [
-      'For S. haematobium: collect urine midday (10 am–2 pm) — egg excretion peaks at noon; filter 10 mL through a 10-µm membrane filter.',
-      'Katayama fever (acute schistosomiasis): occurs 2–8 weeks post-exposure — serology is more sensitive than stool/urine at this stage.',
+      'For S. haematobium: collect urine midday (10 am-2 pm) - egg excretion peaks at noon; filter 10 mL through a 10-um membrane filter.',
+      'Katayama fever (acute schistosomiasis): occurs 2-8 weeks post-exposure - serology is more sensitive than stool/urine at this stage.',
       'Schistosoma eggs in tissue biopsy: rectal snip or bladder biopsy increases diagnostic yield for chronic low-density infections.'
     ],
     interpretationTitle: 'Schistosoma species identification guide',
     interpretationRows: [
-      ['Large egg, prominent lateral spine, in stool', 'Schistosoma mansoni — positive', 'Report; praziquantel treatment; clinical correlation; baseline CBC and liver function'],
-      ['Elongated egg, terminal spine, in urine or stool', 'Schistosoma haematobium — positive', 'Report; praziquantel; urinalysis, renal function; imaging if long-standing infection (bladder wall changes)'],
-      ['Small nearly-round egg, small/no spine, in stool', 'Schistosoma japonicum — positive', 'Report; praziquantel (higher dose than other species); hepatic ultrasound in heavy or chronic infection']
+      ['Large egg, prominent lateral spine, in stool', 'Schistosoma mansoni - positive', 'Report; praziquantel treatment; clinical correlation; baseline CBC and liver function'],
+      ['Elongated egg, terminal spine, in urine or stool', 'Schistosoma haematobium - positive', 'Report; praziquantel; urinalysis, renal function; imaging if long-standing infection (bladder wall changes)'],
+      ['Small nearly-round egg, small/no spine, in stool', 'Schistosoma japonicum - positive', 'Report; praziquantel (higher dose than other species); hepatic ultrasound in heavy or chronic infection']
     ],
     takeaways: [
       'S. mansoni: large + prominent lateral spine + in stool. S. haematobium: terminal spine + in urine. S. japonicum: smallest + nearly round + minimal spine.',
-      'No operculum on any Schistosoma egg — the absence of an operculum distinguishes Schistosoma from all common operculated trematode eggs.',
+      'No operculum on any Schistosoma egg - the absence of an operculum distinguishes Schistosoma from all common operculated trematode eggs.',
       'Collect at the right time from the right specimen: stool for S. mansoni/japonicum; urine at noon for S. haematobium.'
     ],
     remember: 'Lateral spine = S. mansoni (stool). Terminal spine = S. haematobium (urine). Small, round, tiny spine = S. japonicum (stool). No operculum on any.',
     divr: {
       detect: 'Stool O&P with concentration (S. mansoni, S. japonicum); urine filtration at midday (S. haematobium); rectal or bladder biopsy for low-burden or chronic infection',
-      identify: ['Lateral spine (mid-to-posterior): S. mansoni, 140–240 µm', 'Terminal spine: S. haematobium, 110–170 µm; in urine primarily', 'Small, nearly round, minimal spine: S. japonicum, 70–100 µm; in stool; Far East'],
+      identify: ['Lateral spine (mid-to-posterior): S. mansoni, 140-240 um', 'Terminal spine: S. haematobium, 110-170 um; in urine primarily', 'Small, nearly round, minimal spine: S. japonicum, 70-100 um; in stool; Far East'],
       verify: 'Egg morphology and spine position are usually sufficient; serology (ELISA) for early infection or low-burden; PCR at reference labs for species confirmation',
       report: 'Report as Schistosoma [species] eggs with specimen source; clinical correlation required; confirm per lab SOP'
     }
@@ -3726,57 +3726,57 @@ export const atlasPages: AtlasPage[] = [
     slug: 'hymenolepis-nana-egg',
     title: 'Hymenolepis nana and H. diminuta Eggs',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for dwarf and rat tapeworm egg identification: H. nana (thin-shelled, 6 hooklets, polar filaments in the space between oncosphere and eggshell — diagnostic) versus H. diminuta (same size range but no polar filaments, larger eggs).',
+    summary: 'Bench-card visuals for dwarf and rat tapeworm egg identification: H. nana (thin-shelled, 6 hooklets, polar filaments in the space between oncosphere and eggshell - diagnostic) versus H. diminuta (same size range but no polar filaments, larger eggs).',
     boardTitle: 'Hymenolepis eggs: polar filaments (H. nana) vs. no polar filaments (H. diminuta)',
-    boardNote: 'H. nana: 30–47 µm, round to oval, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments in the space between the oncosphere and outer shell — pathognomonic. H. diminuta: 70–85 µm, larger, round, thick shell, inner oncosphere with 3 hooklet pairs, NO polar filaments, yellowish color. H. nana is the most common tapeworm in the US (direct fecal-oral transmission, no intermediate host required).',
+    boardNote: 'H. nana: 30-47 um, round to oval, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments in the space between the oncosphere and outer shell - pathognomonic. H. diminuta: 70-85 um, larger, round, thick shell, inner oncosphere with 3 hooklet pairs, NO polar filaments, yellowish color. H. nana is the most common tapeworm in the US (direct fecal-oral transmission, no intermediate host required).',
     ariaLabel: 'Illustrated Hymenolepis nana egg showing thin shell, oncosphere with hooklets, and polar filaments, compared to Hymenolepis diminuta egg with no polar filaments',
     visualType: 'microscope-hymenolepis',
     tubes: [
       {
         id: 'A',
         label: 'H. nana',
-        name: 'Round 30–47 µm, polar filaments — diagnostic',
+        name: 'Round 30-47 um, polar filaments - diagnostic',
         colors: { slant: '#f5ecd0', butt: '#988050', base: '#383010' },
-        note: '30–47 µm. Round to broadly oval. Thin outer shell. Inner oncosphere with 3 hooklet pairs (6 hooklets). Polar filaments in the space between the oncosphere and the outer shell — 4–8 thread-like filaments running from each pole of the oncosphere — this is the pathognomonic feature that distinguishes H. nana from all other cestode eggs. Most common tapeworm in the US. Direct fecal-oral transmission — no intermediate host required. Common in children and institutions.'
+        note: '30-47 um. Round to broadly oval. Thin outer shell. Inner oncosphere with 3 hooklet pairs (6 hooklets). Polar filaments in the space between the oncosphere and the outer shell - 4-8 thread-like filaments running from each pole of the oncosphere - this is the pathognomonic feature that distinguishes H. nana from all other cestode eggs. Most common tapeworm in the US. Direct fecal-oral transmission - no intermediate host required. Common in children and institutions.'
       },
       {
         id: 'B',
         label: 'H. diminuta',
-        name: 'Larger 70–85 µm, no polar filaments, yellowish',
+        name: 'Larger 70-85 um, no polar filaments, yellowish',
         colors: { slant: '#ece4c0', butt: '#8a7038', base: '#382808' },
-        note: '70–85 µm. Larger than H. nana. Round to oval, yellow-brown outer shell. Inner oncosphere with 3 hooklet pairs. NO polar filaments between oncosphere and outer shell — clear space is empty. Transmitted via accidental ingestion of insect intermediate hosts (flour beetles, grain beetles) — rare human infection. Rats and mice are the natural definitive hosts. H. diminuta infection in humans is uncommon and typically mild.'
+        note: '70-85 um. Larger than H. nana. Round to oval, yellow-brown outer shell. Inner oncosphere with 3 hooklet pairs. NO polar filaments between oncosphere and outer shell - clear space is empty. Transmitted via accidental ingestion of insect intermediate hosts (flour beetles, grain beetles) - rare human infection. Rats and mice are the natural definitive hosts. H. diminuta infection in humans is uncommon and typically mild.'
       }
     ],
     readoutTitle: 'Hymenolepis egg differential',
     readoutRows: [
-      ['Small round egg 30–47 µm, thin shell, polar filaments in clear space', 'Hymenolepis nana', 'Polar filaments (thread-like strands between oncosphere and outer shell) are pathognomonic for H. nana'],
-      ['Larger round egg 70–85 µm, yellow-brown shell, no polar filaments', 'Hymenolepis diminuta', 'Clear space between oncosphere and outer shell is empty (no filaments); size distinguishes from H. nana'],
+      ['Small round egg 30-47 um, thin shell, polar filaments in clear space', 'Hymenolepis nana', 'Polar filaments (thread-like strands between oncosphere and outer shell) are pathognomonic for H. nana'],
+      ['Larger round egg 70-85 um, yellow-brown shell, no polar filaments', 'Hymenolepis diminuta', 'Clear space between oncosphere and outer shell is empty (no filaments); size distinguishes from H. nana'],
       ['3 hooklet pairs (6 hooklets) inside oncosphere', 'Hymenolepis or other cestode egg feature', 'Hooklets in inner oncosphere are shared with Taenia eggs; size and filament presence distinguish'],
-      ['Taenia egg (30–45 µm) vs. H. nana (30–47 µm)', 'Overlap in size — use shell and filaments', 'Taenia egg has thick radially striated embryophore; H. nana has thin shell + polar filaments; both about the same size'],
-      ['Direct fecal-oral transmission, no intermediate host', 'H. nana biology', 'H. nana is unique among tapeworms — eggs are infectious when swallowed directly; autoinfection can occur; no insect needed']
+      ['Taenia egg (30-45 um) vs. H. nana (30-47 um)', 'Overlap in size - use shell and filaments', 'Taenia egg has thick radially striated embryophore; H. nana has thin shell + polar filaments; both about the same size'],
+      ['Direct fecal-oral transmission, no intermediate host', 'H. nana biology', 'H. nana is unique among tapeworms - eggs are infectious when swallowed directly; autoinfection can occur; no insect needed']
     ],
-    trapTitle: 'H. nana polar filaments may be subtle — use good optics and concentration',
-    trapBody: 'The polar filaments of H. nana can be difficult to see on direct wet prep, especially in fixed specimens. Formalin-ethyl acetate concentration and iodine staining improve visualization. The filaments are thread-like structures running from the poles of the inner oncosphere to the outer shell — do not mistake the clear space for simply having "no filaments."',
+    trapTitle: 'H. nana polar filaments may be subtle - use good optics and concentration',
+    trapBody: 'The polar filaments of H. nana can be difficult to see on direct wet prep, especially in fixed specimens. Formalin-ethyl acetate concentration and iodine staining improve visualization. The filaments are thread-like structures running from the poles of the inner oncosphere to the outer shell - do not mistake the clear space for simply having "no filaments."',
     trapBullets: [
-      'H. nana has no intermediate host — children can have large worm burdens from autoinfection; treat all household contacts in institutions.',
-      'H. diminuta requires an insect intermediate host (grain beetle) — human infections are rare and typically self-limited.',
-      'Niclosamide or praziquantel are both effective for H. nana; repeat stool exam 3–4 weeks post-treatment to confirm clearance.'
+      'H. nana has no intermediate host - children can have large worm burdens from autoinfection; treat all household contacts in institutions.',
+      'H. diminuta requires an insect intermediate host (grain beetle) - human infections are rare and typically self-limited.',
+      'Niclosamide or praziquantel are both effective for H. nana; repeat stool exam 3-4 weeks post-treatment to confirm clearance.'
     ],
     interpretationTitle: 'Hymenolepis species identification guide',
     interpretationRows: [
-      ['Small round 30–47 µm, thin shell, polar filaments', 'Hymenolepis nana — positive', 'Report; praziquantel; treat household contacts and institutional contacts; repeat stool exam post-treatment'],
-      ['Larger round 70–85 µm, yellow-brown shell, no filaments', 'Hymenolepis diminuta — positive', 'Report; praziquantel; inquire about grain beetle exposure; typically mild infection'],
-      ['Round cestode egg, filaments or no filaments uncertain', 'Hymenolepis spp. — needs clarification', 'Measure carefully; use concentration and iodine stain to look for filaments; consult reference material; report with description']
+      ['Small round 30-47 um, thin shell, polar filaments', 'Hymenolepis nana - positive', 'Report; praziquantel; treat household contacts and institutional contacts; repeat stool exam post-treatment'],
+      ['Larger round 70-85 um, yellow-brown shell, no filaments', 'Hymenolepis diminuta - positive', 'Report; praziquantel; inquire about grain beetle exposure; typically mild infection'],
+      ['Round cestode egg, filaments or no filaments uncertain', 'Hymenolepis spp. - needs clarification', 'Measure carefully; use concentration and iodine stain to look for filaments; consult reference material; report with description']
     ],
     takeaways: [
-      'H. nana: small 30–47 µm, thin shell, polar filaments between oncosphere and outer shell — pathognomonic.',
-      'H. diminuta: larger 70–85 µm, yellow-brown shell, NO polar filaments — clear space between oncosphere and shell is empty.',
-      'H. nana is the most common US tapeworm — direct fecal-oral transmission, no insect needed; H. diminuta requires a beetle intermediate host.'
+      'H. nana: small 30-47 um, thin shell, polar filaments between oncosphere and outer shell - pathognomonic.',
+      'H. diminuta: larger 70-85 um, yellow-brown shell, NO polar filaments - clear space between oncosphere and shell is empty.',
+      'H. nana is the most common US tapeworm - direct fecal-oral transmission, no insect needed; H. diminuta requires a beetle intermediate host.'
     ],
     remember: 'Polar filaments = H. nana (pathognomonic). No filaments + larger + yellow-brown = H. diminuta. Size + filaments = the two distinguishing features.',
     divr: {
       detect: 'Stool O&P with formalin-ethyl acetate concentration (method of choice); iodine wet prep to visualize hooklets and filaments; direct saline prep adequate for heavy infections',
-      identify: ['H. nana: round 30–47 µm, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments (thread-like) in the space between oncosphere and outer shell', 'H. diminuta: round 70–85 µm, yellow-brown shell, 3 hooklet pairs, NO polar filaments — empty clear space', 'Polar filament presence/absence is the key discriminating feature'],
+      identify: ['H. nana: round 30-47 um, thin shell, inner oncosphere with 3 hooklet pairs, polar filaments (thread-like) in the space between oncosphere and outer shell', 'H. diminuta: round 70-85 um, yellow-brown shell, 3 hooklet pairs, NO polar filaments - empty clear space', 'Polar filament presence/absence is the key discriminating feature'],
       verify: 'Iodine stain and concentration improve visualization of filaments; measure carefully (size discriminates H. nana from H. diminuta); repeat exam if negative and high suspicion',
       report: 'Report as Hymenolepis nana or H. diminuta eggs; clinical correlation required; confirm per lab SOP'
     }
@@ -3785,58 +3785,58 @@ export const atlasPages: AtlasPage[] = [
     slug: 'diphyllobothrium-latum-egg',
     title: 'Diphyllobothrium latum: Operculated Fish Tapeworm Egg',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for the fish tapeworm egg: Diphyllobothrium latum produces the largest egg of the common intestinal cestodes — broadly oval, operculated, yellow-brown, with a small knob at the abopercular end and an unembryonated interior.',
-    boardTitle: 'D. latum egg: operculated, smooth-rimmed, yellow-brown, 58–76 µm',
-    boardNote: 'D. latum: 58–76 × 40–50 µm — broadly oval, yellow-brown, thin shell. Operculum at one pole (flat lid, no shoulder). Small knob (abopercular button) at the opposite pole. Unembryonated when passed. Found in stool. Acquired from raw or undercooked freshwater fish (salmon, pike, perch). Associated with vitamin B₁₂ deficiency/megaloblastic anemia in heavy infections.',
+    summary: 'Bench-card visuals for the fish tapeworm egg: Diphyllobothrium latum produces the largest egg of the common intestinal cestodes - broadly oval, operculated, yellow-brown, with a small knob at the abopercular end and an unembryonated interior.',
+    boardTitle: 'D. latum egg: operculated, smooth-rimmed, yellow-brown, 58-76 um',
+    boardNote: 'D. latum: 58-76 x 40-50 um - broadly oval, yellow-brown, thin shell. Operculum at one pole (flat lid, no shoulder). Small knob (abopercular button) at the opposite pole. Unembryonated when passed. Found in stool. Acquired from raw or undercooked freshwater fish (salmon, pike, perch). Associated with vitamin B₁₂ deficiency/megaloblastic anemia in heavy infections.',
     ariaLabel: 'Illustrated Diphyllobothrium latum egg showing broadly oval operculated egg with smooth opercular rim, yellow-brown shell, and small abopercular knob',
     visualType: 'microscope-diphyllobothrium',
     tubes: [
       {
         id: 'A',
         label: 'D. latum egg',
-        name: 'Oval 58–76 µm, operculated, smooth rim, abopercular knob',
+        name: 'Oval 58-76 um, operculated, smooth rim, abopercular knob',
         colors: { slant: '#f0e8d0', butt: '#a88848', base: '#4a2810' },
-        note: '58–76 × 40–50 µm. Broadly oval. Yellow-brown thin shell. Operculum at one pole — a flat lid with a smooth rim (no shoulder or prominent ridge at the opercular junction — key difference from Paragonimus). Small abopercular knob (button-like) at the opposite pole. Unembryonated when passed. Found in stool. The largest common intestinal cestode egg. Acquired by ingestion of raw or undercooked freshwater fish. May cause megaloblastic anemia via vitamin B₁₂ competition.'
+        note: '58-76 x 40-50 um. Broadly oval. Yellow-brown thin shell. Operculum at one pole - a flat lid with a smooth rim (no shoulder or prominent ridge at the opercular junction - key difference from Paragonimus). Small abopercular knob (button-like) at the opposite pole. Unembryonated when passed. Found in stool. The largest common intestinal cestode egg. Acquired by ingestion of raw or undercooked freshwater fish. May cause megaloblastic anemia via vitamin B₁₂ competition.'
       },
       {
         id: 'B',
         label: 'Key comparators',
         name: 'Paragonimus (shouldered rim) vs. Fasciola (no knob, larger)',
         colors: { slant: '#e8e0cc', butt: '#907848', base: '#3a2810' },
-        note: 'Paragonimus westermani (80–120 µm): larger, prominent shouldered opercular rim (the operculum sits in a groove with a widened shell rim — absent in D. latum). Fasciola hepatica (130–150 µm): largest operculated egg, no opercular shoulder, no abopercular knob, very large. Clonorchis sinensis (28–34 µm): much smaller, vase-shaped with prominent shoulder and knob. D. latum occupies the middle size range with a smooth rim and small knob — no other common trematode/cestode occupies this morphologic space.'
+        note: 'Paragonimus westermani (80-120 um): larger, prominent shouldered opercular rim (the operculum sits in a groove with a widened shell rim - absent in D. latum). Fasciola hepatica (130-150 um): largest operculated egg, no opercular shoulder, no abopercular knob, very large. Clonorchis sinensis (28-34 um): much smaller, vase-shaped with prominent shoulder and knob. D. latum occupies the middle size range with a smooth rim and small knob - no other common trematode/cestode occupies this morphologic space.'
       }
     ],
     readoutTitle: 'D. latum vs. operculated trematode eggs',
     readoutRows: [
-      ['Broadly oval, 58–76 µm, smooth opercular rim, small abopercular knob', 'Diphyllobothrium latum (cestode)', 'The smooth rim (no shoulder) + small knob + intermediate size = D. latum; not a trematode'],
-      ['Shouldered opercular rim (groove at opercular junction)', 'Paragonimus westermani (trematode)', 'Paragonimus is larger (80–120 µm) and has a prominent shouldered rim; D. latum rim is smooth'],
-      ['Very large operculated egg (130–150 µm), no shoulder, no knob', 'Fasciola hepatica (trematode)', 'Fasciola is the largest common operculated egg; lacks both opercular shoulder and abopercular knob'],
-      ['Very small flask-shaped egg (28–34 µm), prominent shoulders', 'Clonorchis sinensis (trematode)', 'Much smaller than D. latum; prominent opercular shoulders; abopercular knob present'],
-      ['Vitamin B₁₂ deficiency + operculated egg in stool', 'D. latum — fish tapeworm', 'D. latum competes for vitamin B₁₂ in the terminal ileum — megaloblastic anemia is a complication in heavy infection']
+      ['Broadly oval, 58-76 um, smooth opercular rim, small abopercular knob', 'Diphyllobothrium latum (cestode)', 'The smooth rim (no shoulder) + small knob + intermediate size = D. latum; not a trematode'],
+      ['Shouldered opercular rim (groove at opercular junction)', 'Paragonimus westermani (trematode)', 'Paragonimus is larger (80-120 um) and has a prominent shouldered rim; D. latum rim is smooth'],
+      ['Very large operculated egg (130-150 um), no shoulder, no knob', 'Fasciola hepatica (trematode)', 'Fasciola is the largest common operculated egg; lacks both opercular shoulder and abopercular knob'],
+      ['Very small flask-shaped egg (28-34 um), prominent shoulders', 'Clonorchis sinensis (trematode)', 'Much smaller than D. latum; prominent opercular shoulders; abopercular knob present'],
+      ['Vitamin B₁₂ deficiency + operculated egg in stool', 'D. latum - fish tapeworm', 'D. latum competes for vitamin B₁₂ in the terminal ileum - megaloblastic anemia is a complication in heavy infection']
     ],
-    trapTitle: 'D. latum is a cestode (tapeworm), not a trematode — treat differently',
-    trapBody: 'D. latum eggs resemble operculated trematode eggs but this is a cestode (tapeworm). Treatment is praziquantel or niclosamide — the same drugs that treat other tapeworms. The key clinical association is vitamin B₁₂ deficiency with megaloblastic anemia in heavy infections. Recheck stool 3–6 weeks after treatment.',
+    trapTitle: 'D. latum is a cestode (tapeworm), not a trematode - treat differently',
+    trapBody: 'D. latum eggs resemble operculated trematode eggs but this is a cestode (tapeworm). Treatment is praziquantel or niclosamide - the same drugs that treat other tapeworms. The key clinical association is vitamin B₁₂ deficiency with megaloblastic anemia in heavy infections. Recheck stool 3-6 weeks after treatment.',
     trapBullets: [
-      'Endemic regions: Great Lakes (US), Scandinavia, Siberia, Far East — wherever raw freshwater fish (salmon, pike, perch) is consumed.',
-      'Proglottids (segments) are much wider than long (≥3 × 11 mm) — the opposite of Taenia proglottids; the broad proglottid is how D. latum got its name ("latum" = broad).',
-      'Plerocercoid larva in freshwater fish is the infective stage — cooking to 60°C (140°F) or freezing at −20°C for 24 hours kills the larva.'
+      'Endemic regions: Great Lakes (US), Scandinavia, Siberia, Far East - wherever raw freshwater fish (salmon, pike, perch) is consumed.',
+      'Proglottids (segments) are much wider than long (>=3 x 11 mm) - the opposite of Taenia proglottids; the broad proglottid is how D. latum got its name ("latum" = broad).',
+      'Plerocercoid larva in freshwater fish is the infective stage - cooking to 60 degrees C (140 degrees F) or freezing at −20 degrees C for 24 hours kills the larva.'
     ],
     interpretationTitle: 'Diphyllobothrium latum identification guide',
     interpretationRows: [
-      ['Broadly oval 58–76 µm, smooth opercular rim, abopercular knob', 'Diphyllobothrium latum — positive', 'Report; praziquantel; measure vitamin B₁₂; dietary history (raw freshwater fish); avoid raw fish going forward'],
-      ['Similar egg without knob or with shoulder', 'Reconsider — see comparator table', 'With shoulder = Paragonimus; much larger = Fasciola; much smaller = Clonorchis; measure and re-examine'],
-      ['Broad proglottid (wider than long) in stool', 'D. latum proglottid', 'Typical proglottid is 2–4 mm wide × 10–15 mm long; much wider than long — distinctive cestode segment morphology']
+      ['Broadly oval 58-76 um, smooth opercular rim, abopercular knob', 'Diphyllobothrium latum - positive', 'Report; praziquantel; measure vitamin B₁₂; dietary history (raw freshwater fish); avoid raw fish going forward'],
+      ['Similar egg without knob or with shoulder', 'Reconsider - see comparator table', 'With shoulder = Paragonimus; much larger = Fasciola; much smaller = Clonorchis; measure and re-examine'],
+      ['Broad proglottid (wider than long) in stool', 'D. latum proglottid', 'Typical proglottid is 2-4 mm wide x 10-15 mm long; much wider than long - distinctive cestode segment morphology']
     ],
     takeaways: [
-      'D. latum: broadly oval 58–76 µm, smooth opercular rim (no shoulder), small abopercular knob, yellow-brown — the largest common intestinal cestode egg.',
+      'D. latum: broadly oval 58-76 um, smooth opercular rim (no shoulder), small abopercular knob, yellow-brown - the largest common intestinal cestode egg.',
       'Smooth rim (no shoulder) distinguishes D. latum from Paragonimus; smaller size distinguishes it from Fasciola.',
       'Vitamin B₁₂ deficiency + megaloblastic anemia in a fish-eating patient = D. latum until proven otherwise.'
     ],
-    remember: 'D. latum: smooth rim + small knob + yellow-brown + 58–76 µm. No shoulder (≠ Paragonimus). Freshwater fish source. May deplete vitamin B₁₂.',
+    remember: 'D. latum: smooth rim + small knob + yellow-brown + 58-76 um. No shoulder (≠ Paragonimus). Freshwater fish source. May deplete vitamin B₁₂.',
     divr: {
       detect: 'Stool O&P with formalin-ethyl acetate concentration; direct saline prep if heavy infection; proglottid examination if segments passed',
-      identify: ['Broadly oval, 58–76 µm, yellow-brown thin shell', 'Operculum at one pole — smooth rim with no prominent shoulder or groove', 'Small abopercular knob (button) at opposite pole; unembryonated interior'],
-      verify: 'Measure carefully — size and rim morphology distinguish D. latum from Paragonimus (80–120 µm, shouldered) and Fasciola (130–150 µm); proglottid morphology confirms if segments recovered',
+      identify: ['Broadly oval, 58-76 um, yellow-brown thin shell', 'Operculum at one pole - smooth rim with no prominent shoulder or groove', 'Small abopercular knob (button) at opposite pole; unembryonated interior'],
+      verify: 'Measure carefully - size and rim morphology distinguish D. latum from Paragonimus (80-120 um, shouldered) and Fasciola (130-150 um); proglottid morphology confirms if segments recovered',
       report: 'Report as Diphyllobothrium latum eggs with measured size; vitamin B₁₂ level recommended; clinical correlation required; confirm per lab SOP'
     }
   },
@@ -3844,9 +3844,9 @@ export const atlasPages: AtlasPage[] = [
     slug: 'echinococcus-granulosus-hydatid',
     title: 'Echinococcus granulosus: Hydatid Sand and Protoscoleces',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for Echinococcus granulosus (hydatid disease) laboratory findings: protoscoleces in hydatid fluid (with suckers and hooklets), brood capsules, and the thick laminated cyst wall in tissue — not detected by routine stool O&P.',
+    summary: 'Bench-card visuals for Echinococcus granulosus (hydatid disease) laboratory findings: protoscoleces in hydatid fluid (with suckers and hooklets), brood capsules, and the thick laminated cyst wall in tissue - not detected by routine stool O&P.',
     boardTitle: 'Echinococcus granulosus: protoscolex in hydatid fluid + thick laminated cyst wall',
-    boardNote: 'Hydatid disease: fluid from surgically excised or aspirated hydatid cyst contains "hydatid sand" — protoscoleces (immature scoleces with 4 suckers + rostellum with 2 rows of hooklets) and free hooklets. Brood capsules may also be present. Cyst wall on histology: thick laminated (wavy, acellular) outer wall + inner germinal (nucleated) layer. Stool O&P is NOT appropriate — E. granulosus eggs are not passed in human stool.',
+    boardNote: 'Hydatid disease: fluid from surgically excised or aspirated hydatid cyst contains "hydatid sand" - protoscoleces (immature scoleces with 4 suckers + rostellum with 2 rows of hooklets) and free hooklets. Brood capsules may also be present. Cyst wall on histology: thick laminated (wavy, acellular) outer wall + inner germinal (nucleated) layer. Stool O&P is NOT appropriate - E. granulosus eggs are not passed in human stool.',
     ariaLabel: 'Illustrated Echinococcus granulosus protoscolex showing suckers and hooklets in hydatid fluid, plus laminated cyst wall showing layered structure',
     visualType: 'microscope-echinococcus',
     tubes: [
@@ -3855,46 +3855,46 @@ export const atlasPages: AtlasPage[] = [
         label: 'Protoscolex (hydatid sand)',
         name: '4 suckers + rostellum with 2 rows of hooklets',
         colors: { slant: '#f0ecd8', butt: '#a09060', base: '#3a2810' },
-        note: 'Protoscolex: small (170–220 µm), invaginated or evaginated. 4 suckers (cup-shaped, clearly visible on evaginated forms). Rostellum with 2 rows of hooks (large and small alternating). Free hooklets may be seen in fluid (20–40 µm, curved with a pointed blade). Hydatid sand = fluid containing protoscoleces + free hooklets + brood capsules — aspirated from cyst under image guidance or at surgery. Handle with care — cyst rupture can cause anaphylaxis and seeding of secondary cysts.'
+        note: 'Protoscolex: small (170-220 um), invaginated or evaginated. 4 suckers (cup-shaped, clearly visible on evaginated forms). Rostellum with 2 rows of hooks (large and small alternating). Free hooklets may be seen in fluid (20-40 um, curved with a pointed blade). Hydatid sand = fluid containing protoscoleces + free hooklets + brood capsules - aspirated from cyst under image guidance or at surgery. Handle with care - cyst rupture can cause anaphylaxis and seeding of secondary cysts.'
       },
       {
         id: 'B',
         label: 'Laminated cyst wall',
         name: 'Thick wavy acellular outer layer + germinal inner layer',
         colors: { slant: '#e8e4d4', butt: '#888068', base: '#302818' },
-        note: 'Histology of cyst wall: thick outer laminated layer (wavy, acellular, eosinophilic — like a stack of membranes or "frosted glass" appearance) and a thin inner germinal (nucleated epithelial) layer from which protoscoleces and brood capsules bud. A fibrous host-derived pericyst surrounds the laminated wall. The laminated wall is pathognomonic for Echinococcus — Entamoeba hepatic abscess and pyogenic abscess lack this structure. PAS stain highlights the laminated wall.'
+        note: 'Histology of cyst wall: thick outer laminated layer (wavy, acellular, eosinophilic - like a stack of membranes or "frosted glass" appearance) and a thin inner germinal (nucleated epithelial) layer from which protoscoleces and brood capsules bud. A fibrous host-derived pericyst surrounds the laminated wall. The laminated wall is pathognomonic for Echinococcus - Entamoeba hepatic abscess and pyogenic abscess lack this structure. PAS stain highlights the laminated wall.'
       }
     ],
     readoutTitle: 'What to look for in hydatid fluid or tissue',
     readoutRows: [
-      ['Small oval structures with suckers and hooklets in fluid', 'Echinococcus protoscoleces (hydatid sand)', 'Evaginated forms show 4 suckers and rostellar hooklets clearly; invaginated forms appear as granular ovals — look for free hooklets to confirm'],
-      ['Free hooklets (20–40 µm, curved with blade and handle)', 'Echinococcus granulosus hooklets', 'Hooklets persist long after protoscolex degeneration — a single hooklet in cyst fluid is diagnostic of echinococcal cyst'],
-      ['Thick wavy acellular eosinophilic outer layer on H&E', 'Laminated cyst wall — pathognomonic for Echinococcus', 'PAS stain highlights the laminated wall; no germinal cells in the outer layer; host fibrous pericyst visible outside'],
-      ['No eggs in stool', 'Expected — E. granulosus does not produce eggs in human hosts', 'Humans are accidental intermediate hosts; eggs are passed only by definitive hosts (dogs); stool O&P is not appropriate'],
-      ['Thick-walled hepatic lesion with daughter cysts on imaging', 'Hydatid cyst — suspect E. granulosus', 'Imaging appearance (cysts within cysts, calcified wall) precedes laboratory diagnosis; serology confirms; avoid percutaneous drainage without treatment']
+      ['Small oval structures with suckers and hooklets in fluid', 'Echinococcus protoscoleces (hydatid sand)', 'Evaginated forms show 4 suckers and rostellar hooklets clearly; invaginated forms appear as granular ovals - look for free hooklets to confirm'],
+      ['Free hooklets (20-40 um, curved with blade and handle)', 'Echinococcus granulosus hooklets', 'Hooklets persist long after protoscolex degeneration - a single hooklet in cyst fluid is diagnostic of echinococcal cyst'],
+      ['Thick wavy acellular eosinophilic outer layer on H&E', 'Laminated cyst wall - pathognomonic for Echinococcus', 'PAS stain highlights the laminated wall; no germinal cells in the outer layer; host fibrous pericyst visible outside'],
+      ['No eggs in stool', 'Expected - E. granulosus does not produce eggs in human hosts', 'Humans are accidental intermediate hosts; eggs are passed only by definitive hosts (dogs); stool O&P is not appropriate'],
+      ['Thick-walled hepatic lesion with daughter cysts on imaging', 'Hydatid cyst - suspect E. granulosus', 'Imaging appearance (cysts within cysts, calcified wall) precedes laboratory diagnosis; serology confirms; avoid percutaneous drainage without treatment']
     ],
     trapTitle: 'Accidental cyst rupture during aspiration or surgery can cause anaphylaxis and dissemination',
-    trapBody: 'Hydatid cyst fluid is highly allergenic — rupture can cause severe anaphylaxis. The PAIR procedure (Puncture-Aspiration-Injection-Re-aspiration) under albendazole cover is now an accepted technique with appropriate precautions. Avoid aspiration without surgery or PAIR protocol. Secondary cyst seeding from spillage can occur — handle all cyst specimens with extreme care.',
+    trapBody: 'Hydatid cyst fluid is highly allergenic - rupture can cause severe anaphylaxis. The PAIR procedure (Puncture-Aspiration-Injection-Re-aspiration) under albendazole cover is now an accepted technique with appropriate precautions. Avoid aspiration without surgery or PAIR protocol. Secondary cyst seeding from spillage can occur - handle all cyst specimens with extreme care.',
     trapBullets: [
-      'Serologic tests (ELISA, Western blot for E. granulosus antigen B) are the first-line diagnostic in most settings — more practical than fluid analysis.',
-      'E. multilocularis (alveolar echinococcosis) produces an infiltrative, tumor-like cyst without a smooth wall — more invasive and harder to treat.',
-      'Definitive hosts (dogs, wolves) pass eggs in stool — humans are infected by ingesting eggs from contaminated soil, water, or food in contact with dogs.'
+      'Serologic tests (ELISA, Western blot for E. granulosus antigen B) are the first-line diagnostic in most settings - more practical than fluid analysis.',
+      'E. multilocularis (alveolar echinococcosis) produces an infiltrative, tumor-like cyst without a smooth wall - more invasive and harder to treat.',
+      'Definitive hosts (dogs, wolves) pass eggs in stool - humans are infected by ingesting eggs from contaminated soil, water, or food in contact with dogs.'
     ],
     interpretationTitle: 'Echinococcus granulosus laboratory identification guide',
     interpretationRows: [
-      ['Protoscoleces with suckers + hooklets, or free hooklets, in cyst fluid', 'Echinococcus granulosus — positive', 'Report; albendazole therapy; surgical or PAIR intervention per guidelines; infectious disease and surgery consultation'],
-      ['Thick laminated eosinophilic acellular wall on histology', 'Echinococcal cyst — pathognomonic', 'Report with histologic description; PAS stain confirms; serology for confirmation; no viable protoscoleces needed for diagnosis'],
+      ['Protoscoleces with suckers + hooklets, or free hooklets, in cyst fluid', 'Echinococcus granulosus - positive', 'Report; albendazole therapy; surgical or PAIR intervention per guidelines; infectious disease and surgery consultation'],
+      ['Thick laminated eosinophilic acellular wall on histology', 'Echinococcal cyst - pathognomonic', 'Report with histologic description; PAS stain confirms; serology for confirmation; no viable protoscoleces needed for diagnosis'],
       ['Positive serology (ELISA/Western blot for echinococcal antigen)', 'Probable E. granulosus infection', 'Most practical first-line test; confirm with imaging; fluid/tissue analysis if cyst accessible; clinical correlation required']
     ],
     takeaways: [
-      'Hydatid sand (protoscoleces + free hooklets in cyst fluid) = Echinococcus granulosus — diagnostic.',
-      'Laminated acellular cyst wall on H&E is pathognomonic for Echinococcus — no other hepatic lesion has this structure.',
-      'Routine stool O&P is NOT appropriate — humans are intermediate hosts; E. granulosus eggs are not passed in human stool.'
+      'Hydatid sand (protoscoleces + free hooklets in cyst fluid) = Echinococcus granulosus - diagnostic.',
+      'Laminated acellular cyst wall on H&E is pathognomonic for Echinococcus - no other hepatic lesion has this structure.',
+      'Routine stool O&P is NOT appropriate - humans are intermediate hosts; E. granulosus eggs are not passed in human stool.'
     ],
     remember: 'Hydatid sand (suckers + hooklets in cyst fluid) = Echinococcus. Laminated wavy wall on histology = pathognomonic. Not in stool. Serology first.',
     divr: {
-      detect: 'Hydatid cyst fluid (at surgery or PAIR under albendazole cover) — direct examination for protoscoleces and free hooklets; histology of cyst wall; serology (ELISA) is first-line non-invasive test',
-      identify: ['Protoscolex: oval 170–220 µm, 4 suckers + rostellum with 2 rows of hooklets', 'Free hooklets: 20–40 µm, curved, blade and handle visible — single hooklet is diagnostic', 'Laminated cyst wall: thick, wavy, acellular eosinophilic outer layer + thin nucleated germinal inner layer'],
+      detect: 'Hydatid cyst fluid (at surgery or PAIR under albendazole cover) - direct examination for protoscoleces and free hooklets; histology of cyst wall; serology (ELISA) is first-line non-invasive test',
+      identify: ['Protoscolex: oval 170-220 um, 4 suckers + rostellum with 2 rows of hooklets', 'Free hooklets: 20-40 um, curved, blade and handle visible - single hooklet is diagnostic', 'Laminated cyst wall: thick, wavy, acellular eosinophilic outer layer + thin nucleated germinal inner layer'],
       verify: 'Serology (ELISA for antigen B, Western blot) confirms; imaging shows characteristic cyst morphology; histology with PAS stain confirms laminated wall',
       report: 'Report as Echinococcus granulosus with specimen source and findings; clinical correlation and imaging required; urgent consultation recommended; confirm per lab SOP'
     }
@@ -3914,14 +3914,14 @@ export const atlasPages: AtlasPage[] = [
         label: 'P. vivax',
         name: 'Enlarged RBC, Schüffner dots, ameboid trophozoite',
         colors: { slant: '#f5ede0', butt: '#e08050', base: '#7a2808' },
-        note: 'RBC enlarged (up to 1.5–2× normal). Schüffner dots (stippling of RBC cytoplasm) — present in vivax and ovale, absent in falciparum and malariae. Trophozoite ameboid/irregular in shape. Schizont: 12–24 merozoites arranged in irregular cluster. Gametocyte: oval/round, fills enlarged RBC. Quartan/tertian fever (48h cycle). Associated with hypnozoite relapse from liver.'
+        note: 'RBC enlarged (up to 1.5-2x normal). Schüffner dots (stippling of RBC cytoplasm) - present in vivax and ovale, absent in falciparum and malariae. Trophozoite ameboid/irregular in shape. Schizont: 12-24 merozoites arranged in irregular cluster. Gametocyte: oval/round, fills enlarged RBC. Quartan/tertian fever (48h cycle). Associated with hypnozoite relapse from liver.'
       },
       {
         id: 'B',
         label: 'P. malariae',
         name: 'Normal RBC, band-form trophozoite, rosette schizont',
         colors: { slant: '#ece8d8', butt: '#8878b0', base: '#3a2860' },
-        note: 'RBC normal size or slightly smaller. No Schüffner dots. Band-form trophozoite: stretches across full width of RBC — pathognomonic for malariae. Rosette schizont: 6–12 merozoites arranged in a daisy-wheel around central pigment mass. Quartan fever (72h cycle). Low parasitemia. P. knowlesi mimics malariae on smear but causes rapidly severe disease — PCR required in Southeast Asia travelers.'
+        note: 'RBC normal size or slightly smaller. No Schüffner dots. Band-form trophozoite: stretches across full width of RBC - pathognomonic for malariae. Rosette schizont: 6-12 merozoites arranged in a daisy-wheel around central pigment mass. Quartan fever (72h cycle). Low parasitemia. P. knowlesi mimics malariae on smear but causes rapidly severe disease - PCR required in Southeast Asia travelers.'
       }
     ],
     readoutTitle: 'Species-level morphology differentiation guide',
@@ -3930,32 +3930,32 @@ export const atlasPages: AtlasPage[] = [
       ['Oval/fimbriated RBC + Schüffner dots + compact oval trophozoite', 'P. ovale', 'Fimbriated (jagged/irregular) RBC edge at oval end distinguishes ovale from vivax; less common globally'],
       ['Normal RBC + band-form trophozoite + rosette schizont', 'P. malariae', 'Band-form crossing full RBC diameter is pathognomonic; 72h cycle (quartan fever)'],
       ['Normal RBC + multiple delicate rings + banana gametocyte', 'P. falciparum (reference)', 'No Schüffner dots, no RBC enlargement, no schizonts on peripheral smear; crescent gametocyte is pathognomonic'],
-      ['Schüffner dots present', 'P. vivax OR P. ovale only', 'Neither P. falciparum nor P. malariae produce Schüffner dots — presence excludes these two species'],
-      ['Rosette schizont (6–12 merozoites around central pigment)', 'P. malariae', 'Daisy-wheel arrangement is characteristic; helps confirm malariae when band-form is not seen']
+      ['Schüffner dots present', 'P. vivax OR P. ovale only', 'Neither P. falciparum nor P. malariae produce Schüffner dots - presence excludes these two species'],
+      ['Rosette schizont (6-12 merozoites around central pigment)', 'P. malariae', 'Daisy-wheel arrangement is characteristic; helps confirm malariae when band-form is not seen']
     ],
     trapTitle: 'P. knowlesi mimics P. malariae on smear but causes severe disease',
-    trapBody: 'P. knowlesi band-form trophozoites are morphologically identical to P. malariae on Giemsa stain. P. knowlesi has a 24-hour cycle and rapidly progressive disease — not the mild quartan fever of P. malariae. PCR is mandatory for travelers returning from Borneo and Southeast Asia when malariae morphology is suspected.',
+    trapBody: 'P. knowlesi band-form trophozoites are morphologically identical to P. malariae on Giemsa stain. P. knowlesi has a 24-hour cycle and rapidly progressive disease - not the mild quartan fever of P. malariae. PCR is mandatory for travelers returning from Borneo and Southeast Asia when malariae morphology is suspected.',
     trapBullets: [
-      'P. vivax and P. ovale both cause relapsing malaria via hypnozoites — primaquine/tafenoquine required for radical cure; screen for G6PD deficiency before use.',
-      'Mixed infections with two Plasmodium species are possible — scan the full smear systematically before finalizing species.',
+      'P. vivax and P. ovale both cause relapsing malaria via hypnozoites - primaquine/tafenoquine required for radical cure; screen for G6PD deficiency before use.',
+      'Mixed infections with two Plasmodium species are possible - scan the full smear systematically before finalizing species.',
       'RBC enlargement is best appreciated on a thin smear stained at the correct pH (Giemsa pH 7.2); over-staining can obscure Schüffner dots.'
     ],
     interpretationTitle: 'Plasmodium species differentiation guide',
     interpretationRows: [
-      ['Enlarged RBC, Schüffner dots, ameboid trophozoite', 'P. vivax — report and treat; primaquine for radical cure', 'Screen G6PD before primaquine/tafenoquine; assess for splenomegaly'],
-      ['Normal RBC, band-form trophozoite, rosette schizont, low parasitemia', 'P. malariae — report; exclude P. knowlesi by travel history + PCR', 'P. malariae can cause nephrotic syndrome; low parasitemia but chronic'],
-      ['Oval fimbriated RBC, Schüffner dots, compact trophozoite', 'P. ovale — report and treat; primaquine for radical cure', 'Less common globally; morphologically most like vivax but distinct fimbriated RBC end']
+      ['Enlarged RBC, Schüffner dots, ameboid trophozoite', 'P. vivax - report and treat; primaquine for radical cure', 'Screen G6PD before primaquine/tafenoquine; assess for splenomegaly'],
+      ['Normal RBC, band-form trophozoite, rosette schizont, low parasitemia', 'P. malariae - report; exclude P. knowlesi by travel history + PCR', 'P. malariae can cause nephrotic syndrome; low parasitemia but chronic'],
+      ['Oval fimbriated RBC, Schüffner dots, compact trophozoite', 'P. ovale - report and treat; primaquine for radical cure', 'Less common globally; morphologically most like vivax but distinct fimbriated RBC end']
     ],
     takeaways: [
       'Enlarged RBC + Schüffner dots = P. vivax or P. ovale. Normal RBC, no dots = P. falciparum or P. malariae.',
       'Band-form trophozoite crossing the RBC diameter = P. malariae (pathognomonic).',
-      'P. knowlesi mimics P. malariae morphologically — PCR is required in Southeast Asia travelers regardless of species ID on smear.'
+      'P. knowlesi mimics P. malariae morphologically - PCR is required in Southeast Asia travelers regardless of species ID on smear.'
     ],
     remember: 'Schüffner dots = vivax or ovale. Band-form = malariae. Banana gametocyte = falciparum. knowlesi mimics malariae. Enlarged RBC separates vivax/ovale from the rest.',
     relatedLearnSlug: 'blood-parasites',
     divr: {
-      detect: 'EDTA peripheral blood — Giemsa thin + thick smear; Giemsa pH 7.2 for optimal Schüffner dot visualization; oil immersion at 1000×',
-      identify: ['P. vivax: enlarged RBC, Schüffner dots, ameboid trophozoite, 12–24 merozoite schizont', 'P. malariae: normal RBC, band-form trophozoite, rosette schizont (6–12 merozoites around central pigment)', 'P. ovale: oval/fimbriated RBC, Schüffner dots, compact oval trophozoite', 'P. falciparum: normal RBC, no Schüffner dots, delicate rings, banana gametocyte — reference'],
+      detect: 'EDTA peripheral blood - Giemsa thin + thick smear; Giemsa pH 7.2 for optimal Schüffner dot visualization; oil immersion at 1000x',
+      identify: ['P. vivax: enlarged RBC, Schüffner dots, ameboid trophozoite, 12-24 merozoite schizont', 'P. malariae: normal RBC, band-form trophozoite, rosette schizont (6-12 merozoites around central pigment)', 'P. ovale: oval/fimbriated RBC, Schüffner dots, compact oval trophozoite', 'P. falciparum: normal RBC, no Schüffner dots, delicate rings, banana gametocyte - reference'],
       verify: 'PCR for species confirmation; mandatory for P. knowlesi exclusion in Southeast Asia travelers; RDT for rapid antigen detection; quantify parasitemia',
       report: 'Report species and parasitemia %; P. falciparum = urgent notification; PCR confirmation per lab SOP; clinical correlation required'
     }
@@ -3964,59 +3964,59 @@ export const atlasPages: AtlasPage[] = [
     slug: 'cyclospora-cystoisospora-maf',
     title: 'Cyclospora vs. Cystoisospora on Modified Acid-Fast',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card comparison of Cyclospora cayetanensis and Cystoisospora belli oocysts on modified acid-fast stain: size difference (8–10 µm vs. 25–30 µm), staining intensity variability (Cyclospora), and sporoblast count differentiation.',
+    summary: 'Bench-card comparison of Cyclospora cayetanensis and Cystoisospora belli oocysts on modified acid-fast stain: size difference (8-10 um vs. 25-30 um), staining intensity variability (Cyclospora), and sporoblast count differentiation.',
     boardTitle: 'Cyclospora and Cystoisospora oocysts on modified acid-fast stain',
-    boardNote: 'Cyclospora cayetanensis: ~8–10 µm, round, variable acid-fast staining (same slide may show bright pink to unstained), autofluorescent under UV (365 nm). Cystoisospora belli: ~25–30 µm, elongated oval, usually strongly acid-fast, single sporoblast (immature) or 2 sporocysts (mature). Cryptosporidium (comparator): 4–6 µm — always smaller than Cyclospora.',
-    ariaLabel: 'Illustrated Cyclospora oocyst at 8–10 µm with variable acid-fast staining compared to larger elongated Cystoisospora oocyst at 25–30 µm',
+    boardNote: 'Cyclospora cayetanensis: ~8-10 um, round, variable acid-fast staining (same slide may show bright pink to unstained), autofluorescent under UV (365 nm). Cystoisospora belli: ~25-30 um, elongated oval, usually strongly acid-fast, single sporoblast (immature) or 2 sporocysts (mature). Cryptosporidium (comparator): 4-6 um - always smaller than Cyclospora.',
+    ariaLabel: 'Illustrated Cyclospora oocyst at 8-10 um with variable acid-fast staining compared to larger elongated Cystoisospora oocyst at 25-30 um',
     visualType: 'microscope-cyclospora-cystoisospora',
     tubes: [
       {
         id: 'A',
         label: 'Cyclospora cayetanensis',
-        name: '8–10 µm round, variable acid-fast, autofluorescent',
+        name: '8-10 um round, variable acid-fast, autofluorescent',
         colors: { slant: '#d8e0d0', butt: '#c84050', base: '#782030' },
-        note: '8–10 µm round oocysts. Modified acid-fast: variable staining — bright pink/red to faint "ghost" on the same slide; some oocysts may not stain at all. Autofluorescence under UV (365 nm) is a key confirmatory property: Cyclospora fluoresces blue-green to green; yeast and Cryptosporidium do not fluoresce. Wrinkled appearance on some preparations. Transmitted via contaminated produce and water (raspberries, cilantro outbreaks).'
+        note: '8-10 um round oocysts. Modified acid-fast: variable staining - bright pink/red to faint "ghost" on the same slide; some oocysts may not stain at all. Autofluorescence under UV (365 nm) is a key confirmatory property: Cyclospora fluoresces blue-green to green; yeast and Cryptosporidium do not fluoresce. Wrinkled appearance on some preparations. Transmitted via contaminated produce and water (raspberries, cilantro outbreaks).'
       },
       {
         id: 'B',
         label: 'Cystoisospora belli',
-        name: '25–30 µm elongated oval, strongly acid-fast, single sporoblast',
+        name: '25-30 um elongated oval, strongly acid-fast, single sporoblast',
         colors: { slant: '#d8e0d0', butt: '#d06040', base: '#602010' },
-        note: '25–30 µm, elongated oval (longer than wide). Usually strongly acid-fast (pink-red). Immature oocysts (most common in stool) contain a single round sporoblast. Mature oocysts contain 2 sporocysts. Larger than Cyclospora (~3× larger) — size is the primary bench differentiator. Immunocompromised patients (especially HIV/AIDS) are at highest risk for severe/disseminated disease. Sporadic in immunocompetent hosts in temperate regions.'
+        note: '25-30 um, elongated oval (longer than wide). Usually strongly acid-fast (pink-red). Immature oocysts (most common in stool) contain a single round sporoblast. Mature oocysts contain 2 sporocysts. Larger than Cyclospora (~3x larger) - size is the primary bench differentiator. Immunocompromised patients (especially HIV/AIDS) are at highest risk for severe/disseminated disease. Sporadic in immunocompetent hosts in temperate regions.'
       }
     ],
     readoutTitle: 'Modified acid-fast size and staining comparison',
     readoutRows: [
-      ['Round, 8–10 µm, variable acid-fast staining', 'Cyclospora cayetanensis', 'Variable staining on same slide is expected and characteristic — do not call negative based on ghost oocysts alone'],
-      ['Elongated oval, 25–30 µm, strongly acid-fast, single sporoblast', 'Cystoisospora belli', 'Size (~3× larger than Cyclospora) is the primary differentiator; elongated shape distinguishes from round Cyclospora'],
-      ['Round, 4–6 µm, variable acid-fast', 'Cryptosporidium parvum/hominis (size comparator)', 'Smaller than Cyclospora; always round; no autofluorescence; size calibration essential for discrimination'],
-      ['Autofluorescence under UV 365 nm (blue-green/green)', 'Cyclospora — confirms identity', 'Unique to Cyclospora among intestinal coccidia; Cystoisospora and Cryptosporidium do not autofluoresce'],
+      ['Round, 8-10 um, variable acid-fast staining', 'Cyclospora cayetanensis', 'Variable staining on same slide is expected and characteristic - do not call negative based on ghost oocysts alone'],
+      ['Elongated oval, 25-30 um, strongly acid-fast, single sporoblast', 'Cystoisospora belli', 'Size (~3x larger than Cyclospora) is the primary differentiator; elongated shape distinguishes from round Cyclospora'],
+      ['Round, 4-6 um, variable acid-fast', 'Cryptosporidium parvum/hominis (size comparator)', 'Smaller than Cyclospora; always round; no autofluorescence; size calibration essential for discrimination'],
+      ['Autofluorescence under UV 365 nm (blue-green/green)', 'Cyclospora - confirms identity', 'Unique to Cyclospora among intestinal coccidia; Cystoisospora and Cryptosporidium do not autofluoresce'],
       ['2 sporocysts in an elongated oocyst', 'Mature Cystoisospora belli', 'Mature form; most shed oocysts are immature (1 sporoblast); 2 sporocysts = definitive identification'],
-      ['Variable staining with wrinkled surface, 8–10 µm', 'Cyclospora — wrinkled oocyst', 'Wrinkled or morula-like internal structure on some fixed preparations; UV autofluorescence confirms if needed']
+      ['Variable staining with wrinkled surface, 8-10 um', 'Cyclospora - wrinkled oocyst', 'Wrinkled or morula-like internal structure on some fixed preparations; UV autofluorescence confirms if needed']
     ],
     trapTitle: 'Cyclospora\'s variable staining causes false negatives on modified AFB',
-    trapBody: 'Cyclospora oocysts show highly variable modified acid-fast staining — on a single slide some oocysts are bright pink, others faint, and some are essentially unstained. This variability is characteristic of Cyclospora and can cause false negatives if only bright-staining structures are examined. UV autofluorescence (365 nm) is confirmatory and should be used when Cyclospora is suspected and acid-fast results are equivocal.',
+    trapBody: 'Cyclospora oocysts show highly variable modified acid-fast staining - on a single slide some oocysts are bright pink, others faint, and some are essentially unstained. This variability is characteristic of Cyclospora and can cause false negatives if only bright-staining structures are examined. UV autofluorescence (365 nm) is confirmatory and should be used when Cyclospora is suspected and acid-fast results are equivocal.',
     trapBullets: [
-      'Size calibration with a stage micrometer is essential — Cyclospora (8–10 µm), Cystoisospora (25–30 µm), and Cryptosporidium (4–6 µm) look similar on modified AFB without measurement.',
-      'Cystoisospora in immunocompromised patients can disseminate to lymph nodes and organs — not just a self-limited diarrhea in this population.',
+      'Size calibration with a stage micrometer is essential - Cyclospora (8-10 um), Cystoisospora (25-30 um), and Cryptosporidium (4-6 um) look similar on modified AFB without measurement.',
+      'Cystoisospora in immunocompromised patients can disseminate to lymph nodes and organs - not just a self-limited diarrhea in this population.',
       'Molecular GI panels (PCR) now offer more sensitive detection than modified AFB for all three coccidia.'
     ],
     interpretationTitle: 'Cyclospora and Cystoisospora modified acid-fast identification guide',
     interpretationRows: [
-      ['Round, 8–10 µm, variable acid-fast, autofluorescence positive', 'Cyclospora cayetanensis — positive', 'Report; TMP-SMX is treatment of choice; notify public health if outbreak suspected (foodborne)'],
-      ['Elongated oval, 25–30 µm, strongly acid-fast, single sporoblast (immature)', 'Cystoisospora belli — positive', 'Report; TMP-SMX; assess immune status; severe/prolonged disease expected in HIV/AIDS'],
-      ['8–10 µm, ghost oocysts only, equivocal AFB', 'Possible Cyclospora — confirm with UV autofluorescence or PCR', 'Do not call negative based on absent staining alone; autofluorescence under 365 nm UV is highly specific']
+      ['Round, 8-10 um, variable acid-fast, autofluorescence positive', 'Cyclospora cayetanensis - positive', 'Report; TMP-SMX is treatment of choice; notify public health if outbreak suspected (foodborne)'],
+      ['Elongated oval, 25-30 um, strongly acid-fast, single sporoblast (immature)', 'Cystoisospora belli - positive', 'Report; TMP-SMX; assess immune status; severe/prolonged disease expected in HIV/AIDS'],
+      ['8-10 um, ghost oocysts only, equivocal AFB', 'Possible Cyclospora - confirm with UV autofluorescence or PCR', 'Do not call negative based on absent staining alone; autofluorescence under 365 nm UV is highly specific']
     ],
     takeaways: [
-      'Size first: 4–6 µm = Cryptosporidium, 8–10 µm = Cyclospora, 25–30 µm = Cystoisospora.',
+      'Size first: 4-6 um = Cryptosporidium, 8-10 um = Cyclospora, 25-30 um = Cystoisospora.',
       'Cyclospora variable staining (bright to ghost on same slide) + UV autofluorescence = Cyclospora.',
       'Cystoisospora: elongated oval, strongly acid-fast, single sporoblast (immature) or 2 sporocysts (mature).'
     ],
-    remember: 'Size order: Crypto (4–6) < Cyclospora (8–10) < Cystoisospora (25–30). Cyclospora = variable AFB + UV autofluorescence. Cystoisospora = elongated + strongly AFB + single sporoblast.',
+    remember: 'Size order: Crypto (4-6) < Cyclospora (8-10) < Cystoisospora (25-30). Cyclospora = variable AFB + UV autofluorescence. Cystoisospora = elongated + strongly AFB + single sporoblast.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Fresh or fixed stool — modified acid-fast stain (Kinyoun cold method); UV fluorescence microscopy at 365 nm for Cyclospora confirmation; formalin-ethyl acetate concentration',
-      identify: ['Cyclospora: round 8–10 µm, variable acid-fast (bright to ghost), autofluorescent under UV 365 nm', 'Cystoisospora: elongated oval 25–30 µm, strongly acid-fast, single sporoblast (immature) or 2 sporocysts', 'Size calibration essential — Cryptosporidium 4–6 µm for comparison'],
+      detect: 'Fresh or fixed stool - modified acid-fast stain (Kinyoun cold method); UV fluorescence microscopy at 365 nm for Cyclospora confirmation; formalin-ethyl acetate concentration',
+      identify: ['Cyclospora: round 8-10 um, variable acid-fast (bright to ghost), autofluorescent under UV 365 nm', 'Cystoisospora: elongated oval 25-30 um, strongly acid-fast, single sporoblast (immature) or 2 sporocysts', 'Size calibration essential - Cryptosporidium 4-6 um for comparison'],
       verify: 'UV autofluorescence (365 nm) confirms Cyclospora; PCR (molecular GI panel) offers highest sensitivity for all three coccidia',
       report: 'Report species with size estimate and staining pattern; Cyclospora = notify public health if outbreak setting; clinical correlation required'
     }
@@ -4025,59 +4025,59 @@ export const atlasPages: AtlasPage[] = [
     slug: 'entamoeba-comparison-panel',
     title: 'Entamoeba Comparison Panel: E. histolytica/dispar, E. coli, E. hartmanni',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card comparison of the three most common Entamoeba species in stool: E. histolytica/dispar (pathogenic, 4-nucleated cyst, central karyosome, blunt chromatoids), E. coli (nonpathogenic, 8-nucleated cyst, eccentric karyosome, splintered chromatoids), and E. hartmanni (nonpathogenic, small <10 µm).',
+    summary: 'Bench-card comparison of the three most common Entamoeba species in stool: E. histolytica/dispar (pathogenic, 4-nucleated cyst, central karyosome, blunt chromatoids), E. coli (nonpathogenic, 8-nucleated cyst, eccentric karyosome, splintered chromatoids), and E. hartmanni (nonpathogenic, small <10 um).',
     boardTitle: 'Entamoeba species comparison: nuclear structure and cyst morphology',
-    boardNote: 'E. histolytica/dispar: cyst ≤4 nuclei, central karyosome, fine even peripheral chromatin, blunt chromatoid bars. E. coli: cyst up to 8 nuclei, eccentric karyosome, coarse irregular peripheral chromatin, splintered chromatoid bars. E. hartmanni: morphologically identical to histolytica/dispar but trophozoite <10 µm, cyst <8 µm.',
+    boardNote: 'E. histolytica/dispar: cyst <=4 nuclei, central karyosome, fine even peripheral chromatin, blunt chromatoid bars. E. coli: cyst up to 8 nuclei, eccentric karyosome, coarse irregular peripheral chromatin, splintered chromatoid bars. E. hartmanni: morphologically identical to histolytica/dispar but trophozoite <10 um, cyst <8 um.',
     ariaLabel: 'Illustrated comparison of Entamoeba histolytica/dispar 4-nucleated cyst with blunt chromatoids versus E. coli 8-nucleated cyst with eccentric karyosome',
     visualType: 'microscope-entamoeba-panel',
     tubes: [
       {
         id: 'A',
         label: 'E. histolytica/dispar',
-        name: '≤4 nuclei, central karyosome, blunt chromatoid bars',
+        name: '<=4 nuclei, central karyosome, blunt chromatoid bars',
         colors: { slant: '#e8e0d0', butt: '#6878a8', base: '#283060' },
-        note: 'Cyst: round, 10–20 µm. Mature: 4 nuclei; immature: 1–2 (+ visible glycogen mass on iodine). Each nucleus: central karyosome + fine evenly distributed peripheral chromatin. Chromatoid bars: smooth, blunt, rounded ends — distinguishes from E. coli. Trophozoite 12–60 µm; ingested RBCs = pathognomonic for E. histolytica (not E. dispar). Without RBCs: report as E. histolytica/dispar complex.'
+        note: 'Cyst: round, 10-20 um. Mature: 4 nuclei; immature: 1-2 (+ visible glycogen mass on iodine). Each nucleus: central karyosome + fine evenly distributed peripheral chromatin. Chromatoid bars: smooth, blunt, rounded ends - distinguishes from E. coli. Trophozoite 12-60 um; ingested RBCs = pathognomonic for E. histolytica (not E. dispar). Without RBCs: report as E. histolytica/dispar complex.'
       },
       {
         id: 'B',
         label: 'E. coli',
         name: 'Up to 8 nuclei, eccentric karyosome, splintered chromatoids',
         colors: { slant: '#e4dcc8', butt: '#7890a8', base: '#2c4058' },
-        note: 'Cyst: round, 15–25 µm (often larger than E. histolytica/dispar). Mature: up to 8 nuclei — >4 nuclei confirms E. coli. Each nucleus: eccentric (off-center) karyosome + coarse irregular peripheral chromatin. Chromatoid bars: splintered, pointed, irregular ends — distinguishes from E. histolytica/dispar blunt bars. E. coli is nonpathogenic; no treatment needed. Trophozoite 15–50 µm; ingests bacteria and debris but NOT RBCs.'
+        note: 'Cyst: round, 15-25 um (often larger than E. histolytica/dispar). Mature: up to 8 nuclei - >4 nuclei confirms E. coli. Each nucleus: eccentric (off-center) karyosome + coarse irregular peripheral chromatin. Chromatoid bars: splintered, pointed, irregular ends - distinguishes from E. histolytica/dispar blunt bars. E. coli is nonpathogenic; no treatment needed. Trophozoite 15-50 um; ingests bacteria and debris but NOT RBCs.'
       }
     ],
     readoutTitle: 'Nuclear structure and cyst count differentiation',
     readoutRows: [
-      ['Cyst with ≤4 nuclei, central karyosome, fine even chromatin', 'E. histolytica/dispar', 'Maximum 4 nuclei in mature cyst; central karyosome is the key nuclear-level ID clue'],
-      ['Cyst with up to 8 nuclei, eccentric karyosome', 'E. coli — nonpathogenic', 'Finding >4 nuclei confirms E. coli; eccentric karyosome (off-center dot) vs. central karyosome in histolytica'],
+      ['Cyst with <=4 nuclei, central karyosome, fine even chromatin', 'E. histolytica/dispar', 'Maximum 4 nuclei in mature cyst; central karyosome is the key nuclear-level ID clue'],
+      ['Cyst with up to 8 nuclei, eccentric karyosome', 'E. coli - nonpathogenic', 'Finding >4 nuclei confirms E. coli; eccentric karyosome (off-center dot) vs. central karyosome in histolytica'],
       ['Chromatoid bars: smooth, blunt, rounded ends', 'E. histolytica/dispar cyst', 'Blunt ends = E. histolytica/dispar; most reliable cyst-level feature when nuclear count is borderline (immature cyst)'],
       ['Chromatoid bars: splintered, pointed, irregular ends', 'E. coli cyst', 'Splinter-like ends = E. coli; compare bar end morphology at oil immersion on trichrome stain'],
-      ['Trophozoite <10 µm, cyst <8 µm, same nuclear pattern as histolytica/dispar', 'E. hartmanni — nonpathogenic', 'Size (<10 µm trophozoite, <8 µm cyst) is the only feature separating E. hartmanni from E. histolytica/dispar; nuclear structure and chromatoids identical'],
+      ['Trophozoite <10 um, cyst <8 um, same nuclear pattern as histolytica/dispar', 'E. hartmanni - nonpathogenic', 'Size (<10 um trophozoite, <8 um cyst) is the only feature separating E. hartmanni from E. histolytica/dispar; nuclear structure and chromatoids identical'],
       ['Trophozoite with ingested RBCs', 'E. histolytica (pathogenic, not E. dispar)', 'Erythrophagocytosis is pathognomonic and the only morphologic proof of pathogenicity; no other Entamoeba species ingests RBCs']
     ],
-    trapTitle: 'E. coli is the most common nonpathogenic Entamoeba — do not treat',
+    trapTitle: 'E. coli is the most common nonpathogenic Entamoeba - do not treat',
     trapBody: 'E. coli is the most frequently encountered Entamoeba species in clinical stool and is completely nonpathogenic. The nuclear structure and chromatoid bar morphology are the reliable differentiators from E. histolytica/dispar. Reporting E. coli as E. histolytica leads to unnecessary antiparasitic treatment. Always report the species and note that E. coli requires no treatment.',
     trapBullets: [
-      'E. hartmanni requires a calibrated ocular micrometer to separate from E. histolytica/dispar — size is the only distinguishing feature.',
-      'Immature cysts with 1–2 nuclei are common for all Entamoeba species — always scan multiple cysts before assigning nuclear count.',
+      'E. hartmanni requires a calibrated ocular micrometer to separate from E. histolytica/dispar - size is the only distinguishing feature.',
+      'Immature cysts with 1-2 nuclei are common for all Entamoeba species - always scan multiple cysts before assigning nuclear count.',
       'Trichrome stain is required for reliable nuclear detail; iodine wet prep shows cysts but chromatoid bars and nuclear structure are poorly visible.'
     ],
     interpretationTitle: 'Entamoeba species differentiation guide',
     interpretationRows: [
-      ['≤4 nuclei, central karyosome, blunt chromatoid bars', 'E. histolytica/dispar — confirm with EIA/PCR if no RBCs seen', 'Report as E. histolytica/dispar complex without molecular confirmation; if RBCs ingested = E. histolytica (treat)'],
-      ['Up to 8 nuclei, eccentric karyosome, splintered chromatoid bars', 'E. coli — nonpathogenic; no treatment', 'Report as E. coli; inform clinician that no treatment is required; presence is a fecal-oral hygiene marker'],
-      ['Same nuclear pattern as histolytica/dispar, trophozoite <10 µm / cyst <8 µm', 'E. hartmanni — nonpathogenic; no treatment', 'Size measurement is essential; report as E. hartmanni with size note; no treatment required']
+      ['<=4 nuclei, central karyosome, blunt chromatoid bars', 'E. histolytica/dispar - confirm with EIA/PCR if no RBCs seen', 'Report as E. histolytica/dispar complex without molecular confirmation; if RBCs ingested = E. histolytica (treat)'],
+      ['Up to 8 nuclei, eccentric karyosome, splintered chromatoid bars', 'E. coli - nonpathogenic; no treatment', 'Report as E. coli; inform clinician that no treatment is required; presence is a fecal-oral hygiene marker'],
+      ['Same nuclear pattern as histolytica/dispar, trophozoite <10 um / cyst <8 um', 'E. hartmanni - nonpathogenic; no treatment', 'Size measurement is essential; report as E. hartmanni with size note; no treatment required']
     ],
     takeaways: [
       'Nuclear karyosome: central = E. histolytica/dispar + E. hartmanni; eccentric = E. coli.',
       'Chromatoid bar ends: blunt = E. histolytica/dispar; splintered/irregular = E. coli.',
-      'E. hartmanni: morphologically identical to E. histolytica/dispar except trophozoite <10 µm and cyst <8 µm — always measure.'
+      'E. hartmanni: morphologically identical to E. histolytica/dispar except trophozoite <10 um and cyst <8 um - always measure.'
     ],
-    remember: 'Central karyosome + blunt chromatoids = histolytica/dispar. Eccentric karyosome + 8 nuclei + splintered chromatoids = E. coli. Tiny size (<10 µm) = E. hartmanni.',
+    remember: 'Central karyosome + blunt chromatoids = histolytica/dispar. Eccentric karyosome + 8 nuclei + splintered chromatoids = E. coli. Tiny size (<10 um) = E. hartmanni.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Stool O&P — trichrome stain (best for nuclear detail and chromatoids); iodine wet prep; formalin-ethyl acetate concentration; calibrated ocular micrometer for E. hartmanni',
-      identify: ['E. histolytica/dispar: ≤4 nuclei, central karyosome, fine even peripheral chromatin, blunt chromatoid bar ends', 'E. coli: up to 8 nuclei, eccentric karyosome, coarse irregular chromatin, splintered/pointed chromatoid bar ends', 'E. hartmanni: identical to E. histolytica/dispar but trophozoite <10 µm, cyst <8 µm'],
+      detect: 'Stool O&P - trichrome stain (best for nuclear detail and chromatoids); iodine wet prep; formalin-ethyl acetate concentration; calibrated ocular micrometer for E. hartmanni',
+      identify: ['E. histolytica/dispar: <=4 nuclei, central karyosome, fine even peripheral chromatin, blunt chromatoid bar ends', 'E. coli: up to 8 nuclei, eccentric karyosome, coarse irregular chromatin, splintered/pointed chromatoid bar ends', 'E. hartmanni: identical to E. histolytica/dispar but trophozoite <10 um, cyst <8 um'],
       verify: 'EIA antigen or PCR required to distinguish E. histolytica from E. dispar; cannot be separated morphologically without erythrophagocytosis',
       report: 'E. histolytica/dispar complex if no RBCs; E. histolytica if RBCs ingested; E. coli and E. hartmanni = nonpathogenic, report but no treatment; confirm per lab SOP'
     }
@@ -4086,60 +4086,60 @@ export const atlasPages: AtlasPage[] = [
     slug: 'operculated-egg-comparison',
     title: 'Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card comparison of the four common operculated helminth eggs: Diphyllobothrium latum (~65 µm, abopercular knob), Paragonimus westermani (~90 µm, shouldered operculum), Fasciola hepatica/Fasciolopsis buski (~140 µm, largest, thin shell), and Clonorchis/Opisthorchis (~30 µm, smallest, shoulder rim).',
+    summary: 'Bench-card comparison of the four common operculated helminth eggs: Diphyllobothrium latum (~65 um, abopercular knob), Paragonimus westermani (~90 um, shouldered operculum), Fasciola hepatica/Fasciolopsis buski (~140 um, largest, thin shell), and Clonorchis/Opisthorchis (~30 um, smallest, shoulder rim).',
     boardTitle: 'Operculated egg size ladder: Clonorchis < Diphyllobothrium < Paragonimus < Fasciola',
-    boardNote: 'Size ladder (smallest to largest): Clonorchis/Opisthorchis ~30 µm (tiny operculum, shoulder rim, abopercular knob) → Diphyllobothrium latum ~65 µm (oval, opercular shoulder, abopercular knob) → Paragonimus westermani ~90 µm (thick shell, shouldered operculum, golden-brown) → Fasciola/Fasciolopsis ~140 µm (largest, thin shell, indistinct operculum, yellow-brown). All pass in feces (Paragonimus also in sputum).',
-    ariaLabel: 'Illustrated size comparison of four operculated helminth eggs from smallest Clonorchis at 30 µm to largest Fasciola at 140 µm',
+    boardNote: 'Size ladder (smallest to largest): Clonorchis/Opisthorchis ~30 um (tiny operculum, shoulder rim, abopercular knob) -> Diphyllobothrium latum ~65 um (oval, opercular shoulder, abopercular knob) -> Paragonimus westermani ~90 um (thick shell, shouldered operculum, golden-brown) -> Fasciola/Fasciolopsis ~140 um (largest, thin shell, indistinct operculum, yellow-brown). All pass in feces (Paragonimus also in sputum).',
+    ariaLabel: 'Illustrated size comparison of four operculated helminth eggs from smallest Clonorchis at 30 um to largest Fasciola at 140 um',
     visualType: 'microscope-operculated-eggs',
     tubes: [
       {
         id: 'A',
         label: 'Size comparison (small to large)',
-        name: 'Clonorchis ~30µm · Diphyllobothrium ~65µm · Paragonimus ~90µm · Fasciola ~140µm',
+        name: 'Clonorchis ~30um - Diphyllobothrium ~65um - Paragonimus ~90um - Fasciola ~140um',
         colors: { slant: '#f0e8d0', butt: '#c49840', base: '#5c3810' },
-        note: 'All four are operculated (have a lid at one pole). Size is the primary bench differentiator. Each has a characteristic opercular shoulder and/or abopercular knob. Clonorchis: tiny (~30 µm), flask-shaped, shoulder rim at opercular end, knob at abopercular end. Diphyllobothrium: oval (~65 µm), opercular shoulder, abopercular knob. Paragonimus: thick golden-brown shell (~90 µm), shouldered operculum. Fasciola/Fasciolopsis: large (~140 µm), thin shell, yellow-brown, operculum less prominent.'
+        note: 'All four are operculated (have a lid at one pole). Size is the primary bench differentiator. Each has a characteristic opercular shoulder and/or abopercular knob. Clonorchis: tiny (~30 um), flask-shaped, shoulder rim at opercular end, knob at abopercular end. Diphyllobothrium: oval (~65 um), opercular shoulder, abopercular knob. Paragonimus: thick golden-brown shell (~90 um), shouldered operculum. Fasciola/Fasciolopsis: large (~140 um), thin shell, yellow-brown, operculum less prominent.'
       },
       {
         id: 'B',
         label: 'Diagnostic clues by species',
         name: 'Operculum + shell thickness + abopercular knob pattern',
         colors: { slant: '#ece0c0', butt: '#a88040', base: '#503010' },
-        note: 'Clonorchis sinensis/Opisthorchis: ~28–35 µm, flask-shaped, prominent shoulder rim at opercular end, tiny knob at abopercular end — smallest common operculated egg. Diphyllobothrium latum: ~58–75 µm, oval, slight opercular shoulder, prominent abopercular knob. Paragonimus westermani: ~80–100 µm, thick shell, golden-brown color, shouldered operculum, abopercular knob. Fasciola hepatica / Fasciolopsis buski: ~130–150 µm (largest), thin shell, yellow-brown, opercular shoulder present — both essentially identical; clinical context differentiates (Fasciola: liver/bile ducts; Fasciolopsis: intestinal).'
+        note: 'Clonorchis sinensis/Opisthorchis: ~28-35 um, flask-shaped, prominent shoulder rim at opercular end, tiny knob at abopercular end - smallest common operculated egg. Diphyllobothrium latum: ~58-75 um, oval, slight opercular shoulder, prominent abopercular knob. Paragonimus westermani: ~80-100 um, thick shell, golden-brown color, shouldered operculum, abopercular knob. Fasciola hepatica / Fasciolopsis buski: ~130-150 um (largest), thin shell, yellow-brown, opercular shoulder present - both essentially identical; clinical context differentiates (Fasciola: liver/bile ducts; Fasciolopsis: intestinal).'
       }
     ],
     readoutTitle: 'Operculated egg identification by size and features',
     readoutRows: [
-      ['~28–35 µm, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Clonorchis sinensis / Opisthorchis spp.', 'Smallest; bile-stained, clustered in bile ducts; East/Southeast Asia exposure; bile-stained yellow-brown'],
-      ['~58–75 µm, oval, slight shoulder, prominent abopercular knob, yellow-brown', 'Diphyllobothrium latum', 'Abopercular knob is the most distinctive feature; found in raw freshwater fish consumers; cecum-like undeveloped embryo inside'],
-      ['~80–100 µm, thick golden-brown shell, shouldered operculum, abopercular knob', 'Paragonimus westermani', 'Thick shell + golden-brown color + shouldered operculum; may be found in stool OR sputum (pulmonary paragonimiasis)'],
-      ['~130–150 µm, thin shell, yellow-brown, opercular shoulder, no prominent knob', 'Fasciola hepatica (liver fluke) or Fasciolopsis buski (intestinal)', 'Largest operculated egg; thin shell distinguishes from Paragonimus; clinical context differentiates species (Fasciola: liver disease + eosinophilia; Fasciolopsis: Asia, intestinal)'],
+      ['~28-35 um, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Clonorchis sinensis / Opisthorchis spp.', 'Smallest; bile-stained, clustered in bile ducts; East/Southeast Asia exposure; bile-stained yellow-brown'],
+      ['~58-75 um, oval, slight shoulder, prominent abopercular knob, yellow-brown', 'Diphyllobothrium latum', 'Abopercular knob is the most distinctive feature; found in raw freshwater fish consumers; cecum-like undeveloped embryo inside'],
+      ['~80-100 um, thick golden-brown shell, shouldered operculum, abopercular knob', 'Paragonimus westermani', 'Thick shell + golden-brown color + shouldered operculum; may be found in stool OR sputum (pulmonary paragonimiasis)'],
+      ['~130-150 um, thin shell, yellow-brown, opercular shoulder, no prominent knob', 'Fasciola hepatica (liver fluke) or Fasciolopsis buski (intestinal)', 'Largest operculated egg; thin shell distinguishes from Paragonimus; clinical context differentiates species (Fasciola: liver disease + eosinophilia; Fasciolopsis: Asia, intestinal)'],
       ['Operculum visible at one pole of egg', 'Trematode (fluke) or Diphyllobothrium (cestode)', 'All these eggs have a functional operculum (lid) at one pole; size + shape + shell thickness = primary ID features'],
-      ['Egg in sputum (not stool)', 'Paragonimus westermani — pulmonary paragonimiasis', 'Paragonimus eggs are shed in sputum when lung cysts rupture; may also be found in stool from swallowed sputum']
+      ['Egg in sputum (not stool)', 'Paragonimus westermani - pulmonary paragonimiasis', 'Paragonimus eggs are shed in sputum when lung cysts rupture; may also be found in stool from swallowed sputum']
     ],
     trapTitle: 'Fasciola and Fasciolopsis eggs are morphologically indistinguishable',
-    trapBody: 'Fasciola hepatica and Fasciolopsis buski eggs are essentially identical in size (~140 µm), shape, shell thickness, and opercular morphology. Species differentiation requires clinical and epidemiological context: Fasciola causes liver/biliary disease with eosinophilia in watercress-eating endemic areas; Fasciolopsis causes intestinal disease in Southeast Asia. Never report species from morphology alone without clinical context.',
+    trapBody: 'Fasciola hepatica and Fasciolopsis buski eggs are essentially identical in size (~140 um), shape, shell thickness, and opercular morphology. Species differentiation requires clinical and epidemiological context: Fasciola causes liver/biliary disease with eosinophilia in watercress-eating endemic areas; Fasciolopsis causes intestinal disease in Southeast Asia. Never report species from morphology alone without clinical context.',
     trapBullets: [
-      'Always measure eggs with a calibrated ocular micrometer — overlapping size ranges mean accurate measurement is essential for the Clonorchis/Diphyllobothrium differentiation.',
+      'Always measure eggs with a calibrated ocular micrometer - overlapping size ranges mean accurate measurement is essential for the Clonorchis/Diphyllobothrium differentiation.',
       'Paragonimus eggs in sputum are diagnostic for pulmonary paragonimiasis; request sputum AFB (or direct smear) when hemoptysis occurs in someone from an endemic region.',
-      'Diphyllobothrium latum causes vitamin B₁₂ deficiency (megaloblastic anemia) from competitive uptake in the terminal ileum — check CBC when diagnosing fish tapeworm.'
+      'Diphyllobothrium latum causes vitamin B₁₂ deficiency (megaloblastic anemia) from competitive uptake in the terminal ileum - check CBC when diagnosing fish tapeworm.'
     ],
     interpretationTitle: 'Operculated egg clinical differentiation guide',
     interpretationRows: [
-      ['Tiny flask egg ~30 µm, shoulder rim, abopercular knob', 'Clonorchis/Opisthorchis — biliary trematode', 'Report with size; exposure to raw/undercooked freshwater fish in Asia; risk factor for cholangiocarcinoma with chronic infection'],
-      ['Oval egg ~65 µm, prominent abopercular knob', 'Diphyllobothrium latum — fish tapeworm', 'Report; praziquantel treatment; check B₁₂ levels; raw/undercooked freshwater fish exposure'],
-      ['Thick-shelled ~90 µm, golden-brown, shouldered operculum', 'Paragonimus westermani — pulmonary fluke', 'Report; also check sputum; praziquantel treatment; crustacean (crab, crayfish) exposure'],
-      ['Large ~140 µm, thin shell, yellow-brown', 'Fasciola hepatica or Fasciolopsis buski — requires clinical context', 'Report as large operculated egg consistent with Fasciola/Fasciolopsis; differentiate by clinical presentation and exposure history']
+      ['Tiny flask egg ~30 um, shoulder rim, abopercular knob', 'Clonorchis/Opisthorchis - biliary trematode', 'Report with size; exposure to raw/undercooked freshwater fish in Asia; risk factor for cholangiocarcinoma with chronic infection'],
+      ['Oval egg ~65 um, prominent abopercular knob', 'Diphyllobothrium latum - fish tapeworm', 'Report; praziquantel treatment; check B₁₂ levels; raw/undercooked freshwater fish exposure'],
+      ['Thick-shelled ~90 um, golden-brown, shouldered operculum', 'Paragonimus westermani - pulmonary fluke', 'Report; also check sputum; praziquantel treatment; crustacean (crab, crayfish) exposure'],
+      ['Large ~140 um, thin shell, yellow-brown', 'Fasciola hepatica or Fasciolopsis buski - requires clinical context', 'Report as large operculated egg consistent with Fasciola/Fasciolopsis; differentiate by clinical presentation and exposure history']
     ],
     takeaways: [
-      'Size ladder: Clonorchis (~30 µm) < Diphyllobothrium (~65 µm) < Paragonimus (~90 µm) < Fasciola (~140 µm).',
+      'Size ladder: Clonorchis (~30 um) < Diphyllobothrium (~65 um) < Paragonimus (~90 um) < Fasciola (~140 um).',
       'Diphyllobothrium: abopercular knob + opercular shoulder. Paragonimus: thick golden-brown shell + shouldered operculum. Clonorchis: tiny + shoulder rim + tiny knob.',
-      'Fasciola and Fasciolopsis are morphologically identical — differentiate by clinical/epidemiological context, never by morphology alone.'
+      'Fasciola and Fasciolopsis are morphologically identical - differentiate by clinical/epidemiological context, never by morphology alone.'
     ],
     remember: 'Size is the primary operculated egg ID tool. Clonorchis: tiny flask. Diphyllobothrium: knob + shoulder. Paragonimus: thick + golden-brown + in sputum too. Fasciola: largest + thin shell.',
     relatedLearnSlug: 'intestinal-helminths',
     divr: {
       detect: 'Stool O&P for all four; also examine sputum (digested or direct) for Paragonimus; formalin-ethyl acetate concentration; calibrated ocular micrometer essential',
-      identify: ['Clonorchis/Opisthorchis: ~30 µm, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Diphyllobothrium latum: ~65 µm oval, opercular shoulder, prominent abopercular knob', 'Paragonimus westermani: ~90 µm, thick golden-brown shell, shouldered operculum', 'Fasciola/Fasciolopsis: ~140 µm, thin shell, opercular shoulder — largest common operculated egg'],
+      identify: ['Clonorchis/Opisthorchis: ~30 um, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Diphyllobothrium latum: ~65 um oval, opercular shoulder, prominent abopercular knob', 'Paragonimus westermani: ~90 um, thick golden-brown shell, shouldered operculum', 'Fasciola/Fasciolopsis: ~140 um, thin shell, opercular shoulder - largest common operculated egg'],
       verify: 'Serology (ELISA) for Fasciola and Paragonimus when egg counts are low; clinical and exposure history essential for species differentiation',
       report: 'Report operculated egg with measured size and morphologic features; include clinical context for species; confirm per lab SOP'
     }
@@ -4148,59 +4148,59 @@ export const atlasPages: AtlasPage[] = [
     slug: 'blastocystis-hominis-forms',
     title: 'Blastocystis hominis: Central Body, Granular, and Ameboid Forms',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for recognizing Blastocystis hominis in stool: the dominant central body form (large central vacuole, peripheral nuclei), granular form, and ameboid form; size range 6–40 µm; clinical significance and report context.',
+    summary: 'Bench-card visuals for recognizing Blastocystis hominis in stool: the dominant central body form (large central vacuole, peripheral nuclei), granular form, and ameboid form; size range 6-40 um; clinical significance and report context.',
     boardTitle: 'Blastocystis hominis: central body form and granular form',
-    boardNote: 'Central body form (most common in stool): large central vacuole (takes up most of cell), 1–4 peripheral nuclei at the margin. Granular form: central vacuole filled with granules. Ameboid form: rare, irregular pseudopods. Size highly variable: 6–40 µm. Modified trichrome or Giemsa for best detail. Clinical significance remains controversial — often considered commensal; treat only with clinical correlation.',
+    boardNote: 'Central body form (most common in stool): large central vacuole (takes up most of cell), 1-4 peripheral nuclei at the margin. Granular form: central vacuole filled with granules. Ameboid form: rare, irregular pseudopods. Size highly variable: 6-40 um. Modified trichrome or Giemsa for best detail. Clinical significance remains controversial - often considered commensal; treat only with clinical correlation.',
     ariaLabel: 'Illustrated Blastocystis hominis central body form showing large central vacuole with peripheral nuclei, and granular form with granule-filled center',
     visualType: 'microscope-blastocystis',
     tubes: [
       {
         id: 'A',
         label: 'Central body form',
-        name: 'Large central vacuole, peripheral nuclei (1–4)',
+        name: 'Large central vacuole, peripheral nuclei (1-4)',
         colors: { slant: '#e8e4d0', butt: '#8898a0', base: '#304050' },
-        note: 'Most common form in clinical stool samples. Large central vacuole occupies ~90% of the cell. 1–4 nuclei arranged at the periphery (pushed to the margins by the vacuole). Size: 6–40 µm (highly variable). Modified trichrome: nuclei stain red-purple at periphery. iodine wet prep: central vacuole appears yellowish. Commonly found in stool but clinical significance uncertain — many infected individuals are asymptomatic.'
+        note: 'Most common form in clinical stool samples. Large central vacuole occupies ~90% of the cell. 1-4 nuclei arranged at the periphery (pushed to the margins by the vacuole). Size: 6-40 um (highly variable). Modified trichrome: nuclei stain red-purple at periphery. iodine wet prep: central vacuole appears yellowish. Commonly found in stool but clinical significance uncertain - many infected individuals are asymptomatic.'
       },
       {
         id: 'B',
         label: 'Granular form',
         name: 'Central vacuole filled with metabolic or lipid granules',
         colors: { slant: '#e0dcc8', butt: '#788088', base: '#283040' },
-        note: 'Central vacuole filled with granules (metabolic, lipid, or reproductive). Peripheral cytoplasm with 1–4 nuclei still visible at margins. May appear darker or denser than the classic central body form. Ameboid form (not shown): rare, irregular pseudopods, seen predominantly in immunocompromised hosts, may be associated with pathogenicity. Cyst form (not shown): small, ~3–10 µm, thick wall, environmentally resistant — the infective stage.'
+        note: 'Central vacuole filled with granules (metabolic, lipid, or reproductive). Peripheral cytoplasm with 1-4 nuclei still visible at margins. May appear darker or denser than the classic central body form. Ameboid form (not shown): rare, irregular pseudopods, seen predominantly in immunocompromised hosts, may be associated with pathogenicity. Cyst form (not shown): small, ~3-10 um, thick wall, environmentally resistant - the infective stage.'
       }
     ],
     readoutTitle: 'Blastocystis form recognition guide',
     readoutRows: [
-      ['Large central vacuole (~90% of cell), peripheral nuclei', 'Central body form — most common', 'Key feature: vacuole is the dominant structure; nuclei are pushed to the margins'],
+      ['Large central vacuole (~90% of cell), peripheral nuclei', 'Central body form - most common', 'Key feature: vacuole is the dominant structure; nuclei are pushed to the margins'],
       ['Granule-filled central vacuole, peripheral nuclei', 'Granular form', 'Dense center due to granules; peripheral nuclei still identifiable with Giemsa or trichrome'],
       ['Irregular pseudopods, no prominent central vacuole', 'Ameboid form', 'Rare; associated with immunocompromised hosts; may be more pathogenic; look for pseudopodal extensions'],
-      ['Small ~3–10 µm, thick-walled, dense', 'Cyst form (environmentally resistant)', 'Infective stage; may resemble other protozoan cysts; size and wall thickness differentiate'],
-      ['Highly variable size 6–40 µm on same slide', 'Blastocystis — size variability is expected', 'Size variation does not indicate different species; B. hominis shows extreme pleomorphism within a single specimen'],
+      ['Small ~3-10 um, thick-walled, dense', 'Cyst form (environmentally resistant)', 'Infective stage; may resemble other protozoan cysts; size and wall thickness differentiate'],
+      ['Highly variable size 6-40 um on same slide', 'Blastocystis - size variability is expected', 'Size variation does not indicate different species; B. hominis shows extreme pleomorphism within a single specimen'],
       ['Modified trichrome: peripheral red-purple dots', 'Peripheral nuclei of central body form', 'Staining pattern helps distinguish from debris or yeast; compare to Iodine prep for vacuole visualization']
     ],
-    trapTitle: 'Clinical significance of Blastocystis is uncertain — do not over-report as pathogen',
+    trapTitle: 'Clinical significance of Blastocystis is uncertain - do not over-report as pathogen',
     trapBody: 'Blastocystis hominis is frequently found in stool and is considered by many authorities to be a commensal protist rather than a pathogen. Its role in irritable bowel-like symptoms is debated. Reporting Blastocystis as a pathogen may lead to unnecessary treatment. Most labs report with a note that clinical significance is uncertain; treatment decisions require physician clinical correlation. Treatment (metronidazole, TMP-SMX) is reserved for symptomatic patients with no other identified cause.',
     trapBullets: [
-      'Blastocystis is extremely common worldwide — some surveys find it in >20% of the population in endemic areas.',
+      'Blastocystis is extremely common worldwide - some surveys find it in >20% of the population in endemic areas.',
       'The taxonomy of Blastocystis has changed significantly; it is now classified as a stramenopile, not a protozoan or fungus.',
       'Molecular subtyping (18S rRNA subtypes) correlates with virulence potential in research settings but is not clinically available in most labs.'
     ],
     interpretationTitle: 'Blastocystis hominis identification and reporting guide',
     interpretationRows: [
-      ['Large central vacuole, peripheral nuclei, 6–40 µm', 'Blastocystis hominis — central body form', 'Report with note on uncertain clinical significance; physician clinical correlation required for treatment decision'],
-      ['Granule-filled vacuole, peripheral nuclei', 'Blastocystis hominis — granular form', 'Report as Blastocystis hominis with form noted; treatment indicated only with clinical symptoms and no other etiology found'],
-      ['Small cysts, irregular ameboid forms', 'Blastocystis hominis — other forms', 'Report; note form type; ameboid form in immunocompromised may be more clinically relevant']
+      ['Large central vacuole, peripheral nuclei, 6-40 um', 'Blastocystis hominis - central body form', 'Report with note on uncertain clinical significance; physician clinical correlation required for treatment decision'],
+      ['Granule-filled vacuole, peripheral nuclei', 'Blastocystis hominis - granular form', 'Report as Blastocystis hominis with form noted; treatment indicated only with clinical symptoms and no other etiology found'],
+      ['Small cysts, irregular ameboid forms', 'Blastocystis hominis - other forms', 'Report; note form type; ameboid form in immunocompromised may be more clinically relevant']
     ],
     takeaways: [
       'Central body form = large central vacuole + peripheral nuclei pushed to margins. Most common form in stool.',
-      'Size highly variable (6–40 µm) — extreme pleomorphism is a Blastocystis feature, not a classification issue.',
+      'Size highly variable (6-40 um) - extreme pleomorphism is a Blastocystis feature, not a classification issue.',
       'Report as Blastocystis hominis with a note that clinical significance is uncertain; treatment requires physician clinical correlation.'
     ],
     remember: 'Central vacuole takes up ~90% of the cell; nuclei pushed to periphery = Blastocystis central body form. Very common; controversial pathogenicity; always add clinical significance note in report.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'Fresh or PVA-fixed stool — trichrome stain (best for nuclear detail); iodine wet prep (vacuole visualization); Giemsa; formalin-ethyl acetate concentration',
-      identify: ['Central body form: large central vacuole ~90% of cell, 1–4 peripheral nuclei at margins, size 6–40 µm', 'Granular form: central vacuole filled with granules, peripheral nuclei', 'Ameboid form: irregular pseudopods, rare — associated with immunocompromised patients'],
+      detect: 'Fresh or PVA-fixed stool - trichrome stain (best for nuclear detail); iodine wet prep (vacuole visualization); Giemsa; formalin-ethyl acetate concentration',
+      identify: ['Central body form: large central vacuole ~90% of cell, 1-4 peripheral nuclei at margins, size 6-40 um', 'Granular form: central vacuole filled with granules, peripheral nuclei', 'Ameboid form: irregular pseudopods, rare - associated with immunocompromised patients'],
       verify: 'PCR for subtyping (research setting); no routine confirmatory test; diagnosis is morphologic; clinical correlation determines significance',
       report: 'Report as Blastocystis hominis with form and note that clinical significance is uncertain; treatment decision requires physician clinical correlation; confirm per lab SOP'
     }
@@ -4211,7 +4211,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for recognizing Dientamoeba fragilis trophozoite: binucleate (80% of organisms), fragmented chromatin within nucleus, no cyst stage, delicate cytoplasm, and association with Enterobius co-infection.',
     boardTitle: 'Dientamoeba fragilis: binucleate trophozoite morphology',
-    boardNote: 'Trophozoite only — no cyst stage. ~7–12 µm. 80% of organisms are binucleate (2 nuclei). Each nucleus: fragmented chromatin (4–8 granules, no membrane karyosome) — "chromatin fragment" pattern. Cytoplasm: granular, may contain ingested bacteria. Associated with Enterobius vermicularis co-infection (proposed route of transmission via pinworm eggs). Must use permanent stain (trichrome or iron-hematoxylin) — invisible on wet prep.',
+    boardNote: 'Trophozoite only - no cyst stage. ~7-12 um. 80% of organisms are binucleate (2 nuclei). Each nucleus: fragmented chromatin (4-8 granules, no membrane karyosome) - "chromatin fragment" pattern. Cytoplasm: granular, may contain ingested bacteria. Associated with Enterobius vermicularis co-infection (proposed route of transmission via pinworm eggs). Must use permanent stain (trichrome or iron-hematoxylin) - invisible on wet prep.',
     ariaLabel: 'Illustrated Dientamoeba fragilis trophozoite showing two nuclei with fragmented chromatin and no visible cyst stage',
     visualType: 'microscope-dientamoeba',
     tubes: [
@@ -4220,48 +4220,48 @@ export const atlasPages: AtlasPage[] = [
         label: 'Binucleate trophozoite',
         name: '2 nuclei, fragmented chromatin (no karyosome)',
         colors: { slant: '#dce8d8', butt: '#5888a0', base: '#1c4060' },
-        note: '7–12 µm. Two nuclei present in ~80% of organisms (uninucleate in ~20%). Each nucleus: 4–8 chromatin granules arranged in a clump or tetrad — NO central karyosome and NO peripheral chromatin ring (distinguishes from all other Entamoeba). Cytoplasm is granular, pseudopods broad and leaf-like. Trophozoite is labile — PVA fixation (polyvinyl alcohol) immediately after collection is required; organisms rapidly disintegrate in formalin or unfixed specimens.'
+        note: '7-12 um. Two nuclei present in ~80% of organisms (uninucleate in ~20%). Each nucleus: 4-8 chromatin granules arranged in a clump or tetrad - NO central karyosome and NO peripheral chromatin ring (distinguishes from all other Entamoeba). Cytoplasm is granular, pseudopods broad and leaf-like. Trophozoite is labile - PVA fixation (polyvinyl alcohol) immediately after collection is required; organisms rapidly disintegrate in formalin or unfixed specimens.'
       },
       {
         id: 'B',
         label: 'No cyst stage (trophozoite-only)',
-        name: 'No cyst stage — any cyst in specimen is another species',
+        name: 'No cyst stage - any cyst in specimen is another species',
         colors: { slant: '#d4e0cc', butt: '#487888', base: '#183050' },
-        note: 'Dientamoeba fragilis has NO known cyst stage in humans — only trophozoites are found in stool. If cysts are seen in the same specimen, they belong to another organism (Giardia, Entamoeba, etc.). Finding only trophozoites and no cysts is consistent with Dientamoeba diagnosis. Transmission is not fully understood but proposed to involve Enterobius eggs as a protective vehicle. Recommend co-examination for Enterobius (perianal tape prep) when Dientamoeba is found.'
+        note: 'Dientamoeba fragilis has NO known cyst stage in humans - only trophozoites are found in stool. If cysts are seen in the same specimen, they belong to another organism (Giardia, Entamoeba, etc.). Finding only trophozoites and no cysts is consistent with Dientamoeba diagnosis. Transmission is not fully understood but proposed to involve Enterobius eggs as a protective vehicle. Recommend co-examination for Enterobius (perianal tape prep) when Dientamoeba is found.'
       }
     ],
     readoutTitle: 'Dientamoeba fragilis trophozoite recognition guide',
     readoutRows: [
-      ['Binucleate (2 nuclei visible), fragmented chromatin granules', 'Dientamoeba fragilis — definitive', 'Two nuclei with granular chromatin fragments (4–8 granules each) is the hallmark feature; seen in ~80% of organisms'],
+      ['Binucleate (2 nuclei visible), fragmented chromatin granules', 'Dientamoeba fragilis - definitive', 'Two nuclei with granular chromatin fragments (4-8 granules each) is the hallmark feature; seen in ~80% of organisms'],
       ['No central karyosome, no peripheral chromatin ring', 'Dientamoeba nuclear pattern', 'Distinguished from all Entamoeba species (which have karyosomes); nuclear structure alone separates D. fragilis'],
       ['Uninucleate trophozoite with same nuclear pattern', 'Dientamoeba fragilis (~20% of organisms)', 'Do not exclude Dientamoeba based on single nucleus; report if binucleate forms are found elsewhere on the slide'],
       ['No cyst stage found', 'Expected for D. fragilis', 'No cyst stage exists; absence of cysts with presence of binucleate trophozoites supports Dientamoeba diagnosis'],
       ['Co-detection with Enterobius eggs (pinworm)', 'Supports Dientamoeba diagnosis', 'Proposed transmission via Enterobius eggs; recommend perianal tape prep when D. fragilis is identified'],
-      ['Organism disintegrates rapidly in unfixed specimen', 'D. fragilis — fixation-dependent diagnosis', 'PVA fixation immediately at collection is essential; routine formalin preservation loses this organism']
+      ['Organism disintegrates rapidly in unfixed specimen', 'D. fragilis - fixation-dependent diagnosis', 'PVA fixation immediately at collection is essential; routine formalin preservation loses this organism']
     ],
-    trapTitle: 'Dientamoeba is invisible on wet prep — permanent stain is required',
-    trapBody: 'Dientamoeba fragilis trophozoites are transparent and essentially invisible on saline or iodine wet preparations. Permanent staining (trichrome or iron-hematoxylin) is required for identification. The organism also rapidly disintegrates in unfixed specimens — PVA fixation at the time of collection is essential. Many cases are missed due to inadequate fixation or lack of permanent staining, leading to under-diagnosis.',
+    trapTitle: 'Dientamoeba is invisible on wet prep - permanent stain is required',
+    trapBody: 'Dientamoeba fragilis trophozoites are transparent and essentially invisible on saline or iodine wet preparations. Permanent staining (trichrome or iron-hematoxylin) is required for identification. The organism also rapidly disintegrates in unfixed specimens - PVA fixation at the time of collection is essential. Many cases are missed due to inadequate fixation or lack of permanent staining, leading to under-diagnosis.',
     trapBullets: [
-      'D. fragilis is now classified as a trichomonad (related to Trichomonas) based on molecular data, not a true amoeba — the name is historical.',
+      'D. fragilis is now classified as a trichomonad (related to Trichomonas) based on molecular data, not a true amoeba - the name is historical.',
       'Co-infection with Enterobius is common enough to warrant a perianal tape prep when D. fragilis is found in stool.',
       'Treatment with iodoquinol, paromomycin, or metronidazole is effective; treat when symptomatic (diarrhea, abdominal pain).'
     ],
     interpretationTitle: 'Dientamoeba fragilis identification and reporting guide',
     interpretationRows: [
-      ['Binucleate trophozoite ~7–12 µm, fragmented chromatin, no karyosome', 'Dientamoeba fragilis — positive', 'Report; recommend Enterobius tape prep; treat if symptomatic; use iodoquinol or paromomycin'],
+      ['Binucleate trophozoite ~7-12 um, fragmented chromatin, no karyosome', 'Dientamoeba fragilis - positive', 'Report; recommend Enterobius tape prep; treat if symptomatic; use iodoquinol or paromomycin'],
       ['Uninucleate trophozoite with fragmented chromatin, same slide as binucleate forms', 'Dientamoeba fragilis uninucleate form', 'Report as D. fragilis if binucleate forms present elsewhere; uninucleate form alone is insufficient for diagnosis'],
       ['Granular trophozoite, unfixed specimen, no definitive nuclear detail', 'Suspicious but non-diagnostic', 'PVA fixation required; repeat O&P with proper fixation; do not report D. fragilis from wet prep or poor fixation alone']
     ],
     takeaways: [
       'Binucleate + fragmented chromatin (no karyosome) = D. fragilis. ~80% of organisms are binucleate.',
-      'No cyst stage: any cyst in the specimen belongs to another organism. Invisible on wet prep — permanent stain mandatory.',
+      'No cyst stage: any cyst in the specimen belongs to another organism. Invisible on wet prep - permanent stain mandatory.',
       'Co-infection with Enterobius is common; recommend perianal tape prep when D. fragilis is found.'
     ],
     remember: 'Two nuclei + chromatin fragments (no karyosome) + no cyst stage = Dientamoeba fragilis. Invisible on wet prep. PVA fixation at collection is essential.',
     relatedLearnSlug: 'intestinal-protozoa',
     divr: {
-      detect: 'PVA-fixed stool — trichrome stain (preferred) or iron-hematoxylin; permanent stain is required; organism not identifiable on wet prep; formalin fixation loses this organism',
-      identify: ['Binucleate trophozoite ~7–12 µm (80% of organisms are binucleate)', 'Each nucleus: 4–8 chromatin granules (fragmented, no karyosome, no peripheral chromatin ring)', 'No cyst stage — if cysts present, they belong to another species'],
+      detect: 'PVA-fixed stool - trichrome stain (preferred) or iron-hematoxylin; permanent stain is required; organism not identifiable on wet prep; formalin fixation loses this organism',
+      identify: ['Binucleate trophozoite ~7-12 um (80% of organisms are binucleate)', 'Each nucleus: 4-8 chromatin granules (fragmented, no karyosome, no peripheral chromatin ring)', 'No cyst stage - if cysts present, they belong to another species'],
       verify: 'Molecular PCR (GI panels) is more sensitive and is the preferred method in high-resource settings; morphology on trichrome is the classical method',
       report: 'Report as Dientamoeba fragilis trophozoites detected; recommend Enterobius tape prep; treat if symptomatic; clinical correlation required; confirm per lab SOP'
     }
@@ -4270,38 +4270,38 @@ export const atlasPages: AtlasPage[] = [
     slug: 'clonorchis-opisthorchis-egg',
     title: 'Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for recognizing Clonorchis sinensis and Opisthorchis spp. eggs: the smallest common operculated helminth egg (~28–35 µm), flask or vase shape, prominent shoulder rim at the opercular end, tiny knob at the abopercular end, and bile-staining.',
+    summary: 'Bench-card visuals for recognizing Clonorchis sinensis and Opisthorchis spp. eggs: the smallest common operculated helminth egg (~28-35 um), flask or vase shape, prominent shoulder rim at the opercular end, tiny knob at the abopercular end, and bile-staining.',
     boardTitle: 'Clonorchis / Opisthorchis egg: flask-shaped, opercular shoulder, abopercular knob',
-    boardNote: 'Clonorchis sinensis (Chinese liver fluke) and Opisthorchis spp. eggs are morphologically identical. ~28–35 µm — the smallest common operculated egg (smaller than Diphyllobothrium ~65 µm). Flask/vase shape. Prominent shoulder rim (thickening) at the opercular end where the operculum sits. Tiny knob or protuberance at the abopercular (non-opercular) end. Bile-stained golden-brown. Fully embryonated (miracidium inside) when shed in feces.',
-    ariaLabel: 'Illustrated Clonorchis sinensis egg showing flask shape with opercular shoulder rim and tiny abopercular knob, approximately 30 µm',
+    boardNote: 'Clonorchis sinensis (Chinese liver fluke) and Opisthorchis spp. eggs are morphologically identical. ~28-35 um - the smallest common operculated egg (smaller than Diphyllobothrium ~65 um). Flask/vase shape. Prominent shoulder rim (thickening) at the opercular end where the operculum sits. Tiny knob or protuberance at the abopercular (non-opercular) end. Bile-stained golden-brown. Fully embryonated (miracidium inside) when shed in feces.',
+    ariaLabel: 'Illustrated Clonorchis sinensis egg showing flask shape with opercular shoulder rim and tiny abopercular knob, approximately 30 um',
     visualType: 'microscope-clonorchis',
     tubes: [
       {
         id: 'A',
         label: 'Clonorchis/Opisthorchis egg',
-        name: '~30 µm flask-shaped, shoulder rim, abopercular knob',
+        name: '~30 um flask-shaped, shoulder rim, abopercular knob',
         colors: { slant: '#f4e8c8', butt: '#b87828', base: '#5c3010' },
-        note: '28–35 µm. Flask or vase shape (wider at opercular end, tapered toward the abopercular end). Prominent shoulder rim thickening at the opercular end — the operculum fits into this raised rim. Tiny knob or protuberance at the narrow (abopercular) end. Bile-stained golden-brown. Fully embryonated miracidium visible inside some preparations. Morphologically identical for C. sinensis, O. viverrini, and O. felineus — species differentiation requires geographic/exposure history or PCR.'
+        note: '28-35 um. Flask or vase shape (wider at opercular end, tapered toward the abopercular end). Prominent shoulder rim thickening at the opercular end - the operculum fits into this raised rim. Tiny knob or protuberance at the narrow (abopercular) end. Bile-stained golden-brown. Fully embryonated miracidium visible inside some preparations. Morphologically identical for C. sinensis, O. viverrini, and O. felineus - species differentiation requires geographic/exposure history or PCR.'
       },
       {
         id: 'B',
         label: 'Size and context comparator',
-        name: 'Smallest operculated egg: ~30 µm vs. Diphyllobothrium ~65 µm',
+        name: 'Smallest operculated egg: ~30 um vs. Diphyllobothrium ~65 um',
         colors: { slant: '#ece0b8', butt: '#a06820', base: '#4c2808' },
-        note: 'Clonorchis egg at ~30 µm is the smallest of the four common operculated eggs. Diphyllobothrium latum (~65 µm) is more than twice the size and has a more prominent abopercular knob. Heterophyes heterophyes and Metagonimus yokogawai eggs (~30 µm) mimic Clonorchis in size but lack the shoulder rim and have a less prominent knob — differentiation requires careful morphology at oil immersion. Clinical context: East/Southeast Asian fish consumption; chronic infection is a risk factor for cholangiocarcinoma (especially O. viverrini).'
+        note: 'Clonorchis egg at ~30 um is the smallest of the four common operculated eggs. Diphyllobothrium latum (~65 um) is more than twice the size and has a more prominent abopercular knob. Heterophyes heterophyes and Metagonimus yokogawai eggs (~30 um) mimic Clonorchis in size but lack the shoulder rim and have a less prominent knob - differentiation requires careful morphology at oil immersion. Clinical context: East/Southeast Asian fish consumption; chronic infection is a risk factor for cholangiocarcinoma (especially O. viverrini).'
       }
     ],
     readoutTitle: 'Clonorchis/Opisthorchis egg recognition guide',
     readoutRows: [
-      ['Flask/vase shape, ~28–35 µm, prominent opercular shoulder rim', 'Clonorchis sinensis or Opisthorchis spp.', 'Shoulder rim distinguishes from Heterophyes/Metagonimus which lack this thickening'],
-      ['Tiny knob at narrow (abopercular) end', 'Clonorchis/Opisthorchis — supportive feature', 'Knob is small but visible at oil immersion; Diphyllobothrium knob is larger and more prominent'],
-      ['Bile-stained golden-brown, fully embryonated', 'Clonorchis/Opisthorchis — eggs shed embryonated', 'Miracidium visible inside well-preserved eggs; contrast with Diphyllobothrium (undeveloped embryo)'],
-      ['~28–35 µm — smallest common operculated egg', 'Size anchors the identification', 'Measure with calibrated micrometer; size overlaps with Heterophyes at lower end; shoulder rim is the differentiator'],
+      ['Flask/vase shape, ~28-35 um, prominent opercular shoulder rim', 'Clonorchis sinensis or Opisthorchis spp.', 'Shoulder rim distinguishes from Heterophyes/Metagonimus which lack this thickening'],
+      ['Tiny knob at narrow (abopercular) end', 'Clonorchis/Opisthorchis - supportive feature', 'Knob is small but visible at oil immersion; Diphyllobothrium knob is larger and more prominent'],
+      ['Bile-stained golden-brown, fully embryonated', 'Clonorchis/Opisthorchis - eggs shed embryonated', 'Miracidium visible inside well-preserved eggs; contrast with Diphyllobothrium (undeveloped embryo)'],
+      ['~28-35 um - smallest common operculated egg', 'Size anchors the identification', 'Measure with calibrated micrometer; size overlaps with Heterophyes at lower end; shoulder rim is the differentiator'],
       ['East/Southeast Asia exposure + raw freshwater fish history', 'Epidemiology supports Clonorchis/Opisthorchis', 'Endemic in China, Korea, Vietnam, Thailand; raw or undercooked cyprinid fish; cholangiocarcinoma risk with long-term infection'],
       ['Morphologically identical to O. viverrini, O. felineus', 'Species cannot be distinguished by morphology', 'Geographic exposure + PCR or serology required for species-level differentiation; C. sinensis (East Asia) vs. O. viverrini (Southeast Asia)']
     ],
-    trapTitle: 'Heterophyes and Metagonimus eggs mimic Clonorchis — opercular shoulder is the key differentiator',
-    trapBody: 'Heterophyes heterophyes and Metagonimus yokogawai eggs overlap with Clonorchis in size (~28–30 µm). The key differentiator is the opercular shoulder: Clonorchis/Opisthorchis have a prominent thickened shoulder rim that is absent or much less defined in Heterophyes/Metagonimus. Careful oil-immersion examination is required when the eggs are on the small end of the Clonorchis range.',
+    trapTitle: 'Heterophyes and Metagonimus eggs mimic Clonorchis - opercular shoulder is the key differentiator',
+    trapBody: 'Heterophyes heterophyes and Metagonimus yokogawai eggs overlap with Clonorchis in size (~28-30 um). The key differentiator is the opercular shoulder: Clonorchis/Opisthorchis have a prominent thickened shoulder rim that is absent or much less defined in Heterophyes/Metagonimus. Careful oil-immersion examination is required when the eggs are on the small end of the Clonorchis range.',
     trapBullets: [
       'Chronic Clonorchis/Opisthorchis infection (especially O. viverrini in Southeast Asia) is a Group 1 IARC carcinogen and a major risk factor for cholangiocarcinoma.',
       'Praziquantel is highly effective and is the treatment of choice for all liver fluke infections.',
@@ -4309,20 +4309,20 @@ export const atlasPages: AtlasPage[] = [
     ],
     interpretationTitle: 'Clonorchis/Opisthorchis identification and reporting guide',
     interpretationRows: [
-      ['Flask-shaped ~30 µm egg, opercular shoulder rim, tiny abopercular knob', 'Clonorchis sinensis / Opisthorchis spp. — positive', 'Report as liver fluke egg consistent with Clonorchis/Opisthorchis; praziquantel treatment; liver imaging for cholangiopathy'],
-      ['Similar-sized egg ~30 µm, no prominent shoulder rim', 'Heterophyes/Metagonimus — consider alternative', 'Shoulder rim absence or minimal = Heterophyes or Metagonimus; report with morphologic notes; geographic context'],
+      ['Flask-shaped ~30 um egg, opercular shoulder rim, tiny abopercular knob', 'Clonorchis sinensis / Opisthorchis spp. - positive', 'Report as liver fluke egg consistent with Clonorchis/Opisthorchis; praziquantel treatment; liver imaging for cholangiopathy'],
+      ['Similar-sized egg ~30 um, no prominent shoulder rim', 'Heterophyes/Metagonimus - consider alternative', 'Shoulder rim absence or minimal = Heterophyes or Metagonimus; report with morphologic notes; geographic context'],
       ['Equivocal morphology at size limit', 'Confirm with repeat prep, PCR, or serology', 'If species differentiation is clinically important, request PCR or reference lab confirmation; clinical context guides']
     ],
     takeaways: [
-      'Smallest common operculated egg ~28–35 µm: flask shape + opercular shoulder rim + tiny abopercular knob = Clonorchis/Opisthorchis.',
+      'Smallest common operculated egg ~28-35 um: flask shape + opercular shoulder rim + tiny abopercular knob = Clonorchis/Opisthorchis.',
       'Shoulder rim at opercular end is the key differentiator from Heterophyes/Metagonimus (which lack this rim at the same size).',
       'Chronic infection (especially O. viverrini) = major cholangiocarcinoma risk; always note exposure history when reporting.'
     ],
-    remember: 'Clonorchis = smallest operculated egg (~30 µm). Flask shape. Shoulder rim at opercular end. Tiny abopercular knob. Bile-stained. Cholangiocarcinoma risk.',
+    remember: 'Clonorchis = smallest operculated egg (~30 um). Flask shape. Shoulder rim at opercular end. Tiny abopercular knob. Bile-stained. Cholangiocarcinoma risk.',
     relatedLearnSlug: 'intestinal-helminths',
     divr: {
-      detect: 'Stool O&P — iodine wet prep or formalin-ethyl acetate sedimentation; calibrated ocular micrometer for size; oil immersion for opercular shoulder detail',
-      identify: ['Flask-shaped ~28–35 µm, prominent shoulder rim (thickening) at opercular end', 'Tiny knob at abopercular (narrow) end', 'Bile-stained golden-brown, fully embryonated; C. sinensis and Opisthorchis spp. morphologically identical'],
+      detect: 'Stool O&P - iodine wet prep or formalin-ethyl acetate sedimentation; calibrated ocular micrometer for size; oil immersion for opercular shoulder detail',
+      identify: ['Flask-shaped ~28-35 um, prominent shoulder rim (thickening) at opercular end', 'Tiny knob at abopercular (narrow) end', 'Bile-stained golden-brown, fully embryonated; C. sinensis and Opisthorchis spp. morphologically identical'],
       verify: 'PCR or serology (ELISA) for species differentiation; geographic/exposure history essential; liver ultrasound for cholangiopathy',
       report: 'Report as liver fluke egg consistent with Clonorchis/Opisthorchis; note species indistinguishable by morphology; treatment: praziquantel; clinical correlation required; confirm per lab SOP'
     }
@@ -4331,59 +4331,59 @@ export const atlasPages: AtlasPage[] = [
     slug: 'fasciolopsis-fasciola-comparison',
     title: 'Fasciola hepatica vs. Fasciolopsis buski: Large Operculated Egg Comparison',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card comparison of the two largest operculated helminth eggs: Fasciola hepatica (liver fluke, ~130–150 µm, thin shell, biliary disease) and Fasciolopsis buski (intestinal giant fluke, ~130–140 µm, thin shell) — morphologically essentially identical, differentiated by clinical context and geographic exposure.',
+    summary: 'Bench-card comparison of the two largest operculated helminth eggs: Fasciola hepatica (liver fluke, ~130-150 um, thin shell, biliary disease) and Fasciolopsis buski (intestinal giant fluke, ~130-140 um, thin shell) - morphologically essentially identical, differentiated by clinical context and geographic exposure.',
     boardTitle: 'Fasciola hepatica vs. Fasciolopsis buski: identical morphology, different clinical disease',
-    boardNote: 'Both eggs: ~130–150 µm (largest common operculated egg), oval, yellow-brown, thin shell, opercular shoulder at the opercular pole. Morphologically indistinguishable by microscopy. Fasciola hepatica: liver/bile duct disease, eosinophilia, transmitted via aquatic vegetation (watercress). Fasciolopsis buski: intestinal disease, Southeast Asia, transmitted via aquatic plants (water caltrops, water chestnuts). Clinical and geographic context is mandatory for species-level differentiation.',
-    ariaLabel: 'Illustrated large operculated egg approximately 140 µm representing Fasciola hepatica and Fasciolopsis buski, showing thin shell and opercular shoulder',
+    boardNote: 'Both eggs: ~130-150 um (largest common operculated egg), oval, yellow-brown, thin shell, opercular shoulder at the opercular pole. Morphologically indistinguishable by microscopy. Fasciola hepatica: liver/bile duct disease, eosinophilia, transmitted via aquatic vegetation (watercress). Fasciolopsis buski: intestinal disease, Southeast Asia, transmitted via aquatic plants (water caltrops, water chestnuts). Clinical and geographic context is mandatory for species-level differentiation.',
+    ariaLabel: 'Illustrated large operculated egg approximately 140 um representing Fasciola hepatica and Fasciolopsis buski, showing thin shell and opercular shoulder',
     visualType: 'microscope-fasciola',
     tubes: [
       {
         id: 'A',
         label: 'Fasciola hepatica (liver fluke)',
-        name: '~130–150 µm, thin shell, biliary/hepatic disease',
+        name: '~130-150 um, thin shell, biliary/hepatic disease',
         colors: { slant: '#f0e8c0', butt: '#c8a040', base: '#604810' },
-        note: '130–150 µm, oval. Thin shell (thinner than Paragonimus, Diphyllobothrium). Yellow-brown (bile-stained). Opercular shoulder visible at one pole — operculum is relatively inconspicuous compared to smaller operculated eggs. Interior contains undeveloped egg cell and vitelline cells when freshly passed; embryonates in water. Fasciola: hepatic phase (liver migration, acute eosinophilic hepatitis) + biliary phase (biliary obstruction, cholangitis). Worldwide distribution where freshwater snails and aquatic vegetation co-exist. Transmitted by eating raw watercress or drinking contaminated water.'
+        note: '130-150 um, oval. Thin shell (thinner than Paragonimus, Diphyllobothrium). Yellow-brown (bile-stained). Opercular shoulder visible at one pole - operculum is relatively inconspicuous compared to smaller operculated eggs. Interior contains undeveloped egg cell and vitelline cells when freshly passed; embryonates in water. Fasciola: hepatic phase (liver migration, acute eosinophilic hepatitis) + biliary phase (biliary obstruction, cholangitis). Worldwide distribution where freshwater snails and aquatic vegetation co-exist. Transmitted by eating raw watercress or drinking contaminated water.'
       },
       {
         id: 'B',
         label: 'Fasciolopsis buski (intestinal fluke)',
-        name: '~130–140 µm, thin shell, intestinal disease (same morphology)',
+        name: '~130-140 um, thin shell, intestinal disease (same morphology)',
         colors: { slant: '#ece4b8', butt: '#c09838', base: '#584010' },
-        note: '130–140 µm, oval. Morphologically essentially identical to Fasciola hepatica — same size range, same thin shell, same yellow-brown bile staining, same opercular shoulder. Disease context is the ONLY differentiator: Fasciolopsis causes intestinal disease (diarrhea, malabsorption, edema in heavy infections) in Southeast/East Asia. Transmitted by eating raw aquatic plants (water caltrops, lotus roots, water chestnuts) in pig-raising endemic regions. No hepatic phase — worm lives in the small intestine attached to the mucosa. Treatment: praziquantel (both species).'
+        note: '130-140 um, oval. Morphologically essentially identical to Fasciola hepatica - same size range, same thin shell, same yellow-brown bile staining, same opercular shoulder. Disease context is the ONLY differentiator: Fasciolopsis causes intestinal disease (diarrhea, malabsorption, edema in heavy infections) in Southeast/East Asia. Transmitted by eating raw aquatic plants (water caltrops, lotus roots, water chestnuts) in pig-raising endemic regions. No hepatic phase - worm lives in the small intestine attached to the mucosa. Treatment: praziquantel (both species).'
       }
     ],
     readoutTitle: 'Fasciola vs. Fasciolopsis morphology and differentiation',
     readoutRows: [
-      ['Large oval egg ~130–150 µm, thin shell, opercular shoulder', 'Fasciola hepatica or Fasciolopsis buski — morphologically identical', 'Size and morphology alone cannot differentiate — clinical/geographic context is mandatory'],
-      ['Biliary disease, eosinophilia, hepatomegaly, jaundice', 'Fasciola hepatica — clinical clue', 'Hepatic migration phase: RUQ pain, fever, eosinophilia; biliary phase: obstructive jaundice, cholangitis'],
-      ['Intestinal diarrhea, malabsorption, Southeast/East Asia exposure', 'Fasciolopsis buski — clinical clue', 'No hepatic phase; worm lives in intestine; Southeast/East Asian exposure + aquatic plant ingestion'],
+      ['Large oval egg ~130-150 um, thin shell, opercular shoulder', 'Fasciola hepatica or Fasciolopsis buski - morphologically identical', 'Size and morphology alone cannot differentiate - clinical/geographic context is mandatory'],
+      ['Biliary disease, eosinophilia, hepatomegaly, jaundice', 'Fasciola hepatica - clinical clue', 'Hepatic migration phase: RUQ pain, fever, eosinophilia; biliary phase: obstructive jaundice, cholangitis'],
+      ['Intestinal diarrhea, malabsorption, Southeast/East Asia exposure', 'Fasciolopsis buski - clinical clue', 'No hepatic phase; worm lives in intestine; Southeast/East Asian exposure + aquatic plant ingestion'],
       ['Aquatic vegetation (watercress, freshwater plants) consumption', 'Fasciola hepatica transmission route', 'Watercress grown in endemic areas is the classic vehicle; contaminated water source also possible'],
       ['Water caltrops, lotus root, water chestnuts', 'Fasciolopsis buski transmission route', 'Aquatic plants in Southeast Asia where pigs act as reservoir hosts; cercariae encyst on plant surfaces'],
-      ['Largest common operculated egg on smear', 'Fasciola or Fasciolopsis — size anchors ID', 'No other common intestinal helminth produces an operculated egg ~130–150 µm; size rules out Diphyllobothrium (~65 µm) and Paragonimus (~90 µm)']
+      ['Largest common operculated egg on smear', 'Fasciola or Fasciolopsis - size anchors ID', 'No other common intestinal helminth produces an operculated egg ~130-150 um; size rules out Diphyllobothrium (~65 um) and Paragonimus (~90 um)']
     ],
-    trapTitle: 'Do not report species from morphology alone — they are identical under the microscope',
+    trapTitle: 'Do not report species from morphology alone - they are identical under the microscope',
     trapBody: 'Fasciola hepatica and Fasciolopsis buski eggs are morphologically indistinguishable by standard light microscopy. Reporting a specific species from egg morphology alone is an error that can mislead clinical management. The distinction requires clinical presentation (hepatic vs. intestinal symptoms), imaging (hepatic lesions for Fasciola), geographic exposure, and reservoir host context. Always report as "large operculated egg consistent with Fasciola hepatica / Fasciolopsis buski" with a clinical correlation note.',
     trapBullets: [
-      'Fasciola hepatica also infects cattle (zoonosis) — veterinary and food exposure history is relevant in non-endemic areas.',
+      'Fasciola hepatica also infects cattle (zoonosis) - veterinary and food exposure history is relevant in non-endemic areas.',
       'Serology (ELISA for Fasciola antigen) is more sensitive than stool O&P for Fasciola in the acute hepatic phase when eggs are not yet being shed.',
-      'Both are treated with triclabendazole (Fasciola preferred agent — more active than praziquantel against Fasciola) or praziquantel (Fasciolopsis).'
+      'Both are treated with triclabendazole (Fasciola preferred agent - more active than praziquantel against Fasciola) or praziquantel (Fasciolopsis).'
     ],
     interpretationTitle: 'Large operculated egg clinical differentiation guide',
     interpretationRows: [
-      ['Large ~130–150 µm operculated egg, hepatic/biliary disease, eosinophilia', 'Fasciola hepatica — report and treat with triclabendazole', 'Liver imaging; ELISA serology; triclabendazole preferred over praziquantel for Fasciola'],
-      ['Large ~130–150 µm operculated egg, intestinal disease, Southeast Asia', 'Fasciolopsis buski — report and treat with praziquantel', 'Praziquantel effective; aquatic plant exposure history; no hepatic involvement'],
-      ['Large ~130–150 µm operculated egg, unclear clinical context', 'Large operculated egg — report with differential', 'Report as large operculated egg consistent with Fasciola hepatica/Fasciolopsis buski; request clinical details for species differentiation']
+      ['Large ~130-150 um operculated egg, hepatic/biliary disease, eosinophilia', 'Fasciola hepatica - report and treat with triclabendazole', 'Liver imaging; ELISA serology; triclabendazole preferred over praziquantel for Fasciola'],
+      ['Large ~130-150 um operculated egg, intestinal disease, Southeast Asia', 'Fasciolopsis buski - report and treat with praziquantel', 'Praziquantel effective; aquatic plant exposure history; no hepatic involvement'],
+      ['Large ~130-150 um operculated egg, unclear clinical context', 'Large operculated egg - report with differential', 'Report as large operculated egg consistent with Fasciola hepatica/Fasciolopsis buski; request clinical details for species differentiation']
     ],
     takeaways: [
-      'Fasciola and Fasciolopsis produce morphologically identical eggs (~130–150 µm, thin shell, opercular shoulder) — they cannot be distinguished by microscopy.',
+      'Fasciola and Fasciolopsis produce morphologically identical eggs (~130-150 um, thin shell, opercular shoulder) - they cannot be distinguished by microscopy.',
       'Clinical differentiation: Fasciola = hepatic/biliary disease + eosinophilia (liver fluke); Fasciolopsis = intestinal disease in Southeast Asia (intestinal fluke).',
-      'Largest common operculated egg — larger than Paragonimus (~90 µm) and much larger than Diphyllobothrium (~65 µm).'
+      'Largest common operculated egg - larger than Paragonimus (~90 um) and much larger than Diphyllobothrium (~65 um).'
     ],
     remember: 'Fasciola ≈ Fasciolopsis by egg morphology. Largest operculated egg. Hepatic disease = Fasciola (triclabendazole). Intestinal disease + Southeast Asia = Fasciolopsis (praziquantel).',
     relatedLearnSlug: 'intestinal-helminths',
     divr: {
-      detect: 'Stool O&P — sedimentation (formalin-ethyl acetate); calibrated micrometer; serology (ELISA) for Fasciola when eggs not yet shed (acute hepatic phase)',
-      identify: ['Large operculated egg ~130–150 µm, thin shell, yellow-brown, opercular shoulder — Fasciola and Fasciolopsis morphologically identical', 'Species differentiation requires: clinical presentation (hepatic vs. intestinal), geographic exposure, imaging'],
+      detect: 'Stool O&P - sedimentation (formalin-ethyl acetate); calibrated micrometer; serology (ELISA) for Fasciola when eggs not yet shed (acute hepatic phase)',
+      identify: ['Large operculated egg ~130-150 um, thin shell, yellow-brown, opercular shoulder - Fasciola and Fasciolopsis morphologically identical', 'Species differentiation requires: clinical presentation (hepatic vs. intestinal), geographic exposure, imaging'],
       verify: 'Fasciola serology (ELISA) for hepatic phase; liver imaging (CT/MRI); PCR in specialized labs; stool O&P for biliary/intestinal phases',
       report: 'Report as large operculated egg consistent with Fasciola hepatica/Fasciolopsis buski; note species indistinguishable by morphology; require clinical context for species; confirm per lab SOP'
     }
@@ -4392,59 +4392,59 @@ export const atlasPages: AtlasPage[] = [
     slug: 'dipylidium-caninum-egg-packet',
     title: 'Dipylidium caninum: Egg Packets and Cucumber-Seed Proglottids',
     eyebrow: 'Visual Atlas / Parasitology',
-    summary: 'Bench-card visuals for Dipylidium caninum (dog/cat tapeworm): egg capsules/packets (5–30 oncospheres per capsule), cucumber-seed shaped proglottids, and flea/louse transmission — the most common tapeworm of dogs and cats, occasional human infections in children.',
+    summary: 'Bench-card visuals for Dipylidium caninum (dog/cat tapeworm): egg capsules/packets (5-30 oncospheres per capsule), cucumber-seed shaped proglottids, and flea/louse transmission - the most common tapeworm of dogs and cats, occasional human infections in children.',
     boardTitle: 'Dipylidium caninum: egg packets and proglottid morphology',
-    boardNote: 'Egg packets (capsules): each contains 5–30 round oncospheres (20–40 µm each), enclosed in a thin outer membrane. Found in stool or on perianal skin when proglottid ruptures. Proglottid: cucumber-seed or rice-grain shape (~1–3 cm), with two lateral genital pores (one on each side) — double genital pore is unique to D. caninum among common tapeworms. Transmission: humans (usually children) accidentally swallow infected dog or cat fleas; flea larvae ingest tapeworm eggs.',
+    boardNote: 'Egg packets (capsules): each contains 5-30 round oncospheres (20-40 um each), enclosed in a thin outer membrane. Found in stool or on perianal skin when proglottid ruptures. Proglottid: cucumber-seed or rice-grain shape (~1-3 cm), with two lateral genital pores (one on each side) - double genital pore is unique to D. caninum among common tapeworms. Transmission: humans (usually children) accidentally swallow infected dog or cat fleas; flea larvae ingest tapeworm eggs.',
     ariaLabel: 'Illustrated Dipylidium caninum egg packet showing multiple round oncospheres within a membrane capsule, and cucumber-seed shaped proglottid with double lateral genital pores',
     visualType: 'microscope-dipylidium',
     tubes: [
       {
         id: 'A',
         label: 'Egg packet (egg capsule)',
-        name: '5–30 round oncospheres in a membrane capsule',
+        name: '5-30 round oncospheres in a membrane capsule',
         colors: { slant: '#f0e8c8', butt: '#a08848', base: '#4c3810' },
-        note: 'Egg capsule (packet): thin outer membrane containing 5–30 round oncospheres (20–40 µm each, with 3 pairs of hooklets inside). Packets released when gravid proglottids disintegrate in stool or on perianal skin. The egg packet — not individual oncospheres — is the diagnostic unit in stool exam. Individual oncospheres resemble Hymenolepis nana eggs but lack the characteristic polar filaments; egg-capsule context is essential. Found in stool or on perianal skin (proglottids migrate out and rupture spontaneously).'
+        note: 'Egg capsule (packet): thin outer membrane containing 5-30 round oncospheres (20-40 um each, with 3 pairs of hooklets inside). Packets released when gravid proglottids disintegrate in stool or on perianal skin. The egg packet - not individual oncospheres - is the diagnostic unit in stool exam. Individual oncospheres resemble Hymenolepis nana eggs but lack the characteristic polar filaments; egg-capsule context is essential. Found in stool or on perianal skin (proglottids migrate out and rupture spontaneously).'
       },
       {
         id: 'B',
         label: 'Cucumber-seed proglottid',
-        name: 'Double genital pores — unique to Dipylidium',
+        name: 'Double genital pores - unique to Dipylidium',
         colors: { slant: '#ece0b8', butt: '#907840', base: '#403008' },
-        note: 'Proglottid: ~1–3 cm, elongated oval — resembles a cucumber seed or rice grain. Double genital pores (one on each lateral side) is the single most diagnostic feature of D. caninum — no other common tapeworm has two functional genital pores. Proglottids may be passed intact in stool or observed migrating perianally (patients may report "moving seeds" in their underwear or on pets). Gravid proglottids are filled with egg capsules. Scolex: ~0.5 mm, 4 suckers + rostellum with multiple rows of rose-thorn hooks.'
+        note: 'Proglottid: ~1-3 cm, elongated oval - resembles a cucumber seed or rice grain. Double genital pores (one on each lateral side) is the single most diagnostic feature of D. caninum - no other common tapeworm has two functional genital pores. Proglottids may be passed intact in stool or observed migrating perianally (patients may report "moving seeds" in their underwear or on pets). Gravid proglottids are filled with egg capsules. Scolex: ~0.5 mm, 4 suckers + rostellum with multiple rows of rose-thorn hooks.'
       }
     ],
     readoutTitle: 'Dipylidium caninum diagnostic recognition guide',
     readoutRows: [
-      ['Egg capsule (packet) containing 5–30 round oncospheres', 'Dipylidium caninum eggs', 'The packet itself is diagnostic; do not confuse individual oncospheres with other tapeworm eggs without packet context'],
-      ['Double genital pores (one each side of proglottid)', 'Dipylidium caninum — unique feature', 'No other common tapeworm has bilateral genital pores; single pore = Taenia; presence of two pores confirms D. caninum'],
+      ['Egg capsule (packet) containing 5-30 round oncospheres', 'Dipylidium caninum eggs', 'The packet itself is diagnostic; do not confuse individual oncospheres with other tapeworm eggs without packet context'],
+      ['Double genital pores (one each side of proglottid)', 'Dipylidium caninum - unique feature', 'No other common tapeworm has bilateral genital pores; single pore = Taenia; presence of two pores confirms D. caninum'],
       ['Cucumber-seed or rice-grain shaped proglottid', 'D. caninum or other tapeworm (shape alone)', 'Shape is suggestive; confirm species by double genital pores; Taenia segments are flatter and wider-proportioned'],
-      ['Round oncospheres, 20–40 µm, 3 hooklet pairs', 'D. caninum oncosphere', 'Similar to H. nana oncosphere but without the polar filaments; egg-packet context distinguishes from free H. nana eggs'],
-      ['Child with pruritus ani, contact with dogs or cats, fleas on pet', 'Dipylidium caninum — transmission clue', 'Children are the primary human hosts due to accidental flea ingestion during play; ask about pet flea status'],
-      ['Moving white segments in stool or on perianal skin', 'Proglottids migrating — behavioral clue', 'Gravid proglottids actively migrate; "moving rice grains" in stool or underwear is a classic patient complaint for D. caninum and Taenia']
+      ['Round oncospheres, 20-40 um, 3 hooklet pairs', 'D. caninum oncosphere', 'Similar to H. nana oncosphere but without the polar filaments; egg-packet context distinguishes from free H. nana eggs'],
+      ['Child with pruritus ani, contact with dogs or cats, fleas on pet', 'Dipylidium caninum - transmission clue', 'Children are the primary human hosts due to accidental flea ingestion during play; ask about pet flea status'],
+      ['Moving white segments in stool or on perianal skin', 'Proglottids migrating - behavioral clue', 'Gravid proglottids actively migrate; "moving rice grains" in stool or underwear is a classic patient complaint for D. caninum and Taenia']
     ],
-    trapTitle: 'Egg capsules (packets) are the diagnostic form — individual oncospheres are non-specific',
-    trapBody: 'When Dipylidium egg capsules rupture (in stool processing or specimen handling), the individual round oncospheres released look similar to other tapeworm oncospheres. An individual 20–40 µm oncosphere without packet context cannot be reliably identified as D. caninum. Always look for intact egg capsules, and ask about proglottid passage and pet flea history to anchor the identification.',
+    trapTitle: 'Egg capsules (packets) are the diagnostic form - individual oncospheres are non-specific',
+    trapBody: 'When Dipylidium egg capsules rupture (in stool processing or specimen handling), the individual round oncospheres released look similar to other tapeworm oncospheres. An individual 20-40 um oncosphere without packet context cannot be reliably identified as D. caninum. Always look for intact egg capsules, and ask about proglottid passage and pet flea history to anchor the identification.',
     trapBullets: [
-      'Treat the pet (dog or cat) for fleas simultaneously with treating the human host — re-infection will occur without environmental flea control.',
+      'Treat the pet (dog or cat) for fleas simultaneously with treating the human host - re-infection will occur without environmental flea control.',
       'Praziquantel (single dose) is highly effective for D. caninum; niclosamide is an alternative.',
       'Dipylidium is the most common tapeworm of dogs and cats worldwide; human infection is incidental and primarily occurs in children under 2 years old who have close contact with infested pets.'
     ],
     interpretationTitle: 'Dipylidium caninum identification and reporting guide',
     interpretationRows: [
-      ['Egg capsule with 5–30 round oncospheres in membrane packet', 'Dipylidium caninum — positive', 'Report; praziquantel treatment; recommend pet flea treatment to prevent re-infection'],
-      ['Cucumber-seed proglottid with double lateral genital pores', 'Dipylidium caninum — proglottid confirmed', 'Double genital pores confirm D. caninum; report as tapeworm proglottid; praziquantel treatment'],
-      ['Individual round oncospheres without egg capsule context', 'Oncospheres — confirm species with clinical context', 'Cannot confirm D. caninum from oncospheres alone; look for intact capsules; ask about proglottid passage and pet fleas']
+      ['Egg capsule with 5-30 round oncospheres in membrane packet', 'Dipylidium caninum - positive', 'Report; praziquantel treatment; recommend pet flea treatment to prevent re-infection'],
+      ['Cucumber-seed proglottid with double lateral genital pores', 'Dipylidium caninum - proglottid confirmed', 'Double genital pores confirm D. caninum; report as tapeworm proglottid; praziquantel treatment'],
+      ['Individual round oncospheres without egg capsule context', 'Oncospheres - confirm species with clinical context', 'Cannot confirm D. caninum from oncospheres alone; look for intact capsules; ask about proglottid passage and pet fleas']
     ],
     takeaways: [
-      'Egg capsule (packet) with 5–30 oncospheres is the diagnostic unit — look for intact packets, not individual oncospheres.',
+      'Egg capsule (packet) with 5-30 oncospheres is the diagnostic unit - look for intact packets, not individual oncospheres.',
       'Double genital pores (one each lateral side) on the cucumber-seed proglottid = Dipylidium caninum exclusively.',
-      'Transmission: accidental swallowing of infected dog/cat fleas — always recommend flea treatment for the pet.'
+      'Transmission: accidental swallowing of infected dog/cat fleas - always recommend flea treatment for the pet.'
     ],
-    remember: 'Egg packet (5–30 oncospheres in capsule) = Dipylidium. Double genital pores on cucumber-seed proglottid = confirmed D. caninum. Flea-transmitted. Treat pet too.',
+    remember: 'Egg packet (5-30 oncospheres in capsule) = Dipylidium. Double genital pores on cucumber-seed proglottid = confirmed D. caninum. Flea-transmitted. Treat pet too.',
     relatedLearnSlug: 'intestinal-helminths',
     divr: {
-      detect: 'Stool O&P — sedimentation or zinc sulfate flotation for egg capsules; direct examination of proglottids in stool or perianal specimens; tape prep for proglottids on perianal skin',
-      identify: ['Egg capsule: 5–30 round oncospheres (20–40 µm each with 3 hooklet pairs) in thin membrane packet', 'Proglottid: cucumber-seed shaped, double lateral genital pores (unique to D. caninum)', 'Scolex: 4 suckers + rostellum with multiple rows of rose-thorn hooks'],
+      detect: 'Stool O&P - sedimentation or zinc sulfate flotation for egg capsules; direct examination of proglottids in stool or perianal specimens; tape prep for proglottids on perianal skin',
+      identify: ['Egg capsule: 5-30 round oncospheres (20-40 um each with 3 hooklet pairs) in thin membrane packet', 'Proglottid: cucumber-seed shaped, double lateral genital pores (unique to D. caninum)', 'Scolex: 4 suckers + rostellum with multiple rows of rose-thorn hooks'],
       verify: 'Double genital pores on proglottid are pathognomonic; egg capsule context confirms oncosphere identity; pet flea history supports diagnosis',
       report: 'Report as Dipylidium caninum egg capsules/proglottids detected; recommend praziquantel treatment; advise pet flea treatment; clinical correlation required; confirm per lab SOP'
     }
@@ -4455,7 +4455,7 @@ export const atlasPages: AtlasPage[] = [
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card comparison of Taenia solium (pork tapeworm) and T. saginata (beef tapeworm) scoleces: T. solium has 4 suckers + rostellum with 2 rows of hooks (armed); T. saginata has 4 suckers only, NO rostellum, NO hooks (unarmed). Critical distinction for cysticercosis risk assessment.',
     boardTitle: 'Taenia scolex: T. solium (armed, rostellum + hooks) vs. T. saginata (unarmed, no rostellum)',
-    boardNote: 'T. solium (armed tapeworm): scolex ~1 mm, 4 suckers + rostellum (rounded projection) with 2 alternating rows of hooks (large and small, 22–32 total). T. saginata (unarmed tapeworm): scolex ~1–2 mm, 4 suckers only — NO rostellum, NO hooks. Scolex examination distinguishes species when segments are passed but eggs are unavailable. T. solium infection carries cysticercosis risk (larval migration to tissues); T. saginata does not.',
+    boardNote: 'T. solium (armed tapeworm): scolex ~1 mm, 4 suckers + rostellum (rounded projection) with 2 alternating rows of hooks (large and small, 22-32 total). T. saginata (unarmed tapeworm): scolex ~1-2 mm, 4 suckers only - NO rostellum, NO hooks. Scolex examination distinguishes species when segments are passed but eggs are unavailable. T. solium infection carries cysticercosis risk (larval migration to tissues); T. saginata does not.',
     ariaLabel: 'Illustrated comparison of Taenia solium scolex showing rostellum with 2 rows of hooks versus T. saginata scolex showing 4 suckers with no rostellum',
     visualType: 'microscope-taenia-scolex',
     tubes: [
@@ -4464,48 +4464,48 @@ export const atlasPages: AtlasPage[] = [
         label: 'T. solium (armed)',
         name: '4 suckers + rostellum with 2 rows of hooks',
         colors: { slant: '#f0e8d8', butt: '#906840', base: '#3c2010' },
-        note: '~1 mm scolex. 4 cup-shaped suckers arranged symmetrically around the scolex. Rostellum: rounded projection at the apex, armed with 22–32 hooks in 2 alternating rows (large hooks ~180 µm + small hooks ~130 µm). The hooks are visible at low power as a double crown at the apex. T. solium also carries cysticercosis risk (Taenia solium cysticercosis, NCC) from accidental ingestion of T. solium eggs — can cause cysts in brain, muscle, eye. Eggs of T. solium and T. saginata are morphologically identical; scolex examination is required for species differentiation.'
+        note: '~1 mm scolex. 4 cup-shaped suckers arranged symmetrically around the scolex. Rostellum: rounded projection at the apex, armed with 22-32 hooks in 2 alternating rows (large hooks ~180 um + small hooks ~130 um). The hooks are visible at low power as a double crown at the apex. T. solium also carries cysticercosis risk (Taenia solium cysticercosis, NCC) from accidental ingestion of T. solium eggs - can cause cysts in brain, muscle, eye. Eggs of T. solium and T. saginata are morphologically identical; scolex examination is required for species differentiation.'
       },
       {
         id: 'B',
         label: 'T. saginata (unarmed)',
         name: '4 suckers only, NO rostellum, NO hooks',
         colors: { slant: '#ece4d0', butt: '#806030', base: '#381808' },
-        note: '~1–2 mm scolex (slightly larger than T. solium). 4 prominent suckers arranged symmetrically. NO rostellum — apex is rounded and smooth. NO hooks — completely absent. The "unarmed" tapeworm. Gravid proglottids: 15–30 uterine branches per side (T. solium: 7–13 branches per side) — proglottid branch counting is an alternative species ID method when scolex is unavailable. T. saginata does NOT cause cysticercosis — humans are the only definitive host for the adult worm; cattle are the intermediate host (cysticerci in muscle).'
+        note: '~1-2 mm scolex (slightly larger than T. solium). 4 prominent suckers arranged symmetrically. NO rostellum - apex is rounded and smooth. NO hooks - completely absent. The "unarmed" tapeworm. Gravid proglottids: 15-30 uterine branches per side (T. solium: 7-13 branches per side) - proglottid branch counting is an alternative species ID method when scolex is unavailable. T. saginata does NOT cause cysticercosis - humans are the only definitive host for the adult worm; cattle are the intermediate host (cysticerci in muscle).'
       }
     ],
     readoutTitle: 'Taenia scolex and proglottid species differentiation',
     readoutRows: [
-      ['Rostellum with 2 rows of hooks at apex', 'T. solium (armed) — cysticercosis risk', 'Presence of hooks confirms T. solium; report immediately to assess cysticercosis risk in patient and contacts'],
-      ['No rostellum, smooth rounded apex, 4 suckers only', 'T. saginata (unarmed) — no cysticercosis risk', 'Absence of rostellum/hooks = T. saginata; no cysticercosis concern'],
-      ['Proglottid with 15–30 uterine branches per side', 'T. saginata gravid proglottid', 'Count uterine branches in fixed/pressed proglottid; 15–30 = saginata; 7–13 = solium; Indian ink injection helps visualization'],
-      ['Proglottid with 7–13 uterine branches per side', 'T. solium gravid proglottid', 'Fewer branches than T. saginata; confirm with Indian ink injection and microsopy; scolex ID is more definitive'],
-      ['Taenia eggs (radially striated shell, 30–40 µm, oncosphere with 3 hooklet pairs)', 'Taenia spp. — species cannot be determined from egg', 'T. solium and T. saginata eggs are morphologically identical; report as Taenia spp.; require scolex or proglottid for species ID'],
-      ['T. solium egg ingested by human (not pork ingestion)', 'Risk of cysticercosis — NCC', 'Human becomes accidental intermediate host when T. solium eggs are ingested; cysticerci develop in tissues including brain']
+      ['Rostellum with 2 rows of hooks at apex', 'T. solium (armed) - cysticercosis risk', 'Presence of hooks confirms T. solium; report immediately to assess cysticercosis risk in patient and contacts'],
+      ['No rostellum, smooth rounded apex, 4 suckers only', 'T. saginata (unarmed) - no cysticercosis risk', 'Absence of rostellum/hooks = T. saginata; no cysticercosis concern'],
+      ['Proglottid with 15-30 uterine branches per side', 'T. saginata gravid proglottid', 'Count uterine branches in fixed/pressed proglottid; 15-30 = saginata; 7-13 = solium; Indian ink injection helps visualization'],
+      ['Proglottid with 7-13 uterine branches per side', 'T. solium gravid proglottid', 'Fewer branches than T. saginata; confirm with Indian ink injection and microsopy; scolex ID is more definitive'],
+      ['Taenia eggs (radially striated shell, 30-40 um, oncosphere with 3 hooklet pairs)', 'Taenia spp. - species cannot be determined from egg', 'T. solium and T. saginata eggs are morphologically identical; report as Taenia spp.; require scolex or proglottid for species ID'],
+      ['T. solium egg ingested by human (not pork ingestion)', 'Risk of cysticercosis - NCC', 'Human becomes accidental intermediate host when T. solium eggs are ingested; cysticerci develop in tissues including brain']
     ],
     trapTitle: 'Taenia eggs cannot be used to distinguish T. solium from T. saginata',
-    trapBody: 'Taenia solium and T. saginata produce morphologically identical eggs (radially striated outer shell, ~30–40 µm, oncosphere with 3 hooklet pairs inside). Species identification requires either scolex examination (hooks vs. no hooks) or gravid proglottid uterine branch counting (7–13 = solium vs. 15–30 = saginata). Reporting "Taenia spp." from egg morphology alone is correct and appropriate — do not speculate on species without scolex or proglottid evidence.',
+    trapBody: 'Taenia solium and T. saginata produce morphologically identical eggs (radially striated outer shell, ~30-40 um, oncosphere with 3 hooklet pairs inside). Species identification requires either scolex examination (hooks vs. no hooks) or gravid proglottid uterine branch counting (7-13 = solium vs. 15-30 = saginata). Reporting "Taenia spp." from egg morphology alone is correct and appropriate - do not speculate on species without scolex or proglottid evidence.',
     trapBullets: [
-      'Taenia solium cysticercosis (neurocysticercosis, NCC) is the most common cause of acquired epilepsy in many developing countries — a finding of T. solium should prompt NCC investigation.',
-      'When T. solium adult tapeworm is found, assess household contacts for egg exposure — cysticercosis can be transmitted from person to person via fecal-oral route (T. solium eggs in human stool).',
-      'Cysticercosis is NOT caused by eating pork — it results from ingesting T. solium eggs (from contaminated food/water or human carriers). Eating infected pork gives the adult tapeworm, not cysticercosis.'
+      'Taenia solium cysticercosis (neurocysticercosis, NCC) is the most common cause of acquired epilepsy in many developing countries - a finding of T. solium should prompt NCC investigation.',
+      'When T. solium adult tapeworm is found, assess household contacts for egg exposure - cysticercosis can be transmitted from person to person via fecal-oral route (T. solium eggs in human stool).',
+      'Cysticercosis is NOT caused by eating pork - it results from ingesting T. solium eggs (from contaminated food/water or human carriers). Eating infected pork gives the adult tapeworm, not cysticercosis.'
     ],
     interpretationTitle: 'Taenia species differentiation and reporting guide',
     interpretationRows: [
-      ['Scolex with rostellum + 2 rows of hooks', 'Taenia solium — armed tapeworm; cysticercosis risk assessment required', 'Report immediately; CNS imaging for NCC; praziquantel for intestinal tapeworm; albendazole + corticosteroids for NCC'],
-      ['Scolex with 4 suckers, no rostellum, no hooks', 'Taenia saginata — unarmed tapeworm; no cysticercosis risk', 'Report; praziquantel treatment; no NCC concern; beef exposure history'],
-      ['Taenia eggs only, no scolex or proglottid', 'Taenia spp. — species indeterminate', 'Report as Taenia spp. egg; request scolex or proglottid for species ID; inform physician of cysticercosis risk potential until T. solium excluded']
+      ['Scolex with rostellum + 2 rows of hooks', 'Taenia solium - armed tapeworm; cysticercosis risk assessment required', 'Report immediately; CNS imaging for NCC; praziquantel for intestinal tapeworm; albendazole + corticosteroids for NCC'],
+      ['Scolex with 4 suckers, no rostellum, no hooks', 'Taenia saginata - unarmed tapeworm; no cysticercosis risk', 'Report; praziquantel treatment; no NCC concern; beef exposure history'],
+      ['Taenia eggs only, no scolex or proglottid', 'Taenia spp. - species indeterminate', 'Report as Taenia spp. egg; request scolex or proglottid for species ID; inform physician of cysticercosis risk potential until T. solium excluded']
     ],
     takeaways: [
       'T. solium (armed): rostellum + 2 rows of hooks + 4 suckers = cysticercosis risk. T. saginata (unarmed): 4 suckers only, no rostellum/hooks = no cysticercosis.',
-      'Taenia eggs are identical for both species — scolex or proglottid required for species identification.',
-      'Proglottid uterine branches: 7–13 = T. solium; 15–30 = T. saginata — use Indian ink injection for visibility.'
+      'Taenia eggs are identical for both species - scolex or proglottid required for species identification.',
+      'Proglottid uterine branches: 7-13 = T. solium; 15-30 = T. saginata - use Indian ink injection for visibility.'
     ],
     remember: 'Armed (hooks + rostellum) = T. solium = cysticercosis risk. Unarmed (no hooks) = T. saginata = no cysticercosis. Eggs identical. Never speculate species from egg alone.',
     relatedLearnSlug: 'intestinal-helminths',
     divr: {
-      detect: 'Stool examination for scolex (after anthelmintic treatment, scolex may be expelled — examine thoroughly); proglottid examination (direct or Indian ink injection); stool O&P for eggs',
-      identify: ['T. solium scolex: 4 suckers + rostellum with 2 rows of hooks (22–32 hooks total, ~180 µm large + ~130 µm small)', 'T. saginata scolex: 4 suckers + NO rostellum + NO hooks', 'Proglottid branches: T. solium 7–13 lateral branches; T. saginata 15–30 lateral branches (Indian ink); Taenia eggs morphologically identical'],
+      detect: 'Stool examination for scolex (after anthelmintic treatment, scolex may be expelled - examine thoroughly); proglottid examination (direct or Indian ink injection); stool O&P for eggs',
+      identify: ['T. solium scolex: 4 suckers + rostellum with 2 rows of hooks (22-32 hooks total, ~180 um large + ~130 um small)', 'T. saginata scolex: 4 suckers + NO rostellum + NO hooks', 'Proglottid branches: T. solium 7-13 lateral branches; T. saginata 15-30 lateral branches (Indian ink); Taenia eggs morphologically identical'],
       verify: 'Species ID requires scolex or proglottid morphology; PCR from proglottid or stool for definitive species ID; imaging (CT/MRI) when T. solium found to evaluate for NCC',
       report: 'Report species if scolex/proglottid available; Taenia spp. if egg only; T. solium = urgent NCC risk assessment; clinical correlation required; confirm per lab SOP'
     }
@@ -5671,7 +5671,7 @@ function renderMicrodase(tube: TubeVisual) {
           </>
         ) : (
           <>
-            {/* No color — white/unchanged disk */}
+            {/* No color - white/unchanged disk */}
             <circle cx="115" cy="100" r="29" fill="#f8fafc" opacity="0.9" />
             {/* Colony smear texture (grey) */}
             <path d="M 104,95 Q 115,91 126,101 T 115,110" fill="none" stroke="#cbd5e1" strokeWidth="6" strokeLinecap="round" opacity="0.75" />
@@ -5839,7 +5839,7 @@ function renderMRSBroth(tube: TubeVisual) {
         {/* Durham tube (inverted small tube submerged in broth)
              The Durham tube sits near the top of the broth, closed end at top.
              It is narrower than the main tube. */}
-        {/* Durham tube body — glass wall */}
+        {/* Durham tube body - glass wall */}
         <rect x="50" y="138" width="20" height="64" rx="5" fill="#ffffff" fillOpacity="0.18" stroke="#94a3b8" strokeWidth="1.2" />
 
         {/* Durham tube interior */}
@@ -5855,7 +5855,7 @@ function renderMRSBroth(tube: TubeVisual) {
             <path d="M51 157 L69 157 L69 196 C69 199, 65 201, 60 201 C55 201, 51 199, 51 196 Z" fill={brothColor} opacity="0.7" />
           </>
         ) : (
-          /* Broth fills the entire Durham tube — no gas */
+          /* Broth fills the entire Durham tube - no gas */
           <path d="M51 139 L69 139 L69 196 C69 199, 65 201, 60 201 C55 201, 51 199, 51 196 Z" fill={brothColor} opacity="0.72" />
         )}
 
@@ -5909,7 +5909,7 @@ function renderMUGTest(tube: TubeVisual) {
           </filter>
         </defs>
 
-        {/* UV viewing chamber — pitch black */}
+        {/* UV viewing chamber - pitch black */}
         <rect x="0" y="0" width="200" height="200" fill="#020617" />
         <rect x="0" y="0" width="200" height="200" fill={`url(#uv-vignette-${tube.id})`} />
 
@@ -6285,7 +6285,7 @@ function renderOptochinTest(tube: TubeVisual) {
               <line x1="142" y1="140" x2="142" y2="150" />
             </g>
             <rect x="72" y="152" width="56" height="15" fill={agarColor} rx="3" opacity="0.9" stroke="#ffffff" strokeWidth="0.5" />
-            <text x="100" y="163" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold" fontFamily="sans-serif">≥ 14 mm</text>
+            <text x="100" y="163" textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold" fontFamily="sans-serif">{'>= 14 mm'}</text>
           </>
         ) : (
           <>
@@ -6335,7 +6335,7 @@ function renderOxidaseTest(tube: TubeVisual) {
         {/* Left half label zone */}
         <rect x="25" y="45" width="55" height="110" fill="#cbd5e0" fillOpacity="0.12" stroke="#4a5568" strokeWidth="1" />
         <text x="52" y="90" textAnchor="middle" fill="#a0aec0" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">oxidase</text>
-        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/–</text>
+        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/-</text>
 
         {/* White filter paper triangle */}
         <polygon points="135,55 98,125 172,125" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" filter={`url(#slide-shadow-ox-${tube.id})`} />
@@ -6566,7 +6566,7 @@ function renderPYRTest(tube: TubeVisual) {
         {/* Left half label zone */}
         <rect x="25" y="45" width="55" height="110" fill="#cbd5e0" fillOpacity="0.12" stroke="#4a5568" strokeWidth="1" />
         <text x="52" y="90" textAnchor="middle" fill="#a0aec0" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">Pyr</text>
-        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/–</text>
+        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/-</text>
 
         {/* White circular paper disk */}
         <circle cx="135" cy="100" r="28" fill="#ffffff" stroke="#cbd5e1" strokeWidth="1" filter={`url(#slide-shadow-pyr-${tube.id})`} />
@@ -6763,7 +6763,7 @@ function renderSpotIndole(tube: TubeVisual) {
         {/* Left half label zone */}
         <rect x="25" y="45" width="55" height="110" fill="#cbd5e0" fillOpacity="0.12" stroke="#4a5568" strokeWidth="1" />
         <text x="52" y="90" textAnchor="middle" fill="#a0aec0" fontSize="10" fontWeight="bold" fontFamily="sans-serif" letterSpacing="0.5">Indole</text>
-        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/–</text>
+        <text x="52" y="115" textAnchor="middle" fill="#718096" fontSize="11" fontWeight="bold" fontFamily="sans-serif" letterSpacing="1">+/-</text>
 
         {/* White filter paper triangle */}
         <polygon points="135,55 98,125 172,125" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1" filter={`url(#slide-shadow-sp-${tube.id})`} />
@@ -7288,12 +7288,12 @@ function renderEnterobius(tube: TubeVisual) {
           <line x1="72" y1="60" x2="72" y2="140" stroke={shell} strokeWidth="2.8" strokeLinecap="round" opacity="0.6" />
           {isFresh ? (
             <>
-              {/* Larva inside — coiled shape */}
+              {/* Larva inside - coiled shape */}
               <path d="M 104 72 C 130 78, 138 95, 128 110 C 118 125, 98 124, 94 108 C 90 92, 108 88, 118 100" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.65" strokeLinecap="round" />
               <circle cx="104" cy="70" r="3.5" fill={detail} opacity="0.6" />
             </>
           ) : (
-            /* Collapsed/older — faint outline only */
+            /* Collapsed/older - faint outline only */
             <ellipse cx="112" cy="100" rx="26" ry="34" fill={detail} fillOpacity="0.1" stroke={detail} strokeWidth="1.2" strokeDasharray="4 3" opacity="0.5" />
           )}
         </g>
@@ -7326,7 +7326,7 @@ function renderStrongyloides(tube: TubeVisual) {
         </defs>
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#strongy-bg-${tube.id})`} stroke="#c0c8b8" strokeWidth="1.2" />
         <g filter={`url(#strongy-shadow-${tube.id})`}>
-          {/* Larval body — elongated worm */}
+          {/* Larval body - elongated worm */}
           <path d={isRhabditiform ? 'M 100 28 C 102 60, 104 90, 100 118 C 96 148, 98 162, 100 175' : 'M 100 22 C 103 55, 105 88, 100 118 C 95 148, 97 164, 100 180'} fill="none" stroke={body} strokeWidth="13" strokeLinecap="round" opacity="0.72" />
           <path d={isRhabditiform ? 'M 100 28 C 102 60, 104 90, 100 118 C 96 148, 98 162, 100 175' : 'M 100 22 C 103 55, 105 88, 100 118 C 95 148, 97 164, 100 180'} fill="none" stroke={bg} strokeWidth="7" strokeLinecap="round" opacity="0.45" />
           {isRhabditiform ? (
@@ -7390,7 +7390,7 @@ function renderHookworm(tube: TubeVisual) {
               <line x1="75" y1="100" x2="125" y2="100" stroke={detail} strokeWidth="1" opacity="0.35" />
             </>
           ) : (
-            /* Embryonated — larva curled inside */
+            /* Embryonated - larva curled inside */
             <path d="M 100 62 C 128 70, 136 90, 122 108 C 108 126, 84 122, 82 104 C 80 86, 100 82, 108 96" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
           )}
         </g>
@@ -7474,14 +7474,14 @@ function renderPlasmodium(tube: TubeVisual) {
             <ellipse cx="100" cy="100" rx="66" ry="56" fill={`url(#plasmo-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
             {/* Central pallor */}
             <ellipse cx="100" cy="100" rx="28" ry="24" fill={bg} fillOpacity="0.55" stroke="none" />
-            {/* Ring 1 — accole at edge */}
+            {/* Ring 1 - accole at edge */}
             <circle cx="55" cy="80" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.85" />
             <circle cx="53" cy="77" r="3" fill={detail} opacity="0.85" />
-            {/* Ring 2 — double chromatin */}
+            {/* Ring 2 - double chromatin */}
             <circle cx="138" cy="86" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.82" />
             <circle cx="134" cy="83" r="2.2" fill={detail} opacity="0.82" />
             <circle cx="141" cy="83" r="2.2" fill={detail} opacity="0.82" />
-            {/* Ring 3 — accole at bottom edge */}
+            {/* Ring 3 - accole at bottom edge */}
             <circle cx="88" cy="148" r="9" fill="none" stroke={detail} strokeWidth="2" opacity="0.75" />
             <circle cx="86" cy="146" r="2.5" fill={detail} opacity="0.75" />
           </g>
@@ -7532,7 +7532,7 @@ function renderBabesia(tube: TubeVisual) {
             {/* RBC */}
             <ellipse cx="100" cy="100" rx="64" ry="54" fill={`url(#bab-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
             <ellipse cx="100" cy="100" rx="26" ry="22" fill={bg} fillOpacity="0.5" stroke="none" />
-            {/* Maltese cross tetrad — 4 pear-shaped merozoites */}
+            {/* Maltese cross tetrad - 4 pear-shaped merozoites */}
             <circle cx="100" cy="78" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
             <circle cx="100" cy="76" r="3" fill={detail} opacity="0.88" />
             <circle cx="100" cy="122" r="10" fill="none" stroke={detail} strokeWidth="2.2" opacity="0.88" />
@@ -7559,7 +7559,7 @@ function renderBabesia(tube: TubeVisual) {
             {/* Ring 3 */}
             <circle cx="82" cy="120" r="7" fill="none" stroke={detail} strokeWidth="2" opacity="0.78" />
             <circle cx="81" cy="118" r="2" fill={detail} opacity="0.78" />
-            {/* Extracellular ring — outside RBC */}
+            {/* Extracellular ring - outside RBC */}
             <circle cx="150" cy="140" r="7" fill="none" stroke={detail} strokeWidth="2" opacity="0.7" />
             <circle cx="149" cy="138" r="2" fill={detail} opacity="0.7" />
           </g>
@@ -7603,14 +7603,14 @@ function renderTrypanosoma(tube: TubeVisual) {
             <ellipse cx="63" cy="148" rx="9" ry="7" fill={detail} opacity="0.82" />
             {/* Anterior free flagellum */}
             <path d="M 142 90 C 152 78, 162 64, 170 48" fill="none" stroke={detail} strokeWidth="2" opacity="0.65" strokeLinecap="round" />
-            {/* Nucleus — mid body */}
+            {/* Nucleus - mid body */}
             <ellipse cx="88" cy="96" rx="9" ry="7" fill={detail} fillOpacity="0.55" stroke={detail} strokeWidth="1" />
           </g>
         ) : (
           <g filter={`url(#tryp-shadow-${tube.id})`}>
             {/* Cell (macrophage outline) */}
             <ellipse cx="100" cy="100" rx="72" ry="62" fill={body} fillOpacity="0.12" stroke={body} strokeWidth="1.8" strokeDasharray="5 3" />
-            {/* Amastigotes — small round cells with nucleus + kinetoplast */}
+            {/* Amastigotes - small round cells with nucleus + kinetoplast */}
             {[
               [78, 80], [100, 78], [122, 80],
               [70, 100], [92, 100], [114, 100], [134, 100],
@@ -7654,22 +7654,22 @@ function renderToxoplasma(tube: TubeVisual) {
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#toxo-bg-${tube.id})`} stroke="#c0b0d0" strokeWidth="1.2" />
         {isTachyzoite ? (
           <g filter={`url(#toxo-shadow-${tube.id})`}>
-            {/* Crescent tachyzoites — group of 2-3 */}
+            {/* Crescent tachyzoites - group of 2-3 */}
             {/* Tachyzoite 1 */}
             <path d="M 70 88 C 74 72, 94 68, 108 76 C 120 84, 120 100, 108 106 C 94 112, 74 108, 70 92" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="102" cy="96" rx="7" ry="5" fill={detail} opacity="0.72" />
-            {/* Tachyzoite 2 — adjacent, slightly rotated */}
+            {/* Tachyzoite 2 - adjacent, slightly rotated */}
             <path d="M 82 116 C 86 100, 106 96, 120 104 C 132 112, 132 128, 120 134 C 106 140, 86 136, 82 120" fill={body} fillOpacity="0.50" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="114" cy="124" rx="7" ry="5" fill={detail} opacity="0.68" />
-            {/* Tachyzoite 3 — partial */}
+            {/* Tachyzoite 3 - partial */}
             <path d="M 48 96 C 52 82, 66 78, 74 86 C 80 94, 78 106, 70 108 C 60 110, 46 104, 48 98" fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="66" cy="97" rx="5" ry="4" fill={detail} opacity="0.62" />
           </g>
         ) : (
           <g filter={`url(#toxo-shadow-${tube.id})`}>
-            {/* Tissue cyst — large round with bradyzoites inside */}
+            {/* Tissue cyst - large round with bradyzoites inside */}
             <circle cx="100" cy="100" rx="64" r="62" fill={bg} fillOpacity="0.4" stroke={detail} strokeWidth="2.5" />
-            {/* Bradyzoites — small crescent shapes inside cyst */}
+            {/* Bradyzoites - small crescent shapes inside cyst */}
             {[
               [74, 80, 0], [94, 75, 15], [114, 80, -15], [130, 92, -30],
               [135, 110, -45], [122, 126, -55], [104, 132, 0], [84, 128, 20],
@@ -7713,7 +7713,7 @@ function renderLeishmania(tube: TubeVisual) {
             <ellipse cx="100" cy="100" rx="72" ry="65" fill={body} fillOpacity="0.14" stroke={body} strokeWidth="2" />
             {/* Host nucleus */}
             <ellipse cx="138" cy="72" rx="16" ry="12" fill={body} fillOpacity="0.25" stroke={body} strokeWidth="1.5" />
-            {/* Amastigotes — small round with nucleus + kinetoplast */}
+            {/* Amastigotes - small round with nucleus + kinetoplast */}
             {[
               [68, 80], [88, 80], [108, 80],
               [60, 100], [80, 100], [100, 100], [120, 100],
@@ -7723,19 +7723,19 @@ function renderLeishmania(tube: TubeVisual) {
                 <circle cx={cx} cy={cy} r="8.5" fill={body} fillOpacity="0.30" stroke={detail} strokeWidth="1.2" />
                 {/* Nucleus */}
                 <circle cx={cx - 1} cy={cy - 1} r="2.8" fill={detail} opacity="0.78" />
-                {/* Kinetoplast bar — perpendicular to nucleus */}
+                {/* Kinetoplast bar - perpendicular to nucleus */}
                 <rect x={cx + 2} y={cy - 1} width="5.5" height="2.5" rx="1" fill={detail} opacity="0.72" />
               </g>
             ))}
           </g>
         ) : (
           <g filter={`url(#leish-shadow-${tube.id})`}>
-            {/* Promastigote — elongated with anterior flagellum */}
+            {/* Promastigote - elongated with anterior flagellum */}
             <path d="M 100 160 C 98 130, 96 100, 100 70 C 102 50, 104 36, 100 24" fill="none" stroke={body} strokeWidth="11" strokeLinecap="round" opacity="0.72" />
             <path d="M 100 160 C 98 130, 96 100, 100 70 C 102 50, 104 36, 100 24" fill="none" stroke={bg} strokeWidth="6" strokeLinecap="round" opacity="0.4" />
             {/* Anterior kinetoplast */}
             <ellipse cx="100" cy="62" rx="8" ry="6" fill={detail} opacity="0.78" />
-            {/* Nucleus — mid-body */}
+            {/* Nucleus - mid-body */}
             <ellipse cx="100" cy="100" rx="9" ry="7" fill={detail} fillOpacity="0.55" stroke={detail} strokeWidth="1" />
             {/* Anterior flagellum */}
             <path d="M 100 24 C 108 14, 118 8, 128 4" fill="none" stroke={detail} strokeWidth="2" opacity="0.68" strokeLinecap="round" />
@@ -7780,7 +7780,7 @@ function renderAscaris(tube: TubeVisual) {
               <circle key={i} cx={b.cx} cy={b.cy} r="6.5" fill={shell} fillOpacity="0.55" />
             ))}
             <ellipse cx="100" cy="100" rx="52" ry="62" fill={shell} fillOpacity="0.28" />
-            {/* Inner shell — smooth, thick */}
+            {/* Inner shell - smooth, thick */}
             <ellipse cx="100" cy="100" rx="43" ry="53" fill={bg} fillOpacity="0.85" stroke={shell} strokeWidth="3" />
             {/* Unsegmented cell content */}
             <ellipse cx="100" cy="102" rx="33" ry="42" fill={shell} fillOpacity="0.28" stroke={detail} strokeWidth="1.2" />
@@ -7788,7 +7788,7 @@ function renderAscaris(tube: TubeVisual) {
           </g>
         ) : (
           <g filter={`url(#asc-shadow-${tube.id})`}>
-            {/* Decorticate / infertile — elongated oval, no outer coat */}
+            {/* Decorticate / infertile - elongated oval, no outer coat */}
             <ellipse cx="100" cy="100" rx="42" ry="62" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2.5" />
             {/* Disorganized granular content */}
             <ellipse cx="84" cy="76" rx="14" ry="11" fill={detail} fillOpacity="0.26" stroke={detail} strokeWidth="1" />
@@ -7828,10 +7828,10 @@ function renderTrichostrongylus(tube: TubeVisual) {
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#tss-bg-${tube.id})`} stroke="#b8a888" strokeWidth="1.2" />
         {isTss ? (
           <g filter={`url(#tss-shadow-${tube.id})`}>
-            {/* Trichostrongylus: elongated, asymmetric — one end tapered */}
+            {/* Trichostrongylus: elongated, asymmetric - one end tapered */}
             <path d="M 100 30 C 130 30, 152 52, 152 90 C 152 130, 134 162, 100 172 C 80 172, 58 152, 50 118 C 44 90, 54 50, 100 30 Z" fill={bg} fillOpacity="0.82" stroke={shell} strokeWidth="2.5" />
             <path d="M 100 40 C 126 40, 144 60, 144 92 C 144 128, 128 156, 100 164 C 82 164, 62 146, 56 116 C 50 90, 62 56, 100 40 Z" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.4" />
-            {/* Advanced morula — ~15 cells */}
+            {/* Advanced morula - ~15 cells */}
             {([
               [90, 58], [110, 58],
               [76, 80], [96, 78], [116, 80],
@@ -7847,7 +7847,7 @@ function renderTrichostrongylus(tube: TubeVisual) {
             {/* Hookworm comparator: rounder oval, symmetric blunt ends */}
             <ellipse cx="100" cy="100" rx="50" ry="60" fill={bg} fillOpacity="0.82" stroke={shell} strokeWidth="2.5" />
             <ellipse cx="100" cy="100" rx="44" ry="54" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.4" />
-            {/* Early morula — 7 cells */}
+            {/* Early morula - 7 cells */}
             {([
               [88, 78], [112, 78],
               [80, 100], [100, 98], [120, 100],
@@ -7891,7 +7891,7 @@ function renderTrichinella(tube: TubeVisual) {
             {[38, 54, 70, 86, 102, 118, 134, 150, 166].map(y => (
               <line key={y} x1="10" y1={y} x2="190" y2={y} stroke={shell} strokeWidth="0.8" strokeOpacity="0.28" />
             ))}
-            {/* Nurse cell capsule — oval */}
+            {/* Nurse cell capsule - oval */}
             <ellipse cx="100" cy="100" rx="72" ry="38" fill={bg} fillOpacity="0.92" stroke={shell} strokeWidth="2.5" />
             <ellipse cx="100" cy="100" rx="66" ry="32" fill="none" stroke={shell} strokeWidth="1" strokeOpacity="0.3" />
             {/* Coiled larva inside */}
@@ -8036,7 +8036,7 @@ function renderTaeniaEgg(tube: TubeVisual) {
           <g filter={`url(#tae-shadow-${tube.id})`}>
             {/* Gravid proglottid comparison */}
             <line x1="100" y1="28" x2="100" y2="172" stroke={shell} strokeWidth="1" strokeOpacity="0.45" strokeDasharray="4,3" />
-            {/* T. saginata — left half */}
+            {/* T. saginata - left half */}
             <rect x="16" y="32" width="80" height="136" rx="4" fill={shell} fillOpacity="0.14" stroke={shell} strokeWidth="1.5" />
             <line x1="56" y1="32" x2="56" y2="168" stroke={detail} strokeWidth="2" />
             {[42,50,58,66,74,82,90,98,106,114,122,130,138,146,154,162].map((y,i) => (
@@ -8045,7 +8045,7 @@ function renderTaeniaEgg(tube: TubeVisual) {
                 <line x1="56" y1={y} x2="94" y2={y} stroke={detail} strokeWidth="1" strokeOpacity="0.65" />
               </g>
             ))}
-            {/* T. solium — right half */}
+            {/* T. solium - right half */}
             <rect x="104" y="32" width="80" height="136" rx="4" fill={shell} fillOpacity="0.14" stroke={shell} strokeWidth="1.5" />
             <line x1="144" y1="32" x2="144" y2="168" stroke={detail} strokeWidth="2" />
             {[48,62,76,90,104,118,132,146,160].map((y,i) => (
@@ -8056,7 +8056,7 @@ function renderTaeniaEgg(tube: TubeVisual) {
             ))}
             {/* Labels */}
             <text x="56" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. saginata {'>'}13</text>
-            <text x="144" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. solium 8–13</text>
+            <text x="144" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. solium 8-13</text>
           </g>
         )}
         <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
@@ -8149,7 +8149,7 @@ function renderSchistosoma(tube: TubeVisual) {
             <ellipse cx="100" cy="100" rx="45" ry="62" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
             {/* Embryonated inner content */}
             <ellipse cx="100" cy="100" rx="36" ry="54" fill={shell} fillOpacity="0.16" stroke={detail} strokeWidth="1" />
-            {/* Prominent lateral spine — pointing to the right at mid-posterior */}
+            {/* Prominent lateral spine - pointing to the right at mid-posterior */}
             <path d="M 145 118 L 172 108 L 145 102 Z" fill={shell} fillOpacity="0.7" stroke={shell} strokeWidth="1.5" />
             {/* Spine junction */}
             <path d="M 144 110 L 144 110" fill="none" stroke={shell} strokeWidth="1" />
@@ -8160,7 +8160,7 @@ function renderSchistosoma(tube: TubeVisual) {
             <ellipse cx="100" cy="100" rx="40" ry="58" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
             {/* Embryonated inner content */}
             <ellipse cx="100" cy="100" rx="32" ry="50" fill={shell} fillOpacity="0.16" stroke={detail} strokeWidth="1" />
-            {/* Terminal spine — at the bottom pole */}
+            {/* Terminal spine - at the bottom pole */}
             <path d="M 92 158 L 100 182 L 108 158 Z" fill={shell} fillOpacity="0.7" stroke={shell} strokeWidth="1.5" />
           </g>
         )}
@@ -8212,7 +8212,7 @@ function renderHymenolepis(tube: TubeVisual) {
             <line key={i} x1={h.x1} y1={h.y1} x2={h.x2} y2={h.y2} stroke={detail} strokeWidth="1.8" strokeLinecap="round" />
           ))}
           {isNana && (
-            /* Polar filaments — 4 thread-like filaments from each pole of oncosphere */
+            /* Polar filaments - 4 thread-like filaments from each pole of oncosphere */
             <>
               {/* Top pole filaments */}
               <line x1="96" y1="72" x2="92" y2="52" stroke={detail} strokeWidth="1" strokeOpacity="0.7" strokeLinecap="round" />
@@ -8259,16 +8259,16 @@ function renderDiphyllobothrium(tube: TubeVisual) {
           <g filter={`url(#dip-shadow-${tube.id})`}>
             {/* D. latum: broadly oval egg, smooth opercular rim, abopercular knob */}
             <ellipse cx="100" cy="100" rx="50" ry="62" fill={shell} fillOpacity="0.20" stroke={shell} strokeWidth="2.5" />
-            {/* Smooth opercular rim at top — no shoulder (just flat) */}
+            {/* Smooth opercular rim at top - no shoulder (just flat) */}
             <ellipse cx="100" cy="40" rx="32" ry="8" fill={bg} fillOpacity="0.92" stroke={shell} strokeWidth="2" />
             {/* Unembryonated interior */}
             <ellipse cx="100" cy="108" rx="38" ry="46" fill={shell} fillOpacity="0.15" stroke={detail} strokeWidth="1" />
-            {/* Abopercular knob — small button at bottom */}
+            {/* Abopercular knob - small button at bottom */}
             <ellipse cx="100" cy="162" rx="12" ry="6" fill={shell} fillOpacity="0.65" stroke={shell} strokeWidth="1.5" />
           </g>
         ) : (
           <g filter={`url(#dip-shadow-${tube.id})`}>
-            {/* Comparison card — draw 2 mini eggs for comparison */}
+            {/* Comparison card - draw 2 mini eggs for comparison */}
             {/* Left mini: Paragonimus (shouldered, larger) */}
             <ellipse cx="62" cy="95" rx="30" ry="38" fill={shell} fillOpacity="0.18" stroke={shell} strokeWidth="2" />
             <ellipse cx="62" cy="59" rx="26" ry="5" fill={shell} fillOpacity="0.42" stroke={shell} strokeWidth="1.5" />
@@ -8325,7 +8325,7 @@ function renderEchinococcus(tube: TubeVisual) {
             ].map(([cx,cy],i) => (
               <ellipse key={i} cx={cx} cy={cy} rx="3" ry="4.5" fill={detail} fillOpacity="0.7" stroke={detail} strokeWidth="0.5" />
             ))}
-            {/* 4 suckers — positioned around the body */}
+            {/* 4 suckers - positioned around the body */}
             {[
               [56, 80], [144, 80], [56, 120], [144, 120]
             ].map(([cx,cy],i) => (
@@ -8342,12 +8342,12 @@ function renderEchinococcus(tube: TubeVisual) {
             {/* Laminated cyst wall cross-section */}
             {/* Outer fibrous pericyst (host-derived) */}
             <rect x="15" y="30" width="170" height="140" rx="8" fill={shell} fillOpacity="0.12" stroke={shell} strokeWidth="1.5" />
-            {/* Laminated layer — multiple wavy eosinophilic layers */}
+            {/* Laminated layer - multiple wavy eosinophilic layers */}
             {[0,1,2,3,4,5,6].map(n => (
               <path key={n} d={`M 20 ${70+n*8} C 60 ${65+n*8}, 100 ${75+n*8}, 140 ${67+n*8} C 160 ${63+n*8}, 175 ${70+n*8}, 180 ${68+n*8}`} fill="none" stroke={shell} strokeWidth="1.8" strokeOpacity="0.75" />
             ))}
             <rect x="18" y="62" width="164" height="62" rx="4" fill={shell} fillOpacity="0.15" stroke={shell} strokeWidth="2.5" />
-            {/* Germinal layer — thin inner nucleated layer */}
+            {/* Germinal layer - thin inner nucleated layer */}
             <rect x="18" y="124" width="164" height="18" rx="2" fill={detail} fillOpacity="0.20" stroke={detail} strokeWidth="1.5" />
             {/* Nuclei in germinal layer */}
             {[30,55,80,105,130,155,170].map((x,i) => (
@@ -8417,7 +8417,7 @@ function renderPlasmodiumPanel(tube: TubeVisual) {
             <ellipse cx="100" cy="96" rx="58" ry="50" fill={`url(#pmp-rbc-${tube.id})`} stroke={rbc} strokeWidth="2" />
             {/* central pallor */}
             <ellipse cx="100" cy="96" rx="24" ry="20" fill={bg} fillOpacity="0.38" />
-            {/* Band-form trophozoite — crosses full RBC width */}
+            {/* Band-form trophozoite - crosses full RBC width */}
             <path d="M 48 90 L 152 104" stroke={detail} strokeWidth="6" strokeLinecap="round" opacity="0.75" />
             <path d="M 52 88 L 148 102" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" opacity="0.35" />
             {/* Chromatin dot */}
@@ -8455,7 +8455,7 @@ function renderCyclosporaCystoisospora(tube: TubeVisual) {
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#cyc-bg-${tube.id})`} stroke="#b0b8a0" strokeWidth="1.2" />
         {isCyclospora ? (
           <g>
-            {/* Cyclospora: small round oocysts, variable staining — bright, medium, ghost */}
+            {/* Cyclospora: small round oocysts, variable staining - bright, medium, ghost */}
             {/* Bright staining oocyst */}
             <circle cx="72" cy="80" r="16" fill={fill} fillOpacity="0.9" stroke={edge} strokeWidth="2" />
             <circle cx="72" cy="80" r="8" fill="#ffffff" fillOpacity="0.3" stroke="none" />
@@ -8471,15 +8471,15 @@ function renderCyclosporaCystoisospora(tube: TubeVisual) {
             <circle cx="120" cy="120" r="14" fill={fill} fillOpacity="0.35" stroke={edge} strokeWidth="1.5" />
             {/* Size label */}
             <line x1="56" y1="110" x2="88" y2="110" stroke={edge} strokeWidth="1" opacity="0.5" />
-            <text x="72" y="107" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">8–10 µm</text>
+            <text x="72" y="107" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">8-10 um</text>
             {/* Variable staining label */}
             <text x="100" y="162" textAnchor="middle" fill={edge} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Variable acid-fast staining</text>
-            <text x="100" y="172" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">bright → ghost on same slide</text>
+            <text x="100" y="172" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">{'bright -> ghost on same slide'}</text>
           </g>
         ) : (
           <g>
             {/* Cystoisospora: elongated oval oocyst, much larger */}
-            {/* Main oocyst body — elongated */}
+            {/* Main oocyst body - elongated */}
             <ellipse cx="100" cy="96" rx="40" ry="58" fill={fill} fillOpacity="0.72" stroke={edge} strokeWidth="2.5" />
             {/* Highlight */}
             <ellipse cx="85" cy="76" rx="16" ry="24" fill="#ffffff" fillOpacity="0.25" stroke="none" />
@@ -8491,7 +8491,7 @@ function renderCyclosporaCystoisospora(tube: TubeVisual) {
             <line x1="142" y1="38" x2="142" y2="154" stroke={edge} strokeWidth="1" opacity="0.5" />
             <line x1="138" y1="38" x2="146" y2="38" stroke={edge} strokeWidth="1" opacity="0.5" />
             <line x1="138" y1="154" x2="146" y2="154" stroke={edge} strokeWidth="1" opacity="0.5" />
-            <text x="158" y="96" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif" transform="rotate(90 158 96)">25–30 µm</text>
+            <text x="158" y="96" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif" transform="rotate(90 158 96)">25-30 um</text>
             <text x="100" y="168" textAnchor="middle" fill={edge} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Elongated oval</text>
             <text x="100" y="178" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">Single sporoblast (immature)</text>
           </g>
@@ -8536,7 +8536,7 @@ function renderEntamoebaPanel(tube: TubeVisual) {
             ))}
             {/* Blunt chromatoid bar */}
             <rect x="84" y="92" width="32" height="8" rx="4" fill={detail} opacity="0.7" />
-            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif" fontWeight="bold">4 nuclei · central karyosome</text>
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif" fontWeight="bold">4 nuclei - central karyosome</text>
             <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">blunt chromatoid bars</text>
           </g>
         ) : (
@@ -8551,14 +8551,14 @@ function renderEntamoebaPanel(tube: TubeVisual) {
             ].map(([cx,cy],i) => (
               <g key={i}>
                 <circle cx={cx} cy={cy} r="10" fill="#ffffff" fillOpacity="0.22" stroke={detail} strokeWidth="1.5" />
-                {/* eccentric karyosome — off-center dot */}
+                {/* eccentric karyosome - off-center dot */}
                 <circle cx={cx+4} cy={cy-3} r="3.5" fill={detail} opacity="0.85" />
               </g>
             ))}
-            {/* Splintered chromatoid bars — irregular pointed ends */}
+            {/* Splintered chromatoid bars - irregular pointed ends */}
             <path d="M 82 95 L 100 91 L 118 97" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="square" opacity="0.65" />
             <path d="M 84 103 L 100 99 L 116 105" fill="none" stroke={detail} strokeWidth="2.5" strokeLinecap="square" opacity="0.55" />
-            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif" fontWeight="bold">≤8 nuclei · eccentric karyosome</text>
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif" fontWeight="bold">{'<=8 nuclei - eccentric karyosome'}</text>
             <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">splintered chromatoid bars</text>
           </g>
         )}
@@ -8590,44 +8590,44 @@ function renderOperculated(tube: TubeVisual) {
         {isSizePanel ? (
           <g>
             {/* Size comparison panel: 4 eggs side by side, left to right = smallest to largest */}
-            {/* Clonorchis ~30µm — tiny flask */}
+            {/* Clonorchis ~30um - tiny flask */}
             <ellipse cx="38" cy="100" rx="8" ry="12" fill={shell} fillOpacity="0.7" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="38" cy="88" rx="10" ry="4" fill={shell} fillOpacity="0.5" stroke={detail} strokeWidth="1" />
             <rect x="33" y="86" width="10" height="3" rx="1" fill={detail} fillOpacity="0.5" />
             <circle cx="38" cy="113" r="2" fill={detail} opacity="0.6" />
             <text x="38" y="125" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Clonorchis</text>
-            <text x="38" y="133" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~30 µm</text>
-            {/* Diphyllobothrium ~65µm */}
+            <text x="38" y="133" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~30 um</text>
+            {/* Diphyllobothrium ~65um */}
             <ellipse cx="82" cy="98" rx="13" ry="20" fill={shell} fillOpacity="0.68" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="82" cy="78" rx="15" ry="5" fill={shell} fillOpacity="0.45" stroke={detail} strokeWidth="1" />
             <rect x="76" y="75" width="12" height="4" rx="1.5" fill={detail} fillOpacity="0.45" />
             <circle cx="82" cy="119" r="3" fill={detail} opacity="0.65" />
             <text x="82" y="132" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Diphyllobothrium</text>
-            <text x="82" y="140" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~65 µm</text>
-            {/* Paragonimus ~90µm */}
+            <text x="82" y="140" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~65 um</text>
+            {/* Paragonimus ~90um */}
             <ellipse cx="130" cy="95" rx="18" ry="28" fill={shell} fillOpacity="0.75" stroke={detail} strokeWidth="2" />
             <ellipse cx="130" cy="67" rx="21" ry="7" fill={shell} fillOpacity="0.55" stroke={detail} strokeWidth="1.5" />
             <rect x="120" y="63" width="20" height="6" rx="2" fill={detail} fillOpacity="0.45" />
             <circle cx="130" cy="124" r="3.5" fill={detail} opacity="0.65" />
             <text x="130" y="138" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Paragonimus</text>
-            <text x="130" y="146" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~90 µm</text>
-            {/* Fasciola ~140µm */}
+            <text x="130" y="146" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~90 um</text>
+            {/* Fasciola ~140um */}
             <ellipse cx="175" cy="90" rx="13" ry="42" fill={shell} fillOpacity="0.62" stroke={detail} strokeWidth="1.8" />
             <ellipse cx="175" cy="48" rx="15" ry="6" fill={shell} fillOpacity="0.42" stroke={detail} strokeWidth="1.2" />
             <rect x="168" y="44" width="14" height="5" rx="1.5" fill={detail} fillOpacity="0.38" />
             <text x="175" y="144" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Fasciola</text>
-            <text x="175" y="152" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~140 µm</text>
+            <text x="175" y="152" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">~140 um</text>
             {/* Arrow / size ladder */}
             <line x1="22" y1="170" x2="188" y2="170" stroke={detail} strokeWidth="1.5" opacity="0.45" />
             <polygon points="188,166 188,174 195,170" fill={detail} opacity="0.45" />
-            <text x="100" y="183" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">← Smallest to Largest →</text>
+            <text x="100" y="183" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">{'<- Smallest to Largest ->'}</text>
           </g>
         ) : (
           <g>
             {/* Diagnostic features panel */}
             {/* Shoulder rim detail */}
             <text x="100" y="28" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Key operculated egg features</text>
-            {/* Clonorchis detail egg — flask with labeled shoulder rim */}
+            {/* Clonorchis detail egg - flask with labeled shoulder rim */}
             <ellipse cx="52" cy="80" rx="10" ry="16" fill={shell} fillOpacity="0.65" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="52" cy="64" rx="13" ry="5" fill={shell} fillOpacity="0.45" stroke={detail} strokeWidth="1.2" />
             <rect x="42" y="61" width="20" height="5" rx="1.5" fill={detail} fillOpacity="0.5" />
@@ -8636,16 +8636,16 @@ function renderOperculated(tube: TubeVisual) {
             <text x="88" y="51" fill={detail} fontSize="6.5" fontFamily="sans-serif">Shoulder rim</text>
             <line x1="52" y1="100" x2="52" y2="110" stroke={detail} strokeWidth="0.8" opacity="0.6" />
             <text x="36" y="118" fill={detail} fontSize="6" fontFamily="sans-serif">Knob</text>
-            <text x="52" y="130" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Clonorchis ~30µm</text>
+            <text x="52" y="130" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Clonorchis ~30um</text>
 
-            {/* Paragonimus egg — thick shell, shouldered operculum */}
+            {/* Paragonimus egg - thick shell, shouldered operculum */}
             <ellipse cx="148" cy="82" rx="22" ry="32" fill={shell} fillOpacity="0.72" stroke={detail} strokeWidth="2.5" />
             <ellipse cx="148" cy="50" rx="26" ry="9" fill={shell} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
             <rect x="124" y="45" width="48" height="9" rx="3" fill={detail} fillOpacity="0.4" />
             <circle cx="148" cy="115" r="4.5" fill={detail} opacity="0.65" />
             {/* thick shell highlight */}
             <path d="M 128 56 C 126 62, 125 70, 125 82" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.3" strokeLinecap="round" />
-            <text x="148" y="130" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Paragonimus ~90µm</text>
+            <text x="148" y="130" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif" fontWeight="bold">Paragonimus ~90um</text>
             <text x="148" y="139" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">Thick golden-brown shell</text>
           </g>
         )}
@@ -8687,7 +8687,7 @@ function renderBlastocystis(tube: TubeVisual) {
             <circle cx="100" cy="96" r="52" fill={`url(#bla-vac-${tube.id})`} stroke={cellFill} strokeWidth="1.5" />
             {/* Thin peripheral cytoplasm */}
             <circle cx="100" cy="96" r="62" fill="none" stroke={cellFill} strokeWidth="8" opacity="0.2" />
-            {/* 3–4 peripheral nuclei at margins */}
+            {/* 3-4 peripheral nuclei at margins */}
             {[[100,36],[152,76],[148,122],[62,130],[50,76]].slice(0,4).map(([cx,cy],i) => (
               <g key={i}>
                 <circle cx={cx} cy={cy} r="8" fill={cellFill} fillOpacity="0.55" stroke={detail} strokeWidth="1.5" />
@@ -8698,7 +8698,7 @@ function renderBlastocystis(tube: TubeVisual) {
             <line x1="40" y1="158" x2="160" y2="158" stroke={detail} strokeWidth="1" opacity="0.5" />
             <line x1="40" y1="154" x2="40" y2="162" stroke={detail} strokeWidth="1" opacity="0.5" />
             <line x1="160" y1="154" x2="160" y2="162" stroke={detail} strokeWidth="1" opacity="0.5" />
-            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif">6–40 µm (variable)</text>
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif">6-40 um (variable)</text>
             <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif" fontWeight="bold">Central vacuole ~90% of cell</text>
           </g>
         ) : (
@@ -8759,25 +8759,25 @@ function renderDientamoeba(tube: TubeVisual) {
             {/* Pseudopod extensions */}
             <path d="M 148 82 C 162 76, 172 68, 178 58" fill="none" stroke={cellFill} strokeWidth="6" strokeLinecap="round" opacity="0.3" />
             <path d="M 86 138 C 84 152, 80 162, 72 172" fill="none" stroke={cellFill} strokeWidth="5" strokeLinecap="round" opacity="0.25" />
-            {/* Nucleus 1 — fragmented chromatin, NO karyosome */}
+            {/* Nucleus 1 - fragmented chromatin, NO karyosome */}
             <circle cx="82" cy="84" r="18" fill="#ffffff" fillOpacity="0.25" stroke={detail} strokeWidth="1.8" />
             {/* Chromatin granules (fragmented) */}
             {[[76,80],[82,75],[88,80],[84,87],[78,87]].map(([cx,cy],i) => (
               <circle key={i} cx={cx} cy={cy} r="3.5" fill={detail} opacity="0.75" />
             ))}
-            {/* Nucleus 2 — same pattern */}
+            {/* Nucleus 2 - same pattern */}
             <circle cx="120" cy="100" r="18" fill="#ffffff" fillOpacity="0.25" stroke={detail} strokeWidth="1.8" />
             {[[114,96],[120,91],[126,96],[122,103],[116,103]].map(([cx,cy],i) => (
               <circle key={i+5} cx={cx} cy={cy} r="3.5" fill={detail} opacity="0.75" />
             ))}
             {/* No-karyosome annotation */}
-            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">2 nuclei · fragmented chromatin</text>
-            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">No karyosome · No cyst stage</text>
-            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">7–12 µm</text>
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">2 nuclei - fragmented chromatin</text>
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">No karyosome - No cyst stage</text>
+            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">7-12 um</text>
           </g>
         ) : (
           <g>
-            {/* No cyst stage panel — shows crossed-out cyst and reference trophozoite */}
+            {/* No cyst stage panel - shows crossed-out cyst and reference trophozoite */}
             {/* Label panel */}
             <text x="100" y="40" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">No cyst stage exists</text>
             {/* Cross-out over generic cyst shape */}
@@ -8824,13 +8824,13 @@ function renderClonorchis(tube: TubeVisual) {
         {isEgg ? (
           <g>
             {/* Clonorchis egg: flask shape, shoulder rim, abopercular knob */}
-            {/* Egg body — flask/vase shape: wider at top (opercular end), tapered at bottom */}
+            {/* Egg body - flask/vase shape: wider at top (opercular end), tapered at bottom */}
             <path d="M 84 58 L 116 58 C 128 58, 136 68, 136 82 L 136 130 C 136 148, 120 160, 100 160 C 80 160, 64 148, 64 130 L 64 82 C 64 68, 72 58, 84 58 Z" fill={shell} fillOpacity="0.68" stroke={detail} strokeWidth="2.5" />
             {/* Shell highlight */}
             <path d="M 74 64 C 70 72, 68 82, 68 94" fill="none" stroke="#ffffff" strokeWidth="3.5" opacity="0.32" strokeLinecap="round" />
-            {/* Opercular shoulder rim — raised thickening at top */}
+            {/* Opercular shoulder rim - raised thickening at top */}
             <rect x="62" y="56" width="76" height="10" rx="3" fill={detail} fillOpacity="0.55" />
-            {/* Operculum — lid at top */}
+            {/* Operculum - lid at top */}
             <ellipse cx="100" cy="52" rx="26" ry="8" fill={shell} fillOpacity="0.7" stroke={detail} strokeWidth="2" />
             <path d="M 78 52 C 86 46, 114 46, 122 52" fill="none" stroke="#ffffff" strokeWidth="2" opacity="0.3" />
             {/* Abopercular knob at bottom */}
@@ -8844,26 +8844,26 @@ function renderClonorchis(tube: TubeVisual) {
             <text x="164" y="36" fill={detail} fontSize="7" fontFamily="sans-serif">Operculum</text>
             <line x1="108" y1="167" x2="140" y2="175" stroke={detail} strokeWidth="0.8" opacity="0.65" />
             <text x="142" y="178" fill={detail} fontSize="7" fontFamily="sans-serif">Knob</text>
-            <text x="100" y="26" textAnchor="middle" fill={detail} fontSize="8.5" fontFamily="sans-serif" fontWeight="bold">~28–35 µm</text>
+            <text x="100" y="26" textAnchor="middle" fill={detail} fontSize="8.5" fontFamily="sans-serif" fontWeight="bold">~28-35 um</text>
           </g>
         ) : (
           <g>
             {/* Size comparator: Clonorchis (small) vs Diphyllobothrium (larger) */}
             <text x="100" y="26" textAnchor="middle" fill={detail} fontSize="8.5" fontFamily="sans-serif" fontWeight="bold">Size comparison</text>
-            {/* Clonorchis — small flask */}
+            {/* Clonorchis - small flask */}
             <path d="M 58 52 L 78 52 C 86 52, 90 60, 90 70 L 90 104 C 90 116, 82 122, 68 122 C 54 122, 46 116, 46 104 L 46 70 C 46 60, 50 52, 58 52 Z" fill={shell} fillOpacity="0.65" stroke={detail} strokeWidth="2" />
             <rect x="44" y="49" width="48" height="7" rx="2" fill={detail} fillOpacity="0.5" />
             <ellipse cx="68" cy="45" rx="16" ry="6" fill={shell} fillOpacity="0.6" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="68" cy="125" rx="5" ry="3" fill={detail} fillOpacity="0.65" />
             <text x="68" y="138" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">Clonorchis</text>
-            <text x="68" y="147" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">~30 µm</text>
-            {/* Diphyllobothrium — larger oval */}
+            <text x="68" y="147" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">~30 um</text>
+            {/* Diphyllobothrium - larger oval */}
             <path d="M 122 38 L 154 38 C 168 38, 178 52, 178 68 L 178 120 C 178 140, 166 152, 148 152 C 130 152, 118 140, 118 120 L 118 68 C 118 52, 122 38, 130 38 Z" fill={shell} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
             <rect x="116" y="34" width="64" height="9" rx="2.5" fill={detail} fillOpacity="0.45" />
             <ellipse cx="148" cy="29" rx="22" ry="8" fill={shell} fillOpacity="0.55" stroke={detail} strokeWidth="1.5" />
             <ellipse cx="148" cy="157" rx="8" ry="5" fill={detail} fillOpacity="0.65" />
             <text x="148" y="169" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">Diphyllobothrium</text>
-            <text x="148" y="178" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">~65 µm</text>
+            <text x="148" y="178" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">~65 um</text>
           </g>
         )}
         <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
@@ -8891,8 +8891,8 @@ function renderFasciola(tube: TubeVisual) {
           </radialGradient>
         </defs>
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#fas-bg-${tube.id})`} stroke="#c0a860" strokeWidth="1.2" />
-        {/* Both panels show essentially identical large egg — annotations differ */}
-        {/* Large oval operculated egg ~140µm */}
+        {/* Both panels show essentially identical large egg - annotations differ */}
+        {/* Large oval operculated egg ~140um */}
         <ellipse cx="100" cy="96" rx="46" ry="64" fill={shell} fillOpacity="0.58" stroke={detail} strokeWidth="2.5" />
         {/* Thin shell highlight */}
         <path d="M 62 64 C 58 72, 55 82, 55 96" fill="none" stroke="#ffffff" strokeWidth="4" opacity="0.28" strokeLinecap="round" />
@@ -8900,7 +8900,7 @@ function renderFasciola(tube: TubeVisual) {
         <rect x="52" y="28" width="96" height="10" rx="3" fill={detail} fillOpacity="0.45" />
         {/* Operculum */}
         <ellipse cx="100" cy="24" rx="34" ry="9" fill={shell} fillOpacity="0.65" stroke={detail} strokeWidth="2" />
-        {/* Interior — vitelline cells */}
+        {/* Interior - vitelline cells */}
         {[
           [86,60],[100,55],[114,60],[78,72],[92,68],[108,68],[122,72],
           [82,84],[96,80],[110,80],[124,86],[80,96],[94,92],[110,92],[126,96],
@@ -8917,15 +8917,15 @@ function renderFasciola(tube: TubeVisual) {
         {isFasciola ? (
           <g>
             <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Fasciola hepatica</text>
-            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Liver/biliary disease · eosinophilia</text>
+            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Liver/biliary disease - eosinophilia</text>
           </g>
         ) : (
           <g>
             <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Fasciolopsis buski</text>
-            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Intestinal disease · SE Asia</text>
+            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Intestinal disease - SE Asia</text>
           </g>
         )}
-        <text x="100" y="18" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">~130–150 µm · Morphologically identical</text>
+        <text x="100" y="18" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">~130-150 um - Morphologically identical</text>
         <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
@@ -8956,7 +8956,7 @@ function renderDipylidium(tube: TubeVisual) {
             {/* Egg capsule: outer membrane containing multiple oncospheres */}
             {/* Outer capsule membrane */}
             <ellipse cx="100" cy="96" rx="66" ry="58" fill={fill} fillOpacity="0.18" stroke={fill} strokeWidth="2.5" strokeDasharray="6,3" />
-            {/* Oncospheres inside — arranged in a cluster */}
+            {/* Oncospheres inside - arranged in a cluster */}
             {[
               [80,70],[100,64],[120,70],[68,86],[86,82],[102,80],[118,82],[134,88],
               [64,100],[80,96],[98,94],[116,94],[132,100],[146,98],
@@ -8972,16 +8972,16 @@ function renderDipylidium(tube: TubeVisual) {
               </g>
             ))}
             <text x="100" y="168" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Egg capsule / packet</text>
-            <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">5–30 oncospheres per capsule</text>
+            <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">5-30 oncospheres per capsule</text>
           </g>
         ) : (
           <g>
             {/* Cucumber-seed proglottid with double genital pores */}
-            {/* Proglottid body — elongated oval */}
+            {/* Proglottid body - elongated oval */}
             <ellipse cx="100" cy="96" rx="30" ry="60" fill={fill} fillOpacity="0.45" stroke={detail} strokeWidth="2.5" />
             {/* Proglottid highlight */}
             <path d="M 76 60 C 74 68, 72 78, 72 96" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.28" strokeLinecap="round" />
-            {/* Double genital pores — one on each side */}
+            {/* Double genital pores - one on each side */}
             <circle cx="70" cy="96" r="6" fill={bg} stroke={detail} strokeWidth="2" />
             <circle cx="130" cy="96" r="6" fill={bg} stroke={detail} strokeWidth="2" />
             <circle cx="70" cy="96" r="3" fill={detail} opacity="0.7" />
@@ -9033,7 +9033,7 @@ function renderTaeniaScolex(tube: TubeVisual) {
         <ellipse cx="100" cy="110" rx="44" ry="56" fill={bodyFill} fillOpacity="0.3" stroke={bodyFill} strokeWidth="2.5" />
         {/* Body highlight */}
         <path d="M 64 80 C 62 90, 60 100, 60 112" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.28" strokeLinecap="round" />
-        {/* 4 suckers — positioned around the scolex */}
+        {/* 4 suckers - positioned around the scolex */}
         {[[66,90],[134,90],[66,130],[134,130]].map(([cx,cy],i) => (
           <g key={i}>
             <ellipse cx={cx} cy={cy} rx="16" ry="13" fill={bg} fillOpacity="0.9" stroke={bodyFill} strokeWidth="2" />
@@ -9044,11 +9044,11 @@ function renderTaeniaScolex(tube: TubeVisual) {
           <g>
             {/* T. solium: rostellum with 2 rows of hooks */}
             <ellipse cx="100" cy="58" rx="22" ry="16" fill={bodyFill} fillOpacity="0.45" stroke={bodyFill} strokeWidth="2" />
-            {/* Row 1 of hooks — larger */}
+            {/* Row 1 of hooks - larger */}
             {[72,81,90,100,110,119,128].map((x,i) => (
               <path key={i} d={`M ${x} 46 C ${x-3} 40, ${x+1} 36, ${x+2} 42`} fill="none" stroke={detail} strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
             ))}
-            {/* Row 2 of hooks — smaller */}
+            {/* Row 2 of hooks - smaller */}
             {[78,87,96,105,114,122].map((x,i) => (
               <path key={i+7} d={`M ${x} 54 C ${x-2} 48, ${x+1} 45, ${x+2} 50`} fill="none" stroke={detail} strokeWidth="2" strokeLinecap="round" opacity="0.65" />
             ))}
@@ -9060,13 +9060,13 @@ function renderTaeniaScolex(tube: TubeVisual) {
             {/* T. saginata: smooth rounded apex, no rostellum, no hooks */}
             {/* Smooth rounded apex */}
             <ellipse cx="100" cy="60" rx="28" ry="18" fill={bodyFill} fillOpacity="0.32" stroke={bodyFill} strokeWidth="2" />
-            {/* Smooth highlight — no hooks */}
+            {/* Smooth highlight - no hooks */}
             <path d="M 80 50 C 88 44, 112 44, 120 50" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.35" strokeLinecap="round" />
             {/* NO hooks indicator */}
             <line x1="72" y1="36" x2="128" y2="36" stroke={detail} strokeWidth="2" opacity="0.3" strokeDasharray="4,3" />
-            <text x="100" y="28" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif">No rostellum · No hooks</text>
+            <text x="100" y="28" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif">No rostellum - No hooks</text>
             <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">T. saginata (UNARMED)</text>
-            <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">4 suckers only · Smooth apex</text>
+            <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">4 suckers only - Smooth apex</text>
           </g>
         )}
         <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
@@ -9313,6 +9313,52 @@ const coagulaseStageTypes: AtlasPage['visualType'][] = [
   'xv-factor-test'
 ];
 
+const isParasiteVisualType = (visualType: AtlasPage['visualType']) => visualType.startsWith('microscope-');
+
+const intestinalParasiteTypes: AtlasPage['visualType'][] = [
+  'microscope-giardia',
+  'microscope-cryptosporidium',
+  'microscope-entamoeba',
+  'microscope-enterobius',
+  'microscope-strongyloides',
+  'microscope-hookworm',
+  'microscope-trichuris',
+  'microscope-ascaris',
+  'microscope-trichostrongylus',
+  'microscope-taenia-egg',
+  'microscope-hymenolepis',
+  'microscope-diphyllobothrium',
+  'microscope-cyclospora-cystoisospora',
+  'microscope-entamoeba-panel',
+  'microscope-blastocystis',
+  'microscope-dientamoeba',
+  'microscope-dipylidium',
+  'microscope-taenia-scolex'
+];
+
+const bloodParasiteTypes: AtlasPage['visualType'][] = [
+  'microscope-plasmodium',
+  'microscope-babesia',
+  'microscope-trypanosoma',
+  'microscope-microfilaria',
+  'microscope-schistosoma',
+  'microscope-plasmodium-panel'
+];
+
+const tissueParasiteTypes: AtlasPage['visualType'][] = [
+  'microscope-toxoplasma',
+  'microscope-leishmania',
+  'microscope-trichinella',
+  'microscope-echinococcus'
+];
+
+const trematodeEggTypes: AtlasPage['visualType'][] = [
+  'microscope-paragonimus',
+  'microscope-operculated-eggs',
+  'microscope-clonorchis',
+  'microscope-fasciola'
+];
+
 const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
   if (utilizationStageTypes.includes(visualType)) {
     return 'utilization-stage';
@@ -9334,7 +9380,7 @@ const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
     return 'coagulase-stage';
   }
 
-  if (visualType === 'microscope-giardia' || visualType === 'microscope-cryptosporidium' || visualType === 'microscope-entamoeba' || visualType === 'microscope-trichomonas' || visualType === 'microscope-enterobius' || visualType === 'microscope-strongyloides' || visualType === 'microscope-hookworm' || visualType === 'microscope-trichuris' || visualType === 'microscope-plasmodium' || visualType === 'microscope-babesia' || visualType === 'microscope-trypanosoma' || visualType === 'microscope-toxoplasma' || visualType === 'microscope-leishmania' || visualType === 'microscope-ascaris' || visualType === 'microscope-trichostrongylus' || visualType === 'microscope-trichinella' || visualType === 'microscope-microfilaria' || visualType === 'microscope-taenia-egg' || visualType === 'microscope-paragonimus' || visualType === 'microscope-schistosoma' || visualType === 'microscope-hymenolepis' || visualType === 'microscope-diphyllobothrium' || visualType === 'microscope-echinococcus' || visualType === 'microscope-plasmodium-panel' || visualType === 'microscope-cyclospora-cystoisospora' || visualType === 'microscope-entamoeba-panel' || visualType === 'microscope-operculated-eggs' || visualType === 'microscope-blastocystis' || visualType === 'microscope-dientamoeba' || visualType === 'microscope-clonorchis' || visualType === 'microscope-fasciola' || visualType === 'microscope-dipylidium' || visualType === 'microscope-taenia-scolex') {
+  if (isParasiteVisualType(visualType)) {
     return 'parasite-stage';
   }
 
@@ -9393,7 +9439,7 @@ function getVisualCategory(page: AtlasPage) {
     return 'Media reactions';
   }
 
-  if (page.visualType === 'microscope-giardia' || page.visualType === 'microscope-cryptosporidium' || page.visualType === 'microscope-entamoeba' || page.visualType === 'microscope-enterobius' || page.visualType === 'microscope-strongyloides' || page.visualType === 'microscope-hookworm' || page.visualType === 'microscope-trichuris' || page.visualType === 'microscope-ascaris' || page.visualType === 'microscope-trichostrongylus' || page.visualType === 'microscope-taenia-egg' || page.visualType === 'microscope-hymenolepis' || page.visualType === 'microscope-diphyllobothrium') {
+  if (intestinalParasiteTypes.includes(page.visualType)) {
     return 'Intestinal Parasites';
   }
 
@@ -9401,34 +9447,32 @@ function getVisualCategory(page: AtlasPage) {
     return 'Urogenital Parasites';
   }
 
-  if (page.visualType === 'microscope-plasmodium' || page.visualType === 'microscope-babesia' || page.visualType === 'microscope-trypanosoma' || page.visualType === 'microscope-microfilaria' || page.visualType === 'microscope-schistosoma') {
+  if (bloodParasiteTypes.includes(page.visualType)) {
     return 'Blood Parasites';
   }
 
-  if (page.visualType === 'microscope-toxoplasma' || page.visualType === 'microscope-leishmania' || page.visualType === 'microscope-trichinella' || page.visualType === 'microscope-echinococcus') {
+  if (tissueParasiteTypes.includes(page.visualType)) {
     return 'Tissue Parasites';
   }
 
-  if (page.visualType === 'microscope-paragonimus') {
+  if (trematodeEggTypes.includes(page.visualType)) {
     return 'Trematode Eggs';
   }
 
   return 'Biochemical tests';
 }
 
-function getDiscipline(page: AtlasPage): 'bacteriology' | 'parasitology' {
-  const parasiteTypes: AtlasPage['visualType'][] = [
-    'microscope-giardia', 'microscope-cryptosporidium',
-    'microscope-entamoeba', 'microscope-trichomonas',
-    'microscope-enterobius', 'microscope-strongyloides',
-    'microscope-hookworm', 'microscope-trichuris',
-    'microscope-plasmodium', 'microscope-babesia',
-    'microscope-trypanosoma', 'microscope-toxoplasma',
-    'microscope-leishmania', 'microscope-ascaris', 'microscope-trichostrongylus',
-    'microscope-trichinella', 'microscope-microfilaria', 'microscope-taenia-egg', 'microscope-paragonimus',
-    'microscope-schistosoma', 'microscope-hymenolepis', 'microscope-diphyllobothrium', 'microscope-echinococcus'
-  ];
-  return parasiteTypes.includes(page.visualType) ? 'parasitology' : 'bacteriology';
+type VisualDiscipline = 'bacteriology' | 'parasitology';
+
+const visualDisciplineLabels: Record<VisualDiscipline, string> = {
+  bacteriology: 'Bacteriology',
+  parasitology: 'Parasitology'
+};
+
+const visualDisciplineSlugs = Object.keys(visualDisciplineLabels) as VisualDiscipline[];
+
+function getDiscipline(page: AtlasPage): VisualDiscipline {
+  return isParasiteVisualType(page.visualType) ? 'parasitology' : 'bacteriology';
 }
 
 function groupPagesByFirstLetter(pages: AtlasPage[]) {
@@ -9446,8 +9490,9 @@ function groupPagesByFirstLetter(pages: AtlasPage[]) {
   }, []);
 }
 
-function VisualAtlasHub() {
-  const [discipline, setDiscipline] = useState<'bacteriology' | 'parasitology'>('bacteriology');
+function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipline?: VisualDiscipline }) {
+  const navigate = useNavigate();
+  const [discipline, setDiscipline] = useState<VisualDiscipline>(initialDiscipline);
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -9495,6 +9540,16 @@ function VisualAtlasHub() {
       }))
   ), [categories, disciplinePages]);
 
+  useEffect(() => {
+    setDiscipline(initialDiscipline);
+    setActiveCategory('All');
+    setSearchQuery('');
+  }, [initialDiscipline]);
+
+  const handleDisciplineChange = (nextDiscipline: VisualDiscipline) => {
+    navigate(`/visuals/${nextDiscipline}`);
+  };
+
   return (
     <div className="visual-atlas-shell">
       <header className="visual-atlas-hero">
@@ -9506,15 +9561,15 @@ function VisualAtlasHub() {
       </header>
 
       <div className="visual-discipline-tabs" role="tablist" aria-label="Visual section">
-        {(['bacteriology', 'parasitology'] as const).map((d) => (
+        {visualDisciplineSlugs.map((d) => (
           <button
             key={d}
             role="tab"
             aria-selected={discipline === d}
             className={discipline === d ? 'active' : ''}
-            onClick={() => { setDiscipline(d); setActiveCategory('All'); setSearchQuery(''); }}
+            onClick={() => handleDisciplineChange(d)}
           >
-            {d === 'bacteriology' ? 'Bacteriology' : 'Parasitology'}
+            {visualDisciplineLabels[d]}
           </button>
         ))}
       </div>
@@ -9595,6 +9650,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const { user } = useAuth();
   const { bookmarkError, isBookmarked, toggleBookmark } = useBookmarks();
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
+  const [isBoardNoteExpanded, setIsBoardNoteExpanded] = useState(false);
+  const [expandedAnchorIds, setExpandedAnchorIds] = useState<string[]>([]);
   const isVisualBookmarked = isBookmarked('visual', page.slug);
   const visualPosition = useMemo(() => {
     const pageDiscipline = getDiscipline(page);
@@ -9611,6 +9668,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
   useEffect(() => {
     document.title = `${page.title} | Learn Microbes`;
+    setIsBoardNoteExpanded(false);
+    setExpandedAnchorIds([]);
     trackEvent('visual_card_opened', {
       visual_slug: page.slug,
       visual_title: page.title,
@@ -9685,6 +9744,17 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const disciplineKicker = getDiscipline(page) === 'parasitology'
     ? 'Visual Atlas / Parasitology'
     : 'Visual Atlas / Bacteriology';
+  const isLongBoardNote = page.boardNote.length > 230;
+  const boardNoteText = isLongBoardNote && !isBoardNoteExpanded
+    ? `${page.boardNote.slice(0, 230).trim()}...`
+    : page.boardNote;
+  const toggleAnchorNote = (anchorId: string) => {
+    setExpandedAnchorIds((currentIds) => (
+      currentIds.includes(anchorId)
+        ? currentIds.filter((id) => id !== anchorId)
+        : [...currentIds, anchorId]
+    ));
+  };
 
   return (
     <div className="visual-atlas-shell">
@@ -9721,39 +9791,6 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
       {renderVisualSequence('top')}
 
-      {getDiscipline(page) === 'parasitology' && page.divr && (
-        <div className="visual-divr-strip" aria-label="DIVR diagnostic framework">
-          <div className="divr-step">
-            <div className="divr-label-row">
-              <span className="divr-badge">D</span>
-              <span className="divr-title">Detect</span>
-            </div>
-            <p>{page.divr.detect}</p>
-          </div>
-          <div className="divr-step">
-            <div className="divr-label-row">
-              <span className="divr-badge">I</span>
-              <span className="divr-title">Identify</span>
-            </div>
-            <ul>{page.divr.identify.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-          <div className="divr-step">
-            <div className="divr-label-row">
-              <span className="divr-badge">V</span>
-              <span className="divr-title">Verify</span>
-            </div>
-            <p>{page.divr.verify}</p>
-          </div>
-          <div className="divr-step">
-            <div className="divr-label-row">
-              <span className="divr-badge">R</span>
-              <span className="divr-title">Report</span>
-            </div>
-            <p>{page.divr.report}</p>
-          </div>
-        </div>
-      )}
-
       <section className="visual-board" aria-labelledby="visual-board-title">
         <div className="visual-board-heading">
           <div>
@@ -9764,7 +9801,16 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
         <div className="visual-board-read-first">
           <span>Read first</span>
-          <p>{page.boardNote}</p>
+          <p>{boardNoteText}</p>
+          {isLongBoardNote && (
+            <button
+              type="button"
+              className="visual-note-toggle"
+              onClick={() => setIsBoardNoteExpanded((expanded) => !expanded)}
+            >
+              {isBoardNoteExpanded ? 'Show less' : 'Show full note'}
+            </button>
+          )}
         </div>
 
         <div className={`lia-stage ${getAtlasStageClass(page.visualType)}`} role="img" aria-label={page.ariaLabel}>
@@ -9774,13 +9820,30 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           </div>
         </div>
         <div className="visual-result-anchors" aria-label="Visual result anchors">
-          {page.tubes.map((tube) => (
-            <div className="visual-result-anchor" key={tube.id}>
-              <span>{tube.label}</span>
-              <strong>{tube.name}</strong>
-              <p>{tube.note}</p>
-            </div>
-          ))}
+          {page.tubes.map((tube) => {
+            const isAnchorExpanded = expandedAnchorIds.includes(tube.id);
+            const isLongAnchorNote = tube.note.length > 165;
+            const anchorNote = isLongAnchorNote && !isAnchorExpanded
+              ? `${tube.note.slice(0, 165).trim()}...`
+              : tube.note;
+
+            return (
+              <div className="visual-result-anchor" key={tube.id}>
+                <span>{tube.label}</span>
+                <strong>{tube.name}</strong>
+                <p>{anchorNote}</p>
+                {isLongAnchorNote && (
+                  <button
+                    type="button"
+                    className="visual-note-toggle"
+                    onClick={() => toggleAnchorNote(tube.id)}
+                  >
+                    {isAnchorExpanded ? 'Show less' : 'Show detail'}
+                  </button>
+                )}
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -9851,10 +9914,15 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
 const VisualAtlas: React.FC = () => {
   const { slug } = useParams();
+  const disciplineSlug = visualDisciplineSlugs.find((discipline) => discipline === slug);
   const page = atlasPages.find((item) => item.slug === slug);
 
   if (!slug) {
     return <VisualAtlasHub />;
+  }
+
+  if (disciplineSlug) {
+    return <VisualAtlasHub initialDiscipline={disciplineSlug} />;
   }
 
   if (!page) {

@@ -7,10 +7,8 @@ import {
   faFire,
   faFlaskVial,
   faLock,
-  faMoon,
   faRotateRight,
   faShieldHalved,
-  faSun,
   faTrophy,
   faXmarkCircle
 } from '@fortawesome/free-solid-svg-icons';
@@ -73,18 +71,24 @@ type LeaderboardEntry = {
   rank: number;
   displayName: string;
   score: number;
+  attemptCount?: number;
+  accuracyPercent?: number | null;
   userId?: string;
 };
 
 type LeaderboardUserRank = {
   rank: number;
   score: number;
+  attemptCount?: number;
+  accuracyPercent?: number | null;
 } | null;
 
 type LeaderboardAttemptRow = {
   user_id: string;
   correct_count: number | null;
   score_percent: number | null;
+  question_count: number | null;
+  completed_at?: string | null;
 };
 
 type LeaderboardRpcRow = {
@@ -101,6 +105,8 @@ type LeaderboardProfileRow = {
   email: string | null;
   display_name: string | null;
 };
+
+type LeaderboardScope = 'weekly' | 'allTime';
 
 const QUIZ_STORAGE_KEY = 'learnmicrobes_study_quiz_state';
 const STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_streak';
@@ -165,6 +171,17 @@ const getSavedQuizState = (): SavedQuizState | null => {
 const getSavedNumber = (key: string) => {
   const saved = Number(localStorage.getItem(key));
   return Number.isFinite(saved) && saved > 0 ? saved : 0;
+};
+
+const getStartOfLocalWeekIso = () => {
+  const today = new Date();
+  const day = today.getDay();
+  const daysSinceMonday = (day + 6) % 7;
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - daysSinceMonday);
+  monday.setHours(0, 0, 0, 0);
+
+  return monday.toISOString();
 };
 
 const unique = (items: string[]) => Array.from(new Set(items.filter(Boolean)));
@@ -442,13 +459,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [leaderboardEntries, setLeaderboardEntries] = useState<LeaderboardEntry[] | null>(null);
   const [leaderboardLoading, setLeaderboardLoading] = useState(false);
   const [leaderboardUserRank, setLeaderboardUserRank] = useState<LeaderboardUserRank>(null);
+  const [leaderboardScope, setLeaderboardScope] = useState<LeaderboardScope>('weekly');
   const lastSavedAttemptSignature = useRef('');
-  const [isDarkMode, setIsDarkMode] = useState(() => (
-    localStorage.getItem('learnmicrobes_study_quiz_dark_mode') === 'true'
-    || document.body.classList.contains('dark')
-    || document.body.classList.contains('dark-mode')
-  ));
-
   const missedQuestionIds = useMemo(
     () => missedAttempts.map((attempt) => attempt.questionId),
     [missedAttempts]
@@ -634,6 +646,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     setIsLeaderboardOpen(true);
   };
 
+  const handleLeaderboardScopeChange = (scope: LeaderboardScope) => {
+    setLeaderboardScope(scope);
+    setLeaderboardEntries(null);
+    setLeaderboardUserRank(null);
+  };
+
   const loadLeaderboard = useCallback(async () => {
     if (!user) {
       setLeaderboardEntries([]);
@@ -649,32 +667,44 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     setLeaderboardLoading(true);
 
-    const { data: rpcRows, error: rpcError } = await supabase
-      .rpc('get_study_quiz_leaderboard', { row_limit: 1000 });
+    if (leaderboardScope === 'allTime') {
+      const { data: rpcRows, error: rpcError } = await supabase
+        .rpc('get_study_quiz_leaderboard', { row_limit: 1000 });
 
-    if (!rpcError && rpcRows) {
-      const rankedEntries = (rpcRows as LeaderboardRpcRow[]).map((entry, index) => ({
-        rank: Number(entry.rank ?? index + 1),
-        displayName: entry.display_name?.trim() || `Learner ${Number(entry.rank ?? index + 1)}`,
-        score: Number(entry.total_score ?? 0),
-        userId: entry.user_id
-      }));
-      const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
+      if (!rpcError && rpcRows) {
+        const rankedEntries = (rpcRows as LeaderboardRpcRow[]).map((entry, index) => ({
+          rank: Number(entry.rank ?? index + 1),
+          displayName: entry.display_name?.trim() || `Learner ${Number(entry.rank ?? index + 1)}`,
+          score: Number(entry.total_score ?? 0),
+          attemptCount: Number(entry.attempt_count ?? 0),
+          accuracyPercent: entry.accuracy_percent,
+          userId: entry.user_id
+        }));
+        const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
 
-      setLeaderboardEntries(rankedEntries.slice(0, 10));
-      setLeaderboardUserRank(currentUserEntry ? {
-        rank: currentUserEntry.rank,
-        score: currentUserEntry.score
-      } : null);
-      setLeaderboardLoading(false);
-      return;
+        setLeaderboardEntries(rankedEntries.slice(0, 10));
+        setLeaderboardUserRank(currentUserEntry ? {
+          rank: currentUserEntry.rank,
+          score: currentUserEntry.score,
+          attemptCount: currentUserEntry.attemptCount,
+          accuracyPercent: currentUserEntry.accuracyPercent
+        } : null);
+        setLeaderboardLoading(false);
+        return;
+      }
     }
 
-    const { data: attempts, error: attemptsError } = await supabase
+    let attemptsQuery = supabase
       .from('quiz_attempts')
-      .select('user_id, correct_count, score_percent')
+      .select('user_id, correct_count, score_percent, question_count, completed_at')
       .order('completed_at', { ascending: false })
       .limit(1000);
+
+    if (leaderboardScope === 'weekly') {
+      attemptsQuery = attemptsQuery.gte('completed_at', getStartOfLocalWeekIso());
+    }
+
+    const { data: attempts, error: attemptsError } = await attemptsQuery;
 
     if (attemptsError) {
       setLeaderboardEntries(leaderboardPreview);
@@ -683,15 +713,35 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       return;
     }
 
-    const scoreByUser = new Map<string, number>();
+    const scoreByUser = new Map<string, { score: number; correct: number; questionCount: number; attemptCount: number }>();
     ((attempts ?? []) as LeaderboardAttemptRow[]).forEach((attempt) => {
       const score = Number(attempt.correct_count ?? attempt.score_percent ?? 0);
-      scoreByUser.set(attempt.user_id, (scoreByUser.get(attempt.user_id) ?? 0) + score);
+      const currentScore = scoreByUser.get(attempt.user_id) ?? {
+        score: 0,
+        correct: 0,
+        questionCount: 0,
+        attemptCount: 0
+      };
+
+      scoreByUser.set(attempt.user_id, {
+        score: currentScore.score + score,
+        correct: currentScore.correct + Number(attempt.correct_count ?? 0),
+        questionCount: currentScore.questionCount + Number(attempt.question_count ?? 0),
+        attemptCount: currentScore.attemptCount + 1
+      });
     });
 
     const rankedScores = Array.from(scoreByUser.entries())
-      .map(([userId, score]) => ({ userId, score }))
-      .sort((first, second) => second.score - first.score);
+      .map(([userId, totals]) => ({
+        userId,
+        ...totals,
+        accuracyPercent: totals.questionCount > 0 ? Math.round((totals.correct / totals.questionCount) * 100) : null
+      }))
+      .sort((first, second) => (
+        second.score - first.score
+        || (second.accuracyPercent ?? 0) - (first.accuracyPercent ?? 0)
+        || second.attemptCount - first.attemptCount
+      ));
 
     const profileByUser = new Map<string, LeaderboardProfileRow>();
     const userIds = rankedScores.map((entry) => entry.userId);
@@ -727,6 +777,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       rank: index + 1,
       displayName: getDisplayName(entry.userId, index + 1),
       score: entry.score,
+      attemptCount: entry.attemptCount,
+      accuracyPercent: entry.accuracyPercent,
       userId: entry.userId
     }));
     const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
@@ -734,10 +786,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     setLeaderboardEntries(rankedEntries.slice(0, 10));
     setLeaderboardUserRank(currentUserEntry ? {
       rank: currentUserEntry.rank,
-      score: currentUserEntry.score
+      score: currentUserEntry.score,
+      attemptCount: currentUserEntry.attemptCount,
+      accuracyPercent: currentUserEntry.accuracyPercent
     } : null);
     setLeaderboardLoading(false);
-  }, [user]);
+  }, [leaderboardScope, user]);
 
   useEffect(() => {
     localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify({
@@ -791,16 +845,6 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     const timeout = window.setTimeout(() => setShowConfetti(false), 1200);
     return () => window.clearTimeout(timeout);
   }, [showConfetti]);
-
-  useEffect(() => {
-    if (embedded) {
-      return undefined;
-    }
-
-    document.body.classList.toggle('dark', isDarkMode);
-    localStorage.setItem('learnmicrobes_study_quiz_dark_mode', String(isDarkMode));
-    return undefined;
-  }, [embedded, isDarkMode]);
 
   useEffect(() => {
     if (expandedCategoryKeys.includes(category)) {
@@ -991,14 +1035,6 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 aria-label="Open quiz leaderboard"
               >
                 <FontAwesomeIcon icon={faTrophy} />
-              </button>
-              <button
-                type="button"
-                className="study-quiz-icon-button"
-                onClick={() => setIsDarkMode((darkMode) => !darkMode)}
-                aria-label={isDarkMode ? 'Switch StudyQuiz to light mode' : 'Switch StudyQuiz to dark mode'}
-              >
-                <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
               </button>
             </div>
             <div>
@@ -1360,6 +1396,31 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 <FontAwesomeIcon icon={faXmarkCircle} />
               </button>
             </div>
+            <div className="study-quiz-leaderboard-tabs" role="tablist" aria-label="Leaderboard scope">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={leaderboardScope === 'weekly'}
+                className={leaderboardScope === 'weekly' ? 'active' : ''}
+                onClick={() => handleLeaderboardScopeChange('weekly')}
+              >
+                This week
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={leaderboardScope === 'allTime'}
+                className={leaderboardScope === 'allTime' ? 'active' : ''}
+                onClick={() => handleLeaderboardScopeChange('allTime')}
+              >
+                All time
+              </button>
+            </div>
+            <p className="study-quiz-leaderboard-note">
+              {leaderboardScope === 'weekly'
+                ? 'Weekly rank counts saved quiz sessions from Monday through today.'
+                : 'All-time rank counts every saved Study Quiz session.'}
+            </p>
             {!user ? (
               <div className="study-quiz-leaderboard-auth">
                 <p>Sign in to appear on the leaderboard.</p>
@@ -1381,18 +1442,38 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                   {(leaderboardEntries ?? []).map((entry) => (
                     <li key={`${entry.rank}-${entry.displayName}`}>
                       <span>#{entry.rank}</span>
-                      <strong>{entry.displayName}</strong>
+                      <strong>
+                        {entry.displayName}
+                        {(entry.attemptCount || entry.accuracyPercent !== undefined) && (
+                          <small>
+                            {entry.attemptCount ? `${entry.attemptCount} saved ${entry.attemptCount === 1 ? 'session' : 'sessions'}` : 'Saved sessions'}
+                            {entry.accuracyPercent !== undefined && entry.accuracyPercent !== null ? ` | ${entry.accuracyPercent}% accuracy` : ''}
+                          </small>
+                        )}
+                      </strong>
                       <em>{entry.score.toLocaleString()}</em>
                     </li>
                   ))}
                 </ol>
                 {leaderboardEntries?.length === 0 && (
-                  <p className="study-quiz-leaderboard-empty">No saved quiz sessions yet. Save a session to start the leaderboard.</p>
+                  <p className="study-quiz-leaderboard-empty">
+                    {leaderboardScope === 'weekly'
+                      ? 'No saved quiz sessions this week yet. Save a session to start the weekly board.'
+                      : 'No saved quiz sessions yet. Save a session to start the leaderboard.'}
+                  </p>
                 )}
                 {leaderboardUserRank && (
                   <div className="study-quiz-user-rank">
                     <span>Your rank</span>
-                    <strong>#{leaderboardUserRank.rank}</strong>
+                    <strong>
+                      #{leaderboardUserRank.rank}
+                      {(leaderboardUserRank.attemptCount || leaderboardUserRank.accuracyPercent !== undefined) && (
+                        <small>
+                          {leaderboardUserRank.attemptCount ? `${leaderboardUserRank.attemptCount} saved ${leaderboardUserRank.attemptCount === 1 ? 'session' : 'sessions'}` : 'Saved sessions'}
+                          {leaderboardUserRank.accuracyPercent !== undefined && leaderboardUserRank.accuracyPercent !== null ? ` | ${leaderboardUserRank.accuracyPercent}% accuracy` : ''}
+                        </small>
+                      )}
+                    </strong>
                     <em>{leaderboardUserRank.score.toLocaleString()}</em>
                   </div>
                 )}
