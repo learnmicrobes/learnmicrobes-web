@@ -19,7 +19,7 @@ const infoPages: Record<InfoPageKey, {
   disclaimer: {
     kicker: 'Disclaimer',
     title: 'Educational review, not medical or exam-policy advice',
-    intro: 'Learn Microbes is built for clinical microbiology learning and review. It is not a substitute for professional judgment, institutional procedures, or official certification requirements.',
+    intro: 'For study purposes only. Not a substitute for clinical judgment or official references. Learn Microbes is built for clinical microbiology learning and review. It is not a substitute for professional judgment, institutional procedures, or official certification requirements.',
     sections: [
       {
         title: 'Educational use',

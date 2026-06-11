@@ -172,6 +172,12 @@ const getDailyMicrobeRiddle = () => {
   return dailyMicrobeRiddles[riddleIndex];
 };
 
+const getDailyFeaturedBenchCard = () => {
+  const dayNumber = getDateDayNumber(getLocalDateStamp());
+  const featuredIndex = Math.abs(dayNumber + 3) % atlasPages.length;
+  return atlasPages[featuredIndex] ?? atlasPages[0];
+};
+
 const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replace(/^[A-Z]\)\s*/, '') ?? 'the correct guide';
 
 export default function App() {
@@ -422,9 +428,7 @@ export default function App() {
     }
   ]), []);
 
-  const featuredBenchCard = useMemo(() => (
-    atlasPages.find((page) => page.slug === 'indole-production') ?? atlasPages[0]
-  ), []);
+  const featuredBenchCard = useMemo(() => getDailyFeaturedBenchCard(), []);
 
   const homeSecondaryLinks = useMemo(() => ([
     { label: 'ASCP microbiology review', path: '/ascp-microbiology-review' },
@@ -1352,11 +1356,13 @@ export default function App() {
                 <p>
                   Learn clinical microbiology the way the bench actually thinks: follow Gram stain, colony clues, media, key tests, and the next safest step.
                 </p>
-                <div className="dashboard-cover-actions" aria-label="Primary Learn Microbes actions">
-                  <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
-                    Create free account
-                  </button>
-                </div>
+                {!user && (
+                  <div className="dashboard-cover-actions" aria-label="Primary Learn Microbes actions">
+                    <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
+                      Create free account
+                    </button>
+                  </div>
+                )}
                 <div className="dashboard-hero-search" ref={dashboardSearchRef}>
                   <label htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
                   <div className="dashboard-hero-search-box">
@@ -1616,7 +1622,6 @@ export default function App() {
               </a>
             </nav>
           </div>
-          <p style={{ fontSize: '0.75rem', color: '#888', marginTop: '0.5rem', textAlign: 'center' }}>For study purposes only. Not a substitute for clinical judgment or official references.</p>
         </div>
       </footer>
       <button

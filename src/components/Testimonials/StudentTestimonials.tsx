@@ -113,8 +113,8 @@ const StudentTestimonials: React.FC = () => {
           <h2 id="testimonials-title">Built around real study pain points</h2>
         </div>
 
-        <div className="testimonials-marquee" aria-label="Sample learner feedback carousel">
-          <div className="testimonials-track">
+        <div className="testimonials-list" aria-label="Sample learner feedback carousel">
+          <div className="testimonials-grid">
             {testimonialLoop.map((testimonial, index) => (
               <article
                 key={`${testimonial.name}-${testimonial.role}-${index}`}
