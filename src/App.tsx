@@ -11,6 +11,7 @@ import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
+import brandMark from './assets/brand-mark.svg';
 import './App.css';
 
 type DashboardSearchItem = {
@@ -1100,7 +1101,7 @@ export default function App() {
         <div className="nav-brand" onClick={() => handleToolChange(null)}>
           <img
             className="nav-brand-mark"
-            src={`${process.env.PUBLIC_URL}/brand-mark.svg`}
+            src={brandMark}
             alt="Learn Microbes"
           />
           {!isMobile && (
