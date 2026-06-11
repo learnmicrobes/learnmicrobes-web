@@ -25,7 +25,7 @@ const studyModules = [
   {
     icon: faFlaskVial,
     title: 'High-yield biochemical tests',
-    body: 'Review reactions, expected results, QC organisms, and interpretation traps for common clinical microbiology bench tests.',
+    body: 'Review reactions, expected results, QC organisms, and interpretation traps for common clinical microbiology bench tests. Covers oxidase, catalase, coagulase, urease, indole, and key selective media used at the bench.',
     path: '/biochemical-tests',
     action: 'Review tests'
   },
@@ -62,6 +62,9 @@ const ASCPReviewPage: React.FC = () => (
           Learn Microbes organizes microbiology study around bench logic: organism identification, biochemical tests,
           safety escalation, visual readouts, and quiz reps. Use this page as a practical ASCP microbiology review
           hub while you prepare for M(ASCP), MLS coursework, or clinical bench onboarding.
+        </p>
+        <p className="ascp-review-audience">
+          Built for MLS students, MT/MLS candidates, and bench techs preparing for the M(ASCP) exam.
         </p>
         <div className="ascp-review-actions">
           <Link to="/certification-study-paths">
@@ -118,6 +121,9 @@ const ASCPReviewPage: React.FC = () => (
           </g>
           <text x="210" y="302" textAnchor="middle" className="ascp-flow-watermark">Learn Microbes | learnmicrobes.com</text>
         </svg>
+        <p className="ascp-flow-caption">
+          The weak-area loop routes your missed questions back into focused review — so every quiz session makes your next one more targeted.
+        </p>
       </div>
     </section>
 
@@ -128,7 +134,7 @@ const ASCPReviewPage: React.FC = () => (
         <p>
           Passing ASCP-style microbiology review is not only memorizing organisms. The higher-yield move is learning
           how specimens, stains, reactions, safety cues, and reporting decisions connect. That is the study pattern
-          this beta is being built around.
+          this platform is being built around.
         </p>
       </div>
       <ol className="ascp-review-steps">
@@ -181,6 +187,14 @@ const ASCPReviewPage: React.FC = () => (
         <Link to="/do-not-routine-culture">
           <FontAwesomeIcon icon={faShieldHalved} />
           Safety and special-pathogen traps
+        </Link>
+        <Link to="/learn#mycology">
+          <FontAwesomeIcon icon={faBookOpen} />
+          Mycology and fungal ID review
+        </Link>
+        <Link to="/learn#parasitology">
+          <FontAwesomeIcon icon={faBookOpen} />
+          Parasitology review
         </Link>
         <Link to="/search">
           <FontAwesomeIcon icon={faMagnifyingGlass} />

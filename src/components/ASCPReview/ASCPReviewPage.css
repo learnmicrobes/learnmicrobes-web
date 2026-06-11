@@ -403,6 +403,26 @@ body.dark-mode .ascp-review-disclaimer p {
   color: #f8d88a;
 }
 
+.ascp-review-audience {
+  font-size: 0.82rem;
+  color: var(--muted-color);
+  opacity: 0.82;
+}
+
+.ascp-flow-caption {
+  margin-top: 0.55rem;
+  font-size: 0.78rem;
+  color: var(--muted-color);
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0.82;
+}
+
+body.dark-mode .ascp-review-audience,
+body.dark-mode .ascp-flow-caption {
+  color: #8fa0b0;
+}
+
 @media (max-width: 900px) {
   .ascp-review-hero,
   .ascp-review-panel,
