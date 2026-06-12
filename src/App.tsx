@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faSearch, faUser, faMoon, faSun, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
+import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
 import { atlasPages } from './components/VisualAtlas/VisualAtlas';
 import { learnTopics } from './data/learnTopics';
@@ -1037,6 +1038,14 @@ export default function App() {
         title: 'Parasitology Visual Atlas | Learn Microbes',
         description: 'Parasitology visual bench cards for ova, cysts, trophozoites, blood parasites, stains, and morphology-based clinical microbiology review.'
       },
+      '/visuals/mycology': {
+        title: 'Mycology Visual Atlas | Learn Microbes',
+        description: 'Mycology visual bench cards for yeasts, molds, dimorphic fungi, dermatophytes, direct exams, and morphology-based clinical microbiology review.'
+      },
+      '/visuals/virology': {
+        title: 'Virology Visual Atlas | Learn Microbes',
+        description: 'Virology visual bench cards for cytopathic effects, inclusion patterns, molecular panels, serology patterns, and clinical microbiology review.'
+      },
       '/biochemical-tests': {
         title: 'Biochemical Tests Review | Clinical Microbiology | Learn Microbes',
         description: 'Review clinical microbiology biochemical tests, principles, expected results, QC organisms, and exam-relevant interpretation traps.'
@@ -1643,7 +1652,7 @@ export default function App() {
               className="depth-nudge-cta"
               onClick={() => {
                 setShowDepthNudge(false);
-                navigate('/login');
+                navigate(buildAuthRedirectPath('/login', `${location.pathname}${location.search}`));
               }}
             >
               Sign in

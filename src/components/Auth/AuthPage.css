@@ -189,6 +189,20 @@
   padding-right: 3rem;
 }
 
+/* Hide native browser password reveal/clear icons so only our custom toggle shows */
+.auth-password-field input::-ms-reveal,
+.auth-password-field input::-ms-clear {
+  display: none;
+}
+
+.auth-password-field input::-webkit-credentials-auto-fill-button,
+.auth-password-field input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
 .auth-password-toggle {
   position: absolute;
   top: 50%;

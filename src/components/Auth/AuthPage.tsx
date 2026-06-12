@@ -5,6 +5,7 @@ import { faArrowRight, faEye, faEyeSlash, faFlaskVial, faRightToBracket, faUserP
 import { isSupabaseConfigured, supabase } from '../../lib/supabaseClient';
 import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
+import { buildAuthRedirectPath, getSafeAuthRedirectPath } from '../../utils/authRedirect';
 import './AuthPage.css';
 
 type AuthMode = 'sign-in' | 'sign-up' | 'reset-password' | 'update-password' | 'email-sent';
@@ -83,6 +84,8 @@ const AuthPage: React.FC = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const passwordRequirements = getPasswordRequirements(password);
   const isCreatingAccount = mode === 'sign-up';
+  const redirectTo = getSafeAuthRedirectPath(new URLSearchParams(location.search).get('redirectTo'));
+  const postAuthPath = redirectTo ?? '/account';
   const authTitle = isCreatingAccount ? 'Create your Learn Microbes account.' : 'Sign in to your study account.';
   const authBody = isCreatingAccount
     ? 'Save progress, bookmarks, quiz history, and profile details as you study clinical microbiology.'
@@ -90,9 +93,9 @@ const AuthPage: React.FC = () => {
 
   useEffect(() => {
     if (isAuthReady && user && mode !== 'update-password') {
-      navigate('/account', { replace: true });
+      navigate(postAuthPath, { replace: true });
     }
-  }, [isAuthReady, mode, navigate, user]);
+  }, [isAuthReady, mode, navigate, postAuthPath, user]);
 
   useEffect(() => {
     if (mode !== 'sign-in' && mode !== 'sign-up') {
@@ -221,7 +224,7 @@ const AuthPage: React.FC = () => {
     }
 
     setStatusMessage(mode === 'sign-in' ? 'Signed in successfully.' : 'Account created and signed in.');
-    navigate('/account', { replace: true });
+    navigate(postAuthPath, { replace: true });
   };
 
   const handleGoogleSignIn = async () => {
@@ -242,7 +245,7 @@ const AuthPage: React.FC = () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/account`
+        redirectTo: `${window.location.origin}${buildAuthRedirectPath('/login', redirectTo)}`
       }
     });
 
@@ -310,7 +313,7 @@ const AuthPage: React.FC = () => {
       <EmailSentPanel
         email={email}
         onTryAgain={() => { setMode('sign-up'); setPassword(''); setStatusMessage(''); }}
-        onGoToSignIn={() => { setMode('sign-in'); setPassword(''); navigate('/login', { replace: true }); }}
+        onGoToSignIn={() => { setMode('sign-in'); setPassword(''); navigate(buildAuthRedirectPath('/login', redirectTo), { replace: true }); }}
       />
     );
   }
@@ -449,7 +452,7 @@ const AuthPage: React.FC = () => {
               className="auth-secondary-btn"
               onClick={() => {
                 switchMode('sign-in');
-                navigate('/login', { replace: true });
+                navigate(buildAuthRedirectPath('/login', redirectTo), { replace: true });
               }}
             >
               Back to sign in
@@ -480,7 +483,7 @@ const AuthPage: React.FC = () => {
                 onClick={() => {
                   const nextMode = isCreatingAccount ? 'sign-in' : 'sign-up';
                   switchMode(nextMode);
-                  navigate(isCreatingAccount ? '/login' : '/register', { replace: true });
+                  navigate(buildAuthRedirectPath(isCreatingAccount ? '/login' : '/register', redirectTo), { replace: true });
                 }}
               >
                 {isCreatingAccount ? 'Sign in' : 'Create account'}
@@ -497,4 +500,4 @@ const AuthPage: React.FC = () => {
   );
 };
 
-export default AuthPage;
+export default AuthPage;

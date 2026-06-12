@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { getSearchAliases } from '../../data/searchAliases';
 import { trackEvent } from '../../utils/analytics';
 import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
+import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './VisualAtlas.css';
 
 export type TubeVisual = {
@@ -29,7 +30,7 @@ export type AtlasPage = {
   boardTitle: string;
   boardNote: string;
   ariaLabel: string;
-  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex';
+  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening';
   tubes: TubeVisual[];
   readoutTitle: string;
   readoutRows: string[][];
@@ -2530,6 +2531,1761 @@ export const atlasPages: AtlasPage[] = [
     remember: 'XV disk supports all Haemophilus. V disk supports parainfluenzae. X disk supports ducreyi. Negative means growth everywhere.',
     biochemicalTestId: 'xv-factor',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
+  },
+  {
+    slug: 'mucorales-rhizopus',
+    title: 'Mucorales / Rhizopus: Broad Hyphae and Sporangia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Mucorales patterns: broad ribbon-like hyphae, sparse septation, right-angle branching, sporangia, and rhizoids.',
+    boardTitle: 'Mucorales bench pattern: broad hyphae, sporangium, rhizoids',
+    boardNote: 'Start with hyphae width and septation. Mucorales are broad, ribbon-like, pauci-septate molds. Rhizopus adds rhizoids near sporangiophores; culture work should follow mold safety SOPs.',
+    ariaLabel: 'Illustrated Mucorales mold showing broad ribbon-like hyphae, a round sporangium, sporangiophore, and rhizoids',
+    visualType: 'mycology-mucorales',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Culture mount',
+        name: 'Sporangium on sporangiophore with rhizoids',
+        colors: { slant: '#dceef1', butt: '#4f5f4f', base: '#1f3f3b' },
+        note: 'Look for a round sporangium at the tip of a sporangiophore. Rhizopus classically has rhizoids at the base of the sporangiophore.'
+      },
+      {
+        id: 'B',
+        label: 'Direct exam',
+        name: 'Broad ribbon-like hyphae, sparse septa',
+        colors: { slant: '#eef6f5', butt: '#7aa7b0', base: '#245c69' },
+        note: 'KOH or tissue may show broad, folded, pauci-septate hyphae with irregular right-angle branching. Do not overcall from one broken fragment.'
+      }
+    ],
+    readoutTitle: 'What to look for first',
+    readoutRows: [
+      ['Broad ribbon-like hyphae', 'Mucorales pattern', 'Width and folded ribbon shape are the first clue'],
+      ['Sparse or absent septa', 'Pauci-septate hyphae', 'Broken hyphae can mimic septa; scan several fields'],
+      ['Round sporangium', 'Sporangiospores contained in a sac', 'Supports Mucorales rather than Aspergillus-style conidial chains'],
+      ['Rhizoids at sporangiophore base', 'Rhizopus-type clue', 'Helpful but not always seen in every mount']
+    ],
+    trapTitle: 'Do not confuse crushed hyaline molds with Mucorales',
+    trapBody: 'A damaged Aspergillus or other hyaline mold can look broad in one area. Use the whole pattern: hyphal width, septation, branching, and reproductive structure.',
+    trapBullets: [
+      'Report and handle clinically significant molds according to lab SOP and biosafety policy.',
+      'Direct exam from tissue matters more than colony appearance alone when invasive disease is suspected.',
+      'Mucorales workups often require rapid escalation rather than prolonged bench speculation.'
+    ],
+    interpretationTitle: 'Mucorales interpretation guide',
+    interpretationRows: [
+      ['Broad pauci-septate hyphae in tissue', 'Mucorales-like mold', 'Escalate per SOP; correlate with culture and pathology'],
+      ['Sporangium plus rhizoids', 'Rhizopus-type pattern', 'Supports presumptive group-level ID in culture mount'],
+      ['Septate acute-angle hyphae only', 'Consider Aspergillus or other hyaline mold', 'Look for conidial head or other reproductive clues']
+    ],
+    takeaways: [
+      'Mucorales is a pattern-recognition diagnosis at the bench: broad, ribbon-like, sparse septa.',
+      'Rhizopus adds rhizoids and sporangia, but direct tissue morphology may be incomplete.',
+      'Safety and rapid escalation matter more than forcing a species-level call from a weak mount.'
+    ],
+    remember: 'Mucorales = broad ribbon hyphae plus sporangia. Rhizopus = rhizoids near the sporangiophore.',
+    divr: {
+      detect: 'KOH, tissue stain, or culture mount from mold workup',
+      identify: ['Broad pauci-septate hyphae', 'Sporangium on sporangiophore', 'Rhizoids support Rhizopus-type morphology'],
+      verify: 'Correlate with culture morphology and lab mold identification workflow',
+      report: 'Escalate clinically significant mold findings per SOP and biosafety policy'
+    }
+  },
+  {
+    slug: 'aspergillus-fumigatus',
+    title: 'Aspergillus fumigatus: Septate Hyphae and Conidial Head',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Aspergillus fumigatus patterns: septate hyphae, acute-angle branching, flask-shaped phialides, and compact columnar conidia.',
+    boardTitle: 'Aspergillus fumigatus: acute-angle hyphae and compact conidial head',
+    boardNote: 'Separate direct exam from culture morphology. Tissue suggests Aspergillus when hyphae are septate with acute-angle branching; culture mounts add the conidial head pattern.',
+    ariaLabel: 'Illustrated Aspergillus fumigatus with septate acute-angle branching hyphae and a compact conidial head',
+    visualType: 'mycology-aspergillus-fumigatus',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Direct exam',
+        name: 'Septate hyphae, acute-angle branching',
+        colors: { slant: '#edf5f1', butt: '#5e8f8a', base: '#245c69' },
+        note: 'Thin septate hyphae branching at narrow angles support Aspergillus-like hyaline mold morphology. Tissue morphology alone is not species-level ID.'
+      },
+      {
+        id: 'B',
+        label: 'Culture mount',
+        name: 'Compact conidial head, phialides on vesicle',
+        colors: { slant: '#d9ece8', butt: '#5c8a72', base: '#24443a' },
+        note: 'A. fumigatus classically shows a flask-shaped vesicle with phialides over the upper portion and compact columnar conidia.'
+      }
+    ],
+    readoutTitle: 'Aspergillus bench anchors',
+    readoutRows: [
+      ['Septate hyphae', 'Hyaline mold pattern', 'Narrow hyphae with regular septa'],
+      ['Acute-angle branching', 'Aspergillus-like direct exam', 'Usually about 45 degrees, but tissue distortion can alter angles'],
+      ['Conidial head', 'Culture morphology anchor', 'Vesicle, phialides, and conidia pattern help separate species groups'],
+      ['Compact columnar head', 'A. fumigatus pattern', 'Compare with radiate heads in some other Aspergillus species']
+    ],
+    trapTitle: 'Direct exam is not the same as species identification',
+    trapBody: 'Septate acute-angle hyphae are clinically useful, but several hyaline molds can overlap. Use culture morphology, validated ID methods, and SOP language before naming a species.',
+    trapBullets: [
+      'Avoid calling A. fumigatus from tissue morphology alone.',
+      'Culture morphology should be interpreted with colony features and microscopic mount.',
+      'Consider referral or MALDI/sequence workflows when morphology is atypical.'
+    ],
+    interpretationTitle: 'Aspergillus interpretation guide',
+    interpretationRows: [
+      ['Septate acute-angle hyphae in tissue', 'Aspergillus-like hyaline mold', 'Report according to pathology/lab wording and SOP'],
+      ['Compact conidial head in culture', 'A. fumigatus group pattern', 'Confirm with local identification workflow'],
+      ['Broad pauci-septate hyphae', 'Consider Mucorales', 'Different safety and clinical urgency pathway']
+    ],
+    takeaways: [
+      'Use direct exam for the hyphal pattern and culture mount for the reproductive structure.',
+      'A. fumigatus is compact and columnar compared with more radiate Aspergillus heads.',
+      'Bench wording should avoid overclaiming species from tissue alone.'
+    ],
+    remember: 'Aspergillus = septate acute-angle hyphae. Fumigatus culture = compact columnar conidial head.',
+    divr: {
+      detect: 'KOH, calcofluor, tissue stain, or culture tease mount',
+      identify: ['Septate acute-angle hyphae', 'Conidial head with phialides on vesicle', 'Compact columnar conidia for fumigatus pattern'],
+      verify: 'Culture morphology plus validated mold ID workflow',
+      report: 'Use SOP-approved language, especially for tissue-only findings'
+    }
+  },
+  {
+    slug: 'histoplasma-capsulatum',
+    title: 'Histoplasma capsulatum: Intracellular Yeast and Tuberculate Macroconidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Histoplasma: tiny intracellular yeasts in macrophages and tuberculate macroconidia in mold phase.',
+    boardTitle: 'Histoplasma: tiny intracellular yeast vs mold-phase macroconidia',
+    boardNote: 'Yeast phase is the clinical recognition anchor: tiny oval yeasts inside macrophages. Mold phase may show tuberculate macroconidia, but culture handling requires safety-aware workflow.',
+    ariaLabel: 'Illustrated Histoplasma showing intracellular tiny yeasts in a macrophage and mold phase tuberculate macroconidia',
+    visualType: 'mycology-histoplasma',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Tissue / smear',
+        name: 'Tiny intracellular yeasts in macrophages',
+        colors: { slant: '#e9f0ed', butt: '#6f8fa3', base: '#2f556a' },
+        note: 'Small 2-5 um oval yeasts often cluster inside macrophages. A clear halo can be artifact, not a true capsule.'
+      },
+      {
+        id: 'B',
+        label: 'Mold phase',
+        name: 'Tuberculate macroconidia',
+        colors: { slant: '#e2efe9', butt: '#789b6d', base: '#345c3a' },
+        note: 'Mold phase can form thick-walled macroconidia with knob-like projections. Handle suspected dimorphic fungi according to safety policy.'
+      }
+    ],
+    readoutTitle: 'Histoplasma visual anchors',
+    readoutRows: [
+      ['2-5 um oval yeast', 'Histoplasma yeast phase', 'Much smaller than Blastomyces and usually intracellular'],
+      ['Inside macrophages', 'Strong tissue clue', 'Scan histiocytes and reticuloendothelial specimens carefully'],
+      ['No broad-based bud', 'Helps separate from Blastomyces', 'Histoplasma is tiny and narrow budding when seen'],
+      ['Tuberculate macroconidia', 'Mold phase clue', 'Culture work requires appropriate safety workflow']
+    ],
+    trapTitle: 'Do not mistake the halo for a cryptococcal capsule',
+    trapBody: 'Histoplasma may show a clear rim around tiny yeasts in tissue, but the organism is much smaller and often intracellular. Cryptococcus is usually larger and truly encapsulated.',
+    trapBullets: [
+      'Use size, host cell location, and budding pattern together.',
+      'Culture of dimorphic fungi is a safety-sensitive workflow.',
+      'Antigen or molecular testing may support diagnosis depending on specimen and setting.'
+    ],
+    interpretationTitle: 'Histoplasma interpretation guide',
+    interpretationRows: [
+      ['Tiny intracellular yeasts', 'Histoplasma-compatible morphology', 'Correlate with fungal stains, antigen, culture, and clinical setting'],
+      ['Large broad-based budding yeast', 'Blastomyces pattern', 'Different morphology and reporting pathway'],
+      ['Tuberculate macroconidia in mold phase', 'Histoplasma mold-phase clue', 'Do not manipulate outside approved safety workflow']
+    ],
+    takeaways: [
+      'Histoplasma yeast is small, intracellular, and easy to miss at low power.',
+      'The mold-phase macroconidia are a learning anchor, not an invitation for unsafe culture handling.',
+      'Size is the fastest split from Blastomyces and Cryptococcus.'
+    ],
+    remember: 'Histo hides inside histiocytes: tiny intracellular yeasts first, tuberculate macroconidia later.',
+    divr: {
+      detect: 'Tissue stain, bone marrow smear, respiratory specimen, antigen, or culture workflow',
+      identify: ['Tiny intracellular yeast', 'Macrophage association', 'Tuberculate macroconidia in mold phase'],
+      verify: 'Use fungal stains and validated confirmatory testing per SOP',
+      report: 'Escalate suspected dimorphic fungus findings through safety-aware workflow'
+    }
+  },
+  {
+    slug: 'blastomyces-dermatitidis',
+    title: 'Blastomyces dermatitidis: Broad-Based Budding Yeast',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Blastomyces: large thick-walled yeast with broad-based budding and a mold phase with lateral conidia.',
+    boardTitle: 'Blastomyces: broad-based budding yeast',
+    boardNote: 'The yeast form is the high-yield recognition point: large, thick-walled, and broad-based budding. Compare size and budding pattern before reaching for lookalikes.',
+    ariaLabel: 'Illustrated Blastomyces dermatitidis broad-based budding yeast and mold phase lateral conidia',
+    visualType: 'mycology-blastomyces',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Yeast phase',
+        name: 'Large thick wall, broad-based bud',
+        colors: { slant: '#e6eef1', butt: '#9a8c6a', base: '#5b4a2b' },
+        note: 'Usually 8-15 um with thick refractile wall. Daughter cell attaches by a broad base rather than a narrow neck.'
+      },
+      {
+        id: 'B',
+        label: 'Mold phase',
+        name: 'Oval conidia on lateral branches',
+        colors: { slant: '#eaf3ee', butt: '#6f9279', base: '#34523d' },
+        note: 'Mycelial form can show oval conidia borne laterally on hyphae. Culture work follows dimorphic mold safety SOPs.'
+      }
+    ],
+    readoutTitle: 'Blastomyces recognition anchors',
+    readoutRows: [
+      ['Large thick-walled yeast', 'Blastomyces yeast phase', 'Larger than Histoplasma and often visible as single cells'],
+      ['Broad-based budding', 'Key morphology', 'The bud has a wide attachment to the mother cell'],
+      ['No capsule halo', 'Not Cryptococcus pattern', 'Capsule-focused stains point a different direction'],
+      ['Lateral oval conidia', 'Mold phase clue', 'Use only within approved mold identification workflow']
+    ],
+    trapTitle: 'Broad-based budding is a pattern, not just a big yeast',
+    trapBody: 'Size alone can mislead. Look for the thick wall and the broad connection between mother and daughter yeast cells.',
+    trapBullets: [
+      'Compare against Histoplasma: much smaller and usually intracellular.',
+      'Compare against Cryptococcus: capsule and narrow-based budding.',
+      'Dimorphic mold culture work requires safety-aware handling.'
+    ],
+    interpretationTitle: 'Blastomyces interpretation guide',
+    interpretationRows: [
+      ['Thick-walled yeast with broad bud', 'Blastomyces-compatible morphology', 'Escalate per SOP and correlate with culture or confirmatory testing'],
+      ['Tiny intracellular yeasts', 'Histoplasma pattern', 'Use size and intracellular location to separate'],
+      ['Encapsulated narrow-budding yeast', 'Cryptococcus pattern', 'Use capsule-focused methods if clinically appropriate']
+    ],
+    takeaways: [
+      'Blastomyces is the broad-based budding yeast card students should know cold.',
+      'Large size plus thick wall plus broad bud is stronger than any one feature alone.',
+      'Keep culture-phase handling within the lab safety workflow.'
+    ],
+    remember: 'Blasto buds broadly: big thick-walled yeast with a wide bridge to the daughter cell.',
+    divr: {
+      detect: 'KOH, tissue stain, respiratory specimen, or culture workflow',
+      identify: ['Large thick-walled yeast', 'Broad-based budding', 'Mold phase lateral conidia'],
+      verify: 'Correlate morphology with culture and approved confirmatory methods',
+      report: 'Use SOP language and escalate suspected dimorphic fungus findings'
+    }
+  },
+  {
+    slug: 'coccidioides-immitis',
+    title: 'Coccidioides: Spherule and Arthroconidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Coccidioides: tissue spherules packed with endospores and mold-phase barrel-shaped arthroconidia.',
+    boardTitle: 'Coccidioides: spherules in tissue, arthroconidia in mold phase',
+    boardNote: 'Tissue diagnosis centers on spherules with endospores. Mold-phase arthroconidia are highly infectious; suspected cultures require strict safety handling.',
+    ariaLabel: 'Illustrated Coccidioides showing a large spherule with endospores and mold phase barrel-shaped arthroconidia',
+    visualType: 'mycology-coccidioides',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Tissue phase',
+        name: 'Large spherule with endospores',
+        colors: { slant: '#efe6de', butt: '#b58b7a', base: '#6f4132' },
+        note: 'Large round spherules contain many endospores. Free endospores can mimic budding yeast if the spherule wall is not seen.'
+      },
+      {
+        id: 'B',
+        label: 'Mold phase',
+        name: 'Barrel arthroconidia, alternating empty cells',
+        colors: { slant: '#e5f0f3', butt: '#6d9db4', base: '#2f5e72' },
+        note: 'Barrel-shaped arthroconidia are the culture hazard. Do not manipulate suspected Coccidioides culture outside approved containment.'
+      }
+    ],
+    readoutTitle: 'Coccidioides visual anchors',
+    readoutRows: [
+      ['Spherule with endospores', 'Tissue-phase clue', 'Large round structure packed with internal endospores'],
+      ['Free endospores', 'Possible rupture', 'Can be mistaken for yeast if context is ignored'],
+      ['Barrel arthroconidia', 'Mold-phase clue', 'Alternating arthroconidia and empty cells in hyphae'],
+      ['Culture safety concern', 'High-risk mold handling', 'Follow lab containment and referral policy']
+    ],
+    trapTitle: 'The mold phase is a safety signal',
+    trapBody: 'Coccidioides arthroconidia are infectious. The bench decision is not only identification; it is safe handling and rapid escalation.',
+    trapBullets: [
+      'Do not open or manipulate suspicious cultures outside approved safety procedures.',
+      'Spherules in tissue are safer teaching anchors than culture morphology.',
+      'Use geography, exposure history, serology, culture, and pathology together.'
+    ],
+    interpretationTitle: 'Coccidioides interpretation guide',
+    interpretationRows: [
+      ['Spherules with endospores', 'Coccidioides-compatible tissue morphology', 'Escalate and confirm per SOP'],
+      ['Barrel arthroconidia in culture', 'Coccidioides mold-phase concern', 'Apply safety workflow immediately'],
+      ['Small oval intracellular yeasts', 'Histoplasma pattern', 'Not a spherule/endospore pattern']
+    ],
+    takeaways: [
+      'Coccidioides tissue form is a spherule, not a budding yeast.',
+      'Mold-phase arthroconidia are the safety-critical feature.',
+      'The safest next step is escalation, containment, and SOP-guided confirmation.'
+    ],
+    remember: 'Cocci = spherule in tissue, barrel arthroconidia in culture, safety first.',
+    divr: {
+      detect: 'Tissue stain, respiratory culture, serology, or reference workflow',
+      identify: ['Spherules with endospores', 'Barrel arthroconidia in mold phase', 'Alternating empty cells'],
+      verify: 'Confirm with approved dimorphic fungus workflow and clinical context',
+      report: 'Escalate suspected culture immediately under safety policy'
+    }
+  },
+  {
+    slug: 'dermatophyte-comparison',
+    title: 'Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card comparison for dermatophyte morphology: microconidia-heavy Trichophyton, spindle macroconidia of Microsporum, and club-shaped macroconidia of Epidermophyton.',
+    boardTitle: 'Dermatophyte comparison: microconidia and macroconidia shapes',
+    boardNote: 'Read dermatophytes as a pattern comparison. Trichophyton often leans on microconidia, Microsporum has rough spindle macroconidia, and Epidermophyton has smooth club-shaped macroconidia without microconidia.',
+    ariaLabel: 'Illustrated dermatophyte comparison showing Trichophyton microconidia, Microsporum spindle macroconidia, and Epidermophyton club-shaped macroconidia',
+    visualType: 'mycology-dermatophyte-panel',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trichophyton',
+        name: 'Many microconidia along hyphae',
+        colors: { slant: '#edf3ef', butt: '#6f9b82', base: '#315a42' },
+        note: 'Many species show microconidia along hyphae; macroconidia may be rare or absent depending on species and medium.'
+      },
+      {
+        id: 'B',
+        label: 'Microsporum',
+        name: 'Rough spindle macroconidia',
+        colors: { slant: '#e6f1ef', butt: '#5f95a1', base: '#2c5d67' },
+        note: 'Large spindle-shaped, rough-walled macroconidia are the classic Microsporum anchor. Microconidia may be present but are not the main clue.'
+      },
+      {
+        id: 'C',
+        label: 'Epidermophyton',
+        name: 'Smooth club macroconidia, no microconidia',
+        colors: { slant: '#f0efe4', butt: '#a18f5d', base: '#5f4e24' },
+        note: 'Smooth, club-shaped macroconidia often occur in clusters. Microconidia are absent, which helps separate it from the other two genera.'
+      }
+    ],
+    readoutTitle: 'Dermatophyte genus anchors',
+    readoutRows: [
+      ['Many microconidia', 'Trichophyton pattern', 'Macroconidia may be rare, pencil-shaped, or species-dependent'],
+      ['Rough spindle macroconidia', 'Microsporum pattern', 'Usually the most visually distinctive macroconidia group'],
+      ['Smooth club macroconidia', 'Epidermophyton pattern', 'No microconidia is the key negative clue'],
+      ['Hair, skin, nail source', 'Dermatophyte context', 'Match morphology with clinical specimen and culture features']
+    ],
+    trapTitle: 'Old cultures can lose the clean textbook pattern',
+    trapBody: 'Dermatophyte mounts may be sparse, distorted, or nonsporulating. Use colony appearance, slide culture or tape prep quality, and SOP-supported confirmatory methods.',
+    trapBullets: [
+      'Do not force a genus from a single weak conidium.',
+      'Some Trichophyton species sporulate poorly on routine media.',
+      'Dermatophyte ID is a pattern plus specimen context, not one isolated shape.'
+    ],
+    interpretationTitle: 'Dermatophyte comparison guide',
+    interpretationRows: [
+      ['Microconidia dominate', 'Trichophyton likely', 'Review arrangement: singly along hyphae, clusters, or grape-like groups'],
+      ['Spindle rough macroconidia', 'Microsporum likely', 'Use macroconidia wall texture and shape'],
+      ['Club macroconidia, no microconidia', 'Epidermophyton likely', 'Absence of microconidia is part of the call']
+    ],
+    takeaways: [
+      'Dermatophyte comparison is a shape language: microconidia, spindle macroconidia, or club macroconidia.',
+      'The best student move is to compare the genus-level anchors before memorizing species exceptions.',
+      'Poor sporulation is common, so weak mounts should trigger better prep or confirmatory workflow.'
+    ],
+    remember: 'Trichophyton = microconidia. Microsporum = spindle macroconidia. Epidermophyton = club macroconidia with no microconidia.',
+    divr: {
+      detect: 'Skin, hair, nail culture mount, tape prep, or slide culture',
+      identify: ['Trichophyton microconidia patterns', 'Microsporum rough spindle macroconidia', 'Epidermophyton smooth club macroconidia without microconidia'],
+      verify: 'Use culture features and local dermatophyte ID workflow',
+      report: 'Report genus/species only when morphology and SOP criteria support it'
+    }
+  },
+  {
+    slug: 'candida-albicans-germ-tube',
+    title: 'Candida albicans: Germ Tube and Pseudohyphae',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Candida albicans-style germ tubes and separating true germ tubes from pseudohyphae.',
+    boardTitle: 'Candida albicans: germ tube vs pseudohyphae',
+    boardNote: 'A true germ tube has parallel walls and no constriction at the yeast cell. Pseudohyphae show constriction at the attachment point and look more segmented.',
+    ariaLabel: 'Illustrated Candida albicans yeast with a true germ tube and pseudohyphae comparison',
+    visualType: 'mycology-candida-germ-tube',
+    tubes: [
+      {
+        id: 'A',
+        label: 'True germ tube',
+        name: 'Parallel outgrowth, no constriction',
+        colors: { slant: '#f1ece2', butt: '#8f7560', base: '#4c372c' },
+        note: 'Serum germ tube positive pattern: smooth tube-like extension from yeast cell with no pinched base. Supports C. albicans/C. dubliniensis group.'
+      },
+      {
+        id: 'B',
+        label: 'Pseudohyphae',
+        name: 'Constricted buds, chain-like growth',
+        colors: { slant: '#edf3ef', butt: '#7a9b83', base: '#3a5d43' },
+        note: 'Pseudohyphae have constrictions at septa and attachment points. Do not count these as true germ tubes.'
+      }
+    ],
+    readoutTitle: 'Yeast form readout',
+    readoutRows: [
+      ['No constriction at origin', 'True germ tube', 'Classic germ tube-positive Candida pattern'],
+      ['Constriction at attachment point', 'Pseudohyphae', 'Budding chain, not a true germ tube'],
+      ['Rapid serum incubation', 'Screening method', 'Timing and inoculum matter for clean interpretation'],
+      ['Chromogenic or confirmatory ID', 'Verification step', 'Use local yeast ID workflow before final species call']
+    ],
+    trapTitle: 'Do not call pseudohyphae a germ tube',
+    trapBody: 'The base is the decision point. If the outgrowth pinches where it leaves the yeast cell, it is pseudohyphae, not a true germ tube.',
+    trapBullets: [
+      'Scan multiple yeast cells before calling the reaction.',
+      'Overincubation can make interpretation messy.',
+      'C. dubliniensis can also be germ tube positive, so final ID depends on the full workflow.'
+    ],
+    interpretationTitle: 'Candida germ tube guide',
+    interpretationRows: [
+      ['True germ tubes present', 'Germ tube positive yeast', 'Supports C. albicans/C. dubliniensis group; confirm per SOP'],
+      ['Only pseudohyphae or budding yeast', 'Germ tube negative pattern', 'Continue yeast ID workflow'],
+      ['Mixed forms or weak read', 'Indeterminate', 'Repeat or confirm with validated method']
+    ],
+    takeaways: [
+      'Germ tube interpretation is about the base: no constriction means true germ tube.',
+      'Pseudohyphae are useful morphology, but they are not a positive germ tube result.',
+      'Use germ tube as a fast screen, not as a complete yeast identification system.'
+    ],
+    remember: 'Germ tube = no pinch. Pseudohyphae = pinched chain.',
+    divr: {
+      detect: 'Yeast isolate with germ tube setup or wet mount morphology',
+      identify: ['True germ tube without constriction', 'Pseudohyphae with pinched attachments', 'Budding yeast background'],
+      verify: 'Confirm with local yeast identification workflow',
+      report: 'Use SOP-supported organism ID, especially for non-albicans Candida'
+    }
+  },
+  {
+    slug: 'cryptococcus-neoformans-capsule',
+    title: 'Cryptococcus neoformans/gattii: Capsule and Narrow-Based Budding',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing encapsulated Cryptococcus yeast and narrow-based budding on direct exam or special stains.',
+    boardTitle: 'Cryptococcus: capsule halo and narrow-based budding',
+    boardNote: 'Cryptococcus is a yeast pattern: round to oval cells, narrow-based budding, and a capsule that may appear as a clear halo on capsule-focused preparations.',
+    ariaLabel: 'Illustrated Cryptococcus yeast showing capsule halo and narrow-based budding',
+    visualType: 'mycology-cryptococcus',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Capsule prep',
+        name: 'Clear halo around round yeast',
+        colors: { slant: '#e8eef2', butt: '#6d8296', base: '#2f4c62' },
+        note: 'Capsule-focused preparations can show a clear halo around round budding yeasts. Capsule size can vary by strain and specimen.'
+      },
+      {
+        id: 'B',
+        label: 'Budding yeast',
+        name: 'Narrow-based budding',
+        colors: { slant: '#f1efe8', butt: '#8c7a58', base: '#4b3d24' },
+        note: 'Buds attach by a narrow neck, unlike Blastomyces broad-based budding. Correlate with antigen or culture workflow.'
+      }
+    ],
+    readoutTitle: 'Cryptococcus visual anchors',
+    readoutRows: [
+      ['Round encapsulated yeast', 'Cryptococcus pattern', 'Capsule may appear as a halo depending on method'],
+      ['Narrow-based budding', 'Yeast morphology clue', 'Separates from broad-based Blastomyces pattern'],
+      ['CSF or sterile site context', 'High-impact specimen', 'Follow urgent reporting and confirmatory workflow'],
+      ['Cryptococcal antigen', 'Verification method', 'Often more sensitive than morphology alone']
+    ],
+    trapTitle: 'A halo is not always a capsule',
+    trapBody: 'Artifacts and shrinkage can create clear spaces around organisms. Use size, budding pattern, specimen context, and confirmatory testing.',
+    trapBullets: [
+      'Histoplasma can show an artifactual halo but is much smaller and often intracellular.',
+      'Blastomyces is larger and broad-based budding.',
+      'Cryptococcal antigen testing is central in many workflows.'
+    ],
+    interpretationTitle: 'Cryptococcus interpretation guide',
+    interpretationRows: [
+      ['Encapsulated narrow-budding yeast', 'Cryptococcus-compatible morphology', 'Confirm with antigen, culture, or validated ID workflow'],
+      ['Broad-based budding yeast', 'Blastomyces pattern', 'Do not call Cryptococcus based on size alone'],
+      ['Tiny intracellular yeasts', 'Histoplasma pattern', 'Use size and cell location']
+    ],
+    takeaways: [
+      'Cryptococcus is capsule plus narrow-based budding in the right specimen context.',
+      'A halo alone is not enough; morphology and confirmatory testing carry the call.',
+      'Sterile site yeast findings deserve prompt SOP-guided escalation.'
+    ],
+    remember: 'Crypto = capsule halo plus narrow neck bud.',
+    divr: {
+      detect: 'CSF, sterile fluid, respiratory specimen, capsule prep, antigen, or culture',
+      identify: ['Round yeast', 'Capsule halo', 'Narrow-based budding'],
+      verify: 'Cryptococcal antigen and validated culture/ID workflow',
+      report: 'Escalate sterile site findings per SOP'
+    }
+  },
+  {
+    slug: 'sporothrix-schenckii',
+    title: 'Sporothrix schenckii: Cigar Yeast and Flowerette Conidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Sporothrix: cigar-shaped yeast in tissue and flowerette conidia in mold phase.',
+    boardTitle: 'Sporothrix: cigar yeast and flowerette conidia',
+    boardNote: 'Sporothrix is dimorphic. Tissue yeast may be cigar-shaped and sparse; mold phase can show conidia arranged like a small flowerette at the conidiophore tip.',
+    ariaLabel: 'Illustrated Sporothrix showing cigar-shaped yeast and flowerette conidia',
+    visualType: 'mycology-sporothrix',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Yeast phase',
+        name: 'Cigar-shaped budding yeast',
+        colors: { slant: '#efe7e2', butt: '#9b6f6f', base: '#5c3434' },
+        note: 'Cigar-shaped yeast forms are classic but may be few in tissue. Look for compatible morphology in the right clinical context.'
+      },
+      {
+        id: 'B',
+        label: 'Mold phase',
+        name: 'Flowerette conidia',
+        colors: { slant: '#e7f1ed', butt: '#6b997c', base: '#315a40' },
+        note: 'Conidia may cluster at the tip of a conidiophore in a flowerette arrangement. Culture work follows dimorphic fungus safety workflow.'
+      }
+    ],
+    readoutTitle: 'Sporothrix anchors',
+    readoutRows: [
+      ['Cigar-shaped yeast', 'Tissue clue', 'May be sparse; do not expect every field to show it'],
+      ['Flowerette conidia', 'Mold phase clue', 'Conidia cluster at conidiophore tip'],
+      ['Lymphocutaneous context', 'Clinical pattern', 'Specimen source can support the morphology'],
+      ['Dimorphic mold handling', 'Safety workflow', 'Use approved culture procedures']
+    ],
+    trapTitle: 'Sparse tissue forms can make Sporothrix easy to miss',
+    trapBody: 'The yeast form may be rare in tissue sections. A negative quick scan does not exclude infection when clinical suspicion is high.',
+    trapBullets: [
+      'Scan carefully and correlate with culture.',
+      'Do not overcall nonspecific elongated debris as cigar yeast.',
+      'Use dimorphic fungus safety workflow for cultures.'
+    ],
+    interpretationTitle: 'Sporothrix interpretation guide',
+    interpretationRows: [
+      ['Cigar-shaped yeast in tissue', 'Sporothrix-compatible clue', 'Correlate with culture and clinical pattern'],
+      ['Flowerette conidia in mold phase', 'Sporothrix mold-phase clue', 'Confirm through approved workflow'],
+      ['Broad-based budding yeast', 'Blastomyces pattern', 'Different dimorphic yeast morphology']
+    ],
+    takeaways: [
+      'Sporothrix teaches the difference between tissue yeast clues and culture mold clues.',
+      'Cigar yeast is high-yield but not always abundant.',
+      'Flowerette conidia make a clean visual anchor for the mold phase.'
+    ],
+    remember: 'Sporothrix = cigar yeast in tissue, flowerette conidia in mold.',
+    divr: {
+      detect: 'Tissue, drainage, culture, or dimorphic fungus workup',
+      identify: ['Cigar-shaped yeast', 'Flowerette conidia', 'Dimorphic pattern'],
+      verify: 'Culture and validated identification workflow',
+      report: 'Use SOP language and safety-aware culture handling'
+    }
+  },
+  {
+    slug: 'paracoccidioides-brasiliensis',
+    title: 'Paracoccidioides brasiliensis: Multiple Budding Yeast',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Paracoccidioides multiple budding yeast, often described as a pilot-wheel pattern.',
+    boardTitle: 'Paracoccidioides: multiple budding yeast',
+    boardNote: 'The recognition anchor is a large yeast with multiple narrow-neck buds around the mother cell. Compare against Blastomyces, which usually has a single broad-based bud.',
+    ariaLabel: 'Illustrated Paracoccidioides yeast with multiple buds around a central mother cell',
+    visualType: 'mycology-paracoccidioides',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Tissue yeast',
+        name: 'Multiple buds around mother cell',
+        colors: { slant: '#efe9df', butt: '#a0825d', base: '#5b4226' },
+        note: 'Large yeast with multiple buds attached around the perimeter. This multi-budding pattern is the key visual clue.'
+      },
+      {
+        id: 'B',
+        label: 'Comparator',
+        name: 'Single broad bud is not the same pattern',
+        colors: { slant: '#e9f0ed', butt: '#8a8f70', base: '#4c5133' },
+        note: 'Blastomyces typically shows a single broad-based bud. Paracoccidioides shows multiple buds around one mother cell.'
+      }
+    ],
+    readoutTitle: 'Paracoccidioides anchors',
+    readoutRows: [
+      ['Multiple peripheral buds', 'Paracoccidioides pattern', 'Buds form around the mother yeast cell'],
+      ['Large mother cell', 'Dimorphic yeast clue', 'Use size and budding arrangement together'],
+      ['Single broad bud', 'Blastomyces comparator', 'Not the same as multiple-budding pattern'],
+      ['Exposure context', 'Supportive clue', 'Geography and clinical setting matter']
+    ],
+    trapTitle: 'Do not reduce this to "big yeast"',
+    trapBody: 'The diagnostic idea is the budding arrangement. A large yeast with one broad bud points away from Paracoccidioides.',
+    trapBullets: [
+      'Look for multiple buds, not just large cell size.',
+      'Compare directly with Blastomyces when teaching this card.',
+      'Confirm through culture, pathology, or reference methods per SOP.'
+    ],
+    interpretationTitle: 'Paracoccidioides interpretation guide',
+    interpretationRows: [
+      ['Multiple budding yeast', 'Paracoccidioides-compatible morphology', 'Correlate with clinical and geographic context'],
+      ['Single broad-based bud', 'Blastomyces pattern', 'Different budding architecture'],
+      ['Tiny intracellular yeasts', 'Histoplasma pattern', 'Different size and host-cell location']
+    ],
+    takeaways: [
+      'Paracoccidioides is a budding-arrangement card.',
+      'Multiple buds around one mother cell are more important than the nickname.',
+      'Use this as a comparator against Blastomyces.'
+    ],
+    remember: 'Para = many buds around one parent cell.',
+    divr: {
+      detect: 'Tissue, smear, culture, or dimorphic fungus workflow',
+      identify: ['Large yeast', 'Multiple peripheral buds', 'Comparator against Blastomyces'],
+      verify: 'Confirm through validated workflow and clinical context',
+      report: 'Use SOP-supported dimorphic fungus reporting language'
+    }
+  },
+  {
+    slug: 'fusarium-sickle-macroconidia',
+    title: 'Fusarium spp.: Sickle-Shaped Macroconidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Fusarium: multicelled sickle or canoe-shaped macroconidia with hyaline septate hyphae.',
+    boardTitle: 'Fusarium: sickle-shaped multicelled macroconidia',
+    boardNote: 'Fusarium is an opportunistic hyaline mold pattern. The teaching anchor is a curved, multicelled macroconidium shaped like a canoe or sickle.',
+    ariaLabel: 'Illustrated Fusarium showing curved multicelled macroconidia and septate hyphae',
+    visualType: 'mycology-fusarium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Macroconidia',
+        name: 'Curved sickle-shaped, multicelled',
+        colors: { slant: '#e8f2f4', butt: '#5d9ab0', base: '#2b5d70' },
+        note: 'Macroconidia are curved and divided by septa. This shape is a strong visual anchor for Fusarium-style morphology.'
+      },
+      {
+        id: 'B',
+        label: 'Hyphae',
+        name: 'Hyaline septate mold',
+        colors: { slant: '#edf4f0', butt: '#6f9a86', base: '#335c48' },
+        note: 'Septate hyphae support a hyaline mold pattern. Use macroconidia and validated methods to separate from lookalikes.'
+      }
+    ],
+    readoutTitle: 'Fusarium visual anchors',
+    readoutRows: [
+      ['Curved macroconidia', 'Fusarium pattern', 'Canoe or sickle shape is the main clue'],
+      ['Multiple septa in macroconidia', 'Multicelled conidium', 'Do not confuse with simple oval conidia'],
+      ['Hyaline septate hyphae', 'Opportunistic mold context', 'Overlaps with other hyaline molds'],
+      ['Sterile site or immunocompromised host', 'Clinical importance', 'Escalate per SOP']
+    ],
+    trapTitle: 'Macroconidia shape matters more than color',
+    trapBody: 'Colony color can vary and is not enough. Teach learners to find the multicelled curved macroconidia and then confirm through the lab workflow.',
+    trapBullets: [
+      'Do not identify Fusarium from septate hyphae alone.',
+      'Compare with dermatophyte macroconidia and Aspergillus conidial heads.',
+      'Opportunistic mold significance depends heavily on source and patient context.'
+    ],
+    interpretationTitle: 'Fusarium interpretation guide',
+    interpretationRows: [
+      ['Sickle macroconidia with septa', 'Fusarium-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Compact conidial head', 'Aspergillus pattern', 'Different reproductive structure'],
+      ['Rough spindle macroconidia', 'Microsporum pattern', 'Dermatophyte context and source differ']
+    ],
+    takeaways: [
+      'Fusarium is a macroconidia-shape card.',
+      'Curved, multicelled conidia are the anchor.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Fusarium = curved sickle macroconidia with septa.',
+    divr: {
+      detect: 'Culture mount, sterile site mold workup, or opportunistic mold evaluation',
+      identify: ['Curved multicelled macroconidia', 'Hyaline septate hyphae', 'Opportunistic mold context'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'penicillium-talaromyces',
+    title: 'Penicillium / Talaromyces: Brush Conidiophores and Fission Yeast',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Penicillium-like brush conidiophores and Talaromyces marneffei yeast division by fission.',
+    boardTitle: 'Penicillium/Talaromyces: brush mold, fission yeast clue',
+    boardNote: 'Penicillium-type molds form brush-like conidiophores. Talaromyces marneffei is dimorphic and its yeast phase divides by fission with a central septum.',
+    ariaLabel: 'Illustrated Penicillium brush-like conidiophore and Talaromyces fission yeast with central septum',
+    visualType: 'mycology-penicillium-talaromyces',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Mold phase',
+        name: 'Brush-like conidiophore',
+        colors: { slant: '#e8f1ed', butt: '#5f927a', base: '#2f5a43' },
+        note: 'Branching phialides form a brush-like head with chains of conidia. Many Penicillium-like molds share this general architecture.'
+      },
+      {
+        id: 'B',
+        label: 'Yeast phase',
+        name: 'Fission yeast with central septum',
+        colors: { slant: '#efe9e0', butt: '#9a765f', base: '#5a3928' },
+        note: 'Talaromyces marneffei yeast divides by fission and may show a central transverse septum rather than budding.'
+      }
+    ],
+    readoutTitle: 'Penicillium/Talaromyces anchors',
+    readoutRows: [
+      ['Brush-like conidiophore', 'Penicillium-type mold clue', 'Branching phialides with chains of conidia'],
+      ['Central septum in yeast', 'Talaromyces marneffei clue', 'Fission division rather than budding'],
+      ['Dimorphic behavior', 'Talaromyces context', 'Mold and yeast phases have different clues'],
+      ['Clinical context', 'Opportunistic/systemic mycosis concern', 'Interpret with source, geography, and host status']
+    ],
+    trapTitle: 'Not every Penicillium-like mold is Talaromyces',
+    trapBody: 'Brush-like mold morphology is broad. The fission yeast phase and clinical context are what make Talaromyces marneffei a distinct teaching pattern.',
+    trapBullets: [
+      'Do not call Talaromyces from brush morphology alone.',
+      'Look for yeast-phase fission with a central septum when relevant.',
+      'Use validated identification or reference workflow for clinically significant isolates.'
+    ],
+    interpretationTitle: 'Penicillium/Talaromyces interpretation guide',
+    interpretationRows: [
+      ['Brush-like conidiophore only', 'Penicillium-like mold', 'Continue mold ID workflow; do not overcall'],
+      ['Fission yeast with central septum', 'Talaromyces marneffei clue', 'Correlate with dimorphic fungus workflow'],
+      ['Budding yeast forms', 'Different yeast pattern', 'Compare with Candida, Cryptococcus, Blastomyces, or Sporothrix']
+    ],
+    takeaways: [
+      'Penicillium-like mold morphology is a brush pattern.',
+      'Talaromyces marneffei yeast phase divides by fission with a central septum.',
+      'The safest bench habit is to avoid species-level overcalls from mold architecture alone.'
+    ],
+    remember: 'Penicillium brushes; Talaromyces yeast splits by fission.',
+    divr: {
+      detect: 'Culture mount, tissue, blood culture, or dimorphic/opportunistic fungus workflow',
+      identify: ['Brush-like conidiophore', 'Fission yeast with transverse septum', 'Clinical context'],
+      verify: 'Validated ID or reference workflow',
+      report: 'Use SOP-supported reporting for clinically significant isolates'
+    }
+  },
+  {
+    slug: 'scopulariopsis-rough-conidia',
+    title: 'Scopulariopsis spp.: Penicillus-Like Brush and Rough Conidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Scopulariopsis: penicillus-like brush of annellides bearing chains of rough, thick-walled, lemon-shaped conidia.',
+    boardTitle: 'Scopulariopsis: brush of annellides with rough lemon-shaped conidia',
+    boardNote: 'Scopulariopsis sits in the opportunistic mold group. The teaching anchor is a Penicillium-like brush whose conidia are rough or echinulate with a flat base, not smooth.',
+    ariaLabel: 'Illustrated Scopulariopsis showing a brush-like conidiophore bearing chains of rough lemon-shaped conidia',
+    visualType: 'mycology-scopulariopsis',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Conidiophore',
+        name: 'Penicillus-like brush of annellides',
+        colors: { slant: '#efe9df', butt: '#9a8260', base: '#5a4326' },
+        note: 'Annellides form a brush that resembles Penicillium at first glance. The conidia-producing cells widen as chains build, which is the annellide clue.'
+      },
+      {
+        id: 'B',
+        label: 'Conidia',
+        name: 'Rough, thick-walled, lemon-shaped',
+        colors: { slant: '#efe6da', butt: '#a07a4f', base: '#5e3d1c' },
+        note: 'Conidia are rough or echinulate with a flat truncate base, often described as lemon-shaped. Surface texture separates it from smooth Penicillium conidia.'
+      }
+    ],
+    readoutTitle: 'Scopulariopsis visual anchors',
+    readoutRows: [
+      ['Penicillus-like brush', 'Penicillium mimic clue', 'Looks brush-like, so check conidial surface before calling Penicillium'],
+      ['Rough or echinulate conidia', 'Scopulariopsis pattern', 'Spiny surface is the main separator from smooth lookalikes'],
+      ['Flat truncate base on conidia', 'Lemon-shaped clue', 'Base shape supports Scopulariopsis over oval Penicillium conidia'],
+      ['Sterile site or nail/skin source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'A brush shape alone can read as Penicillium',
+    trapBody: 'Low-power brush morphology overlaps with Penicillium. The separator is conidial surface and base shape: Scopulariopsis conidia are rough with a flat base, while Penicillium conidia are smooth.',
+    trapBullets: [
+      'Do not call Penicillium from brush architecture alone.',
+      'Examine conidial surface texture at high power before deciding.',
+      'Use validated identification for clinically significant or sterile-site isolates.'
+    ],
+    interpretationTitle: 'Scopulariopsis interpretation guide',
+    interpretationRows: [
+      ['Brush with rough lemon-shaped conidia', 'Scopulariopsis-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Brush with smooth oval conidia', 'Penicillium pattern', 'Different surface and base shape'],
+      ['Brush with delicate tapering phialides', 'Paecilomyces pattern', 'Compare conidiogenous cell shape']
+    ],
+    takeaways: [
+      'Scopulariopsis is a conidial-surface card.',
+      'Rough, flat-based, lemon-shaped conidia separate it from Penicillium.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Scopulariopsis = brush plus rough lemon-shaped conidia with a flat base.',
+    divr: {
+      detect: 'Culture tease mount, nail or skin source, or opportunistic mold workup',
+      identify: ['Penicillus-like brush of annellides', 'Rough echinulate conidia', 'Flat truncate conidial base'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'paecilomyces-tapering-phialides',
+    title: 'Paecilomyces spp.: Long Tapering Phialides',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Paecilomyces: long slender phialides that taper to a fine point, bearing delicate divergent chains of conidia.',
+    boardTitle: 'Paecilomyces: long tapering phialides with delicate conidial chains',
+    boardNote: 'Paecilomyces is another opportunistic mold that mimics Penicillium. The anchor is a long phialide that tapers to a thin neck, with chains that spread apart rather than forming a tight brush.',
+    ariaLabel: 'Illustrated Paecilomyces showing long tapering phialides bearing delicate divergent chains of conidia',
+    visualType: 'mycology-paecilomyces',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Phialides',
+        name: 'Long, tapering to a fine point',
+        colors: { slant: '#e9efe6', butt: '#7f9a6f', base: '#3f5a30' },
+        note: 'Phialides are long and slender, narrowing to a thin neck. This tapering shape is the main separator from the shorter, plumper phialides of Penicillium.'
+      },
+      {
+        id: 'B',
+        label: 'Conidial chains',
+        name: 'Delicate divergent chains',
+        colors: { slant: '#eef0e6', butt: '#94a06f', base: '#4f5a30' },
+        note: 'Chains of small oval conidia spread apart in loose divergent arrangements rather than forming a tight columnar brush.'
+      }
+    ],
+    readoutTitle: 'Paecilomyces visual anchors',
+    readoutRows: [
+      ['Long tapering phialides', 'Paecilomyces pattern', 'Fine narrowing neck is the main clue'],
+      ['Divergent conidial chains', 'Loose brush clue', 'Chains spread apart rather than packing into columns'],
+      ['Penicillium-like outline', 'Mimic warning', 'Low-power shape overlaps; check phialide taper'],
+      ['Sterile site or device source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'Tapering phialides separate it from Penicillium',
+    trapBody: 'Paecilomyces and Penicillium both form branched conidiophores. The separator is phialide shape: Paecilomyces phialides are long and taper to a fine point, and its conidial chains diverge instead of forming compact columns.',
+    trapBullets: [
+      'Do not call Penicillium from branched architecture alone.',
+      'Look for the long tapering phialide neck at high power.',
+      'Use validated identification for clinically significant or sterile-site isolates.'
+    ],
+    interpretationTitle: 'Paecilomyces interpretation guide',
+    interpretationRows: [
+      ['Long tapering phialides, divergent chains', 'Paecilomyces-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Short plump phialides, compact brush', 'Penicillium pattern', 'Different phialide shape and chain packing'],
+      ['Rough lemon-shaped conidia', 'Scopulariopsis pattern', 'Compare conidial surface and base']
+    ],
+    takeaways: [
+      'Paecilomyces is a phialide-shape card.',
+      'Long tapering phialides and divergent chains separate it from Penicillium.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Paecilomyces = long tapering phialides with delicate divergent chains.',
+    divr: {
+      detect: 'Culture tease mount, device-associated source, or opportunistic mold workup',
+      identify: ['Long tapering phialides', 'Delicate divergent conidial chains', 'Penicillium-like overall shape'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'scedosporium-lomentospora',
+    title: 'Scedosporium / Lomentospora: Flask Cells and Annelloconidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Scedosporium and Lomentospora: flask-shaped conidiogenous cells producing single annelloconidia at the tip on hyaline septate hyphae.',
+    boardTitle: 'Scedosporium / Lomentospora: flask cells with single annelloconidia',
+    boardNote: 'Scedosporium and Lomentospora are opportunistic hyaline molds. The anchor is a flask-shaped conidiogenous cell bearing single oval annelloconidia at the tip, set on septate hyphae.',
+    ariaLabel: 'Illustrated Scedosporium showing flask-shaped conidiogenous cells with single oval annelloconidia on septate hyphae',
+    visualType: 'mycology-scedosporium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Conidiogenous cell',
+        name: 'Flask-shaped, single tip conidium',
+        colors: { slant: '#e8f1ee', butt: '#5f8f86', base: '#27524a' },
+        note: 'Flask-shaped or annellidic cells produce a single oval conidium at the tip. Conidia often gather as small clusters at the apex.'
+      },
+      {
+        id: 'B',
+        label: 'Hyphae',
+        name: 'Hyaline septate mold',
+        colors: { slant: '#edf4f0', butt: '#6f9a86', base: '#335c48' },
+        note: 'Septate hyphae place this in the hyaline mold group. Conidiogenous cell shape, not hyphae alone, points toward Scedosporium or Lomentospora.'
+      }
+    ],
+    readoutTitle: 'Scedosporium / Lomentospora anchors',
+    readoutRows: [
+      ['Flask-shaped conidiogenous cell', 'Scedosporium pattern', 'Swollen base tapering to a neck is the main clue'],
+      ['Single oval conidium at the tip', 'Annelloconidium clue', 'Conidia form one at a time, often clustering at the apex'],
+      ['Hyaline septate hyphae', 'Opportunistic mold context', 'Overlaps with Aspergillus and Fusarium on hyphae alone'],
+      ['Sterile site or near-drowning history', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'Septate hyphae alone do not separate the hyaline molds',
+    trapBody: 'Scedosporium, Aspergillus, and Fusarium all show septate hyphae. The separator here is the flask-shaped conidiogenous cell bearing a single tip conidium, not the hyphae.',
+    trapBullets: [
+      'Do not call Aspergillus or Fusarium from septate hyphae alone.',
+      'Look for single tip conidia on flask-shaped cells.',
+      'Lomentospora prolificans is often multidrug resistant; escalate clinically significant isolates per SOP.'
+    ],
+    interpretationTitle: 'Scedosporium / Lomentospora interpretation guide',
+    interpretationRows: [
+      ['Flask cells with single tip conidia', 'Scedosporium-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Compact conidial head on a vesicle', 'Aspergillus pattern', 'Different reproductive structure'],
+      ['Curved multicelled macroconidia', 'Fusarium pattern', 'Different conidial shape']
+    ],
+    takeaways: [
+      'Scedosporium and Lomentospora are conidiogenous-cell-shape cards.',
+      'Flask cells with single tip conidia separate them from other hyaline molds.',
+      'Lomentospora resistance makes correct identification and SOP escalation important.'
+    ],
+    remember: 'Scedosporium / Lomentospora = flask cells with single oval conidia on septate hyphae.',
+    divr: {
+      detect: 'Culture tease mount, sterile site, or opportunistic mold workup',
+      identify: ['Flask-shaped conidiogenous cells', 'Single oval annelloconidia at the tip', 'Hyaline septate hyphae'],
+      verify: 'Validated mold identification workflow',
+      report: 'Flag possible Lomentospora resistance; interpret with source, host, and SOP'
+    }
+  },
+  {
+    slug: 'trichosporon-arthroconidia',
+    title: 'Trichosporon spp.: Arthroconidia and Blastoconidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Trichosporon: a yeast-like organism producing both rectangular arthroconidia and budding blastoconidia, distinct from Candida.',
+    boardTitle: 'Trichosporon: arthroconidia plus blastoconidia, not Candida',
+    boardNote: 'Trichosporon is a yeast-like organism that breaks hyphae into rectangular arthroconidia while also forming budding blastoconidia. The mix is the teaching anchor that separates it from Candida.',
+    ariaLabel: 'Illustrated Trichosporon showing rectangular arthroconidia in a chain alongside budding blastoconidia',
+    visualType: 'mycology-trichosporon',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Arthroconidia',
+        name: 'Rectangular, in chains',
+        colors: { slant: '#efe9e0', butt: '#9a8466', base: '#56412a' },
+        note: 'Hyphae fragment into rectangular arthroconidia laid end to end. Rectangular fragmentation is the main clue away from Candida.'
+      },
+      {
+        id: 'B',
+        label: 'Blastoconidia',
+        name: 'Budding yeast cells',
+        colors: { slant: '#eee7da', butt: '#a0825c', base: '#5a3e22' },
+        note: 'Budding blastoconidia appear alongside the arthroconidia. The combination of both forms is what defines the Trichosporon pattern.'
+      }
+    ],
+    readoutTitle: 'Trichosporon visual anchors',
+    readoutRows: [
+      ['Rectangular arthroconidia', 'Trichosporon pattern', 'End-to-end fragmentation is the main clue'],
+      ['Budding blastoconidia', 'Yeast-like clue', 'Buds appear with the arthroconidia, not alone'],
+      ['Both forms together', 'Trichosporon anchor', 'The mix separates it from Candida and Geotrichum'],
+      ['Blood, urine, or hair source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'Not every yeast-like organism is Candida',
+    trapBody: 'Trichosporon can be mistaken for Candida on a quick look, but it produces rectangular arthroconidia in addition to buds. Geotrichum makes arthroconidia without true blastoconidia, so the presence of both forms favors Trichosporon.',
+    trapBullets: [
+      'Do not default a yeast-like organism to Candida.',
+      'Look for rectangular arthroconidia plus budding blastoconidia together.',
+      'Use validated identification for clinically significant or sterile-site isolates.'
+    ],
+    interpretationTitle: 'Trichosporon interpretation guide',
+    interpretationRows: [
+      ['Arthroconidia plus blastoconidia', 'Trichosporon-compatible morphology', 'Confirm by validated yeast ID workflow'],
+      ['Buds and pseudohyphae, no arthroconidia', 'Candida pattern', 'Different reproductive forms'],
+      ['Arthroconidia without true buds', 'Geotrichum pattern', 'Compare for budding blastoconidia']
+    ],
+    takeaways: [
+      'Trichosporon is a mixed-morphology card.',
+      'Arthroconidia plus blastoconidia separate it from Candida and Geotrichum.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Trichosporon = rectangular arthroconidia plus budding blastoconidia.',
+    divr: {
+      detect: 'Wet mount or tease mount from yeast-like growth; blood, urine, or hair source',
+      identify: ['Rectangular arthroconidia in chains', 'Budding blastoconidia', 'Both forms present together'],
+      verify: 'Validated yeast identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'dematiaceous-alternaria-curvularia',
+    title: 'Alternaria vs Curvularia: Dematiaceous Conidia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual comparing two dematiaceous molds: Alternaria muriform conidia with a tapered beak versus Curvularia curved conidia with a swollen central cell.',
+    boardTitle: 'Dematiaceous molds: Alternaria beaked muriform vs Curvularia curved conidia',
+    boardNote: 'Both are pigmented (dematiaceous) molds with brown septate hyphae. Conidial shape separates them: Alternaria is muriform with a beak, Curvularia is curved with a larger central cell.',
+    ariaLabel: 'Illustrated comparison of Alternaria muriform beaked conidia and Curvularia curved conidia with a swollen central cell',
+    visualType: 'mycology-dematiaceous-panel',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Alternaria',
+        name: 'Muriform conidia with a beak',
+        colors: { slant: '#e6e0d4', butt: '#7a6a4a', base: '#3f3320' },
+        note: 'Conidia are muriform, divided by both crosswise and lengthwise septa, and taper into a beak-like extension. Chains often form in branching arrangements.'
+      },
+      {
+        id: 'B',
+        label: 'Curvularia',
+        name: 'Curved conidia, swollen central cell',
+        colors: { slant: '#e4ddd0', butt: '#806c48', base: '#42321c' },
+        note: 'Conidia are curved by an enlarged central cell that bends the conidium. Cross septa divide it, but there are no lengthwise septa and no beak.'
+      }
+    ],
+    readoutTitle: 'Dematiaceous comparison anchors',
+    readoutRows: [
+      ['Brown septate hyphae', 'Dematiaceous group', 'Pigment is visible without staining; places both in the dark-mold group'],
+      ['Muriform conidia with a beak', 'Alternaria pattern', 'Crosswise and lengthwise septa plus a tapered beak'],
+      ['Curved conidia, swollen central cell', 'Curvularia pattern', 'Central cell enlargement bends the conidium'],
+      ['Sterile site or sinus source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'Pigment groups them, conidial shape separates them',
+    trapBody: 'Both molds are dematiaceous, so brown hyphae alone do not distinguish them. Use conidial structure: Alternaria conidia are muriform with a beak, while Curvularia conidia are curved by a swollen central cell without lengthwise septa.',
+    trapBullets: [
+      'Do not separate dematiaceous molds by pigment alone.',
+      'Look for the beak and muriform septa of Alternaria versus the curved central cell of Curvularia.',
+      'Use validated identification for clinically significant or sterile-site isolates.'
+    ],
+    interpretationTitle: 'Dematiaceous interpretation guide',
+    interpretationRows: [
+      ['Muriform beaked conidia, brown hyphae', 'Alternaria-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Curved conidia with swollen central cell', 'Curvularia-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Hyaline septate hyphae, no pigment', 'Not dematiaceous', 'Reconsider Aspergillus, Fusarium, or Scedosporium']
+    ],
+    takeaways: [
+      'Both are dematiaceous molds with brown septate hyphae.',
+      'Alternaria conidia are muriform with a beak; Curvularia conidia are curved by a swollen central cell.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Alternaria = beaked muriform conidia. Curvularia = curved conidia with a swollen central cell.',
+    divr: {
+      detect: 'Culture tease mount or tape prep showing pigmented mold; sinus or sterile site source',
+      identify: ['Brown septate hyphae', 'Alternaria: muriform beaked conidia', 'Curvularia: curved conidia with swollen central cell'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'sclerotic-bodies-chromo-vs-phaeo',
+    title: 'Sclerotic Bodies: Chromoblastomycosis vs Phaeohyphomycosis',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual contrasting muriform sclerotic bodies in tissue with dematiaceous septate hyphae, the split that separates chromoblastomycosis from phaeohyphomycosis.',
+    boardTitle: 'Dematiaceous tissue forms: sclerotic bodies vs pigmented septate hyphae',
+    boardNote: 'Many dematiaceous molds look alike in culture. The tissue form is what splits the disease: clustered muriform sclerotic bodies point to chromoblastomycosis, while pigmented septate hyphae point to phaeohyphomycosis.',
+    ariaLabel: 'Illustrated comparison of clustered brown muriform sclerotic bodies and pigmented septate hyphae with budding yeast',
+    visualType: 'mycology-sclerotic-bodies',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Sclerotic bodies',
+        name: 'Clustered muriform brown cells',
+        colors: { slant: '#e7ddcf', butt: '#8a5a3a', base: '#4a2a18' },
+        note: 'Thick-walled brown cells in clusters, divided by septa in more than one plane (muriform). Often called copper pennies. This tissue form defines chromoblastomycosis.'
+      },
+      {
+        id: 'B',
+        label: 'Pigmented hyphae',
+        name: 'Dematiaceous septate hyphae',
+        colors: { slant: '#e2dccd', butt: '#6f5e40', base: '#38301c' },
+        note: 'Brown septate hyphae, sometimes with budding yeast forms. Pigmented hyphae in tissue point to phaeohyphomycosis rather than chromoblastomycosis.'
+      }
+    ],
+    readoutTitle: 'Tissue-form anchors',
+    readoutRows: [
+      ['Clustered muriform brown cells', 'Sclerotic bodies', 'Septa in two planes; copper-penny look defines chromoblastomycosis'],
+      ['Brown septate hyphae in tissue', 'Phaeohyphomycosis form', 'Pigmented hyphae, sometimes with yeast forms'],
+      ['Visible brown pigment without stain', 'Dematiaceous group', 'Pigment is present on H&E and on Fontana-Masson'],
+      ['Subcutaneous or sinus source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'The tissue form decides the disease name, not the genus',
+    trapBody: 'Several genera can cause either disease. Do not assign chromoblastomycosis from culture alone. The defining feature is the tissue form: muriform sclerotic bodies for chromoblastomycosis, pigmented septate hyphae for phaeohyphomycosis.',
+    trapBullets: [
+      'Do not call chromoblastomycosis without sclerotic bodies in tissue.',
+      'Fontana-Masson can confirm melanin when pigment is faint.',
+      'Correlate tissue form with culture identification and clinical source.'
+    ],
+    interpretationTitle: 'Tissue-form interpretation guide',
+    interpretationRows: [
+      ['Muriform sclerotic bodies in tissue', 'Chromoblastomycosis', 'Correlate with culture; report tissue form per SOP'],
+      ['Pigmented septate hyphae or yeast in tissue', 'Phaeohyphomycosis', 'Correlate with culture and clinical source'],
+      ['Faint or absent visible pigment', 'Confirm melanin', 'Fontana-Masson stain supports a dematiaceous process']
+    ],
+    takeaways: [
+      'Tissue form, not genus, separates chromoblastomycosis from phaeohyphomycosis.',
+      'Sclerotic bodies are clustered, muriform, and thick-walled.',
+      'Fontana-Masson confirms melanin when pigment is hard to see.'
+    ],
+    remember: 'Sclerotic bodies = chromoblastomycosis. Pigmented hyphae = phaeohyphomycosis.',
+    divr: {
+      detect: 'Tissue section, KOH of crust or biopsy, or culture with Fontana-Masson',
+      identify: ['Muriform sclerotic bodies for chromoblastomycosis', 'Pigmented septate hyphae for phaeohyphomycosis', 'Melanin confirmed by Fontana-Masson'],
+      verify: 'Correlate tissue form with culture identification',
+      report: 'Report tissue form and correlate with source and SOP'
+    }
+  },
+  {
+    slug: 'bipolaris-exserohilum-poroconidia',
+    title: 'Bipolaris vs Exserohilum: Poroconidia and Hilum',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual comparing two dematiaceous molds with multicelled poroconidia on geniculate conidiophores, separated by the protruding hilum of Exserohilum.',
+    boardTitle: 'Poroconidia molds: Bipolaris flat hilum vs Exserohilum protruding hilum',
+    boardNote: 'Both form multicelled poroconidia on a bent, zig-zag (geniculate) conidiophore. The separator is the hilum: Bipolaris has a slightly flattened scar, Exserohilum has a strongly protruding hilum.',
+    ariaLabel: 'Illustrated comparison of Bipolaris poroconidia with a flat hilum and Exserohilum poroconidia with a protruding hilum on geniculate conidiophores',
+    visualType: 'mycology-bipolaris-exserohilum',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Bipolaris',
+        name: 'Poroconidia, flat hilum',
+        colors: { slant: '#e6dccc', butt: '#7e6442', base: '#3f3018' },
+        note: 'Multicelled oblong poroconidia borne sympodially on a geniculate conidiophore. The hilum is only slightly flattened and does not strongly protrude.'
+      },
+      {
+        id: 'B',
+        label: 'Exserohilum',
+        name: 'Poroconidia, protruding hilum',
+        colors: { slant: '#e3d9c8', butt: '#856640', base: '#432f16' },
+        note: 'Elongated multicelled poroconidia with a strongly protruding hilum at the base. The projecting hilum is the main separator from Bipolaris.'
+      }
+    ],
+    readoutTitle: 'Poroconidia comparison anchors',
+    readoutRows: [
+      ['Geniculate (zig-zag) conidiophore', 'Poroconidia group', 'Sympodial growth bends the conidiophore at each scar'],
+      ['Oblong poroconidia, flat hilum', 'Bipolaris pattern', 'Hilum slightly flattened, not projecting'],
+      ['Elongated conidia, protruding hilum', 'Exserohilum pattern', 'Projecting hilum is the key separator'],
+      ['Sinus or subcutaneous source', 'Clinical context', 'Significance depends on source and host; interpret per SOP']
+    ],
+    trapTitle: 'Both make poroconidia; the hilum separates them',
+    trapBody: 'Bipolaris, Exserohilum, and Drechslera all form multicelled poroconidia on geniculate conidiophores. Use the hilum: a flat scar favors Bipolaris, a strongly protruding hilum favors Exserohilum. Drechslera shows few conidia and is rare in clinical work.',
+    trapBullets: [
+      'Do not separate these by conidiophore shape alone.',
+      'Examine the hilum at the conidial base before deciding.',
+      'Use validated identification for clinically significant or sterile-site isolates.'
+    ],
+    interpretationTitle: 'Poroconidia interpretation guide',
+    interpretationRows: [
+      ['Oblong poroconidia, flat hilum', 'Bipolaris-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Elongated poroconidia, protruding hilum', 'Exserohilum-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Muriform conidia with beak', 'Alternaria pattern', 'Different conidial structure']
+    ],
+    takeaways: [
+      'Bipolaris and Exserohilum are hilum-shape cards.',
+      'A protruding hilum points to Exserohilum; a flat hilum points to Bipolaris.',
+      'Clinical significance depends on specimen source and host context.'
+    ],
+    remember: 'Bipolaris = flat hilum. Exserohilum = protruding hilum. Both = geniculate poroconidia.',
+    divr: {
+      detect: 'Culture tease mount or tape prep showing pigmented mold; sinus or sterile site source',
+      identify: ['Geniculate conidiophore with poroconidia', 'Bipolaris: flat hilum', 'Exserohilum: protruding hilum'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'cladosporium-shield-cells',
+    title: 'Cladosporium: Shield Cells and Fragile Chains',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing Cladosporium: erect branching conidiophores with shield-shaped cells and fragile chains of elliptical dematiaceous blastoconidia.',
+    boardTitle: 'Cladosporium: shield cells and easily dislodged conidial chains',
+    boardNote: 'Cladosporium is a slow-growing dematiaceous mold. The anchors are shield-shaped cells at branch points and fragile branching chains of dark elliptical conidia that dislodge easily during mounting.',
+    ariaLabel: 'Illustrated Cladosporium showing erect branching conidiophores with shield cells and chains of elliptical dematiaceous conidia',
+    visualType: 'mycology-cladosporium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Shield cells',
+        name: 'Branch-point cells with two scars',
+        colors: { slant: '#dfe2cf', butt: '#5e6b40', base: '#2f3a1c' },
+        note: 'Shield-shaped cells sit at branch points and bear two or more dark scars where conidia attach. These cells anchor the branching chains.'
+      },
+      {
+        id: 'B',
+        label: 'Conidial chains',
+        name: 'Fragile branching chains',
+        colors: { slant: '#dee1cd', butt: '#67703f', base: '#34391a' },
+        note: 'Elliptical dark conidia form branching chains that break apart easily during mount preparation. Intact chains are best seen on a tape prep.'
+      }
+    ],
+    readoutTitle: 'Cladosporium visual anchors',
+    readoutRows: [
+      ['Shield cells at branch points', 'Cladosporium pattern', 'Two or more dark attachment scars per cell'],
+      ['Branching chains of conidia', 'Acropetal chain clue', 'Chains build outward and branch'],
+      ['Chains dislodge during mounting', 'Fragility clue', 'Tape prep preserves intact chains better than a tease mount'],
+      ['Skin, sinus, or environmental source', 'Clinical context', 'Often a contaminant; interpret with source and host per SOP']
+    ],
+    trapTitle: 'Fragile chains break, so absence of long chains is not exclusion',
+    trapBody: 'Cladosporium conidial chains fall apart easily when slides are made, leaving scattered conidia that can be misread. Look for shield cells and dark attachment scars, and use a tape prep to keep chains intact.',
+    trapBullets: [
+      'Do not exclude Cladosporium just because chains look broken.',
+      'Look for shield cells and dark hila as confirmatory clues.',
+      'Distinguish a likely contaminant from a true pathogen using source and host context.'
+    ],
+    interpretationTitle: 'Cladosporium interpretation guide',
+    interpretationRows: [
+      ['Shield cells with branching dark chains', 'Cladosporium-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Collarette phialides with conidial clusters', 'Phialophora pattern', 'Different conidiogenous structure'],
+      ['Mixed sporulation with denticles', 'Fonsecaea pattern', 'Compare chromoblastomycosis agents']
+    ],
+    takeaways: [
+      'Cladosporium is a shield-cell card.',
+      'Shield cells and fragile branching chains are the anchors.',
+      'Tape prep preserves the chains that tease mounts tend to break.'
+    ],
+    remember: 'Cladosporium = shield cells plus fragile branching chains of dark conidia.',
+    divr: {
+      detect: 'Tape prep or culture tease mount of a slow-growing pigmented mold',
+      identify: ['Shield cells with dark attachment scars', 'Branching chains of elliptical conidia', 'Chains fragile during mounting'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'chromoblastomycosis-agents',
+    title: 'Chromoblastomycosis Agents: Sporulation Types',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual comparing how three chromoblastomycosis agents sporulate: Phialophora collarette phialides, Fonsecaea mixed denticulate types, and Cladophialophora long fragile chains.',
+    boardTitle: 'Chromoblastomycosis agents: collarette, mixed denticulate, and long chains',
+    boardNote: 'These agents share sclerotic bodies in tissue but differ in culture sporulation. Phialophora makes collarette phialides, Fonsecaea shows mixed denticulate sporulation, and Cladophialophora forms long fragile conidial chains.',
+    ariaLabel: 'Illustrated comparison of Phialophora collarette phialides, Fonsecaea denticulate sporulation, and Cladophialophora long conidial chains',
+    visualType: 'mycology-chromo-agents',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Phialophora',
+        name: 'Collarette phialides',
+        colors: { slant: '#e0ddce', butt: '#6a5d40', base: '#352d1a' },
+        note: 'Flask or cup-shaped phialides with a distinct saucer-like collarette. Oval conidia are produced through the apical pore and cluster near the opening.'
+      },
+      {
+        id: 'B',
+        label: 'Fonsecaea',
+        name: 'Mixed denticulate sporulation',
+        colors: { slant: '#ded9c9', butt: '#6f5b3a', base: '#382c16' },
+        note: 'Mixed sporulation: single-celled conidia arise on short denticles around the conidiophore, with truncated short chains and some collarette types also present.'
+      },
+      {
+        id: 'C',
+        label: 'Cladophialophora',
+        name: 'Long fragile conidial chains',
+        colors: { slant: '#dde0cc', butt: '#5f6b3c', base: '#303a1a' },
+        note: 'Long, sparsely branched, fragile chains of elliptical conidia without prominent shield cells. Chains break apart easily during mount preparation.'
+      }
+    ],
+    readoutTitle: 'Chromoblastomycosis sporulation anchors',
+    readoutRows: [
+      ['Collarette phialides', 'Phialophora type', 'Saucer-like collarette with conidia at the apical pore'],
+      ['Denticulate mixed sporulation', 'Fonsecaea type', 'Conidia on short denticles around the conidiophore'],
+      ['Long fragile conidial chains', 'Cladophialophora type', 'Sparsely branched chains, no prominent shield cells'],
+      ['Sclerotic bodies in tissue', 'Shared tissue form', 'All three produce muriform sclerotic bodies in tissue']
+    ],
+    trapTitle: 'Tissue form is shared, so culture sporulation separates the agents',
+    trapBody: 'All three produce sclerotic bodies in tissue, so the tissue form cannot name the genus. Use culture sporulation: collarette phialides for Phialophora, mixed denticulate types for Fonsecaea, and long fragile chains for Cladophialophora.',
+    trapBullets: [
+      'Do not name the genus from sclerotic bodies alone.',
+      'Read the culture sporulation type carefully; mixed types favor Fonsecaea.',
+      'Use validated identification for clinically significant isolates.'
+    ],
+    interpretationTitle: 'Chromoblastomycosis agent interpretation guide',
+    interpretationRows: [
+      ['Collarette phialides with conidial clusters', 'Phialophora-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Mixed denticulate sporulation', 'Fonsecaea-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Long fragile conidial chains', 'Cladophialophora-compatible morphology', 'Confirm by validated mold ID workflow']
+    ],
+    takeaways: [
+      'The agents share sclerotic bodies in tissue but differ in culture sporulation.',
+      'Collarette, denticulate, and long-chain patterns separate the three genera.',
+      'Mixed sporulation is a useful clue toward Fonsecaea.'
+    ],
+    remember: 'Phialophora collarette, Fonsecaea denticulate mix, Cladophialophora long chains; all = sclerotic bodies in tissue.',
+    divr: {
+      detect: 'Culture tease mount or slide culture of a slow-growing pigmented mold',
+      identify: ['Phialophora: collarette phialides', 'Fonsecaea: mixed denticulate sporulation', 'Cladophialophora: long fragile chains'],
+      verify: 'Validated mold identification workflow',
+      report: 'Correlate with sclerotic bodies in tissue and SOP guidance'
+    }
+  },
+  {
+    slug: 'exophiala-black-yeast',
+    title: 'Exophiala / Hortaea: Black Yeast to Annellophores',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual for recognizing black yeast morphology: early annellidic budding yeast cells maturing to tapered tube-like annellophores in Exophiala and Hortaea.',
+    boardTitle: 'Black yeast: annellidic budding maturing to tapered annellophores',
+    boardNote: 'Exophiala and related black yeasts start as dark budding yeast cells that reproduce by annellides, then mature into hyphae bearing tapered tube-like annellophores. The two-stage change is the teaching anchor.',
+    ariaLabel: 'Illustrated black yeast showing early dark budding yeast cells and mature septate hyphae with tapered tube-like annellophores',
+    visualType: 'mycology-exophiala',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Young culture',
+        name: 'Dark annellidic budding yeast',
+        colors: { slant: '#ddd8c8', butt: '#5a4d36', base: '#2c2414' },
+        note: 'Early growth shows dark yeast-like cells that bud by annellides rather than simple blastoconidia. Colonies are shiny and black at this stage.'
+      },
+      {
+        id: 'B',
+        label: 'Mature culture',
+        name: 'Tapered tube-like annellophores',
+        colors: { slant: '#dad6c6', butt: '#5f5238', base: '#2f2616' },
+        note: 'With age, septate hyphae form annellophores that taper to a narrow tip. Clusters of oval to round conidia gather at and below the tip.'
+      }
+    ],
+    readoutTitle: 'Black yeast visual anchors',
+    readoutRows: [
+      ['Dark budding yeast in young culture', 'Annellidic yeast clue', 'Reproduces by annellides; shiny black colony'],
+      ['Tapered tube-like annellophores', 'Mature Exophiala clue', 'Narrowing tip with conidia clustered at the apex'],
+      ['Shift from yeast to hyphae with age', 'Two-stage pattern', 'Young yeast matures into a mold-like culture'],
+      ['Subcutaneous or skin source', 'Clinical context', 'Hortaea werneckii causes tinea nigra; interpret per SOP']
+    ],
+    trapTitle: 'Early black yeast can read as a simple budding yeast',
+    trapBody: 'A young black yeast culture can resemble an ordinary budding yeast. Watch the culture mature: the appearance of tapered annellophores and septate hyphae confirms a dematiaceous black yeast rather than Candida or Cryptococcus.',
+    trapBullets: [
+      'Do not stop at budding yeast in a young dark culture.',
+      'Let the culture mature to reveal annellophores and hyphae.',
+      'Use validated identification for clinically significant isolates.'
+    ],
+    interpretationTitle: 'Black yeast interpretation guide',
+    interpretationRows: [
+      ['Dark budding yeast maturing to annellophores', 'Exophiala-compatible morphology', 'Confirm by validated mold ID workflow'],
+      ['Tinea nigra with brown hyphae and yeast', 'Hortaea werneckii pattern', 'Correlate with superficial skin source'],
+      ['Pale budding yeast, no pigment', 'Not a black yeast', 'Reconsider Candida or Cryptococcus']
+    ],
+    takeaways: [
+      'Black yeasts shift from dark budding yeast to annellophore-bearing hyphae.',
+      'Annellides and tapered annellophores separate them from Candida and Cryptococcus.',
+      'Hortaea werneckii is the tinea nigra agent in this group.'
+    ],
+    remember: 'Black yeast = dark annellidic buds maturing to tapered annellophores.',
+    divr: {
+      detect: 'Culture tease mount over time; KOH of superficial skin for tinea nigra',
+      identify: ['Dark annellidic budding yeast in young culture', 'Tapered tube-like annellophores at maturity', 'Pigmented septate hyphae'],
+      verify: 'Validated mold identification workflow',
+      report: 'Interpret with source, host status, and SOP guidance'
+    }
+  },
+  {
+    slug: 'aspergillus-species-comparison',
+    title: 'Aspergillus Species: Conidial Head Comparison',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visual comparing Aspergillus conidial heads: fumigatus compact columnar, niger biseriate radiate, flavus variable, and terreus with accessory aleurioconidia.',
+    boardTitle: 'Aspergillus comparison: head shape and seriation across four species',
+    boardNote: 'These four share septate acute-angle hyphae. Separate them by conidial head shape and seriation, not by hyphae. Keep species claims tied to culture morphology and validated workflow.',
+    ariaLabel: 'Illustrated comparison of Aspergillus fumigatus, niger, flavus, and terreus conidial heads',
+    visualType: 'mycology-aspergillus-comparison',
+    tubes: [
+      {
+        id: 'A',
+        label: 'A. fumigatus',
+        name: 'Compact columnar, uniseriate',
+        colors: { slant: '#d9ece8', butt: '#5c8a72', base: '#24443a' },
+        note: 'Compact columnar head with phialides over the upper vesicle only (uniseriate). Conidia column points upward. Tolerates higher temperatures.'
+      },
+      {
+        id: 'B',
+        label: 'A. niger',
+        name: 'Radiate biseriate, dark conidia',
+        colors: { slant: '#e0dccf', butt: '#6a6048', base: '#33291a' },
+        note: 'Large radiate head that splits into a full sphere, biseriate with metulae and phialides. Conidia are dark, giving black colonies.'
+      },
+      {
+        id: 'C',
+        label: 'A. flavus',
+        name: 'Radiate, variable seriation, rough stalk',
+        colors: { slant: '#e6e2cd', butt: '#8a8048', base: '#4a4018' },
+        note: 'Radiate head that may be uniseriate, biseriate, or both. Conidiophore wall is rough. Colonies are often yellow-green.'
+      },
+      {
+        id: 'D',
+        label: 'A. terreus',
+        name: 'Compact biseriate, aleurioconidia',
+        colors: { slant: '#e7ddd0', butt: '#9a7c54', base: '#56381c' },
+        note: 'Small compact columnar biseriate head, plus accessory aleurioconidia borne singly on the hyphae. The accessory conidia are the terreus clue.'
+      }
+    ],
+    readoutTitle: 'Aspergillus comparison anchors',
+    readoutRows: [
+      ['Compact columnar, uniseriate', 'A. fumigatus pattern', 'Phialides on the upper vesicle only; thermotolerant'],
+      ['Radiate biseriate, dark conidia', 'A. niger pattern', 'Full sphere head; black colonies'],
+      ['Radiate, variable seriation, rough stalk', 'A. flavus pattern', 'Uni- or biseriate; yellow-green colonies'],
+      ['Compact biseriate plus aleurioconidia', 'A. terreus pattern', 'Accessory hyphal conidia are the key separator']
+    ],
+    trapTitle: 'Hyphae are shared; the head tells the species group',
+    trapBody: 'All four show septate acute-angle hyphae, so hyphae cannot separate them. Use head shape, seriation, conidiophore wall, and accessory structures, and keep species-level claims tied to culture morphology and validated workflow.',
+    trapBullets: [
+      'Do not separate Aspergillus species by hyphae alone.',
+      'Note seriation (uniseriate vs biseriate) and head shape together.',
+      'Confirm atypical or clinically significant isolates with MALDI or sequencing.'
+    ],
+    interpretationTitle: 'Aspergillus comparison interpretation guide',
+    interpretationRows: [
+      ['Compact columnar uniseriate head', 'A. fumigatus group', 'Confirm with culture morphology and validated workflow'],
+      ['Radiate biseriate head, dark conidia', 'A. niger group', 'Correlate with black colony color'],
+      ['Radiate variable head, rough stalk', 'A. flavus group', 'Correlate with yellow-green colony color'],
+      ['Compact biseriate head plus aleurioconidia', 'A. terreus group', 'Look for accessory hyphal conidia']
+    ],
+    takeaways: [
+      'Aspergillus species share hyphae but differ in conidial head structure.',
+      'Track head shape, seriation, stalk texture, and accessory conidia together.',
+      'Keep species-level identification tied to culture morphology and validated methods.'
+    ],
+    remember: 'fumigatus compact columnar, niger radiate dark, flavus rough variable, terreus aleurioconidia.',
+    divr: {
+      detect: 'Culture tease mount from a hyaline mold with septate acute-angle hyphae',
+      identify: ['Head shape and seriation', 'Conidiophore wall texture', 'Colony color and accessory aleurioconidia'],
+      verify: 'Culture morphology plus validated mold ID workflow',
+      report: 'Use SOP-approved species-group language; confirm atypical isolates'
+    }
+  },
+  {
+    slug: 'viral-cytopathic-effect-panel',
+    title: 'Viral Cytopathic Effect: Culture Pattern Panel',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for reviewing common cytopathic effect patterns in viral culture: rounding, syncytia, plaques, and inclusion-like change.',
+    boardTitle: 'Viral CPE panel: read the cell monolayer pattern',
+    boardNote: 'CPE is a pattern screen, not a final identification by itself. Read the distribution, cell shape, timing, and confirm with the laboratory algorithm.',
+    ariaLabel: 'Illustrated viral cytopathic effect panel showing rounding, syncytia, plaques, and inclusion-like change',
+    visualType: 'virology-cpe-panel',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Rounding',
+        name: 'Cells round up and detach',
+        colors: { slant: '#eaf4f5', butt: '#78aeb7', base: '#245c69' },
+        note: 'Monolayer cells become swollen, rounded, and refractile. Note timing and cell line, then confirm by method-specific testing.'
+      },
+      {
+        id: 'B',
+        label: 'Syncytia',
+        name: 'Fused cells with shared cytoplasm',
+        colors: { slant: '#eef1e6', butt: '#8cae7a', base: '#3f6b4f' },
+        note: 'Multinucleated fused cells suggest a syncytial pattern. Use this as a visual clue, not a standalone organism call.'
+      },
+      {
+        id: 'C',
+        label: 'Plaques',
+        name: 'Focal clearing in a monolayer',
+        colors: { slant: '#f5eee3', butt: '#c9a26a', base: '#7a5530' },
+        note: 'Discrete cleared foci show localized cell destruction. Plaque size and tempo can help organize the workup.'
+      },
+      {
+        id: 'D',
+        label: 'Inclusion-like',
+        name: 'Altered nuclei or cytoplasm',
+        colors: { slant: '#f4e9ee', butt: '#c27d99', base: '#74415a' },
+        note: 'Dense nuclear or cytoplasmic changes can be a useful review anchor. Confirm with stain, antigen, molecular, or SOP-directed methods.'
+      }
+    ],
+    readoutTitle: 'What to look for in viral culture',
+    readoutRows: [
+      ['Rounded refractile cells', 'General CPE pattern', 'Record cell line, timing, and distribution'],
+      ['Multinucleated fused cells', 'Syncytial pattern', 'Think fusion pattern, then confirm by workflow'],
+      ['Clear foci in monolayer', 'Plaque pattern', 'Localized lysis helps organize the read'],
+      ['Nuclear or cytoplasmic change', 'Inclusion-like pattern', 'Use as an anchor, not a final ID']
+    ],
+    trapTitle: 'CPE points the workup, but it does not finish it',
+    trapBody: 'Different viruses and cell lines can produce overlapping patterns. The safest study habit is to describe the pattern first, then connect it to the confirmatory method used by the lab.',
+    trapBullets: [
+      'Document timing and cell line with the morphology.',
+      'Avoid naming a virus from CPE alone.',
+      'Use antigen, stain, molecular, or validated culture confirmation as directed.'
+    ],
+    interpretationTitle: 'Viral CPE study interpretation guide',
+    interpretationRows: [
+      ['Diffuse rounding', 'CPE present', 'Continue with lab confirmation pathway'],
+      ['Syncytia', 'Fusion-type CPE', 'Correlate with respiratory or herpesvirus-style algorithms'],
+      ['Focal plaques', 'Localized lytic effect', 'Correlate with culture system and timing'],
+      ['No CPE', 'No visible change at that read', 'Does not exclude virus if method sensitivity or timing is limited']
+    ],
+    takeaways: [
+      'Start by describing the cell pattern before naming anything.',
+      'Timing, cell line, and distribution matter.',
+      'CPE is a screening clue that needs confirmation.'
+    ],
+    remember: 'CPE is the monolayer speaking. Describe it first, then confirm it.',
+    divr: {
+      detect: 'Cell culture monolayer with visible change',
+      identify: ['Rounding', 'Syncytia', 'Plaques', 'Inclusion-like change'],
+      verify: 'Confirm with validated stain, antigen, culture, or molecular workflow',
+      report: 'Use SOP-approved result language'
+    }
+  },
+  {
+    slug: 'herpesvirus-cpe',
+    title: 'Herpesvirus-Style CPE: Multinucleation and Molding',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for reviewing herpesvirus-style cytopathic effect, including multinucleation, nuclear molding, and marginated chromatin.',
+    boardTitle: 'Herpesvirus-style CPE: the three M pattern',
+    boardNote: 'For study purposes, group the pattern as multinucleation, molding, and margination. Confirm by the method used in the laboratory.',
+    ariaLabel: 'Illustrated herpesvirus cytopathic effect showing multinucleated cells, nuclear molding, and marginated chromatin',
+    visualType: 'virology-herpesvirus-cpe',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Multinucleation',
+        name: 'Several nuclei in one enlarged cell',
+        colors: { slant: '#eef3f6', butt: '#91b7c2', base: '#285f72' },
+        note: 'Fused enlarged cell with several nuclei. This is the easiest first anchor when reviewing herpesvirus-style CPE.'
+      },
+      {
+        id: 'B',
+        label: 'Molding',
+        name: 'Nuclei press into each other',
+        colors: { slant: '#f3eee6', butt: '#c5a171', base: '#765331' },
+        note: 'Adjacent nuclei look crowded or shaped by contact. Read together with multinucleation and chromatin pattern.'
+      },
+      {
+        id: 'C',
+        label: 'Margination',
+        name: 'Chromatin pushed to nuclear edge',
+        colors: { slant: '#f5e8ec', butt: '#c9859a', base: '#743f57' },
+        note: 'Chromatin appears rimmed at the nuclear membrane. In real work, confirm with stain, antigen, or molecular method.'
+      }
+    ],
+    readoutTitle: 'Three M review anchors',
+    readoutRows: [
+      ['Multiple nuclei in one cell', 'Multinucleation', 'Fusion-type viral effect'],
+      ['Nuclei press together', 'Molding', 'Crowded molded nuclear contours'],
+      ['Rimmed chromatin', 'Margination', 'Chromatin pushed toward the edge']
+    ],
+    trapTitle: 'Do not turn the mnemonic into a diagnosis',
+    trapBody: 'The three M pattern helps students recognize herpesvirus-style CPE, but the lab still relies on validated confirmation and specimen context.',
+    trapBullets: [
+      'Use the pattern as a visual recognition anchor.',
+      'Confirm with the method in use, such as DFA, culture confirmation, or NAAT.',
+      'Separate morphology review from clinical management.'
+    ],
+    interpretationTitle: 'Herpesvirus-style CPE guide',
+    interpretationRows: [
+      ['Multinucleation plus molding', 'Herpesvirus-style pattern', 'Confirm through validated workflow'],
+      ['Single feature only', 'Incomplete pattern', 'Correlate with specimen and test method'],
+      ['No visible CPE', 'No morphologic clue', 'Does not rule out infection in molecular-first workflows']
+    ],
+    takeaways: [
+      'Use the three M pattern: multinucleation, molding, margination.',
+      'Morphology helps recognition but confirmation carries the result.',
+      'Keep wording tied to the method, not a visual guess.'
+    ],
+    remember: 'Herpesvirus-style CPE is a three M study pattern.',
+    divr: {
+      detect: 'Cell culture or cytology material with viral-type cell changes',
+      identify: ['Multinucleation', 'Molding', 'Margination'],
+      verify: 'Confirm with validated viral testing workflow',
+      report: 'Report according to assay and SOP language'
+    }
+  },
+  {
+    slug: 'cmv-owl-eye-inclusion',
+    title: 'CMV Inclusion Pattern: Owl-Eye Study Card',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for recognizing the classic cytomegalovirus inclusion pattern as a morphology review anchor.',
+    boardTitle: 'CMV inclusion pattern: enlarged cell with owl-eye nucleus',
+    boardNote: 'The study pattern is cytomegaly plus a large intranuclear inclusion and a surrounding halo. Use morphology as an anchor, not a complete result.',
+    ariaLabel: 'Illustrated CMV owl-eye inclusion pattern with enlarged cell, intranuclear inclusion, and clear halo',
+    visualType: 'virology-cmv-inclusion',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Cytomegaly',
+        name: 'Enlarged infected cell',
+        colors: { slant: '#eef2f3', butt: '#8fb0ba', base: '#2d5c6a' },
+        note: 'The cell is larger than its neighbors. Enlarged cell size sets up the CMV morphology clue.'
+      },
+      {
+        id: 'B',
+        label: 'Owl-eye',
+        name: 'Dense intranuclear inclusion with halo',
+        colors: { slant: '#f3e8ed', butt: '#ba7b96', base: '#6e3d55' },
+        note: 'Large central intranuclear inclusion with a pale halo. Treat as a classic morphology anchor requiring method-based correlation.'
+      }
+    ],
+    readoutTitle: 'CMV morphology anchors',
+    readoutRows: [
+      ['Enlarged cell', 'Cytomegaly', 'Cell size stands out from background cells'],
+      ['Large intranuclear inclusion', 'Owl-eye pattern', 'Dense center with pale halo'],
+      ['Background inflammation or tissue effect', 'Context clue', 'Correlate with specimen and method']
+    ],
+    trapTitle: 'Classic-looking does not mean standalone',
+    trapBody: 'The owl-eye pattern is memorable, but virology results still depend on specimen type, stain, immunostain, culture, antigen, or molecular workflow.',
+    trapBullets: [
+      'Use the inclusion pattern as a study cue.',
+      'Do not replace assay interpretation with morphology alone.',
+      'Connect the finding to the method used by the lab.'
+    ],
+    interpretationTitle: 'CMV inclusion study guide',
+    interpretationRows: [
+      ['Cytomegaly plus owl-eye inclusion', 'CMV-style morphology', 'Confirm through method-specific workflow'],
+      ['Small nonspecific nuclear change', 'Not enough for pattern call', 'Look for full size and inclusion pattern'],
+      ['Molecular positive without visible inclusion', 'Method detects target, not morphology', 'Interpret through assay instructions']
+    ],
+    takeaways: [
+      'CMV morphology is about cell size plus inclusion pattern.',
+      'The halo helps the owl-eye clue stand out.',
+      'Assay method and specimen context still control reporting.'
+    ],
+    remember: 'CMV is cytomegaly plus the owl-eye inclusion pattern.',
+    divr: {
+      detect: 'Enlarged cell or viral inclusion clue',
+      identify: ['Cytomegaly', 'Large intranuclear inclusion', 'Halo'],
+      verify: 'Correlate with validated stain, antigen, culture, or molecular method',
+      report: 'Use method-specific result language'
+    }
+  },
+  {
+    slug: 'respiratory-virus-naat-panel',
+    title: 'Respiratory Virus NAAT Panel: Result Logic',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for reviewing respiratory virus molecular panel logic from specimen to target result.',
+    boardTitle: 'Respiratory NAAT panel: specimen to target result',
+    boardNote: 'Molecular panels answer whether specific targets were detected in that specimen. They do not grade disease severity or replace specimen quality review.',
+    ariaLabel: 'Illustrated respiratory virus NAAT panel workflow from specimen through extraction, amplification, target result, and interpretation note',
+    visualType: 'virology-respiratory-naat',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Specimen',
+        name: 'Nasopharyngeal, nasal, or respiratory source',
+        colors: { slant: '#eef3f1', butt: '#88b6aa', base: '#2c635a' },
+        note: 'Start with source and collection quality. The result belongs to the submitted specimen and the assay targets on the panel.'
+      },
+      {
+        id: 'B',
+        label: 'Target detected',
+        name: 'Amplification crosses threshold',
+        colors: { slant: '#edf4f6', butt: '#74b3c0', base: '#245c69' },
+        note: 'Detected means a target signal was found by that assay. Report wording follows the platform and laboratory SOP.'
+      },
+      {
+        id: 'C',
+        label: 'Not detected',
+        name: 'No target signal above cutoff',
+        colors: { slant: '#f4efe7', butt: '#c6aa78', base: '#725b34' },
+        note: 'Not detected means no listed target was detected by that method. It does not prove absence of every respiratory virus.'
+      }
+    ],
+    readoutTitle: 'Respiratory panel readout anchors',
+    readoutRows: [
+      ['Good specimen plus valid controls', 'Interpretable panel', 'Proceed to target-level readout'],
+      ['Target detected', 'Assay target found', 'Use exact organism or target wording from the panel'],
+      ['No listed target detected', 'Negative panel result', 'Limited to included targets and assay performance'],
+      ['Invalid control', 'Uninterpretable run', 'Repeat or recollect per SOP']
+    ],
+    trapTitle: 'A panel is a target list, not a complete respiratory diagnosis',
+    trapBody: 'Students should read panel results as assay-specific target detection. Collection quality, timing, targets included, and current SOP all matter.',
+    trapBullets: [
+      'Check controls before interpreting targets.',
+      'Do not infer organisms that are not on the panel.',
+      'Use the report language supported by the assay.'
+    ],
+    interpretationTitle: 'Respiratory NAAT interpretation guide',
+    interpretationRows: [
+      ['Detected target', 'Positive for that target', 'Report with exact assay wording'],
+      ['Multiple targets detected', 'Co-detection pattern', 'Verify panel rules and reporting language'],
+      ['All targets not detected', 'No included target detected', 'Correlate with collection quality and timing'],
+      ['Invalid', 'No result', 'Repeat according to SOP']
+    ],
+    takeaways: [
+      'Molecular panels detect targets included on the panel.',
+      'Controls and specimen quality come before interpretation.',
+      'Negative means not detected by that assay, not every virus excluded.'
+    ],
+    remember: 'NAAT reads targets in a specimen. Keep the wording that precise.',
+    divr: {
+      detect: 'Submitted respiratory specimen and valid assay controls',
+      identify: ['Detected targets', 'Not detected targets', 'Invalid control state'],
+      verify: 'Check platform rules and SOP reporting language',
+      report: 'Report target-specific results only'
+    }
+  },
+  {
+    slug: 'hepatitis-b-serology-patterns',
+    title: 'Hepatitis B Serology: Marker Pattern Study Card',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for learning common hepatitis B serology marker patterns without turning them into a clinical management algorithm.',
+    boardTitle: 'HBV serology markers: surface, core, and immunity pattern',
+    boardNote: 'Read HBsAg, anti-HBs, and anti-HBc together. This is a study anchor; real interpretation follows current lab algorithms and clinical context.',
+    ariaLabel: 'Illustrated hepatitis B serology marker patterns for HBsAg, anti-HBs, anti-HBc IgM, and total anti-HBc',
+    visualType: 'virology-hepatitis-b-serology',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Susceptible',
+        name: 'No HBV markers detected',
+        colors: { slant: '#f5f1e8', butt: '#d6c394', base: '#7a693d' },
+        note: 'HBsAg negative, anti-HBs negative, anti-HBc negative. Study pattern: no marker of infection or immunity detected.'
+      },
+      {
+        id: 'B',
+        label: 'Immune pattern',
+        name: 'Anti-HBs present',
+        colors: { slant: '#edf4ef', butt: '#8bb987', base: '#356d45' },
+        note: 'Anti-HBs positive suggests an immunity marker. Anti-HBc helps separate vaccine-style pattern from past infection pattern.'
+      },
+      {
+        id: 'C',
+        label: 'Acute pattern',
+        name: 'HBsAg plus anti-HBc IgM',
+        colors: { slant: '#f3e8eb', butt: '#c28191', base: '#743d4d' },
+        note: 'HBsAg positive with anti-HBc IgM positive is the classic acute-study pattern. Confirm and report according to the lab algorithm.'
+      }
+    ],
+    readoutTitle: 'HBV marker anchors',
+    readoutRows: [
+      ['HBsAg', 'Surface antigen', 'Current antigen marker in classic patterns'],
+      ['Anti-HBs', 'Surface antibody', 'Immunity marker'],
+      ['Anti-HBc IgM', 'Core IgM antibody', 'Recent infection pattern marker'],
+      ['Total anti-HBc', 'Core antibody history marker', 'Helps separate vaccine-style from infection-history patterns']
+    ],
+    trapTitle: 'HBV serology is a pattern read',
+    trapBody: 'One marker alone can mislead. Students should read the marker set together and leave final reporting to the current laboratory algorithm.',
+    trapBullets: [
+      'Do not interpret anti-HBs without checking anti-HBc.',
+      'IgM anti-HBc changes the pattern meaning.',
+      'Use current SOP and public health reporting rules where applicable.'
+    ],
+    interpretationTitle: 'HBV serology study guide',
+    interpretationRows: [
+      ['All three common markers negative', 'Susceptible-style pattern', 'No serologic marker detected in this study set'],
+      ['Anti-HBs only', 'Vaccine-style immunity pattern', 'Anti-HBc negative helps support this pattern'],
+      ['Anti-HBs plus total anti-HBc', 'Past infection-style immunity pattern', 'HBsAg negative in the classic resolved pattern'],
+      ['HBsAg plus anti-HBc IgM', 'Acute-style pattern', 'Use current lab algorithm for final interpretation']
+    ],
+    takeaways: [
+      'HBV serology is read as a marker set.',
+      'Anti-HBs alone is not the same as anti-HBs plus anti-HBc.',
+      'Use study patterns, then follow the current lab algorithm.'
+    ],
+    remember: 'Surface antigen asks current marker. Surface antibody asks immunity. Core antibody asks exposure history.',
+    divr: {
+      detect: 'HBV serology marker set',
+      identify: ['HBsAg', 'Anti-HBs', 'Anti-HBc IgM', 'Total anti-HBc'],
+      verify: 'Compare the full marker pattern with current lab algorithm',
+      report: 'Use validated interpretive comments and SOP language'
+    }
+  },
+  {
+    slug: 'hiv-screening-algorithm',
+    title: 'HIV Screening Algorithm: Study Flow',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for reviewing the common HIV laboratory screening flow: Ag/Ab screen, differentiation assay, and NAT follow-up concept.',
+    boardTitle: 'HIV screening study flow: screen, differentiate, resolve',
+    boardNote: 'This is an educational review of laboratory logic. Real reporting follows the current testing algorithm, assay instructions, and facility SOP.',
+    ariaLabel: 'Illustrated HIV screening algorithm showing antigen antibody screen, differentiation assay, and NAT follow-up concept',
+    visualType: 'virology-hiv-screening',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Ag/Ab screen',
+        name: 'Initial combined screening assay',
+        colors: { slant: '#eef2f5', butt: '#84aebe', base: '#2e6170' },
+        note: 'A reactive screen starts the algorithm. It is a screening result and needs the next step defined by the laboratory workflow.'
+      },
+      {
+        id: 'B',
+        label: 'Differentiation',
+        name: 'HIV-1 and HIV-2 antibody separation',
+        colors: { slant: '#f0eee6', butt: '#c0a86d', base: '#756037' },
+        note: 'Differentiation testing helps sort antibody reactivity patterns. Interpret with the exact assay and current algorithm.'
+      },
+      {
+        id: 'C',
+        label: 'NAT follow-up',
+        name: 'RNA target used to resolve discordance',
+        colors: { slant: '#f3e8ed', butt: '#bf829b', base: '#6e4058' },
+        note: 'NAT is used in defined follow-up situations, especially discordant patterns. Keep wording tied to the validated workflow.'
+      }
+    ],
+    readoutTitle: 'HIV algorithm study anchors',
+    readoutRows: [
+      ['Nonreactive screen', 'No screen reactivity', 'Report by assay language'],
+      ['Reactive screen', 'Needs algorithm follow-up', 'Move to differentiation step'],
+      ['Differentiation reactive', 'Antibody pattern identified', 'Use current reporting algorithm'],
+      ['Screen reactive, differentiation nonreactive or indeterminate', 'Discordant pattern', 'NAT follow-up concept']
+    ],
+    trapTitle: 'Screening language matters',
+    trapBody: 'The first test is a screen. Students should avoid final-sounding language until the algorithm is complete and the lab report language supports it.',
+    trapBullets: [
+      'Separate screening reactivity from final interpretation.',
+      'Use the exact assay and algorithm wording.',
+      'Do not use this card for clinical management decisions.'
+    ],
+    interpretationTitle: 'HIV screening study guide',
+    interpretationRows: [
+      ['Ag/Ab nonreactive', 'Screen nonreactive pattern', 'Report according to assay wording'],
+      ['Ag/Ab reactive plus differentiation reactive', 'Confirmed algorithm pattern', 'Use current reporting language'],
+      ['Ag/Ab reactive plus differentiation nonreactive', 'Needs NAT resolution', 'Follow the lab algorithm'],
+      ['Indeterminate pattern', 'Unresolved by current step', 'SOP defines repeat or follow-up']
+    ],
+    takeaways: [
+      'Think screen, differentiate, resolve.',
+      'Reactive screening results need algorithm completion.',
+      'Keep result language tied to the assay and SOP.'
+    ],
+    remember: 'HIV lab logic is screen first, differentiate next, NAT when the algorithm needs resolution.',
+    divr: {
+      detect: 'Initial HIV Ag/Ab screen result',
+      identify: ['Screen reactivity', 'Differentiation pattern', 'Need for NAT resolution'],
+      verify: 'Complete the current laboratory algorithm',
+      report: 'Use approved assay and SOP wording'
+    }
   },
   {
     slug: 'giardia-lamblia',
@@ -9078,6 +10834,822 @@ function renderTaeniaScolex(tube: TubeVisual) {
   );
 }
 
+function renderMycology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  const isMucorales = visualType === 'mycology-mucorales';
+  const isAspergillus = visualType === 'mycology-aspergillus-fumigatus';
+  const isHistoplasma = visualType === 'mycology-histoplasma';
+  const isBlastomyces = visualType === 'mycology-blastomyces';
+  const isCoccidioides = visualType === 'mycology-coccidioides';
+  const isDermatophyte = visualType === 'mycology-dermatophyte-panel';
+  const isCandida = visualType === 'mycology-candida-germ-tube';
+  const isCryptococcus = visualType === 'mycology-cryptococcus';
+  const isSporothrix = visualType === 'mycology-sporothrix';
+  const isParacoccidioides = visualType === 'mycology-paracoccidioides';
+  const isFusarium = visualType === 'mycology-fusarium';
+  const isPenicilliumTalaromyces = visualType === 'mycology-penicillium-talaromyces';
+  const isScopulariopsis = visualType === 'mycology-scopulariopsis';
+  const isPaecilomyces = visualType === 'mycology-paecilomyces';
+  const isScedosporium = visualType === 'mycology-scedosporium';
+  const isTrichosporon = visualType === 'mycology-trichosporon';
+  const isDematiaceous = visualType === 'mycology-dematiaceous-panel';
+  const isAspergillusComparison = visualType === 'mycology-aspergillus-comparison';
+  const isScleroticBodies = visualType === 'mycology-sclerotic-bodies';
+  const isBipolarisExserohilum = visualType === 'mycology-bipolaris-exserohilum';
+  const isCladosporium = visualType === 'mycology-cladosporium';
+  const isChromoAgents = visualType === 'mycology-chromo-agents';
+  const isExophiala = visualType === 'mycology-exophiala';
+  const hyphaStroke = isMucorales ? 8 : 3;
+
+  const renderHyphalField = () => (
+    <g fill="none" stroke={body} strokeLinecap="round">
+      <path d="M 22 62 C 54 70, 82 78, 112 70 C 144 62, 166 70, 184 88" strokeWidth={hyphaStroke} opacity="0.7" />
+      <path d="M 30 136 C 66 116, 94 112, 126 124 C 154 134, 172 124, 186 112" strokeWidth={hyphaStroke} opacity="0.58" />
+      <path d="M 84 76 C 96 96, 108 112, 130 126" strokeWidth={hyphaStroke} opacity="0.5" />
+      <path d="M 116 70 C 126 52, 140 42, 164 36" strokeWidth={hyphaStroke} opacity="0.48" />
+      {!isMucorales && (
+        <>
+          {[54, 78, 104, 132, 154].map((x) => <line key={x} x1={x} y1="66" x2={x + 8} y2="76" stroke={detail} strokeWidth="1" opacity="0.55" />)}
+          <path d="M 98 88 L 128 56" strokeWidth="2.4" opacity="0.72" />
+        </>
+      )}
+    </g>
+  );
+
+  const renderConidiaDots = (points: Array<[number, number]>, size = 5) => (
+    points.map(([cx, cy], index) => (
+      <circle key={`${cx}-${cy}-${index}`} cx={cx} cy={cy} r={size} fill={body} stroke={detail} strokeWidth="0.8" opacity="0.82" />
+    ))
+  );
+
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`myc-bg-${visualType}-${tube.id}`} cx="50%" cy="45%" r="70%">
+            <stop offset="0%" stopColor={bg} stopOpacity="0.62" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`myc-shadow-${visualType}-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2.2" floodColor={detail} floodOpacity="0.18" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#myc-bg-${visualType}-${tube.id})`} stroke="rgba(36, 92, 105, 0.22)" strokeWidth="1.2" />
+
+        {isMucorales && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 52 154 C 74 130, 88 106, 98 72" fill="none" stroke={body} strokeWidth="8" strokeLinecap="round" opacity="0.7" />
+            <circle cx="106" cy="54" r="28" fill={detail} fillOpacity="0.84" stroke="#1e3432" strokeWidth="2" />
+            {renderConidiaDots([[96,46],[108,42],[118,54],[104,62],[92,58]], 3)}
+            <path d="M 56 154 C 44 160, 34 166, 24 176" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="round" opacity="0.75" />
+            <path d="M 56 154 C 56 168, 54 178, 48 188" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="round" opacity="0.75" />
+            <path d="M 56 154 C 70 164, 82 174, 92 184" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="round" opacity="0.75" />
+            <text x="112" y="94" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">sporangium</text>
+            <text x="56" y="144" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">rhizoids</text>
+          </g>
+        )}
+
+        {isMucorales && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">broad pauci-septate hyphae</text>
+          </g>
+        )}
+
+        {isAspergillus && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            <path d="M 98 88 L 132 54" fill="none" stroke={detail} strokeWidth="2" strokeLinecap="round" />
+            <text x="104" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">septate, acute-angle branching</text>
+          </g>
+        )}
+
+        {isAspergillus && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 98 158 C 96 124, 98 92, 102 68" fill="none" stroke={detail} strokeWidth="4" strokeLinecap="round" />
+            <ellipse cx="106" cy="56" rx="18" ry="24" fill={body} fillOpacity="0.72" stroke={detail} strokeWidth="2" />
+            {Array.from({ length: 17 }).map((_, index) => {
+              const angle = (-145 + index * 17) * Math.PI / 180;
+              const x1 = 106 + Math.cos(angle) * 14;
+              const y1 = 56 + Math.sin(angle) * 18;
+              const x2 = 106 + Math.cos(angle) * 42;
+              const y2 = 56 + Math.sin(angle) * 40;
+              return (
+                <g key={index}>
+                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={detail} strokeWidth="1.4" opacity="0.64" />
+                  <circle cx={x2} cy={y2} r="4.5" fill={body} stroke={detail} strokeWidth="0.8" />
+                </g>
+              );
+            })}
+            <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">compact conidial head</text>
+          </g>
+        )}
+
+        {isHistoplasma && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="102" cy="96" rx="58" ry="46" fill={body} fillOpacity="0.18" stroke={detail} strokeWidth="2" />
+            {renderConidiaDots([[80,84],[94,78],[110,88],[118,108],[96,112],[74,104],[128,82]], 4)}
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">tiny yeasts inside macrophage</text>
+          </g>
+        )}
+
+        {isHistoplasma && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            {[72, 120, 150].map((cx, index) => (
+              <g key={index}>
+                <circle cx={cx} cy={index === 1 ? 76 : 112} r="18" fill={body} fillOpacity="0.62" stroke={detail} strokeWidth="2" />
+                {renderConidiaDots([[cx - 12, index === 1 ? 68 : 104],[cx + 12, index === 1 ? 68 : 104],[cx - 10, index === 1 ? 86 : 122],[cx + 10, index === 1 ? 86 : 122]], 3)}
+              </g>
+            ))}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">tuberculate macroconidia</text>
+          </g>
+        )}
+
+        {isBlastomyces && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <circle cx="90" cy="100" r="34" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="4" />
+            <circle cx="132" cy="92" r="22" fill={body} fillOpacity="0.5" stroke={detail} strokeWidth="3.4" />
+            <path d="M 111 93 C 116 86, 124 84, 132 86" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.32" strokeLinecap="round" />
+            <text x="102" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">broad-based bud</text>
+          </g>
+        )}
+
+        {isBlastomyces && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            {renderConidiaDots([[70,72],[94,96],[128,66],[150,118]], 7)}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">lateral oval conidia</text>
+          </g>
+        )}
+
+        {isCoccidioides && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <circle cx="100" cy="96" r="50" fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="3.5" />
+            {renderConidiaDots([[84,82],[100,78],[116,84],[78,100],[94,98],[110,100],[124,104],[90,116],[106,120],[120,118]], 5)}
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">spherule with endospores</text>
+          </g>
+        )}
+
+        {isCoccidioides && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 38 78 C 68 78, 88 86, 112 86 C 136 86, 154 78, 178 78" fill="none" stroke={detail} strokeWidth="2" strokeLinecap="round" />
+            {[54, 78, 102, 126, 150].map((cx, index) => (
+              <rect key={index} x={cx - 9} y={index % 2 === 0 ? 66 : 92} width="18" height="24" rx="5" fill={body} fillOpacity="0.62" stroke={detail} strokeWidth="1.6" transform={`rotate(${index % 2 === 0 ? -8 : 8} ${cx} ${index % 2 === 0 ? 78 : 104})`} />
+            ))}
+            <text x="100" y="160" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">barrel arthroconidia</text>
+            <text x="100" y="171" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">safety-sensitive culture clue</text>
+          </g>
+        )}
+
+        {isDermatophyte && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            {renderConidiaDots([[58,64],[70,70],[84,76],[98,82],[112,88],[126,94],[140,100]], 4)}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">microconidia along hyphae</text>
+          </g>
+        )}
+
+        {isDermatophyte && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[62, 104, 146].map((cx, index) => (
+              <g key={index} transform={`rotate(${index === 1 ? -8 : 12} ${cx} 96)`}>
+                <path d={`M ${cx - 10} 52 C ${cx + 18} 62, ${cx + 22} 130, ${cx - 8} 142 C ${cx - 24} 116, ${cx - 24} 78, ${cx - 10} 52 Z`} fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
+                <line x1={cx - 8} y1="76" x2={cx + 12} y2="82" stroke={detail} strokeWidth="1" opacity="0.55" />
+                <line x1={cx - 10} y1="98" x2={cx + 14} y2="104" stroke={detail} strokeWidth="1" opacity="0.55" />
+              </g>
+            ))}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">rough spindle macroconidia</text>
+          </g>
+        )}
+
+        {isDermatophyte && tube.id === 'C' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[70, 104, 138].map((cx, index) => (
+              <path key={index} d={`M ${cx - 14} 62 C ${cx + 18} 58, ${cx + 28} 126, ${cx - 8} 142 C ${cx - 28} 118, ${cx - 24} 78, ${cx - 14} 62 Z`} fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" />
+            ))}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">smooth club macroconidia</text>
+            <text x="100" y="181" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">no microconidia</text>
+          </g>
+        )}
+
+        {isCandida && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="72" cy="112" rx="28" ry="24" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2.4" />
+            <path d="M 92 94 C 116 72, 138 62, 164 58" fill="none" stroke={body} strokeWidth="15" strokeLinecap="round" opacity="0.6" />
+            <path d="M 94 94 C 118 74, 140 66, 162 62" fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" opacity="0.22" />
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">no constriction at base</text>
+          </g>
+        )}
+
+        {isCandida && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[62,118],[86,104],[110,90],[134,78]].map(([cx, cy], index) => (
+              <ellipse key={index} cx={cx} cy={cy} rx="18" ry="14" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" transform={`rotate(-30 ${cx} ${cy})`} />
+            ))}
+            {[76,100,124].map((x) => <line key={x} x1={x} y1={110 - (x - 76) * 0.6} x2={x + 8} y2={103 - (x - 76) * 0.6} stroke={detail} strokeWidth="2.4" opacity="0.72" />)}
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">pinched chain</text>
+          </g>
+        )}
+
+        {isCryptococcus && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <circle cx="92" cy="96" r="38" fill="#ffffff" fillOpacity="0.38" stroke={detail} strokeWidth="1.5" />
+            <circle cx="92" cy="96" r="24" fill={body} fillOpacity="0.62" stroke={detail} strokeWidth="2" />
+            <circle cx="126" cy="86" r="13" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="1.8" />
+            <path d="M 108 90 C 112 86, 118 84, 124 84" fill="none" stroke={detail} strokeWidth="1.4" opacity="0.8" />
+            {tube.id === 'A' && <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">capsule halo</text>}
+            {tube.id === 'B' && <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">narrow-based bud</text>}
+          </g>
+        )}
+
+        {isSporothrix && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[72, 108, 138].map((cx, index) => (
+              <ellipse key={index} cx={cx} cy={index === 1 ? 92 : 112} rx="10" ry="28" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" transform={`rotate(${index === 1 ? 58 : 38} ${cx} ${index === 1 ? 92 : 112})`} />
+            ))}
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">cigar-shaped yeast</text>
+          </g>
+        )}
+
+        {isSporothrix && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 152 C 98 120, 100 92, 108 66" fill="none" stroke={detail} strokeWidth="3.5" strokeLinecap="round" />
+            {[[-26,-12],[-14,-24],[0,-28],[14,-22],[26,-10],[-18,4],[0,8],[18,4]].map(([dx, dy], index) => (
+              <ellipse key={index} cx={108 + dx} cy={66 + dy} rx="7" ry="11" fill={body} fillOpacity="0.62" stroke={detail} strokeWidth="1.4" transform={`rotate(${dx * 2} ${108 + dx} ${66 + dy})`} />
+            ))}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">flowerette conidia</text>
+          </g>
+        )}
+
+        {isParacoccidioides && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <circle cx="100" cy="96" r="34" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="3" />
+            {Array.from({ length: 8 }).map((_, index) => {
+              const angle = index * Math.PI / 4;
+              const cx = 100 + Math.cos(angle) * 42;
+              const cy = 96 + Math.sin(angle) * 36;
+              return <circle key={index} cx={cx} cy={cy} r="12" fill={body} fillOpacity="0.48" stroke={detail} strokeWidth="2" />;
+            })}
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">multiple peripheral buds</text>
+          </g>
+        )}
+
+        {isParacoccidioides && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <circle cx="88" cy="100" r="32" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="3" />
+            <circle cx="130" cy="90" r="21" fill={body} fillOpacity="0.48" stroke={detail} strokeWidth="2.8" />
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">single broad bud comparator</text>
+          </g>
+        )}
+
+        {isFusarium && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[74, 122].map((cx, index) => (
+              <g key={index} transform={`rotate(${index === 0 ? -22 : 28} ${cx} 98)`}>
+                <path d={`M ${cx - 42} 92 C ${cx - 12} 54, ${cx + 42} 58, ${cx + 48} 110 C ${cx + 8} 92, ${cx - 20} 98, ${cx - 42} 92 Z`} fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
+                <line x1={cx - 22} y1="82" x2={cx - 14} y2="98" stroke={detail} strokeWidth="1" opacity="0.6" />
+                <line x1={cx} y1="76" x2={cx + 4} y2="100" stroke={detail} strokeWidth="1" opacity="0.6" />
+                <line x1={cx + 22} y1="82" x2={cx + 20} y2="104" stroke={detail} strokeWidth="1" opacity="0.6" />
+              </g>
+            ))}
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">sickle macroconidia</text>
+          </g>
+        )}
+
+        {isFusarium && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">hyaline septate hyphae</text>
+          </g>
+        )}
+
+        {isPenicilliumTalaromyces && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 126, 100 96, 104 68" fill="none" stroke={detail} strokeWidth="3.6" strokeLinecap="round" />
+            {[-36,-24,-12,0,12,24,36].map((dx) => (
+              <g key={dx}>
+                <line x1="104" y1="68" x2={104 + dx} y2="44" stroke={detail} strokeWidth="2" opacity="0.72" />
+                {renderConidiaDots([[104 + dx, 36],[104 + dx, 28]], 4)}
+              </g>
+            ))}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">brush-like conidiophore</text>
+          </g>
+        )}
+
+        {isPenicilliumTalaromyces && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[72, 108, 138].map((cx, index) => (
+              <g key={index}>
+                <ellipse cx={cx} cy={index === 1 ? 86 : 112} rx="16" ry="24" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" transform={`rotate(${index === 1 ? -20 : 15} ${cx} ${index === 1 ? 86 : 112})`} />
+                <line x1={cx - 12} y1={index === 1 ? 86 : 112} x2={cx + 12} y2={index === 1 ? 86 : 112} stroke={detail} strokeWidth="1.8" opacity="0.72" />
+              </g>
+            ))}
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">fission yeast septum</text>
+          </g>
+        )}
+
+        {isScopulariopsis && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 160 C 98 130, 100 100, 104 74" fill="none" stroke={detail} strokeWidth="3.6" strokeLinecap="round" />
+            {[-30,-18,-6,6,18,30].map((dx) => (
+              <g key={dx}>
+                <path d={`M 104 74 C ${104 + dx * 0.5} 62, ${104 + dx} 56, ${104 + dx} 48`} fill="none" stroke={detail} strokeWidth="2.4" opacity="0.72" />
+                {renderConidiaDots([[104 + dx, 42],[104 + dx, 32]], 4)}
+              </g>
+            ))}
+            <text x="100" y="176" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">penicillus-like brush</text>
+          </g>
+        )}
+
+        {isScopulariopsis && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[70,90],[102,84],[134,92],[86,118],[118,116]].map(([cx, cy], index) => (
+              <g key={index}>
+                <path d={`M ${cx} ${cy - 16} C ${cx + 13} ${cy - 12}, ${cx + 13} ${cy + 10}, ${cx} ${cy + 14} C ${cx - 13} ${cy + 10}, ${cx - 13} ${cy - 12}, ${cx} ${cy - 16} Z`} fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" />
+                <line x1={cx - 9} y1={cy + 14} x2={cx + 9} y2={cy + 14} stroke={detail} strokeWidth="1.8" opacity="0.8" />
+                {[[-6,-6],[5,-7],[7,3],[-5,4],[0,8]].map(([sx, sy], si) => (
+                  <line key={si} x1={cx + sx} y1={cy + sy} x2={cx + sx * 1.5} y2={cy + sy * 1.5} stroke={detail} strokeWidth="1" opacity="0.6" />
+                ))}
+              </g>
+            ))}
+            <text x="100" y="166" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">rough lemon-shaped conidia</text>
+          </g>
+        )}
+
+        {isPaecilomyces && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 160 C 98 132, 100 104, 102 84" fill="none" stroke={detail} strokeWidth="3.4" strokeLinecap="round" />
+            {[-34,-14,8,30].map((dx, index) => (
+              <path key={index} d={`M 102 84 C ${102 + dx * 0.4} 70, ${102 + dx} 60, ${102 + dx * 1.4} 40`} fill="none" stroke={detail} strokeWidth="2.6" opacity="0.74" />
+            ))}
+            <text x="100" y="176" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">long tapering phialides</text>
+          </g>
+        )}
+
+        {isPaecilomyces && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[60,70,18],[96,58,-14],[132,72,22]].map(([x0, y0, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${x0} ${y0})`}>
+                {renderConidiaDots([[x0, y0],[x0, y0 + 16],[x0, y0 + 32],[x0, y0 + 48]], 4)}
+              </g>
+            ))}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">divergent conidial chains</text>
+          </g>
+        )}
+
+        {isScedosporium && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[72,118],[110,124],[146,116]].map(([cx, cy], index) => (
+              <g key={index}>
+                <path d={`M ${cx} ${cy} C ${cx + 11} ${cy - 6}, ${cx + 9} ${cy - 30}, ${cx} ${cy - 42} C ${cx - 9} ${cy - 30}, ${cx - 11} ${cy - 6}, ${cx} ${cy} Z`} fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
+                <ellipse cx={cx} cy={cy - 50} rx="8" ry="11" fill={body} fillOpacity="0.7" stroke={detail} strokeWidth="1.6" />
+              </g>
+            ))}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">flask cells, single tip conidia</text>
+          </g>
+        )}
+
+        {isScedosporium && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">hyaline septate hyphae</text>
+          </g>
+        )}
+
+        {isTrichosporon && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[40,70,100,130].map((x, index) => (
+              <rect key={index} x={x} y="84" width="28" height="22" rx="3" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" transform={`rotate(${index % 2 === 0 ? -6 : 6} ${x + 14} 95)`} />
+            ))}
+            <text x="100" y="146" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">rectangular arthroconidia</text>
+          </g>
+        )}
+
+        {isTrichosporon && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="84" cy="104" rx="26" ry="22" fill={body} fillOpacity="0.56" stroke={detail} strokeWidth="2.4" />
+            <ellipse cx="120" cy="84" rx="15" ry="13" fill={body} fillOpacity="0.5" stroke={detail} strokeWidth="2" />
+            <ellipse cx="138" cy="70" rx="9" ry="8" fill={body} fillOpacity="0.46" stroke={detail} strokeWidth="1.6" />
+            <text x="100" y="160" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">budding blastoconidia</text>
+          </g>
+        )}
+
+        {isDematiaceous && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[72,108],[112,84]].map(([cx, cy], index) => (
+              <g key={index}>
+                <path d={`M ${cx - 18} ${cy + 14} C ${cx - 20} ${cy - 14}, ${cx + 14} ${cy - 18}, ${cx + 18} ${cy - 4} L ${cx + 34} ${cy - 22}`} fill="none" stroke={detail} strokeWidth="1.4" opacity="0.6" />
+                <path d={`M ${cx - 18} ${cy + 14} C ${cx - 22} ${cy - 16}, ${cx + 16} ${cy - 20}, ${cx + 18} ${cy - 2} C ${cx + 8} ${cy + 10}, ${cx - 10} ${cy + 14}, ${cx - 18} ${cy + 14} Z`} fill={body} fillOpacity="0.6" stroke={detail} strokeWidth="2" />
+                <line x1={cx - 14} y1={cy - 2} x2={cx + 14} y2={cy - 6} stroke={detail} strokeWidth="1" opacity="0.6" />
+                <line x1={cx - 2} y1={cy - 14} x2={cx} y2={cy + 12} stroke={detail} strokeWidth="1" opacity="0.6" />
+                <path d={`M ${cx + 18} ${cy - 2} L ${cx + 36} ${cy - 22}`} stroke={detail} strokeWidth="2.4" opacity="0.7" />
+              </g>
+            ))}
+            <text x="100" y="168" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">muriform conidia with beak</text>
+          </g>
+        )}
+
+        {isDematiaceous && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[70,96,-18],[120,100,16]].map(([cx, cy, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${cx} ${cy})`}>
+                <path d={`M ${cx - 34} ${cy} C ${cx - 26} ${cy - 26}, ${cx + 26} ${cy - 26}, ${cx + 34} ${cy} C ${cx + 24} ${cy + 6}, ${cx - 24} ${cy + 6}, ${cx - 34} ${cy} Z`} fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" />
+                {[-17,-2,15].map((dx) => <line key={dx} x1={cx + dx} y1={cy - 12} x2={cx + dx} y2={cy + 4} stroke={detail} strokeWidth="1" opacity="0.6" />)}
+                <path d={`M ${cx - 4} ${cy - 18} C ${cx + 8} ${cy - 22}, ${cx + 10} ${cy + 2}, ${cx - 2} ${cy + 4}`} fill={detail} fillOpacity="0.18" stroke="none" />
+              </g>
+            ))}
+            <text x="100" y="170" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">curved, swollen central cell</text>
+          </g>
+        )}
+
+        {isAspergillusComparison && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 128, 100 96, 102 72" fill="none" stroke={detail} strokeWidth="4" strokeLinecap="round" />
+            {tube.id === 'A' && (
+              <g>
+                <ellipse cx="104" cy="62" rx="14" ry="18" fill={body} fillOpacity="0.7" stroke={detail} strokeWidth="2" />
+                {Array.from({ length: 9 }).map((_, index) => {
+                  const angle = (-120 + index * 15) * Math.PI / 180;
+                  return <line key={index} x1={104 + Math.cos(angle) * 12} y1={56 + Math.sin(angle) * 16} x2={104 + Math.cos(angle) * 30} y2={56 + Math.sin(angle) * 34} stroke={detail} strokeWidth="1.4" opacity="0.66" />;
+                })}
+                {renderConidiaDots([[96,26],[104,22],[112,26],[100,16]], 4)}
+                <text x="100" y="180" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">compact columnar (uniseriate)</text>
+              </g>
+            )}
+            {tube.id === 'B' && (
+              <g>
+                <circle cx="104" cy="56" r="16" fill={body} fillOpacity="0.66" stroke={detail} strokeWidth="2" />
+                {Array.from({ length: 16 }).map((_, index) => {
+                  const angle = index * 22.5 * Math.PI / 180;
+                  const x2 = 104 + Math.cos(angle) * 40;
+                  const y2 = 56 + Math.sin(angle) * 40;
+                  return <g key={index}><line x1={104 + Math.cos(angle) * 15} y1={56 + Math.sin(angle) * 15} x2={x2} y2={y2} stroke={detail} strokeWidth="1.2" opacity="0.6" /><circle cx={x2} cy={y2} r="4" fill={detail} fillOpacity="0.7" stroke={detail} strokeWidth="0.6" /></g>;
+                })}
+                <text x="100" y="184" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">radiate biseriate, dark conidia</text>
+              </g>
+            )}
+            {tube.id === 'C' && (
+              <g>
+                <circle cx="104" cy="58" r="15" fill={body} fillOpacity="0.6" stroke={detail} strokeWidth="2" />
+                {Array.from({ length: 11 }).map((_, index) => {
+                  const angle = (-150 + index * 27) * Math.PI / 180;
+                  const x2 = 104 + Math.cos(angle) * 38;
+                  const y2 = 58 + Math.sin(angle) * 38;
+                  return <g key={index}><line x1={104 + Math.cos(angle) * 14} y1={58 + Math.sin(angle) * 14} x2={x2} y2={y2} stroke={detail} strokeWidth="1.2" opacity="0.6" /><circle cx={x2} cy={y2} r="4" fill={body} stroke={detail} strokeWidth="0.7" /></g>;
+                })}
+                {[78,90,102,114].map((y) => <line key={y} x1="98" y1={y} x2="106" y2={y + 2} stroke={detail} strokeWidth="1.6" opacity="0.6" />)}
+                <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">radiate, rough stalk</text>
+              </g>
+            )}
+            {tube.id === 'D' && (
+              <g>
+                <ellipse cx="104" cy="60" rx="12" ry="15" fill={body} fillOpacity="0.66" stroke={detail} strokeWidth="2" />
+                {Array.from({ length: 7 }).map((_, index) => {
+                  const angle = (-110 + index * 18) * Math.PI / 180;
+                  return <line key={index} x1={104 + Math.cos(angle) * 10} y1={56 + Math.sin(angle) * 13} x2={104 + Math.cos(angle) * 26} y2={56 + Math.sin(angle) * 30} stroke={detail} strokeWidth="1.3" opacity="0.64" />;
+                })}
+                {renderConidiaDots([[62,110],[58,128],[150,104],[152,124],[70,150]], 5)}
+                <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">compact head plus aleurioconidia</text>
+              </g>
+            )}
+          </g>
+        )}
+
+        {isScleroticBodies && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[78,80],[104,74],[92,100],[118,96],[76,118],[106,120]].map(([cx, cy], index) => (
+              <g key={index}>
+                <circle cx={cx} cy={cy} r="15" fill={body} fillOpacity="0.72" stroke={detail} strokeWidth="2" />
+                <line x1={cx - 13} y1={cy} x2={cx + 13} y2={cy} stroke={detail} strokeWidth="1.4" opacity="0.85" />
+                <line x1={cx} y1={cy - 13} x2={cx} y2={cy + 13} stroke={detail} strokeWidth="1.4" opacity="0.85" />
+              </g>
+            ))}
+            <text x="100" y="164" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">muriform sclerotic bodies</text>
+          </g>
+        )}
+
+        {isScleroticBodies && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            {[58,98,138].map((x) => <line key={x} x1={x} y1="64" x2={x + 6} y2="76" stroke={detail} strokeWidth="2" opacity="0.7" />)}
+            <ellipse cx="150" cy="120" rx="12" ry="9" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="1.8" />
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">pigmented septate hyphae</text>
+          </g>
+        )}
+
+        {isBipolarisExserohilum && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 30 150 C 60 140, 56 120, 84 112 C 110 104, 104 84, 130 78 C 150 74, 152 60, 168 54" fill="none" stroke={detail} strokeWidth="3" strokeLinecap="round" opacity="0.8" />
+            {[[60,134,30],[100,108,18],[138,80,8]].map(([cx, cy, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${cx} ${cy})`}>
+                <rect x={cx - 26} y={cy - 9} width="52" height="18" rx="9" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="2" />
+                {[-13,0,13].map((dx) => <line key={dx} x1={cx + dx} y1={cy - 9} x2={cx + dx} y2={cy + 9} stroke={detail} strokeWidth="1" opacity="0.6" />)}
+                {tube.id === 'B' && <ellipse cx={cx - 26} cy={cy} rx="4" ry="5" fill={body} stroke={detail} strokeWidth="1.4" />}
+              </g>
+            ))}
+            {tube.id === 'A' && <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">poroconidia, flat hilum</text>}
+            {tube.id === 'B' && <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">poroconidia, protruding hilum</text>}
+          </g>
+        )}
+
+        {isCladosporium && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 130, 100 104, 104 84" fill="none" stroke={detail} strokeWidth="3.4" strokeLinecap="round" />
+            {[[104,84,-22],[104,84,22]].map(([cx, cy, dx], index) => (
+              <g key={index}>
+                <ellipse cx={cx + dx} cy={cy - 14} rx="11" ry="8" fill={body} fillOpacity="0.62" stroke={detail} strokeWidth="2" transform={`rotate(${dx} ${cx + dx} ${cy - 14})`} />
+                <circle cx={cx + dx * 1.4} cy={cy - 26} r="3" fill={detail} />
+                <circle cx={cx + dx * 1.7} cy={cy - 34} r="3" fill={detail} />
+              </g>
+            ))}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">shield cells with scars</text>
+          </g>
+        )}
+
+        {isCladosporium && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {[[56,72,12],[96,60,-10],[132,84,20]].map(([x0, y0, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${x0} ${y0})`}>
+                {[0,1,2,3].map((n) => (
+                  <ellipse key={n} cx={x0} cy={y0 + n * 17} rx="9" ry="7" fill={body} fillOpacity="0.58" stroke={detail} strokeWidth="1.8" />
+                ))}
+              </g>
+            ))}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">fragile branching chains</text>
+          </g>
+        )}
+
+        {isChromoAgents && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 132, 100 108, 102 90" fill="none" stroke={detail} strokeWidth="3.4" strokeLinecap="round" />
+            <path d="M 90 90 C 90 76, 114 76, 114 90" fill="none" stroke={detail} strokeWidth="2.4" />
+            <path d="M 86 90 C 86 84, 118 84, 114 90" fill="none" stroke={detail} strokeWidth="2" opacity="0.8" />
+            {renderConidiaDots([[96,76],[104,72],[112,78],[100,66]], 4)}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">collarette phialides</text>
+          </g>
+        )}
+
+        {isChromoAgents && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 130, 102 100, 106 78" fill="none" stroke={detail} strokeWidth="3.2" strokeLinecap="round" />
+            {[-28,-12,8,26].map((dx) => (
+              <g key={dx}>
+                <line x1="106" y1="78" x2={106 + dx} y2={64 - Math.abs(dx) * 0.2} stroke={detail} strokeWidth="1.6" opacity="0.7" />
+                <ellipse cx={106 + dx} cy={56 - Math.abs(dx) * 0.2} rx="6" ry="8" fill={body} fillOpacity="0.6" stroke={detail} strokeWidth="1.4" />
+              </g>
+            ))}
+            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">denticulate mixed sporulation</text>
+          </g>
+        )}
+
+        {isChromoAgents && tube.id === 'C' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <path d="M 100 158 C 98 134, 100 112, 102 96" fill="none" stroke={detail} strokeWidth="3.2" strokeLinecap="round" />
+            {[[102,96,-8],[102,96,14]].map(([x0, y0, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${x0} ${y0})`}>
+                {[0,1,2,3,4].map((n) => (
+                  <ellipse key={n} cx={x0} cy={y0 - 12 - n * 14} rx="7" ry="6" fill={body} fillOpacity="0.56" stroke={detail} strokeWidth="1.6" />
+                ))}
+              </g>
+            ))}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">long fragile chains</text>
+          </g>
+        )}
+
+        {isExophiala && tube.id === 'A' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="88" cy="106" rx="24" ry="20" fill={body} fillOpacity="0.66" stroke={detail} strokeWidth="2.4" />
+            <ellipse cx="120" cy="86" rx="14" ry="12" fill={body} fillOpacity="0.56" stroke={detail} strokeWidth="2" />
+            <ellipse cx="138" cy="72" rx="8" ry="7" fill={body} fillOpacity="0.5" stroke={detail} strokeWidth="1.6" />
+            <line x1="104" y1="96" x2="110" y2="92" stroke={detail} strokeWidth="1.6" opacity="0.8" />
+            <text x="100" y="158" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">dark budding yeast</text>
+          </g>
+        )}
+
+        {isExophiala && tube.id === 'B' && (
+          <g filter={`url(#myc-shadow-${visualType}-${tube.id})`}>
+            {renderHyphalField()}
+            {[[78,70,-32],[126,86,28]].map(([x0, y0, ang], index) => (
+              <g key={index} transform={`rotate(${ang} ${x0} ${y0})`}>
+                <path d={`M ${x0 - 6} ${y0 + 26} C ${x0 - 4} ${y0 + 4}, ${x0 + 2} ${y0 - 16}, ${x0} ${y0 - 30}`} fill="none" stroke={detail} strokeWidth="3.2" strokeLinecap="round" />
+                {renderConidiaDots([[x0 - 6, y0 - 34],[x0 + 4, y0 - 36],[x0, y0 - 44]], 3)}
+              </g>
+            ))}
+            <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">tapered annellophores</text>
+          </g>
+        )}
+
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
+function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
+  const bg = tube.colors.slant;
+  const body = tube.colors.butt;
+  const detail = tube.colors.base;
+  const isCpePanel = visualType === 'virology-cpe-panel';
+  const isHerpes = visualType === 'virology-herpesvirus-cpe';
+  const isCmv = visualType === 'virology-cmv-inclusion';
+  const isNaat = visualType === 'virology-respiratory-naat';
+  const isHbv = visualType === 'virology-hepatitis-b-serology';
+  const isHiv = visualType === 'virology-hiv-screening';
+
+  const renderCellField = () => (
+    <>
+      {[
+        [42, 52], [70, 44], [104, 50], [136, 58],
+        [50, 92], [84, 86], [120, 96], [152, 90],
+        [64, 132], [100, 136], [138, 130]
+      ].map(([cx, cy], index) => (
+        <g key={index}>
+          <ellipse cx={cx} cy={cy} rx="12" ry="9" fill="#ffffff" fillOpacity="0.45" stroke={body} strokeWidth="1.2" />
+          <circle cx={cx} cy={cy} r="3.5" fill={detail} fillOpacity="0.5" />
+        </g>
+      ))}
+    </>
+  );
+
+  const markerColors = isHbv
+    ? tube.id === 'A'
+      ? ['#d8d0bd', '#d8d0bd', '#d8d0bd']
+      : tube.id === 'B'
+        ? ['#d8d0bd', '#3f8a55', tube.label.includes('Immune') ? '#d8d0bd' : '#3f8a55']
+        : ['#a44a5f', '#d8d0bd', '#a44a5f']
+    : [];
+
+  return (
+    <div className="lia-tube-card lia-plate-card" key={tube.id}>
+      <div className="lia-letter">{tube.id}</div>
+      <svg className="lia-plate-svg" viewBox="0 0 200 200" aria-hidden="true" style={{ display: 'block', margin: '0 auto' }}>
+        <defs>
+          <radialGradient id={`viro-bg-${visualType}-${tube.id}`} cx="50%" cy="42%" r="72%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.58" />
+            <stop offset="100%" stopColor={bg} stopOpacity="1" />
+          </radialGradient>
+          <filter id={`viro-shadow-${visualType}-${tube.id}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="5" stdDeviation="5" floodColor="#0f172a" floodOpacity="0.16" />
+          </filter>
+        </defs>
+        <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#viro-bg-${visualType}-${tube.id})`} stroke="#b8c6c9" strokeWidth="1.2" />
+
+        {isCpePanel && tube.id === 'A' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            {[[58,66],[92,56],[128,68],[70,106],[112,106],[144,118]].map(([cx, cy], index) => (
+              <g key={index}>
+                <circle cx={cx} cy={cy} r="14" fill={body} fillOpacity="0.68" stroke={detail} strokeWidth="1.4" />
+                <circle cx={cx + 3} cy={cy - 2} r="4" fill={detail} fillOpacity="0.62" />
+              </g>
+            ))}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">rounded refractile cells</text>
+          </g>
+        )}
+
+        {isCpePanel && tube.id === 'B' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <path d="M 52 92 C 62 48, 126 44, 148 82 C 176 128, 110 154, 70 128 C 52 116, 46 104, 52 92 Z" fill={body} fillOpacity="0.55" stroke={detail} strokeWidth="2" />
+            {[80,98,116,132].map((cx, index) => (
+              <circle key={index} cx={cx} cy={index % 2 ? 96 : 82} r="7" fill={detail} fillOpacity="0.64" />
+            ))}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">fused multinucleated cell</text>
+          </g>
+        )}
+
+        {isCpePanel && tube.id === 'C' && (
+          <g>
+            {renderCellField()}
+            <ellipse cx="104" cy="94" rx="48" ry="34" fill={bg} fillOpacity="0.9" stroke={detail} strokeWidth="2" strokeDasharray="5,4" />
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">cleared plaque focus</text>
+          </g>
+        )}
+
+        {isCpePanel && tube.id === 'D' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            {[[70,84],[118,92],[98,126]].map(([cx, cy], index) => (
+              <g key={index}>
+                <ellipse cx={cx} cy={cy} rx="25" ry="19" fill={body} fillOpacity="0.38" stroke={body} strokeWidth="1.5" />
+                <circle cx={cx} cy={cy} r="11" fill="#ffffff" fillOpacity="0.65" stroke={detail} strokeWidth="1.7" />
+                <circle cx={cx} cy={cy} r="5" fill={detail} fillOpacity="0.78" />
+              </g>
+            ))}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">inclusion-like change</text>
+          </g>
+        )}
+
+        {isHerpes && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="100" cy="94" rx="50" ry="40" fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="2" />
+            {tube.id === 'A' && [[78,88],[98,82],[120,94],[102,112]].map(([cx, cy], index) => (
+              <circle key={index} cx={cx} cy={cy} r="11" fill="#ffffff" fillOpacity="0.74" stroke={detail} strokeWidth="1.5" />
+            ))}
+            {tube.id === 'B' && [[82,92],[100,88],[118,92]].map(([cx, cy], index) => (
+              <ellipse key={index} cx={cx} cy={cy} rx="15" ry="12" fill="#ffffff" fillOpacity="0.74" stroke={detail} strokeWidth="1.5" />
+            ))}
+            {tube.id === 'C' && [[82,92],[112,94]].map(([cx, cy], index) => (
+              <g key={index}>
+                <circle cx={cx} cy={cy} r="16" fill="#ffffff" fillOpacity="0.72" stroke={detail} strokeWidth="1.6" />
+                <circle cx={cx} cy={cy} r="10" fill="none" stroke={detail} strokeWidth="3.2" opacity="0.72" />
+                <circle cx={cx} cy={cy} r="4" fill={detail} fillOpacity="0.4" />
+              </g>
+            ))}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
+          </g>
+        )}
+
+        {isCmv && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <ellipse cx="100" cy="96" rx={tube.id === 'A' ? 54 : 48} ry={tube.id === 'A' ? 42 : 38} fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="2" />
+            <circle cx="100" cy="96" r={tube.id === 'A' ? 18 : 24} fill="#ffffff" fillOpacity="0.74" stroke={detail} strokeWidth="1.8" />
+            {tube.id === 'B' && <circle cx="100" cy="96" r="11" fill={detail} fillOpacity="0.82" />}
+            {tube.id === 'A' && <circle cx="100" cy="96" r="7" fill={detail} fillOpacity="0.58" />}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.id === 'A' ? 'enlarged cell' : 'halo plus inclusion'}</text>
+          </g>
+        )}
+
+        {isNaat && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            {tube.id === 'A' ? (
+              <>
+                <rect x="56" y="62" width="88" height="58" rx="12" fill="#ffffff" fillOpacity="0.55" stroke={detail} strokeWidth="1.6" />
+                <path d="M 76 82 C 96 68, 112 98, 132 82" fill="none" stroke={body} strokeWidth="4" strokeLinecap="round" />
+                <path d="M 76 100 C 96 86, 112 116, 132 100" fill="none" stroke={detail} strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+              </>
+            ) : tube.id === 'B' ? (
+              <>
+                <polyline points="42,134 70,122 96,106 122,74 154,54" fill="none" stroke={detail} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <line x1="42" y1="134" x2="158" y2="134" stroke={detail} strokeWidth="1.5" opacity="0.35" />
+                <circle cx="122" cy="74" r="7" fill={body} stroke={detail} strokeWidth="2" />
+              </>
+            ) : (
+              <>
+                <polyline points="42,118 72,118 100,118 128,118 158,118" fill="none" stroke={detail} strokeWidth="4" strokeLinecap="round" />
+                <line x1="42" y1="134" x2="158" y2="134" stroke={detail} strokeWidth="1.5" opacity="0.35" />
+                <circle cx="126" cy="118" r="7" fill={bg} stroke={detail} strokeWidth="2" />
+              </>
+            )}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
+          </g>
+        )}
+
+        {isHbv && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            {['HBsAg', 'anti-HBs', 'anti-HBc'].map((marker, index) => (
+              <g key={marker}>
+                <rect x="38" y={52 + index * 34} width="124" height="22" rx="11" fill="#ffffff" fillOpacity="0.64" stroke={detail} strokeWidth="1" />
+                <circle cx="52" cy={63 + index * 34} r="7" fill={markerColors[index]} stroke={detail} strokeWidth="1" />
+                <text x="68" y={67 + index * 34} fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{marker}</text>
+              </g>
+            ))}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
+          </g>
+        )}
+
+        {isHiv && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <rect x="36" y="58" width="128" height="82" rx="14" fill="#ffffff" fillOpacity="0.56" stroke={detail} strokeWidth="1.4" />
+            {tube.id === 'A' && (
+              <>
+                <circle cx="72" cy="98" r="17" fill={body} fillOpacity="0.44" stroke={detail} strokeWidth="1.7" />
+                <text x="72" y="102" textAnchor="middle" fill={detail} fontSize="11" fontFamily="sans-serif" fontWeight="bold">Ag</text>
+                <circle cx="124" cy="98" r="17" fill={body} fillOpacity="0.26" stroke={detail} strokeWidth="1.7" />
+                <text x="124" y="102" textAnchor="middle" fill={detail} fontSize="11" fontFamily="sans-serif" fontWeight="bold">Ab</text>
+              </>
+            )}
+            {tube.id === 'B' && (
+              <>
+                <rect x="58" y="76" width="84" height="14" rx="7" fill={body} fillOpacity="0.35" stroke={detail} strokeWidth="1" />
+                <rect x="58" y="106" width="84" height="14" rx="7" fill={body} fillOpacity="0.18" stroke={detail} strokeWidth="1" />
+                <text x="100" y="86" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">HIV-1</text>
+                <text x="100" y="116" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">HIV-2</text>
+              </>
+            )}
+            {tube.id === 'C' && (
+              <>
+                <path d="M 54 102 C 70 72, 90 132, 106 102 S 138 72, 154 102" fill="none" stroke={detail} strokeWidth="4" strokeLinecap="round" />
+                <text x="100" y="126" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">RNA target</text>
+              </>
+            )}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
+          </g>
+        )}
+
+        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
+      </svg>
+      <strong>{tube.label}</strong>
+      <span>{tube.name}</span>
+      <p>{tube.note}</p>
+    </div>
+  );
+}
+
 function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
   if (visualType === 'litmus-milk') {
     return renderLitmusMilk(tube);
@@ -9214,6 +11786,8 @@ function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
   if (visualType === 'microscope-fasciola') return renderFasciola(tube);
   if (visualType === 'microscope-dipylidium') return renderDipylidium(tube);
   if (visualType === 'microscope-taenia-scolex') return renderTaeniaScolex(tube);
+  if (isMycologyVisualType(visualType)) return renderMycology(tube, visualType);
+  if (isVirologyVisualType(visualType)) return renderVirology(tube, visualType);
   const growth = tube.growth ?? 'none';
   const isSlant = visualType === 'utilization' || visualType === 'esculin-hydrolysis' || visualType === 'growth-temperature' || visualType === 'bile-esculin' || visualType === 'cetrimide' || visualType === 'citrate';
   // microdase handled above
@@ -9314,6 +11888,8 @@ const coagulaseStageTypes: AtlasPage['visualType'][] = [
 ];
 
 const isParasiteVisualType = (visualType: AtlasPage['visualType']) => visualType.startsWith('microscope-');
+const isMycologyVisualType = (visualType: AtlasPage['visualType']) => visualType.startsWith('mycology-');
+const isVirologyVisualType = (visualType: AtlasPage['visualType']) => visualType.startsWith('virology-');
 
 const intestinalParasiteTypes: AtlasPage['visualType'][] = [
   'microscope-giardia',
@@ -9359,6 +11935,56 @@ const trematodeEggTypes: AtlasPage['visualType'][] = [
   'microscope-fasciola'
 ];
 
+const dimorphicFungusTypes: AtlasPage['visualType'][] = [
+  'mycology-histoplasma',
+  'mycology-blastomyces',
+  'mycology-coccidioides',
+  'mycology-sporothrix',
+  'mycology-paracoccidioides',
+  'mycology-penicillium-talaromyces'
+];
+
+const hyalineMoldTypes: AtlasPage['visualType'][] = [
+  'mycology-aspergillus-fumigatus',
+  'mycology-aspergillus-comparison'
+];
+
+const yeastFormTypes: AtlasPage['visualType'][] = [
+  'mycology-candida-germ-tube',
+  'mycology-cryptococcus',
+  'mycology-trichosporon'
+];
+
+const opportunisticMoldTypes: AtlasPage['visualType'][] = [
+  'mycology-fusarium',
+  'mycology-scopulariopsis',
+  'mycology-paecilomyces',
+  'mycology-scedosporium'
+];
+
+const dematiaceousMoldTypes: AtlasPage['visualType'][] = [
+  'mycology-dematiaceous-panel',
+  'mycology-sclerotic-bodies',
+  'mycology-bipolaris-exserohilum',
+  'mycology-cladosporium',
+  'mycology-chromo-agents',
+  'mycology-exophiala'
+];
+
+const viralCpeTypes: AtlasPage['visualType'][] = [
+  'virology-cpe-panel',
+  'virology-herpesvirus-cpe'
+];
+
+const viralMolecularTypes: AtlasPage['visualType'][] = [
+  'virology-respiratory-naat'
+];
+
+const viralSerologyTypes: AtlasPage['visualType'][] = [
+  'virology-hepatitis-b-serology',
+  'virology-hiv-screening'
+];
+
 const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
   if (utilizationStageTypes.includes(visualType)) {
     return 'utilization-stage';
@@ -9384,6 +12010,14 @@ const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
     return 'parasite-stage';
   }
 
+  if (isMycologyVisualType(visualType)) {
+    return visualType === 'mycology-dermatophyte-panel' ? 'mycology-stage dermatophyte-stage' : 'mycology-stage';
+  }
+
+  if (isVirologyVisualType(visualType)) {
+    return viralSerologyTypes.includes(visualType) ? 'virology-stage virology-serology-stage' : 'virology-stage';
+  }
+
   return '';
 };
 
@@ -9403,7 +12037,7 @@ export function MiniAtlasVisual({ page: providedPage, slug, showFullLink = true 
   return (
     <aside className="mini-atlas-visual" aria-label={`${page.title} visual preview`}>
       <div className="mini-atlas-copy">
-        <span>{getDiscipline(page) === 'parasitology' ? 'Visual Atlas / Parasitology' : 'Visual Atlas / Bacteriology'}</span>
+        <span>{`Visual Atlas / ${visualDisciplineLabels[getDiscipline(page)]}`}</span>
         <h3>{page.boardTitle}</h3>
         <p>{page.boardNote}</p>
       </div>
@@ -9459,20 +12093,85 @@ function getVisualCategory(page: AtlasPage) {
     return 'Trematode Eggs';
   }
 
+  if (page.visualType === 'mycology-mucorales') {
+    return 'Mucorales';
+  }
+
+  if (hyalineMoldTypes.includes(page.visualType)) {
+    return 'Hyaline Molds';
+  }
+
+  if (yeastFormTypes.includes(page.visualType)) {
+    return 'Yeast Forms';
+  }
+
+  if (dimorphicFungusTypes.includes(page.visualType)) {
+    return 'Systemic Mycoses';
+  }
+
+  if (opportunisticMoldTypes.includes(page.visualType)) {
+    return 'Opportunistic Molds';
+  }
+
+  if (dematiaceousMoldTypes.includes(page.visualType)) {
+    return 'Dematiaceous Molds';
+  }
+
+  if (page.visualType === 'mycology-dermatophyte-panel') {
+    return 'Dermatophytes';
+  }
+
+  if (viralCpeTypes.includes(page.visualType)) {
+    return 'Cytopathic Effects';
+  }
+
+  if (page.visualType === 'virology-cmv-inclusion') {
+    return 'Inclusion Patterns';
+  }
+
+  if (viralMolecularTypes.includes(page.visualType)) {
+    return 'Molecular Panels';
+  }
+
+  if (viralSerologyTypes.includes(page.visualType)) {
+    return 'Serology Patterns';
+  }
+
   return 'Biochemical tests';
 }
 
-type VisualDiscipline = 'bacteriology' | 'parasitology';
+type VisualDiscipline = 'bacteriology' | 'parasitology' | 'mycology' | 'virology';
 
 const visualDisciplineLabels: Record<VisualDiscipline, string> = {
   bacteriology: 'Bacteriology',
-  parasitology: 'Parasitology'
+  parasitology: 'Parasitology',
+  mycology: 'Mycology',
+  virology: 'Virology'
 };
 
 const visualDisciplineSlugs = Object.keys(visualDisciplineLabels) as VisualDiscipline[];
 
+const visualDisciplineSearchPlaceholders: Record<VisualDiscipline, string> = {
+  bacteriology: 'Try indole, purple, Durham, 42 C, blackening...',
+  parasitology: 'Try cyst, trophozoite, acid-fast, egg, ring form...',
+  mycology: 'Try broad hyphae, spherule, macroconidia, germ tube...',
+  virology: 'Try CPE, syncytia, inclusion, NAAT, serology...'
+};
+
 function getDiscipline(page: AtlasPage): VisualDiscipline {
-  return isParasiteVisualType(page.visualType) ? 'parasitology' : 'bacteriology';
+  if (isParasiteVisualType(page.visualType)) {
+    return 'parasitology';
+  }
+
+  if (isMycologyVisualType(page.visualType)) {
+    return 'mycology';
+  }
+
+  if (isVirologyVisualType(page.visualType)) {
+    return 'virology';
+  }
+
+  return 'bacteriology';
 }
 
 function groupPagesByFirstLetter(pages: AtlasPage[]) {
@@ -9596,7 +12295,7 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
             type="search"
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder={discipline === 'parasitology' ? 'Try cyst, trophozoite, acid-fast, egg, ring form...' : 'Try indole, purple, Durham, 42 C, blackening...'}
+            placeholder={visualDisciplineSearchPlaceholders[discipline]}
           />
         </div>
         <div className="visual-filter-chips" aria-label="Filter visual categories">
@@ -9647,6 +12346,7 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
 
 function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   const { bookmarkError, isBookmarked, toggleBookmark } = useBookmarks();
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
@@ -9679,7 +12379,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
   const handleBookmarkClick = async () => {
     if (!user) {
-      navigate('/login');
+      navigate(buildAuthRedirectPath('/login', `${location.pathname}${location.search}`));
       return;
     }
 
@@ -9741,9 +12441,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     </nav>
   );
 
-  const disciplineKicker = getDiscipline(page) === 'parasitology'
-    ? 'Visual Atlas / Parasitology'
-    : 'Visual Atlas / Bacteriology';
+  const disciplineKicker = `Visual Atlas / ${visualDisciplineLabels[getDiscipline(page)]}`;
   const isLongBoardNote = page.boardNote.length > 230;
   const boardNoteText = isLongBoardNote && !isBoardNoteExpanded
     ? `${page.boardNote.slice(0, 230).trim()}...`

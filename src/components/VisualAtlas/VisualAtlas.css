@@ -723,6 +723,30 @@
   justify-content: center;
 }
 
+.mycology-stage {
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  max-width: 650px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.virology-stage {
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  max-width: 650px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.virology-serology-stage {
+  grid-template-columns: repeat(3, minmax(170px, 1fr));
+  max-width: 860px;
+}
+
+.dermatophyte-stage {
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  max-width: 860px;
+}
+
 .lia-tube-card {
   display: grid;
   justify-items: center;

@@ -1,9 +1,10 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToolBox from '../../components/ToolBox/ToolBox';
 import { useAuth } from '../../context/AuthContext';
+import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './UnknownIsolateWorkup.css';
 
 type WorkupState = {
@@ -503,6 +504,8 @@ const buildRecommendations = (state: WorkupState): Recommendation[] => {
 
 const UnknownIsolateWorkup: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentAuthRedirect = `${location.pathname}${location.search}`;
   const { user } = useAuth();
   const [workup, setWorkup] = useState<WorkupState>(initialState);
   const [hasReviewedPath, setHasReviewedPath] = useState(false);
@@ -729,10 +732,10 @@ const UnknownIsolateWorkup: React.FC = () => {
               You have built 3 workup paths as a guest. Sign in to keep going and save your workup history and progress.
             </p>
             <div className="unknown-guest-modal-actions">
-              <button type="button" onClick={() => navigate('/login')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate('/register')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
                 Create account
               </button>
             </div>

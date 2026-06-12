@@ -8,6 +8,7 @@ import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
 import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { useLearnProgress } from '../../hooks/useLearnProgress';
+import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './Learn.css';
 
 const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -934,6 +935,7 @@ export const LearnHub: React.FC = () => {
 export const LearnArticle: React.FC = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   const topic = getLearnTopicBySlug(slug);
   const { masteredTopicSet, toggleMasteredTopic } = useMasteredTopics();
@@ -1050,7 +1052,7 @@ export const LearnArticle: React.FC = () => {
 
   const handleBookmarkClick = async () => {
     if (!user) {
-      navigate('/login');
+      navigate(buildAuthRedirectPath('/login', `${location.pathname}${location.search}`));
       return;
     }
 
@@ -1069,7 +1071,7 @@ export const LearnArticle: React.FC = () => {
 
   const handleProgressClick = async () => {
     if (!user) {
-      navigate('/login');
+      navigate(buildAuthRedirectPath('/login', `${location.pathname}${location.search}`));
       return;
     }
 

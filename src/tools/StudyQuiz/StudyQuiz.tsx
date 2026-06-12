@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   faArrowRight,
   faCheckCircle,
@@ -24,6 +24,7 @@ import type { QuestionBankArea } from '../../data/questionBank';
 import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
 import { supabase } from '../../lib/supabaseClient';
+import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './StudyQuiz.css';
 
 type QuizCategory =
@@ -412,6 +413,8 @@ type StudyQuizProps = {
 
 const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficulty, embedded = false }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentAuthRedirect = `${location.pathname}${location.search}`;
   const { user } = useAuth();
   const { quizHistoryError, saveQuizAttempt } = useQuizHistory();
 
@@ -602,7 +605,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     if (!user) {
       if (!isAutomatic) {
-        navigate('/login');
+        navigate(buildAuthRedirectPath('/login', currentAuthRedirect));
       }
       return;
     }
@@ -634,6 +637,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   }, [
     buildQuizAttemptPayload,
     currentAttemptSignature,
+    currentAuthRedirect,
     navigate,
     saveQuizAttempt,
     user,
@@ -1212,7 +1216,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
               <button
                 type="button"
                 className="study-quiz-save-gate-cta"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}
               >
                 Sign in to save
               </button>
@@ -1320,10 +1324,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
               You have completed {GUEST_QUIZ_QUESTION_LIMIT} guest questions. Sign in to keep going and save your quiz history, missed review, and progress.
             </p>
             <div className="study-quiz-guest-modal-actions">
-              <button type="button" onClick={() => navigate('/login')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate('/register')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
                 Register for free
               </button>
             </div>
@@ -1424,7 +1428,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             {!user ? (
               <div className="study-quiz-leaderboard-auth">
                 <p>Sign in to appear on the leaderboard.</p>
-                <button type="button" onClick={() => navigate('/login')}>Sign in</button>
+                <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>Sign in</button>
               </div>
             ) : leaderboardLoading ? (
               <ol className="study-quiz-leaderboard-list loading" aria-label="Loading leaderboard">

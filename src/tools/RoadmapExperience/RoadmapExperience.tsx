@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ToolBox from '../../components/ToolBox/ToolBox';
 import { useAuth } from '../../context/AuthContext';
 import { trackEvent } from '../../utils/analytics';
+import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './RoadmapExperience.css';
 
 export interface RoadmapStep {
@@ -443,6 +444,8 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
   variantClass
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentAuthRedirect = `${location.pathname}${location.search}`;
   const { user } = useAuth();
   const savedState = getInitialState(storageKey);
   const savedMode = localStorage.getItem(`${storageKey}_mode`);
@@ -1019,10 +1022,10 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
               You have reached 5 identification endpoints in this roadmap. Sign in to keep going and track your progress.
             </p>
             <div className="roadmap-guest-modal-actions">
-              <button type="button" onClick={() => navigate('/login')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate('/register')}>
+              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
                 Create account
               </button>
             </div>
