@@ -51,6 +51,18 @@ export type AtlasPage = {
   };
 };
 
+type VisualNextStep = {
+  to: string;
+  label: string;
+  description: string;
+};
+
+const GRAM_POSITIVE_ROADMAP_PATH = '/gram-positive-roadmap';
+const GRAM_NEGATIVE_ROADMAP_PATH = '/gram-negative-roadmap';
+const ANAEROBE_ROADMAP_PATH = '/obligate-anaerobe-roadmap';
+const UNKNOWN_ISOLATE_WORKUP_PATH = '/unknown-isolate-workup';
+const STUDY_QUIZ_PATH = '/study-quiz';
+
 export const atlasPages: AtlasPage[] = [
   {
     slug: 'lysine-iron-agar',
@@ -12174,6 +12186,79 @@ function getDiscipline(page: AtlasPage): VisualDiscipline {
   return 'bacteriology';
 }
 
+const gramPositiveLearnSlugs = new Set([
+  'gram-positive-cocci',
+  'staphylococcus-micrococcus',
+  'streptococcus-enterococcus',
+  'lactobacillus'
+]);
+
+const gramNegativeLearnSlugs = new Set([
+  'enterobacterales',
+  'gram-negative-rods-overview',
+  'neisseria-moraxella',
+  'nonfermenting-gram-negative-rods'
+]);
+
+const anaerobeTerms = [
+  'anaerobe',
+  'obligate anaerobe',
+  'bacteroides',
+  'clostridium',
+  'fusobacterium',
+  'prevotella',
+  'porphyromonas'
+];
+
+function getVisualNextStep(page: AtlasPage): VisualNextStep {
+  const discipline = getDiscipline(page);
+  const textForMapping = [
+    page.title,
+    page.summary,
+    page.boardTitle,
+    page.boardNote,
+    page.relatedLearnSlug ?? ''
+  ].join(' ').toLowerCase();
+
+  if (discipline === 'bacteriology') {
+    if (anaerobeTerms.some((term) => textForMapping.includes(term))) {
+      return {
+        to: ANAEROBE_ROADMAP_PATH,
+        label: 'Open the Anaerobe roadmap',
+        description: 'Use the anaerobe workflow when the pattern points toward oxygen-sensitive organisms.'
+      };
+    }
+
+    if (page.relatedLearnSlug && gramPositiveLearnSlugs.has(page.relatedLearnSlug)) {
+      return {
+        to: GRAM_POSITIVE_ROADMAP_PATH,
+        label: 'Open the Gram Positive roadmap',
+        description: 'Carry this visual clue into the Gram-positive bench workflow.'
+      };
+    }
+
+    if (page.relatedLearnSlug && gramNegativeLearnSlugs.has(page.relatedLearnSlug)) {
+      return {
+        to: GRAM_NEGATIVE_ROADMAP_PATH,
+        label: 'Open the Gram Negative roadmap',
+        description: 'Carry this visual clue into the Gram-negative bench workflow.'
+      };
+    }
+
+    return {
+      to: UNKNOWN_ISOLATE_WORKUP_PATH,
+      label: 'Build an unknown isolate path',
+      description: 'Use this reaction as one clue in a stepwise bench workup.'
+    };
+  }
+
+  return {
+    to: STUDY_QUIZ_PATH,
+    label: 'Practice related review questions',
+    description: 'Reinforce this visual pattern with mixed clinical microbiology questions.'
+  };
+}
+
 function groupPagesByFirstLetter(pages: AtlasPage[]) {
   return pages.reduce<Array<{ letter: string; pages: AtlasPage[] }>>((groups, page) => {
     const letter = page.title[0].toUpperCase();
@@ -12446,6 +12531,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const boardNoteText = isLongBoardNote && !isBoardNoteExpanded
     ? `${page.boardNote.slice(0, 230).trim()}...`
     : page.boardNote;
+  const visualNextStep = getVisualNextStep(page);
   const toggleAnchorNote = (anchorId: string) => {
     setExpandedAnchorIds((currentIds) => (
       currentIds.includes(anchorId)
@@ -12479,6 +12565,13 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
             {user ? (isVisualBookmarked ? 'Saved Bookmark' : 'Save Bookmark') : 'Sign in to Bookmark'}
           </button>
           {page.relatedLearnSlug && <Link to={`/learn/${page.relatedLearnSlug}`}>Read concept page</Link>}
+        </div>
+        <div className="visual-next-step">
+          <div>
+            <span>Next step</span>
+            <p>{visualNextStep.description}</p>
+          </div>
+          <Link to={visualNextStep.to}>{visualNextStep.label}</Link>
         </div>
         {(bookmarkStatusMessage || bookmarkError) && (
           <p className={`visual-bookmark-status ${bookmarkError ? 'error' : ''}`} role={bookmarkError ? 'alert' : 'status'}>

@@ -147,6 +147,57 @@
   color: #8a5b0a;
 }
 
+.visual-next-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  max-width: 760px;
+  margin-top: 0.85rem;
+  padding: 0.78rem 0.85rem;
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(251, 250, 247, 0.94)),
+    var(--va-paper);
+}
+
+.visual-next-step span {
+  display: inline-flex;
+  color: var(--va-primary);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.visual-next-step p {
+  max-width: none;
+  margin: 0.16rem 0 0;
+  color: var(--va-muted);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.visual-next-step a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 2.45rem;
+  padding: 0.62rem 0.82rem;
+  border: 1px solid var(--va-border-strong);
+  border-radius: var(--va-radius);
+  background: var(--va-primary);
+  color: #ffffff;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.visual-next-step a:hover,
+.visual-next-step a:focus-visible {
+  background: var(--va-primary-strong);
+}
+
 .visual-bookmark-status {
   margin: 0.62rem 0 0 !important;
   color: var(--va-primary);
@@ -1019,6 +1070,23 @@ body.dark-mode .visual-hero-actions .visual-bookmark-toggle.saved {
   color: #f8d88a;
 }
 
+body.dark-mode .visual-next-step {
+  border-color: rgba(94, 234, 212, 0.16);
+  background:
+    linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.78)),
+    #17212c;
+}
+
+body.dark-mode .visual-next-step a {
+  background: #245c69;
+  color: #f8fafc;
+}
+
+body.dark-mode .visual-next-step a:hover,
+body.dark-mode .visual-next-step a:focus-visible {
+  background: #2f7888;
+}
+
 body.dark-mode .visual-bookmark-status {
   color: #5eead4;
 }
@@ -1132,6 +1200,15 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
   .visual-atlas-hero {
     padding: 1.2rem;
     margin-bottom: 0.75rem;
+  }
+
+  .visual-next-step {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .visual-next-step a {
+    width: 100%;
   }
 
   .visual-sequence {
