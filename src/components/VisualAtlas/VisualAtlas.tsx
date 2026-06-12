@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -12437,6 +12437,9 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
   const [isBoardNoteExpanded, setIsBoardNoteExpanded] = useState(false);
   const [expandedAnchorIds, setExpandedAnchorIds] = useState<string[]>([]);
+  const visualBoardRef = useRef<HTMLElement>(null);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
   const isVisualBookmarked = isBookmarked('visual', page.slug);
   const visualPosition = useMemo(() => {
     const pageDiscipline = getDiscipline(page);
@@ -12460,6 +12463,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       visual_title: page.title,
       visual_type: page.visualType
     });
+    visualBoardRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
   }, [page.slug, page.title, page.visualType]);
 
   const handleBookmarkClick = async () => {
@@ -12540,8 +12544,25 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     ));
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0 && visualPosition.nextPage) {
+        navigate(`/visuals/${visualPosition.nextPage.slug}`);
+      } else if (deltaX > 0 && visualPosition.previousPage) {
+        navigate(`/visuals/${visualPosition.previousPage.slug}`);
+      }
+    }
+  };
+
   return (
-    <div className="visual-atlas-shell">
+    <div className="visual-atlas-shell" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <header className="visual-atlas-hero">
         <span className="visual-kicker">{disciplineKicker}</span>
         <h1>{page.title}</h1>
@@ -12582,7 +12603,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
 
       {renderVisualSequence('top')}
 
-      <section className="visual-board" aria-labelledby="visual-board-title">
+      <section ref={visualBoardRef} className="visual-board" aria-labelledby="visual-board-title">
         <div className="visual-board-heading">
           <div>
             <span className="visual-kicker">Bench card visual</span>

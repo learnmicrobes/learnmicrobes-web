@@ -357,6 +357,7 @@
 
 .visual-discipline-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 }
@@ -1303,6 +1304,26 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
 
   .parasite-stage {
     grid-template-columns: minmax(180px, 1fr);
+  }
+
+  .mycology-stage {
+    grid-template-columns: repeat(2, 150px);
+    max-width: none;
+  }
+
+  .virology-stage {
+    grid-template-columns: repeat(2, 150px);
+    max-width: none;
+  }
+
+  .virology-serology-stage {
+    grid-template-columns: repeat(3, 120px);
+    max-width: none;
+  }
+
+  .dermatophyte-stage {
+    grid-template-columns: repeat(3, 130px);
+    max-width: none;
   }
 
   .visual-table {
