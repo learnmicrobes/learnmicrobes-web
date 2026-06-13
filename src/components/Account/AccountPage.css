@@ -436,6 +436,12 @@
   transform: translateY(-1px);
 }
 
+.account-security-btn-secondary {
+  background: #fbfaf7;
+  color: var(--muted-color);
+  box-shadow: none;
+}
+
 .account-security-btn:disabled {
   cursor: wait;
   opacity: 0.72;

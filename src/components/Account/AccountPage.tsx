@@ -127,6 +127,7 @@ const AccountPage: React.FC = () => {
   const [isPasswordRecoveryMode, setIsPasswordRecoveryMode] = useState(() => (
     hasPasswordRecoveryUrl() || sessionStorage.getItem(passwordRecoveryStorageKey) === 'active'
   ));
+  const [isPasswordChangeVisible, setIsPasswordChangeVisible] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
@@ -389,7 +390,7 @@ const AccountPage: React.FC = () => {
     setIsSendingPasswordReset(false);
 
     if (error) {
-      setErrorMessage('Password reset could not be started. Try again in a moment.');
+      setErrorMessage(`Password reset could not be started: ${error.message}`);
       scrollToAccountFeedback();
       return;
     }
@@ -435,6 +436,7 @@ const AccountPage: React.FC = () => {
 
     sessionStorage.removeItem(passwordRecoveryStorageKey);
     setIsPasswordRecoveryMode(false);
+    setIsPasswordChangeVisible(false);
     setNewPassword('');
     setConfirmPassword('');
     setStatusMessage('Password updated. You can keep using Learn Microbes with this account.');
@@ -501,7 +503,7 @@ const AccountPage: React.FC = () => {
         )}
       </div>
 
-      {isPasswordRecoveryMode && (
+      {(isPasswordRecoveryMode || isPasswordChangeVisible) && (
         <section className="account-card account-password-recovery" aria-labelledby="account-password-recovery-title">
           <div className="account-card-header">
             <span className="account-icon-tile" aria-hidden="true">
@@ -885,12 +887,30 @@ const AccountPage: React.FC = () => {
               </span>
               <div>
                 <strong>Account security</strong>
-                <p>Use email recovery to change your password. Google sign-in security is managed through Google.</p>
+                <p>Change your password while signed in, or send a recovery link if you need to reset by email.</p>
               </div>
             </div>
-            <button type="button" className="account-security-btn" onClick={handlePasswordResetEmail} disabled={isSendingPasswordReset}>
+            <button
+              type="button"
+              className="account-security-btn"
+              onClick={() => {
+                setIsPasswordChangeVisible((visible) => !visible);
+                setStatusMessage('');
+                setErrorMessage('');
+              }}
+              disabled={isUpdatingPassword}
+            >
               <FontAwesomeIcon icon={faKey} />
-              {isSendingPasswordReset ? 'Sending link...' : 'Send password reset link'}
+              {isPasswordChangeVisible ? 'Hide password form' : 'Change password'}
+            </button>
+            <button
+              type="button"
+              className="account-security-btn account-security-btn-secondary"
+              onClick={handlePasswordResetEmail}
+              disabled={isSendingPasswordReset}
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+              {isSendingPasswordReset ? 'Sending link...' : 'Email recovery link'}
             </button>
           </div>
 
