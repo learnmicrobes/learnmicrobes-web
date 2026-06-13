@@ -1475,7 +1475,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                           </small>
                         )}
                       </strong>
-                      <em>{entry.score.toLocaleString()}</em>
+                      <em className="study-quiz-leaderboard-score" aria-label={`Score ${entry.score.toLocaleString()}`}>
+                        <span>Score</span>
+                        {entry.score.toLocaleString()}
+                      </em>
                     </li>
                   ))}
                 </ol>
@@ -1498,7 +1501,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                         </small>
                       )}
                     </strong>
-                    <em>{leaderboardUserRank.score.toLocaleString()}</em>
+                    <em className="study-quiz-leaderboard-score" aria-label={`Score ${leaderboardUserRank.score.toLocaleString()}`}>
+                      <span>Score</span>
+                      {leaderboardUserRank.score.toLocaleString()}
+                    </em>
                   </div>
                 )}
               </>
