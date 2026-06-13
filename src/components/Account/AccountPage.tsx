@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useMemo, useState } from 'react';
+import React, { FormEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -40,6 +40,8 @@ type ProfileRow = {
 };
 
 const defaultLearningGoal = 'Build my clinical microbiology confidence';
+const passwordRecoveryStorageKey = 'learnmicrobes_password_recovery';
+const passwordRequirementMessage = 'Use at least 12 characters with uppercase, lowercase, a number, and a special character.';
 
 const profileSelectFields = 'id, email, display_name, learning_goal, learner_role, country, hardest_topic, email_update_opt_in, last_active_at, created_at, updated_at';
 
@@ -63,6 +65,26 @@ const hardestTopicOptions = [
   'Bench workflow',
   'Other'
 ];
+
+const getPasswordRequirements = (value: string) => [
+  { label: 'At least 12 characters', met: value.length >= 12 },
+  { label: 'Uppercase letter', met: /[A-Z]/.test(value) },
+  { label: 'Lowercase letter', met: /[a-z]/.test(value) },
+  { label: 'Number', met: /\d/.test(value) },
+  { label: 'Special character', met: /[^A-Za-z0-9]/.test(value) }
+];
+
+const isStrongPassword = (value: string) => (
+  getPasswordRequirements(value).every((requirement) => requirement.met)
+);
+
+const hasPasswordRecoveryUrl = () => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return window.location.hash.includes('type=recovery') || window.location.search.includes('type=recovery');
+};
 
 const getFriendlyDate = (value: string | null | undefined) => {
   if (!value) {
@@ -101,8 +123,15 @@ const AccountPage: React.FC = () => {
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [isSendingPasswordReset, setIsSendingPasswordReset] = useState(false);
+  const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+  const [isPasswordRecoveryMode, setIsPasswordRecoveryMode] = useState(() => (
+    hasPasswordRecoveryUrl() || sessionStorage.getItem(passwordRecoveryStorageKey) === 'active'
+  ));
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [statusMessage, setStatusMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const accountFeedbackRef = useRef<HTMLDivElement>(null);
   const {
     bookmarks,
     bookmarkError,
@@ -142,6 +171,16 @@ const AccountPage: React.FC = () => {
   const accountInitial = useMemo(() => (
     (displayName || user?.email || 'L').trim().charAt(0).toUpperCase()
   ), [displayName, user?.email]);
+
+  const newPasswordRequirements = useMemo(() => (
+    getPasswordRequirements(newPassword)
+  ), [newPassword]);
+
+  const scrollToAccountFeedback = () => {
+    window.requestAnimationFrame(() => {
+      accountFeedbackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  };
 
   const nextStudyActions = useMemo(() => {
     const resumeProgressRow = inProgressRows[0];
@@ -252,6 +291,34 @@ const AccountPage: React.FC = () => {
     loadProfile();
   }, [isAuthReady, navigate, user]);
 
+  useEffect(() => {
+    if (!supabase) {
+      return undefined;
+    }
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        sessionStorage.setItem(passwordRecoveryStorageKey, 'active');
+        setIsPasswordRecoveryMode(true);
+        setStatusMessage('Choose a new password below to finish account recovery.');
+        setErrorMessage('');
+        scrollToAccountFeedback();
+      }
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isAuthReady && user && isPasswordRecoveryMode) {
+      setStatusMessage('Choose a new password below to finish account recovery.');
+      setErrorMessage('');
+      scrollToAccountFeedback();
+    }
+  }, [isAuthReady, isPasswordRecoveryMode, user]);
+
   const handleSaveProfile = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage('');
@@ -284,11 +351,13 @@ const AccountPage: React.FC = () => {
 
     if (error) {
       setErrorMessage(error.message);
+      scrollToAccountFeedback();
       return;
     }
 
     setProfile(data as ProfileRow);
     setStatusMessage('Profile saved.');
+    scrollToAccountFeedback();
     trackEvent('profile_updated', {
       learner_role: learnerRole || 'not_set',
       hardest_topic: hardestTopic || 'not_set',
@@ -314,17 +383,63 @@ const AccountPage: React.FC = () => {
     setIsSendingPasswordReset(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
-      redirectTo: `${window.location.origin}/login`
+      redirectTo: `${window.location.origin}/account`
     });
 
     setIsSendingPasswordReset(false);
 
     if (error) {
       setErrorMessage('Password reset could not be started. Try again in a moment.');
+      scrollToAccountFeedback();
       return;
     }
 
     setStatusMessage('Password reset email sent. Open the link from your email to choose a new password.');
+    scrollToAccountFeedback();
+  };
+
+  const handleUpdatePassword = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrorMessage('');
+    setStatusMessage('');
+
+    if (!supabase || !user) {
+      setErrorMessage('Open the reset link again, then enter your new password.');
+      scrollToAccountFeedback();
+      return;
+    }
+
+    if (!isStrongPassword(newPassword)) {
+      setErrorMessage(passwordRequirementMessage);
+      scrollToAccountFeedback();
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setErrorMessage('The two password fields do not match yet.');
+      scrollToAccountFeedback();
+      return;
+    }
+
+    setIsUpdatingPassword(true);
+
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+
+    setIsUpdatingPassword(false);
+
+    if (error) {
+      setErrorMessage(error.message);
+      scrollToAccountFeedback();
+      return;
+    }
+
+    sessionStorage.removeItem(passwordRecoveryStorageKey);
+    setIsPasswordRecoveryMode(false);
+    setNewPassword('');
+    setConfirmPassword('');
+    setStatusMessage('Password updated. You can keep using Learn Microbes with this account.');
+    window.history.replaceState(null, document.title, window.location.pathname);
+    scrollToAccountFeedback();
   };
 
   const handleRemoveBookmark = async (bookmark: typeof bookmarks[number]) => {
@@ -338,6 +453,7 @@ const AccountPage: React.FC = () => {
 
     if (!result.ok) {
       setErrorMessage(result.message);
+      scrollToAccountFeedback();
     }
   };
 
@@ -369,18 +485,77 @@ const AccountPage: React.FC = () => {
         </div>
       </section>
 
-      {errorMessage && (
-        <div className="account-message error" role="alert">
-          <FontAwesomeIcon icon={faDatabase} />
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      <div className="account-feedback" ref={accountFeedbackRef}>
+        {errorMessage && (
+          <div className="account-message error" role="alert">
+            <FontAwesomeIcon icon={faDatabase} />
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
-      {statusMessage && (
-        <div className="account-message success" role="status">
-          <FontAwesomeIcon icon={faFloppyDisk} />
-          <span>{statusMessage}</span>
-        </div>
+        {statusMessage && (
+          <div className="account-message success" role="status">
+            <FontAwesomeIcon icon={faFloppyDisk} />
+            <span>{statusMessage}</span>
+          </div>
+        )}
+      </div>
+
+      {isPasswordRecoveryMode && (
+        <section className="account-card account-password-recovery" aria-labelledby="account-password-recovery-title">
+          <div className="account-card-header">
+            <span className="account-icon-tile" aria-hidden="true">
+              <FontAwesomeIcon icon={faKey} />
+            </span>
+            <div>
+              <h2 id="account-password-recovery-title">Choose a new password</h2>
+              <p>Enter and confirm a new password for this Learn Microbes account.</p>
+            </div>
+          </div>
+
+          <form className="account-password-form" onSubmit={handleUpdatePassword}>
+            <label>
+              New password
+              <input
+                type="password"
+                value={newPassword}
+                onChange={(event) => setNewPassword(event.target.value)}
+                autoComplete="new-password"
+                placeholder="12+ characters with symbols"
+                required
+              />
+            </label>
+
+            <label>
+              Confirm new password
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+                autoComplete="new-password"
+                placeholder="Re-enter the new password"
+                required
+              />
+            </label>
+
+            <div className="account-password-requirements" aria-live="polite">
+              <span>Password must include:</span>
+              <ul>
+                {newPasswordRequirements.map((requirement) => (
+                  <li className={requirement.met ? 'met' : ''} key={requirement.label}>
+                    <span aria-hidden="true">{requirement.met ? 'Met' : 'Needed'}</span>
+                    {requirement.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button type="submit" className="account-save-btn" disabled={isUpdatingPassword}>
+              <FontAwesomeIcon icon={faKey} />
+              {isUpdatingPassword ? 'Updating...' : 'Update password'}
+            </button>
+          </form>
+        </section>
       )}
 
       <section className="account-grid" aria-label="Account profile details">

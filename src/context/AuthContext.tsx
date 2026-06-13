@@ -45,7 +45,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setIsAuthReady(true);
     });
 
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, nextSession) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        sessionStorage.setItem('learnmicrobes_password_recovery', 'active');
+      }
+
       setSession(nextSession);
       setIsAuthReady(true);
     });

@@ -90,6 +90,10 @@
   min-width: 0;
 }
 
+.account-feedback:empty {
+  display: none;
+}
+
 .account-card {
   display: grid;
   gap: 1rem;
@@ -131,7 +135,8 @@
   grid-template-columns: 1fr;
 }
 
-.account-form label {
+.account-form label,
+.account-password-form label {
   display: grid;
   gap: 0.36rem;
   padding: 0;
@@ -143,7 +148,8 @@
 
 .account-form input,
 .account-form textarea,
-.account-form select {
+.account-form select,
+.account-password-form input {
   width: 100%;
   padding: 0.72rem 0.85rem;
   border: 1px solid rgba(36, 92, 105, 0.18);
@@ -153,6 +159,10 @@
   font: inherit;
   font-weight: 650;
   resize: vertical;
+}
+
+.account-password-form input {
+  min-height: 2.8rem;
 }
 
 .account-form select {
@@ -174,7 +184,8 @@
 
 .account-form input:focus,
 .account-form textarea:focus,
-.account-form select:focus {
+.account-form select:focus,
+.account-password-form input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(36, 92, 105, 0.14);
@@ -428,6 +439,78 @@
 .account-security-btn:disabled {
   cursor: wait;
   opacity: 0.72;
+}
+
+.account-password-recovery {
+  margin-bottom: 1rem;
+  border-color: rgba(36, 92, 105, 0.24);
+  background:
+    linear-gradient(135deg, rgba(36, 92, 105, 0.06), rgba(200, 162, 77, 0.08)),
+    #ffffff;
+}
+
+.account-password-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.account-password-requirements {
+  display: grid;
+  gap: 0.52rem;
+  padding: 0.78rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.account-password-requirements > span {
+  color: var(--primary-color);
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-password-requirements ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.38rem 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.account-password-requirements li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted-color);
+  font-size: 0.82rem;
+  font-weight: 760;
+  line-height: 1.35;
+}
+
+.account-password-requirements li span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.4rem;
+  padding: 0.16rem 0.34rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 999px;
+  color: var(--muted-color);
+  font-size: 0.66rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.account-password-requirements li.met {
+  color: var(--primary-color);
+}
+
+.account-password-requirements li.met span {
+  border-color: rgba(79, 143, 103, 0.3);
+  background: rgba(79, 143, 103, 0.12);
+  color: #2d6b49;
 }
 
 .account-bookmarks {
@@ -783,6 +866,7 @@ body.dark-mode .account-summary dt {
 body.dark-mode .account-form input,
 body.dark-mode .account-form textarea,
 body.dark-mode .account-form select,
+body.dark-mode .account-password-form input,
 body.dark-mode .account-signout-btn,
 body.dark-mode .account-security-panel,
 body.dark-mode .account-security-btn,
@@ -906,6 +990,37 @@ body.dark-mode .account-next-panel p {
   color: #f8d88a;
 }
 
+body.dark-mode .account-password-recovery {
+  background:
+    linear-gradient(135deg, rgba(79, 209, 197, 0.08), rgba(229, 199, 118, 0.08)),
+    #22313f;
+  border-color: rgba(79, 209, 197, 0.18);
+}
+
+body.dark-mode .account-password-requirements {
+  background: #1b2733;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-password-requirements li,
+body.dark-mode .account-password-requirements li span {
+  color: #cbd5df;
+}
+
+body.dark-mode .account-password-requirements li span {
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .account-password-requirements li.met,
+body.dark-mode .account-password-requirements li.met span {
+  color: #5eead4;
+}
+
+body.dark-mode .account-password-requirements li.met span {
+  background: rgba(79, 209, 197, 0.1);
+  border-color: rgba(79, 209, 197, 0.22);
+}
+
 body.dark-mode .account-message.error {
   background: #3a2723;
   color: #ffd2c7;
@@ -958,6 +1073,10 @@ body.dark-mode .account-message.success {
   }
 
   .account-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-password-requirements ul {
     grid-template-columns: 1fr;
   }
 }

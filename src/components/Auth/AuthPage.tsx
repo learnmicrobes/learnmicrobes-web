@@ -55,6 +55,15 @@ const EmailSentPanel: React.FC<EmailSentPanelProps> = ({ email, onTryAgain, onGo
 const PASSWORD_REQUIREMENT_MESSAGE = 'Use at least 12 characters with uppercase, lowercase, a number, and a special character.';
 const GENERIC_SIGN_IN_ERROR = 'Invalid login credentials. Check your email and password, then try again.';
 const GENERIC_RESET_MESSAGE = 'If an account exists for that email, we will send a password reset link.';
+const passwordRecoveryStorageKey = 'learnmicrobes_password_recovery';
+
+const hasPasswordRecoveryUrl = () => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return window.location.hash.includes('type=recovery') || window.location.search.includes('type=recovery');
+};
 
 const getPasswordRequirements = (value: string) => [
   { label: 'At least 12 characters', met: value.length >= 12 },
@@ -72,7 +81,13 @@ const AuthPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, isAuthReady } = useAuth();
-  const [mode, setMode] = useState<AuthMode>(() => (location.pathname === '/register' ? 'sign-up' : 'sign-in'));
+  const [mode, setMode] = useState<AuthMode>(() => (
+    hasPasswordRecoveryUrl() || sessionStorage.getItem(passwordRecoveryStorageKey) === 'active'
+      ? 'update-password'
+      : location.pathname === '/register'
+        ? 'sign-up'
+        : 'sign-in'
+  ));
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -86,8 +101,14 @@ const AuthPage: React.FC = () => {
   const isCreatingAccount = mode === 'sign-up';
   const redirectTo = getSafeAuthRedirectPath(new URLSearchParams(location.search).get('redirectTo'));
   const postAuthPath = redirectTo ?? '/account';
-  const authTitle = isCreatingAccount ? 'Create your Learn Microbes account.' : 'Sign in to your study account.';
-  const authBody = isCreatingAccount
+  const authTitle = mode === 'update-password'
+    ? 'Choose a new password.'
+    : isCreatingAccount
+      ? 'Create your Learn Microbes account.'
+      : 'Sign in to your study account.';
+  const authBody = mode === 'update-password'
+    ? 'Enter a new password to finish account recovery and return to your study account.'
+    : isCreatingAccount
     ? 'Save progress, bookmarks, quiz history, and profile details as you study clinical microbiology.'
     : 'Access your saved progress, bookmarks, quiz history, and profile details.';
 
@@ -124,6 +145,7 @@ const AuthPage: React.FC = () => {
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY') {
+        sessionStorage.setItem(passwordRecoveryStorageKey, 'active');
         setMode('update-password');
         setPassword('');
         setErrorMessage('');
@@ -172,6 +194,7 @@ const AuthPage: React.FC = () => {
         return;
       }
 
+      sessionStorage.removeItem(passwordRecoveryStorageKey);
       setStatusMessage('Password updated. Redirecting to your account.');
       setPassword('');
       navigate('/account', { replace: true });
@@ -274,7 +297,7 @@ const AuthPage: React.FC = () => {
     setIsResettingPassword(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
-      redirectTo: `${window.location.origin}/login`
+      redirectTo: `${window.location.origin}/account`
     });
 
     setIsResettingPassword(false);
