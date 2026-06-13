@@ -69,3 +69,23 @@ Use a timestamp prefix so migrations run in order. The description should be sho
 - `anon` role has no table access (all data is behind RLS).
 - The leaderboard function is intentionally callable by `anon` — it powers the public leaderboard in Quiz Lab.
 - Trigger functions are not callable via the PostgREST API (EXECUTE revoked from `anon` and `authenticated`).
+
+## Current frontend use
+
+The React app currently uses these tables/functions for account features:
+
+- `profiles`: account page profile fields and beta learner metadata.
+- `bookmarks`: saved Learn pages and Visual Atlas cards.
+- `learn_progress`: started/completed Learn topic tracking.
+- `quiz_attempts`: Study Quiz history, weak areas, and leaderboard inputs.
+- `get_study_quiz_leaderboard(row_limit)`: public all-time leaderboard RPC.
+
+## Backend expansion priority
+
+Before adding new backend-backed features, prioritize a security and migration review:
+
+- Confirm RLS still limits authenticated users to their own rows.
+- Confirm `anon` has no direct table access.
+- Review every callable function before granting `anon` or `authenticated` EXECUTE.
+- Keep production migrations immutable; use new forward migrations for fixes.
+- Never place service-role keys or other secrets in frontend code, `.env.example`, or committed docs.

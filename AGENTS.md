@@ -10,7 +10,7 @@ Read this entire file before making any changes to the codebase.
 Learn Microbes is a bench-first clinical microbiology learning platform for:
 
 - MedTech / MLS students
-- ASCP reviewees (M(ASCP), SM(ASCP))
+- ASCP / AMT reviewees (M(ASCP), SM(ASCP), and related microbiology certification review)
 - New bench learners
 - Working medical technologists
 
@@ -54,7 +54,7 @@ Usage: `const { user } = useAuth()` — guest state is `!user` (null when not si
 
 - **Home dashboard** — hero search, daily riddle, featured bench card, start-here paths
 - **Learn** — topic pages for clinical microbiology organisms and concepts (`src/data/learnTopics.ts`)
-- **Visual Atlas** — original bench cards (bacteriology + parasitology tabs) with SVG renders, DIVR readouts, and comparison panels (`src/components/VisualAtlas/`)
+- **Visual Atlas** — original bench cards across bacteriology, parasitology, mycology, and virology-style study cards with SVG renders, DIVR readouts where present, and comparison panels (`src/components/VisualAtlas/`)
 - **Tools**
   - Gram Positive Roadmap
   - Gram Negative Roadmap
@@ -65,6 +65,7 @@ Usage: `const { user } = useAuth()` — guest state is `!user` (null when not si
   - Special Pathogens Hub
   - Do Not Routine Culture
 - **Practice** — Study Quiz (guest-gated at 15 questions), ASCP review hub
+- **Account features** — Supabase-backed profiles, bookmarks, Learn progress, quiz history, and weak-area review
 - **Search** — global search across all content
 - **Auth** — sign in / create account / Google OAuth via Supabase
 - **Guest soft-gating** — roadmaps (5 endpoints per roadmap), Unknown Isolate Workup (3 reviewed paths), Study Quiz (15 questions); gate modals follow the pattern in `StudyQuiz.tsx`
@@ -173,6 +174,7 @@ Never imply official ASCP affiliation, guaranteed exam outcomes, medical advice,
   - Inner `<section>` with `onClick={(e) => e.stopPropagation()}`
   - CSS variables scoped on the modal element to match the StudyQuiz purple palette
 - localStorage keys must use the prefix `learnmicrobes_`
+- Existing auth remember-me storage currently uses legacy `lm_` keys (`lm_remember_me`, `lm_session_marker`); do not rename them casually without a migration-safe plan.
 - Do not store sensitive data in localStorage
 
 ### Git and deployment
@@ -248,14 +250,14 @@ When adding new features, follow these existing patterns:
 | New Visual Atlas bench card | `VisualAtlas.tsx` — add to `atlasPages`, extend `visualType` union, add SVG render function |
 | New Learn topic | `learnTopics` data structure in `src/data/learnTopics.ts` |
 | New guest gate | `StudyQuiz.tsx` modal pattern + localStorage counter with `learnmicrobes_` prefix |
-| New route | Register in `src/Routes.tsx`; add SEO metadata entry in `App.tsx` `routeMetadata` |
+| New route | Register in `src/Routes.tsx`; add SEO metadata entry in `App.tsx` `routeMetadata`; check dashboard search and global search if the route should be discoverable |
 | New CSS component | Scope to component class, use existing CSS variables, include dark mode overrides |
 
-**Planned but not yet built — do not implement without explicit instruction:**
+**Planned / early feature surfaces — do not expand without explicit instruction:**
 
 - Flashcards
 - Case Study Simulator (full implementation)
-- Detailed Certification Study Paths
+- Detailed Certification Study Paths beyond the current early route
 - Backend API / server-side features
 - Push notifications
 - Native mobile app

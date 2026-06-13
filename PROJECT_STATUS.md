@@ -1,424 +1,426 @@
 # PROJECT STATUS
 
+Last refreshed: 2026-06-13
+
 ## 1. Project Purpose and Current Website Scope
 
-`Learn Microbes` is a student-first educational web app for microbiology learners, especially students and new medical technologists. The current site is positioned as a `learning companion + bench reference`, not just a static lookup tool.
+`Learn Microbes` is a bench-first clinical microbiology learning platform for MedTech/MLS students, ASCP/AMT reviewees, new bench learners, and working medical technologists.
 
-Current scope:
+The product is a learning companion and bench reference, not a diagnostic system. Every feature should reinforce the core clinical microbiology reasoning flow:
 
-- Home page with onboarding-focused hero and tool entry cards
-- `Guides` library for core microbiology foundations, bench workflows, and interpretation shortcuts
-- Interactive diagnostic tools:
-  - Enterics biochemical calculator
-  - Gram-positive roadmap
-  - Gram-negative roadmap
-  - Obligate anaerobe roadmap
-- Biochemical test reference pages
-- Global search across guides, tests, and roadmap content
-- About page
-- Branding assets, favicon, responsive nav, and theme toggle
+`specimen/source -> Gram stain -> morphology -> media -> key tests -> safest next step`
 
-The product direction is currently centered on helping learners understand:
+The learner-facing questions remain:
 
-- what they are looking at
-- why it matters
-- what to do next
+- What am I looking at?
+- Why does it matter?
+- What do I do next?
 
-ASCP/premium prep is intentionally deferred for later.
+The site must stay educational and humble: it is not medical advice, not a replacement for laboratory SOPs, and not official ASCP/AMT guidance.
 
 ## 2. Tech Stack, Framework, and Important Libraries
 
 - Framework: `React 18`
 - Language: `TypeScript`
-- App scaffold/build: `react-scripts` / Create React App
-- Routing: `react-router-dom`
+- App scaffold/build: Create React App / `react-scripts`
+- Routing: `react-router-dom` v6
 - Icons:
   - `@fortawesome/react-fontawesome`
   - `@fortawesome/free-solid-svg-icons`
   - external Font Awesome stylesheet in `public/index.html`
-- Sanitization dependency present: `dompurify`
-
-Package info from `package.json`:
-
-- App/package name: `biochemical-calculator`
-- Scripts:
-  - `npm start`
+- Auth/database: Supabase
+  - email/password auth
+  - Google OAuth
+  - Postgres tables for profiles, bookmarks, Learn progress, and quiz attempts
+- Sanitization: `dompurify`
+  - currently used in the enterics biochemical calculator where generated HTML is rendered
+  - must be used for any future user-supplied HTML
+- Deployment: GitHub Pages via `.github/workflows/main.yml`
+  - push to `main`
+  - Node 20
+  - `npm install`
   - `npm run build`
-  - `npm test`
-  - `npm run eject`
-- No `lint` script is currently defined
+  - deploy `./build` through GitHub Pages
+
+Package scripts:
+
+- `npm start`
+- `npm run build`
+- `npm test`
+- `npm run eject`
+
+No `lint` script is currently defined.
 
 ## 3. Current Folder/File Structure and Key File Roles
 
 Project root:
 
-- `package.json`: scripts and dependencies
-- `public/`: static assets, favicon/logo, HTML shell, manifest
-- `src/`: application code
-- `build/`: last production build output
-- `PROJECT_STATUS.md`: this handoff file
+- `AGENTS.md`: primary coding-agent instruction file and product philosophy.
+- `PROJECT_STATUS.md`: this handoff/status file.
+- `package.json`: scripts and dependencies.
+- `.github/workflows/main.yml`: GitHub Pages deployment workflow.
+- `public/`: static assets, HTML shell, manifest, sitemap, service worker, favicon/logo assets.
+- `src/`: application code.
+- `supabase/`: SQL migrations and database notes.
+- `build/`: generated production build output. Do not edit by hand.
+- Root extraction/helper files such as `extract_pdf_*.js`, `extracted-*.txt`, and related scripts are content-work artifacts. Do not delete them without explaining why first.
 
 Important `src/` files:
 
 - `src/index.tsx`
   - app bootstrap
+  - wraps routes in `BrowserRouter` and `AuthProvider`
+  - registers `public/sw.js`
 - `src/Routes.tsx`
   - central route definitions
-  - mounts `App` as shell and nests tool/guide pages inside it
+  - mounts `App` as the shell and nests all feature pages inside it
 - `src/App.tsx`
-  - primary app shell
-  - top nav
-  - hamburger menu
-  - settings menu
-  - dark mode persistence
-  - home page hero and tool cards
-  - footer and scroll-to-top button
+  - primary shell, nav, home dashboard, route-aware SEO metadata, dashboard search, daily riddle, featured bench card, auth menu, dark mode, footer
 - `src/App.css`
-  - main app shell, nav, hero, card, footer, and some legacy styling
+  - large app-shell stylesheet with homepage/nav/footer styling and many dark-mode rules
 - `src/styles.css`
-  - global styles and current shared color variables
-  - starting point for the newer `Lab Notebook` palette
-
-Important `src/components/` areas:
-
-- `src/components/Guides/MicroBasics.tsx`
-  - the current guide library
-  - defines guide data, deep-link handling, visuals, and next-step flow
-- `src/components/Guides/MicroBasics.css`
-  - guide library layout, cards, sidebar, diagrams, next-step styling
-- `src/components/Search/GlobalSearch.tsx`
-  - manual search index across tests, guides, and roadmap entries
-- `src/components/Search/GlobalSearch.css`
-  - search UI styling
-- `src/components/ToolBox/ToolBox.css`
-  - shared toolbox shell for inner pages
-- `src/components/About.tsx`
-  - about page
-- `src/components/NotFound.tsx`
-  - fallback route
-
-Important `src/tools/` areas:
-
-- `src/tools/BioCalculator/`
-  - Enterics biochemical calculator
-- `src/tools/BiochemicalTests/`
-  - biochemical test reference system
-  - includes `biochemicalData`
-- `src/tools/GramPositiveRoadmap/`
-  - Gram-positive roadmap logic/data
-- `src/tools/GramNegativeRoadmap/`
-  - Gram-negative roadmap logic/data
-- `src/tools/ObligateAnaerobeRoadmap/`
-  - obligate anaerobe roadmap logic/data
-
-Important `public/` files:
-
-- `public/index.html`
-  - HTML shell
-  - favicon/logo/meta tags
-- `public/manifest.json`
-  - manifest
-- `public/brand-mark.svg`
-  - current brand mark
-- `public/logo-full.svg`
-  - current wordmark logo
-- `public/favicon.svg`
-  - current favicon
-
-## 4. Features Already Completed
-
-### Navigation and shell
-
-- Responsive top navigation
-- Hamburger menu for smaller screens
-- Dedicated `Settings` button in nav
-- Theme toggle moved into settings dropdown
-- Scroll-to-top button
-- Footer with social/contact links
-
-### Branding
-
-- Temporary branded SVG logo/brand mark added
-- SVG favicon wired into app
-- Navbar branding replaced with project-specific assets
-
-### Home page / onboarding
-
-- Homepage reframed around student-first learning
-- Dedicated `Start Here: Intro to Microbiology` home card
-- Hero quick links added
-- Separate overly large learning-path block removed
-- Compact `How to start` strip embedded into hero
-
-### Guides system
-
-`Guides` was expanded from a thin starter page into a real guide library with grouped navigation and deep links.
-
-Current guide categories:
-
-- `Core Basics`
-- `Bench Workflows`
-- `Interpretation`
-
-Current guide modules in `MicroBasics.tsx` include:
-
-- `intro-to-microbiology`
-- `microbial-taxonomy`
-- `bacterial-cell-structure`
-- `host-microorganism-interactions`
-- `laboratory-safety-basics`
-- `specimens`
-- `gram-stain`
-- `media`
-- `atmosphere`
-- `blood-culture`
-- `urine-culture`
-- `gram-positive-id`
-- `enterics`
-
-### Educational visuals
+  - global variables and older global styles
+  - includes the Lab Notebook primary color foundation
+- `src/lib/supabaseClient.ts`
+  - reads `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY`
+  - exports nullable Supabase client and configuration flag
+- `src/context/AuthContext.tsx`
+  - central auth context
+  - `const { user } = useAuth()` is the guest/auth split; guest is `!user`
+- `src/utils/authRedirect.ts`
+  - safe redirect helpers for auth gates
+- `src/utils/analytics.ts`
+  - thin wrapper around `window.gtag`
+
+Important data/content files:
+
+- `src/data/learnTopics.ts`
+  - main Learn article corpus
+- `src/data/learnExpansionTopics.ts`
+  - additional searchable Learn-style topics; used by global search
+- `src/data/questionBank.ts`
+  - Study Quiz question bank
+- `src/data/glossaryData.ts`
+  - glossary content
+- `src/data/searchAliases.ts`
+  - search synonym/alias support
+- `src/tools/BiochemicalTests/biochemicalData.ts`
+  - biochemical test reference data
+- Roadmap data:
+  - `src/tools/GramPositiveRoadmap/data.ts`
+  - `src/tools/GramNegativeRoadmap/gnrdata.ts`
+  - `src/tools/ObligateAnaerobeRoadmap/anaerobedata.ts`
+- `src/components/VisualAtlas/VisualAtlas.tsx`
+  - Visual Atlas content data, visual type union, and inline SVG render functions
+
+Important feature folders:
+
+- `src/components/Learn/`
+  - Learn hub and Learn article views
+- `src/components/VisualAtlas/`
+  - Visual Atlas UI and card rendering
+- `src/components/Guides/`
+  - older guide library with `?guide=` deep links
+- `src/components/Search/`
+  - global search
+- `src/components/Auth/`
+  - sign in, create account, password reset/update, Google OAuth
+- `src/components/Account/`
+  - profile, saved progress, bookmarks, quiz history
+- `src/components/Practice/`
+  - practice hub
+- `src/components/ASCPReview/`
+  - ASCP review hub
+- `src/tools/RoadmapExperience/`
+  - shared roadmap experience, persistence, guest gating, keyboard/detail modes
+
+## 4. Major Routes and Built Areas
+
+Routes are registered in `src/Routes.tsx`.
+
+Core public routes:
+
+- `/`
+  - home dashboard with hero search, daily riddle, featured bench card, and start-here paths
+- `/learn`
+  - Learn hub
+- `/learn/:slug`
+  - Learn article pages
+- `/visuals`
+  - Visual Atlas
+- `/visuals/:slug`
+  - Visual Atlas individual card/deep link
+- `/guides`
+  - older guide library with query-param deep links
+- `/search`
+  - global search across Learn, expanded topics, guides, biochemical tests, atlas cards, and roadmap content
+- `/about`, `/mission`, `/faq`, `/disclaimer`, `/terms`, `/privacy`
+  - informational pages
+
+Tools/reference routes:
+
+- `/biochemical-calculator`
+  - enterics biochemical calculator and quiz mode
+- `/biochemical-tests`
+  - biochemical test reference
+- `/gram-positive-roadmap`
+- `/gram-negative-roadmap`
+- `/obligate-anaerobe-roadmap`
+- `/unknown-isolate-workup`
+- `/special-pathogens`
+- `/do-not-routine-culture`
+- `/syndrome-diagnostic-path`
+
+Practice/account routes:
+
+- `/practice`
+  - practice hub
+- `/study-quiz`
+  - Study Quiz with guest limit, persistence, missed review, and leaderboard modal
+- `/ascp-microbiology-review`
+  - ASCP review hub
+- `/certification-study-paths`
+  - early/active certification study path page with quiz modal behavior
+- `/case-study-simulator`
+  - planned/early route
+- `/flashcards`
+  - planned/early route
+- `/auth`, `/login`, `/register`
+  - auth entry points
+- `/account`
+  - signed-in study account
+- `/join-alpha`
+  - alpha/beta validation route
+
+## 5. Current Feature Set
+
+### Home dashboard
+
+- Hero search powered by a local index in `App.tsx`
+- Daily microbe riddle stored by date in localStorage
+- Featured bench card
+- Start-here paths for new learners, ASCP review, bench workflow, and biochemical help
+- Mobile home-screen hint
+- Alpha validation CTA
+
+### Learn hub/articles
+
+- Learn hub groups topics by study area.
+- Article pages include:
+  - breadcrumbs and next/previous study navigation
+  - basic workflow, key clues, common traps, student shortcut
+  - tables where useful
+  - related Visual Atlas cards when matching content exists
+  - progress and bookmark actions for signed-in users
+- Learn progress uses Supabase `learn_progress` for signed-in users, with local mastered-topic fallback behavior in the UI.
+
+### Visual Atlas
+
+- Large original visual card system in `src/components/VisualAtlas/VisualAtlas.tsx`.
+- Includes bacteriology biochemical reaction cards plus parasitology, mycology, and virology-style visual cards.
+- Uses inline SVG/CSS visuals and DIVR-style readouts where present.
+- Supports individual `/visuals/:slug` routes and signed-in bookmarks.
+
+### Tools
+
+- Shared roadmap experience powers:
+  - Gram Positive Roadmap
+  - Gram Negative Roadmap
+  - Obligate Anaerobe Roadmap
+- Unknown Isolate Workup exists as a bench-first workflow builder.
+- Biochemical Tests reference exists with a large static data set.
+- Enterics Biochemical Calculator exists and uses DOMPurify for rendered HTML output.
+- Special Pathogens Hub and Do Not Routine Culture safety content exist.
+- Syndrome Diagnostic Path exists as an additional tool route.
+
+### Practice and review
 
-Simple teaching visuals were added directly in the guides using HTML/CSS and inline SVG:
+- Study Quiz uses `src/data/questionBank.ts` plus generated roadmap questions.
+- Guest Study Quiz limit is 15 answered questions.
+- Signed-in quiz attempts save to Supabase `quiz_attempts`.
+- Leaderboard modal reads Supabase data when available and falls back gracefully.
+- Practice hub links Study Quiz, ASCP Review Hub, and planned/early case/flashcard routes.
+- ASCP Review Hub exists and keeps an independent educational-review disclaimer.
+- Certification Study Paths has an active route and changelog, but should still be treated carefully as an early feature surface.
 
-- taxonomy ladder
-- Gram-positive vs Gram-negative envelope visual
-- microscopy flow visual
-- 4-step Gram stain sequence
+### Auth/account
 
-The Gram envelope visual was iterated multiple times for readability:
+- Supabase auth supports email/password and Google OAuth.
+- Account page reads/writes profile data and shows saved study data.
+- Signed-in account features include:
+  - profiles
+  - Learn bookmarks
+  - Visual Atlas bookmarks
+  - Learn progress
+  - quiz history and weak areas
 
-- cramped inline labels removed
-- legend moved outside the drawing
-- Gram-positive / Gram-negative labels moved to the bottom
-- Gram-negative flagellum adjusted to avoid overlapping the label
+### Guest soft-gating
 
-### Search
+- Roadmaps: guest modal after 5 endpoints per roadmap.
+- Unknown Isolate Workup: guest modal after 3 reviewed paths.
+- Study Quiz: guest modal after 15 answered guest questions.
+- Guest modal pattern should follow `StudyQuiz.tsx` unless a specific feature already has an established local variant.
 
-- Global search page implemented
-- Search index includes:
-  - biochemical tests
-  - guide modules
-  - roadmap summaries
-  - Gram-positive roadmap node/conclusion content
+## 6. Styling and Design System State
 
-### Student-first content direction
+The intended direction is the Lab Notebook palette:
 
-- Textbook-inspired material is being rewritten as original, student-first teaching content
-- User-facing guide copy was explicitly cleaned to avoid `Chapter 1`, `Chapter 2`, etc. phrasing
-- Current pattern favors:
-  - short summaries
-  - highlights
-  - concept cards
-  - visual summaries
-  - next-step links
+- warm paper-like backgrounds
+- deep ink text
+- teal/blue-green primary (`--primary-color: #245c69`)
+- restrained accent colors
+- clean, clinical, student-friendly UI
+
+Current styling reality is mixed:
+
+- `src/styles.css` has shared variables and older global styles.
+- `src/App.css` is large and includes both newer dashboard/nav styling and broad dark-mode overrides.
+- Component CSS files are scoped by feature, but not all are fully migrated to the Lab Notebook palette.
+- Tool-specific CSS still contains legacy colors and should be migrated carefully.
+- Primary mobile breakpoint is `max-width: 768px`; secondary is `max-width: 480px`.
+
+## 7. Supabase and Data Persistence
+
+Frontend env vars:
+
+- `REACT_APP_SUPABASE_URL`
+- `REACT_APP_SUPABASE_ANON_KEY`
+
+Do not inspect, edit, or commit `.env`.
 
-## 5. Features Currently In Progress
+Supabase tables documented in `supabase/README.md`:
 
-### 1. Theme migration
+- `profiles`
+- `bookmarks`
+- `learn_progress`
+- `quiz_attempts`
 
-The app is in a partial transition to a warmer `Lab Notebook` palette.
+Security model:
 
-Already migrated:
+- RLS is enabled.
+- Users should only access their own rows.
+- Anonymous users should not read/write table rows directly.
+- Public leaderboard access is intentionally through the `get_study_quiz_leaderboard(row_limit)` function.
 
-- shared variables in `src/styles.css`
-- app shell / homepage / nav in `src/App.css`
-- guide surfaces in `src/components/Guides/MicroBasics.css`
-- toolbox shell in `src/components/ToolBox/ToolBox.css`
+Before expanding backend features, prioritize Supabase security/migration cleanup:
 
-Not fully migrated yet:
+- keep migrations immutable after production use
+- verify RLS policies before adding new account data
+- avoid service-role keys in frontend code
+- review function permissions before adding RPCs
+- prefer small forward migrations over editing old SQL
 
-- tool-specific CSS in calculator/roadmap/test areas
-- some legacy colors still hardcoded in older stylesheets
+## 8. Important Implementation Conventions
 
-### 2. Foundation content expansion
+Content/source handling:
 
-The guide library is actively expanding chapter-by-chapter from the source material, but translated into original student-first modules.
-
-Current focus has been:
+- User-facing content must be original writing.
+- Textbooks or extracted source material are internal planning inputs only.
+- Do not surface "Chapter X" framing in UI/data that renders to users.
+- Keep the educational disclaimer posture: no diagnostic authority, no guaranteed exam outcomes, no official ASCP/AMT affiliation.
 
-- foundations
-- specimen/safety
-- microscopy/staining
+Routing:
 
-### 3. Visual system refinement
-
-Simple diagrams are now part of the product direction, but only a few modules currently have dedicated visuals.
-
-## 6. Important Design/UI Decisions Already Made
-
-- The site should feel like a `learning companion`, not just a reference dump.
-- Homepage should not stack multiple large onboarding blocks that repeat the same message.
-- `Start Here` should be surfaced prominently on the home page, not hidden only inside `Guides`.
-- `Guides` remains the library, but the home page is the primary onboarding entry point.
-- Use simple, instructional visuals instead of custom artwork-heavy illustrations.
-- For compact diagrams, keep labels outside the drawing when readability is at risk.
-- The preferred palette direction is `Lab Notebook`:
-  - warmer paper-like background
-  - deeper ink text
-  - teal/blue-green primary
-  - restrained accent usage
-- Maintain a clean, professional, educational look over flashy UI.
-
-## 7. Important Implementation Decisions, Conventions, and Patterns to Preserve
-
-### Content/source handling
-
-- Textbook chapters are an `internal planning input only`.
-- Do `not` expose `Chapter X` language in user-facing copy.
-- Keep wording original to avoid plagiarism/copyright risk.
-- Credit/source thinking can be acknowledged later, but content should not read like reproduced textbook structure or prose.
-
-### Guide structure
-
-Guides currently follow a repeatable pattern:
-
-- `id`
-- `label`
-- `category`
-- `title`
-- `summary`
-- `highlights`
-- optional `cards`
-- `sections`
-- optional module-specific visuals
-- `What To Do Next` navigation
-
-### Deep linking
-
-- Guide routing uses `/guides?guide=<guide-id>`
-- `MicroBasics.tsx` reads the query param and updates state from it
-
-### Search indexing
-
-- Search entries are manually curated in `src/components/Search/GlobalSearch.tsx`
-- If a guide is added or renamed, search likely needs a matching manual update
-
-### Visual implementation
-
-- Prefer lightweight HTML/CSS or inline SVG diagrams
-- Use visuals to reduce reading burden, not for decoration
-- Each visual should teach one concept clearly
-
-### Homepage logic
-
-- One strong hero plus direct entry points is preferred over multiple stacked intro sections
-- New learner onboarding should stay compact and visible
-
-## 8. Recently Created or Heavily Modified Files
-
-- `PROJECT_STATUS.md`
-  - current project handoff file
-- `src/App.tsx`
-  - heavily modified for student-first homepage, settings menu, theme toggle, and hamburger nav
-- `src/App.css`
-  - heavily modified for nav, homepage, mobile behavior, and palette migration
-- `src/styles.css`
-  - now contains current shared color variables and theme foundation
-- `src/components/Guides/MicroBasics.tsx`
-  - major center of recent work
-  - now acts as the full guide library and contains original teaching content, deep links, and visuals
-- `src/components/Guides/MicroBasics.css`
-  - extensive guide styling and diagram support
-- `src/components/Search/GlobalSearch.tsx`
-  - expanded with guide indexing and searchability improvements
-- `src/components/ToolBox/ToolBox.css`
-  - updated to match the newer palette on shared tool surfaces
-- `public/index.html`
-  - updated for favicon/logo/meta references
-- `public/manifest.json`
-  - updated for brand assets
-- `public/brand-mark.svg`
-  - new temporary brand mark
-- `public/logo-full.svg`
-  - new temporary logo
-- `public/favicon.svg`
-  - new temporary favicon
-
-## 9. Known Bugs, Rough Edges, or Unresolved Issues
-
-- The palette migration is incomplete. Some older tool pages likely still use the previous teal-heavy or hardcoded color styling.
-- Search entries are partially inconsistent:
-  - some guide entries use exact `?guide=` deep links
-  - some still use generic `/guides`
-- `public/index.html` still contains placeholder/example deployment metadata such as `learnmicrobes.example.com`.
-- There are visible encoding artifacts in some file outputs and likely some literal text/icon content:
-  - emoji-like strings in `App.tsx`
-  - unusual punctuation characters in some metadata/output
-  - not necessarily breaking, but worth a cleanup pass later
-- `src/styles.css` still contains a large amount of older global and legacy styling mixed with newer variable-driven styles.
-- `git` was not available from the shell in this session, so current git status could not be confirmed from tooling.
-- There are helper/extraction scripts and extracted text files in the project root from PDF/content work that do not appear to be part of the deployed app. They are not harmful, but the root is noisy.
-- Some roadmap/content data files may still contain internal chapter labels/comments or source-mapping traces. Those are fine if never surfaced, but should stay internal.
-
-## 10. Pending TODOs or User Requests Not Yet Completed
-
-- Continue converting source material into student-first guides using the established pattern
-- Continue adding simple visuals where they clearly improve comprehension
-- Finish broader palette migration across tool-specific pages
-- Improve guide/result linking consistency so all guide search results deep-link to the correct module
-- Eventually consider:
-  - sign-in
-  - saved progress/bookmarks
-  - freemium/ASCP prep layer
-  - backend support
-
-User direction that should still govern future work:
-
-- prioritize students/new learners over ASCP-specific premium prep for now
-- keep content original
-- keep visuals simple and readable
-- avoid clutter and repeated onboarding blocks
-
-## 11. Current Build / Test / Lint Status
-
-### Build
-
-Verified in this session:
-
-- `npm run build`
-- Status: `success`
-
-Latest observed output:
-
-- Production build compiled successfully
-- Output sizes:
-  - `build/static/js/main.cc3d5886.js` at `164.34 kB` gzip
-  - `build/static/css/main.1814bb8b.css` at `10.34 kB` gzip
-
-Observed warning:
-
-- Node deprecation warning:
-  - `[DEP0176] fs.F_OK is deprecated, use fs.constants.F_OK instead`
-- This appears to come from underlying tooling and is currently non-blocking
-
-### Tests
-
-- `npm test` was not run during this status pass
-- There is no current evidence of a dedicated automated test suite beyond the default CRA script
-
-### Lint
-
-- No lint script is defined in `package.json`
-- Lint status is therefore `not configured via npm script`
-
-## 12. Exact Best Next Step
-
-The single best next task is:
-
-`Continue the Lab Notebook theme migration into the tool-specific CSS files, starting with the biochemical tests, calculator, and roadmap surfaces, so the app stops feeling visually split between the old and new color systems.`
-
-Why this is the best next step:
-
-- the information architecture and guide direction are now much clearer
-- the new palette is only partially applied
-- a consistent visual system will make the whole site feel more professional before adding more content
-- this is lower risk than starting auth/backend and improves the entire product immediately
-
-Suggested starting targets:
-
-- `src/tools/BiochemicalTests/*`
-- `src/tools/BioCalculator/*`
-- roadmap-related CSS/components under:
-  - `src/tools/GramPositiveRoadmap/*`
-  - `src/tools/GramNegativeRoadmap/*`
-  - `src/tools/ObligateAnaerobeRoadmap/*`
+- Add new routes in `src/Routes.tsx`.
+- Add/update route metadata in `src/App.tsx` `routeMetadata` or dynamic metadata logic.
+- Check Global Search if a new content area should be discoverable.
+
+Search:
+
+- Global Search is manually assembled in `src/components/Search/GlobalSearch.tsx`.
+- Dashboard search is separately assembled in `src/App.tsx`.
+- When adding/renaming Learn topics, Visual Atlas cards, tools, or guide entries, check both search surfaces if relevant.
+
+Auth:
+
+- Guest state is `!user`.
+- Use `buildAuthRedirectPath()` for auth-gated redirects.
+- Account features should degrade gracefully if Supabase is not configured.
+
+Local storage:
+
+- New localStorage keys should use the `learnmicrobes_` prefix.
+- Existing auth "remember me" keys currently use `lm_remember_me` and `lm_session_marker`; this inconsistency is a known cleanup candidate, not something to casually rename without migration thought.
+- Do not store sensitive data in localStorage.
+
+Sanitization:
+
+- DOMPurify is available.
+- Any future user-generated HTML or generated HTML rendered with `dangerouslySetInnerHTML` must be sanitized.
+
+Git/deploy:
+
+- Do not commit unless explicitly instructed.
+- Do not use `git add .` or `git add -A`; stage specific files.
+- Do not commit `.claude/`.
+- Do not use GitHub Desktop for agent-authored commits.
+- After pushing to `main`, verify the GitHub Pages workflow succeeds before calling deployment done.
+
+## 9. Known Bugs, Rough Edges, and Risks
+
+- Current working tree has pre-existing modified source files:
+  - `src/components/VisualAtlas/VisualAtlas.tsx`
+  - `src/tools/StudyQuiz/StudyQuiz.tsx`
+  Treat these as user/work-in-progress changes and do not overwrite or revert them without explicit permission.
+- Styling is split between newer Lab Notebook surfaces and older global/tool styles.
+- `src/styles.css` and `src/App.css` still carry broad legacy/global rules.
+- localStorage key naming is inconsistent:
+  - required/new prefix: `learnmicrobes_`
+  - existing auth remember-me keys: `lm_remember_me`, `lm_session_marker`
+- Some content/data contains encoding artifacts such as `35Â°C`; these should be cleaned in a focused encoding/content pass.
+- Root directory is noisy with extraction/helper/generated files from content work.
+- Search can drift because dashboard search and global search are separate manual indexes.
+- Some search guide entries may point to older `/guides?guide=` ids or content not mirrored in the newer Learn hub.
+- `public/index.html` loads Google Analytics directly; AGENTS.md says not to add analytics/tracking without explicit approval, so any analytics changes should be deliberate and reviewed.
+- Supabase security/migration cleanup should remain a priority before backend expansion.
+- `@types/react` and `@types/react-dom` are version 19 while runtime React is 18. This may be harmless today but is worth watching if type issues appear.
+- No lint script is configured.
+- Automated test coverage appears limited to the default CRA test command; feature verification is mostly build/manual review.
+
+## 10. Build, Test, and Verification Status
+
+Required after any code change:
+
+```bash
+npm run build
+```
+
+Expected successful build output should include `Compiled successfully`.
+
+For any touched CSS file, run the brace-balance check from `AGENTS.md`:
+
+```bash
+node -e "const fs=require('fs');const s=fs.readFileSync('<file>','utf8');const o=(s.match(/\{/g)||[]).length;const c=(s.match(/\}/g)||[]).length;console.log('balance:',o-c);"
+```
+
+Additional commands:
+
+- `npm start` for local development.
+- `npm test` for CRA test runner.
+
+No `npm run lint` command exists.
+
+## 11. Current Best Next Steps
+
+Recommended near-term priorities:
+
+1. Finish documentation review and keep future agents oriented around the current app, not the older guide-only state.
+2. Continue Lab Notebook theme migration across tool-specific CSS, especially:
+   - `src/tools/BiochemicalTests/*`
+   - `src/tools/BioCalculator/*`
+   - `src/tools/RoadmapExperience/*`
+   - roadmap variant CSS files
+3. Do a focused encoding/content cleanup pass for visible artifacts like `35Â°C`.
+4. Reconcile localStorage key naming with a migration-safe approach.
+5. Review Supabase migrations/RLS/function permissions before adding any new backend-backed features.
+6. Improve search consistency between Learn, Guides, Visual Atlas, dashboard search, and global search.
+7. Only after the above, expand early routes such as flashcards, case simulator, and certification study paths.
+
+## 12. Files Not To Touch Casually
+
+- `.env` and any secrets.
+- `build/` output.
+- root extraction/generated content files unless the cleanup is explicitly requested.
+- pre-existing modified source files unless the task directly asks for them:
+  - `src/components/VisualAtlas/VisualAtlas.tsx`
+  - `src/tools/StudyQuiz/StudyQuiz.tsx`
