@@ -11,7 +11,9 @@ import {
   faFloppyDisk,
   faImages,
   faIdBadge,
+  faKey,
   faRightFromBracket,
+  faShieldHalved,
   faTrophy,
   faTrash
 } from '@fortawesome/free-solid-svg-icons';
@@ -98,6 +100,7 @@ const AccountPage: React.FC = () => {
   const [emailUpdateOptIn, setEmailUpdateOptIn] = useState(false);
   const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
+  const [isSendingPasswordReset, setIsSendingPasswordReset] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const {
@@ -297,6 +300,31 @@ const AccountPage: React.FC = () => {
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
+  };
+
+  const handlePasswordResetEmail = async () => {
+    setErrorMessage('');
+    setStatusMessage('');
+
+    if (!supabase || !user?.email) {
+      setErrorMessage('Sign in with an email account before requesting a password reset link.');
+      return;
+    }
+
+    setIsSendingPasswordReset(true);
+
+    const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
+      redirectTo: `${window.location.origin}/login`
+    });
+
+    setIsSendingPasswordReset(false);
+
+    if (error) {
+      setErrorMessage('Password reset could not be started. Try again in a moment.');
+      return;
+    }
+
+    setStatusMessage('Password reset email sent. Open the link from your email to choose a new password.');
   };
 
   const handleRemoveBookmark = async (bookmark: typeof bookmarks[number]) => {
@@ -673,6 +701,22 @@ const AccountPage: React.FC = () => {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="account-security-panel" aria-label="Account security">
+            <div className="account-security-heading">
+              <span aria-hidden="true">
+                <FontAwesomeIcon icon={faShieldHalved} />
+              </span>
+              <div>
+                <strong>Account security</strong>
+                <p>Use email recovery to change your password. Google sign-in security is managed through Google.</p>
+              </div>
+            </div>
+            <button type="button" className="account-security-btn" onClick={handlePasswordResetEmail} disabled={isSendingPasswordReset}>
+              <FontAwesomeIcon icon={faKey} />
+              {isSendingPasswordReset ? 'Sending link...' : 'Send password reset link'}
+            </button>
           </div>
 
           <button type="button" className="account-signout-btn" onClick={handleSignOut}>

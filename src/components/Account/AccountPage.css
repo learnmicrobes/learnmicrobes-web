@@ -365,6 +365,71 @@
   color: var(--primary-color);
 }
 
+.account-security-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.82rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #fbfaf7;
+}
+
+.account-security-heading {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.account-security-heading > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border: 1px solid rgba(36, 92, 105, 0.14);
+  border-radius: 6px;
+  background: #f0f5f3;
+  color: var(--primary-color);
+}
+
+.account-security-heading strong {
+  display: block;
+  margin-bottom: 0.14rem;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+}
+
+.account-security-heading p {
+  color: var(--muted-color);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.account-security-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: 2.6rem;
+  padding: 0.68rem 0.8rem;
+  border: 1px solid rgba(36, 92, 105, 0.18);
+  border-radius: 6px;
+  background: #ffffff;
+  color: var(--primary-color);
+  font-weight: 900;
+}
+
+.account-security-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.account-security-btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .account-bookmarks {
   gap: 0.9rem;
 }
@@ -719,6 +784,8 @@ body.dark-mode .account-form input,
 body.dark-mode .account-form textarea,
 body.dark-mode .account-form select,
 body.dark-mode .account-signout-btn,
+body.dark-mode .account-security-panel,
+body.dark-mode .account-security-btn,
 body.dark-mode .account-bookmark-card,
 body.dark-mode .account-empty-bookmarks,
 body.dark-mode .account-empty-bookmarks a {
@@ -761,11 +828,19 @@ body.dark-mode .account-next-actions a > span {
   color: #5eead4;
 }
 
-body.dark-mode .account-next-actions strong {
+body.dark-mode .account-security-heading > span {
+  background: rgba(79, 209, 197, 0.08);
+  border-color: rgba(79, 209, 197, 0.14);
+  color: #5eead4;
+}
+
+body.dark-mode .account-next-actions strong,
+body.dark-mode .account-security-heading strong {
   color: #f8fffd;
 }
 
-body.dark-mode .account-next-actions small {
+body.dark-mode .account-next-actions small,
+body.dark-mode .account-security-heading p {
   color: #cbd5df;
 }
 
@@ -903,6 +978,7 @@ body.dark-mode .account-message.success {
   }
 
   .account-save-btn,
+  .account-security-btn,
   .account-signout-btn {
     width: 100%;
   }
