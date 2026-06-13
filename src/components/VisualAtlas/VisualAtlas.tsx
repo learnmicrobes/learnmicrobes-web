@@ -30,7 +30,7 @@ export type AtlasPage = {
   boardTitle: string;
   boardNote: string;
   ariaLabel: string;
-  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening';
+  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening' | 'virology-em-morphology';
   tubes: TubeVisual[];
   readoutTitle: string;
   readoutRows: string[][];
@@ -4297,6 +4297,79 @@ export const atlasPages: AtlasPage[] = [
       identify: ['Screen reactivity', 'Differentiation pattern', 'Need for NAT resolution'],
       verify: 'Complete the current laboratory algorithm',
       report: 'Use approved assay and SOP wording'
+    }
+  },
+  {
+    slug: 'viral-em-morphology-panel',
+    title: 'Electron Micrograph Morphology: Four Classic Silhouettes',
+    eyebrow: 'Visual Atlas / Virology',
+    summary: 'Original bench-card visual for reviewing classic negative-stain electron micrograph shapes used as morphology anchors: rotavirus wheel, coronavirus corona, adenovirus icosahedron, and small round structured virus.',
+    boardTitle: 'EM viral morphology: read the silhouette, then confirm',
+    boardNote: 'Negative-stain EM gives a shape clue, not a final identification. Use the outline as a study anchor and confirm with antigen, molecular, or SOP-directed methods.',
+    ariaLabel: 'Illustrated electron micrograph morphology panel showing rotavirus wheel shape, coronavirus corona spikes, adenovirus icosahedral capsid, and small round structured virus',
+    visualType: 'virology-em-morphology',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Rotavirus',
+        name: 'Wheel-like capsid with short radiating spokes',
+        colors: { slant: '#e7eef0', butt: '#6fa3ad', base: '#234e57' },
+        note: 'About 70 nm wheel ("rota" = wheel). Short capsomere spokes radiate from a hub, giving a cartwheel rim. Pair the shape with stool antigen or molecular testing.'
+      },
+      {
+        id: 'B',
+        label: 'Coronavirus',
+        name: 'Enveloped virion with club-shaped surface spikes',
+        colors: { slant: '#f5ecd8', butt: '#caa05c', base: '#7a5524' },
+        note: 'Pleomorphic enveloped particle with a fringe of club-shaped peplomers ("solar corona"). Spikes carry knobbed tips. Confirm with the respiratory molecular workflow.'
+      },
+      {
+        id: 'C',
+        label: 'Adenovirus',
+        name: 'Non-enveloped icosahedral capsid, hexagonal profile',
+        colors: { slant: '#eaf0ee', butt: '#7e9e86', base: '#39604a' },
+        note: 'About 70-90 nm, sharp hexagonal (icosahedral) outline with 20 facets; fibers may project from vertices. Use morphology as an anchor, then confirm.'
+      },
+      {
+        id: 'D',
+        label: 'Norovirus (Norwalk)',
+        name: 'Small round virus with cup-shaped surface depressions',
+        colors: { slant: '#f1e8ee', butt: '#b783a0', base: '#6c3d57' },
+        note: 'About 27-32 nm. "Small round structured" outline with feathery rim and cup-like surface hollows (calicivirus family). Stool molecular testing confirms.'
+      }
+    ],
+    readoutTitle: 'What to look for by silhouette',
+    readoutRows: [
+      ['Wheel with radiating short spokes', 'Rotavirus pattern', 'Cartwheel rim; correlate with stool antigen or molecular result'],
+      ['Fringe of club-shaped spikes', 'Coronavirus pattern', 'Solar-corona envelope; correlate with respiratory molecular testing'],
+      ['Sharp hexagonal capsid', 'Adenovirus pattern', 'Icosahedral facets; vertex fibers may be visible'],
+      ['Small round, feathery cup-pitted surface', 'Small round structured virus', 'Calicivirus/norovirus look; confirm by molecular stool testing']
+    ],
+    trapTitle: 'EM shape narrows the field but does not name the virus',
+    trapBody: 'Negative-stain morphology overlaps between agents, depends on stain quality and particle orientation, and cannot give a serotype or strain. Describe the silhouette first, then connect it to the confirmatory method the lab uses.',
+    trapBullets: [
+      'Record stain, size estimate, and orientation with the shape.',
+      'Avoid a final virus call from EM appearance alone.',
+      'Confirm with antigen, molecular, or validated culture as directed.'
+    ],
+    interpretationTitle: 'EM morphology study interpretation guide',
+    interpretationRows: [
+      ['Wheel silhouette', 'Rotavirus-type morphology', 'Correlate with gastroenteritis antigen or molecular workup'],
+      ['Corona of spikes', 'Coronavirus-type morphology', 'Correlate with respiratory molecular workflow'],
+      ['Hexagonal capsid', 'Adenovirus-type morphology', 'Correlate with respiratory, ocular, or enteric context'],
+      ['Small round pitted particle', 'Norovirus-type morphology', 'Correlate with outbreak or molecular stool testing']
+    ],
+    takeaways: [
+      'Anchor each virus to one silhouette: wheel, corona, hexagon, pitted sphere.',
+      'EM gives morphology, not a strain or serotype.',
+      'Always close the loop with a confirmatory method.'
+    ],
+    remember: 'EM is a shape clue: rota = wheel, corona = crown, adeno = hexagon, noro = pitted sphere.',
+    divr: {
+      detect: 'Negative-stain electron micrograph particle',
+      identify: ['Wheel (rotavirus)', 'Corona of spikes (coronavirus)', 'Hexagonal capsid (adenovirus)', 'Small round pitted (norovirus)'],
+      verify: 'Confirm with antigen, molecular, or validated method',
+      report: 'Use SOP-approved morphology and result language'
     }
   },
   {
@@ -11474,6 +11547,12 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
   const isNaat = visualType === 'virology-respiratory-naat';
   const isHbv = visualType === 'virology-hepatitis-b-serology';
   const isHiv = visualType === 'virology-hiv-screening';
+  const isEm = visualType === 'virology-em-morphology';
+
+  const emHexPoints = Array.from({ length: 6 }, (_, i) => {
+    const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
+    return `${(100 + 44 * Math.cos(angle)).toFixed(1)},${(92 + 44 * Math.sin(angle)).toFixed(1)}`;
+  }).join(' ');
 
   const renderCellField = () => (
     <>
@@ -11650,6 +11729,72 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
               </>
             )}
             <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
+          </g>
+        )}
+
+        {isEm && tube.id === 'A' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <circle cx="100" cy="92" r="46" fill={body} fillOpacity="0.4" stroke={detail} strokeWidth="2.4" />
+            <circle cx="100" cy="92" r="15" fill="#ffffff" fillOpacity="0.7" stroke={detail} strokeWidth="1.8" />
+            {Array.from({ length: 16 }, (_, i) => {
+              const a = (i / 16) * Math.PI * 2;
+              return (
+                <line key={i} x1={100 + 15 * Math.cos(a)} y1={92 + 15 * Math.sin(a)} x2={100 + 44 * Math.cos(a)} y2={92 + 44 * Math.sin(a)} stroke={detail} strokeWidth="2" opacity="0.7" />
+              );
+            })}
+            {Array.from({ length: 16 }, (_, i) => {
+              const a = (i / 16) * Math.PI * 2;
+              return <circle key={i} cx={100 + 46 * Math.cos(a)} cy={92 + 46 * Math.sin(a)} r="3.4" fill={detail} fillOpacity="0.7" />;
+            })}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">wheel-like capsid</text>
+          </g>
+        )}
+
+        {isEm && tube.id === 'B' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <circle cx="100" cy="92" r="34" fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="2" />
+            <circle cx="100" cy="92" r="12" fill="#ffffff" fillOpacity="0.5" stroke={detail} strokeWidth="1.3" opacity="0.7" />
+            {Array.from({ length: 18 }, (_, i) => {
+              const a = (i / 18) * Math.PI * 2;
+              const x2 = 100 + 48 * Math.cos(a);
+              const y2 = 92 + 48 * Math.sin(a);
+              return (
+                <g key={i}>
+                  <line x1={100 + 34 * Math.cos(a)} y1={92 + 34 * Math.sin(a)} x2={x2} y2={y2} stroke={detail} strokeWidth="2" />
+                  <circle cx={x2} cy={y2} r="3.6" fill={detail} fillOpacity="0.8" />
+                </g>
+              );
+            })}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">club-shaped spikes</text>
+          </g>
+        )}
+
+        {isEm && tube.id === 'C' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <polygon points={emHexPoints} fill={body} fillOpacity="0.42" stroke={detail} strokeWidth="2.4" />
+            {Array.from({ length: 6 }, (_, i) => {
+              const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
+              return <line key={i} x1="100" y1="92" x2={100 + 44 * Math.cos(a)} y2={92 + 44 * Math.sin(a)} stroke={detail} strokeWidth="1.2" opacity="0.45" />;
+            })}
+            {Array.from({ length: 6 }, (_, i) => {
+              const a = (i / 6) * Math.PI * 2 - Math.PI / 2;
+              return <circle key={i} cx={100 + 44 * Math.cos(a)} cy={92 + 44 * Math.sin(a)} r="3.4" fill={detail} fillOpacity="0.78" />;
+            })}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">icosahedral capsid</text>
+          </g>
+        )}
+
+        {isEm && tube.id === 'D' && (
+          <g filter={`url(#viro-shadow-${visualType}-${tube.id})`}>
+            <circle cx="100" cy="92" r="30" fill={body} fillOpacity="0.45" stroke={detail} strokeWidth="2" />
+            {[[90, 82], [110, 84], [100, 96], [86, 98], [114, 100], [100, 74], [92, 108], [112, 110]].map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r="4" fill="#ffffff" fillOpacity="0.55" stroke={detail} strokeWidth="1" />
+            ))}
+            {Array.from({ length: 20 }, (_, i) => {
+              const a = (i / 20) * Math.PI * 2;
+              return <line key={i} x1={100 + 30 * Math.cos(a)} y1={92 + 30 * Math.sin(a)} x2={100 + 35 * Math.cos(a)} y2={92 + 35 * Math.sin(a)} stroke={detail} strokeWidth="1.3" opacity="0.6" />;
+            })}
+            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">cup-pitted surface</text>
           </g>
         )}
 
@@ -12139,6 +12284,10 @@ function getVisualCategory(page: AtlasPage) {
 
   if (page.visualType === 'virology-cmv-inclusion') {
     return 'Inclusion Patterns';
+  }
+
+  if (page.visualType === 'virology-em-morphology') {
+    return 'Electron Microscopy';
   }
 
   if (viralMolecularTypes.includes(page.visualType)) {
