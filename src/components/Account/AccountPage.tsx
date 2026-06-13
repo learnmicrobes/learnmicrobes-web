@@ -8,6 +8,8 @@ import {
   faCheckCircle,
   faDatabase,
   faEnvelope,
+  faEye,
+  faEyeSlash,
   faFloppyDisk,
   faImages,
   faIdBadge,
@@ -130,6 +132,8 @@ const AccountPage: React.FC = () => {
   const [isPasswordChangeVisible, setIsPasswordChangeVisible] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const accountFeedbackRef = useRef<HTMLDivElement>(null);
@@ -439,6 +443,8 @@ const AccountPage: React.FC = () => {
     setIsPasswordChangeVisible(false);
     setNewPassword('');
     setConfirmPassword('');
+    setShowNewPassword(false);
+    setShowConfirmPassword(false);
     setStatusMessage('Password updated. You can keep using Learn Microbes with this account.');
     window.history.replaceState(null, document.title, window.location.pathname);
     scrollToAccountFeedback();
@@ -518,26 +524,46 @@ const AccountPage: React.FC = () => {
           <form className="account-password-form" onSubmit={handleUpdatePassword}>
             <label>
               New password
-              <input
-                type="password"
-                value={newPassword}
-                onChange={(event) => setNewPassword(event.target.value)}
-                autoComplete="new-password"
-                placeholder="12+ characters with symbols"
-                required
-              />
+              <span className="account-password-field">
+                <input
+                  type={showNewPassword ? 'text' : 'password'}
+                  value={newPassword}
+                  onChange={(event) => setNewPassword(event.target.value)}
+                  autoComplete="new-password"
+                  placeholder="12+ characters with symbols"
+                  required
+                />
+                <button
+                  type="button"
+                  className="account-password-toggle"
+                  onClick={() => setShowNewPassword((visible) => !visible)}
+                  aria-label={showNewPassword ? 'Hide new password' : 'Show new password'}
+                >
+                  <FontAwesomeIcon icon={showNewPassword ? faEyeSlash : faEye} />
+                </button>
+              </span>
             </label>
 
             <label>
               Confirm new password
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(event) => setConfirmPassword(event.target.value)}
-                autoComplete="new-password"
-                placeholder="Re-enter the new password"
-                required
-              />
+              <span className="account-password-field">
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                  autoComplete="new-password"
+                  placeholder="Re-enter the new password"
+                  required
+                />
+                <button
+                  type="button"
+                  className="account-password-toggle"
+                  onClick={() => setShowConfirmPassword((visible) => !visible)}
+                  aria-label={showConfirmPassword ? 'Hide confirmed password' : 'Show confirmed password'}
+                >
+                  <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
+                </button>
+              </span>
             </label>
 
             <div className="account-password-requirements" aria-live="polite">
@@ -895,6 +921,8 @@ const AccountPage: React.FC = () => {
               className="account-security-btn"
               onClick={() => {
                 setIsPasswordChangeVisible((visible) => !visible);
+                setShowNewPassword(false);
+                setShowConfirmPassword(false);
                 setStatusMessage('');
                 setErrorMessage('');
               }}
