@@ -100,82 +100,152 @@
 }
 
 .ascp-review-flow {
-  padding: 0.5rem;
+  display: grid;
+  gap: 0.68rem;
+  padding: 0.82rem;
   border: 1px solid rgba(36, 92, 105, 0.14);
   border-radius: 6px;
-  background: #fbfaf7;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(251, 250, 247, 0.94)),
+    #fbfaf7;
 }
 
-.ascp-review-flow svg {
-  display: block;
-  width: 100%;
-  height: auto;
+.ascp-flow-heading {
+  display: grid;
+  gap: 0.18rem;
 }
 
-.ascp-flow-paper {
-  fill: #fffdf8;
-  stroke: rgba(36, 92, 105, 0.16);
+.ascp-flow-heading span {
+  color: var(--primary-color);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
-.ascp-flow-line {
-  fill: none;
-  stroke: rgba(36, 92, 105, 0.4);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.ascp-flow-heading strong {
+  color: var(--dark-color);
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
-.ascp-flow-loop {
-  fill: none;
-  stroke: rgba(36, 92, 105, 0.18);
-  stroke-width: 12;
+.ascp-flow-visual {
+  position: relative;
+  min-height: 16.3rem;
+  overflow: hidden;
+  padding: 0.85rem;
+  border: 1px solid rgba(36, 92, 105, 0.12);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at center, rgba(214, 167, 71, 0.18) 0 19%, transparent 20%),
+    radial-gradient(circle at center, transparent 0 34%, rgba(36, 92, 105, 0.12) 35% 38%, transparent 39%),
+    #fffdf8;
 }
 
-.ascp-flow-arrow {
-  fill: none;
-  stroke: rgba(36, 92, 105, 0.42);
-  stroke-width: 4;
-  stroke-linecap: round;
+.ascp-flow-step-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 5.1rem 0.72rem;
+  min-height: 14.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.ascp-flow-node rect {
-  fill: #f0f5f3;
-  stroke: rgba(36, 92, 105, 0.2);
+.ascp-flow-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.48rem;
+  align-items: center;
+  min-width: 0;
+  padding: 0.62rem;
+  border: 1px solid rgba(36, 92, 105, 0.15);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
 }
 
-.ascp-flow-node circle {
-  fill: var(--primary-color);
+.ascp-flow-step-marker {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #ffffff;
+  line-height: 1;
 }
 
-.ascp-flow-center rect {
-  fill: #fff8e5;
-  stroke: rgba(200, 162, 77, 0.34);
-}
-
-.ascp-review-flow text {
-  fill: var(--dark-color);
-  font-family: Inter, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.ascp-flow-node text:nth-of-type(3),
-.ascp-flow-center text:nth-of-type(2) {
-  fill: var(--muted-color);
-  font-size: 11px;
-  font-weight: 750;
-}
-
-.ascp-review-flow .ascp-flow-number {
-  fill: #ffffff;
-  font-size: 12px;
+.ascp-flow-step-marker span {
+  font-size: 0.68rem;
   font-weight: 950;
 }
 
+.ascp-flow-step-marker svg {
+  margin-top: 0.12rem;
+  font-size: 0.64rem;
+}
+
+.ascp-flow-step-copy {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.ascp-flow-step-copy strong {
+  color: var(--dark-color);
+  font-size: 0.74rem;
+  line-height: 1.1;
+}
+
+.ascp-flow-step-copy small {
+  color: var(--muted-color);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.ascp-flow-center-card {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  gap: 0.18rem;
+  width: min(11.6rem, calc(100% - 7.2rem));
+  padding: 0.72rem 0.82rem;
+  border: 1px solid rgba(200, 162, 77, 0.36);
+  border-radius: 6px;
+  background: rgba(255, 248, 229, 0.94);
+  color: var(--dark-color);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 14px 24px rgba(15, 23, 42, 0.08);
+}
+
+.ascp-flow-center-card span {
+  color: #8a5b0a;
+  font-size: 0.66rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.ascp-flow-center-card strong {
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
 .ascp-flow-watermark {
-  fill: rgba(36, 92, 105, 0.48) !important;
-  font-size: 10px !important;
-  font-weight: 800 !important;
+  display: block;
+  color: rgba(36, 92, 105, 0.48);
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
 }
 
 .ascp-review-panel {
@@ -352,40 +422,41 @@ body.dark-mode .ascp-review-intent-list a {
   border-color: rgba(222, 232, 222, 0.14);
 }
 
-body.dark-mode .ascp-flow-paper {
-  fill: #1b2733;
-  stroke: rgba(222, 232, 222, 0.14);
+body.dark-mode .ascp-flow-heading strong,
+body.dark-mode .ascp-flow-step-copy strong,
+body.dark-mode .ascp-flow-center-card strong {
+  color: #f8fffd;
 }
 
-body.dark-mode .ascp-flow-node rect {
-  fill: rgba(79, 209, 197, 0.08);
-  stroke: rgba(79, 209, 197, 0.14);
+body.dark-mode .ascp-flow-visual {
+  border-color: rgba(222, 232, 222, 0.14);
+  background:
+    radial-gradient(circle at center, rgba(229, 199, 118, 0.14) 0 19%, transparent 20%),
+    radial-gradient(circle at center, transparent 0 34%, rgba(94, 234, 212, 0.14) 35% 38%, transparent 39%),
+    #17212c;
 }
 
-body.dark-mode .ascp-flow-loop {
-  stroke: rgba(94, 234, 212, 0.16);
+body.dark-mode .ascp-flow-step {
+  border-color: rgba(222, 232, 222, 0.14);
+  background: rgba(30, 41, 59, 0.82);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
 }
 
-body.dark-mode .ascp-flow-arrow {
-  stroke: rgba(94, 234, 212, 0.42);
+body.dark-mode .ascp-flow-step-marker {
+  background: #2f9189;
 }
 
-body.dark-mode .ascp-flow-node circle {
-  fill: #2f9189;
+body.dark-mode .ascp-flow-step-copy small {
+  color: #cbd5df;
 }
 
-body.dark-mode .ascp-flow-center rect {
-  fill: #2f2a1c;
-  stroke: rgba(229, 199, 118, 0.26);
+body.dark-mode .ascp-flow-center-card {
+  background: rgba(47, 42, 28, 0.94);
+  border-color: rgba(229, 199, 118, 0.26);
 }
 
-body.dark-mode .ascp-review-flow text {
-  fill: #f8fffd;
-}
-
-body.dark-mode .ascp-flow-node text:nth-of-type(3),
-body.dark-mode .ascp-flow-center text:nth-of-type(2) {
-  fill: #cbd5df;
+body.dark-mode .ascp-flow-center-card span {
+  color: #f8d88a;
 }
 
 body.dark-mode .ascp-review-icon {
@@ -456,6 +527,40 @@ body.dark-mode .ascp-flow-caption {
   }
 
   .ascp-review-flow {
-    padding: 0.25rem;
+    padding: 0.72rem;
   }
+
+  .ascp-flow-visual {
+    min-height: 15.4rem;
+    padding: 0.62rem;
+  }
+
+  .ascp-flow-step-grid {
+    gap: 4.8rem 0.5rem;
+    min-height: 13.7rem;
+  }
+
+  .ascp-flow-step {
+    gap: 0.4rem;
+    padding: 0.52rem;
+  }
+
+  .ascp-flow-step-marker {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .ascp-flow-step-copy strong {
+    font-size: 0.68rem;
+  }
+
+  .ascp-flow-step-copy small {
+    font-size: 0.58rem;
+  }
+
+  .ascp-flow-center-card {
+    width: min(10.6rem, calc(100% - 6.2rem));
+    padding: 0.62rem 0.68rem;
+  }
+
 }

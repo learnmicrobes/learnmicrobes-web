@@ -52,6 +52,33 @@ const reviewSteps = [
   'Use official ASCP materials for eligibility, content guidelines, and exam policy details.'
 ];
 
+const reviewLoopSteps = [
+  {
+    icon: faBookOpen,
+    number: '1',
+    title: 'Foundations',
+    detail: 'Gram stain logic'
+  },
+  {
+    icon: faFlaskVial,
+    number: '2',
+    title: 'Bench tests',
+    detail: 'QC + reactions'
+  },
+  {
+    icon: faRoute,
+    number: '3',
+    title: 'Organism ID',
+    detail: 'Roadmaps'
+  },
+  {
+    icon: faClipboardList,
+    number: '4',
+    title: 'Quiz reps',
+    detail: 'Saved misses'
+  }
+];
+
 const ASCPReviewPage: React.FC = () => (
   <div className="ascp-review-page">
     <section className="ascp-review-hero" aria-labelledby="ascp-review-title">
@@ -78,51 +105,34 @@ const ASCPReviewPage: React.FC = () => (
         </div>
       </div>
 
-      <div className="ascp-review-flow" aria-label="ASCP microbiology review flow">
-        <svg viewBox="0 0 420 320" role="img" aria-labelledby="ascp-flow-title ascp-flow-desc">
-          <title id="ascp-flow-title">Learn Microbes ASCP microbiology review flow</title>
-          <desc id="ascp-flow-desc">A numbered study loop from foundations through reactions, organism ID, quiz practice, and weak-area review.</desc>
-          <rect x="18" y="20" width="384" height="260" rx="12" className="ascp-flow-paper" />
-          <circle cx="210" cy="150" r="72" className="ascp-flow-loop" />
-          <path d="M269 105 C296 131 296 169 269 195" className="ascp-flow-arrow" />
-          <path d="M151 195 C124 169 124 131 151 105" className="ascp-flow-arrow" />
-          <g className="ascp-flow-node">
-            <rect x="42" y="52" width="130" height="58" rx="8" />
-            <circle cx="66" cy="81" r="14" />
-            <text x="66" y="86" textAnchor="middle" className="ascp-flow-number">1</text>
-            <text x="92" y="76">Foundations</text>
-            <text x="92" y="94">Gram stain logic</text>
-          </g>
-          <g className="ascp-flow-node">
-            <rect x="248" y="52" width="130" height="58" rx="8" />
-            <circle cx="272" cy="81" r="14" />
-            <text x="272" y="86" textAnchor="middle" className="ascp-flow-number">2</text>
-            <text x="298" y="76">Bench tests</text>
-            <text x="298" y="94">QC + reactions</text>
-          </g>
-          <g className="ascp-flow-node">
-            <rect x="42" y="190" width="130" height="58" rx="8" />
-            <circle cx="66" cy="219" r="14" />
-            <text x="66" y="224" textAnchor="middle" className="ascp-flow-number">3</text>
-            <text x="92" y="214">Organism ID</text>
-            <text x="92" y="232">Roadmaps</text>
-          </g>
-          <g className="ascp-flow-node">
-            <rect x="248" y="190" width="130" height="58" rx="8" />
-            <circle cx="272" cy="219" r="14" />
-            <text x="272" y="224" textAnchor="middle" className="ascp-flow-number">4</text>
-            <text x="298" y="214">Quiz reps</text>
-            <text x="298" y="232">Saved misses</text>
-          </g>
-          <g className="ascp-flow-center">
-            <rect x="133" y="122" width="154" height="56" rx="8" />
-            <text x="210" y="145" textAnchor="middle">Weak-area loop</text>
-            <text x="210" y="164" textAnchor="middle">review next</text>
-          </g>
-          <text x="210" y="302" textAnchor="middle" className="ascp-flow-watermark">Learn Microbes | learnmicrobes.com</text>
-        </svg>
+      <div className="ascp-review-flow" aria-labelledby="ascp-flow-title">
+        <div className="ascp-flow-heading">
+          <span>Study loop map</span>
+          <strong id="ascp-flow-title">Study, quiz, then target the miss.</strong>
+        </div>
+        <div className="ascp-flow-visual" aria-label="A four-step ASCP microbiology review loop">
+          <ol className="ascp-flow-step-grid">
+            {reviewLoopSteps.map((step) => (
+              <li className="ascp-flow-step" key={step.title}>
+                <span className="ascp-flow-step-marker">
+                  <span>{step.number}</span>
+                  <FontAwesomeIcon icon={step.icon} />
+                </span>
+                <span className="ascp-flow-step-copy">
+                  <strong>{step.title}</strong>
+                  <small>{step.detail}</small>
+                </span>
+              </li>
+            ))}
+          </ol>
+          <div className="ascp-flow-center-card">
+            <span>Weak-area loop</span>
+            <strong>Missed questions become the next review block.</strong>
+          </div>
+        </div>
+        <span className="ascp-flow-watermark" aria-hidden="true">Learn Microbes | learnmicrobes.com</span>
         <p className="ascp-flow-caption">
-          The weak-area loop routes your missed questions back into focused review — so every quiz session makes your next one more targeted.
+          The weak-area loop routes your missed questions back into focused review, so every quiz session makes your next one more targeted.
         </p>
       </div>
     </section>
