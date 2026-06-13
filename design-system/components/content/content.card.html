@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" viewport="700x560" name="Content — bench card, quiz, specimen" subtitle="BenchCard · QuizOption · SpecimenFrame · StatChip" -->
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--surface-app);font-family:var(--font-ui);padding:24px}
+  .wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;max-width:660px}
+  .lbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:8px}
+  .stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+  const { BenchCard, QuizOption, SpecimenFrame, StatChip } = window.LearnMicrobesDesignSystem_92bf69;
+  function Demo(){
+    const [pick,setPick] = React.useState(null);
+    const states = i => pick==null ? 'default' : (i===1?'correct':(i===pick?'incorrect':'default'));
+    return (
+      <div>
+        <div className="wrap">
+          <BenchCard kicker="Gram-positive · cocci" title="Streptococcus pyogenes"
+            source="Pediatric throat swab · sore throat & fever, 3 days · pure growth at 24 h"
+            findings={['Sheep blood agar','β-hemolytic','GPC in chains','Catalase-negative']}
+            nextStep="PYR or bacitracin (A-disk) to confirm Group A Strep" accent="gramPos"/>
+          <div>
+            <div className="lbl">Quiz options</div>
+            <div style={{display:'grid',gap:10}}>
+              {['H₂S production','Gas production','Lactose fermentation','Contamination'].map((o,i)=>(
+                <QuizOption key={i} letter={'ABCD'[i]} state={states(i)} onClick={()=>setPick(i)}>{o}</QuizOption>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div style={{marginTop:20,maxWidth:320}}>
+          <div className="lbl">Specimen frame + stats</div>
+          <SpecimenFrame label="Specimen A" ratio="16 / 10">
+            <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',
+              background:'linear-gradient(135deg,#7a1f1f,#3a0f0f)',color:'#f4d6d6',fontSize:13,fontWeight:600}}>blood agar plate</div>
+          </SpecimenFrame>
+          <div className="stats">
+            <StatChip icon="fa-solid fa-rotate" value="145+" label="quiz reps"/>
+            <StatChip icon="fa-solid fa-layer-group" value="60+" label="bench cards"/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

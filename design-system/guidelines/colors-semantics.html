@@ -1,0 +1,20 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Bench semantics" subtitle="Color carries clinical meaning, not decoration" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;background:var(--surface-app);font-family:var(--font-ui);padding:20px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .sw{display:flex;align-items:center;gap:10px;background:#fff;border:var(--hairline);border-radius:var(--radius-sm);padding:9px 11px}
+  .dot{width:26px;height:26px;border-radius:7px;flex-shrink:0}
+  .name{font-size:12px;font-weight:700;color:var(--text-heading)}
+  .hex{font-size:10px;color:var(--text-muted);font-family:var(--font-mono);margin-top:1px}
+</style></head>
+<body>
+  <div class="grid">
+    <div class="sw"><div class="dot" style="background:var(--lm-gram-pos)"></div><div><div class="name">Gram-positive</div><div class="hex">#805ad5</div></div></div>
+    <div class="sw"><div class="dot" style="background:var(--lm-gram-neg)"></div><div><div class="name">Gram-negative</div><div class="hex">#c84b4b</div></div></div>
+    <div class="sw"><div class="dot" style="background:var(--lm-anaerobe)"></div><div><div class="name">Anaerobe</div><div class="hex">#2f7abf</div></div></div>
+    <div class="sw"><div class="dot" style="background:var(--lm-biochem)"></div><div><div class="name">Biochemical</div><div class="hex">#d66f2f</div></div></div>
+    <div class="sw"><div class="dot" style="background:var(--lm-caution)"></div><div><div class="name">Biosafety / caution</div><div class="hex">#a83232</div></div></div>
+    <div class="sw"><div class="dot" style="background:var(--lm-gold)"></div><div><div class="name">Certification gold</div><div class="hex">#c8a24d</div></div></div>
+  </div>
+</body></html>

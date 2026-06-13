@@ -1,0 +1,25 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Elevation — soft depth" subtitle="Low, calm shadows. Never heavy or dramatic." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-canvas); color: var(--text-body); }
+  .wrap { padding: 30px 24px; display: flex; gap: 22px; align-items: flex-end; }
+  .item { text-align: center; }
+  .box { width: 96px; height: 66px; background: var(--paper); border: 1px solid var(--line-soft); border-radius: var(--radius-md); }
+  b { display: block; font-size: 12px; font-weight: 700; margin-top: 12px; }
+  span { display: block; font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-xs)"></div><b>xs</b></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-sm)"></div><b>sm</b><span>cards</span></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-md)"></div><b>md</b><span>panels</span></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-lg)"></div><b>lg</b><span>hover</span></div>
+    <div class="item"><div class="box" style="box-shadow:var(--shadow-xl)"></div><b>xl</b><span>menus</span></div>
+  </div>
+</body>
+</html>

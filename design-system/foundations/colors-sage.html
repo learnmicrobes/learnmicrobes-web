@@ -1,0 +1,33 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Sage & green accents" subtitle="Muted green: success, light pills, eyebrows on dark." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-app); color: var(--text-body); }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; border-radius: var(--radius-md); height: 80px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; border: 1px solid var(--line-soft); }
+  .sw b { font-size: 12px; font-weight: 700; }
+  .sw span { font-size: 11px; opacity: 0.85; }
+  .on-dark b, .on-dark span { color: #f6fbf8; }
+  .on-light b, .on-light span { color: #15302c; }
+  .note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw on-dark" style="background:var(--sage-700)"><b>700</b><span>#3f7a55</span></div>
+      <div class="sw on-dark" style="background:var(--sage-600)"><b>600 · accent</b><span>#4f8f67</span></div>
+      <div class="sw on-dark" style="background:var(--sage-500)"><b>500 · eyebrow</b><span>#5b9b7a</span></div>
+      <div class="sw on-dark" style="background:var(--sage-400)"><b>400 · pill</b><span>#7cb494</span></div>
+      <div class="sw on-light" style="background:var(--sage-300)"><b>300</b><span>#9fcfc8</span></div>
+      <div class="sw on-light" style="background:var(--sage-200)"><b>200</b><span>#cfe5d6</span></div>
+      <div class="sw on-light" style="background:var(--sage-100)"><b>100</b><span>#e4efe6</span></div>
+    </div>
+    <p class="note">Restrained accent — confirmation, difficulty pills, eyebrows on teal. Never the dominant field.</p>
+  </div>
+</body>
+</html>

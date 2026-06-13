@@ -1,0 +1,47 @@
+<!-- @dsCard group="Brand" viewport="700x220" name="Pills, tags & dotted motif" subtitle="Post-type tags, difficulty pills, clue chips, the 4×4 dot grid." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-canvas); color: var(--text-body); }
+  .wrap { position: relative; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .tag { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; border-radius: var(--radius-pill); padding: 7px 16px; }
+  .tag.solid { background: var(--teal-700); color: #fff; }
+  .tag.sage { background: var(--sage-400); color: #14342a; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 700; color: var(--text-heading); background: var(--paper); border: 1px solid var(--sage-200); border-radius: var(--radius-pill); padding: 7px 14px; }
+  .chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sage-600); }
+  .url { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 800; color: #fff; background: var(--teal-700); border-radius: var(--radius-pill); padding: 9px 18px; }
+  .url::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage-400); }
+  .dots { position: absolute; top: 18px; right: 22px; display: grid; grid-template-columns: repeat(4, 6px); gap: 9px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-400); opacity: 0.5; }
+  .meta { font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="dots">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="row">
+      <span class="tag solid">POP QUIZ</span>
+      <span class="tag solid">MICRO CHALLENGE #06</span>
+      <span class="tag sage">INTERMEDIATE</span>
+      <span class="tag sage">ANSWER</span>
+    </div>
+    <div class="row">
+      <span class="chip">Sheep blood agar</span>
+      <span class="chip">&beta;-hemolytic</span>
+      <span class="chip">GPC in chains</span>
+      <span class="chip">Catalase-negative</span>
+    </div>
+    <div class="row">
+      <span class="url">LearnMicrobes.com</span>
+      <span class="meta">↑ dotted 4×4 grid is the one decorative motif</span>
+    </div>
+  </div>
+</body>
+</html>

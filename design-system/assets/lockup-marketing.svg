@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" role="img" aria-labelledby="lock-title">
+  <title id="lock-title">Learn Microbes marketing lockup</title>
+  <rect x="0" y="4" width="56" height="56" rx="15" fill="#1a463d"></rect>
+  <g transform="translate(0 4)" fill="none" stroke="#f6fbf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 14v11L15.5 39a3.6 3.6 0 0 0 3.1 5.4h18.8a3.6 3.6 0 0 0 3.1-5.4L32 25V14"></path>
+    <path d="M21 14h14"></path>
+    <path d="M20 35.5h16"></path>
+  </g>
+  <circle cx="25.5" cy="39.5" r="1.5" fill="#9fe3c1"></circle>
+  <circle cx="31" cy="41.2" r="1.2" fill="#9fe3c1"></circle>
+  <text x="72" y="30" fill="#15302a" font-family="&#39;Hanken Grotesk&#39;, Inter, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="-0.5">Learn Microbes</text>
+  <text x="73" y="48" fill="#5f6b77" font-family="Inter, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2.2">CLINICAL BENCH REFERENCE</text>
+</svg>

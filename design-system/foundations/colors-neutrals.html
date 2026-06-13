@@ -1,0 +1,32 @@
+<!-- @dsCard group="Colors" viewport="700x190" name="Warm neutrals & ink" subtitle="Off-white canvases, white cards, slate ink, warm gray text." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-app); color: var(--text-body); }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 10px; }
+  .sw { flex: 1; border-radius: var(--radius-md); height: 84px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; border: 1px solid var(--line); }
+  .sw b { font-size: 12px; font-weight: 700; }
+  .sw span { font-size: 11px; opacity: 0.85; }
+  .on-dark b, .on-dark span { color: #f6fbf8; }
+  .on-light b, .on-light span { color: #15302c; }
+  .lbl { margin: 0 0 10px; font-size: 11px; letter-spacing: var(--ls-eyebrow); text-transform: uppercase; font-weight: 700; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw on-light" style="background:var(--cream-50)"><b>cream-50 · app bg</b><span>#faf7f0</span></div>
+      <div class="sw on-light" style="background:var(--cream-150)"><b>canvas · social</b><span>#f0ede4</span></div>
+      <div class="sw on-light" style="background:var(--cream-100)"><b>surface</b><span>#f4efe4</span></div>
+      <div class="sw on-light" style="background:var(--paper)"><b>paper · card</b><span>#ffffff</span></div>
+      <div class="sw on-dark" style="background:var(--ink-900)"><b>ink-900 · head</b><span>#15302c</span></div>
+      <div class="sw on-dark" style="background:var(--ink-800)"><b>ink-800 · body</b><span>#1c2733</span></div>
+      <div class="sw on-dark" style="background:var(--ink-500)"><b>ink-500 · muted</b><span>#5f6b77</span></div>
+    </div>
+  </div>
+</body>
+</html>

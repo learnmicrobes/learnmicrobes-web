@@ -1,0 +1,4 @@
+/* Learn Microbes — Fonts
+   Brand typeface is Inter (the production app loads it from Google Fonts).
+   Consumers get Inter automatically by linking styles.css. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');

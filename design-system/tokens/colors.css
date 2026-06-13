@@ -1,0 +1,128 @@
+/* Learn Microbes — Color tokens
+   Brand anchor: deep teal / blue-green. Backgrounds: warm off-white.
+   Accents: muted sage green, with restrained gold + terracotta.
+   Derived from the production app (src/styles.css, App.css) and the
+   social / educational templates. */
+
+:root {
+  /* ---- Teal ramp (primary brand anchor) ---- */
+  --teal-950: #14302f;
+  --teal-900: #1a3d3a;
+  --teal-800: #1d4a54; /* primary-strong — deep header stop */
+  --teal-700: #21514c; /* deep forest teal — full-bleed social backgrounds */
+  --teal-600: #245c69; /* PRIMARY — app anchor, buttons, links */
+  --teal-500: #2c7873; /* header gradient top, theme-color */
+  --teal-400: #4e8f8a;
+  --teal-300: #88b8b3;
+  --teal-200: #bcd8d4;
+  --teal-100: #dce8de; /* pale sage surface (secondary-color) */
+  --teal-50:  #eef5f3;
+
+  /* ---- Sage / green accent ---- */
+  --sage-700: #3f7a55;
+  --sage-600: #4f8f67; /* success / accent green */
+  --sage-500: #5b9b7a; /* eyebrow green on dark backgrounds */
+  --sage-400: #7cb494; /* light green pill (e.g. "INTERMEDIATE") */
+  --sage-300: #9fcfc8;
+  --sage-200: #cfe5d6;
+  --sage-100: #e4efe6;
+
+  /* ---- Warm accents (used sparingly) ---- */
+  --gold-500:       #c8a24d; /* highlight / annotation accent */
+  --terracotta-500: #c96b4b; /* warm contrast accent */
+  --error-600:      #b64b36;
+  --success-600:    #4f8f67;
+
+  /* ---- Warm neutrals ---- */
+  --cream-50:  #faf7f0; /* app light background */
+  --cream-100: #f4efe4; /* warm surface */
+  --cream-150: #f0ede4; /* social / educational canvas */
+  --paper:     #ffffff; /* cards */
+  --paper-tint:#fbfaf7; /* faint warm card / hover */
+
+  /* ---- Ink / text ---- */
+  --ink-900:  #15302c; /* deep teal-black headings (on cream) */
+  --ink-800:  #1c2733; /* primary slate text */
+  --ink-600:  #3d4852;
+  --ink-500:  #5f6b77; /* muted / secondary text */
+  --ink-400:  #8a949e;
+  --ink-300:  #b6bdc4;
+
+  /* ---- Lines & borders ---- */
+  --line-soft:   rgba(36, 92, 105, 0.10);
+  --line:        rgba(36, 92, 105, 0.16);
+  --line-strong: rgba(36, 92, 105, 0.30);
+  --line-on-dark:rgba(255, 255, 255, 0.16);
+
+  /* =====================================================
+     Semantic aliases — prefer these in product UI
+     ===================================================== */
+  --brand:            var(--teal-600);
+  --brand-strong:     var(--teal-800);
+  --brand-deep:       var(--teal-700);
+  --brand-soft:       var(--teal-100);
+  --accent:           var(--sage-600);
+  --accent-soft:      var(--sage-100);
+
+  --bg-app:           var(--cream-50);
+  --bg-canvas:        var(--cream-150);
+  --surface-card:     var(--paper);
+  --surface-sunken:   var(--cream-100);
+  --surface-tint:     var(--paper-tint);
+  --surface-brand:    var(--teal-700);
+
+  --text-heading:     var(--ink-900);
+  --text-body:        var(--ink-800);
+  --text-muted:       var(--ink-500);
+  --text-on-brand:    #f6fbf8;
+  --text-eyebrow:     var(--teal-600);
+
+  --border-card:      var(--line);
+  --border-input:     var(--line-strong);
+
+  --focus-ring:       rgba(36, 92, 105, 0.32);
+
+  /* gradient used by the brand tile + app header */
+  --brand-gradient:   linear-gradient(135deg, var(--teal-500), var(--teal-800));
+  --header-gradient:  linear-gradient(135deg, #1a5a57, var(--teal-500));
+}
+
+/* =========================================================================
+   Bench category accents — semantic color coding for ID tools & roadmaps.
+   Restrained, lab-coded hues (a single muted plum for Gram-positive nods to
+   the crystal-violet stain; clay/red for Gram-negative safranin), used only
+   as thin category accent stripes — never as fields or gradients.
+   ========================================================================= */
+:root {
+  --lm-gram-pos:  #6d5b9e; /* muted plum — Gram-positive */
+  --lm-gram-neg:  #c0563f; /* brick — Gram-negative */
+  --lm-anaerobe:  #3f6b66; /* deep teal-grey — anaerobes */
+  --lm-biochem:   #c8a24d; /* amber — biochemical reactions */
+  --lm-clay:      #c96b4b; /* terracotta — special pathogens */
+  --lm-caution:   #b64b36; /* alarm red — do-not-culture / safety */
+  --lm-error:     #b64b36;
+}
+
+/* =========================================================================
+   Compatibility aliases — the product/UI-kit layer references these names.
+   They map onto the canonical ramp above so one palette drives everything.
+   ========================================================================= */
+:root {
+  --lm-teal-600: var(--teal-600); /* @kind color */
+  --lm-teal-700: var(--teal-700); /* @kind color */
+  --lm-teal-800: var(--teal-800); /* @kind color */
+  --lm-sage-100: var(--sage-100); /* @kind color */
+  --lm-sage-200: var(--sage-200); /* @kind color */
+  --lm-sage-400: var(--sage-400); /* @kind color */
+  --lm-sage-500: var(--sage-500); /* @kind color */
+  --lm-sage-600: var(--sage-600); /* @kind color */
+  --lm-sage-700: var(--sage-700); /* @kind color */
+  --lm-ink-300:  var(--ink-300);  /* @kind color */
+
+  --color-brand:        var(--teal-600); /* @kind color */
+  --color-brand-strong: var(--teal-800); /* @kind color */
+  --text-brand:         var(--teal-600); /* @kind color */
+  --surface-app:        var(--cream-50); /* @kind color */
+  --border-ondark:      var(--line-on-dark); /* @kind color */
+  --text-onbrand-muted: rgba(244, 239, 228, 0.82); /* @kind color */
+}

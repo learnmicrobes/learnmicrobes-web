@@ -1,0 +1,56 @@
+/* Learn Microbes — Typography tokens
+   One typeface (Inter) carries the whole system. Headlines are heavy and
+   tight; body is calm and highly legible for mobile reading. Eyebrows are
+   uppercase, tracked, and usually teal or sage. */
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', ui-monospace, 'Menlo', 'Consolas', monospace;
+  /* Aliases used by the product / UI-kit layer (one typeface does everything) */
+  --font-ui:      var(--font-sans); /* @kind font */
+  --font-display: var(--font-sans); /* @kind font */
+
+  /* ---- Weights ---- */
+  --fw-light:    300; /* @kind font */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+  --fw-heavy:    800; /* @kind font */
+  --fw-black:    900; /* @kind font */
+
+  /* ---- Display / headline scale (clamped for responsive surfaces) ---- */
+  --fs-display:   clamp(2.4rem, 5vw, 3.55rem); /* @kind font */
+  --fs-h1:        clamp(2rem, 3.4vw, 2.6rem); /* @kind font */
+  --fs-h2:        1.55rem;
+  --fs-h3:        1.2rem;
+  --fs-h4:        1.02rem;
+
+  /* ---- Body scale ---- */
+  --fs-lead:      1.1rem;   /* hero subhead */
+  --fs-body:      0.96rem;  /* default body */
+  --fs-sm:        0.86rem;  /* secondary / captions */
+  --fs-xs:        0.78rem;  /* labels, helper text */
+  --fs-eyebrow:   0.72rem;  /* uppercase kicker */
+  --fs-label:     var(--fs-eyebrow); /* @kind font */
+
+  /* ---- Line heights ---- */
+  --lh-tight:   1.12;  /* @kind font */
+  --lh-snug:    1.25;  /* @kind font */
+  --lh-normal:  1.5;   /* @kind font */
+  --lh-relaxed: 1.6;   /* @kind font */
+
+  /* ---- Tracking ---- */
+  --ls-tight:   -0.02em; /* @kind font */
+  --ls-normal:  0;       /* @kind font */
+  --ls-eyebrow: 0.12em;  /* @kind font */
+  --ls-label:   var(--ls-eyebrow); /* @kind font */
+  --ls-mono:    0.01em;  /* @kind font */
+
+  /* ---- Semantic aliases ---- */
+  --type-display-weight: var(--fw-heavy);
+  --type-heading-weight: var(--fw-heavy);
+  --type-eyebrow-weight: var(--fw-bold);
+  --type-body-weight:    var(--fw-regular);
+  --type-label-weight:   var(--fw-semibold);
+}

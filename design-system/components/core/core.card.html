@@ -1,0 +1,68 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Core — buttons, pills, tags" subtitle="Button · Pill · Tag · Kicker · Card" -->
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body{margin:0;background:var(--surface-app);font-family:var(--font-ui);padding:24px}
+  .grp{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+  .green{background:var(--lm-teal-800);border-radius:var(--radius-md);padding:18px;gap:12px;display:flex;flex-wrap:wrap;align-items:center}
+  .lbl{width:100%;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:2px}
+</style></head>
+<body><div id="root"></div>
+<script type="text/babel">
+  const { Button, Pill, Tag, Kicker, Card, Badge, IconButton } = window.LearnMicrobesDesignSystem_92bf69;
+  function Demo(){
+    return (
+      <div>
+        <div className="grp"><span className="lbl">Buttons</span>
+          <Button variant="primary" icon="fa-solid fa-flask">Identify</Button>
+          <Button variant="accent" icon="fa-solid fa-arrow-right" iconRight>Try it</Button>
+          <Button variant="secondary">Reset</Button>
+          <Button variant="ghost">Learn more</Button>
+          <Button variant="primary" disabled>Disabled</Button>
+        </div>
+        <div className="grp"><span className="lbl">Pill buttons (marketing)</span>
+          <Button variant="primary" pill size="lg">Save this post</Button>
+          <Button variant="accent" pill size="lg">Tag a colleague</Button>
+        </div>
+        <div className="grp"><span className="lbl">Pills</span>
+          <Pill tone="dark">Pop quiz</Pill>
+          <Pill tone="sage">Intermediate</Pill>
+          <Pill tone="teal">Micro challenge #06</Pill>
+          <Pill tone="soft">New</Pill>
+          <Pill tone="outline">Bacteriology</Pill>
+        </div>
+        <div className="grp"><span className="lbl">Tags (bench findings)</span>
+          <Tag>Sheep blood agar</Tag>
+          <Tag accent="gramPos">GPC in chains</Tag>
+          <Tag accent="gramNeg">Lactose +</Tag>
+          <Tag accent="biochem">Oxidase −</Tag>
+        </div>
+        <div className="grp"><span className="lbl">Badges &amp; icon buttons</span>
+          <Badge variant="sage" size="lg">B</Badge>
+          <Badge variant="teal" shape="circle">3</Badge>
+          <Badge variant="soft">New</Badge>
+          <IconButton label="Search"><i className="fa-solid fa-magnifying-glass" /></IconButton>
+          <IconButton label="Bookmark" variant="solid"><i className="fa-solid fa-bookmark" /></IconButton>
+        </div>
+        <div className="grp"><span className="lbl">Kicker</span>
+          <Kicker tone="sage">Question</Kicker>
+          <span style={{color:'var(--lm-ink-300)'}}>·</span>
+          <Kicker tone="teal">Clinical bench reference</Kicker>
+        </div>
+        <div className="green"><span className="lbl" style={{color:'rgba(255,255,255,.6)'}}>On deep green</span>
+          <Button variant="ghost-dark" pill>Tag a colleague</Button>
+          <Pill tone="onDark" uppercase={false}>LearnMicrobes.com</Pill>
+          <Tag onDark>β-hemolytic</Tag>
+          <Kicker tone="onDark">Free to start</Kicker>
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body></html>

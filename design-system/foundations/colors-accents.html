@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Warm & semantic accents" subtitle="Gold, terracotta, success, error — used only to flag." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-app); color: var(--text-body); }
+  .wrap { padding: 22px 24px; }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; border-radius: var(--radius-md); height: 80px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-sizing: border-box; }
+  .sw b { font-size: 12.5px; font-weight: 700; color: #fff; }
+  .sw span { font-size: 11px; color: rgba(255,255,255,0.88); }
+  .note { margin-top: 12px; font-size: 12px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row">
+      <div class="sw" style="background:var(--gold-500)"><b>Gold</b><span>#c8a24d · highlight</span></div>
+      <div class="sw" style="background:var(--terracotta-500)"><b>Terracotta</b><span>#c96b4b · warm flag</span></div>
+      <div class="sw" style="background:var(--success-600)"><b>Success</b><span>#4f8f67</span></div>
+      <div class="sw" style="background:var(--error-600)"><b>Error</b><span>#b64b36</span></div>
+    </div>
+    <p class="note">Warm accents stay scarce — a gold annotation, a terracotta caution. The palette never goes neon.</p>
+  </div>
+</body>
+</html>

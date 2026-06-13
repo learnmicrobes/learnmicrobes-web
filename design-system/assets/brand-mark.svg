@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="bm-title bm-desc">
+  <title id="bm-title">Learn Microbes brand mark</title>
+  <desc id="bm-desc">Clinical notebook mark with the letters LM for Learn Microbes.</desc>
+  <defs>
+    <linearGradient id="bm-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c7873"></stop>
+      <stop offset="100%" stop-color="#1d4a54"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="64" height="64" rx="14" fill="#2c7873"></rect>
+  <rect width="64" height="64" rx="14" fill="url(#bm-bg)"></rect>
+
+  
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 13h22.5L48 20.5V47a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5z" stroke="#f6fbf8" stroke-width="2.3"></path>
+    <path d="M40.5 13v7.5H48" stroke="#f6fbf8" stroke-width="2.3"></path>
+    <path d="M13 22h-4M13 30h-4M13 38h-4M13 46h-4" stroke="#d6e6df" stroke-width="2.2"></path>
+    <path d="M22 42h18" stroke="#9fcfc8" stroke-width="1.7" opacity="0.8"></path>
+  </g>
+
+  
+  <text x="28" y="35" text-anchor="middle" dominant-baseline="central" fill="#f6fbf8" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="-0.5">LM</text>
+</svg>

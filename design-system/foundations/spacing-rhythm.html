@@ -1,0 +1,27 @@
+<!-- @dsCard group="Spacing" viewport="700x210" name="Spacing rhythm" subtitle="4px base unit — structured, generous whitespace." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--bg-app); color: var(--text-body); }
+  .wrap { padding: 24px 28px; display: flex; flex-direction: column; gap: 9px; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .bar { background: var(--teal-300); height: 16px; border-radius: 3px; }
+  .lbl { font-size: 12px; color: var(--text-muted); width: 120px; }
+  .lbl b { color: var(--text-body); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row"><span class="lbl"><b>2</b> · 8px</span><div class="bar" style="width:8px"></div></div>
+    <div class="row"><span class="lbl"><b>3</b> · 12px</span><div class="bar" style="width:12px"></div></div>
+    <div class="row"><span class="lbl"><b>4</b> · 16px</span><div class="bar" style="width:16px"></div></div>
+    <div class="row"><span class="lbl"><b>6</b> · 24px</span><div class="bar" style="width:24px"></div></div>
+    <div class="row"><span class="lbl"><b>8</b> · 32px</span><div class="bar" style="width:32px"></div></div>
+    <div class="row"><span class="lbl"><b>12</b> · 48px</span><div class="bar" style="width:48px"></div></div>
+    <div class="row"><span class="lbl"><b>16</b> · 64px</span><div class="bar" style="width:64px"></div></div>
+  </div>
+</body>
+</html>

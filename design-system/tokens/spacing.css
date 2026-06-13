@@ -1,0 +1,57 @@
+/* Learn Microbes — Spacing, radius, shadow & layout tokens
+   The system breathes: generous whitespace, structured 4px rhythm, soft
+   non-dramatic depth, and rounded — but not playful — geometry. Product UI
+   uses tighter "clinical" radii (6–10px); social/marketing tiles use the
+   larger rounded geometry (14–28px) and full pills. */
+
+:root {
+  /* ---- Spacing scale (4px base rhythm) ---- */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.25rem;  /* 20 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-8: 2rem;     /* 32 */
+  --space-10: 2.5rem;  /* 40 */
+  --space-12: 3rem;    /* 48 */
+  --space-16: 4rem;    /* 64 */
+  --space-20: 5rem;    /* 80 */
+
+  /* ---- Radius ---- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;    /* product UI default (inputs, chips, small cards) */
+  --radius-md: 10px;   /* product cards */
+  --radius-lg: 14px;   /* brand tile, larger panels */
+  --radius-xl: 20px;   /* social/marketing cards */
+  --radius-2xl: 28px;  /* hero tiles, feature blocks */
+  --radius-pill: 999px;
+
+  /* ---- Soft depth (calm, never heavy) ---- */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 6px 16px rgba(15, 23, 42, 0.035);
+  --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.10);
+  --shadow-xl: 0 24px 58px rgba(15, 23, 42, 0.18);
+  --shadow-brand: 0 10px 24px rgba(36, 92, 105, 0.16);
+  --shadow-card: var(--shadow-sm); /* alias used by product/UI-kit layer */
+
+  /* ---- Focus ---- */
+  --ring: 0 0 0 3px var(--focus-ring); /* @kind shadow */
+
+  /* ---- Motion (subtle, calm — short eases, no bounce) ---- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* @kind other */
+  --ease-out: var(--ease); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur: 180ms;      /* @kind other */
+  --dur-base: var(--dur); /* @kind other */
+  --dur-slow: 260ms; /* @kind other */
+  --hover-lift: translateY(-2px); /* @kind other */
+  --lift-hover: var(--hover-lift); /* @kind other */
+
+  /* ---- Layout ---- */
+  --container: 1100px;       /* @kind spacing */
+  --container-wide: 1200px;  /* @kind spacing */
+  --tap-min: 44px; /* @kind spacing */
+}
