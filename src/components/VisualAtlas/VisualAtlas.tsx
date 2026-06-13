@@ -57,6 +57,10 @@ type VisualNextStep = {
   description: string;
 };
 
+type VisualNavigationState = {
+  focusVisual?: boolean;
+};
+
 const GRAM_POSITIVE_ROADMAP_PATH = '/gram-positive-roadmap';
 const GRAM_NEGATIVE_ROADMAP_PATH = '/gram-negative-roadmap';
 const ANAEROBE_ROADMAP_PATH = '/obligate-anaerobe-roadmap';
@@ -12586,10 +12590,10 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   const [bookmarkStatusMessage, setBookmarkStatusMessage] = useState('');
   const [isBoardNoteExpanded, setIsBoardNoteExpanded] = useState(false);
   const [expandedAnchorIds, setExpandedAnchorIds] = useState<string[]>([]);
+  const visualSequenceRef = useRef<HTMLElement>(null);
   const visualBoardRef = useRef<HTMLElement>(null);
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
   const isVisualBookmarked = isBookmarked('visual', page.slug);
+  const shouldFocusVisual = Boolean((location.state as VisualNavigationState | null)?.focusVisual);
   const visualPosition = useMemo(() => {
     const pageDiscipline = getDiscipline(page);
     const sortedAtlasPages = getAlphabetizedAtlasPages().filter((p) => getDiscipline(p) === pageDiscipline);
@@ -12612,8 +12616,30 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       visual_title: page.title,
       visual_type: page.visualType
     });
-    visualBoardRef.current?.scrollIntoView({ behavior: 'auto', block: 'start' });
   }, [page.slug, page.title, page.visualType]);
+
+  useEffect(() => {
+    const shouldUseStudyPosition = shouldFocusVisual
+      || (typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 900px)').matches);
+
+    if (!shouldUseStudyPosition) {
+      return undefined;
+    }
+
+    let timeoutId: number | undefined;
+    const animationFrameId = window.requestAnimationFrame(() => {
+      timeoutId = window.setTimeout(() => {
+        (visualSequenceRef.current ?? visualBoardRef.current)?.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }, 0);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [page.slug, shouldFocusVisual]);
 
   const handleBookmarkClick = async () => {
     if (!user) {
@@ -12635,9 +12661,13 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   };
 
   const renderVisualSequence = (placement: 'top' | 'bottom') => (
-    <nav className={`visual-sequence visual-sequence-${placement}`} aria-label="Previous and next Visual Atlas cards">
+    <nav
+      ref={placement === 'top' ? visualSequenceRef : undefined}
+      className={`visual-sequence visual-sequence-${placement}`}
+      aria-label="Previous and next Visual Atlas cards"
+    >
       {visualPosition.previousPage ? (
-        <Link className="visual-sequence-link previous" to={`/visuals/${visualPosition.previousPage.slug}`}>
+        <Link className="visual-sequence-link previous" to={`/visuals/${visualPosition.previousPage.slug}`} state={{ focusVisual: true }}>
           <span className="visual-seq-icon" aria-hidden="true"><FontAwesomeIcon icon={faChevronLeft} /></span>
           <span className="visual-seq-text">
             <small>Previous visual</small>
@@ -12660,7 +12690,7 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       </div>
 
       {visualPosition.nextPage ? (
-        <Link className="visual-sequence-link next" to={`/visuals/${visualPosition.nextPage.slug}`}>
+        <Link className="visual-sequence-link next" to={`/visuals/${visualPosition.nextPage.slug}`} state={{ focusVisual: true }}>
           <span className="visual-seq-text">
             <small>Next visual</small>
             <strong>{visualPosition.nextPage.title}</strong>
@@ -12693,25 +12723,8 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     ));
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
-    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
-      if (deltaX < 0 && visualPosition.nextPage) {
-        navigate(`/visuals/${visualPosition.nextPage.slug}`);
-      } else if (deltaX > 0 && visualPosition.previousPage) {
-        navigate(`/visuals/${visualPosition.previousPage.slug}`);
-      }
-    }
-  };
-
   return (
-    <div className="visual-atlas-shell" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+    <div className="visual-atlas-shell">
       <header className="visual-atlas-hero">
         <span className="visual-kicker">{disciplineKicker}</span>
         <h1>{page.title}</h1>
