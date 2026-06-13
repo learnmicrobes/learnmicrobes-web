@@ -25,6 +25,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
 import { supabase } from '../../lib/supabaseClient';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
+import { trackEvent } from '../../utils/analytics';
 import './StudyQuiz.css';
 
 type QuizCategory =
@@ -415,7 +416,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const navigate = useNavigate();
   const location = useLocation();
   const currentAuthRedirect = `${location.pathname}${location.search}`;
-  const { user } = useAuth();
+  const { isAuthReady, user } = useAuth();
   const { quizHistoryError, saveQuizAttempt } = useQuizHistory();
 
   const shuffleChoices = (question: QuizQuestion): QuizQuestion => {
@@ -464,6 +465,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [leaderboardUserRank, setLeaderboardUserRank] = useState<LeaderboardUserRank>(null);
   const [leaderboardScope, setLeaderboardScope] = useState<LeaderboardScope>('weekly');
   const lastSavedAttemptSignature = useRef('');
+  const hasTrackedQuizStart = useRef(false);
+  const hasTrackedGuestGate = useRef(false);
   const missedQuestionIds = useMemo(
     () => missedAttempts.map((attempt) => attempt.questionId),
     [missedAttempts]
@@ -798,6 +801,17 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   }, [leaderboardScope, user]);
 
   useEffect(() => {
+    if (!isAuthReady || hasTrackedQuizStart.current) {
+      return;
+    }
+
+    hasTrackedQuizStart.current = true;
+    trackEvent('quiz_started', {
+      is_guest: !user
+    });
+  }, [isAuthReady, user]);
+
+  useEffect(() => {
     localStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify({
       category,
       difficulty,
@@ -937,6 +951,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
   const handleNext = () => {
     if (hasReachedGuestQuestionLimit) {
+      if (!hasTrackedGuestGate.current) {
+        hasTrackedGuestGate.current = true;
+        trackEvent('quiz_gate_reached', {
+          questions_answered: guestAnsweredCount
+        });
+      }
       setIsGuestLimitModalOpen(true);
       return;
     }
