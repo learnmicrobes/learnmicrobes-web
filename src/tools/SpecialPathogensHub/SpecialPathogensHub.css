@@ -129,9 +129,8 @@
 
 .special-pathogen-card {
   padding: 1.25rem 1.2rem;
-  border: 1px solid rgba(36, 92, 105, 0.16);
-  border-left: 6px solid #b6533a;
-  border-radius: 7px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.055);
   text-align: left;
