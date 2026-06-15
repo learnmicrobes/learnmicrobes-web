@@ -29,6 +29,7 @@ interface QuizOptionsProps {
 interface IdentificationResult {
   bacteria: string;
   matchPercentage: string;
+  weightedMatchScore: number;
   testsConsidered: number;
   criticalMismatches: string[];
 }
@@ -962,6 +963,20 @@ const normalizeTestResult = (result: string): TestResult => {
   return '';
 };
 
+const getWeightedTestScore = (importance: TestImportance): number => {
+  if (importance === 'green') return 2;
+  if (importance === 'pink') return 1.5;
+  return 1;
+};
+
+const getVariableMatchScore = (importance: TestImportance): number => (
+  importance === 'green' ? 0.5 : 0.3
+);
+
+const clampPercentage = (value: number): number => (
+  Math.min(100, Math.max(0, value))
+);
+
 const formatTestName = (test: string): string => {
   return test
     .replace(/([A-Z])/g, ' $1')
@@ -1153,6 +1168,7 @@ const BioCalculator = () => {
       
       const results: IdentificationResult[] = Object.entries(bacteriaProfiles).map(([bacteria, profile]) => {
         let score = 0;
+        let maxPossibleScore = 0;
         let testsConsidered = 0;
         const criticalMismatches: string[] = [];
   
@@ -1171,12 +1187,16 @@ const BioCalculator = () => {
           const importance = testImportance[bacteria]?.[test] || 'supportive';
           const isKeyTest = importance === 'green';
           const isSupportive = importance === 'pink';
+          const maxTestScore = userValue === "V"
+            ? getVariableMatchScore(importance)
+            : getWeightedTestScore(importance);
+          maxPossibleScore += maxTestScore;
   
           if (userValue === "V") {
-            if (expected === "V") score += isKeyTest ? 0.5 : 0.3;
+            if (expected === "V") score += getVariableMatchScore(importance);
           } else {
             if (expected === userValue) {
-              score += isKeyTest ? 2 : isSupportive ? 1.5 : 1;
+              score += maxTestScore;
             } else {
               if (['+', '-'].includes(expected)) {
                 score -= isKeyTest ? 3 : isSupportive ? 2 : 1;
@@ -1187,18 +1207,22 @@ const BioCalculator = () => {
             }
           }
         });
+
+        // Weighted educational similarity score only; this is not a diagnostic probability.
+        const weightedMatchScore = maxPossibleScore > 0
+          ? clampPercentage((score / maxPossibleScore) * 100)
+          : 0;
   
         return {
           bacteria,
-          matchPercentage: testsConsidered > 0 
-            ? ((score / testsConsidered) * 100).toFixed(2)
-            : "0.00",
+          matchPercentage: weightedMatchScore.toFixed(2),
+          weightedMatchScore,
           testsConsidered,
           criticalMismatches
         };
       });
   
-      results.sort((a, b) => parseFloat(b.matchPercentage) - parseFloat(a.matchPercentage));
+      results.sort((a, b) => b.weightedMatchScore - a.weightedMatchScore);
   
       let resultHTML = "";
       if (results.length === 0 || results[0].matchPercentage === "0.00") {
@@ -1210,7 +1234,7 @@ const BioCalculator = () => {
             <span class="result-kicker">Likely ID</span>
             <div class="top-match-card">
               <strong>${topResult.bacteria}</strong> 
-              <span class="match-percentage">${topResult.matchPercentage}% match</span>
+              <span class="match-percentage">${topResult.matchPercentage}% weighted match</span>
               ${topResult.criticalMismatches.length > 0 ? 
                 `<div class="warning">⚠️ Critical mismatch in: 
                 ${topResult.criticalMismatches.map(t => formatTestName(t)).join(', ')}
@@ -1228,7 +1252,7 @@ const BioCalculator = () => {
                 ${results.slice(1, 5).map(result => `
                   <div class="other-match-card" role="listitem">
                     <strong>${result.bacteria}</strong>
-                    <span class="match-percentage">${result.matchPercentage}% match</span>
+                    <span class="match-percentage">${result.matchPercentage}% weighted match</span>
                   </div>
                 `).join('')}
               </div>
