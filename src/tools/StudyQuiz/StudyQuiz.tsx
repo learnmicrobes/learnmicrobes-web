@@ -363,16 +363,18 @@ const buildQuizQuestions = (): QuizQuestion[] => {
     'postanalytic-procedures': 'postanalytics'
   };
 
-  const authoredQuestions = questionBank.map((question) => ({
-    id: question.id,
-    category: questionBankCategoryMap[question.area],
-    difficulty: question.difficulty,
-    prompt: question.prompt,
-    choices: question.choices,
-    answer: question.answer,
-    explanation: question.explanation,
-    source: question.source
-  }));
+  const authoredQuestions = questionBank
+    .filter((question) => question.status === 'published')
+    .map((question) => ({
+      id: question.id,
+      category: questionBankCategoryMap[question.area],
+      difficulty: question.difficulty,
+      prompt: question.prompt,
+      choices: question.choices,
+      answer: question.answer,
+      explanation: question.explanation,
+      source: question.source
+    }));
 
   return [...authoredQuestions, ...principleQuestions, ...qcQuestions, ...expectedResultQuestions, ...organismQuestions, ...safetyQuestions];
 };
@@ -520,9 +522,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       ))
   ), [allQuestions, category, difficulty, missedQuestions, reviewMissedOnly]);
 
-  const currentQuestion = visibleQuestions[questionIndex % visibleQuestions.length];
+  const currentQuestion = visibleQuestions.length > 0
+    ? visibleQuestions[questionIndex % visibleQuestions.length]
+    : null;
+  const currentQuestionId = currentQuestion?.id ?? '';
   const isAnswered = Boolean(selectedAnswer);
-  const isCorrect = selectedAnswer === currentQuestion.answer;
+  const isCorrect = currentQuestion ? selectedAnswer === currentQuestion.answer : false;
   const hasReachedGuestQuestionLimit = !user && guestAnsweredCount >= GUEST_QUIZ_QUESTION_LIMIT;
   const isQuestionLockedForGuest = hasReachedGuestQuestionLimit && !isAnswered;
   const scoreText = `${correctIds.length}/${answeredIds.length || 0}`;
@@ -538,9 +543,12 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     ? Math.round((visibleAnsweredCount / visibleQuestions.length) * 100)
     : 0;
   const isQuizComplete = visibleQuestions.length > 0 && visibleAnsweredCount === visibleQuestions.length;
-  const accuracyPercent = answeredIds.length > 0
-    ? Math.round((correctIds.length / answeredIds.length) * 100)
-    : 0;
+  const visibleAccuracyPercent = visibleAnsweredCount >= 3
+    ? Math.round((visibleCorrectCount / visibleAnsweredCount) * 100)
+    : null;
+  const sourceTypeLabel = currentQuestion?.source.startsWith('Learn Microbes original question bank')
+    ? 'Learn Microbes starter'
+    : 'Generated practice';
   const timerPercent = Math.max(0, Math.round((timeRemaining / QUIZ_TIMER_SECONDS) * 100));
   const timerState = timeRemaining <= 10 ? 'urgent' : timeRemaining <= 25 ? 'warning' : '';
   const missedAttemptMap = useMemo(
@@ -841,10 +849,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   useEffect(() => {
     setTimeRemaining(QUIZ_TIMER_SECONDS);
     setShowConfetti(false);
-  }, [currentQuestion.id]);
+  }, [currentQuestionId]);
 
   useEffect(() => {
-    if (!isTimedMode || isAnswered || hasReachedGuestQuestionLimit || timeRemaining <= 0) {
+    if (!currentQuestion || !isTimedMode || isAnswered || hasReachedGuestQuestionLimit || timeRemaining <= 0) {
       return undefined;
     }
 
@@ -853,7 +861,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [hasReachedGuestQuestionLimit, isAnswered, isTimedMode, timeRemaining]);
+  }, [currentQuestion, hasReachedGuestQuestionLimit, isAnswered, isTimedMode, timeRemaining]);
 
   useEffect(() => {
     if (!showConfetti) {
@@ -904,7 +912,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   };
 
   const handleAnswer = (choice: string) => {
-    if (isAnswered || isQuestionLockedForGuest) {
+    if (!currentQuestion || isAnswered || isQuestionLockedForGuest) {
       return;
     }
 
@@ -950,6 +958,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   };
 
   const handleNext = () => {
+    if (visibleQuestions.length === 0) {
+      return;
+    }
+
     if (hasReachedGuestQuestionLimit) {
       if (!hasTrackedGuestGate.current) {
         hasTrackedGuestGate.current = true;
@@ -966,8 +978,21 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   };
 
   const handlePrevious = () => {
+    if (visibleQuestions.length === 0) {
+      return;
+    }
+
     setQuestionIndex((index) => (index - 1 + visibleQuestions.length) % visibleQuestions.length);
     setSelectedAnswer('');
+    setIsGuestLimitModalOpen(false);
+  };
+
+  const handleShowAllQuestions = () => {
+    setCategory('all');
+    setDifficulty('beginner');
+    setQuestionIndex(0);
+    setSelectedAnswer('');
+    setReviewMissedOnly(false);
     setIsGuestLimitModalOpen(false);
   };
 
@@ -1227,7 +1252,9 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
         <section className="study-quiz-main-rail" aria-label="Active quiz question">
           <div className="study-quiz-set-meta">
             <span>{visibleAnsweredCount} / {visibleQuestions.length} answered</span>
-            <span>{accuracyPercent}% accuracy</span>
+            <span>
+              Current set accuracy: {visibleAccuracyPercent === null ? 'Answer 3 to build accuracy' : `${visibleAccuracyPercent}%`}
+            </span>
           </div>
 
           {isQuizComplete && !user && (
@@ -1243,92 +1270,120 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             </div>
           )}
 
-          <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
-            {showConfetti && (
-              <div className="study-quiz-confetti" aria-hidden="true">
-                {Array.from({ length: CONFETTI_PIECES }).map((_, index) => (
-                  <span key={`confetti-${index}`} />
-                ))}
-              </div>
-            )}
-            <div className="study-quiz-card-header">
-              <span>
-                <FontAwesomeIcon icon={currentQuestion.category === 'safety' ? faShieldHalved : faFlaskVial} />
-                {reviewMissedOnly ? 'Missed review' : categoryLabels[currentQuestion.category]}
-              </span>
-              <span>{difficultyLabels[currentQuestion.difficulty]}</span>
-              <span>{questionIndex + 1} of {visibleQuestions.length}</span>
-            </div>
-
-            <h2>{currentQuestion.prompt}</h2>
-            {isTimedMode && timeRemaining === 0 && !isAnswered && (
-              <p className="study-quiz-timer-alert" role="status" aria-live="polite">
-                Time is up. Choose an answer, then review the explanation.
-              </p>
-            )}
-
-            <div className="study-quiz-choices">
-              {currentQuestion.choices.map((choice, index) => {
-                const className = isAnswered
-                  ? choice === currentQuestion.answer
-                    ? 'correct'
-                    : choice === selectedAnswer
-                      ? 'incorrect'
-                      : ''
-                  : '';
-
-                return (
-                  <button
-                    key={choice}
-                    type="button"
-                    className={className}
-                    onClick={() => handleAnswer(choice)}
-                    disabled={isQuestionLockedForGuest}
-                    aria-pressed={selectedAnswer === choice}
-                  >
-                    <span className="study-quiz-choice-letter">{String.fromCharCode(65 + index)}</span>
-                    <span className="study-quiz-choice-text">{choice}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {isAnswered && (
-              <div
-                className={`study-quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`}
-                role="status"
-                aria-live="polite"
-                aria-atomic="true"
-              >
-                <div>
-                  <FontAwesomeIcon icon={isCorrect ? faCheckCircle : faXmarkCircle} />
-                  <strong>{isCorrect ? 'Correct' : 'Incorrect'}</strong>
+          {currentQuestion ? (
+            <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
+              {showConfetti && (
+                <div className="study-quiz-confetti" aria-hidden="true">
+                  {Array.from({ length: CONFETTI_PIECES }).map((_, index) => (
+                    <span key={`confetti-${index}`} />
+                  ))}
                 </div>
-                <p>{currentQuestion.explanation}</p>
+              )}
+              <div className="study-quiz-card-header">
+                <span>
+                  <FontAwesomeIcon icon={currentQuestion.category === 'safety' ? faShieldHalved : faFlaskVial} />
+                  {reviewMissedOnly ? 'Missed review' : categoryLabels[currentQuestion.category]}
+                </span>
+                <span>{difficultyLabels[currentQuestion.difficulty]}</span>
+                <span className="study-quiz-source-type">{sourceTypeLabel}</span>
+                <span>{questionIndex + 1} of {visibleQuestions.length}</span>
               </div>
-            )}
 
-            <div className="study-quiz-actions">
-              <button type="button" onClick={handlePrevious} aria-label="Previous question">
-                Previous
-              </button>
-              <button type="button" onClick={handleNext}>
-                {hasReachedGuestQuestionLimit && !user ? 'Sign in to continue' : 'Next question'}
-                <FontAwesomeIcon icon={faArrowRight} />
-              </button>
-            </div>
+              <h2>{currentQuestion.prompt}</h2>
+              {isTimedMode && timeRemaining === 0 && !isAnswered && (
+                <p className="study-quiz-timer-alert" role="status" aria-live="polite">
+                  Time is up. Choose an answer, then review the explanation.
+                </p>
+              )}
 
-            <div className="study-quiz-mobile-save-row">
-              <button
-                type="button"
-                className="study-quiz-save"
-                onClick={() => saveCurrentQuizAttempt(false)}
-                disabled={visibleAnsweredCount === 0 || isSavingQuizAttempt || hasSavedCurrentAttempt}
-              >
-                {isSavingQuizAttempt ? 'Saving...' : hasSavedCurrentAttempt ? 'Session saved' : user ? 'Save session' : 'Sign in to save'}
+              <div className="study-quiz-choices">
+                {currentQuestion.choices.map((choice, index) => {
+                  const answerStateLabel = isAnswered
+                    ? choice === currentQuestion.answer && choice === selectedAnswer
+                      ? 'Your answer / Correct answer'
+                      : choice === currentQuestion.answer
+                        ? 'Correct answer'
+                        : choice === selectedAnswer
+                          ? 'Your answer'
+                          : ''
+                    : '';
+                  const className = isAnswered
+                    ? choice === currentQuestion.answer
+                      ? 'correct'
+                      : choice === selectedAnswer
+                        ? 'incorrect'
+                        : ''
+                    : '';
+
+                  return (
+                    <button
+                      key={choice}
+                      type="button"
+                      className={className}
+                      onClick={() => handleAnswer(choice)}
+                      disabled={isQuestionLockedForGuest}
+                      aria-pressed={selectedAnswer === choice}
+                      aria-label={answerStateLabel ? `${choice}. ${answerStateLabel}` : choice}
+                    >
+                      <span className="study-quiz-choice-letter">{String.fromCharCode(65 + index)}</span>
+                      <span className="study-quiz-choice-body">
+                        <span className="study-quiz-choice-text">{choice}</span>
+                        {answerStateLabel && (
+                          <span className="study-quiz-answer-state">{answerStateLabel}</span>
+                        )}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {isAnswered && (
+                <div
+                  className={`study-quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`}
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
+                  <div>
+                    <FontAwesomeIcon icon={isCorrect ? faCheckCircle : faXmarkCircle} />
+                    <strong>{isCorrect ? 'Correct' : 'Incorrect'}</strong>
+                  </div>
+                  <span className="study-quiz-feedback-label">Bench takeaway</span>
+                  <p>{currentQuestion.explanation}</p>
+                </div>
+              )}
+
+              <div className="study-quiz-actions">
+                <button type="button" onClick={handlePrevious} aria-label="Previous question">
+                  Previous
+                </button>
+                <button type="button" onClick={handleNext}>
+                  {hasReachedGuestQuestionLimit && !user ? 'Sign in to continue' : 'Next question'}
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </button>
+              </div>
+
+              <div className="study-quiz-mobile-save-row">
+                <button
+                  type="button"
+                  className="study-quiz-save"
+                  onClick={() => saveCurrentQuizAttempt(false)}
+                  disabled={visibleAnsweredCount === 0 || isSavingQuizAttempt || hasSavedCurrentAttempt}
+                >
+                  {isSavingQuizAttempt ? 'Saving...' : hasSavedCurrentAttempt ? 'Session saved' : user ? 'Save session' : 'Sign in to save'}
+                </button>
+              </div>
+            </main>
+          ) : (
+            <main className="study-quiz-card study-quiz-empty-state">
+              <span className="study-quiz-empty-kicker">No matching set</span>
+              <h2>No questions match this filter yet.</h2>
+              <p>Try All categories or a different difficulty.</p>
+              <button type="button" onClick={handleShowAllQuestions}>
+                Show all questions
               </button>
-            </div>
-          </main>
+            </main>
+          )}
         </section>
       </div>
 
