@@ -408,6 +408,53 @@ const difficultyDescriptions: Record<QuizDifficulty, string> = {
 export type StudyQuizCategory = QuizCategory;
 export type StudyQuizDifficulty = QuizDifficulty;
 
+export const studyQuizCategoryLabels = categoryLabels;
+export const studyQuizDifficultyLabels = difficultyLabels;
+export const studyQuizDifficultyDescriptions = difficultyDescriptions;
+
+let cachedQuizStats: {
+  totalQuestions: number;
+  categoryCounts: Record<Exclude<QuizCategory, 'all'>, number>;
+  difficultyCounts: Record<QuizDifficulty, number>;
+} | null = null;
+
+/**
+ * Question counts for the Practice hub, built from the same source as the quiz
+ * itself so the numbers a student sees always match what they get.
+ */
+export const getStudyQuizStats = () => {
+  if (cachedQuizStats) {
+    return cachedQuizStats;
+  }
+
+  const questions = buildQuizQuestions();
+  const categoryCounts = {} as Record<Exclude<QuizCategory, 'all'>, number>;
+  const difficultyCounts: Record<QuizDifficulty, number> = {
+    beginner: 0,
+    intermediate: 0,
+    advanced: 0
+  };
+
+  (Object.keys(categoryLabels) as QuizCategory[]).forEach((key) => {
+    if (key !== 'all') {
+      categoryCounts[key] = 0;
+    }
+  });
+
+  questions.forEach((question) => {
+    categoryCounts[question.category] += 1;
+    difficultyCounts[question.difficulty] += 1;
+  });
+
+  cachedQuizStats = {
+    totalQuestions: questions.length,
+    categoryCounts,
+    difficultyCounts
+  };
+
+  return cachedQuizStats;
+};
+
 type StudyQuizProps = {
   initialCategory?: QuizCategory;
   initialDifficulty?: QuizDifficulty;
@@ -435,9 +482,24 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const allQuestions = useMemo(() => buildQuizQuestions().map(shuffleChoices), []);
   const savedState = useMemo(() => getSavedQuizState(), []);
   const validQuestionIds = useMemo(() => new Set(allQuestions.map((question) => question.id)), [allQuestions]);
-  const hasInitialFilter = Boolean(initialCategory || initialDifficulty);
-  const savedCategory = initialCategory ?? (savedState?.category && categoryLabels[savedState.category] ? savedState.category : 'all');
-  const savedDifficulty = initialDifficulty ?? (savedState?.difficulty && difficultyLabels[savedState.difficulty] ? savedState.difficulty : 'intermediate');
+
+  // Practice page deep links (/study-quiz?category=mycology&difficulty=beginner) preset the quiz.
+  const linkedFilters = useMemo(() => {
+    const params = new URLSearchParams(location.search);
+    const linkedCategory = params.get('category') as QuizCategory | null;
+    const linkedDifficulty = params.get('difficulty') as QuizDifficulty | null;
+
+    return {
+      category: linkedCategory && categoryLabels[linkedCategory] ? linkedCategory : undefined,
+      difficulty: linkedDifficulty && difficultyLabels[linkedDifficulty] ? linkedDifficulty : undefined
+    };
+  }, [location.search]);
+
+  const presetCategory = initialCategory ?? linkedFilters.category;
+  const presetDifficulty = initialDifficulty ?? linkedFilters.difficulty;
+  const hasInitialFilter = Boolean(presetCategory || presetDifficulty);
+  const savedCategory = presetCategory ?? (savedState?.category && categoryLabels[savedState.category] ? savedState.category : 'all');
+  const savedDifficulty = presetDifficulty ?? (savedState?.difficulty && difficultyLabels[savedState.difficulty] ? savedState.difficulty : 'intermediate');
   const [category, setCategory] = useState<QuizCategory>(savedCategory);
   const [difficulty, setDifficulty] = useState<QuizDifficulty>(savedDifficulty);
   const [questionIndex, setQuestionIndex] = useState(hasInitialFilter ? 0 : savedState?.questionIndex ?? 0);
