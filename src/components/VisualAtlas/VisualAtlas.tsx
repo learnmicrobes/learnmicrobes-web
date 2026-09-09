@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faChevronLeft, faChevronRight, faMicroscope } from '@fortawesome/free-solid-svg-icons';
 import { getSearchAliases } from '../../data/searchAliases';
 import { trackEvent } from '../../utils/analytics';
 import { useAuth } from '../../context/AuthContext';
@@ -20,6 +20,15 @@ export type TubeVisual = {
   };
   note: string;
   growth?: 'heavy' | 'light' | 'none';
+  recognitionImage?: {
+    src: string;
+    alt: string;
+  };
+  structureMap?: {
+    src: string;
+    alt: string;
+  };
+  benchTip?: string;
 };
 
 export type AtlasPage = {
@@ -3860,7 +3869,16 @@ export const atlasPages: AtlasPage[] = [
         label: 'A. niger',
         name: 'Radiate biseriate, dark conidia',
         colors: { slant: '#e0dccf', butt: '#6a6048', base: '#33291a' },
-        note: 'Large radiate head that splits into a full sphere, biseriate with metulae and phialides. Conidia are dark, giving black colonies.'
+        note: 'Look for a large radiate conidial head with dark conidia and biseriate structures around the vesicle.',
+        recognitionImage: {
+          src: '/visual-atlas/mycology/aspergillus/aspergillus-niger-recognition-v01.webp?v=2',
+          alt: 'Microscopy-style educational recognition image of Aspergillus niger showing a blue-stained radiate conidial head.'
+        },
+        structureMap: {
+          src: '/visual-atlas/mycology/aspergillus/aspergillus-niger-structure-map-v01.svg?v=2',
+          alt: 'Structure map of Aspergillus niger showing conidiophore, vesicle, metulae, phialides, and dark conidia.'
+        },
+        benchTip: 'Start with the head shape, then confirm the arrangement around the vesicle.'
       },
       {
         id: 'C',
@@ -10923,7 +10941,43 @@ function renderTaeniaScolex(tube: TubeVisual) {
   );
 }
 
+function renderMycologyRecognitionCard(tube: TubeVisual) {
+  if (!tube.recognitionImage) {
+    return null;
+  }
+
+  return (
+    <div className="lia-tube-card lia-plate-card mycology-recognition-card" key={tube.id}>
+      <div className="mycology-recognition-card-id" aria-label={`Visual ${tube.id}`}>{tube.id}</div>
+      <div className="mycology-recognition-heading">
+        <span>Microscopy recognition</span>
+        <strong><em>{tube.label}</em></strong>
+      </div>
+      <figure className="mycology-recognition-image">
+        <img src={tube.recognitionImage.src} alt={tube.recognitionImage.alt} loading="eager" />
+      </figure>
+      <strong className="mycology-recognition-differentiator">{tube.name}</strong>
+      <p className="mycology-recognition-note">{tube.note}</p>
+      {tube.benchTip && (
+        <aside className="mycology-recognition-tip">
+          <span aria-hidden="true"><FontAwesomeIcon icon={faMicroscope} /></span>
+          <p>{tube.benchTip}</p>
+        </aside>
+      )}
+      {tube.structureMap && (
+        <figure className="mycology-structure-map">
+          <img src={tube.structureMap.src} alt={tube.structureMap.alt} loading="lazy" />
+        </figure>
+      )}
+    </div>
+  );
+}
+
 function renderMycology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
+  if (tube.recognitionImage) {
+    return renderMycologyRecognitionCard(tube);
+  }
+
   const bg = tube.colors.slant;
   const body = tube.colors.butt;
   const detail = tube.colors.base;
@@ -12172,6 +12226,7 @@ const getAtlasStageClass = (visualType: AtlasPage['visualType']) => {
   }
 
   if (isMycologyVisualType(visualType)) {
+    if (visualType === 'mycology-aspergillus-comparison') return 'mycology-stage mycology-comparison-stage';
     return visualType === 'mycology-dermatophyte-panel' ? 'mycology-stage dermatophyte-stage' : 'mycology-stage';
   }
 
