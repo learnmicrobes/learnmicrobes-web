@@ -11,55 +11,47 @@ import { useLearnProgress } from '../../hooks/useLearnProgress';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './Learn.css';
 
-const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+export const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const categoryOrder = [
   'Foundations',
   'Clinical Lab Principles',
   'Core Methods',
+  // Organism groups run bacteriology, parasitology, mycology, virology.
   'Bacteriology',
-  'Mycology',
   'Parasitology',
+  'Mycology',
   'Virology',
   'Molecular and Immunodiagnostics',
   'Bench and Exam Integration'
 ];
 
-const learningLaneMeta: Record<string, { number: string; description: string }> = {
+const learningLaneMeta: Record<string, { description: string }> = {
   Foundations: {
-    number: '01',
     description: 'Organism naming, bacterial structure, genetics, metabolism, host response, and normal flora logic.'
   },
   'Clinical Lab Principles': {
-    number: '02',
     description: 'Safety, specimens, diagnostic methods, antimicrobial activity, QC, and clinical lab reasoning.'
   },
   'Core Methods': {
-    number: '03',
     description: 'Microscopy, stains, media, atmosphere, colony reading, and branch-point tests.'
   },
   Bacteriology: {
-    number: '04',
     description: 'Bacterial identification principles and major bacterial organism groups.'
   },
   Mycology: {
-    number: '05',
     description: 'Fungal specimens, yeasts, molds, dermatophytes, dimorphic fungi, and fungal diagnostics.'
   },
   Parasitology: {
-    number: '06',
     description: 'Stool O&P, protozoa, helminths, blood parasites, malaria, and parasite methods.'
   },
   Virology: {
-    number: '07',
     description: 'Viral structure, specimen selection, respiratory viruses, herpesviruses, hepatitis, and HIV basics.'
   },
   'Molecular and Immunodiagnostics': {
-    number: '08',
     description: 'NAAT, PCR, sequencing, MALDI-TOF, immunoassays, and serology interpretation.'
   },
   'Bench and Exam Integration': {
-    number: '09',
     description: 'Unknown isolate thinking, syndrome-to-test logic, exam pathways, tables, and common traps.'
   }
 };
@@ -71,7 +63,7 @@ const categoryDisplayNames: Record<string, string> = {
   'Bench and Exam Integration': 'Bench and Exam Review'
 };
 
-const getCategoryDisplayName = (category: string) => categoryDisplayNames[category] ?? category;
+export const getCategoryDisplayName = (category: string) => categoryDisplayNames[category] ?? category;
 
 const studyPaths = [
   {
@@ -583,7 +575,6 @@ export const LearnHub: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilters, setActiveFilters] = useState<LearnFilter[]>([]);
   const [openCategories, setOpenCategories] = useState(() => new Set(['Foundations', 'Clinical Lab Principles']));
-  const [isStudyOrderOpen, setIsStudyOrderOpen] = useState(false);
   const { completedTopicSlugs, progressRows } = useLearnProgress();
   const { masteredTopicSet } = useMasteredTopics();
   const completedTopicSet = progressRows.length > 0 ? completedTopicSlugs : masteredTopicSet;
@@ -741,6 +732,37 @@ export const LearnHub: React.FC = () => {
         </div>
       </header>
 
+      <section className="learn-book-map" aria-labelledby="learn-book-map-title">
+        <div className="learn-book-map-heading">
+          <span className="learn-section-label">Jump to a subject</span>
+          <h2 id="learn-book-map-title">Browse all 9 study areas</h2>
+          <p>Tap a subject to expand its full topic list further down this page.</p>
+        </div>
+        <div className="learn-book-map-grid" id="learn-book-map-grid">
+          {topicsByCategory.map((group) => {
+            const meta = learningLaneMeta[group.category];
+            const categoryProgress = getCategoryProgress(group.category);
+
+            return (
+              <button
+                key={group.category}
+                type="button"
+                onClick={() => openStudyArea(group.category)}
+                aria-expanded={openCategories.has(group.category)}
+                aria-controls={`${slugify(group.category)}-topic-list`}
+              >
+                <span>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</span>
+                <strong>{getCategoryDisplayName(group.category)}</strong>
+                <small>{meta.description}</small>
+                <span className="learn-area-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered`}>
+                  <i style={{ width: `${categoryProgress.percent}%` }} />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="learn-start-panel" aria-labelledby="learn-start-title">
         <div>
           <span className="learn-section-label">Begin Learning</span>
@@ -886,48 +908,6 @@ export const LearnHub: React.FC = () => {
           );
         })}
       </div>
-
-      <section className={`learn-book-map ${isStudyOrderOpen ? 'open' : 'collapsed'}`} aria-labelledby="learn-book-map-title">
-        <button
-          type="button"
-          className="learn-book-map-toggle"
-          onClick={() => setIsStudyOrderOpen((current) => !current)}
-          aria-expanded={isStudyOrderOpen}
-          aria-controls="learn-book-map-grid"
-        >
-          <span>
-            <small className="learn-section-label">Learning map</small>
-            <strong id="learn-book-map-title">Browse all areas</strong>
-            <em>Use this when you want the full Learn Microbes sequence.</em>
-          </span>
-          <b>{isStudyOrderOpen ? 'Hide' : 'Show'}</b>
-        </button>
-        {isStudyOrderOpen && (
-          <div className="learn-book-map-grid" id="learn-book-map-grid">
-            {topicsByCategory.map((group) => {
-              const meta = learningLaneMeta[group.category];
-              const categoryProgress = getCategoryProgress(group.category);
-
-              return (
-                <button
-                  key={group.category}
-                  type="button"
-                  onClick={() => openStudyArea(group.category)}
-                  aria-expanded={openCategories.has(group.category)}
-                  aria-controls={`${slugify(group.category)}-topic-list`}
-                >
-                  <span>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</span>
-                  <strong>{getCategoryDisplayName(group.category)}</strong>
-                  <small>{meta.description}</small>
-                  <span className="learn-area-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered`}>
-                    <i style={{ width: `${categoryProgress.percent}%` }} />
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        )}
-      </section>
     </div>
   );
 };
