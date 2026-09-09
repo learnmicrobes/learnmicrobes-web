@@ -39,11 +39,11 @@
 .not-found-card h1 {
   color: var(--primary-color, #2c7873);
   margin-bottom: 1rem;
-  font-size: 1.8rem;
+  font-size: var(--text-2xl);
 }
 
 .not-found-joke {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: #4a5568;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -61,7 +61,7 @@
   border: none;
   padding: 0.8rem 2rem;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: var(--text-md);
   font-weight: bold;
   cursor: pointer;
   display: flex;

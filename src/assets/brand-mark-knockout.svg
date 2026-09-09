@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="bmk-title bmk-desc">
+  <title id="bmk-title">Learn Microbes brand mark</title>
+  <desc id="bmk-desc">Clinical notebook mark with the letters LM for Learn Microbes.</desc>
+
+  <!--
+    Knockout lockup. The tiled app-icon version (brand-mark.svg) is #2c7873..#1d4a54,
+    which sits almost exactly on top of the #245c69 nav bar and disappears. This one
+    drops the tile and knocks the glyph out in white, then scales it to fill the box
+    the tile used to occupy. Use this on brand-coloured surfaces; use the tiled mark
+    on light grounds, the favicon, and the installed app icon.
+  -->
+  <g transform="translate(32 32) scale(1.42) translate(-28.5 -32.5)">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13h22.5L48 20.5V47a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5z" stroke="#ffffff" stroke-width="2.3"/>
+      <path d="M40.5 13v7.5H48" stroke="#ffffff" stroke-width="2.3"/>
+      <path d="M13 22h-4M13 30h-4M13 38h-4M13 46h-4" stroke="#ffffff" stroke-width="2.2" opacity="0.72"/>
+      <path d="M19.5 40.5h22" stroke="#ffffff" stroke-width="1.7" opacity="0.6"/>
+    </g>
+
+    <text
+      x="30.5"
+      y="31"
+      text-anchor="middle"
+      dominant-baseline="central"
+      fill="#ffffff"
+      font-family="Arial, Helvetica, sans-serif"
+      font-weight="700"
+      font-size="16"
+      letter-spacing="-0.5"
+    >LM</text>
+  </g>
+</svg>

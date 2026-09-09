@@ -32,8 +32,8 @@
 .ascp-review-kicker {
   display: inline-flex;
   color: var(--primary-color);
-  font-size: 0.72rem;
-  font-weight: 900;
+  font-size: var(--text-xs);
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -52,11 +52,11 @@
 }
 
 .ascp-review-page h2 {
-  font-size: 1.35rem;
+  font-size: var(--text-xl);
 }
 
 .ascp-review-page h3 {
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .ascp-review-page p {
@@ -80,7 +80,7 @@
   gap: 0.48rem;
   min-height: 2.55rem;
   border-radius: 6px;
-  font-weight: 900;
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -117,15 +117,15 @@
 
 .ascp-flow-heading span {
   color: var(--primary-color);
-  font-size: 0.68rem;
-  font-weight: 950;
+  font-size: var(--text-xs);
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .ascp-flow-heading strong {
   color: var(--dark-color);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.2;
 }
 
@@ -180,13 +180,13 @@
 }
 
 .ascp-flow-step-marker span {
-  font-size: 0.68rem;
-  font-weight: 950;
+  font-size: var(--text-xs);
+  font-weight: 700;
 }
 
 .ascp-flow-step-marker svg {
   margin-top: 0.12rem;
-  font-size: 0.64rem;
+  font-size: var(--text-xs);
 }
 
 .ascp-flow-step-copy {
@@ -197,14 +197,14 @@
 
 .ascp-flow-step-copy strong {
   color: var(--dark-color);
-  font-size: 0.74rem;
+  font-size: var(--text-sm);
   line-height: 1.1;
 }
 
 .ascp-flow-step-copy small {
   color: var(--muted-color);
-  font-size: 0.62rem;
-  font-weight: 800;
+  font-size: var(--text-xs);
+  font-weight: 500;
   line-height: 1.15;
 }
 
@@ -228,22 +228,22 @@
 
 .ascp-flow-center-card span {
   color: #8a5b0a;
-  font-size: 0.66rem;
-  font-weight: 950;
+  font-size: var(--text-xs);
+  font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .ascp-flow-center-card strong {
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
   line-height: 1.25;
 }
 
 .ascp-flow-watermark {
   display: block;
   color: rgba(36, 92, 105, 0.48);
-  font-size: 0.62rem;
-  font-weight: 800;
+  font-size: var(--text-xs);
+  font-weight: 500;
   line-height: 1;
   text-align: center;
 }
@@ -275,7 +275,7 @@
   border-radius: 6px;
   background: #fbfaf7;
   color: var(--dark-color);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.42;
 }
 
@@ -329,7 +329,7 @@
 }
 
 .ascp-review-module-grid p {
-  font-size: 0.86rem;
+  font-size: var(--text-base);
 }
 
 .ascp-review-module-grid a {
@@ -339,7 +339,7 @@
   border: 1px solid rgba(36, 92, 105, 0.18);
   background: #ffffff;
   color: var(--primary-color);
-  font-size: 0.84rem;
+  font-size: var(--text-base);
 }
 
 .ascp-review-search-intent {
@@ -382,13 +382,13 @@
 
 .ascp-review-disclaimer strong {
   color: var(--dark-color);
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   line-height: 1.25;
 }
 
 .ascp-review-disclaimer p {
   color: #6c4c10;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   line-height: 1.45;
 }
 
@@ -475,14 +475,14 @@ body.dark-mode .ascp-review-disclaimer p {
 }
 
 .ascp-review-audience {
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   color: var(--muted-color);
   opacity: 0.82;
 }
 
 .ascp-flow-caption {
   margin-top: 0.55rem;
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
   color: var(--muted-color);
   line-height: 1.45;
   text-align: center;
@@ -516,7 +516,7 @@ body.dark-mode .ascp-flow-caption {
   }
 
   .ascp-review-page h1 {
-    font-size: 1.9rem;
+    font-size: var(--text-2xl);
   }
 
   .ascp-review-actions,
@@ -551,11 +551,11 @@ body.dark-mode .ascp-flow-caption {
   }
 
   .ascp-flow-step-copy strong {
-    font-size: 0.68rem;
+    font-size: var(--text-xs);
   }
 
   .ascp-flow-step-copy small {
-    font-size: 0.58rem;
+    font-size: var(--text-xs);
   }
 
   .ascp-flow-center-card {

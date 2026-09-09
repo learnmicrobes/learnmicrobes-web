@@ -12,10 +12,76 @@
     --border-color: rgba(36, 92, 105, 0.14);
     --error-color: #b64b36;
     --success-color: #4f8f67;
+
+    /* One interface family, declared once. IBM Plex Sans holds up at small sizes
+       on low-end screens; the mono face is for measured values (CFU counts, QC
+       results, titres) the way a lab report sets them. */
+    --font-ui: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    /* Type scale. Eight steps, and nothing between them. Body sits at
+       --text-md (16px) and never below; --text-xs is the floor for any label. */
+    --text-xs: 0.75rem;     /* 12px - uppercase labels, counts */
+    --text-sm: 0.8125rem;   /* 13px - captions, helper text */
+    --text-base: 0.9375rem; /* 15px - secondary body, card copy */
+    --text-md: 1rem;        /* 16px - primary body */
+    --text-lg: 1.1875rem;   /* 19px - card and section titles */
+    --text-xl: 1.5rem;      /* 24px - panel headings */
+    --text-2xl: 2rem;       /* 32px - page titles */
+    --text-3xl: 2.625rem;   /* 42px - hero */
+
+    /*
+     * Semantic surface and ink tokens.
+     *
+     * Components reference these, never a literal hex. Dark mode then redefines
+     * the tokens in one place instead of every component restating its own
+     * colours, which is what the ~995 `body.dark-mode` overrides were doing.
+     *
+     * Naming is by ROLE, not value: --surface is "the thing content sits on",
+     * so it can be white here and near-black in dark mode without any component
+     * needing to know.
+     */
+    --ground: #faf7f0;          /* page background */
+    --surface: #ffffff;         /* panels */
+    --surface-card: #ffffff;    /* an object sitting on the ground or in a group */
+    --surface-sunken: #fbfaf7;  /* chips, insets, wells inside a surface */
+    --ink: #1c2733;             /* primary text */
+    --ink-muted: #5f6b77;       /* secondary text */
+    --ink-subtle: #7b8794;      /* captions, disabled */
+    --rule: rgba(36, 92, 105, 0.14);        /* hairlines */
+    --rule-strong: rgba(36, 92, 105, 0.3);  /* hover and focus edges */
+    --accent: #245c69;          /* accent TEXT: links, active labels, brand */
+    --accent-strong: #1d4a54;   /* accent text, hover */
+    --accent-wash: rgba(36, 92, 105, 0.08); /* tinted accent background */
+
+    /* Accent FILLS are tracked separately from accent text. In dark mode the
+       readable accent text colour is a bright mint, which would be far too loud
+       as a button fill, so the two roles need their own tokens. */
+    --accent-fill: #245c69;
+    --accent-fill-hover: #1d4a54;
+    --accent-fill-ink: #ffffff;
+}
+
+body.dark-mode {
+    --ground: #12161a;
+    --surface: #22313f;
+    --surface-card: #1b2733;
+    --surface-sunken: #1b2733;
+    --ink: #f8fffd;
+    --ink-muted: #cbd5df;
+    --ink-subtle: #9db3b0;
+    --rule: rgba(222, 232, 222, 0.14);
+    --rule-strong: rgba(222, 232, 222, 0.28);
+    --accent: #5eead4;
+    --accent-strong: #4cc4bb;
+    --accent-wash: rgba(94, 234, 212, 0.12);
+    --accent-fill: #2c7873;
+    --accent-fill-hover: #35908a;
+    --accent-fill-ink: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-ui);
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -26,13 +92,14 @@ body {
     flex-direction: column;
 }
 
-/* Header Styles */
-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 1.5rem 0;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/*
+ * Legacy calculator header. Like the old bare `section` rule, this was an
+ * unscoped element selector, so it applied a gradient banner to any bare
+ * <header> in the app. Every page header now carries its own class.
+ */
+.bio-calculator header {
+    color: var(--ink);
+    text-align: left;
 }
 
 .header-content {
@@ -43,13 +110,13 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: var(--text-2xl);
     font-weight: 700;
 }
 
 .subtitle {
     margin: 0.5rem 0 0;
-    font-size: 1rem;
+    font-size: var(--text-md);
     opacity: 0.9;
     font-weight: 300;
 }
@@ -64,7 +131,13 @@ main {
     box-sizing: border-box;
 }
 
-section {
+/*
+ * Legacy calculator styling. This used to be a bare `section` selector, which
+ * turned every semantic section in the app into a white card and forced each
+ * page to fight it. Scoped to the calculator it came from; pages now decide
+ * their own surfaces.
+ */
+.bio-calculator section {
     margin: 1.5rem 0;
     padding: 1.5rem;
     background: white;
@@ -72,7 +145,7 @@ section {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-body.dark-mode section {
+body.dark-mode .bio-calculator section {
     background: #1e2532;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
 }
@@ -80,7 +153,7 @@ body.dark-mode section {
 h2 {
     color: var(--primary-color);
     margin: 0 0 1.5rem;
-    font-size: 1.5rem;
+    font-size: var(--text-xl);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -89,7 +162,7 @@ h2 {
 h3 {
     color: var(--secondary-color);
     margin: 1rem 0 0.5rem;
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
     border-bottom: 2px solid var(--light-color);
     padding-bottom: 0.3rem;
 }
@@ -101,11 +174,9 @@ form {
     gap: 1.5rem;
 }
 
+/* Boxing handled in calculator.css; this stays a plain group. */
 .test-category {
-    background: rgba(111, 185, 143, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--secondary-color);
+    padding: 0;
 }
 
 label {
@@ -167,7 +238,7 @@ button {
     padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: var(--text-md);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -203,7 +274,7 @@ button {
     background: rgba(44, 120, 115, 0.05);
     border-radius: 8px;
     padding: 1.5rem;
-    border-left: 4px solid var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
 
 #result-text {
@@ -235,7 +306,7 @@ footer {
 
 footer p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: var(--text-md);
     opacity: 0.9;
 }
 
@@ -250,7 +321,7 @@ footer p {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: var(--text-md);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
@@ -262,7 +333,7 @@ footer p {
 }
 
 .social-links i {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
 }
 
 /* Responsive Design */
@@ -323,7 +394,7 @@ footer p {
     padding: 5px 10px;
     margin: 5px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: var(--text-md);
   }
 
   #guess-input {
@@ -345,7 +416,7 @@ button, .test-option, .quiz-option {
   @media (max-width: 768px) {
     .test-btn {
       padding: 0.5rem 1rem;
-      font-size: 1.1rem;
+      font-size: var(--text-lg);
     }
 
     .quiz-option {
@@ -367,7 +438,7 @@ button, .test-option, .quiz-option {
     }
 
     .header-content h1 {
-      font-size: 1.8rem;
+      font-size: var(--text-2xl);
     }
 
     /* Mode selector */
@@ -460,7 +531,7 @@ button, .test-option, .quiz-option {
   color: #6fb98f;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
 }
 
 .roadmap-options {
@@ -489,7 +560,7 @@ button, .test-option, .quiz-option {
 }
 
 .option-tests {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: #6c757d;
   margin-top: 0.5rem;
   background: rgba(108, 117, 125, 0.1);
@@ -519,7 +590,7 @@ button, .test-option, .quiz-option {
 
 .roadmap-conclusion {
   background: #f8f9fa;
-  border-left: 4px solid #6fb98f;
+  border: 1px solid #6fb98f;
   padding: 1rem;
   margin-top: 1.5rem;
   border-radius: 0 4px 4px 0;
@@ -556,7 +627,7 @@ button, .test-option, .quiz-option {
   @media (max-width: 480px) {
     /* Header */
     .header-content h1 {
-      font-size: 1.5rem;
+      font-size: var(--text-xl);
     }
 
     /* Test options */
@@ -575,7 +646,7 @@ button, .test-option, .quiz-option {
 
     /* Result text */
     #result-text {
-      font-size: 0.9rem;
+      font-size: var(--text-md);
     }
 
     /* Hide some decorative elements */
@@ -597,7 +668,7 @@ button, .test-option, .quiz-option {
     }
 
     legend {
-      font-size: 1rem;
+      font-size: var(--text-md);
     }
   }
 
@@ -637,7 +708,7 @@ button, .test-option, .quiz-option {
     right: 10px;
     background: rgba(0, 0, 0, 0.05);
     color: rgba(0, 0, 0, 0.4);
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     font-weight: bold;
     width: 24px;
     height: 24px;

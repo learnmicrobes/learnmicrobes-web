@@ -4,19 +4,16 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-ui);
 }
 
+/* The page title is a heading, not a card. */
 .bio-calculator header {
   width: min(1200px, calc(100% - 2rem));
   margin: 1.25rem auto 0;
-  padding: 1.35rem 1.5rem;
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 8px;
-  background: #ffffff;
+  padding: 0.25rem 0 0;
   color: var(--dark-color);
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+  text-align: left;
 }
 
 .bio-calculator header::before {
@@ -50,16 +47,16 @@
   box-sizing: border-box;
 }
 
+/* A segmented control on a sunken track, not a floating white card. */
 .mode-selector {
   display: flex;
   justify-content: center;
-  gap: 0.65rem;
+  gap: 0.25rem;
   margin: 1rem 0;
-  padding: 0.35rem;
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.035);
+  padding: 0.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-sunken);
 }
 
 .mode-btn {
@@ -71,8 +68,8 @@
   border-radius: 6px;
   background-color: transparent;
   color: var(--primary-strong);
-  font-size: 0.9rem;
-  font-weight: 850;
+  font-size: var(--text-md);
+  font-weight: 600;
   cursor: pointer;
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
 }
@@ -84,13 +81,14 @@
   box-shadow: none;
 }
 
+/*
+ * A test category is a labelled group, not an object. The panel around it and
+ * the fieldset around each test already carry the boundaries; a third box here
+ * was what made the calculator read as boxes inside boxes inside boxes.
+ */
 .test-category {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
-  border: 1px solid rgba(36, 92, 105, 0.14);
+  padding: 0;
+  margin-bottom: 1.75rem;
 }
 
 
@@ -117,10 +115,10 @@
 }
 
 .bio-calculator legend {
-  font-weight: 800;
+  font-weight: 500;
   color: var(--dark-color);
   padding: 0 0.5rem;
-  font-size: 0.84rem;
+  font-size: var(--text-base);
 }
 
 .test-instructions {
@@ -135,8 +133,8 @@
 .test-instructions p {
   margin: 0 0 0.45rem;
   color: var(--primary-color);
-  font-size: 0.74rem;
-  font-weight: 900;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -152,7 +150,7 @@
 
 .test-instructions li {
   color: var(--muted-color);
-  font-size: 0.88rem;
+  font-size: var(--text-base);
   line-height: 1.35;
 }
 
@@ -171,7 +169,7 @@
   background: #ffffff !important;
   color: var(--primary-strong) !important;
   font-size: 0.86rem !important;
-  font-weight: 850 !important;
+  font-weight: 600 !important;
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.035);
 }
 
@@ -216,7 +214,7 @@
   min-height: 2.25rem;
   padding: 0.3rem 0.7rem;
   border-radius: 4px;
-  font-weight: 850;
+  font-weight: 600;
   margin-left: 0;
   color: var(--primary-strong);
   border: 1px solid rgba(36, 92, 105, 0.16);
@@ -272,7 +270,7 @@
 }
 
 .educational-notes h4 {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: var(--primary-color);
   margin: 0 0 1rem;
 }
@@ -283,7 +281,7 @@
 }
 
 .bio-calculator .test-group h5 {
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--primary-strong);
   margin: 0 0 0.5rem;
   font-weight: 600;
@@ -321,7 +319,7 @@
 }
 
 .clinical-notes h5 {
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--secondary-color);
   margin: 0 0 0.5rem;
 }
@@ -343,8 +341,8 @@
 .result-kicker {
   display: block;
   color: var(--primary-color);
-  font-size: 0.72rem;
-  font-weight: 900;
+  font-size: var(--text-xs);
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -366,7 +364,7 @@
 .top-match-card strong {
   min-width: 0;
   color: var(--dark-color);
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
@@ -375,7 +373,7 @@
   background: rgba(36, 92, 105, 0.08);
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   font-weight: 600;
 }
 
@@ -394,7 +392,7 @@
 .bio-calculator .test-group h5 {
   color: var(--secondary-color);
   margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .bio-calculator .test-group ul {
@@ -444,7 +442,7 @@
 }
 
 .other-matches h4 {
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   color: var(--primary-strong);
   margin: 0 0 0.8rem;
 }
@@ -472,7 +470,7 @@
 .other-match-card strong {
   min-width: 0;
   color: var(--dark-color);
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   line-height: 1.25;
   overflow-wrap: anywhere;
 }
@@ -483,7 +481,7 @@
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
   border: 1px solid rgba(36, 92, 105, 0.14);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.6;
   min-width: 0;
   overflow-wrap: anywhere;
@@ -508,7 +506,7 @@
   padding: 0.8rem;
   border-radius: 6px;
   margin: 1rem 0;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   border: 1px solid rgba(182, 75, 54, 0.22);
 }
 
@@ -526,7 +524,7 @@
 
 .quiz-question h3 {
   color: var(--dark-color);
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
@@ -542,7 +540,7 @@
   background: rgba(44, 120, 115, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--primary-color);
 }
@@ -590,7 +588,7 @@
   padding: 0.8rem 1.5rem;
   border: 1px solid rgba(36, 92, 105, 0.16);
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -609,7 +607,7 @@
 
 
 .bio-calculator {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-ui);
   line-height: 1.6;
   background-color: var(--light-color);
   color: var(--dark-color);
@@ -627,7 +625,7 @@
 .bio-calculator h2 {
   color: var(--primary-color);
   margin: 0 0 1.5rem;
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -636,7 +634,7 @@
 .bio-calculator h3 {
   color: var(--primary-strong);
   margin: 1rem 0 0.5rem;
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   border-bottom: 1px solid rgba(36, 92, 105, 0.12);
   padding-bottom: 0.3rem;
 }
@@ -678,7 +676,7 @@
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: var(--text-md);
   border: 1px solid rgba(36, 92, 105, 0.14);
   box-shadow: none;
 }
@@ -761,7 +759,7 @@
 .choice-text {
   font-weight: 600;
   color: var(--dark-color);
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .quiz-feedback-banner {
@@ -802,7 +800,7 @@
   color: var(--primary-color);
   padding: 0.5rem 1.2rem;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: var(--text-base);
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(28, 39, 51, 0.05);
 }
@@ -872,7 +870,7 @@
   padding: 0.8rem 1.5rem;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: var(--text-md);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -940,7 +938,7 @@
   
   .test-btn {
     padding: 0.5rem 1rem;
-    font-size: 1rem;
+    font-size: var(--text-md);
   }
   
   .mode-selector {

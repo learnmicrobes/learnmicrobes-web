@@ -80,8 +80,8 @@ body.dark-mode .cert-path-page {
   display: inline-flex;
   margin-bottom: 0.45rem;
   color: var(--cert-primary);
-  font-size: 0.74rem;
-  font-weight: 900;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }
@@ -107,7 +107,7 @@ body.dark-mode .cert-path-page {
   max-width: 840px;
   margin: 1rem 0 0;
   color: var(--cert-muted);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.6;
 }
 
@@ -146,8 +146,8 @@ body.dark-mode .cert-path-sticky-progress {
   justify-content: space-between;
   gap: 0.75rem;
   color: var(--cert-muted);
-  font-size: 0.68rem;
-  font-weight: 900;
+  font-size: var(--text-xs);
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.1;
   text-transform: uppercase;
@@ -190,7 +190,7 @@ body.dark-mode .cert-path-sticky-progress {
   border-radius: 6px;
   background: var(--cert-card-strong);
   color: var(--cert-ink);
-  font-weight: 900;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 10px var(--cert-shadow);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
@@ -225,12 +225,12 @@ body.dark-mode .cert-path-sticky-progress {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 6px;
-  border-left: 4px solid var(--cert-warm);
+  border: 1px solid var(--cert-warm);
 }
 
 .cert-streak-badge svg {
   color: var(--cert-warm);
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
 }
 
 .cert-streak-badge div {
@@ -243,15 +243,15 @@ body.dark-mode .cert-path-sticky-progress {
 .cert-area-card span,
 .cert-level-columns span {
   color: var(--cert-primary);
-  font-size: 0.74rem;
-  font-weight: 900;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .cert-streak-badge strong {
   color: var(--cert-ink);
-  font-size: 1.08rem;
+  font-size: var(--text-lg);
 }
 
 .cert-streak-badge button,
@@ -270,7 +270,7 @@ body.dark-mode .cert-path-sticky-progress {
   background: var(--cert-card-strong);
   color: var(--cert-primary);
   padding: 0.55rem 0.75rem;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.1;
   text-decoration: none;
   white-space: nowrap;
@@ -312,11 +312,11 @@ body.dark-mode .cert-path-sticky-progress {
 }
 
 .cert-exam-card {
-  border-left: 4px solid var(--cert-primary);
+  border: 1px solid var(--cert-primary);
 }
 
 .cert-exam-card:nth-child(2) {
-  border-left-color: var(--cert-warm);
+  border-color: var(--cert-warm);
 }
 
 .cert-exam-badge {
@@ -329,8 +329,8 @@ body.dark-mode .cert-path-sticky-progress {
   border-radius: 5px;
   background: rgba(36, 92, 105, 0.06);
   color: var(--cert-primary);
-  font-size: 0.9rem;
-  font-weight: 900;
+  font-size: var(--text-md);
+  font-weight: 600;
 }
 
 .cert-exam-card h2,
@@ -340,7 +340,7 @@ body.dark-mode .cert-path-sticky-progress {
   display: block;
   margin: 0.8rem 0 0.55rem;
   color: var(--cert-ink);
-  font-size: 1.45rem;
+  font-size: var(--text-xl);
   line-height: 1.2;
 }
 
@@ -383,7 +383,7 @@ body.dark-mode .cert-path-sticky-progress {
   background: rgba(36, 92, 105, 0.05);
   color: var(--cert-primary);
   padding: 0.65rem 0.8rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .cert-area-section {
@@ -410,7 +410,7 @@ body.dark-mode .cert-path-sticky-progress {
   flex-direction: column;
   min-height: 100%;
   overflow: hidden;
-  border-left: 4px solid var(--cert-primary);
+  border: 1px solid var(--cert-primary);
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -425,7 +425,7 @@ body.dark-mode .cert-path-sticky-progress {
 }
 
 .cert-area-card.completed {
-  border-left-color: #35a267;
+  border-color: #35a267;
 }
 
 .cert-area-card.return-highlight {
@@ -466,7 +466,7 @@ body.dark-mode .cert-high-yield-badge {
 .cert-area-card h3 {
   margin: 0;
   color: var(--cert-ink);
-  font-size: 1.18rem;
+  font-size: var(--text-lg);
   line-height: 1.25;
 }
 
@@ -539,7 +539,7 @@ body.dark-mode .cert-status.coming-soon {
 .cert-level-columns p {
   margin: 0.35rem 0 0;
   color: var(--cert-muted);
-  font-size: 0.92rem;
+  font-size: var(--text-md);
   line-height: 1.45;
 }
 
@@ -673,7 +673,7 @@ body.cert-quiz-modal-open {
   background: var(--cert-card-strong);
   color: var(--cert-ink);
   padding: 0.55rem 0.8rem;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.1;
   white-space: nowrap;
   cursor: pointer;
@@ -689,20 +689,20 @@ body.cert-quiz-modal-open {
   flex: 0 0 auto;
   margin: 0 0 0.75rem;
   color: var(--cert-muted);
-  font-size: 0.88rem;
-  font-weight: 800;
+  font-size: var(--text-base);
+  font-weight: 500;
 }
 
 .cert-modal-header h2 {
   margin: 0.25rem 0 0;
   color: var(--cert-ink);
-  font-size: 1.35rem;
+  font-size: var(--text-xl);
 }
 
 .cert-modal-header p {
   margin: 0.4rem 0 0;
   color: var(--cert-muted);
-  font-weight: 800;
+  font-weight: 500;
   text-transform: capitalize;
 }
 
@@ -838,7 +838,7 @@ body.dark-mode .study-quiz-page.embedded {
 }
 
 .study-quiz-page.embedded .study-quiz-card-header span {
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
 }
 
 .cert-path-icon-btn:focus-visible,

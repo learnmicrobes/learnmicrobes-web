@@ -21,7 +21,7 @@
 
 .about-subtitle {
   color: #0f5c6a;
-  font-size: 0.75rem;
+  font-size: var(--text-sm);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -40,7 +40,7 @@
 .about-description {
   color: #4d5b73;
   line-height: 1.55;
-  font-size: 1rem;
+  font-size: var(--text-md);
   margin: 0;
   max-width: 850px;
 }
@@ -69,7 +69,7 @@
 
 .about-column h3 {
   color: #123f4a;
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   margin-top: 0;
   margin-bottom: 0.65rem;
 }
@@ -78,7 +78,7 @@
 .about-column li {
   color: #4d5b73;
   line-height: 1.55;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   margin: 0;
 }
 
@@ -107,13 +107,13 @@
 .about-statement h3 {
   margin: 0 0 0.55rem;
   color: #123f4a;
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .about-statement p {
   margin: 0;
   color: #4d5b73;
-  font-size: 0.94rem;
+  font-size: var(--text-md);
   line-height: 1.55;
 }
 
@@ -146,8 +146,8 @@
   background: transparent;
   color: #123f4a;
   font: inherit;
-  font-size: 0.98rem;
-  font-weight: 800;
+  font-size: var(--text-md);
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
 }
@@ -161,15 +161,15 @@
 .faq-accordion-icon {
   flex: 0 0 auto;
   color: #0f5c6a;
-  font-size: 1.05rem;
-  font-weight: 900;
+  font-size: var(--text-lg);
+  font-weight: 600;
 }
 
 .faq-accordion-item p {
   margin: 0;
   padding: 0 1rem 1rem;
   color: #4d5b73;
-  font-size: 0.94rem;
+  font-size: var(--text-md);
   line-height: 1.55;
 }
 
@@ -236,7 +236,7 @@ body.dark-mode .faq-accordion-icon {
   }
 
   .about-title {
-    font-size: 1.6rem;
+    font-size: var(--text-2xl);
     line-height: 1.12;
   }
 

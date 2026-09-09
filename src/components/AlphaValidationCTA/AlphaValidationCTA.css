@@ -14,15 +14,15 @@
 .alpha-validation-cta span {
   display: inline-flex;
   color: var(--primary-color);
-  font-size: 0.7rem;
-  font-weight: 900;
+  font-size: var(--text-xs);
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 .alpha-validation-cta h2 {
   margin: 0.22rem 0 0.2rem;
   color: var(--dark-color);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.25;
 }
 
@@ -30,7 +30,7 @@
   max-width: 760px;
   margin: 0;
   color: var(--muted-color);
-  font-size: 0.86rem;
+  font-size: var(--text-base);
   line-height: 1.42;
 }
 
@@ -48,7 +48,7 @@
   border-radius: 5px;
   background: #ffffff;
   color: var(--primary-color);
-  font-weight: 850;
+  font-weight: 600;
   cursor: pointer;
 }
 

@@ -19,8 +19,8 @@
   border-radius: 999px;
   background: #ffffff;
   color: var(--primary-color);
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
@@ -47,8 +47,8 @@
   display: inline-flex;
   margin-bottom: 0.8rem;
   color: #b83232;
-  font-size: 0.78rem;
-  font-weight: 900;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -66,7 +66,7 @@
   max-width: 780px;
   margin: 1rem 0 0;
   color: var(--muted-color);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.65;
 }
 
@@ -77,24 +77,24 @@
   gap: 0.65rem;
   padding: 1.25rem;
   border: 1px solid rgba(184, 50, 50, 0.24);
-  border-left: 5px solid #b83232;
+  border: 1px solid #b83232;
   border-radius: 10px;
   background: #fff8f6;
 }
 
 .do-not-culture-hero-card svg {
   color: #b83232;
-  font-size: 1.55rem;
+  font-size: var(--text-xl);
 }
 
 .do-not-culture-hero-card strong {
   color: var(--dark-color);
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .do-not-culture-hero-card span {
   color: var(--muted-color);
-  font-size: 0.92rem;
+  font-size: var(--text-md);
   line-height: 1.45;
 }
 
@@ -129,20 +129,20 @@
 
 .do-not-culture-rule svg {
   color: var(--primary-color);
-  font-size: 1.15rem;
+  font-size: var(--text-lg);
 }
 
 .do-not-culture-rule span {
   display: block;
   margin-top: 0.6rem;
   color: var(--dark-color);
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .do-not-culture-rule p {
   margin: 0.4rem 0 0;
   color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--text-md);
   line-height: 1.45;
 }
 
@@ -163,7 +163,7 @@
   border-radius: 8px;
   background: #ffffff;
   color: var(--primary-color);
-  font-weight: 800;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -202,8 +202,8 @@
   min-height: 28px;
   padding: 0.3rem 0.5rem;
   border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 900;
+  font-size: var(--text-xs);
+  font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -226,7 +226,7 @@
 .do-not-culture-card h2 {
   margin: 0.55rem 0 0;
   color: var(--dark-color);
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
   line-height: 1.25;
 }
 
@@ -248,7 +248,7 @@
 .culture-trigger {
   margin: 1rem 0;
   padding: 0.85rem 0.95rem;
-  border-left: 4px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   background: rgba(36, 92, 105, 0.06);
 }
@@ -257,8 +257,8 @@
 .culture-card-columns h3 {
   display: block;
   color: var(--primary-color);
-  font-size: 0.76rem;
-  font-weight: 900;
+  font-size: var(--text-sm);
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -266,7 +266,7 @@
 .culture-trigger p {
   margin: 0.35rem 0 0;
   color: var(--dark-color);
-  font-size: 0.92rem;
+  font-size: var(--text-md);
   line-height: 1.45;
 }
 
@@ -288,7 +288,7 @@
   margin: 0;
   padding-left: 1rem;
   color: var(--dark-color);
-  font-size: 0.88rem;
+  font-size: var(--text-base);
   line-height: 1.4;
 }
 
@@ -297,7 +297,7 @@
   padding-top: 0.9rem;
   border-top: 1px solid var(--border-color);
   color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--text-md);
   font-weight: 700;
   line-height: 1.45;
 }

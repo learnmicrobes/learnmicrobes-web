@@ -1406,7 +1406,7 @@ const BioCalculator = () => {
       <head>
         <title>Learn Microbes - Lab Report</title>
         <style>
-          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; color: #2d3748; line-height: 1.6; max-width: 800px; margin: 0 auto; background: #fff; }
+          body { font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif; padding: 40px; color: #2d3748; line-height: 1.6; max-width: 800px; margin: 0 auto; background: #fff; }
           .header { border-bottom: 4px solid #2c7873; padding-bottom: 20px; margin-bottom: 30px; }
           .header h1 { color: #2c7873; margin: 0 0 10px 0; font-size: 28px; }
           .meta { color: #718096; font-size: 14px; }

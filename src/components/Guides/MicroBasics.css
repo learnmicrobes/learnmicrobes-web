@@ -22,8 +22,8 @@
   border-radius: 999px;
   background: #ffffff;
   color: var(--primary-color);
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
@@ -53,14 +53,14 @@ body.dark-mode .micro-basics-back {
 .guide-sidebar-intro h3 {
   margin: 0 0 0.35rem;
   color: var(--dark-color);
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
 }
 
 .guide-sidebar-intro p {
   margin: 0;
   color: var(--muted-color);
   line-height: 1.5;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
 }
 
 .guide-sidebar-search {
@@ -75,8 +75,8 @@ body.dark-mode .micro-basics-back {
 .guide-sidebar-search label,
 .guide-pathway-title {
   color: var(--primary-strong);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -108,13 +108,13 @@ body.dark-mode .micro-basics-back {
   padding: 0 0.7rem;
   background: #ffffff;
   color: var(--primary-strong);
-  font-weight: 800;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .guide-search-count {
   color: var(--muted-color);
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
 }
 
 .guide-pathways,
@@ -149,7 +149,7 @@ body.dark-mode .micro-basics-back {
 
 .guide-pathway-btn span {
   color: var(--primary-strong);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.2;
 }
 
@@ -168,7 +168,7 @@ body.dark-mode .micro-basics-back {
   border: none;
   padding: 0.72rem 0.8rem;
   text-align: left;
-  font-size: 0.96rem;
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--muted-color);
   border-radius: 8px;
@@ -195,7 +195,7 @@ body.dark-mode .micro-basics-back {
 .topic-btn.active {
   background: rgba(36, 92, 105, 0.08);
   color: var(--primary-strong);
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .topic-btn.active::before {
@@ -205,8 +205,8 @@ body.dark-mode .micro-basics-back {
 .topic-btn small {
   grid-column: 2;
   color: var(--muted-color);
-  font-size: 0.78rem;
-  font-weight: 750;
+  font-size: var(--text-sm);
+  font-weight: 500;
   line-height: 1.25;
 }
 
@@ -215,7 +215,7 @@ body.dark-mode .micro-basics-back {
   border-radius: 10px;
   padding: 0.85rem;
   color: var(--muted-color);
-  font-size: 0.9rem;
+  font-size: var(--text-md);
   line-height: 1.45;
 }
 
@@ -238,21 +238,21 @@ body.dark-mode .micro-basics-back {
   border-radius: 999px;
   background: rgba(36, 92, 105, 0.1);
   color: var(--primary-strong);
-  font-size: 0.8rem;
-  font-weight: 800;
+  font-size: var(--text-sm);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .topic-section h2 {
   color: var(--dark-color);
-  font-size: 2.1rem;
+  font-size: var(--text-2xl);
   margin: 0 0 0.75rem;
 }
 
 .guide-header p {
   color: var(--muted-color);
-  font-size: 1.05rem;
+  font-size: var(--text-lg);
   margin: 0;
   line-height: 1.7;
   max-width: 760px;
@@ -280,7 +280,7 @@ body.dark-mode .micro-basics-back {
   border: 1px solid var(--border-color);
   color: var(--primary-strong);
   line-height: 1.55;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
 }
 
 .info-grid {
@@ -304,7 +304,7 @@ body.dark-mode .micro-basics-back {
 
 .info-card p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   color: var(--muted-color);
   line-height: 1.6;
 }
@@ -357,7 +357,7 @@ body.dark-mode .micro-basics-back {
   margin: 0.9rem 0 0;
   color: var(--muted-color);
   line-height: 1.55;
-  font-size: 0.92rem;
+  font-size: var(--text-md);
 }
 
 .taxonomy-diagram {
@@ -394,7 +394,7 @@ body.dark-mode .micro-basics-back {
 
 .svg-title {
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 500;
   fill: var(--dark-color);
 }
 
@@ -462,7 +462,7 @@ body.dark-mode .micro-basics-back {
 .microscopy-arrow {
   text-align: center;
   color: var(--muted-color);
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .gram-stain-steps {
@@ -489,7 +489,7 @@ body.dark-mode .micro-basics-back {
   gap: 0.55rem 0.9rem;
   margin-top: 0.9rem;
   color: var(--muted-color);
-  font-size: 0.85rem;
+  font-size: var(--text-base);
 }
 
 .diagram-legend span {
@@ -556,7 +556,7 @@ body.dark-mode .micro-basics-back {
   display: block;
   margin-bottom: 0.45rem;
   color: var(--primary-strong);
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.25;
   text-wrap: balance;
 }
@@ -565,7 +565,7 @@ body.dark-mode .micro-basics-back {
   margin: 0;
   color: var(--muted-color);
   line-height: 1.5;
-  font-size: 0.92rem;
+  font-size: var(--text-md);
   max-width: 28ch;
 }
 
@@ -611,7 +611,7 @@ body.dark-mode .micro-basics-back {
     width: 100%;
     min-height: 42px;
     padding: 0.6rem 0.65rem;
-    font-size: 0.9rem;
+    font-size: var(--text-md);
   }
 
   .basics-content {
@@ -620,6 +620,6 @@ body.dark-mode .micro-basics-back {
   }
 
   .topic-section h2 {
-    font-size: 1.7rem;
+    font-size: var(--text-2xl);
   }
 }

@@ -7,12 +7,13 @@ import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
 import { atlasPages } from './components/VisualAtlas/VisualAtlas';
-import { learnTopics } from './data/learnTopics';
+import { learnTopics, type LearnTopic } from './data/learnTopics';
+import { slugify as slugifyLearnCategory, getCategoryDisplayName } from './components/Learn/LearnHub';
 import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
-import brandMark from './assets/brand-mark.svg';
+import brandMark from './assets/brand-mark-knockout.svg';
 import './App.css';
 
 type DashboardSearchItem = {
@@ -189,6 +190,7 @@ export default function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
   const [isToolsOpen, setIsToolsOpen] = useState(false);
+  const [isLearnMenuOpen, setIsLearnMenuOpen] = useState(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const [isHomeScreenHintDismissed, setIsHomeScreenHintDismissed] = useState(
     () => localStorage.getItem('learnmicrobes_home_screen_hint_dismissed') === 'true'
@@ -464,6 +466,25 @@ export default function App() {
   const isToolPathActive = useMemo(() => (
     toolGroups.some((group) => group.items.some((item) => item.path === location.pathname))
   ), [location.pathname, toolGroups]);
+
+  const learnCategoryGroups: Array<{ label: string; categories: LearnTopic['category'][] }> = useMemo(() => ([
+    {
+      label: 'Foundations & Methods',
+      categories: ['Foundations', 'Clinical Lab Principles', 'Core Methods']
+    },
+    {
+      label: 'Organism Groups',
+      categories: ['Bacteriology', 'Parasitology', 'Mycology', 'Virology']
+    },
+    {
+      label: 'Diagnostics & Review',
+      categories: ['Molecular and Immunodiagnostics', 'Bench and Exam Integration']
+    }
+  ]), []);
+
+  const isLearnCategoryActive = useCallback((category: LearnTopic['category']) => (
+    location.pathname === '/learn' && location.hash === `#${slugifyLearnCategory(category)}`
+  ), [location.pathname, location.hash]);
 
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
   const [isDashboardSearchOpen, setIsDashboardSearchOpen] = useState(false);
@@ -862,6 +883,7 @@ export default function App() {
     setIsNavMenuOpen(false);
     setIsAccountMenuOpen(false);
     setIsToolsOpen(false);
+    setIsLearnMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -879,7 +901,7 @@ export default function App() {
   }, [closeMobileNavigation, isMobile, isNavMenuOpen]);
 
   useEffect(() => {
-    if (!isAccountMenuOpen && !isToolsOpen) {
+    if (!isAccountMenuOpen && !isToolsOpen && !isLearnMenuOpen) {
       return undefined;
     }
 
@@ -896,6 +918,10 @@ export default function App() {
       if (!target.closest('.nav-tools')) {
         setIsToolsOpen(false);
       }
+
+      if (!target.closest('.nav-learn-dropdown')) {
+        setIsLearnMenuOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handlePointerDown);
@@ -903,7 +929,7 @@ export default function App() {
     return () => {
       document.removeEventListener('mousedown', handlePointerDown);
     };
-  }, [isAccountMenuOpen, isToolsOpen]);
+  }, [isAccountMenuOpen, isToolsOpen, isLearnMenuOpen]);
 
   const seoMetadata = useMemo(() => {
     const path = location.pathname;
@@ -1185,16 +1211,55 @@ export default function App() {
               <FontAwesomeIcon icon={faHome} />
               <span className="nav-text">Home</span>
             </button>
-            <button
-              className={activeTool === 'Learn' ? 'active' : ''}
-              onClick={() => {
-                closeMobileNavigation();
-                navigate('/learn');
-              }}
-            >
-              <FontAwesomeIcon icon={faGraduationCap} />
-              <span className="nav-text">Learn</span>
-            </button>
+            <div className="nav-tools nav-learn-dropdown">
+              <button
+                className={`nav-tools-trigger nav-learn-trigger-label ${activeTool === 'Learn' ? 'active' : ''}`}
+                onClick={() => {
+                  closeMobileNavigation();
+                  setIsLearnMenuOpen(false);
+                  navigate('/learn');
+                }}
+              >
+                <FontAwesomeIcon icon={faGraduationCap} />
+                <span className="nav-text">Learn</span>
+              </button>
+              <button
+                className={`nav-tools-trigger nav-learn-trigger-chevron ${activeTool === 'Learn' ? 'active' : ''}`}
+                onClick={() => {
+                  setIsToolsOpen(false);
+                  setIsAccountMenuOpen(false);
+                  setIsLearnMenuOpen((open) => !open);
+                }}
+                aria-expanded={isLearnMenuOpen}
+                aria-haspopup="menu"
+                aria-label="Show Learn categories"
+              >
+                <FontAwesomeIcon icon={faChevronDown} className={`nav-chevron ${isLearnMenuOpen ? 'open' : ''}`} />
+              </button>
+              {isLearnMenuOpen && (
+                <div className="nav-tools-menu nav-learn-menu" role="menu" aria-label="Learn menu">
+                  {learnCategoryGroups.map((group) => (
+                    <div className="nav-tools-group" key={group.label}>
+                      <div className="nav-tools-group-label">{group.label}</div>
+                      {group.categories.map((category) => (
+                        <button
+                          key={category}
+                          className={isLearnCategoryActive(category) ? 'active' : ''}
+                          onClick={() => {
+                            closeMobileNavigation();
+                            setIsLearnMenuOpen(false);
+                            navigate(`/learn#${slugifyLearnCategory(category)}`);
+                          }}
+                          role="menuitem"
+                        >
+                          {getCategoryDisplayName(category)}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <button
               className={activeTool === 'Visual Atlas' ? 'active' : ''}
               onClick={() => {
