@@ -1,77 +1,111 @@
-const CACHE_NAME = 'learn-microbes-cache-v2';
+/*
+ * Learn Microbes service worker.
+ *
+ * Bump CACHE_VERSION whenever the caching strategy below changes. Note that a
+ * deploy does NOT require a bump: build output under /static/ is content-hashed
+ * by the bundler, so a new release produces new URLs that miss the cache
+ * naturally. Everything else is served stale-while-revalidate, so it self-heals
+ * within a single visit instead of pinning users to an old build.
+ */
+const CACHE_VERSION = 'v3';
+const SHELL_CACHE = `learn-microbes-shell-${CACHE_VERSION}`;
+const ASSET_CACHE = `learn-microbes-assets-${CACHE_VERSION}`;
+const CURRENT_CACHES = [SHELL_CACHE, ASSET_CACHE];
 
-// Install event: cache root
-self.addEventListener('install', event => {
+const OFFLINE_FALLBACK = '/';
+
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      // Pre-cache root to ensure offline start works immediately
-      return cache.addAll(['/']);
-    })
+    caches.open(SHELL_CACHE)
+      .then((cache) => cache.addAll([OFFLINE_FALLBACK]))
+      // A failed precache must not block installation of an otherwise good worker.
+      .catch(() => undefined)
   );
+
   self.skipWaiting();
 });
 
-// Activate event: clean up old caches
-self.addEventListener('activate', event => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.filter(cacheName => cacheName !== CACHE_NAME)
-          .map(cacheName => caches.delete(cacheName))
-      );
-    })
+    caches.keys()
+      .then((cacheNames) => Promise.all(
+        cacheNames
+          .filter((cacheName) => !CURRENT_CACHES.includes(cacheName))
+          .map((cacheName) => caches.delete(cacheName))
+      ))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Fetch event: Network-first for navigation, Cache-first for assets
-self.addEventListener('fetch', event => {
+// Content-hashed build output. These URLs change every release, so serving them
+// from cache can never go stale.
+const isHashedBuildAsset = (url) => url.pathname.startsWith('/static/');
+
+self.addEventListener('fetch', (event) => {
   const request = event.request;
-  
-  // For navigation requests (like going to / or /guides), try network first, then cache
+
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  const url = new URL(request.url);
+
+  // Never touch cross-origin traffic: Supabase, analytics, fonts, CDNs.
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  // Navigations are network-first so a released build reaches people immediately,
+  // with the cached shell only as an offline fallback.
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
-        .then(response => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, response.clone());
-            return response;
-          });
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy)).catch(() => undefined);
+          return response;
         })
-        .catch(() => {
-          return caches.match(request).then(cachedResponse => {
-            if (cachedResponse) return cachedResponse;
-            // Fallback to root if specific route not found in cache
-            return caches.match('/');
-          });
-        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match(OFFLINE_FALLBACK)))
     );
     return;
   }
 
-  // For static assets (JS, CSS, data), try cache first, then network
-  event.respondWith(
-    caches.match(request).then(cachedResponse => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(request).then(response => {
-        // Don't cache non-success responses or opaque responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
+  if (isHashedBuildAsset(url)) {
+    event.respondWith(
+      caches.match(request).then((cached) => cached || fetch(request).then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const copy = response.clone();
+          caches.open(ASSET_CACHE).then((cache) => cache.put(request, copy)).catch(() => undefined);
         }
-
-        // Cache successful fetch
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, responseToCache);
-        });
-
         return response;
-      }).catch(() => {
-        // Network failed and not in cache. Do nothing, app will handle empty data
-      });
+      }))
+    );
+    return;
+  }
+
+  // Everything else same-origin (manifest, icons, images, JSON) is
+  // stale-while-revalidate: fast from cache, refreshed in the background so the
+  // next load is current even though the URL never changes.
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      const network = fetch(request)
+        .then((response) => {
+          if (response && response.status === 200 && response.type === 'basic') {
+            const copy = response.clone();
+            caches.open(ASSET_CACHE).then((cache) => cache.put(request, copy)).catch(() => undefined);
+          }
+          return response;
+        })
+        .catch(() => cached);
+
+      return cached || network;
     })
   );
+});
+
+// Lets the page ask a waiting worker to take over immediately.
+self.addEventListener('message', (event) => {
+  if (event.data === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
