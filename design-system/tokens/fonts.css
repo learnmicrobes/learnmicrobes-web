@@ -1,4 +1,10 @@
 /* Learn Microbes — Fonts
-   Brand typeface is Inter (the production app loads it from Google Fonts).
-   Consumers get Inter automatically by linking styles.css. */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+   Product UI typeface is IBM Plex Sans, with IBM Plex Mono for measured values
+   (CFU counts, QC results, titres). Plex is drawn for technical documentation and
+   holds up at small sizes on low-end screens, which is what most of this audience
+   reads on. Consumers get both automatically by linking styles.css.
+
+   Inter is retained below for social and marketing templates that were composed
+   in it; it is no longer the product UI face. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');

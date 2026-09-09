@@ -1,6 +1,6 @@
 # PROJECT STATUS
 
-Last refreshed: 2026-06-13
+Last refreshed: 2026-09-08
 
 ## 1. Project Purpose and Current Website Scope
 
@@ -182,9 +182,9 @@ Practice/account routes:
 - `/certification-study-paths`
   - early/active certification study path page with quiz modal behavior
 - `/case-study-simulator`
-  - planned/early route
+  - live: 4 authored cases, staged bench decisions (`src/data/caseStudies.ts`)
 - `/flashcards`
-  - planned/early route
+  - live: ~825 generated cards, 5 decks, self-rated review queue (`src/data/flashcardDecks.ts`)
 - `/auth`, `/login`, `/register`
   - auth entry points
 - `/account`
@@ -239,7 +239,16 @@ Practice/account routes:
 - Guest Study Quiz limit is 15 answered questions.
 - Signed-in quiz attempts save to Supabase `quiz_attempts`.
 - Leaderboard modal reads Supabase data when available and falls back gracefully.
-- Practice hub links Study Quiz, ASCP Review Hub, and planned/early case/flashcard routes.
+- Practice hub is a full landing surface: live question counts, resume/streak panel,
+  quick-start grid that deep-links into the quiz (`/study-quiz?category=…&difficulty=…`),
+  and four active tools. There is no longer a "coming soon" section.
+- **Flashcards** (`src/data/flashcardDecks.ts`) is live: ~825 cards generated from
+  `biochemicalTestsData` and `glossaryData` across 5 decks, with flip, three-way
+  self-rating, and a persistent review queue in `learnmicrobes_flashcard_progress`.
+  Cards are generated, never hand-authored, so they cannot drift from the reference pages.
+- **Case Studies** (`src/data/caseStudies.ts`) is live: 4 authored cases, 11 decision
+  points, staged specimen → direct exam → culture → branch test → report, with
+  feedback on every distractor explaining why it is wrong.
 - ASCP Review Hub exists and keeps an independent educational-review disclaimer.
 - Certification Study Paths has an active route and changelog, but should still be treated carefully as an early feature surface.
 
@@ -273,11 +282,40 @@ The intended direction is the Lab Notebook palette:
 
 Current styling reality is mixed:
 
-- `src/styles.css` has shared variables and older global styles.
+- `src/styles.css` holds the design tokens (type scale, semantic surfaces/ink/rules,
+  accent text vs accent fill) plus older global styles.
 - `src/App.css` is large and includes both newer dashboard/nav styling and broad dark-mode overrides.
 - Component CSS files are scoped by feature, but not all are fully migrated to the Lab Notebook palette.
 - Tool-specific CSS still contains legacy colors and should be migrated carefully.
 - Primary mobile breakpoint is `max-width: 768px`; secondary is `max-width: 480px`.
+  Full-bleed phone layout triggers at `max-width: 620px`.
+
+### Design pass, 2026-09-08
+
+The product UI was reworked; `design-system/readme.md` is the authority and was
+updated to match. Headlines:
+
+- **Typeface:** IBM Plex Sans (UI) + IBM Plex Mono (measured values), replacing a
+  six-way stack in which most pages rendered Inter while the Biochemical Calculator
+  fell through to Verdana on iOS.
+- **Weights:** 400/500/600/700 only — 330 declarations at 750–950 removed.
+- **Type scale:** eight `--text-*` tokens; body raised to 16px from 14.4–15.2px.
+- **Radius:** scaled to the element (10 / 8 / 5–6 / 12–14px); `999px` kept only for
+  circles, meters, progress bars, spinners and scrollbars.
+- **Containment:** one level — panels that *are* content keep a surface; panels
+  that only group cards do not. Panel shadows removed.
+- **Left-border accent rails removed** from 17 places across 10 stylesheets, which
+  the design system had already prohibited.
+- **Full-bleed phone layout** below 620px; reading width 300px → 340px at 375px.
+- **Semantic tokens** with a single dark-mode block. Fully migrated: PracticePage,
+  Flashcards, CaseStudySimulator. Site-wide `body.dark-mode` count 995 → 877.
+- **Two unscoped element selectors removed** (`section`, `header`) — these were
+  carding and bannering the entire app.
+- **Logo:** added `brand-mark-knockout.svg` for brand-coloured surfaces; fixed the
+  wordmark and rule, which were centred on three different axes in both
+  `brand-mark.svg` and `favicon.svg`.
+- **Service worker** rewritten: production-only registration, per-asset strategy,
+  versioned caches. See `AGENTS.md`.
 
 ## 7. Supabase and Data Persistence
 

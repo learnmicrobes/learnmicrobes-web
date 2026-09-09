@@ -160,11 +160,54 @@ Never imply official ASCP affiliation, guaranteed exam outcomes, medical advice,
 
 ### CSS conventions
 
-- Scope all styles to component class names — avoid broad global selectors
+- Scope all styles to component class names. **Never write an unscoped element
+  selector** (`section {…}`, `header {…}`). Two of these existed in `src/styles.css`
+  and applied a card and a gradient banner to the whole app; every page's CSS was
+  silently fighting them. Both are now scoped to `.bio-calculator`.
 - Global CSS variables are defined in `src/styles.css`
 - Component-scoped variables (e.g., `--c-primary`) are defined on a parent class within the component CSS file
 - Dark mode: use `body.dark-mode` selector — do not use `prefers-color-scheme` without approval
-- Primary mobile breakpoint: `max-width: 768px`; secondary: `max-width: 480px`
+- Primary mobile breakpoint: `max-width: 768px`; secondary: `max-width: 480px`.
+  Full-bleed phone layout triggers at `max-width: 620px`.
+
+#### Design tokens — use these, never a literal
+
+Defined in `src/styles.css` `:root`, redefined for dark in one `body.dark-mode`
+block. A component that reads tokens is correct in both themes on the first try.
+
+| Group | Tokens |
+|---|---|
+| Type | `--font-ui`, `--font-mono`, `--text-xs` … `--text-3xl` |
+| Surfaces | `--ground`, `--surface`, `--surface-card`, `--surface-sunken` |
+| Ink | `--ink`, `--ink-muted`, `--ink-subtle` |
+| Lines | `--rule`, `--rule-strong` |
+| Accent text | `--accent`, `--accent-strong`, `--accent-wash` |
+| Accent fills | `--accent-fill`, `--accent-fill-hover`, `--accent-fill-ink` |
+
+Two traps:
+
+- **Accent text ≠ accent fill.** In dark mode the readable accent is a bright mint;
+  as a button fill it is far too loud. Use `--accent-fill` for fills.
+- **`--surface-card` is not `--surface`.** A card is white in light mode but
+  *sunken* in dark. Panels use `--surface`; objects sitting on a ground or in a
+  group use `--surface-card`.
+
+Weights are **400/500/600/700 only**. Body is `--text-md` (16px) and never smaller.
+
+Migration is partial: `PracticePage`, `Flashcards` and `CaseStudySimulator` are
+fully tokenised. `Learn.css`, `App.css`, `VisualAtlas.css`, `AccountPage.css` and
+`RoadmapExperience.css` still carry hand-written `body.dark-mode` overrides. The
+token layer is additive, so those keep working — migrate a file at a time by
+pointing its colours at tokens, then deleting the dark rules whose values now
+match the dark token.
+
+#### Verifying UI changes
+
+`getComputedStyle` in an embedded preview browser reports **stale values for
+transitioned properties** (background, border-color) right after a theme switch —
+it will claim a card is white in dark mode while its text colour has already
+flipped. Trust screenshots over computed-style probes, and take two: the first
+often catches a 180ms transition mid-flight.
 
 ### Auth and guest gating
 
@@ -190,6 +233,39 @@ Never imply official ASCP affiliation, guaranteed exam outcomes, medical advice,
 - Do not commit the `.claude/` directory
 - Do not commit or push unless explicitly instructed
 - After pushing, verify the GitHub Actions build passes before reporting the task done
+
+### Service worker
+
+`public/sw.js` is registered from `src/index.tsx` **in production only**. In
+development the bundler serves unhashed URLs such as `/static/js/bundle.js`, so a
+cached copy shadows every code change and makes it look like edits are not taking
+effect. The dev branch actively unregisters any leftover worker and clears its
+caches, so a stale local state heals itself on the next visit.
+
+Caching strategy, and why each part matters:
+
+- **Navigations** are network-first with the cached shell as offline fallback, so a
+  release reaches people immediately.
+- **`/static/`** is cache-first — that output is content-hashed, so a new release
+  produces new URLs and cannot go stale.
+- **Everything else same-origin** is stale-while-revalidate, so it self-heals within
+  one visit even though the URL never changes.
+- **Cross-origin and non-GET requests are skipped entirely** — Supabase and
+  analytics are never intercepted.
+
+`CACHE_VERSION` only needs bumping when the *strategy* changes, not per deploy.
+
+**If a change "isn't appearing," suspect the worker before the code.** Verify what
+the server is actually sending (`curl -s localhost:3000/static/js/bundle.js | grep
+<your new string>`) before debugging CSS specificity or React state. To clear it:
+
+```js
+const r = await navigator.serviceWorker.getRegistrations();
+const c = await caches.keys();
+await Promise.all(r.map(x => x.unregister()));
+await Promise.all(c.map(n => caches.delete(n)));
+location.reload();
+```
 
 ---
 

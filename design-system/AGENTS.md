@@ -28,8 +28,17 @@ build or change any UI, marketing asset, or educational graphic, design it
   when a token exists.
 - **Brand tone:** practical, calm, clean, modern, bench-aware, trustworthy,
   student-first. Teal-forward, warm off-white grounds, restrained sage accent,
-  heavy Inter headlines, rounded cards with soft depth.
+  IBM Plex Sans set at 400–700, cards with a hairline and no shadow.
+- **One level of containment.** A section that IS the content gets a fill and a
+  hairline; a section whose children already carry the boundary gets space only.
+  Never draw a box around boxes.
+- **Never write an unscoped element selector** (`section {…}`, `header {…}`,
+  `button { background … }`). Two of these existed and carded/bannered the entire
+  app; every page's CSS was fighting them. Scope to a component class.
 - **Avoid:** neon / oversaturated color, purple or "AI" gradients, emoji as icons,
-  cartoon mascots, and stock-science clutter. Icons are Font Awesome 6 (solid).
+  cartoon mascots, stock-science clutter, and **coloured left-border accent rails
+  on cards** — that last one is a recognisable AI-design tell. If a card needs to
+  encode a category, give it a full hairline in that colour. Icons are Font
+  Awesome 6 (solid).
 - Species names are italicized (*S. pyogenes*); eyebrows/tags are UPPERCASE; almost
   everything else is sentence case.

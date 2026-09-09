@@ -94,11 +94,40 @@ Secondary structure is soft warm gray (`--ink-500 #5f6b77`). Warm accents
 (**gold `#c8a24d`**, **terracotta `#c96b4b`**) appear only when something must be
 flagged. No neon, no oversaturation, no corporate-blue, no purple gradients.
 
-**Type.** A single family — **Inter** — does everything. Headlines are heavy
-(800) and tight (`-0.02em`), often stacked over 2–4 lines and very large on
-social covers. Body is regular/medium, 1.5 line-height, sized for mobile (never
-below ~15px on screen). Eyebrows are uppercase, tracked `0.12em`, bold, teal or
-sage. Strong, simple hierarchy: eyebrow → headline → subhead → label → card body → CTA.
+**Type.** A single family — **IBM Plex Sans** — carries the interface, with
+**IBM Plex Mono** reserved for measured values (CFU counts, QC results, titres,
+question tallies) the way a lab report sets them. Plex was drawn for technical
+documentation and holds up at small sizes on low-end Android screens, which is
+what most of the audience reads on.
+
+Weights are **400 / 500 / 600 / 700 only** — body, UI labels, headings, display.
+Nothing above 700. Heavier weights read as shouting rather than as hierarchy, and
+non-standard values (850, 760, 820) are not real cuts; the browser rounds them to
+something else anyway.
+
+The scale is **eight steps and nothing between them**, and body never drops below
+16px:
+
+| Token | Size | Role |
+|---|---|---|
+| `--text-xs` | 12px | uppercase labels, counts |
+| `--text-sm` | 13px | captions, helper text |
+| `--text-base` | 15px | secondary body, card copy |
+| `--text-md` | **16px** | primary body — the floor |
+| `--text-lg` | 19px | card and section titles |
+| `--text-xl` | 24px | panel headings |
+| `--text-2xl` | 32px | page titles |
+| `--text-3xl` | 42px | hero |
+
+Eyebrows are uppercase and tracked, but **used sparingly** — an eyebrow must encode
+something true (a step in a sequence, a status, a specimen label). One on every
+panel is texture, not orientation, and it dates a layout faster than almost
+anything else. Hierarchy: eyebrow (when earned) → headline → subhead → label →
+card body → CTA.
+
+> **Changed 2026-09-08.** This section previously specified Inter with heavy (800)
+> headlines. The product UI moved to Plex and the four-weight ladder deliberately;
+> see *Product UI decisions* below for the reasoning.
 
 **Backgrounds.** Flat warm fields, not gradients (the only gradients are the brand
 tile and the app header bar). Marketing covers are solid deep teal. A faint
@@ -111,14 +140,29 @@ hero behind text — when product screenshots sit on teal they're framed in a ph
 amber TSI tubes, purple Gram films). Polished but honest — real bench photos, not
 stock "science" glamour shots, not illustration. Microscopy keeps its natural color.
 
-**Cards.** White (`--paper`) on warm canvas, **rounded** (product `--radius-md 10px`;
-social `--radius-xl 20px`), 1px hairline border (`rgba(36,92,105,.16)`) plus a
-**soft, low shadow** (`--shadow-sm/md`). Never heavy or dramatic. Photos inside cards
-get a small white inset frame and a teal "Specimen A" tag.
+**Cards & containment.** White (`--surface`) on warm canvas, **rounded**
+(product 5–6px for cards, `--radius-xl 20px` on social), 1px hairline border.
+Photos inside cards get a small white inset frame and a teal "Specimen A" tag.
 
-**Pills & tags.** Fully rounded (`--radius-pill`). Variants: solid deep-teal,
-light sage, and hairline-outline chips with a small leading dot. Used for difficulty,
-post type ("POP QUIZ"/"ANSWER"), clue lists ("β-hemolytic", "GPC in chains"), and URLs.
+The governing rule in the product UI is **one level of containment**:
+
+- A section that **is** the content — a hero, a CTA panel, a callout — gets a fill
+  and a hairline. It is an object.
+- A section whose **children already carry the boundary** — a grid of cards, a row
+  of tiles — gets space and nothing else. Drawing a box around boxes flattens the
+  hierarchy and is the single biggest reason a page reads as "a stack of identical
+  rectangles."
+
+Border, fill, radius and shadow each say *"separate object."* Spend them by role.
+Panel shadows were removed from the product UI; the hairline does the work.
+
+**Pills & tags.** In the **product UI**, tags and chips are **rounded rectangles**
+(see the radius scale below), matching the nav toolbar buttons so the app reads as
+one system. Fully-rounded pills remain correct on **social and marketing** surfaces,
+where they are a brand element. `999px` survives in the product only where the shape
+is doing real work: circular markers, step numbers, check icons, spinners, progress
+bars and meters, loading shimmer, scrollbar thumbs. A blanket find-and-replace on
+`border-radius: 999px` will turn those circles into squircles — don't.
 
 **Borders & dividers.** 1px, low-opacity teal. Vertical rules separate paired panels.
 No thick rules, no colored left-border-accent cards.
@@ -127,8 +171,18 @@ No thick rules, no colored left-border-accent cards.
 (`linear-gradient(180deg,#fff,#fbfaf7)`). Transparency/blur is used lightly on the
 hero search box (`backdrop-filter: blur(12px)`) over photography — not elsewhere.
 
-**Corner radii.** Tight and clinical in the app (4 / 6 / 10 / 14px); larger and
-friendlier on marketing (20 / 28px); pills everywhere a tag belongs.
+**Corner radii.** Tight and clinical in the app, and **scaled to the element** —
+a 42px button and an 18px badge should not share a corner:
+
+| Radius | Use |
+|---|---|
+| **10px** | interactive controls: buttons, toggles, filter chips, segmented controls, 42px icon buttons. Anchored to the nav toolbar buttons. |
+| **8px** | medium chips inside a panel; inner segments of a 10px segmented control |
+| **5–6px** | static badges, small cards, meta chips |
+| **12–14px** | large floating surfaces: dropdown menus, toasts |
+| **999px** | circles and meters only (see *Pills & tags*) |
+
+Marketing stays larger and friendlier (20 / 28px).
 
 **Motion.** Calm and short. ~140–260ms eases, gentle `translateY(-2px)` hover lifts,
 small fade-up entrances (`slideFadeIn`). No bounce, no spring, no parallax.
@@ -139,8 +193,65 @@ shadow (and faintly warmer `#fbfaf7` fill on light cards). Primary buttons darke
 on hover. Press settles the lift. Focus = 3px soft teal ring. Hit targets ≥ 44px.
 
 **Layout.** Centered max-width container (1100–1200px), modular card grids,
-generous gaps. Mobile-first: single column, full-width stacked buttons, larger
-tap targets. Strong scannability — small chunks, clear labels, lots of air.
+generous gaps. Strong scannability — small chunks, clear labels, lots of air.
+
+On phones the product goes **full bleed**. Below 620px the content shell drops its
+side padding and top-level panels span edge to edge, so sections read as stacked
+bands the way a native app does; cards nested inside a panel keep their radius,
+which is what preserves the hierarchy. This is not cosmetic — a 375px screen was
+losing ~40px (11%) to shell padding plus corners, and reading width went from
+300px to 340px when it was removed.
+
+---
+
+## Product UI decisions
+
+> Added 2026-09-08. These are the calls made for the **web app** specifically.
+> Social and marketing surfaces keep the fuller, friendlier treatment described
+> above where they differ.
+
+**Why Plex over Inter.** The audience is overwhelmingly on phones — GA4 shows
+Facebook and Threads referrals dominating, with readers in the Philippines and the
+OFW corridor. Plex was drawn for technical documentation, stays legible at 13–16px
+on inexpensive screens, and its mono companion gives lab values the monospaced
+setting they have in a real report. Inter remains a fine face; this is a fit
+decision, not a quality one.
+
+**Why the weights collapsed.** The codebase had 330 declarations at weight 750–950
+against 47 at 400–600. When body copy, labels, buttons and headings are all
+extra-bold, the eye gets no ranking and the page reads as loud rather than
+designed. Four weights give a real hierarchy.
+
+**Why body is 16px.** It was 14.4–15.2px. Small *and* heavy is the hardest
+combination to read on a phone in daylight, which is the actual reading condition
+for most of this audience.
+
+**Semantic tokens, not literals.** Components reference role tokens —
+`--surface`, `--ink`, `--rule` — never a hex. Dark mode then redefines the tokens
+in one block instead of every component restating its own colours. Two
+distinctions are easy to get wrong:
+
+- **Accent text and accent fill are separate tokens.** In dark mode the readable
+  accent is a bright mint; as a button fill it is far too loud. Fills stay mid-teal
+  (`--accent-fill`), text uses `--accent`.
+- **`--surface-card` exists** because a card is white in light mode but *sunken*
+  in dark (darker than the panel near it). No single surface token covers that.
+
+**Two logo lockups, not one.** The tiled app-icon mark is `#2c7873 → #1d4a54`,
+which sits almost exactly on top of the `#245c69` nav bar and disappears. Use
+`brand-mark-knockout.svg` (glyph knocked out in white, no tile, no shadow) on
+brand-coloured surfaces; use the tiled mark on light grounds, the favicon, and the
+installed app icon. Note that SVG loaded via `<img>` **cannot** load a webfont, so
+the mark's letterforms fall back to a system face — outlines are the proper fix if
+it ever goes to print or merch.
+
+**Never use unscoped element selectors.** Two were found in `src/styles.css`:
+a bare `section { background: white; border-radius: 10px; box-shadow: … }` that
+carded every semantic section in the app, and a bare
+`header { background: linear-gradient(…) }` that bannered every bare `<header>`.
+Both had page CSS fighting them everywhere. They are now scoped to
+`.bio-calculator`, where they originated. If something looks unexpectedly carded
+or bannered, an unscoped element selector is the first place to look.
 
 ---
 
