@@ -49,6 +49,46 @@ Use a timestamp prefix so migrations run in order. The description should be sho
 | GRANT / REVOKE | |
 | CREATE INDEX | |
 
+## Backups
+
+The project is on the free plan, which has no Supabase backups.
+`.github/workflows/backup.yml` makes one every day at 03:17 Philippine time. It saves
+roles, schema, and data (including `auth.users`), encrypts them, and keeps each run's
+file for 30 days under **Actions → Back up Supabase database**.
+
+The dump is encrypted because this repo is public, and anyone signed in to GitHub can
+download a public repo's workflow files.
+
+### One-time setup
+
+Add two secrets under **GitHub → Settings → Secrets and variables → Actions**:
+
+| Secret | Value |
+|---|---|
+| `SUPABASE_DB_URL` | Supabase → **Connect** → **Session pooler** connection string, with the database password filled in. GitHub's runners have no IPv6, so the direct connection string will not work. |
+| `BACKUP_PASSPHRASE` | A long random passphrase. Keep it in a password manager: without it the backups cannot be opened. |
+
+Then run the workflow once by hand (**Actions → Back up Supabase database → Run workflow**)
+and check that it goes green. GitHub pauses scheduled workflows after 60 days with no
+commits to the repo, so check this page after a quiet stretch.
+
+### Restore
+
+1. Download the backup from a workflow run and unzip it to get `learnmicrobes-db-YYYY-MM-DD.tar.gz.enc`.
+2. Decrypt it (you'll be asked for `BACKUP_PASSPHRASE`):
+   ```bash
+   openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in learnmicrobes-db-YYYY-MM-DD.tar.gz.enc | tar -xz
+   ```
+   This gives `roles.sql`, `schema.sql`, and `data.sql`.
+3. Restore into a **new** Supabase project (not over the live one), using its Session pooler connection string:
+   ```bash
+   psql --single-transaction --variable ON_ERROR_STOP=1 --file roles.sql --file schema.sql --command 'SET session_replication_role = replica' --file data.sql --dbname "[NEW_PROJECT_CONNECTION_STRING]"
+   ```
+4. Point the app's `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` at the new project,
+   and set Google sign-in and redirect URLs again in its Auth settings. Those settings are not in the dump.
+
+Full reference: https://supabase.com/docs/guides/platform/migrating-within-supabase/backup-restore
+
 ## Current schema summary (as of 2026-09-13)
 
 ### Tables

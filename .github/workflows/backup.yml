@@ -1,0 +1,66 @@
+name: Back up Supabase database
+
+# Daily backup of the Learn Microbes database: roles, schema, and data
+# (including auth.users). This repo is public and anyone signed in to GitHub
+# can download workflow artifacts, so the dump is encrypted before upload.
+# Setup and restore steps: supabase/README.md.
+
+on:
+  schedule:
+    - cron: '17 19 * * *' # 03:17 Philippine time
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: database-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+
+    steps:
+      - name: Check secrets
+        run: |
+          if [ -z "$SUPABASE_DB_URL" ] || [ -z "$BACKUP_PASSPHRASE" ]; then
+            echo "::error::Add SUPABASE_DB_URL and BACKUP_PASSPHRASE under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Set up Supabase CLI
+        uses: supabase/setup-cli@v3
+        with:
+          version: latest
+
+      - name: Dump roles, schema, and data
+        run: |
+          mkdir backup
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/roles.sql --role-only
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/schema.sql
+          supabase db dump --db-url "$SUPABASE_DB_URL" -f backup/data.sql --use-copy --data-only -x "storage.buckets_vectors" -x "storage.vector_indexes"
+          # A dump that silently lost the app's data is worse than a failed run.
+          grep -qE 'COPY "?public"?\."?quiz_attempts"?' backup/data.sql
+          ls -l backup
+
+      - name: Encrypt
+        run: |
+          stamp=$(date -u +%Y-%m-%d)
+          echo "BACKUP_NAME=learnmicrobes-db-$stamp" >> "$GITHUB_ENV"
+          tar -czf - -C backup . \
+            | openssl enc -aes-256-cbc -pbkdf2 -iter 200000 -salt -pass env:BACKUP_PASSPHRASE \
+              -out "learnmicrobes-db-$stamp.tar.gz.enc"
+          rm -rf backup
+
+      - name: Upload encrypted backup
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.BACKUP_NAME }}
+          path: ${{ env.BACKUP_NAME }}.tar.gz.enc
+          retention-days: 30
+          if-no-files-found: error
