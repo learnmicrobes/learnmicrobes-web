@@ -4791,7 +4791,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nocardia and related aerobic actinomycetes.',
     explanation: 'Branching, beaded Gram-positive rods with modified acid-fast staining support a Nocardia-like branch, especially from pulmonary or disseminated disease contexts.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-002-digestion-decontamination',
@@ -4809,7 +4809,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mucolysis plus decontamination to liquefy sputum and reduce competing flora.',
     explanation: 'NALC helps digest mucus, while NaOH helps reduce contaminating flora. Processing must balance decontamination with preserving mycobacterial viability.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-003-light-sensitive-media',
@@ -4827,7 +4827,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Culture conditions and media handling can affect recovery and must follow validated mycobacteriology protocols.',
     explanation: 'Mycobacteriology media and incubation conditions are method-dependent. Improper storage, light exposure, or incubation conditions can compromise recovery or interpretation.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-004-rapid-liquid-culture',
@@ -4845,7 +4845,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Liquid systems may detect mycobacterial growth before colonies are visible on solid media.',
     explanation: 'Liquid mycobacterial systems can detect growth earlier than solid media. Positive signals still require smear, identification, contamination checks, and appropriate follow-up.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-005-mtb-naat',
@@ -4863,7 +4863,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A validated nucleic acid amplification test for MTB complex.',
     explanation: 'NAAT can rapidly support detection of MTB complex from appropriate specimens. Smear, culture, molecular testing, and biosafety workflow each answer different parts of the question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-006-photochromogen',
@@ -4899,7 +4899,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium marinum.',
     explanation: 'M. marinum is associated with aquatic exposure, skin and soft tissue infection, photochromogenic pigment, and cooler incubation preference.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-008-bcg-species',
@@ -4917,7 +4917,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium bovis.',
     explanation: 'BCG is an attenuated strain derived from M. bovis. This is a high-yield connection between vaccination and the MTB complex group.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-009-mycobacteria-culture-incubation',
@@ -4989,7 +4989,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Overexposure can kill or injure mycobacteria and cause false-negative cultures.',
     explanation: 'Decontamination is a balance. It must reduce normal flora without destroying the target organism, so timing and concentration are controlled by SOP.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-013-acid-fast-cell-wall',
@@ -5043,7 +5043,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fluorescent AFB can be scanned efficiently at lower magnification than traditional brightfield acid-fast stains.',
     explanation: 'Fluorochrome stains help screen smears efficiently. Positive smears still require correlation with culture, NAAT, and the laboratory identification workflow.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-016-afb-smear-not-species-id',
@@ -5079,7 +5079,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'To communicate the approximate organism burden seen microscopically.',
     explanation: 'AFB smear grading is semiquantitative. It tells the team how many organisms were seen by microscopy, but it does not replace identification or susceptibility testing.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-018-afb-culture-needed-after-naat',
@@ -5097,7 +5097,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Culture supports organism recovery, full identification workflow, and susceptibility testing.',
     explanation: 'Molecular tests can provide rapid information, but culture remains important for recovery, confirmation, epidemiology, and susceptibility workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-019-lowenstein-jensen-medium',
@@ -5115,7 +5115,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Lowenstein-Jensen medium.',
     explanation: 'Lowenstein-Jensen is a classic solid medium for mycobacteria. Mycobacterial culture usually requires special media and longer incubation than routine bacterial culture.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-020-middlebrook-transparent-agar',
@@ -5133,7 +5133,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They are transparent agar-based media that allow earlier observation of mycobacterial colony morphology.',
     explanation: 'Middlebrook media support mycobacterial growth and allow colony review on solid media. They are part of a specialized AFB culture workflow, not routine aerobic plating.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-021-culture-incubation-time',
@@ -5169,7 +5169,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A mycobacterium that can produce visible growth within about 7 days under appropriate conditions.',
     explanation: 'Rapid-growing mycobacteria grow faster than classic slow growers, but they are still acid-fast organisms with specialized identification and susceptibility workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-023-runyon-pigment-groups',
@@ -5187,7 +5187,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nontuberculous mycobacteria by pigment production and growth rate patterns.',
     explanation: 'Runyon groups are a classic way to organize nontuberculous mycobacteria. The system uses pigment behavior and growth rate as learning anchors.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-024-photochromogen-concept',
@@ -5205,7 +5205,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Photochromogen.',
     explanation: 'Photochromogens produce pigment after light exposure. Mycobacterium kansasii is a classic teaching example in this group.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-025-scotochromogen-concept',
@@ -5223,7 +5223,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Scotochromogen.',
     explanation: 'Scotochromogens produce pigment without needing light exposure. Pigment behavior is one part of the traditional nontuberculous mycobacteria learning workflow.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-026-mtb-niacin-nitrate-pattern',
@@ -5241,7 +5241,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium tuberculosis.',
     explanation: 'M. tuberculosis is classically taught as niacin positive and nitrate reduction positive. Modern labs may use molecular or MALDI-supported workflows, but the biochemical pattern remains a useful study anchor.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-027-mtb-complex-not-single-species',
@@ -5259,7 +5259,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The result refers to a related group that includes M. tuberculosis and other complex members.',
     explanation: 'MTB complex is a group-level term. Depending on the lab workflow, further differentiation or public health handling may follow.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-028-m-bovis-pattern-caution',
@@ -5277,7 +5277,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It can differ from M. tuberculosis in biochemical and susceptibility patterns, so complex members are not always interchangeable.',
     explanation: 'M. bovis belongs to the MTB complex but has distinguishing laboratory features. The learner should avoid treating every complex member as identical in advanced workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-029-mac-nonchromogen',
@@ -5295,7 +5295,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium avium complex.',
     explanation: 'MAC is classically taught as a slow-growing nonchromogenic nontuberculous mycobacterial group. Clinical significance depends on source, quantity, repeat recovery, and lab criteria.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-030-ntm-significance-context',
@@ -5313,7 +5313,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Interpret significance using source, smear status, quantity, repeat recovery, organism identity, and lab criteria.',
     explanation: 'NTM may represent contamination, colonization, or clinically relevant infection depending on the situation. The lab workflow should not overcall or dismiss them from one clue alone.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-031-m-kansasii-photochromogen',
@@ -5331,7 +5331,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium kansasii.',
     explanation: 'M. kansasii is a classic photochromogen. Pigment production helps organize the NTM branch, but full identification uses the lab’s validated method.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-032-marinum-cool-temperature',
@@ -5349,7 +5349,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It grows better at lower incubation temperatures than many routine mycobacterial cultures.',
     explanation: 'M. marinum is associated with aquatic exposure and lower-temperature growth. Correct suspicion helps the lab select the right incubation conditions.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-033-gordonae-tap-water-context',
@@ -5367,7 +5367,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some mycobacteria are environmental and must be interpreted carefully with specimen source and repeat recovery.',
     explanation: 'M. gordonae is commonly environmental and may represent contamination. Interpretation depends on the full culture context, not the organism name alone.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-034-haemophilum-hemin-low-temp',
@@ -5385,7 +5385,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycobacterium haemophilum.',
     explanation: 'M. haemophilum is fastidious and may need hemin or iron and lower incubation temperature. Suspicion matters because routine conditions may miss it.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-035-m-ulcerans-lower-temperature',
@@ -5403,7 +5403,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It grows best at lower temperatures than standard 37C incubation.',
     explanation: 'Some mycobacteria need nonroutine incubation temperatures. If the organism is suspected, the lab must set up conditions that support recovery.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-036-rapid-growers-wound-context',
@@ -5421,7 +5421,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Rapidly growing nontuberculous mycobacteria.',
     explanation: 'Visible AFB growth within about a week supports the rapid-growing mycobacteria branch. These organisms have their own identification and AST considerations.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-037-m-leprae-no-routine-culture',
@@ -5439,7 +5439,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It cannot be grown on routine artificial culture media used in clinical laboratories.',
     explanation: 'M. leprae does not fit the standard AFB culture workflow. Identification relies on specialized clinical, histologic, molecular, or reference methods depending on the setting.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-038-ppd-igra-immune-response',
@@ -5457,7 +5457,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It shows an immune response to TB-related antigens but does not by itself prove active disease.',
     explanation: 'PPD and IGRA are immune-response tests. They are interpreted in clinical context and are not the same as direct organism detection from a specimen.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycobacteriology-039-afb-biosafety-escalation',
@@ -5475,7 +5475,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Follow the laboratory biosafety and escalation protocol before additional manipulation.',
     explanation: 'AFB workflows include aerosol and biosafety considerations. Learners should know when to pause, protect staff, and follow the laboratory’s TB safety pathway.',
     source: 'Learn Microbes original question bank: Mycobacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
   id: 'mycobacteriology-040-afb-smear-naat-culture-case',
@@ -5529,7 +5529,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cytopathic effect that may support viral growth in culture.',
     explanation: 'Cytopathic effect describes virus-associated changes in cultured cells. It is a presumptive culture clue and must be interpreted with the method and confirmatory testing.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-002-rsv-specimen',
@@ -5547,7 +5547,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Collect an appropriate upper respiratory specimen validated for the assay, such as a nasopharyngeal specimen when required.',
     explanation: 'Respiratory virus testing depends heavily on specimen type, collection quality, timing, and the assay validation. RSV is usually approached with respiratory specimens.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-003-hpv-disease-association',
@@ -5565,7 +5565,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Human papillomavirus.',
     explanation: 'HPV is linked to anogenital warts and cervical dysplasia/cancer screening. Different HPV types and assays answer different clinical questions.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-004-ebv-associations',
@@ -5583,7 +5583,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Epstein-Barr virus.',
     explanation: 'EBV is associated with infectious mononucleosis and selected malignancies. Serology and molecular testing must be matched to the clinical question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-005-hbv-chronic-marker',
@@ -5601,7 +5601,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'HBsAg.',
     explanation: 'Persistent HBsAg supports ongoing HBV infection when interpreted with other markers, timing, and clinical context. Serology is pattern-based, not single-marker memorization alone.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-006-hiv-monitoring',
@@ -5619,7 +5619,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Quantitative HIV RNA viral load.',
     explanation: 'HIV viral load measures circulating viral RNA and is used to monitor therapy response. CD4 count answers immune status rather than viral replication directly.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-007-influenza-drift-shift',
@@ -5637,7 +5637,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Drift is gradual mutation; shift is major reassortment that can create new pandemic-risk strains.',
     explanation: 'Influenza drift reflects accumulating mutations, while shift reflects reassortment with a major antigenic change. This distinction matters for epidemiology and vaccine strategy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-008-hantavirus-vector',
@@ -5655,7 +5655,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Aerosolized excreta from infected rodents.',
     explanation: 'Hantavirus risk is classically linked to rodent exposure, especially aerosolized urine, droppings, or nesting material in enclosed spaces.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-009-viral-transport-medium',
@@ -5763,7 +5763,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is a nonenveloped DNA virus associated with respiratory, ocular, and gastrointestinal syndromes.',
     explanation: 'Adenovirus is a DNA virus with several clinical patterns. The lab approach depends on specimen source and validated viral detection method.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-015-coxsackie-b-myocarditis-pleurodynia',
@@ -5781,7 +5781,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Coxsackie B virus.',
     explanation: 'Coxsackie B virus is a classic enterovirus association for myocarditis and pleurodynia concepts. Testing and interpretation depend on the clinical question and specimen source.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-016-enterovirus-csf-pcr',
@@ -5799,7 +5799,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nucleic acid amplification testing on an appropriate CSF specimen.',
     explanation: 'Enteroviruses are common causes of viral meningitis, and molecular testing can provide rapid detection from validated specimens. This is different from routine bacterial colony identification.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-017-rotavirus-stool-antigen',
@@ -5835,7 +5835,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Norovirus; stool submitted for a validated viral assay.',
     explanation: 'Norovirus is a classic cause of acute gastroenteritis outbreaks. Stool-based molecular or antigen methods may be used depending on the laboratory workflow.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-019-parvovirus-b19-fifth-disease',
@@ -5853,7 +5853,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Parvovirus B19.',
     explanation: 'Parvovirus B19 is classically associated with fifth disease and can also be important in aplastic crisis or congenital infection discussions. Lab testing may involve serology or molecular methods depending on the question.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-020-vzv-vesicle-pcr',
@@ -5871,7 +5871,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use a properly collected lesion specimen for a validated molecular assay when available.',
     explanation: 'VZV testing often depends on lesion specimen quality and molecular detection. Direct cytology findings can be nonspecific and do not reliably separate herpesviruses.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-021-hsv-lesion-pcr',
@@ -5907,7 +5907,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'EBV-specific serology such as viral capsid antigen antibodies can help when the screening result does not fit the case.',
     explanation: 'Heterophile antibody tests are screening tools and can be negative early or in some populations. EBV-specific serology provides a more detailed interpretation path.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-023-cmv-pcr-monitoring',
@@ -5925,7 +5925,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Quantitative molecular testing can track CMV viral load trends in appropriate specimens.',
     explanation: 'CMV monitoring commonly uses quantitative molecular methods in selected patient groups. The result is a lab trend that must be interpreted through the clinical and laboratory protocol.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-024-congenital-cmv-specimen',
@@ -5943,7 +5943,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use the specimen type and collection timing required by the validated congenital CMV protocol.',
     explanation: 'Congenital CMV testing is sensitive to specimen type and timing. The lab should follow its validated protocol rather than treating all specimens as interchangeable.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-025-hepatitis-b-serology-logic',
@@ -5961,7 +5961,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Different markers reflect infection, immunity, exposure history, or phase of infection depending on the pattern.',
     explanation: 'Hepatitis B serology uses combinations such as surface antigen, surface antibody, and core antibody. The pattern matters more than memorizing one marker alone.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-026-hepatitis-c-antibody-rna',
@@ -5979,7 +5979,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'RNA testing helps determine whether viral nucleic acid is detected after a reactive antibody screen.',
     explanation: 'HCV antibody testing shows exposure or immune response, while RNA testing detects viral nucleic acid. The two result types answer different lab questions.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-027-hiv-screening-algorithm',
@@ -5997,7 +5997,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
     explanation: 'HIV testing is algorithm-based. Screening, supplemental differentiation, and nucleic acid testing answer different questions and must follow the validated workflow.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-028-hiv-viral-load-meaning',
@@ -6033,7 +6033,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'To look for viral genetic mutations associated with resistance to antiretroviral drug classes.',
     explanation: 'Genotypic resistance testing examines viral sequence changes linked to resistance. It is a lab interpretation tool, not a treatment recommendation by itself.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-030-hpv-high-risk-dna',
@@ -6051,7 +6051,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nucleic acid from HPV types associated with higher oncogenic risk.',
     explanation: 'High-risk HPV testing detects viral nucleic acid from selected HPV types. It is part of a screening algorithm and should be interpreted by the validated lab workflow.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-031-rabies-dfa-animal-brain',
@@ -6069,7 +6069,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Direct fluorescent antibody testing.',
     explanation: 'Rabies testing is a public health and safety-sensitive workflow. Direct fluorescent antibody testing on appropriate tissue is a classic method, and handling follows strict protocols.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-032-west-nile-igm',
@@ -6087,7 +6087,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Virus-specific IgM antibody detection in appropriate specimens.',
     explanation: 'West Nile virus testing often relies on serologic detection of IgM in serum or CSF, depending on the clinical question and lab protocol. Routine viral culture is not the usual first teaching workflow.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-033-hantavirus-rodent-exposure',
@@ -6123,7 +6123,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Molecular detection from a validated respiratory specimen.',
     explanation: 'Coronavirus testing commonly uses molecular detection from respiratory specimens. Routine culture is not the usual front-line diagnostic workflow in clinical labs.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-035-rubella-immune-status',
@@ -6141,7 +6141,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'IgG and IgM answer different serologic questions and must be interpreted in context.',
     explanation: 'Rubella serology is pattern-based. IgG may support immunity or past exposure, while IgM is used in recent-infection evaluation with appropriate caution and confirmation rules.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-036-torch-panel-concept',
@@ -6159,7 +6159,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They are organisms associated with congenital or perinatal infection evaluation.',
     explanation: 'TORCH is a learning bucket for congenital infection evaluation. Testing depends on the organism, specimen, timing, and whether serology or molecular detection is appropriate.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-037-bk-virus-transplant',
@@ -6177,7 +6177,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Molecular testing of urine or plasma can be used to monitor BK virus in the appropriate protocol.',
     explanation: 'BK virus is a polyomavirus important in transplant-associated monitoring. Testing is protocol-driven and often uses molecular methods rather than routine culture.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-038-hemagglutination-inhibition',
@@ -6195,7 +6195,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Antibody can block a virus from agglutinating red blood cells.',
     explanation: 'Some viruses can agglutinate red blood cells. If specific antibody prevents that reaction, the inhibition pattern can support serologic interpretation in selected workflows.',
     source: 'Learn Microbes original question bank: Virology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'virology-039-virology-bench-first-workflow',
@@ -6321,7 +6321,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Artifacts can mimic parasites, so morphology, size, internal structures, and stain quality must be evaluated carefully.',
     explanation: 'O&P microscopy requires separating true diagnostic structures from artifacts. Size, shape, internal detail, and preparation method all matter.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-002-permanent-stain-purpose',
@@ -6339,7 +6339,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They enhance internal protozoan morphology and allow more detailed review than a wet mount alone.',
     explanation: 'Permanent stains such as trichrome help visualize protozoan nuclear and cytoplasmic detail. They complement, rather than universally replace, concentration and wet mount methods.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-003-naegleria-urgent',
@@ -6357,7 +6357,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Urgent escalation and appropriate confirmatory workflow because free-living amoebae can be rapidly fatal.',
     explanation: 'Suspected Naegleria or other free-living amoebae in CSF is a high-consequence finding. Rapid communication and reference/confirmatory workflow are critical.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-004-malaria-speciation',
@@ -6375,7 +6375,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Infected cell size, parasite forms, pigment, parasitemia pattern, and special forms such as gametocytes.',
     explanation: 'Malaria microscopy uses multiple smear features, not one visual clue alone. Species-level interpretation affects urgency and therapy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-005-pinworm-specimen',
@@ -6411,7 +6411,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Number and pattern of uterine branches in the gravid proglottid.',
     explanation: 'Taenia species differentiation often uses proglottid morphology, especially uterine branch pattern. Egg morphology alone is not enough for reliable species separation.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-007-schistosoma-haematobium',
@@ -6447,7 +6447,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Modified acid-fast or equivalent validated coccidian parasite staining method.',
     explanation: 'Cryptosporidium and related coccidia may require special stains or antigen/molecular methods. Routine O&P alone may not answer every coccidian parasite question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-009-stool-op-and-p-basic-workflow',
@@ -6519,7 +6519,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They are breakdown products associated with eosinophils and may support a parasitic or allergic inflammatory context.',
     explanation: 'Charcot-Leyden crystals are not a parasite identification by themselves. They are supportive microscopic clues that must be interpreted with the full specimen findings.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-013-entamoeba-histolytica-rbc-ingestion',
@@ -6555,7 +6555,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'E. histolytica and E. dispar can look identical by cyst morphology, so lab-specific confirmation may be needed.',
     explanation: 'Some Entamoeba species overlap morphologically. The bench should avoid overcalling pathogenicity from cyst appearance alone when confirmatory methods are required.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-015-giardia-trophozoite-pattern',
@@ -6591,7 +6591,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They can detect parasite antigens in stool and may be more practical than relying only on routine O&P microscopy.',
     explanation: 'Giardia and Cryptosporidium are common targets for stool antigen or molecular workflows. The test choice depends on the lab’s algorithm and requested evaluation.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-017-cryptosporidium-modified-acid-fast',
@@ -6627,7 +6627,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cyclospora cayetanensis.',
     explanation: 'Cyclospora oocysts are larger than Cryptosporidium and can show variable acid-fast staining. Autofluorescence can help support the identification in some workflows.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-019-cystoisospora-large-oocyst',
@@ -6645,7 +6645,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cystoisospora belli.',
     explanation: 'Cystoisospora belli produces large elongated oocysts compared with Cryptosporidium. Size and shape help separate coccidian parasites on stool stains.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-020-microsporidia-modified-trichrome',
@@ -6663,7 +6663,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Modified trichrome or another specialized stain to demonstrate tiny spores.',
     explanation: 'Microsporidia are tiny and can be missed with routine stool methods. Specialized stains or molecular methods are used depending on the lab workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-021-trichomonas-vaginal-specimen',
@@ -6681,7 +6681,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fresh vaginal discharge or an appropriate urogenital specimen handled promptly.',
     explanation: 'Trichomonas trophozoites are fragile, and motility is easiest to observe in fresh specimens. Many labs now use molecular methods, but specimen source still matters.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-022-dientamoeba-permanent-stain',
@@ -6699,7 +6699,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Permanent stained smear.',
     explanation: 'Dientamoeba fragilis is best recognized on permanent stained smears because trophozoite nuclear detail is important. Wet mounts and concentration alone may be insufficient.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-023-balantidium-ciliated-troph',
@@ -6717,7 +6717,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Balantidium coli.',
     explanation: 'Balantidium coli is the classic ciliated intestinal protozoan. Cilia and large size are key morphology clues.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-024-naegleria-csf-motile-amebae',
@@ -6735,7 +6735,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Naegleria fowleri.',
     explanation: 'Naegleria fowleri is a free-living ameba associated with primary amebic meningoencephalitis. This is a high-urgency lab recognition pattern that requires immediate escalation under protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-025-acanthamoeba-contact-lens',
@@ -6753,7 +6753,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Acanthamoeba species.',
     explanation: 'Acanthamoeba is classically associated with keratitis, especially in contact lens-related workflows. Testing may include microscopy, culture, histology, or molecular methods depending on the lab.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-026-enterobius-scotch-tape',
@@ -6789,7 +6789,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Strongyloides stercoralis.',
     explanation: 'Strongyloides rhabditiform larvae have characteristic morphology. Recognizing larvae rather than eggs is important in stool parasite workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-028-strongyloides-autoinfection',
@@ -6825,7 +6825,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Filariform larvae penetrating skin from contaminated soil.',
     explanation: 'Hookworm larvae can penetrate skin, often through contact with contaminated soil. Life-cycle stage and route are key study anchors.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-030-ascaris-fertilized-eggs',
@@ -6843,7 +6843,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Ascaris lumbricoides.',
     explanation: 'Ascaris eggs are classic stool O&P morphology findings. Mammillated, thick-shelled fertilized eggs are a common teaching pattern.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-031-trichuris-barrel-eggs',
@@ -6861,7 +6861,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trichuris trichiura.',
     explanation: 'Trichuris eggs are classically barrel-shaped with bipolar plugs. Egg morphology is a core bench skill in helminth identification.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-032-schistosoma-haematobium-urine',
@@ -6879,7 +6879,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Urine sediment.',
     explanation: 'Schistosoma haematobium eggs are classically recovered from urine and have a terminal spine. Specimen source is part of the organism identification pattern.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-033-schistosoma-mansoni-lateral-spine',
@@ -6897,7 +6897,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Schistosoma mansoni.',
     explanation: 'S. mansoni eggs are classically associated with a large lateral spine. S. haematobium eggs have a terminal spine and are usually linked to urine sediment.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-034-schistosoma-egg-viability',
@@ -6915,7 +6915,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use a fresh, appropriate specimen for a hatching or viability method according to protocol.',
     explanation: 'Viability testing depends on live egg or larval behavior, so preservation can interfere. The lab must follow the specific specimen and timing protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-035-taenia-eggs-not-species',
@@ -6933,7 +6933,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Taenia solium and Taenia saginata eggs are morphologically indistinguishable.',
     explanation: 'Taenia eggs do not reliably separate species. Proglottid or scolex morphology, epidemiology, or other methods may be needed depending on the lab workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-036-taenia-solium-cysticercosis',
@@ -6951,7 +6951,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Humans can develop cysticercosis after ingesting T. solium eggs.',
     explanation: 'T. solium can cause intestinal taeniasis from cysticerci in pork and cysticercosis from ingestion of eggs. That life-cycle distinction matters more than egg morphology.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-037-diphyllobothrium-freshwater-fish',
@@ -6969,7 +6969,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Eating raw or undercooked freshwater fish.',
     explanation: 'Diphyllobothrium latum is the broad fish tapeworm. Freshwater fish exposure is a key life-cycle clue.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-038-echinococcus-hydatid-safety',
@@ -6987,7 +6987,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Handle according to laboratory safety and specimen-processing protocol because cyst fluid can contain infectious protoscolices.',
     explanation: 'Humans are accidental intermediate hosts in echinococcosis. Hydatid material is not a routine stool O&P problem and should be handled by protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-039-paragonimus-sputum-eggs',
@@ -7005,7 +7005,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Sputum.',
     explanation: 'Paragonimus species are lung flukes, and eggs may be found in sputum or stool depending on the workflow. Specimen selection follows the parasite location.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-040-fasciola-large-operculated-eggs',
@@ -7023,7 +7023,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fasciola hepatica.',
     explanation: 'Fasciola hepatica eggs are large and operculated. Trematode egg morphology must be interpreted with exposure, source, and lab reference criteria.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-041-angio-eosinophilic-meningitis',
@@ -7041,7 +7041,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Angiostrongylus cantonensis.',
     explanation: 'Angiostrongylus cantonensis is classically associated with eosinophilic meningitis. The educational focus is life cycle, exposure, and specimen-test logic rather than routine stool identification.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-042-trichinella-bear-pork-exposure',
@@ -7059,7 +7059,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trichinella spiralis.',
     explanation: 'Trichinella infection is linked to encysted larvae in undercooked meat, including pork or wild game. Muscle involvement and eosinophilia are key learning clues.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-043-onchocerca-skin-snip',
@@ -7077,7 +7077,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Skin snip examination.',
     explanation: 'Onchocerca microfilariae are classically detected from skin snips. Filarial testing depends strongly on organism location and periodicity.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-044-filarial-blood-periodicity',
@@ -7095,7 +7095,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some species show periodic circulation in peripheral blood, so timing affects detection.',
     explanation: 'Some filarial microfilariae circulate more predictably at certain times. The lab should collect specimens according to organism suspicion and protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-045-thick-thin-malaria-smears',
@@ -7149,7 +7149,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Plasmodium falciparum.',
     explanation: 'P. falciparum is classically associated with multiple delicate rings and crescent-shaped gametocytes. Species identification requires careful thin-film morphology and lab criteria.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-048-plasmodium-malariae-band-forms',
@@ -7167,7 +7167,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Plasmodium malariae.',
     explanation: 'Band forms are a classic morphology clue for P. malariae. Malaria species calls should be made from well-prepared thin films and appropriate expertise.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-049-plasmodium-vivax-ovale-stippling',
@@ -7185,7 +7185,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They can show Schuffner-type stippling and have dormant liver stages that may relapse.',
     explanation: 'P. vivax and P. ovale are classically associated with enlarged infected RBCs and stippling. Their hypnozoite stage is an important life-cycle concept.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-050-plasmodium-knowlesi-mimic',
@@ -7203,7 +7203,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Its blood stages can resemble other Plasmodium species, so exposure history and reference confirmation may matter.',
     explanation: 'P. knowlesi can resemble P. falciparum or P. malariae depending on stage. Travel or exposure context and confirmatory testing may be needed.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-051-babesia-maltese-cross',
@@ -7221,7 +7221,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Babesia species.',
     explanation: 'Babesia can resemble malaria on blood smear, but tetrads are a classic clue. Travel, tick exposure, and RBC morphology help the lab branch correctly.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-052-trypanosoma-cruzi-trypomastigote',
@@ -7239,7 +7239,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trypanosoma cruzi.',
     explanation: 'Trypanosoma cruzi trypomastigotes have a prominent kinetoplast and curved shape. Microscopy, serology, or molecular methods may be used depending on disease stage and lab protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-053-leishmania-amastigotes',
@@ -7257,7 +7257,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Leishmania species.',
     explanation: 'Leishmania amastigotes are found in macrophages and have nucleus plus kinetoplast morphology. The specimen source and syndrome guide the testing workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-054-toxoplasma-serology-context',
@@ -7275,7 +7275,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'IgG, IgM, timing, and clinical context affect whether results suggest past exposure or possible recent infection.',
     explanation: 'Toxoplasma serology is pattern-based and can be complex. The lab follows its validated algorithm, especially in pregnancy or immunocompromised contexts.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-055-toxoplasma-life-cycle',
@@ -7293,7 +7293,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cats are the definitive host, and humans may acquire infection from oocysts or tissue cysts.',
     explanation: 'Toxoplasma life-cycle learning centers on feline definitive hosts, environmental oocysts, tissue cysts, and congenital or immunocompromised testing concerns.',
     source: 'Learn Microbes original question bank: Parasitology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'parasitology-056-parasite-specimen-source-matching',
@@ -7329,7 +7329,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Entamoeba histolytica.',
   explanation: 'Ingested RBCs are a key teaching clue for E. histolytica trophozoites. Cyst morphology alone may not separate E. histolytica from E. dispar.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'parasitology-058-cryptosporidium-modified-acid-fast-case',
@@ -7347,7 +7347,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Cryptosporidium species.',
   explanation: 'Cryptosporidium oocysts are small and acid-fast variable to positive with modified acid-fast methods. Many labs also use antigen or molecular assays.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'parasitology-059-enterobius-tape-case',
@@ -7383,7 +7383,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Thick films improve detection sensitivity, while thin films help with species morphology.',
   explanation: 'Thick and thin films answer different malaria microscopy questions. Proper smear preparation, timing, and travel history all matter.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'parasitology-061-babesia-maltese-cross-case',
@@ -7419,7 +7419,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Autoinfection within the human host.',
   explanation: 'Strongyloides can maintain infection through autoinfection. This life-cycle feature is a key reason the organism is emphasized in parasitology problem solving.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'parasitology-063-leishmania-amastigote-case',
@@ -7455,7 +7455,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Clear keratin and cellular debris so fungal elements are easier to see.',
     explanation: 'KOH helps dissolve host keratin and background material, improving visualization of hyphae or yeast-like structures in direct fungal exams.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-002-cryptococcus-capsule',
@@ -7473,7 +7473,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cryptococcal antigen testing and appropriate microscopy/culture correlation.',
     explanation: 'Cryptococcus workup often includes antigen detection plus microscopy and culture correlation. Encapsulated yeast in CSF is a high-yield clinical association.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-003-germ-tube',
@@ -7491,7 +7491,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Candida albicans/Candida dubliniensis group.',
     explanation: 'Germ tube positivity supports the C. albicans/C. dubliniensis group in the right workflow. It is not a universal yeast identification method.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-004-dimorphic-fungi',
@@ -7509,7 +7509,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Handle according to fungal safety policy and use validated identification or reference methods rather than casual open-bench manipulation.',
     explanation: 'Dimorphic fungi can pose laboratory exposure risks. Suspicious molds should be handled with appropriate biosafety precautions and confirmatory workflows.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-005-dermatophyte-structures',
@@ -7527,7 +7527,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Hyphal morphology plus macroconidia and microconidia arrangement.',
     explanation: 'Dermatophyte identification uses colony features and microscopic morphology, including macroconidia, microconidia, and hyphal structures.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-006-coccidioides-safety',
@@ -7545,7 +7545,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Stop routine manipulation and follow laboratory safety and confirmatory identification policy.',
     explanation: 'Coccidioides is a major laboratory-acquired infection concern. Suspicious morphology and exposure history should trigger safety-aware handling.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-007-aseptate-hyphae',
@@ -7581,7 +7581,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Differentiating Cryptococcus gattii complex from Cryptococcus neoformans complex in a validated workflow.',
     explanation: 'Selected media such as CGB-type agar can help separate Cryptococcus gattii complex from C. neoformans complex when used in an appropriate identification algorithm.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-009-fungal-specimen-moist-sterile',
@@ -7707,7 +7707,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A true germ tube lacks constriction at its point of origin from the yeast cell.',
     explanation: 'True germ tubes arise without a constriction at the base. Pseudohyphae can mimic germ tubes, so careful microscopic reading matters.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-016-cornmeal-yeast-morphology',
@@ -7725,7 +7725,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It encourages structures such as pseudohyphae, blastoconidia, arthroconidia, or chlamydospores that help with identification.',
     explanation: 'Cornmeal morphology is a classic yeast ID tool. It helps learners connect microscopic structures with yeast groups, but it may be supplemented by modern ID systems.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-017-cryptococcus-urease-niger-seed',
@@ -7743,7 +7743,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cryptococcus neoformans.',
     explanation: 'Cryptococcus neoformans is classically urease positive and can produce brown pigment on niger seed agar through phenol oxidase activity. The bench pattern should fit the full workflow.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-018-cryptococcus-capsule-workflow',
@@ -7779,7 +7779,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Chlamydospores support the C. albicans or C. dubliniensis branch and should be interpreted with other ID results.',
     explanation: 'Chlamydospore production is a classic Candida morphology clue. It supports a branch but does not replace the full yeast identification workflow.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-020-candida-glabrata-small-yeast',
@@ -7797,7 +7797,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Candida glabrata.',
     explanation: 'Candida glabrata often appears as small budding yeast cells and is germ tube negative. Modern ID methods are commonly used, but the morphology remains a useful study anchor.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-021-rhodotorula-pink-yeast',
@@ -7815,7 +7815,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Rhodotorula species.',
     explanation: 'Rhodotorula species are known for pink to coral yeast colonies. Pigment is a clue, but species-level workup still depends on the lab’s identification method.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-022-trichosporon-arthroconidia',
@@ -7833,7 +7833,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trichosporon species.',
     explanation: 'Trichosporon can produce a mixture of yeast-like and hyphal elements, including arthroconidia. Morphology helps guide the yeast-like fungus branch.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-023-geotrichum-arthroconidia',
@@ -7851,7 +7851,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Geotrichum species.',
     explanation: 'Geotrichum is classically associated with hyphae breaking into arthroconidia. This helps separate it from Candida-like yeasts that produce blastoconidia and pseudohyphae.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-024-carbohydrate-assimilation-principle',
@@ -7869,7 +7869,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It checks which carbon sources a yeast can use to support identification.',
     explanation: 'Yeast assimilation patterns are biochemical fingerprints. They support identification when morphology alone is not enough.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-025-dimorphic-temperature-shift',
@@ -7905,7 +7905,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Histoplasma capsulatum.',
     explanation: 'Histoplasma is classically seen as small intracellular yeast in tissue. The bench pattern includes tissue morphology, fungal stains, culture or antigen testing, and safety-aware handling.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-027-blastomyces-broad-based-budding',
@@ -7941,7 +7941,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Paracoccidioides brasiliensis.',
     explanation: 'Paracoccidioides is classically associated with multiple budding yeast forms, sometimes described as a pilot-wheel appearance. This is an advanced morphology clue.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-029-sporothrix-cigar-shaped-yeast',
@@ -7959,7 +7959,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Sporothrix schenckii.',
     explanation: 'Sporothrix is classically associated with cigar-shaped yeast in tissue. Mold-phase morphology and source context help support the branch.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-030-coccidioides-spherules',
@@ -7977,7 +7977,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Coccidioides species.',
     explanation: 'Coccidioides forms spherules with endospores in tissue. This tissue form is a key clue and should trigger the correct fungal workflow.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-031-coccidioides-lab-safety',
@@ -8013,7 +8013,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pneumocystis jirovecii.',
     explanation: 'Pneumocystis is not approached like routine mold culture. Special stains, immunofluorescence, or molecular methods are commonly used depending on the lab workflow.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-033-malassezia-spaghetti-meatballs',
@@ -8031,7 +8031,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Malassezia furfur.',
     explanation: 'Malassezia can show a “spaghetti and meatballs” pattern on direct exam. This is a morphology clue from a superficial skin specimen.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-034-dermatophyte-genera-bucket',
@@ -8049,7 +8049,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trichophyton, Microsporum, and Epidermophyton.',
     explanation: 'Dermatophyte learning usually starts with Trichophyton, Microsporum, and Epidermophyton. The bench then uses colony appearance, microscopic morphology, and source.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-035-epidermophyton-no-microconidia',
@@ -8067,7 +8067,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Epidermophyton.',
     explanation: 'Epidermophyton is classically taught as producing macroconidia but no microconidia. This is a useful genus-level morphology clue.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-036-microsporum-macroconidia',
@@ -8085,7 +8085,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Microsporum.',
     explanation: 'Microsporum species are often recognized by prominent rough-walled macroconidia. This morphology helps separate dermatophyte genera.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-037-trichophyton-hair-nail-skin',
@@ -8103,7 +8103,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Trichophyton.',
     explanation: 'Trichophyton species commonly involve skin, hair, and nails. Microscopic morphology, especially microconidia, is an important teaching clue.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-038-dematiaceous-mold-pigment',
@@ -8121,7 +8121,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A dematiaceous mold with melanin-like pigment in the cell wall.',
     explanation: 'Dematiaceous molds are darkly pigmented molds. Colony pigment and microscopic morphology guide the next identification step.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-039-phialophora-vase-phialides',
@@ -8139,7 +8139,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Phialophora.',
     explanation: 'Phialophora is classically recognized by vase-shaped phialides with collarettes. This is a microscopic morphology clue in the dematiaceous mold branch.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-040-alternaria-muriform-conidia',
@@ -8157,7 +8157,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Alternaria.',
     explanation: 'Alternaria is associated with muriform conidia that have both transverse and longitudinal septations. This is a high-yield morphology pattern.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-041-aspergillus-conidial-head',
@@ -8175,7 +8175,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Aspergillus.',
     explanation: 'Aspergillus species are hyaline molds with septate hyphae and characteristic conidial heads. Species-level workup depends on conidial head structure and other laboratory methods.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-042-aspergillus-fumigatus-morphology',
@@ -8193,7 +8193,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Aspergillus fumigatus.',
     explanation: 'A. fumigatus is classically associated with compact columnar conidial heads and phialides on the upper portion of the vesicle. Microscopic morphology supports species-level branching.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-043-fusarium-sickle-macroconidia',
@@ -8211,7 +8211,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fusarium.',
     explanation: 'Fusarium is classically associated with sickle-shaped macroconidia. This morphology helps separate it from Aspergillus-like and Mucorales-like molds.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-044-scedosporium-annelloconidia',
@@ -8229,7 +8229,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Scedosporium.',
     explanation: 'Scedosporium-like molds can produce annelloconidia rather than Aspergillus-type conidial heads. Microscopic structures guide the branch.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-045-mucorales-broad-aseptate',
@@ -8265,7 +8265,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Rhizopus.',
     explanation: 'Rhizopus is classically taught as having nodal rhizoids directly beneath the sporangiophores. These structures help separate genera within the Mucorales group.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-047-talaromyces-marneffei-dimorphic',
@@ -8283,7 +8283,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Talaromyces marneffei.',
     explanation: 'Talaromyces marneffei, formerly Penicillium marneffei, is a dimorphic fungus associated with yeast-like cells that can show a transverse septum. Taxonomy may vary across older references.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'mycology-048-galactomannan-aspergillus-concept',
@@ -8301,7 +8301,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Antigen testing detects fungal components in selected specimen types, while colony identification uses culture and morphology.',
     explanation: 'Aspergillus workflows may include culture, microscopy, histopathology, antigen testing, or molecular methods depending on the question. Learners should connect the test method to what it actually detects.',
     source: 'Learn Microbes original question bank: Mycology',
-    status: 'draft'
+    status: 'published'
   },
   {
   id: 'mycology-049-aspergillus-fumigatus-conidial-head-case',
@@ -8373,7 +8373,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Candida albicans.',
   explanation: 'C. albicans is classically germ tube positive and can form chlamydospores. These findings support the Candida albicans branch in a teaching workflow.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'mycology-053-dermatophyte-trichophyton-case',
@@ -8391,7 +8391,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Trichophyton rubrum.',
   explanation: 'Trichophyton rubrum is a common dermatophyte associated with tear-shaped microconidia and red reverse pigment. Dermatophyte ID uses source, colony, and microscopic morphology.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'mycology-054-coccidioides-safety-case',
