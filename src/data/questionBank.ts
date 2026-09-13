@@ -3611,7 +3611,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Rhodococcus identification',
     difficulty: 'advanced',
     tags: ['Rhodococcus equi', 'salmon-pink colonies', 'partial acid-fast', 'gram-positive coccobacilli'],
-    prompt: 'A slowly growing gram-positive coccobacillus produces salmon-pink colonies and shows partial acid-fast staining. Which organism is the best teaching match?',
+    prompt: 'A gram-positive coccobacillus develops salmon-pink colonies over several days and shows partial acid-fast staining. Which organism is the best teaching match?',
     choices: [
       'Rhodococcus equi.',
       'Listeria monocytogenes.',
@@ -4457,7 +4457,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Staphylococcus problem solving',
   difficulty: 'beginner',
   tags: ['Staphylococcus aureus', 'mannitol salt agar', 'coagulase', 'screening media'],
-  prompt: 'A heavily mixed wound specimen is plated to a selective high-salt medium. Yellow colonies grow, and the isolate is catalase positive and coagulase positive. Which organism does this pattern support?',
+  prompt: 'A heavily mixed wound specimen is plated to a selective high-salt medium. Colonies grow with a yellow halo in the medium, and the isolate is catalase positive and coagulase positive. Which organism does this pattern support?',
   choices: [
   'Staphylococcus aureus.',
   'Streptococcus pyogenes.',
