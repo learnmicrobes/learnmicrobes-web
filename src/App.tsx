@@ -1015,7 +1015,7 @@ export default function App() {
       },
       '/privacy': {
         title: 'Privacy Policy | Learn Microbes',
-        description: 'Learn how Learn Microbes uses account data, Supabase authentication, saved bookmarks, Learn progress, quiz history, and feedback during beta.'
+        description: 'What Learn Microbes collects and why: account data, Supabase sign-in, Google Analytics, browser storage, and how to request a copy or deletion of your data.'
       },
       '/ascp-microbiology-review': {
         title: 'ASCP Microbiology Review | M(ASCP) Study Hub | Learn Microbes',

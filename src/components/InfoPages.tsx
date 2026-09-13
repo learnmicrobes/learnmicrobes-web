@@ -57,19 +57,31 @@ const infoPages: Record<InfoPageKey, {
   privacy: {
     kicker: 'Privacy Policy',
     title: 'A practical privacy summary for beta users',
-    intro: 'Learn Microbes uses account features to save study progress, bookmarks, and quiz history.',
+    intro: 'What Learn Microbes collects, why, and which services handle it. We do not sell your data.',
     sections: [
       {
         title: 'Account data',
-        body: 'When you sign in, we may store your email address, profile record, bookmarks, Learn progress, and quiz attempts so your study activity can follow your account.'
+        body: 'When you sign in, we store your email address, profile, bookmarks, Learn progress, and quiz attempts so your study activity follows your account. On the quiz leaderboard, which only signed-in learners can see, you appear under a display name only if you choose one; otherwise you are shown as "Learner" and your rank.'
       },
       {
         title: 'Authentication',
-        body: 'Authentication is handled through Supabase. Google sign-in is available, and password resets are sent to the email associated with your account.'
+        body: 'Accounts are handled by Supabase. Google sign-in is available, and password resets are sent to the email address on your account.'
       },
       {
-        title: 'Feedback and contact',
-        body: 'If you send feedback or email Learn Microbes, the information you provide may be used to respond, troubleshoot, and improve the beta experience.'
+        title: 'Analytics',
+        body: 'We use Google Analytics to see which pages and tools are used, such as page views, quizzes started, and visual cards opened. Google Analytics uses cookies and records your device, browser, approximate location, and how you reached the site. We do not send your name or email address to Google Analytics.'
+      },
+      {
+        title: 'Stored in your browser',
+        body: 'Your sign-in session and study settings, such as streaks and missed questions, are saved in your browser, and the site caches its own files so it loads faster and works offline. Clearing your browser data removes them.'
+      },
+      {
+        title: 'Other services',
+        body: 'The site is hosted on GitHub Pages, account data is stored with Supabase, fonts load from Google Fonts, and Support links open Ko-fi. Each of these services has its own privacy policy.'
+      },
+      {
+        title: 'Feedback, contact, and deletion',
+        body: 'If you send feedback or email Learn Microbes, we use what you share to respond and improve the site. To get a copy of your account data or have it deleted, email learnmicrobes@outlook.com.'
       }
     ]
   },
