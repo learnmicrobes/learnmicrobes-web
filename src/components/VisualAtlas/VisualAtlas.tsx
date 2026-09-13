@@ -1685,7 +1685,7 @@ export const atlasPages: AtlasPage[] = [
     ],
     remember: 'Best mental model: If the Durham tube has a clear space at its sealed top, the organism is a heterofermentor and made CO2; if it is fully submerged and filled, the organism ferments without making gas.',
     biochemicalTestId: 'mrs-broth',
-    relatedLearnSlug: 'lactobacillus'
+    relatedLearnSlug: 'gram-positive-bacilli-overview'
   },
   {
     slug: 'mug-test',
@@ -1970,7 +1970,7 @@ export const atlasPages: AtlasPage[] = [
     ],
     remember: 'P is for Pneumoniae (and P-disk). Susceptible = Pneumoniae. Resistant = Other viridans strep.',
     biochemicalTestId: 'optochin-susceptibility',
-    relatedLearnSlug: 'gram-positive-cocci'
+    relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
     slug: 'oxidase-test',
@@ -2208,7 +2208,7 @@ export const atlasPages: AtlasPage[] = [
     ],
     remember: 'PYR positive = Streptococcus pyogenes (Group A) and Enterococcus. PYR negative = Streptococcus agalactiae (Group B). Red = Positive.',
     biochemicalTestId: 'pyr',
-    relatedLearnSlug: 'gram-positive-cocci'
+    relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
     slug: 'pyruvate-broth',
@@ -2260,7 +2260,7 @@ export const atlasPages: AtlasPage[] = [
     ],
     remember: 'Pyruvate = Yellow (Positive) for Enterococcus faecalis. Green = Negative for Enterococcus faecium.',
     biochemicalTestId: 'pyruvate-utilization',
-    relatedLearnSlug: 'gram-positive-cocci'
+    relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
     slug: 'salt-tolerance',
@@ -2312,7 +2312,7 @@ export const atlasPages: AtlasPage[] = [
     ],
     remember: 'Salt tolerance is about growth. Clear purple = Negative. Turbid (usually yellow) = Positive (Enterococci).',
     biochemicalTestId: 'salt-tolerance',
-    relatedLearnSlug: 'gram-positive-cocci'
+    relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
     slug: 'spot-indole',
@@ -4631,7 +4631,7 @@ export const atlasPages: AtlasPage[] = [
       'NAAT sensitivity >95% vs. ~60% for wet mount; a negative wet mount must be followed by NAAT in symptomatic patients.'
     ],
     remember: 'Wet mount negative ≠ infection excluded. NAAT is the standard. 4 anterior flagella + undulating membrane = T. vaginalis.',
-    relatedLearnSlug: 'urogenital-parasites',
+    relatedLearnSlug: 'parasitology-overview',
     divr: {
       detect: 'Vaginal or urethral swab - saline wet mount (process within 30 min of collection); Giemsa or Pap stain if motility is lost',
       identify: ['Tumbling, jerky rotational motility on wet mount', '4 free anterior flagella + undulating membrane (~2/3 body length)', 'Axostyle protrudes from posterior end; no cyst stage'],
@@ -5816,7 +5816,7 @@ export const atlasPages: AtlasPage[] = [
       'P. knowlesi mimics P. malariae morphologically - PCR is required in Southeast Asia travelers regardless of species ID on smear.'
     ],
     remember: 'Schüffner dots = vivax or ovale. Band-form = malariae. Banana gametocyte = falciparum. knowlesi mimics malariae. Enlarged RBC separates vivax/ovale from the rest.',
-    relatedLearnSlug: 'blood-parasites',
+    relatedLearnSlug: 'malaria-blood-films',
     divr: {
       detect: 'EDTA peripheral blood - Giemsa thin + thick smear; Giemsa pH 7.2 for optimal Schüffner dot visualization; oil immersion at 1000x',
       identify: ['P. vivax: enlarged RBC, Schüffner dots, ameboid trophozoite, 12-24 merozoite schizont', 'P. malariae: normal RBC, band-form trophozoite, rosette schizont (6-12 merozoites around central pigment)', 'P. ovale: oval/fimbriated RBC, Schüffner dots, compact oval trophozoite', 'P. falciparum: normal RBC, no Schüffner dots, delicate rings, banana gametocyte - reference'],
@@ -6000,7 +6000,7 @@ export const atlasPages: AtlasPage[] = [
       'Fasciola and Fasciolopsis are morphologically identical - differentiate by clinical/epidemiological context, never by morphology alone.'
     ],
     remember: 'Size is the primary operculated egg ID tool. Clonorchis: tiny flask. Diphyllobothrium: knob + shoulder. Paragonimus: thick + golden-brown + in sputum too. Fasciola: largest + thin shell.',
-    relatedLearnSlug: 'intestinal-helminths',
+    relatedLearnSlug: 'helminths',
     divr: {
       detect: 'Stool O&P for all four; also examine sputum (digested or direct) for Paragonimus; formalin-ethyl acetate concentration; calibrated ocular micrometer essential',
       identify: ['Clonorchis/Opisthorchis: ~30 um, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Diphyllobothrium latum: ~65 um oval, opercular shoulder, prominent abopercular knob', 'Paragonimus westermani: ~90 um, thick golden-brown shell, shouldered operculum', 'Fasciola/Fasciolopsis: ~140 um, thin shell, opercular shoulder - largest common operculated egg'],
@@ -6183,7 +6183,7 @@ export const atlasPages: AtlasPage[] = [
       'Chronic infection (especially O. viverrini) = major cholangiocarcinoma risk; always note exposure history when reporting.'
     ],
     remember: 'Clonorchis = smallest operculated egg (~30 um). Flask shape. Shoulder rim at opercular end. Tiny abopercular knob. Bile-stained. Cholangiocarcinoma risk.',
-    relatedLearnSlug: 'intestinal-helminths',
+    relatedLearnSlug: 'helminths',
     divr: {
       detect: 'Stool O&P - iodine wet prep or formalin-ethyl acetate sedimentation; calibrated ocular micrometer for size; oil immersion for opercular shoulder detail',
       identify: ['Flask-shaped ~28-35 um, prominent shoulder rim (thickening) at opercular end', 'Tiny knob at abopercular (narrow) end', 'Bile-stained golden-brown, fully embryonated; C. sinensis and Opisthorchis spp. morphologically identical'],
@@ -6244,7 +6244,7 @@ export const atlasPages: AtlasPage[] = [
       'Largest common operculated egg - larger than Paragonimus (~90 um) and much larger than Diphyllobothrium (~65 um).'
     ],
     remember: 'Fasciola ≈ Fasciolopsis by egg morphology. Largest operculated egg. Hepatic disease = Fasciola (triclabendazole). Intestinal disease + Southeast Asia = Fasciolopsis (praziquantel).',
-    relatedLearnSlug: 'intestinal-helminths',
+    relatedLearnSlug: 'helminths',
     divr: {
       detect: 'Stool O&P - sedimentation (formalin-ethyl acetate); calibrated micrometer; serology (ELISA) for Fasciola when eggs not yet shed (acute hepatic phase)',
       identify: ['Large operculated egg ~130-150 um, thin shell, yellow-brown, opercular shoulder - Fasciola and Fasciolopsis morphologically identical', 'Species differentiation requires: clinical presentation (hepatic vs. intestinal), geographic exposure, imaging'],
@@ -6305,7 +6305,7 @@ export const atlasPages: AtlasPage[] = [
       'Transmission: accidental swallowing of infected dog/cat fleas - always recommend flea treatment for the pet.'
     ],
     remember: 'Egg packet (5-30 oncospheres in capsule) = Dipylidium. Double genital pores on cucumber-seed proglottid = confirmed D. caninum. Flea-transmitted. Treat pet too.',
-    relatedLearnSlug: 'intestinal-helminths',
+    relatedLearnSlug: 'helminths',
     divr: {
       detect: 'Stool O&P - sedimentation or zinc sulfate flotation for egg capsules; direct examination of proglottids in stool or perianal specimens; tape prep for proglottids on perianal skin',
       identify: ['Egg capsule: 5-30 round oncospheres (20-40 um each with 3 hooklet pairs) in thin membrane packet', 'Proglottid: cucumber-seed shaped, double lateral genital pores (unique to D. caninum)', 'Scolex: 4 suckers + rostellum with multiple rows of rose-thorn hooks'],
@@ -6366,7 +6366,7 @@ export const atlasPages: AtlasPage[] = [
       'Proglottid uterine branches: 7-13 = T. solium; 15-30 = T. saginata - use Indian ink injection for visibility.'
     ],
     remember: 'Armed (hooks + rostellum) = T. solium = cysticercosis risk. Unarmed (no hooks) = T. saginata = no cysticercosis. Eggs identical. Never speculate species from egg alone.',
-    relatedLearnSlug: 'intestinal-helminths',
+    relatedLearnSlug: 'helminths',
     divr: {
       detect: 'Stool examination for scolex (after anthelmintic treatment, scolex may be expelled - examine thoroughly); proglottid examination (direct or Indian ink injection); stool O&P for eggs',
       identify: ['T. solium scolex: 4 suckers + rostellum with 2 rows of hooks (22-32 hooks total, ~180 um large + ~130 um small)', 'T. saginata scolex: 4 suckers + NO rostellum + NO hooks', 'Proglottid branches: T. solium 7-13 lateral branches; T. saginata 15-30 lateral branches (Indian ink); Taenia eggs morphologically identical'],
@@ -12396,10 +12396,9 @@ function getDiscipline(page: AtlasPage): VisualDiscipline {
 }
 
 const gramPositiveLearnSlugs = new Set([
-  'gram-positive-cocci',
   'staphylococcus-micrococcus',
   'streptococcus-enterococcus',
-  'lactobacillus'
+  'gram-positive-bacilli-overview'
 ]);
 
 const gramNegativeLearnSlugs = new Set([
