@@ -4439,7 +4439,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Urine culture problem solving',
   difficulty: 'intermediate',
   tags: ['urine culture', 'Staphylococcus saprophyticus', 'novobiocin', 'CNA'],
-  prompt: 'A urine culture from a young adult grows catalase-positive gram-positive cocci on blood and CNA agar. The isolate is coagulase negative and novobiocin resistant. Which organism is the best teaching match...',
+  prompt: 'A urine culture from a young adult grows catalase-positive gram-positive cocci on blood and CNA agar. The isolate is coagulase negative and novobiocin resistant. Which organism is the best teaching match?',
   choices: [
   'Staphylococcus saprophyticus.',
   'Staphylococcus epidermidis.',
@@ -4457,7 +4457,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Staphylococcus problem solving',
   difficulty: 'beginner',
   tags: ['Staphylococcus aureus', 'mannitol salt agar', 'coagulase', 'screening media'],
-  prompt: 'A heavily mixed wound specimen is plated to a selective high-salt medium. Yellow colonies grow, and the isolate is catalase positive and coagulase positive. Which organism does this pattern support...',
+  prompt: 'A heavily mixed wound specimen is plated to a selective high-salt medium. Yellow colonies grow, and the isolate is catalase positive and coagulase positive. Which organism does this pattern support?',
   choices: [
   'Staphylococcus aureus.',
   'Streptococcus pyogenes.',
@@ -4475,7 +4475,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Enteric problem solving',
   difficulty: 'advanced',
   tags: ['EIEC', 'Shigella', 'nonmotile', 'enterics'],
-  prompt: 'A stool isolate is an oxidase-negative gram-negative rod that is non-lactose fermenting and nonmotile. It gives a Shigella-like screening pattern, but the lab requires confirmation before reporting. What is the best learning point...',
+  prompt: 'A stool isolate is an oxidase-negative gram-negative rod that is non-lactose fermenting and nonmotile. It gives a Shigella-like screening pattern, but the lab requires confirmation before reporting. What is the best learning point?',
   choices: [
   'Shigella-like patterns require confirmation because other enteric organisms can overlap.',
   'The isolate is confirmed as Salmonella from nonmotility alone.',
@@ -4493,7 +4493,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Yersinia problem solving',
   difficulty: 'advanced',
   tags: ['Yersinia enterocolitica', 'CIN agar', 'temperature-dependent motility', 'stool culture'],
-  prompt: 'A stool workup for a child with abdominal symptoms includes a request for Yersinia. The isolate grows on CIN agar and shows motility at room temperature but not at 37C. Which organism is the best teaching match...',
+  prompt: 'A stool workup for a child with abdominal symptoms includes a request for Yersinia. The isolate grows on CIN agar and shows motility at room temperature but not at 37C. Which organism is the best teaching match?',
   choices: [
   'Yersinia enterocolitica.',
   'Vibrio cholerae.',
@@ -4511,7 +4511,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Enteric screening media',
   difficulty: 'intermediate',
   tags: ['E coli O157:H7', 'sorbitol MacConkey', 'stool culture', 'screening'],
-  prompt: 'A stool culture has colorless colonies on sorbitol MacConkey agar while many background E. coli-like colonies ferment sorbitol. What is the best interpretation...',
+  prompt: 'A stool culture has colorless colonies on sorbitol MacConkey agar while many background E. coli-like colonies ferment sorbitol. What is the best interpretation?',
   choices: [
   'The finding is a screening clue for possible E. coli O157:H7 and needs confirmatory workup.',
   'The finding confirms Shigella species without further testing.',
@@ -4529,7 +4529,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Nonfermenter problem solving',
   difficulty: 'advanced',
   tags: ['Stenotrophomonas maltophilia', 'cystic fibrosis', 'oxidase negative', 'maltose'],
-  prompt: 'A respiratory culture from a chronic airway workup grows a nonfermenting gram-negative rod. It is oxidase negative, maltose positive, and does not fit Pseudomonas aeruginosa. Which organism should stay high in the differential...',
+  prompt: 'A respiratory culture from a chronic airway workup grows a nonfermenting gram-negative rod. It is oxidase negative, maltose positive, and does not fit Pseudomonas aeruginosa. Which organism should stay high in the differential?',
   choices: [
   'Stenotrophomonas maltophilia.',
   'Vibrio parahaemolyticus.',
@@ -4547,7 +4547,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Fastidious gram-negative rod problem solving',
   difficulty: 'advanced',
   tags: ['Capnocytophaga canimorsus', 'dog bite', 'capnophilic', 'fastidious gram-negative rods'],
-  prompt: 'A wound culture after dog exposure grows slender gram-negative rods that glide on agar and grow better with added CO2. Which organism group best fits this pattern...',
+  prompt: 'A wound culture after dog exposure grows slender gram-negative rods that glide on agar and grow better with added CO2. Which organism group best fits this pattern?',
   choices: [
   'Capnocytophaga species.',
   'Escherichia coli.',
@@ -4565,7 +4565,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'HACEK problem solving',
   difficulty: 'intermediate',
   tags: ['Eikenella corrodens', 'HACEK', 'pitting agar', 'oral flora'],
-  prompt: 'A fastidious gram-negative rod from an oral-flora-associated specimen pits the agar and does not grow well on MacConkey agar. Which organism is the best teaching match...',
+  prompt: 'A fastidious gram-negative rod from an oral-flora-associated specimen pits the agar and does not grow well on MacConkey agar. Which organism is the best teaching match?',
   choices: [
   'Eikenella corrodens.',
   'Pseudomonas aeruginosa.',
@@ -4583,7 +4583,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Haemophilus problem solving',
   difficulty: 'intermediate',
   tags: ['Haemophilus influenzae', 'X factor', 'V factor', 'chocolate agar'],
-  prompt: 'A small pleomorphic gram-negative coccobacillus grows on chocolate agar but not sheep blood agar. Factor testing shows a requirement for both X and V factors. Which organism is the best teaching match...',
+  prompt: 'A small pleomorphic gram-negative coccobacillus grows on chocolate agar but not sheep blood agar. Factor testing shows a requirement for both X and V factors. Which organism is the best teaching match?',
   choices: [
   'Haemophilus influenzae.',
   'Haemophilus parainfluenzae.',
@@ -4601,7 +4601,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Beta-hemolytic streptococci problem solving',
   difficulty: 'beginner',
   tags: ['Group B Streptococcus', 'CAMP test', 'hippurate', 'pregnancy screen'],
-  prompt: 'A vaginal-rectal screen grows beta-hemolytic catalase-negative gram-positive cocci. The isolate is CAMP positive and hippurate positive. Which organism group does this support...',
+  prompt: 'A vaginal-rectal screen grows beta-hemolytic catalase-negative gram-positive cocci. The isolate is CAMP positive and hippurate positive. Which organism group does this support?',
   choices: [
   'Group B Streptococcus.',
   'Group A Streptococcus.',
@@ -4619,7 +4619,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Enterococcus problem solving',
   difficulty: 'intermediate',
   tags: ['Enterococcus', 'bile esculin', '6.5% NaCl', 'PYR'],
-  prompt: 'A gram-positive coccus from urine is catalase negative, bile esculin positive, PYR positive, and grows in 6.5 percent NaCl. Which branch does this pattern support...',
+  prompt: 'A gram-positive coccus from urine is catalase negative, bile esculin positive, PYR positive, and grows in 6.5 percent NaCl. Which branch does this pattern support?',
   choices: [
   'Enterococcus species.',
   'Streptococcus pneumoniae.',
@@ -4637,7 +4637,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Alpha-hemolytic streptococci problem solving',
   difficulty: 'beginner',
   tags: ['Streptococcus pneumoniae', 'optochin', 'bile solubility', 'alpha hemolysis'],
-  prompt: 'A respiratory culture grows alpha-hemolytic gram-positive cocci with a depressed colony center. The isolate is optochin susceptible and bile soluble. Which organism is the classic teaching match...',
+  prompt: 'A respiratory culture grows alpha-hemolytic gram-positive cocci with a depressed colony center. The isolate is optochin susceptible and bile soluble. Which organism is the classic teaching match?',
   choices: [
   'Streptococcus pneumoniae.',
   'Viridans group streptococci.',
@@ -4655,7 +4655,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Neisseria problem solving',
   difficulty: 'intermediate',
   tags: ['Neisseria gonorrhoeae', 'modified Thayer-Martin', 'oxidase', 'gram-negative diplococci'],
-  prompt: 'A genital specimen grows oxidase-positive gram-negative diplococci on selective medium. Classic carbohydrate testing shows glucose use but not maltose use. Which organism does this support...',
+  prompt: 'A genital specimen grows oxidase-positive gram-negative diplococci on selective medium. Classic carbohydrate testing shows glucose use but not maltose use. Which organism does this support?',
   choices: [
   'Neisseria gonorrhoeae.',
   'Neisseria meningitidis.',
@@ -4673,7 +4673,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Gram-variable rod problem solving',
   difficulty: 'beginner',
   tags: ['Gardnerella vaginalis', 'clue cells', 'gram-variable rods', 'wet prep'],
-  prompt: 'A vaginal wet prep shows epithelial cells heavily coated with small gram-variable coccobacilli. Which organism-centered teaching pattern does this support...',
+  prompt: 'A vaginal wet prep shows epithelial cells heavily coated with small gram-variable coccobacilli. Which organism-centered teaching pattern does this support?',
   choices: [
   'Gardnerella vaginalis.',
   'Staphylococcus aureus.',
@@ -4691,7 +4691,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Listeria problem solving',
   difficulty: 'intermediate',
   tags: ['Listeria monocytogenes', 'CSF', 'tumbling motility', 'beta hemolysis'],
-  prompt: 'A CSF culture grows small beta-hemolytic colonies that could be mistaken for group B Streptococcus, but Gram stain shows short gram-positive rods. The isolate is catalase positive with tumbling motility. Which organism is the best match...',
+  prompt: 'A CSF culture grows small beta-hemolytic colonies that could be mistaken for group B Streptococcus, but Gram stain shows short gram-positive rods. The isolate is catalase positive with tumbling motility. Which organism is the best match?',
   choices: [
   'Listeria monocytogenes.',
   'Streptococcus agalactiae.',
@@ -4709,7 +4709,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Corynebacterium problem solving',
   difficulty: 'advanced',
   tags: ['Corynebacterium diphtheriae', 'toxigenicity', 'special media', 'public health'],
-  prompt: 'A throat specimen grows pleomorphic gram-positive rods with palisading forms, and Corynebacterium diphtheriae is a concern. What is the safest lab-learning principle...',
+  prompt: 'A throat specimen grows pleomorphic gram-positive rods with palisading forms, and Corynebacterium diphtheriae is a concern. What is the safest lab-learning principle?',
   choices: [
   'Follow the lab’s Corynebacterium identification and toxigenicity confirmation workflow.',
   'Report toxin production from Gram stain alone.',
@@ -4727,7 +4727,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Clostridioides difficile problem solving',
   difficulty: 'advanced',
   tags: ['Clostridioides difficile', 'formed stool', 'specimen rejection', 'toxin algorithm'],
-  prompt: 'A formed stool specimen is submitted for C. difficile testing in a lab that rejects formed stool for the assay. What is the safest bench response...',
+  prompt: 'A formed stool specimen is submitted for C. difficile testing in a lab that rejects formed stool for the assay. What is the safest bench response?',
   choices: [
   'Follow the laboratory rejection or clarification protocol.',
   'Run the test anyway because all stool specimens are acceptable.',
@@ -4745,7 +4745,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Anaerobic gram-negative rod problem solving',
   difficulty: 'intermediate',
   tags: ['Bacteroides fragilis group', 'bile esculin', 'anaerobes', 'abscess'],
-  prompt: 'An intra-abdominal abscess culture grows anaerobic gram-negative rods. The isolate grows in bile and hydrolyzes esculin. Which organism group is classically supported...',
+  prompt: 'An intra-abdominal abscess culture grows anaerobic gram-negative rods. The isolate grows in bile and hydrolyzes esculin. Which organism group is classically supported?',
   choices: [
   'Bacteroides fragilis group.',
   'Fusobacterium necrophorum.',
@@ -4763,7 +4763,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Clostridium problem solving',
   difficulty: 'beginner',
   tags: ['Clostridium perfringens', 'double-zone hemolysis', 'lecithinase', 'anaerobes'],
-  prompt: 'An anaerobic wound culture grows boxcar-shaped gram-positive rods with double-zone hemolysis and lecithinase activity. Which organism is the classic teaching match...',
+  prompt: 'An anaerobic wound culture grows boxcar-shaped gram-positive rods with double-zone hemolysis and lecithinase activity. Which organism is the classic teaching match?',
   choices: [
   'Clostridium perfringens.',
   'Clostridioides difficile.',
@@ -5125,12 +5125,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Middlebrook agar', '7H10', '7H11', 'colony morphology', 'AFB culture'],
     prompt: 'Why are Middlebrook 7H10 or 7H11 agar plates useful in mycobacterial culture workflows?',
     choices: [
-      'They are defined solid media that allow observation of mycobacterial colony morphology.',
+      'They are transparent agar-based media that allow earlier observation of mycobacterial colony morphology.',
       'They are selective only for Neisseria species.',
       'They are used to ferment lactose for enteric identification.',
       'They are viral transport media.'
     ],
-    answer: 'They are defined solid media that allow observation of mycobacterial colony morphology.',
+    answer: 'They are transparent agar-based media that allow earlier observation of mycobacterial colony morphology.',
     explanation: 'Middlebrook media support mycobacterial growth and allow colony review on solid media. They are part of a specialized AFB culture workflow, not routine aerobic plating.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'draft'
@@ -5483,7 +5483,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'AFB problem solving',
   difficulty: 'intermediate',
   tags: ['AFB smear', 'NAAT', 'culture', 'Mycobacterium tuberculosis complex'],
-  prompt: 'A respiratory specimen is AFB smear positive and NAAT positive for Mycobacterium tuberculosis complex. Why should culture still continue...',
+  prompt: 'A respiratory specimen is AFB smear positive and NAAT positive for Mycobacterium tuberculosis complex. Why should culture still continue?',
   choices: [
   'Culture supports organism recovery, confirmation, and susceptibility workflow.',
   'Culture is unnecessary because smear gives species and susceptibility.',
@@ -5501,7 +5501,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Nontuberculous mycobacteria problem solving',
   difficulty: 'advanced',
   tags: ['Mycobacterium marinum', 'aquarium exposure', 'low temperature', 'photochromogen'],
-  prompt: 'A skin specimen after aquarium exposure is submitted for AFB culture. The organism grows better at lower temperature and becomes pigmented after light exposure. Which organism is the classic teaching match...',
+  prompt: 'A skin specimen after aquarium exposure is submitted for AFB culture. The organism grows better at lower temperature and becomes pigmented after light exposure. Which organism is the classic teaching match?',
   choices: [
   'Mycobacterium marinum.',
   'Mycobacterium tuberculosis.',
@@ -6221,7 +6221,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Herpesvirus problem solving',
   difficulty: 'beginner',
   tags: ['HSV', 'vesicle lesion', 'PCR', 'specimen collection'],
-  prompt: 'A fresh vesicular lesion is submitted for herpes simplex virus testing. Which specimen principle best supports detection...',
+  prompt: 'A fresh vesicular lesion is submitted for herpes simplex virus testing. Which specimen principle best supports detection?',
   choices: [
   'Collect material from the lesion base using the collection system validated for the assay.',
   'Submit a dry stool swab for viral culture.',
@@ -6239,7 +6239,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Epstein-Barr virus problem solving',
   difficulty: 'intermediate',
   tags: ['Epstein-Barr virus', 'heterophile antibody', 'VCA IgM', 'mononucleosis'],
-  prompt: 'A mono-like illness is suspected, but the heterophile antibody screen is negative. What is the best lab-learning next concept...',
+  prompt: 'A mono-like illness is suspected, but the heterophile antibody screen is negative. What is the best lab-learning next concept?',
   choices: [
   'EBV-specific serology can help when the screening result does not fit the suspected pattern.',
   'A negative heterophile screen always excludes EBV.',
@@ -6257,7 +6257,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Cytomegalovirus problem solving',
   difficulty: 'intermediate',
   tags: ['CMV', 'transplant', 'viral load', 'quantitative PCR'],
-  prompt: 'A transplant monitoring workflow follows cytomegalovirus results over time. Which lab test concept best fits this use case...',
+  prompt: 'A transplant monitoring workflow follows cytomegalovirus results over time. Which lab test concept best fits this use case?',
   choices: [
   'Quantitative molecular testing to track CMV viral load trends.',
   'Coagulase testing from a blood agar colony.',
@@ -6275,7 +6275,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'HIV testing problem solving',
   difficulty: 'advanced',
   tags: ['HIV', 'fourth-generation screen', 'supplemental testing', 'NAAT'],
-  prompt: 'A fourth-generation HIV screening test is repeatedly reactive. What is the safest lab-learning principle...',
+  prompt: 'A fourth-generation HIV screening test is repeatedly reactive. What is the safest lab-learning principle?',
   choices: [
   'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
   'Report infection from the screen alone without the algorithm.',
@@ -6293,7 +6293,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Rabies testing problem solving',
   difficulty: 'advanced',
   tags: ['rabies virus', 'direct fluorescent antibody', 'brain tissue', 'public health'],
-  prompt: 'An animal specimen is submitted for rabies testing after an exposure investigation. Which classic confirmatory method is used on appropriate tissue...',
+  prompt: 'An animal specimen is submitted for rabies testing after an exposure investigation. Which classic confirmatory method is used on appropriate tissue?',
   choices: [
   'Direct fluorescent antibody testing.',
   'Coagulase testing.',
@@ -6455,7 +6455,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Stool ova and parasite workflow',
     difficulty: 'beginner',
     tags: ['stool O&P', 'parasite diagnosis', 'concentration', 'permanent stain'],
-    prompt: 'A stool specimen is submitted for ova and parasite examination. Which approach best matches a bench-first parasitology workflow...',
+    prompt: 'A stool specimen is submitted for ova and parasite examination. Which approach best matches a bench-first parasitology workflow?',
     choices: [
       'Use specimen quality, concentration, wet mount, and permanent stain findings together.',
       'Identify all parasites from stool odor alone.',
@@ -6473,7 +6473,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Intestinal protozoa identification',
     difficulty: 'beginner',
     tags: ['permanent stain', 'trichrome stain', 'intestinal protozoa', 'trophozoites'],
-    prompt: 'Why is a permanent stained smear useful when identifying many intestinal protozoa...',
+    prompt: 'Why is a permanent stained smear useful when identifying many intestinal protozoa?',
     choices: [
       'It preserves nuclear and cytoplasmic details needed for protozoan identification.',
       'It hatches helminth eggs to prove viability.',
@@ -6491,7 +6491,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Stool concentration methods',
     difficulty: 'beginner',
     tags: ['formalin ethyl acetate', 'concentration', 'helminth eggs', 'protozoan cysts'],
-    prompt: 'What is the main purpose of a stool concentration method in parasitology...',
+    prompt: 'What is the main purpose of a stool concentration method in parasitology?',
     choices: [
       'To increase recovery of ova, cysts, and larvae that may be present in low numbers.',
       'To make trophozoites more motile after preservation.',
@@ -6509,7 +6509,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Parasitology stool findings',
     difficulty: 'beginner',
     tags: ['Charcot-Leyden crystals', 'eosinophils', 'stool microscopy', 'parasites'],
-    prompt: 'Charcot-Leyden crystals are seen in a stool specimen. What is the best educational interpretation...',
+    prompt: 'Charcot-Leyden crystals are seen in a stool specimen. What is the best educational interpretation?',
     choices: [
       'They are breakdown products associated with eosinophils and may support a parasitic or allergic inflammatory context.',
       'They are diagnostic eggs of Enterobius vermicularis.',
@@ -6527,7 +6527,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Entamoeba identification',
     difficulty: 'beginner',
     tags: ['Entamoeba histolytica', 'ingested RBCs', 'trophozoites', 'stool microscopy'],
-    prompt: 'A trophozoite in a permanent stained stool smear contains ingested red blood cells. Which organism is classically supported by this finding...',
+    prompt: 'A trophozoite in a permanent stained stool smear contains ingested red blood cells. Which organism is classically supported by this finding?',
     choices: [
       'Entamoeba histolytica.',
       'Entamoeba dispar.',
@@ -6545,7 +6545,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Entamoeba identification',
     difficulty: 'intermediate',
     tags: ['Entamoeba histolytica', 'Entamoeba dispar', 'morphology limits', 'stool microscopy'],
-    prompt: 'Why should a learner be cautious when reporting Entamoeba histolytica-like cysts from stool microscopy alone...',
+    prompt: 'Why should a learner be cautious when reporting Entamoeba histolytica-like cysts from stool microscopy alone?',
     choices: [
       'E. histolytica and E. dispar can look identical by cyst morphology, so lab-specific confirmation may be needed.',
       'E. dispar always contains ingested red blood cells.',
@@ -6563,7 +6563,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Giardia identification',
     difficulty: 'beginner',
     tags: ['Giardia duodenalis', 'trophozoite', 'stool microscopy', 'intestinal protozoa'],
-    prompt: 'A stool wet mount shows a motile, pear-shaped protozoan trophozoite with bilateral symmetry. Which organism is the classic teaching match...',
+    prompt: 'A stool wet mount shows a motile, pear-shaped protozoan trophozoite with bilateral symmetry. Which organism is the classic teaching match?',
     choices: [
       'Giardia duodenalis.',
       'Entamoeba coli.',
@@ -6581,7 +6581,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Fecal immunoassay parasitology',
     difficulty: 'intermediate',
     tags: ['Giardia', 'Cryptosporidium', 'fecal immunoassay', 'stool testing'],
-    prompt: 'Why are fecal immunoassays commonly discussed for Giardia and Cryptosporidium...',
+    prompt: 'Why are fecal immunoassays commonly discussed for Giardia and Cryptosporidium?',
     choices: [
       'They can detect parasite antigens in stool and may be more practical than relying only on routine O&P microscopy.',
       'They hatch helminth eggs to prove viability.',
@@ -6599,7 +6599,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Coccidian parasite staining',
     difficulty: 'beginner',
     tags: ['Cryptosporidium', 'modified acid-fast stain', 'coccidia', 'stool oocysts'],
-    prompt: 'Small round oocysts in stool are suspected to be Cryptosporidium. Which stain is a classic teaching method for demonstrating them...',
+    prompt: 'Small round oocysts in stool are suspected to be Cryptosporidium. Which stain is a classic teaching method for demonstrating them?',
     choices: [
       'Modified acid-fast stain.',
       'Gram stain only.',
@@ -6617,7 +6617,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Coccidian parasite staining',
     difficulty: 'intermediate',
     tags: ['Cyclospora cayetanensis', 'modified acid-fast stain', 'autofluorescence', 'stool oocysts'],
-    prompt: 'A stool specimen contains larger coccidian oocysts that show variable modified acid-fast staining and may autofluoresce. Which organism is the classic teaching match...',
+    prompt: 'A stool specimen contains larger coccidian oocysts that show variable modified acid-fast staining and may autofluoresce. Which organism is the classic teaching match?',
     choices: [
       'Cyclospora cayetanensis.',
       'Giardia duodenalis.',
@@ -6635,7 +6635,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Coccidian parasite staining',
     difficulty: 'advanced',
     tags: ['Cystoisospora belli', 'modified acid-fast stain', 'large oocysts', 'stool microscopy'],
-    prompt: 'A modified acid-fast stain shows large, elongated oocysts in stool. Which coccidian parasite is the classic teaching match...',
+    prompt: 'A modified acid-fast stain shows large, elongated oocysts in stool. Which coccidian parasite is the classic teaching match?',
     choices: [
       'Cystoisospora belli.',
       'Cryptosporidium parvum.',
@@ -6653,7 +6653,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Microsporidia detection',
     difficulty: 'advanced',
     tags: ['microsporidia', 'modified trichrome stain', 'spores', 'immunocompromised host'],
-    prompt: 'A stool specimen from an immunocompromised patient is being evaluated for microsporidia. Which stain concept is most appropriate...',
+    prompt: 'A stool specimen from an immunocompromised patient is being evaluated for microsporidia. Which stain concept is most appropriate?',
     choices: [
       'Modified trichrome or another specialized stain to demonstrate tiny spores.',
       'Routine Gram stain only for helminth eggs.',
@@ -6671,7 +6671,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Urogenital protozoa',
     difficulty: 'beginner',
     tags: ['Trichomonas vaginalis', 'vaginal discharge', 'wet mount', 'NAAT'],
-    prompt: 'Which specimen source is classically most useful for direct detection of motile Trichomonas vaginalis trophozoites...',
+    prompt: 'Which specimen source is classically most useful for direct detection of motile Trichomonas vaginalis trophozoites?',
     choices: [
       'Fresh vaginal discharge or an appropriate urogenital specimen handled promptly.',
       'Formalin-fixed stool sediment only.',
@@ -6689,7 +6689,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Intestinal protozoa identification',
     difficulty: 'intermediate',
     tags: ['Dientamoeba fragilis', 'permanent stain', 'intestinal protozoa', 'stool microscopy'],
-    prompt: 'A lab suspects Dientamoeba fragilis in stool. Which method is most useful in a classic microscopy workflow...',
+    prompt: 'A lab suspects Dientamoeba fragilis in stool. Which method is most useful in a classic microscopy workflow?',
     choices: [
       'Permanent stained smear.',
       'Scotch tape preparation.',
@@ -6707,7 +6707,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Ciliated intestinal protozoa',
     difficulty: 'beginner',
     tags: ['Balantidium coli', 'ciliated protozoa', 'stool microscopy', 'intestinal protozoa'],
-    prompt: 'A large intestinal protozoan trophozoite is covered with cilia. Which organism is the classic teaching match...',
+    prompt: 'A large intestinal protozoan trophozoite is covered with cilia. Which organism is the classic teaching match?',
     choices: [
       'Balantidium coli.',
       'Giardia duodenalis.',
@@ -6725,7 +6725,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Free-living amebae',
     difficulty: 'advanced',
     tags: ['Naegleria fowleri', 'CSF', 'free-living amebae', 'wet mount'],
-    prompt: 'Motile ameboid trophozoites are seen in a fresh CSF wet mount from a rapidly progressive meningoencephalitis workup. Which organism is a classic teaching concern...',
+    prompt: 'Motile ameboid trophozoites are seen in a fresh CSF wet mount from a rapidly progressive meningoencephalitis workup. Which organism is a classic teaching concern?',
     choices: [
       'Naegleria fowleri.',
       'Enterobius vermicularis.',
@@ -6743,7 +6743,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Free-living amebae',
     difficulty: 'intermediate',
     tags: ['Acanthamoeba', 'contact lens', 'keratitis', 'free-living amebae'],
-    prompt: 'A corneal specimen is submitted from a contact lens wearer with concern for free-living amebae. Which organism group belongs high in the differential...',
+    prompt: 'A corneal specimen is submitted from a contact lens wearer with concern for free-living amebae. Which organism group belongs high in the differential?',
     choices: [
       'Acanthamoeba species.',
       'Enterobius vermicularis.',
@@ -6761,7 +6761,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode diagnosis',
     difficulty: 'beginner',
     tags: ['Enterobius vermicularis', 'Scotch tape preparation', 'pinworm', 'eggs'],
-    prompt: 'A child has suspected pinworm infection. Which specimen collection method is the classic teaching choice...',
+    prompt: 'A child has suspected pinworm infection. Which specimen collection method is the classic teaching choice?',
     choices: [
       'Early-morning perianal adhesive tape preparation.',
       'Routine sputum concentration.',
@@ -6779,7 +6779,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode morphology',
     difficulty: 'intermediate',
     tags: ['Strongyloides stercoralis', 'rhabditiform larvae', 'stool microscopy', 'autoinfection'],
-    prompt: 'A stool specimen shows rhabditiform larvae with a short buccal cavity and prominent genital primordium. Which organism is the classic teaching match...',
+    prompt: 'A stool specimen shows rhabditiform larvae with a short buccal cavity and prominent genital primordium. Which organism is the classic teaching match?',
     choices: [
       'Strongyloides stercoralis.',
       'Enterobius vermicularis.',
@@ -6797,7 +6797,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode life cycle',
     difficulty: 'advanced',
     tags: ['Strongyloides stercoralis', 'autoinfection', 'larvae', 'life cycle'],
-    prompt: 'Why is Strongyloides stercoralis important in life-cycle teaching...',
+    prompt: 'Why is Strongyloides stercoralis important in life-cycle teaching?',
     choices: [
       'It can maintain infection through autoinfection within the human host.',
       'It requires a freshwater snail as the only human infective stage.',
@@ -6815,7 +6815,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode transmission',
     difficulty: 'beginner',
     tags: ['hookworm', 'Necator', 'Ancylostoma', 'skin penetration'],
-    prompt: 'Which transmission route is classically associated with hookworm infection...',
+    prompt: 'Which transmission route is classically associated with hookworm infection?',
     choices: [
       'Filariform larvae penetrating skin from contaminated soil.',
       'Eating raw freshwater fish with plerocercoid larvae.',
@@ -6833,7 +6833,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode morphology',
     difficulty: 'beginner',
     tags: ['Ascaris lumbricoides', 'fertilized eggs', 'stool microscopy', 'helminths'],
-    prompt: 'A stool concentration shows thick-shelled mammillated eggs. Which helminth is the classic teaching match...',
+    prompt: 'A stool concentration shows thick-shelled mammillated eggs. Which helminth is the classic teaching match?',
     choices: [
       'Ascaris lumbricoides.',
       'Enterobius vermicularis.',
@@ -6851,7 +6851,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nematode morphology',
     difficulty: 'beginner',
     tags: ['Trichuris trichiura', 'barrel-shaped eggs', 'bipolar plugs', 'stool microscopy'],
-    prompt: 'A stool specimen shows barrel-shaped eggs with bipolar plugs. Which helminth is the classic teaching match...',
+    prompt: 'A stool specimen shows barrel-shaped eggs with bipolar plugs. Which helminth is the classic teaching match?',
     choices: [
       'Trichuris trichiura.',
       'Taenia saginata.',
@@ -6869,7 +6869,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Schistosoma diagnosis',
     difficulty: 'intermediate',
     tags: ['Schistosoma haematobium', 'urine sediment', 'terminal spine', 'eggs'],
-    prompt: 'A parasite egg with a terminal spine is suspected in a patient with urinary tract involvement. Which specimen source is classically important...',
+    prompt: 'A parasite egg with a terminal spine is suspected in a patient with urinary tract involvement. Which specimen source is classically important?',
     choices: [
       'Urine sediment.',
       'Scotch tape preparation.',
@@ -6887,7 +6887,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Schistosoma morphology',
     difficulty: 'intermediate',
     tags: ['Schistosoma mansoni', 'lateral spine', 'stool microscopy', 'eggs'],
-    prompt: 'A stool specimen contains Schistosoma-like eggs with a prominent lateral spine. Which species is the classic teaching match...',
+    prompt: 'A stool specimen contains Schistosoma-like eggs with a prominent lateral spine. Which species is the classic teaching match?',
     choices: [
       'Schistosoma mansoni.',
       'Schistosoma haematobium.',
@@ -6905,7 +6905,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Schistosoma diagnostic methods',
     difficulty: 'advanced',
     tags: ['Schistosoma', 'miracidial hatching', 'egg viability', 'fresh specimen'],
-    prompt: 'A lab needs to demonstrate Schistosoma egg viability. Which principle best fits the classic workflow...',
+    prompt: 'A lab needs to demonstrate Schistosoma egg viability. Which principle best fits the classic workflow?',
     choices: [
       'Use a fresh, appropriate specimen for a hatching or viability method according to protocol.',
       'Use formalin-fixed stool because it preserves larval movement.',
@@ -6923,7 +6923,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Cestode morphology',
     difficulty: 'intermediate',
     tags: ['Taenia', 'eggs', 'proglottids', 'cestodes'],
-    prompt: 'Taenia eggs are seen in stool. Why is species-level identification not usually made from the egg alone...',
+    prompt: 'Taenia eggs are seen in stool. Why is species-level identification not usually made from the egg alone?',
     choices: [
       'Taenia solium and Taenia saginata eggs are morphologically indistinguishable.',
       'Taenia eggs are only found in blood smears.',
@@ -6941,7 +6941,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Cestode life cycle',
     difficulty: 'advanced',
     tags: ['Taenia solium', 'cysticercosis', 'eggs', 'accidental intermediate host'],
-    prompt: 'Why is Taenia solium emphasized separately from Taenia saginata in life-cycle teaching...',
+    prompt: 'Why is Taenia solium emphasized separately from Taenia saginata in life-cycle teaching?',
     choices: [
       'Humans can develop cysticercosis after ingesting T. solium eggs.',
       'T. solium eggs are always larger and easy to distinguish in stool.',
@@ -6959,7 +6959,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Cestode transmission',
     difficulty: 'beginner',
     tags: ['Diphyllobothrium latum', 'freshwater fish', 'operculated eggs', 'cestodes'],
-    prompt: 'Which exposure is classically associated with Diphyllobothrium latum infection...',
+    prompt: 'Which exposure is classically associated with Diphyllobothrium latum infection?',
     choices: [
       'Eating raw or undercooked freshwater fish.',
       'Skin penetration by larvae in soil.',
@@ -6977,7 +6977,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Cestode tissue infection',
     difficulty: 'advanced',
     tags: ['Echinococcus granulosus', 'hydatid cyst', 'scolices', 'lab safety'],
-    prompt: 'Hydatid cyst material is submitted with concern for Echinococcus. What is the safest bench-learning principle...',
+    prompt: 'Hydatid cyst material is submitted with concern for Echinococcus. What is the safest bench-learning principle?',
     choices: [
       'Handle according to laboratory safety and specimen-processing protocol because cyst fluid can contain infectious protoscolices.',
       'Perform routine stool concentration first because adult worms are usually recovered in human stool.',
@@ -6995,7 +6995,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Trematode diagnosis',
     difficulty: 'intermediate',
     tags: ['Paragonimus westermani', 'sputum', 'operculated eggs', 'lung fluke'],
-    prompt: 'A lung fluke infection is suspected. Which specimen may be useful because parasite eggs can be coughed up and swallowed or expectorated...',
+    prompt: 'A lung fluke infection is suspected. Which specimen may be useful because parasite eggs can be coughed up and swallowed or expectorated?',
     choices: [
       'Sputum.',
       'Perianal tape only.',
@@ -7013,7 +7013,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Trematode morphology',
     difficulty: 'intermediate',
     tags: ['Fasciola hepatica', 'operculated eggs', 'trematodes', 'stool microscopy'],
-    prompt: 'A stool specimen contains large operculated trematode eggs. Which organism is a classic teaching possibility when liver fluke exposure is considered...',
+    prompt: 'A stool specimen contains large operculated trematode eggs. Which organism is a classic teaching possibility when liver fluke exposure is considered?',
     choices: [
       'Fasciola hepatica.',
       'Enterobius vermicularis.',
@@ -7031,7 +7031,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Tissue nematode concepts',
     difficulty: 'advanced',
     tags: ['Angiostrongylus cantonensis', 'eosinophilic meningitis', 'larva migrans', 'helminths'],
-    prompt: 'A parasite review case highlights eosinophilic meningitis after ingestion of contaminated raw produce or intermediate hosts. Which parasite is a classic teaching association...',
+    prompt: 'A parasite review case highlights eosinophilic meningitis after ingestion of contaminated raw produce or intermediate hosts. Which parasite is a classic teaching association?',
     choices: [
       'Angiostrongylus cantonensis.',
       'Enterobius vermicularis.',
@@ -7049,7 +7049,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Tissue nematode concepts',
     difficulty: 'intermediate',
     tags: ['Trichinella spiralis', 'undercooked meat', 'bear meat', 'larvae in muscle'],
-    prompt: 'A parasite case involves fever, muscle pain, eosinophilia, and a history of eating undercooked wild game. Which organism is the classic teaching match...',
+    prompt: 'A parasite case involves fever, muscle pain, eosinophilia, and a history of eating undercooked wild game. Which organism is the classic teaching match?',
     choices: [
       'Trichinella spiralis.',
       'Diphyllobothrium latum.',
@@ -7067,7 +7067,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Filarial nematode diagnosis',
     difficulty: 'intermediate',
     tags: ['Onchocerca volvulus', 'skin snip', 'microfilariae', 'filarial worms'],
-    prompt: 'Which specimen method is classically associated with detecting microfilariae of Onchocerca volvulus...',
+    prompt: 'Which specimen method is classically associated with detecting microfilariae of Onchocerca volvulus?',
     choices: [
       'Skin snip examination.',
       'Perianal Scotch tape preparation.',
@@ -7085,7 +7085,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Filarial nematode diagnosis',
     difficulty: 'advanced',
     tags: ['filariae', 'microfilariae', 'blood collection timing', 'periodicity'],
-    prompt: 'Why does collection timing matter for some blood microfilariae exams...',
+    prompt: 'Why does collection timing matter for some blood microfilariae exams?',
     choices: [
       'Some species show periodic circulation in peripheral blood, so timing affects detection.',
       'Microfilariae are visible only after stool concentration.',
@@ -7103,7 +7103,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria smear workflow',
     difficulty: 'beginner',
     tags: ['malaria', 'thick blood film', 'thin blood film', 'Plasmodium'],
-    prompt: 'Why are both thick and thin blood films used in malaria microscopy...',
+    prompt: 'Why are both thick and thin blood films used in malaria microscopy?',
     choices: [
       'Thick films improve detection sensitivity, while thin films help with species identification and parasite morphology.',
       'Thick films identify helminth eggs, while thin films identify adult worms.',
@@ -7121,7 +7121,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria smear workflow',
     difficulty: 'beginner',
     tags: ['malaria', 'STAT procedure', 'blood parasites', 'travel history'],
-    prompt: 'Why are malaria smears usually treated as urgent laboratory work...',
+    prompt: 'Why are malaria smears usually treated as urgent laboratory work?',
     choices: [
       'Delay can affect patient management and parasite morphology, so prompt smear preparation and review are important.',
       'Malaria parasites become helminth eggs after 24 hours.',
@@ -7139,7 +7139,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria species recognition',
     difficulty: 'intermediate',
     tags: ['Plasmodium falciparum', 'malaria', 'multiple ring forms', 'banana gametocytes'],
-    prompt: 'A thin blood film shows multiple delicate ring forms in red blood cells and crescent-shaped gametocytes. Which malaria species is the classic teaching match...',
+    prompt: 'A thin blood film shows multiple delicate ring forms in red blood cells and crescent-shaped gametocytes. Which malaria species is the classic teaching match?',
     choices: [
       'Plasmodium falciparum.',
       'Plasmodium malariae.',
@@ -7157,11 +7157,11 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria species recognition',
     difficulty: 'intermediate',
     tags: ['Plasmodium malariae', 'band forms', 'malaria', 'thin blood film'],
-    prompt: 'A thin blood film shows band-form trophozoites crossing infected red blood cells. Which malaria species is the classic teaching match...',
+    prompt: 'A thin blood film shows band-form trophozoites crossing infected red blood cells. Which malaria species is the classic teaching match?',
     choices: [
       'Plasmodium malariae.',
       'Plasmodium falciparum.',
-      'Plasmodium knowlesi.',
+      'Plasmodium ovale.',
       'Trypanosoma cruzi.'
     ],
     answer: 'Plasmodium malariae.',
@@ -7175,7 +7175,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria species recognition',
     difficulty: 'advanced',
     tags: ['Plasmodium vivax', 'Plasmodium ovale', 'Schuffner dots', 'hypnozoites'],
-    prompt: 'A malaria smear shows enlarged infected red cells with fine stippling. Which teaching concept fits Plasmodium vivax and Plasmodium ovale...',
+    prompt: 'A malaria smear shows enlarged infected red cells with fine stippling. Which teaching concept fits Plasmodium vivax and Plasmodium ovale?',
     choices: [
       'They can show Schuffner-type stippling and have dormant liver stages that may relapse.',
       'They always infect only banana-shaped red cells.',
@@ -7193,7 +7193,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Malaria species recognition',
     difficulty: 'advanced',
     tags: ['Plasmodium knowlesi', 'malaria', 'species mimic', 'thin blood film'],
-    prompt: 'Why is Plasmodium knowlesi important in malaria morphology teaching...',
+    prompt: 'Why is Plasmodium knowlesi important in malaria morphology teaching?',
     choices: [
       'Its blood stages can resemble other Plasmodium species, so exposure history and reference confirmation may matter.',
       'It is detected by modified acid-fast stain of stool.',
@@ -7211,7 +7211,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Blood parasite recognition',
     difficulty: 'intermediate',
     tags: ['Babesia', 'Maltese cross', 'blood smear', 'tickborne'],
-    prompt: 'A blood smear shows intraerythrocytic ring forms and occasional tetrads arranged like a Maltese cross. Which organism is the classic teaching match...',
+    prompt: 'A blood smear shows intraerythrocytic ring forms and occasional tetrads arranged like a Maltese cross. Which organism is the classic teaching match?',
     choices: [
       'Babesia species.',
       'Plasmodium vivax.',
@@ -7229,7 +7229,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Blood and tissue protozoa',
     difficulty: 'advanced',
     tags: ['Trypanosoma cruzi', 'trypomastigote', 'Chagas disease', 'blood smear'],
-    prompt: 'A blood smear shows curved trypomastigotes with a prominent kinetoplast. Which organism is the classic teaching match...',
+    prompt: 'A blood smear shows curved trypomastigotes with a prominent kinetoplast. Which organism is the classic teaching match?',
     choices: [
       'Trypanosoma cruzi.',
       'Plasmodium falciparum.',
@@ -7247,7 +7247,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Blood and tissue protozoa',
     difficulty: 'advanced',
     tags: ['Leishmania', 'amastigotes', 'macrophages', 'kala-azar'],
-    prompt: 'A tissue smear shows intracellular amastigotes within macrophages, each with a nucleus and kinetoplast. Which organism group is the classic teaching match...',
+    prompt: 'A tissue smear shows intracellular amastigotes within macrophages, each with a nucleus and kinetoplast. Which organism group is the classic teaching match?',
     choices: [
       'Leishmania species.',
       'Giardia species.',
@@ -7265,7 +7265,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Toxoplasma testing',
     difficulty: 'intermediate',
     tags: ['Toxoplasma gondii', 'serology', 'IgG', 'IgM', 'congenital infection'],
-    prompt: 'Why is Toxoplasma gondii testing often interpreted with serologic patterns rather than one isolated result...',
+    prompt: 'Why is Toxoplasma gondii testing often interpreted with serologic patterns rather than one isolated result?',
     choices: [
       'IgG, IgM, timing, and clinical context affect whether results suggest past exposure or possible recent infection.',
       'Toxoplasma is identified by finding adult worms in stool.',
@@ -7283,7 +7283,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Toxoplasma life cycle',
     difficulty: 'beginner',
     tags: ['Toxoplasma gondii', 'cats', 'oocysts', 'undercooked meat'],
-    prompt: 'Which life-cycle concept is central to Toxoplasma gondii teaching...',
+    prompt: 'Which life-cycle concept is central to Toxoplasma gondii teaching?',
     choices: [
       'Cats are the definitive host, and humans may acquire infection from oocysts or tissue cysts.',
       'Mosquitoes inject adult worms into the blood.',
@@ -7301,7 +7301,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Parasitology specimen selection',
     difficulty: 'beginner',
     tags: ['specimen selection', 'parasite diagnosis', 'bench workflow', 'source'],
-    prompt: 'Which approach best matches Learn Microbes bench-first parasitology...',
+    prompt: 'Which approach best matches Learn Microbes bench-first parasitology?',
     choices: [
       'Match the suspected parasite stage to the right specimen source and detection method.',
       'Use the same stool O&P method for every parasite in the body.',
@@ -7319,7 +7319,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Entamoeba problem solving',
   difficulty: 'intermediate',
   tags: ['Entamoeba histolytica', 'ingested RBCs', 'permanent stain', 'stool microscopy'],
-  prompt: 'A permanent stained stool smear shows amebic trophozoites containing ingested red blood cells. Which organism is the classic teaching match...',
+  prompt: 'A permanent stained stool smear shows amebic trophozoites containing ingested red blood cells. Which organism is the classic teaching match?',
   choices: [
   'Entamoeba histolytica.',
   'Entamoeba dispar.',
@@ -7337,7 +7337,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Coccidian parasite problem solving',
   difficulty: 'beginner',
   tags: ['Cryptosporidium', 'modified acid-fast stain', 'stool oocysts', 'coccidia'],
-  prompt: 'A stool specimen from a patient with diarrhea shows small round oocysts on modified acid-fast stain. Which organism is the classic teaching match...',
+  prompt: 'A stool specimen from a patient with diarrhea shows small round oocysts on modified acid-fast stain. Which organism is the classic teaching match?',
   choices: [
   'Cryptosporidium species.',
   'Giardia duodenalis.',
@@ -7355,7 +7355,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Nematode problem solving',
   difficulty: 'beginner',
   tags: ['Enterobius vermicularis', 'Scotch tape preparation', 'pinworm', 'eggs'],
-  prompt: 'A pediatric case raises concern for pinworm infection. Which specimen collection method is the classic teaching choice...',
+  prompt: 'A pediatric case raises concern for pinworm infection. Which specimen collection method is the classic teaching choice?',
   choices: [
   'Early-morning perianal adhesive tape preparation.',
   'Thick blood film.',
@@ -7373,7 +7373,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Malaria problem solving',
   difficulty: 'beginner',
   tags: ['malaria', 'thick blood film', 'thin blood film', 'Plasmodium'],
-  prompt: 'A malaria evaluation is ordered. Why should both thick and thin blood films be prepared...',
+  prompt: 'A malaria evaluation is ordered. Why should both thick and thin blood films be prepared?',
   choices: [
   'Thick films improve detection sensitivity, while thin films help with species morphology.',
   'Thick films identify helminth eggs, while thin films identify adult worms.',
@@ -7409,7 +7409,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Strongyloides problem solving',
   difficulty: 'advanced',
   tags: ['Strongyloides stercoralis', 'autoinfection', 'larvae', 'immunocompromised host'],
-  prompt: 'A patient with remote exposure risk has recurrent larvae detected in stool years later. Which life-cycle concept explains why Strongyloides can persist...',
+  prompt: 'A patient with remote exposure risk has recurrent larvae detected in stool years later. Which life-cycle concept explains why Strongyloides can persist?',
   choices: [
   'Autoinfection within the human host.',
   'Dormant hypnozoites in red blood cells.',
@@ -7427,7 +7427,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Tissue protozoa problem solving',
   difficulty: 'advanced',
   tags: ['Leishmania', 'amastigotes', 'macrophages', 'kinetoplast'],
-  prompt: 'A tissue smear shows intracellular amastigotes within macrophages. Each form has a nucleus and kinetoplast. Which organism group is the classic teaching match...',
+  prompt: 'A tissue smear shows intracellular amastigotes within macrophages. Each form has a nucleus and kinetoplast. Which organism group is the classic teaching match?',
   choices: [
   'Leishmania species.',
   'Giardia species.',
@@ -8255,7 +8255,7 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Mucorales identification',
     difficulty: 'intermediate',
     tags: ['Rhizopus', 'rhizoids', 'sporangiophores', 'Mucorales'],
-    prompt: 'A Mucorales mold shows rhizoids located opposite the sporangiophores. Which genus is the classic teaching match?',
+    prompt: 'A Mucorales mold shows rhizoids located directly beneath the sporangiophores. Which genus is the classic teaching match?',
     choices: [
       'Rhizopus.',
       'Mucor.',
@@ -8263,7 +8263,7 @@ export const questionBank: QuestionBankItem[] = [
       'Penicillium.'
     ],
     answer: 'Rhizopus.',
-    explanation: 'Rhizopus is classically taught as having rhizoids opposite sporangiophores. These structures help separate genera within the Mucorales group.',
+    explanation: 'Rhizopus is classically taught as having nodal rhizoids directly beneath the sporangiophores. These structures help separate genera within the Mucorales group.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'draft'
   },
@@ -8309,7 +8309,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Mold problem solving',
   difficulty: 'intermediate',
   tags: ['Aspergillus fumigatus', 'septate hyphae', 'conidial head', 'hyaline mold'],
-  prompt: 'A respiratory mold culture shows septate hyphae and compact columnar conidial heads with phialides mostly on the upper portion of the vesicle. Which organism is the best teaching match...',
+  prompt: 'A respiratory mold culture shows septate hyphae and compact columnar conidial heads with phialides mostly on the upper portion of the vesicle. Which organism is the best teaching match?',
   choices: [
   'Aspergillus fumigatus.',
   'Rhizopus species.',
@@ -8327,7 +8327,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Mucorales problem solving',
   difficulty: 'beginner',
   tags: ['Mucorales', 'broad aseptate hyphae', 'wide-angle branching', 'tissue morphology'],
-  prompt: 'A tissue specimen shows broad ribbon-like hyphae with little septation and wide-angle branching. Which mold group is the classic teaching match...',
+  prompt: 'A tissue specimen shows broad ribbon-like hyphae with little septation and wide-angle branching. Which mold group is the classic teaching match?',
   choices: [
   'Mucorales.',
   'Aspergillus species.',
@@ -8345,7 +8345,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Cryptococcus problem solving',
   difficulty: 'intermediate',
   tags: ['Cryptococcus neoformans', 'CSF', 'urease', 'niger seed agar'],
-  prompt: 'A CSF yeast isolate is urease positive and produces brown pigment on niger seed agar. Which organism is the best teaching match...',
+  prompt: 'A CSF yeast isolate is urease positive and produces brown pigment on niger seed agar. Which organism is the best teaching match?',
   choices: [
   'Cryptococcus neoformans.',
   'Candida glabrata.',
@@ -8363,7 +8363,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Candida problem solving',
   difficulty: 'beginner',
   tags: ['Candida albicans', 'germ tube', 'yeast identification', 'pseudohyphae'],
-  prompt: 'A yeast from a mucosal specimen forms true germ tubes in serum and produces chlamydospores on morphology media. Which organism is the classic teaching match...',
+  prompt: 'A yeast from a mucosal specimen forms true germ tubes in serum and produces chlamydospores on morphology media. Which organism is the classic teaching match?',
   choices: [
   'Candida albicans.',
   'Cryptococcus neoformans.',
@@ -8381,7 +8381,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Dermatophyte problem solving',
   difficulty: 'intermediate',
   tags: ['Trichophyton rubrum', 'dermatophytes', 'skin scraping', 'microconidia'],
-  prompt: 'A skin scraping culture grows a dermatophyte with tear-shaped microconidia along the hyphae and red pigment on the reverse. Which organism is the classic teaching match...',
+  prompt: 'A skin scraping culture grows a dermatophyte with tear-shaped microconidia along the hyphae and red pigment on the reverse. Which organism is the classic teaching match?',
   choices: [
   'Trichophyton rubrum.',
   'Microsporum canis.',
@@ -8399,7 +8399,7 @@ export const questionBank: QuestionBankItem[] = [
   topic: 'Fungal laboratory safety',
   difficulty: 'advanced',
   tags: ['Coccidioides', 'arthroconidia', 'lab safety', 'dimorphic fungi'],
-  prompt: 'A mold culture from a respiratory specimen is suspected to be Coccidioides based on colony and preliminary morphology. What is the safest bench-learning response...',
+  prompt: 'A mold culture from a respiratory specimen is suspected to be Coccidioides based on colony and preliminary morphology. What is the safest bench-learning response?',
   choices: [
   'Avoid extra open-bench manipulation and follow the laboratory safety escalation protocol.',
   'Prepare multiple open-bench tease mounts to look for arthroconidia.',
