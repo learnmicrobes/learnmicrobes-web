@@ -37,6 +37,11 @@ jobs:
           REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
           REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
 
+      # GitHub Pages answers unknown paths with 404.html and an HTTP 404, which keeps
+      # every route but "/" out of search. This writes a real HTML file per route.
+      - name: Pre-render pages for search engines
+        run: npm run prerender
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

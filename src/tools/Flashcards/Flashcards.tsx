@@ -89,10 +89,6 @@ export default function Flashcards() {
   const [ratedIds, setRatedIds] = useState<string[]>([]);
 
   useEffect(() => {
-    document.title = 'Microbiology Flashcards | Learn Microbes';
-  }, []);
-
-  useEffect(() => {
     setMissedIds(readMissedIds());
   }, []);
 

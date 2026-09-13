@@ -142,10 +142,6 @@ export default function PracticePage() {
   const quizStats = useMemo(() => getStudyQuizStats(), []);
 
   useEffect(() => {
-    document.title = 'Practice Microbiology Questions | Learn Microbes';
-  }, []);
-
-  useEffect(() => {
     setSavedQuiz(readSavedQuiz());
     setStreak(readNumber(STREAK_STORAGE_KEY));
     setBestStreak(readNumber(BEST_STREAK_STORAGE_KEY));

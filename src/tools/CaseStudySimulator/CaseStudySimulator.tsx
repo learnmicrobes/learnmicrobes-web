@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -44,10 +44,6 @@ export default function CaseStudySimulator() {
   const [stageIndex, setStageIndex] = useState(0);
   const [answers, setAnswers] = useState<StageAnswer[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
-
-  useEffect(() => {
-    document.title = 'Clinical Microbiology Case Studies | Learn Microbes';
-  }, []);
 
   const visibleCases = useMemo(() => (
     difficulty === 'all' ? caseStudies : caseStudies.filter((item) => item.difficulty === difficulty)

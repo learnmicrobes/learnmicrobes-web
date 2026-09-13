@@ -710,10 +710,6 @@ export const LearnHub: React.FC = () => {
     });
   }, [hasActiveRefinement, topicsByCategory]);
 
-  useEffect(() => {
-    document.title = 'Learn Microbiology Basics | Learn Microbes';
-  }, []);
-
   return (
     <div className="learn-shell">
       <header className="learn-hero">
@@ -930,10 +926,6 @@ export const LearnArticle: React.FC = () => {
   const [progressStatusMessage, setProgressStatusMessage] = useState('');
   const isTopicMastered = topic ? isTopicCompleted(topic.slug) || masteredTopicSet.has(topic.slug) : false;
   const isTopicBookmarked = topic ? isBookmarked('learn', topic.slug) : false;
-
-  useEffect(() => {
-    document.title = topic ? `${topic.title} | Learn Microbes` : 'Learn Topic Not Found | Learn Microbes';
-  }, [topic]);
 
   useEffect(() => {
     if (!topic || !user) {

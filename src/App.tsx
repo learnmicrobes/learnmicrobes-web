@@ -839,16 +839,6 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (activeTool) {
-      document.title = `${activeTool} | Learn Microbes`;
-    } else if (isHomeRoute) {
-      document.title = 'Home | Learn Microbes';
-    } else {
-      document.title = 'Page Not Found | Learn Microbes';
-    }
-  }, [activeTool, isHomeRoute]);
-
-  useEffect(() => {
     setSelectedDashboardSearchIndex(0);
   }, [dashboardSearchQuery]);
 
@@ -932,7 +922,8 @@ export default function App() {
   }, [isAccountMenuOpen, isToolsOpen, isLearnMenuOpen]);
 
   const seoMetadata = useMemo(() => {
-    const path = location.pathname;
+    // GitHub Pages can answer a directory route such as /learn at /learn/, so both spellings share one entry.
+    const path = location.pathname.replace(/(.)\/+$/, '$1');
     const baseTitle = 'Learn Microbes - Clinical Microbiology & ASCP Review';
     const baseDescription = 'Clinical microbiology study tools for MLS students, ASCP microbiology review, bench workflows, organism ID, biochemical tests, visual cards, and quiz practice.';
     const learnSlug = path.match(/^\/learn\/([^/]+)$/)?.[1];
@@ -984,7 +975,7 @@ export default function App() {
 
     if (visualPage) {
       return {
-        title: `${visualPage.title} Visual Guide | Learn Microbes`,
+        title: `${/guide$/i.test(visualPage.title) ? visualPage.title : `${visualPage.title} Visual Guide`} | Learn Microbes`,
         description: `${visualPage.summary} Visual clinical microbiology bench card for students, ASCP review, and laboratory learning.`,
         canonicalPath: `/visuals/${visualPage.slug}`,
         structuredData: breadcrumb([
@@ -1038,15 +1029,15 @@ export default function App() {
       },
       '/practice': {
         title: 'Clinical Microbiology Practice | Quiz and ASCP Review | Learn Microbes',
-        description: 'Practice clinical microbiology with Study Quiz, ASCP review workflows, and future case-based simulator practice for MLS students and certification review.'
+        description: 'Practice clinical microbiology with the Study Quiz, flashcards, and case studies for MLS students, ASCP review, and certification prep.'
       },
       '/case-study-simulator': {
         title: 'Case Study Simulator | ASCP Microbiology Practice | Learn Microbes',
-        description: 'Planned Learn Microbes case study simulator for ASCP-style clinical microbiology practice and scenario-based review.'
+        description: 'Work through scenario-based clinical microbiology case studies for ASCP-style practice, one stage at a time.'
       },
       '/flashcards': {
         title: 'Clinical Microbiology Flashcards | ASCP Review | Learn Microbes',
-        description: 'Planned Learn Microbes flashcards for clinical microbiology rapid recall, ASCP review, organism identification, biochemical tests, and bench interpretation patterns.'
+        description: 'Clinical microbiology flashcards for rapid recall, ASCP review, organism identification, biochemical tests, and bench interpretation patterns.'
       },
       '/learn': {
         title: 'Clinical Microbiology Learn Hub | MLS and ASCP Review | Learn Microbes',

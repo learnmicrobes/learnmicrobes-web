@@ -12663,7 +12663,6 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
   }, [page.slug]);
 
   useEffect(() => {
-    document.title = `${page.title} | Learn Microbes`;
     setIsBoardNoteExpanded(false);
     setExpandedAnchorIds([]);
     trackEvent('visual_card_opened', {
