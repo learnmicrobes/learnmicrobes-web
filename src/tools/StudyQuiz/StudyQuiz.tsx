@@ -75,7 +75,7 @@ type LeaderboardEntry = {
   score: number;
   attemptCount?: number;
   accuracyPercent?: number | null;
-  userId?: string;
+  isCurrentUser?: boolean;
 };
 
 type LeaderboardUserRank = {
@@ -85,27 +85,14 @@ type LeaderboardUserRank = {
   accuracyPercent?: number | null;
 } | null;
 
-type LeaderboardAttemptRow = {
-  user_id: string;
-  correct_count: number | null;
-  score_percent: number | null;
-  question_count: number | null;
-  completed_at?: string | null;
-};
-
+// get_study_quiz_leaderboard never returns user ids or email-derived names.
 type LeaderboardRpcRow = {
-  user_id: string;
+  rank: number | string | null;
   display_name: string | null;
   total_score: number | string | null;
   attempt_count: number | string | null;
   accuracy_percent: number | null;
-  rank: number | string | null;
-};
-
-type LeaderboardProfileRow = {
-  id: string;
-  email: string | null;
-  display_name: string | null;
+  is_current_user: boolean | null;
 };
 
 type LeaderboardScope = 'weekly' | 'allTime';
@@ -118,6 +105,7 @@ const GUEST_QUIZ_COUNT_STORAGE_KEY = 'learnmicrobes_study_quiz_guest_answer_coun
 const QUIZ_TIMER_SECONDS = 60;
 const GUEST_QUIZ_QUESTION_LIMIT = 15;
 const CONFETTI_PIECES = 20;
+const LEADERBOARD_ROW_LIMIT = 10;
 
 /**
  * Future freemium leaderboard integration:
@@ -744,123 +732,37 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
     setLeaderboardLoading(true);
 
-    if (leaderboardScope === 'allTime') {
-      const { data: rpcRows, error: rpcError } = await supabase
-        .rpc('get_study_quiz_leaderboard', { row_limit: 1000 });
+    // Ranking happens server-side across every learner (RLS would hide other
+    // learners' rows from a direct query). The RPC returns the top rows plus the
+    // signed-in learner's own row when they rank outside them.
+    const { data: rpcRows, error: rpcError } = await supabase
+      .rpc('get_study_quiz_leaderboard', {
+        row_limit: LEADERBOARD_ROW_LIMIT,
+        since: leaderboardScope === 'weekly' ? getStartOfLocalWeekIso() : null
+      });
 
-      if (!rpcError && rpcRows) {
-        const rankedEntries = (rpcRows as LeaderboardRpcRow[]).map((entry, index) => ({
-          rank: Number(entry.rank ?? index + 1),
-          displayName: entry.display_name?.trim() || `Learner ${Number(entry.rank ?? index + 1)}`,
-          score: Number(entry.total_score ?? 0),
-          attemptCount: Number(entry.attempt_count ?? 0),
-          accuracyPercent: entry.accuracy_percent,
-          userId: entry.user_id
-        }));
-        const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
-
-        setLeaderboardEntries(rankedEntries.slice(0, 10));
-        setLeaderboardUserRank(currentUserEntry ? {
-          rank: currentUserEntry.rank,
-          score: currentUserEntry.score,
-          attemptCount: currentUserEntry.attemptCount,
-          accuracyPercent: currentUserEntry.accuracyPercent
-        } : null);
-        setLeaderboardLoading(false);
-        return;
-      }
-    }
-
-    let attemptsQuery = supabase
-      .from('quiz_attempts')
-      .select('user_id, correct_count, score_percent, question_count, completed_at')
-      .order('completed_at', { ascending: false })
-      .limit(1000);
-
-    if (leaderboardScope === 'weekly') {
-      attemptsQuery = attemptsQuery.gte('completed_at', getStartOfLocalWeekIso());
-    }
-
-    const { data: attempts, error: attemptsError } = await attemptsQuery;
-
-    if (attemptsError) {
+    if (rpcError || !rpcRows) {
       setLeaderboardEntries(leaderboardPreview);
       setLeaderboardUserRank(null);
       setLeaderboardLoading(false);
       return;
     }
 
-    const scoreByUser = new Map<string, { score: number; correct: number; questionCount: number; attemptCount: number }>();
-    ((attempts ?? []) as LeaderboardAttemptRow[]).forEach((attempt) => {
-      const score = Number(attempt.correct_count ?? attempt.score_percent ?? 0);
-      const currentScore = scoreByUser.get(attempt.user_id) ?? {
-        score: 0,
-        correct: 0,
-        questionCount: 0,
-        attemptCount: 0
+    const rankedEntries: LeaderboardEntry[] = (rpcRows as LeaderboardRpcRow[]).map((entry, index) => {
+      const rank = Number(entry.rank ?? index + 1);
+
+      return {
+        rank,
+        displayName: entry.display_name?.trim() || `Learner ${rank}`,
+        score: Number(entry.total_score ?? 0),
+        attemptCount: Number(entry.attempt_count ?? 0),
+        accuracyPercent: entry.accuracy_percent,
+        isCurrentUser: Boolean(entry.is_current_user)
       };
-
-      scoreByUser.set(attempt.user_id, {
-        score: currentScore.score + score,
-        correct: currentScore.correct + Number(attempt.correct_count ?? 0),
-        questionCount: currentScore.questionCount + Number(attempt.question_count ?? 0),
-        attemptCount: currentScore.attemptCount + 1
-      });
     });
+    const currentUserEntry = rankedEntries.find((entry) => entry.isCurrentUser);
 
-    const rankedScores = Array.from(scoreByUser.entries())
-      .map(([userId, totals]) => ({
-        userId,
-        ...totals,
-        accuracyPercent: totals.questionCount > 0 ? Math.round((totals.correct / totals.questionCount) * 100) : null
-      }))
-      .sort((first, second) => (
-        second.score - first.score
-        || (second.accuracyPercent ?? 0) - (first.accuracyPercent ?? 0)
-        || second.attemptCount - first.attemptCount
-      ));
-
-    const profileByUser = new Map<string, LeaderboardProfileRow>();
-    const userIds = rankedScores.map((entry) => entry.userId);
-
-    if (userIds.length > 0) {
-      const { data: profiles } = await supabase
-        .from('profiles')
-        .select('id, email, display_name')
-        .in('id', userIds);
-
-      ((profiles ?? []) as LeaderboardProfileRow[]).forEach((profile) => {
-        profileByUser.set(profile.id, profile);
-      });
-    }
-
-    const getDisplayName = (userId: string, rank: number) => {
-      const profile = profileByUser.get(userId);
-      const profileName = profile?.display_name?.trim();
-      const email = profile?.email || (userId === user.id ? user.email : '');
-
-      if (profileName) {
-        return profileName;
-      }
-
-      if (email) {
-        return email.split('@')[0] || `Learner ${rank}`;
-      }
-
-      return `Learner ${rank}`;
-    };
-
-    const rankedEntries = rankedScores.map((entry, index) => ({
-      rank: index + 1,
-      displayName: getDisplayName(entry.userId, index + 1),
-      score: entry.score,
-      attemptCount: entry.attemptCount,
-      accuracyPercent: entry.accuracyPercent,
-      userId: entry.userId
-    }));
-    const currentUserEntry = rankedEntries.find((entry) => entry.userId === user.id);
-
-    setLeaderboardEntries(rankedEntries.slice(0, 10));
+    setLeaderboardEntries(rankedEntries.filter((entry) => entry.rank <= LEADERBOARD_ROW_LIMIT));
     setLeaderboardUserRank(currentUserEntry ? {
       rank: currentUserEntry.rank,
       score: currentUserEntry.score,
@@ -1148,7 +1050,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 <FontAwesomeIcon icon={faTrophy} />
               </button>
             </div>
-            <div>
+            <div className="study-quiz-hero-copy">
               <span className="study-quiz-kicker">Practice lab</span>
               <h1>High-yield quiz reps without the noise.</h1>
               <p>
@@ -1315,7 +1217,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
           <div className="study-quiz-set-meta">
             <span>{visibleAnsweredCount} / {visibleQuestions.length} answered</span>
             <span>
-              Current set accuracy: {visibleAccuracyPercent === null ? 'Answer 3 to build accuracy' : `${visibleAccuracyPercent}%`}
+              Accuracy: {visibleAccuracyPercent === null ? 'after 3 answers' : `${visibleAccuracyPercent}%`}
             </span>
           </div>
 

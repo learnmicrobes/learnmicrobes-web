@@ -100,10 +100,6 @@ const getFriendlyDate = (value: string | null | undefined) => {
   }).format(new Date(value));
 };
 
-const getDefaultDisplayName = (email: string | null | undefined) => (
-  email?.split('@')[0] || 'Learn Microbes learner'
-);
-
 const isMissingProfilesTableError = (message: string) => (
   message.toLowerCase().includes('profiles') && (
     message.toLowerCase().includes('does not exist') ||
@@ -254,7 +250,7 @@ const AccountPage: React.FC = () => {
 
       if (data) {
         setProfile(data as ProfileRow);
-        setDisplayName(data.display_name || getDefaultDisplayName(user.email));
+        setDisplayName(data.display_name || '');
         setLearningGoal(data.learning_goal || defaultLearningGoal);
         setLearnerRole(data.learner_role || '');
         setCountry(data.country || '');
@@ -267,7 +263,7 @@ const AccountPage: React.FC = () => {
       const starterProfile = {
         id: user.id,
         email: user.email ?? null,
-        display_name: getDefaultDisplayName(user.email),
+        display_name: null,
         learning_goal: defaultLearningGoal,
         last_active_at: new Date().toISOString()
       };
@@ -282,7 +278,7 @@ const AccountPage: React.FC = () => {
         setErrorMessage(createError.message);
       } else {
         setProfile(createdProfile as ProfileRow);
-        setDisplayName(starterProfile.display_name);
+        setDisplayName('');
         setLearningGoal(starterProfile.learning_goal);
         setLearnerRole('');
         setCountry('');
@@ -341,7 +337,7 @@ const AccountPage: React.FC = () => {
       .upsert({
         id: user.id,
         email: user.email ?? null,
-        display_name: displayName.trim() || getDefaultDisplayName(user.email),
+        display_name: displayName.trim() || null,
         learning_goal: learningGoal.trim() || defaultLearningGoal,
         learner_role: learnerRole || null,
         country: country.trim() || null,
@@ -605,7 +601,7 @@ const AccountPage: React.FC = () => {
                 type="text"
                 value={displayName}
                 onChange={(event) => setDisplayName(event.target.value)}
-                placeholder="How should Learn Microbes greet you?"
+                placeholder="Optional. Shown on the Quiz leaderboard"
                 maxLength={80}
               />
             </label>
