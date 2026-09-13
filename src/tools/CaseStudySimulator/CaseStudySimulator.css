@@ -132,8 +132,12 @@
   margin-top: 0.9rem;
 }
 
+/* The explicit full-width column matters: a global mobile rule centers button
+   content, which shrink-wraps an auto grid track and indents each card by a
+   different amount depending on its title length. */
 .case-card {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.4rem;
   justify-items: start;
   min-width: 0;
@@ -174,9 +178,40 @@
   text-transform: uppercase;
 }
 
-.case-card-tags .level-beginner { background: rgba(79, 143, 103, 0.14); color: #3d7a53; }
-.case-card-tags .level-intermediate { background: rgba(200, 162, 77, 0.18); color: #8a6d1f; }
-.case-card-tags .level-advanced { background: rgba(182, 75, 54, 0.14); color: var(--error-color); }
+/* Area tag takes its subject stain (see src/data/subjectStains.ts). Qualified so
+   it outranks the dark-mode tag override further down. */
+.case-grid .case-card-tags small.subject-stain {
+  background: rgba(36, 92, 105, 0.08);
+  background: color-mix(in srgb, var(--stain) 14%, transparent);
+  color: var(--stain);
+}
+
+/* Difficulty is an order, not a subject: three neutral dots instead of traffic
+   lights, so red and green never sit beside fuchsin and fluorescein. */
+.case-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ink-muted);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
+.case-level-dots {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.case-level-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ink-muted);
+}
+
+.case-level-dots i.on {
+  background: var(--ink-muted);
+}
 
 .case-card strong {
   color: var(--ink);

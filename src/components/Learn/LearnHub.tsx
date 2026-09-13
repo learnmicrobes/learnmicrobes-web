@@ -1,7 +1,15 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowRight,
+  faBookmark,
+  faCheck,
+  faCheckCircle,
+  faChevronDown,
+  faChevronLeft,
+  faXmark
+} from '@fortawesome/free-solid-svg-icons';
 import { learnTopics, getLearnTopicBySlug } from '../../data/learnTopics';
 import { atlasPages, MiniAtlasVisual, type AtlasPage } from '../VisualAtlas/VisualAtlas';
 import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
@@ -9,6 +17,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { useLearnProgress } from '../../hooks/useLearnProgress';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
+import { subjectStainClass } from '../../data/subjectStains';
 import './Learn.css';
 
 export const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -738,16 +747,21 @@ export const LearnHub: React.FC = () => {
           {topicsByCategory.map((group) => {
             const meta = learningLaneMeta[group.category];
             const categoryProgress = getCategoryProgress(group.category);
+            const stainClass = subjectStainClass(group.category);
 
             return (
               <button
                 key={group.category}
                 type="button"
+                className={stainClass || undefined}
                 onClick={() => openStudyArea(group.category)}
                 aria-expanded={openCategories.has(group.category)}
                 aria-controls={`${slugify(group.category)}-topic-list`}
               >
-                <span>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</span>
+                <span>
+                  {stainClass && <i className="subject-stain-drop" aria-hidden="true" />}
+                  {group.topics.length} topic{group.topics.length === 1 ? '' : 's'}
+                </span>
                 <strong>{getCategoryDisplayName(group.category)}</strong>
                 <small>{meta.description}</small>
                 <span className="learn-area-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered`}>
@@ -838,10 +852,11 @@ export const LearnHub: React.FC = () => {
         {topicsByCategory.map((group) => {
           const isCategoryOpen = openCategories.has(group.category);
           const categoryProgress = getCategoryProgress(group.category);
+          const stainClass = subjectStainClass(group.category);
 
           return (
             <section
-              className={`learn-category ${isCategoryOpen ? 'open' : 'collapsed'}`}
+              className={`learn-category ${isCategoryOpen ? 'open' : 'collapsed'} ${stainClass}`.trim()}
               key={group.category}
               id={slugify(group.category)}
               aria-labelledby={`${slugify(group.category)}-learn-title`}
@@ -863,7 +878,10 @@ export const LearnHub: React.FC = () => {
               <div>
                 <div className="learn-category-title-row">
                   <h2 id={`${slugify(group.category)}-learn-title`}>{getCategoryDisplayName(group.category)}</h2>
-                  <small>{group.topics.length} topic{group.topics.length === 1 ? '' : 's'}</small>
+                  <small>
+                    {stainClass && <i className="subject-stain-drop" aria-hidden="true" />}
+                    {group.topics.length} topic{group.topics.length === 1 ? '' : 's'}
+                  </small>
                 </div>
                 <p>{learningLaneMeta[group.category].description}</p>
                 <div className="learn-category-progress" aria-label={`${categoryProgress.masteredCount} of ${categoryProgress.totalCount} topics mastered in ${group.category}`}>
@@ -926,6 +944,61 @@ export const LearnArticle: React.FC = () => {
   const [progressStatusMessage, setProgressStatusMessage] = useState('');
   const isTopicMastered = topic ? isTopicCompleted(topic.slug) || masteredTopicSet.has(topic.slug) : false;
   const isTopicBookmarked = topic ? isBookmarked('learn', topic.slug) : false;
+  const [isTopicSheetOpen, setIsTopicSheetOpen] = useState(false);
+  const topicSheetRef = useRef<HTMLDivElement>(null);
+  const topicSheetTriggerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setIsTopicSheetOpen(false);
+  }, [topic?.slug]);
+
+  // The topic sheet is a modal: lock page scroll, keep focus inside, close on Escape,
+  // and hand focus back to whichever button opened it (unless the user navigated away).
+  useEffect(() => {
+    if (!isTopicSheetOpen) {
+      return;
+    }
+
+    const sheet = topicSheetRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    (sheet?.querySelector<HTMLElement>('[aria-current="page"]') ?? sheet)?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setIsTopicSheetOpen(false);
+        return;
+      }
+
+      if (event.key !== 'Tab' || !sheet) {
+        return;
+      }
+
+      const focusable = Array.from(sheet.querySelectorAll<HTMLElement>('a[href], button'));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      const trigger = topicSheetTriggerRef.current;
+      if (trigger && document.contains(trigger)) {
+        trigger.focus({ preventScroll: true });
+      }
+    };
+  }, [isTopicSheetOpen]);
 
   useEffect(() => {
     if (!topic || !user) {
@@ -1004,6 +1077,7 @@ export const LearnArticle: React.FC = () => {
       previousTopic: topicIndex > 0 ? categoryTopics[topicIndex - 1] : null,
       nextTopic: topicIndex < categoryTopics.length - 1 ? categoryTopics[topicIndex + 1] : null,
       nextAreaFirstTopic,
+      nextArea: nextCategory ?? null,
       nextAreaLabel: nextCategory ? getCategoryDisplayName(nextCategory) : null,
       categorySlug: slugify(topic.category)
     };
@@ -1068,28 +1142,77 @@ export const LearnArticle: React.FC = () => {
     setProgressStatusMessage(result.message);
   };
 
+  const areaName = getCategoryDisplayName(topic.category);
+  const areaStainClass = subjectStainClass(topic.category);
+  const nextAreaStainClass = subjectStainClass(studyPosition?.nextArea);
+  const isLearnTopicDone = (slug: string) => isTopicCompleted(slug) || masteredTopicSet.has(slug);
+  const completedInArea = studyPosition
+    ? studyPosition.categoryTopics.filter((item) => isLearnTopicDone(item.slug)).length
+    : 0;
+  const bookmarkLabel = user ? 'Bookmark this topic' : 'Sign in to bookmark';
+
+  const openTopicSheet = (event: React.MouseEvent<HTMLButtonElement>) => {
+    topicSheetTriggerRef.current = event.currentTarget;
+    setIsTopicSheetOpen(true);
+  };
+
+  const closeTopicSheetForNavigation = () => {
+    topicSheetTriggerRef.current = null;
+    setIsTopicSheetOpen(false);
+  };
+
+  // Position in the area: one segment per topic, filled up to the current one.
+  // Very long areas fall back to a single meter so segments never get hairline-thin.
+  const renderAreaProgress = (position: NonNullable<typeof studyPosition>) => (
+    position.topicTotal <= 24 ? (
+      <span className="learn-lesson-segments" aria-hidden="true">
+        {position.categoryTopics.map((item, index) => (
+          <i key={item.slug} className={index <= position.topicIndex ? 'on' : undefined} />
+        ))}
+      </span>
+    ) : (
+      <span className="learn-lesson-meter" aria-hidden="true">
+        <i style={{ width: `${Math.round((position.topicNumber / position.topicTotal) * 100)}%` }} />
+      </span>
+    )
+  );
+
   return (
     <article className="learn-shell learn-article">
-      <nav className="learn-breadcrumb" aria-label="Breadcrumb">
-        <Link to="/learn">Learn</Link>
-        <span>/</span>
-        <span>{topic.title}</span>
-      </nav>
-
-      {studyPosition && (
-        <div className="learn-article-return-row">
-          <Link className="learn-back-to-contents" to={`/learn#${studyPosition.categorySlug}`}>
-            <span aria-hidden="true">&larr;</span>
-            Back to Learn Contents
-          </Link>
-          <span>
-            {getCategoryDisplayName(topic.category)} / {studyPosition.topicNumber} of {studyPosition.topicTotal} topics
-          </span>
-        </div>
-      )}
-
-      <header className="learn-article-hero">
-        <span className="learn-kicker">Microbiology Notes / {getCategoryDisplayName(topic.category)}</span>
+      <header className={`learn-article-hero ${studyPosition ? 'has-lesson-strip' : ''}`.trim()}>
+        {studyPosition ? (
+          <nav className="learn-lesson-strip" aria-label={`${areaName} topics`}>
+            <Link
+              className="learn-lesson-back"
+              to={`/learn#${studyPosition.categorySlug}`}
+              aria-label={`Back to ${areaName}`}
+              title={`Back to ${areaName}`}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} aria-hidden="true" />
+            </Link>
+            <button
+              type="button"
+              className={`learn-lesson-area ${areaStainClass}`.trim()}
+              onClick={openTopicSheet}
+              aria-haspopup="dialog"
+              aria-expanded={isTopicSheetOpen}
+            >
+              {areaStainClass && <i className="subject-stain-drop" aria-hidden="true" />}
+              <span>{areaName}</span>
+              <FontAwesomeIcon icon={faChevronDown} aria-hidden="true" />
+            </button>
+            <span className="learn-lesson-count">
+              <span className="learn-sr-only">Topic </span>
+              {studyPosition.topicNumber}
+              <span aria-hidden="true"> / </span>
+              <span className="learn-sr-only"> of </span>
+              {studyPosition.topicTotal}
+            </span>
+            {renderAreaProgress(studyPosition)}
+          </nav>
+        ) : (
+          <span className="learn-kicker">Microbiology Notes / {areaName}</span>
+        )}
         <h1>{topic.title}</h1>
         <p>{topic.summary}</p>
         <div className="learn-article-actions">
@@ -1098,18 +1221,20 @@ export const LearnArticle: React.FC = () => {
             className={`learn-master-toggle ${isTopicMastered ? 'mastered' : ''}`}
             onClick={handleProgressClick}
             aria-pressed={isTopicMastered}
+            title={user ? undefined : 'Sign in to track progress'}
           >
-            <FontAwesomeIcon icon={faCheckCircle} />
-            {user ? (isTopicMastered ? 'Completed' : 'Mark Complete') : 'Sign in to Track Progress'}
+            <FontAwesomeIcon icon={faCheckCircle} aria-hidden="true" />
+            {isTopicMastered ? 'Completed' : 'Mark complete'}
           </button>
           <button
             type="button"
             className={`learn-bookmark-toggle ${isTopicBookmarked ? 'saved' : ''}`}
             onClick={handleBookmarkClick}
-            aria-pressed={isTopicBookmarked}
+            aria-pressed={user ? isTopicBookmarked : undefined}
+            aria-label={bookmarkLabel}
+            title={user && isTopicBookmarked ? 'Bookmarked' : bookmarkLabel}
           >
-            <FontAwesomeIcon icon={faBookmark} />
-            {user ? (isTopicBookmarked ? 'Saved Bookmark' : 'Save Bookmark') : 'Sign in to Bookmark'}
+            <FontAwesomeIcon icon={faBookmark} aria-hidden="true" />
           </button>
         </div>
         {(progressStatusMessage || progressError || bookmarkStatusMessage || bookmarkError) && (
@@ -1118,51 +1243,6 @@ export const LearnArticle: React.FC = () => {
           </p>
         )}
       </header>
-
-      {studyPosition && (
-        <nav className="learn-sequence-panel" aria-label={`${topic.category} topic navigation`}>
-          <div className="learn-sequence-status">
-            <span className="learn-section-label">Current area</span>
-            <strong>{getCategoryDisplayName(topic.category)}</strong>
-            <small>
-              {studyPosition.topicNumber} of {studyPosition.topicTotal} topics
-            </small>
-          </div>
-          <div className="learn-sequence-pager">
-            {studyPosition.previousTopic ? (
-              <Link className="learn-arrow-link previous" to={`/learn/${studyPosition.previousTopic.slug}`}>
-                <small>Previous</small>
-                <strong>{studyPosition.previousTopic.title}</strong>
-              </Link>
-            ) : (
-              <Link className="learn-arrow-link previous" to={`/learn#${studyPosition.categorySlug}`}>
-                <small>Back to area</small>
-                <strong>{getCategoryDisplayName(topic.category)}</strong>
-              </Link>
-            )}
-            <Link className="learn-area-chip" to={`/learn#${studyPosition.categorySlug}`}>
-              All {getCategoryDisplayName(topic.category)} topics
-            </Link>
-            {studyPosition.nextTopic ? (
-              <Link className="learn-arrow-link next" to={`/learn/${studyPosition.nextTopic.slug}`}>
-                <small>Next</small>
-                <strong>{studyPosition.nextTopic.title}</strong>
-              </Link>
-            ) : studyPosition.nextAreaFirstTopic ? (
-              <Link className="learn-arrow-link next next-area" to={`/learn/${studyPosition.nextAreaFirstTopic.slug}`}>
-                <small>Next study area</small>
-                <strong>{studyPosition.nextAreaFirstTopic.title}</strong>
-                {studyPosition.nextAreaLabel && <span>{studyPosition.nextAreaLabel}</span>}
-              </Link>
-            ) : (
-              <Link className="learn-arrow-link next" to="/learn">
-                <small>Finished Learn path</small>
-                <strong>Back to Learn</strong>
-              </Link>
-            )}
-          </div>
-        </nav>
-      )}
 
       {isBeginnerStart && (
         <section className="learn-beginner-guide" aria-labelledby="learn-beginner-guide-title">
@@ -1365,39 +1445,6 @@ export const LearnArticle: React.FC = () => {
           </section>
         )}
 
-        {studyPosition && (
-          <nav className="learn-bottom-sequence" aria-label="Next and previous Learn topics">
-            {studyPosition.previousTopic ? (
-              <Link className="previous" to={`/learn/${studyPosition.previousTopic.slug}`}>
-                <small>Previous topic</small>
-                <strong>{studyPosition.previousTopic.title}</strong>
-              </Link>
-            ) : (
-              <Link className="previous" to={`/learn#${studyPosition.categorySlug}`}>
-                <small>Back to study area</small>
-                <strong>{topic.category}</strong>
-              </Link>
-            )}
-            {studyPosition.nextTopic ? (
-              <Link className="next" to={`/learn/${studyPosition.nextTopic.slug}`}>
-                <small>Next topic</small>
-                <strong>{studyPosition.nextTopic.title}</strong>
-              </Link>
-            ) : studyPosition.nextAreaFirstTopic ? (
-              <Link className="next next-area" to={`/learn/${studyPosition.nextAreaFirstTopic.slug}`}>
-                <small>Next study area</small>
-                <strong>{studyPosition.nextAreaFirstTopic.title}</strong>
-                {studyPosition.nextAreaLabel && <span>{studyPosition.nextAreaLabel}</span>}
-              </Link>
-            ) : (
-              <Link className="next" to="/learn">
-                <small>Finished Learn path</small>
-                <strong>Back to Learn</strong>
-              </Link>
-            )}
-          </nav>
-        )}
-
         <section className="learn-note-section learn-related-reading" id="related-reading">
           <h2>Related reading</h2>
           <div className="learn-related-stack">
@@ -1406,6 +1453,78 @@ export const LearnArticle: React.FC = () => {
             ))}
           </div>
         </section>
+
+        {studyPosition && (
+          <nav className="learn-up-next" aria-label="Continue learning">
+            {studyPosition.nextTopic ? (
+              <Link
+                className="learn-up-next-card"
+                to={`/learn/${studyPosition.nextTopic.slug}`}
+                aria-label={`Continue to ${studyPosition.nextTopic.title}, topic ${studyPosition.topicNumber + 1} of ${studyPosition.topicTotal}`}
+              >
+                <span className="learn-up-next-label">
+                  Up next · {studyPosition.topicNumber + 1} of {studyPosition.topicTotal}
+                </span>
+                <strong>{studyPosition.nextTopic.title}</strong>
+                <span className="learn-up-next-go">
+                  Continue
+                  <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                </span>
+                {renderAreaProgress(studyPosition)}
+              </Link>
+            ) : studyPosition.nextAreaFirstTopic ? (
+              <Link
+                className={`learn-up-next-card ${nextAreaStainClass}`.trim()}
+                to={`/learn/${studyPosition.nextAreaFirstTopic.slug}`}
+                aria-label={`Start ${studyPosition.nextAreaLabel}, beginning with ${studyPosition.nextAreaFirstTopic.title}`}
+              >
+                <span className="learn-up-next-label">You finished {areaName}</span>
+                <strong>
+                  {nextAreaStainClass && <i className="subject-stain-drop" aria-hidden="true" />}
+                  {studyPosition.nextAreaLabel}
+                </strong>
+                <span className="learn-up-next-note">Starts with {studyPosition.nextAreaFirstTopic.title}</span>
+                <span className="learn-up-next-go">
+                  Start {studyPosition.nextAreaLabel}
+                  <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                </span>
+              </Link>
+            ) : (
+              <Link className="learn-up-next-card" to="/learn">
+                <span className="learn-up-next-label">You reached the end of the Learn path</span>
+                <strong>Pick another study area</strong>
+                <span className="learn-up-next-go">
+                  Back to Learn
+                  <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                </span>
+              </Link>
+            )}
+            <div className="learn-up-next-links">
+              {studyPosition.previousTopic ? (
+                <Link
+                  to={`/learn/${studyPosition.previousTopic.slug}`}
+                  aria-label={`Previous: ${studyPosition.previousTopic.title}`}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} aria-hidden="true" />
+                  Previous
+                </Link>
+              ) : (
+                <Link to={`/learn#${studyPosition.categorySlug}`}>
+                  <FontAwesomeIcon icon={faChevronLeft} aria-hidden="true" />
+                  {areaName}
+                </Link>
+              )}
+              <button
+                type="button"
+                onClick={openTopicSheet}
+                aria-haspopup="dialog"
+                aria-expanded={isTopicSheetOpen}
+              >
+                All {studyPosition.topicTotal} topics
+              </button>
+            </div>
+          </nav>
+        )}
         </div>
       </div>
 
@@ -1415,6 +1534,81 @@ export const LearnArticle: React.FC = () => {
           title="Help validate the clinical bench reference path"
           body="Tell us whether this starting path matches your class, rotation, or exam prep, and whether saved progress or bookmarks would help."
         />
+      )}
+
+      {studyPosition && isTopicSheetOpen && (
+        <div className="learn-topic-sheet-layer">
+          <button
+            type="button"
+            className="learn-topic-sheet-scrim"
+            tabIndex={-1}
+            aria-hidden="true"
+            onClick={() => setIsTopicSheetOpen(false)}
+          />
+          <div
+            className="learn-topic-sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="learn-topic-sheet-title"
+            ref={topicSheetRef}
+            tabIndex={-1}
+          >
+            <div className="learn-topic-sheet-head">
+              <span className="learn-topic-sheet-handle" aria-hidden="true" />
+              <div>
+                <h2 id="learn-topic-sheet-title" className={areaStainClass || undefined}>
+                  {areaStainClass && <i className="subject-stain-drop" aria-hidden="true" />}
+                  {areaName}
+                </h2>
+                <small>
+                  {user
+                    ? `${completedInArea} of ${studyPosition.topicTotal} done`
+                    : `${studyPosition.topicTotal} topics`}
+                </small>
+              </div>
+              <button
+                type="button"
+                className="learn-topic-sheet-close"
+                onClick={() => setIsTopicSheetOpen(false)}
+                aria-label="Close topic list"
+              >
+                <FontAwesomeIcon icon={faXmark} aria-hidden="true" />
+              </button>
+            </div>
+            <ol className="learn-topic-sheet-list">
+              {studyPosition.categoryTopics.map((item, index) => {
+                const isCurrent = item.slug === topic.slug;
+                const isDone = Boolean(user) && isLearnTopicDone(item.slug);
+
+                return (
+                  <li key={item.slug}>
+                    <Link
+                      to={`/learn/${item.slug}`}
+                      className={isCurrent ? 'current' : undefined}
+                      aria-current={isCurrent ? 'page' : undefined}
+                      onClick={closeTopicSheetForNavigation}
+                    >
+                      <span className="learn-topic-sheet-num">
+                        {isDone ? (
+                          <>
+                            <FontAwesomeIcon icon={faCheck} aria-hidden="true" />
+                            <span className="learn-sr-only">Completed:</span>
+                          </>
+                        ) : index + 1}
+                      </span>
+                      <span className="learn-topic-sheet-title">{item.title}</span>
+                      {isCurrent && <small>Reading</small>}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+            <Link className="learn-topic-sheet-all" to="/learn" onClick={closeTopicSheetForNavigation}>
+              All study areas
+              <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       )}
     </article>
   );

@@ -19,6 +19,7 @@ import {
   type FlashcardDifficulty
 } from '../../data/flashcardDecks';
 import { trackEvent } from '../../utils/analytics';
+import SupportNote from '../../components/Support/SupportNote';
 import './Flashcards.css';
 
 const PROGRESS_STORAGE_KEY = 'learnmicrobes_flashcard_progress';
@@ -197,6 +198,9 @@ export default function Flashcards() {
     return () => window.removeEventListener('keydown', handleKey);
   }, [isFlipped, rateCard]);
 
+  const deckLabel = currentCard
+    ? flashcardDecks.find((d) => d.id === currentCard.deck)?.label
+    : undefined;
   const answeredCount = ratedIds.length;
   const progressPercent = cardOrder.length > 0
     ? Math.round((Math.min(index, cardOrder.length) / cardOrder.length) * 100)
@@ -325,6 +329,7 @@ export default function Flashcards() {
             )}
             <Link to="/practice">Back to Practice</Link>
           </div>
+          <SupportNote location="flashcards_complete" />
         </section>
       ) : currentCard && (
         <section className="flashcards-stage" aria-labelledby="flashcards-card-title">
@@ -333,32 +338,48 @@ export default function Flashcards() {
             <i><b style={{ width: `${progressPercent}%` }} /></i>
           </div>
 
+          {/* Keyed by card so moving to another card remounts it face-up. Without the
+              key the flip-back transition would briefly show the next card's answer. */}
           <button
+            key={currentCard.id}
             type="button"
             className={`flashcards-card ${isFlipped ? 'flipped' : ''}`}
             onClick={() => setIsFlipped((current) => !current)}
             aria-pressed={isFlipped}
           >
-            <span className="flashcards-card-meta">
-              <small>{flashcardDecks.find((d) => d.id === currentCard.deck)?.label}</small>
-              <small>{difficultyLabels[currentCard.difficulty]}</small>
-            </span>
+            <span className="flashcards-card-inner">
+              <span className="flashcards-card-face flashcards-card-face-front" aria-hidden={isFlipped}>
+                <span className="flashcards-card-meta">
+                  <small>{deckLabel}</small>
+                  <small>{difficultyLabels[currentCard.difficulty]}</small>
+                </span>
 
-            {isFlipped ? (
-              <p className="flashcards-card-back" id="flashcards-card-title">{currentCard.back}</p>
-            ) : (
-              <p className="flashcards-card-front" id="flashcards-card-title">{currentCard.front}</p>
-            )}
+                <p className="flashcards-card-front" id={isFlipped ? undefined : 'flashcards-card-title'}>
+                  {currentCard.front}
+                </p>
 
-            {!isFlipped && currentCard.hint && (
-              <span className="flashcards-hint">
-                <FontAwesomeIcon icon={faLightbulb} aria-hidden="true" />
-                {currentCard.hint}
+                {currentCard.hint && (
+                  <span className="flashcards-hint">
+                    <FontAwesomeIcon icon={faLightbulb} aria-hidden="true" />
+                    {currentCard.hint}
+                  </span>
+                )}
+
+                <span className="flashcards-flip-cue">Tap to reveal the answer</span>
               </span>
-            )}
 
-            <span className="flashcards-flip-cue">
-              {isFlipped ? 'Tap to see the question again' : 'Tap to reveal the answer'}
+              <span className="flashcards-card-face flashcards-card-face-back" aria-hidden={!isFlipped}>
+                <span className="flashcards-card-meta">
+                  <small>{deckLabel}</small>
+                  <small>{difficultyLabels[currentCard.difficulty]}</small>
+                </span>
+
+                <p className="flashcards-card-back" id={isFlipped ? 'flashcards-card-title' : undefined}>
+                  {currentCard.back}
+                </p>
+
+                <span className="flashcards-flip-cue">Tap to see the question again</span>
+              </span>
             </span>
           </button>
 

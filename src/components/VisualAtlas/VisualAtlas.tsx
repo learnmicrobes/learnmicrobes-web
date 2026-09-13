@@ -7,6 +7,7 @@ import { trackEvent } from '../../utils/analytics';
 import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
+import { subjectStainClass } from '../../data/subjectStains';
 import './VisualAtlas.css';
 
 export type TubeVisual = {
@@ -12558,9 +12559,10 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
             key={d}
             role="tab"
             aria-selected={discipline === d}
-            className={discipline === d ? 'active' : ''}
+            className={`${discipline === d ? 'active' : ''} ${subjectStainClass(d)}`.trim()}
             onClick={() => handleDisciplineChange(d)}
           >
+            <i className="subject-stain-drop" aria-hidden="true" />
             {visualDisciplineLabels[d]}
           </button>
         ))}

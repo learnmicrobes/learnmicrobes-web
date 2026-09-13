@@ -24,6 +24,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
 import { trackEvent } from '../../utils/analytics';
+import { subjectStainClass } from '../../data/subjectStains';
 import './PracticePage.css';
 
 const QUIZ_STORAGE_KEY = 'learnmicrobes_study_quiz_state';
@@ -289,10 +290,13 @@ export default function PracticePage() {
             <button
               type="button"
               key={tile.category}
-              className="practice-category-card"
+              className={`practice-category-card ${subjectStainClass(tile.category)}`.trim()}
               onClick={() => startQuiz(tile.category, 'category_grid')}
             >
-              <span>{tile.count} question{tile.count === 1 ? '' : 's'}</span>
+              <span>
+                {subjectStainClass(tile.category) && <i className="subject-stain-drop" aria-hidden="true" />}
+                {tile.count} question{tile.count === 1 ? '' : 's'}
+              </span>
               <strong>{studyQuizCategoryLabels[tile.category]}</strong>
             </button>
           ))}

@@ -43,10 +43,16 @@ body.dark-mode .study-quiz-page {
   display: contents;
 }
 
+/* The rail is a <section> and the card a <main>, so global element rules in
+   styles.css (main margin 2rem, mobile section margin + padding 1rem) stacked
+   ~64px of dead space above the question on phones. Only the vertical part is reset;
+   side spacing and centering still come from those rules. */
 .study-quiz-main-rail {
   display: grid;
   gap: 0.75rem;
   order: 3;
+  margin-block: 0;
+  padding-block: 0;
 }
 
 .study-quiz-hero,
@@ -62,25 +68,33 @@ body.dark-mode .study-quiz-page {
   backdrop-filter: blur(8px);
 }
 
+/* Kept slim so the question is what the eye lands on: copy on the left, score
+   and leaderboard on the right. Phones reduce it to a single bar. */
 .study-quiz-hero {
   position: relative;
   order: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.9rem;
   min-height: 0;
   overflow: hidden;
-  padding: 1.55rem 6.5rem 1.35rem;
+  padding: 0.95rem 1.1rem;
   border-radius: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .study-quiz-hero::before {
   content: none;
 }
 
+.study-quiz-hero-copy {
+  order: 1;
+  min-width: 0;
+}
+
 .study-quiz-header-actions {
-  position: absolute;
-  top: 0.9rem;
-  right: 0.9rem;
-  z-index: 2;
+  order: 3;
   display: flex;
   gap: 0.45rem;
 }
@@ -116,7 +130,7 @@ body.dark-mode .study-quiz-page {
   position: relative;
   z-index: 1;
   display: inline-flex;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
   color: var(--c-primary);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -127,31 +141,31 @@ body.dark-mode .study-quiz-page {
 .study-quiz-hero h1 {
   position: relative;
   z-index: 1;
-  margin: 0 auto;
-  max-width: 760px;
+  margin: 0;
   color: var(--c-text);
-  font-size: clamp(1.85rem, 4vw, 2.65rem);
-  line-height: 1.04;
+  font-size: var(--text-xl);
+  line-height: 1.2;
   letter-spacing: 0;
 }
 
 .study-quiz-hero p {
   position: relative;
   z-index: 1;
-  max-width: 660px;
-  margin: 1rem auto 0;
+  max-width: 70ch;
+  margin: 0.3rem 0 0;
   color: var(--c-muted);
-  font-size: var(--text-md);
-  line-height: 1.65;
+  font-size: var(--text-base);
+  line-height: 1.5;
 }
 
 .study-quiz-score-card {
   position: relative;
   z-index: 1;
+  order: 2;
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  margin: 1.25rem auto 0;
+  margin: 0;
   padding: 0.6rem 0.9rem;
   border: 1px solid var(--c-border);
   border-radius: 12px;
@@ -519,6 +533,7 @@ body.dark-mode .study-quiz-page {
 
 .study-quiz-card {
   position: relative;
+  margin-block: 0;
   min-height: 610px;
   overflow: hidden;
   padding: 1.35rem;
@@ -1383,7 +1398,7 @@ body.dark-mode .study-quiz-timer-alert {
 
 @media (max-width: 767px) {
   .study-quiz-layout {
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .study-quiz-left-rail,
@@ -1397,25 +1412,34 @@ body.dark-mode .study-quiz-timer-alert {
     padding: 1rem;
   }
 
+  /* Phones: one bar of kicker, score, and leaderboard. The headline and
+     description stay in the DOM for screen readers and search, just unseen. */
   .study-quiz-hero {
-    padding: 3.65rem 1rem 1rem;
+    gap: 0.5rem;
+    padding: 0.5rem 0.55rem 0.5rem 0.9rem;
+  }
+
+  .study-quiz-hero h1,
+  .study-quiz-hero p {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .study-quiz-kicker {
+    margin: 0;
   }
 
   .study-quiz-score-card {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .study-quiz-hero h1 {
-    padding-right: 0;
-    font-size: var(--text-2xl);
-    line-height: 1.12;
-  }
-
-  .study-quiz-hero p {
-    margin-top: 0.72rem;
-    font-size: var(--text-md);
-    line-height: 1.5;
+    gap: 0.45rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
   }
 
   .study-quiz-card {
@@ -1525,10 +1549,20 @@ body.dark-mode .study-quiz-timer-alert {
     flex: 1 1 44%;
   }
 
-  .study-quiz-card-header,
+  /* Chips wrap as a row; stacked full-width they pushed the question down. */
+  .study-quiz-card-header {
+    justify-content: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .study-quiz-card-header span {
+    padding: 0.24rem 0.45rem;
+    font-size: var(--text-xs);
+  }
+
   .study-quiz-set-meta {
-    display: grid;
-    grid-template-columns: 1fr;
+    gap: 0.25rem 0.75rem;
   }
 
   .study-quiz-leaderboard-list li,
@@ -1579,18 +1613,12 @@ body.dark-mode .study-quiz-timer-alert {
     border-radius: 10px;
   }
 
-  .study-quiz-header-actions {
-    top: 0.72rem;
-    right: 0.72rem;
-  }
-
   .study-quiz-icon-button {
     width: 38px;
     height: 38px;
   }
 
   .study-quiz-kicker {
-    margin-bottom: 0.52rem;
     font-size: var(--text-xs);
   }
 

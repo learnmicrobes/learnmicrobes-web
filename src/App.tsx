@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faSearch, faUser, faMoon, faSun, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
+import { SUPPORT_URL } from './config/support';
 import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
@@ -14,6 +15,7 @@ import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationC
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import brandMark from './assets/brand-mark-knockout.svg';
+import { subjectStainClass } from './data/subjectStains';
 import './App.css';
 
 type DashboardSearchItem = {
@@ -1235,7 +1237,7 @@ export default function App() {
                       {group.categories.map((category) => (
                         <button
                           key={category}
-                          className={isLearnCategoryActive(category) ? 'active' : ''}
+                          className={`${isLearnCategoryActive(category) ? 'active' : ''} ${subjectStainClass(category)}`.trim()}
                           onClick={() => {
                             closeMobileNavigation();
                             setIsLearnMenuOpen(false);
@@ -1243,6 +1245,7 @@ export default function App() {
                           }}
                           role="menuitem"
                         >
+                          {subjectStainClass(category) && <i className="subject-stain-drop" aria-hidden="true" />}
                           {getCategoryDisplayName(category)}
                         </button>
                       ))}
@@ -1658,6 +1661,16 @@ export default function App() {
                 <i className="fas fa-envelope"></i>
               </a>
             </div>
+            <a
+              className="sleek-footer-support"
+              href={SUPPORT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent('support_clicked', { location: 'footer', destination: 'kofi' })}
+            >
+              <i className="fas fa-heart" aria-hidden="true"></i>
+              Support Learn Microbes
+            </a>
           </div>
           <div className="sleek-footer-bottom">
             <span className="sleek-footer-legal">

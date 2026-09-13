@@ -1,4 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMugHot } from '@fortawesome/free-solid-svg-icons';
+import { SUPPORT_URL } from '../config/support';
+import { trackEvent } from '../utils/analytics';
 import './About.css';
 
 export default function About() {
@@ -60,6 +64,26 @@ export default function About() {
           </p>
         </div>
       </div>
+
+      <section className="about-support-card" aria-labelledby="about-support-title">
+        <div>
+          <div className="about-subtitle">Support the project</div>
+          <h2 id="about-support-title">Keep Learn Microbes free</h2>
+          <p>
+            Learn Microbes is free to use. Support on Ko-fi helps cover hosting, the domain, and the time it takes to write and review new cases, flashcards, and references.
+          </p>
+        </div>
+        <a
+          className="about-support-button"
+          href={SUPPORT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackEvent('support_clicked', { location: 'about', destination: 'kofi' })}
+        >
+          <FontAwesomeIcon icon={faMugHot} aria-hidden="true" />
+          Support on Ko-fi
+        </a>
+      </section>
     </div>
   );
 }

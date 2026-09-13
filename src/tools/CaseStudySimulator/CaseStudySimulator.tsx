@@ -16,6 +16,8 @@ import {
   type CaseStudy
 } from '../../data/caseStudies';
 import { trackEvent } from '../../utils/analytics';
+import { subjectStainClass } from '../../data/subjectStains';
+import SupportNote from '../../components/Support/SupportNote';
 import './CaseStudySimulator.css';
 
 const difficultyOrder: CaseDifficulty[] = ['beginner', 'intermediate', 'advanced'];
@@ -157,8 +159,18 @@ export default function CaseStudySimulator() {
             {visibleCases.map((item) => (
               <button type="button" className="case-card" key={item.id} onClick={() => startCase(item)}>
                 <span className="case-card-tags">
-                  <small>{item.area}</small>
-                  <small className={`level-${item.difficulty}`}>{difficultyLabels[item.difficulty]}</small>
+                  <small className={subjectStainClass(item.area) || undefined}>{item.area}</small>
+                  <span className="case-level">
+                    <span className="case-level-dots" aria-hidden="true">
+                      {difficultyOrder.map((level) => (
+                        <i
+                          key={level}
+                          className={difficultyOrder.indexOf(level) <= difficultyOrder.indexOf(item.difficulty) ? 'on' : ''}
+                        />
+                      ))}
+                    </span>
+                    {difficultyLabels[item.difficulty]}
+                  </span>
                 </span>
                 <strong>{item.title}</strong>
                 <span className="case-card-specimen">
@@ -221,6 +233,7 @@ export default function CaseStudySimulator() {
             <button type="button" onClick={exitCase}>Choose another case</button>
             <Link to="/practice">Back to Practice</Link>
           </div>
+          <SupportNote location="case_complete" />
         </section>
       </main>
     );
@@ -235,7 +248,12 @@ export default function CaseStudySimulator() {
         </button>
 
         <div className="case-runner-head">
-          <span className="case-label">{activeCase.area} / {difficultyLabels[activeCase.difficulty]}</span>
+          <span className="case-label">
+            {subjectStainClass(activeCase.area) && (
+              <i className={`subject-stain-drop ${subjectStainClass(activeCase.area)}`} aria-hidden="true" />
+            )}
+            {activeCase.area} / {difficultyLabels[activeCase.difficulty]}
+          </span>
           <h1 id="case-runner-title">{activeCase.title}</h1>
           <p className="case-presentation">{activeCase.presentation}</p>
           <span className="case-specimen-chip">

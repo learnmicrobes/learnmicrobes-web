@@ -324,6 +324,26 @@
   line-height: 1.25;
 }
 
+/* Subject stain on organism-group tiles (see src/data/subjectStains.ts). */
+.practice-category-card.subject-stain {
+  border-color: var(--rule);
+  border-color: color-mix(in srgb, var(--stain) 32%, transparent);
+  background: color-mix(in srgb, var(--stain) 5%, var(--surface-card));
+}
+
+.practice-category-card.subject-stain:hover,
+.practice-category-card.subject-stain:focus-visible {
+  border-color: color-mix(in srgb, var(--stain) 55%, transparent);
+  background: color-mix(in srgb, var(--stain) 9%, var(--surface-card));
+}
+
+.practice-category-card.subject-stain span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--stain);
+}
+
 .practice-mixed-link {
   display: inline-flex;
   align-items: center;

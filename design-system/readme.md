@@ -253,6 +253,57 @@ Both had page CSS fighting them everywhere. They are now scoped to
 `.bio-calculator`, where they originated. If something looks unexpectedly carded
 or bannered, an unscoped element selector is the first place to look.
 
+**Subject stains.** Teal alone made every study area look identical, which is how a
+returning student failed to find Mycology. The five organism groups now each carry
+the color of the reagent a student uses for them at the bench:
+
+| Subject | Reagent | Token | Light | Dark |
+|---|---|---|---|---|
+| Bacteriology | crystal violet (Gram stain) | `--stain-bac` | `#5d3f94` | `#c1abeb` |
+| Parasitology | Lugol's iodine (O&P wet mount) | `--stain-par` | `#87590e` | `#e3b76b` |
+| Mycology | lactophenol cotton blue | `--stain-myc` | `#2d5a9e` | `#9cc0f0` |
+| Virology | fluorescein / FITC (DFA, IFA) | `--stain-vir` | `#4d6614` | `#b8d46c` |
+| Mycobacteriology | carbol fuchsin (acid-fast) | `--stain-afb` | `#9c2f63` | `#ee9cc3` |
+
+Apply them with `subjectStainClass()` from `src/data/subjectStains.ts`, which maps
+any subject name (Learn category, quiz key, case area, atlas discipline) to a class
+exposing `--stain`. The rule that keeps it from turning into decoration:
+**stain color means which subject, teal means you can tap it.** Stains appear only as
+a drop, a colored count, a progress fill, a faint tint or a hairline — never a
+background, a heading color, or a left rail — and the text label always stays.
+Foundations, methods, safety and the analytic phases get no stain.
+
+Difficulty is shown as **three neutral dots**, not traffic-light colors: a red
+Advanced tag beside fuchsin, or a green Beginner tag beside fluorescein, reads as two
+competing signals. Every stain passes WCAG AA as text on both themes.
+
+**Lesson navigation.** A Learn topic used to open with a breadcrumb, a "Back to Learn
+Contents" button, a "Current area" panel and three stacked pager boxes — the same
+destination four ways, 326px of navigation, and the lesson itself starting below the
+first phone screen (913px on a 375×812 viewport). It is now three pieces, each placed
+where the reader needs it:
+
+- **Top: the lesson strip**, inside the article hero (no extra box). A back chevron to
+  the area, the area name as a button (with its stain drop), `n / total`, and a
+  segmented position bar — one segment per topic, falling back to a single meter
+  above 24 topics. The lesson now starts at ~440px.
+- **The topic sheet.** The area name, and "All n topics" at the bottom, open a list of
+  every topic in the area: a bottom sheet under 621px, a centred panel above. The
+  current topic is a solid `--accent-fill` row; completed topics show a check for
+  signed-in readers. It is a real modal — focus moves in, Tab is trapped, Escape and
+  the scrim close it, page scroll locks, and focus returns to the opener unless the
+  reader navigated.
+- **Bottom: one "Up next" card** after Related reading, because "next" is a decision
+  made at the end of a lesson, not the top. The whole card is the link; the solid
+  Continue bar is its visual button. On the last topic of an area it becomes "Start
+  Bacteriology" with that area's stain. Previous and "All n topics" sit under it as
+  quiet text buttons.
+
+No bar is pinned to the bottom of the viewport: it would stack on Safari's own toolbar
+on iPhone and collide with the fixed Feedback button. The hero actions shrank with it
+— "Mark complete" plus an icon-only bookmark (label in `aria-label`/`title`); guests
+are still sent to sign in when they tap either.
+
 ---
 
 ## Iconography

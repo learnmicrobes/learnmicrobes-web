@@ -60,6 +60,14 @@
     --accent-fill: #245c69;
     --accent-fill-hover: #1d4a54;
     --accent-fill-ink: #ffffff;
+
+    /* Subject stains — see src/data/subjectStains.ts for the reagent behind each.
+       Every value passes WCAG AA as text on #ffffff and #faf7f0. */
+    --stain-bac: #5d3f94; /* crystal violet */
+    --stain-par: #87590e; /* Lugol's iodine */
+    --stain-myc: #2d5a9e; /* lactophenol cotton blue */
+    --stain-vir: #4d6614; /* fluorescein */
+    --stain-afb: #9c2f63; /* carbol fuchsin */
 }
 
 body.dark-mode {
@@ -78,6 +86,34 @@ body.dark-mode {
     --accent-fill: #2c7873;
     --accent-fill-hover: #35908a;
     --accent-fill-ink: #ffffff;
+
+    /* Lifted for dark grounds; each passes WCAG AA on #1b2733 and #12161a. */
+    --stain-bac: #c1abeb;
+    --stain-par: #e3b76b;
+    --stain-myc: #9cc0f0;
+    --stain-vir: #b8d46c;
+    --stain-afb: #ee9cc3;
+}
+
+/*
+ * Subject stain hooks. subjectStainClass() adds `subject-stain` plus a variant,
+ * which exposes the right hue as --stain for the component to spend in small
+ * doses. Components that have no subject never get the class, so every
+ * var(--stain) use below sits behind a `.subject-stain` selector.
+ */
+.subject-stain--bac { --stain: var(--stain-bac); }
+.subject-stain--par { --stain: var(--stain-par); }
+.subject-stain--myc { --stain: var(--stain-myc); }
+.subject-stain--vir { --stain: var(--stain-vir); }
+.subject-stain--afb { --stain: var(--stain-afb); }
+
+.subject-stain-drop {
+    display: inline-block;
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--stain);
 }
 
 body {

@@ -1,0 +1,27 @@
+.support-note {
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--rule-strong);
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  text-align: left;
+}
+
+.support-note a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.support-note a:hover,
+.support-note a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.support-note svg {
+  font-size: 0.8em;
+}

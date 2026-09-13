@@ -392,6 +392,18 @@
   color: var(--va-ink);
 }
 
+/* Each discipline tab carries its subject stain as a drop; the active tab stays
+   teal because teal means "you can tap this". */
+.visual-discipline-tabs button.subject-stain {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.visual-discipline-tabs button.active .subject-stain-drop {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
 .bench-card-strip {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));

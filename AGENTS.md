@@ -183,6 +183,7 @@ block. A component that reads tokens is correct in both themes on the first try.
 | Lines | `--rule`, `--rule-strong` |
 | Accent text | `--accent`, `--accent-strong`, `--accent-wash` |
 | Accent fills | `--accent-fill`, `--accent-fill-hover`, `--accent-fill-ink` |
+| Subject stains | `--stain-bac`, `--stain-par`, `--stain-myc`, `--stain-vir`, `--stain-afb` — apply with `subjectStainClass()` from `src/data/subjectStains.ts`. Stain means *which subject*; teal means *tappable*. Small doses only, never backgrounds or left rails. |
 
 Two traps:
 
