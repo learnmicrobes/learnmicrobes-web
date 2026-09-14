@@ -328,7 +328,6 @@
   width: 100%;
   margin-top: 1rem;
   padding: 0.78rem 0.85rem;
-  border: 1px solid var(--rule);
   border-radius: 8px;
   background: var(--surface-sunken);
 }
@@ -388,10 +387,6 @@
   grid-template-columns: minmax(8rem, 0.62fr) minmax(18rem, 1.38fr);
   gap: 0.65rem;
   align-items: center;
-  padding: 0.75rem;
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  background: var(--surface-card);
 }
 
 .test-inline-visual .mini-atlas-copy span {
@@ -493,15 +488,6 @@
   line-height: 1.25;
 }
 
-.content-section h2::before {
-  content: '';
-  flex: 0 0 auto;
-  width: 4px;
-  height: 1em;
-  border-radius: 2px;
-  background: var(--accent-warm);
-}
-
 .content-section p {
   margin: 0;
   color: var(--ink-muted);
@@ -519,11 +505,11 @@
   gap: 0.7rem;
 }
 
+/* Inside the detail panel a highlight is a tint, not a second box. */
 .qc-box {
   display: grid;
   gap: 0.2rem;
   padding: 0.85rem 0.95rem;
-  border: 1px solid var(--rule);
   border-radius: 8px;
 }
 
@@ -541,7 +527,6 @@
 }
 
 .qc-box.positive {
-  border-color: rgba(79, 143, 103, 0.28);
   background: rgba(79, 143, 103, 0.08);
 }
 
@@ -550,7 +535,6 @@
 }
 
 .qc-box.negative {
-  border-color: rgba(182, 75, 54, 0.26);
   background: rgba(182, 75, 54, 0.07);
 }
 
@@ -560,7 +544,6 @@
 
 .expected-results {
   padding: 1rem 1.1rem;
-  border: 1px solid rgba(36, 92, 105, 0.28);
   border-radius: 8px;
   background: var(--surface-sunken);
 }
@@ -647,10 +630,6 @@ body.dark-mode .biochem-legend-chip.nogrowth { color: #f2a291; }
 
 body.dark-mode .qc-box.positive span { color: #8fd6a8; }
 body.dark-mode .qc-box.negative span { color: #f2a291; }
-
-body.dark-mode .expected-results {
-  border-color: rgba(94, 234, 212, 0.24);
-}
 
 /* Mobile */
 @media (max-width: 720px) {

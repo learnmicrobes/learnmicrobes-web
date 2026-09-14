@@ -152,8 +152,8 @@
 }
 
 .syndrome-path-options button.active {
-  border-color: rgba(36, 92, 105, 0.42);
-  box-shadow: inset 4px 0 0 var(--primary-color);
+  border-color: var(--primary-color);
+  background: rgba(36, 92, 105, 0.06);
 }
 
 .syndrome-path-result {

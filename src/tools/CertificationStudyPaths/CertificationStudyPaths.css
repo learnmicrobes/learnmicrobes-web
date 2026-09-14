@@ -41,7 +41,6 @@ body.dark-mode .cert-path-page {
 
 .cert-path-header,
 .cert-path-how,
-.cert-area-section,
 .cert-source-note,
 .cert-exam-card,
 .cert-area-card,
@@ -378,7 +377,6 @@ body.dark-mode .cert-path-sticky-progress {
   min-height: 42px;
   display: flex;
   align-items: center;
-  border: 1px solid var(--cert-border);
   border-radius: 5px;
   background: rgba(36, 92, 105, 0.05);
   color: var(--cert-primary);
@@ -386,9 +384,9 @@ body.dark-mode .cert-path-sticky-progress {
   font-weight: 600;
 }
 
+/* The area cards carry the boundary, so the section around them is space only. */
 .cert-area-section {
-  padding: 1.5rem;
-  border-radius: 6px;
+  padding: 1.5rem 0;
 }
 
 .cert-area-heading h2,

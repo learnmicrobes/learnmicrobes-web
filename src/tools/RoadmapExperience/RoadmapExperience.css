@@ -964,7 +964,6 @@ body.dark-mode .roadmap-guidance-panel {
     linear-gradient(135deg, rgba(79, 209, 197, 0.08), rgba(30, 37, 50, 0) 52%),
     #1e2532;
   border-color: rgba(79, 209, 197, 0.2);
-  border-left-color: var(--roadmap-accent);
 }
 
 body.dark-mode .roadmap-shortlist-panel {
@@ -1092,7 +1091,6 @@ body.dark-mode .roadmap-experience .endpoint-summary-card p {
 body.dark-mode .roadmap-experience .endpoint-safety-panel {
   background: rgba(184, 50, 50, 0.12);
   border-color: rgba(184, 50, 50, 0.5);
-  border-left-color: #ff8a8a;
 }
 
 body.dark-mode .roadmap-experience .endpoint-safety-panel h4 {
@@ -1102,7 +1100,6 @@ body.dark-mode .roadmap-experience .endpoint-safety-panel h4 {
 body.dark-mode .roadmap-container.roadmap-experience > .alpha-validation-cta {
   background: #1e2532;
   border-color: #2d3748;
-  border-left-color: #4fd1c5;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
 

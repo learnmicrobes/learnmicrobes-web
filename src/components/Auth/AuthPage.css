@@ -357,10 +357,8 @@ body.dark-mode .auth-remember-me {
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  padding: 0.85rem;
-  border: 1px solid rgba(36, 92, 105, 0.1);
-  border-radius: 6px;
-  background: #fbfaf7;
+  padding: 0.85rem 0 0;
+  border-top: 1px solid rgba(36, 92, 105, 0.1);
   color: var(--muted-color);
   font-size: var(--text-base);
   font-weight: 500;
@@ -444,8 +442,7 @@ body.dark-mode .auth-secondary-btn {
 }
 
 body.dark-mode .auth-mode-footer {
-  background: #1b2733;
-  border-top-color: rgba(222, 232, 222, 0.1);
+  border-color: rgba(222, 232, 222, 0.1);
   color: #cbd5df;
 }
 

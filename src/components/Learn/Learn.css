@@ -408,25 +408,21 @@
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 0.75rem;
-  padding: 1.05rem 1rem;
-  border: 1px solid rgba(36, 92, 105, 0.16);
-  border-radius: 6px;
-  background: #ffffff;
+  margin-bottom: 0;
+  padding: 0;
   cursor: pointer;
   transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
 }
 
-.learn-category-heading:hover {
-  border-color: rgba(36, 92, 105, 0.3);
-  background: #fbfaf7;
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.04);
+/* The heading is the category panel's own header, not a second box inside it. */
+.learn-category-heading:hover .learn-category-toggle {
+  border-color: rgba(36, 92, 105, 0.34);
 }
 
 .learn-category.open .learn-category-heading {
-  border-color: rgba(36, 92, 105, 0.32);
-  background: linear-gradient(180deg, #ffffff, #fbfaf7);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.055);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(36, 92, 105, 0.12);
 }
 
 .learn-category-heading:focus-visible {
@@ -1294,18 +1290,12 @@
 .learn-beginner-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-  gap: 0.65rem;
+  gap: 1.5rem;
 }
 
+/* The accordions sit directly in the guide panel; no box inside the box. */
 .learn-beginner-panel {
-  padding: 0.85rem;
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 5px;
-  background: #ffffff;
-}
-
-.learn-beginner-panel[open] {
-  background: #fffefb;
+  padding: 0;
 }
 
 .learn-beginner-panel h3 {
@@ -1370,7 +1360,6 @@
   align-items: center;
   min-height: 2.7rem;
   padding: 0.48rem 0.58rem;
-  border: 1px solid rgba(36, 92, 105, 0.14);
   border-radius: 5px;
   color: var(--dark-color);
   font-size: var(--text-base);
@@ -1380,7 +1369,6 @@
 }
 
 .learn-beginner-steps a:hover {
-  border-color: rgba(36, 92, 105, 0.3);
   background: rgba(36, 92, 105, 0.05);
 }
 
@@ -1399,18 +1387,20 @@
 
 .learn-self-checks {
   display: grid;
-  gap: 0.4rem;
 }
 
+/* Rows divided by hairlines inside the accordion panel, not boxes inside a box. */
 .learn-self-checks details {
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 5px;
-  background: #fbfaf7;
+  border-top: 1px solid rgba(36, 92, 105, 0.14);
+}
+
+.learn-self-checks details:first-child {
+  border-top: 0;
 }
 
 .learn-self-checks summary {
   cursor: pointer;
-  padding: 0.62rem 0.68rem;
+  padding: 0.62rem 0;
   color: var(--dark-color);
   font-size: var(--text-base);
   font-weight: 600;
@@ -1419,7 +1409,7 @@
 
 .learn-self-checks p {
   margin: 0;
-  padding: 0 0.68rem 0.72rem;
+  padding: 0 0 0.72rem;
   color: var(--muted-color);
   font-size: var(--text-base);
   line-height: 1.5;
@@ -1453,7 +1443,7 @@
 .learn-topic-nav a {
   display: block;
   padding: 0.42rem 0.5rem;
-  border-left: 3px solid transparent;
+  border-radius: 5px;
   color: var(--muted-color);
   font-size: var(--text-base);
   font-weight: 500;
@@ -1462,7 +1452,6 @@
 }
 
 .learn-topic-nav a:hover {
-  border-left-color: var(--primary-color);
   background: rgba(36, 92, 105, 0.06);
   color: var(--primary-strong);
 }
@@ -1926,9 +1915,6 @@
   gap: 0.65rem;
   align-items: center;
   padding: 0.75rem;
-  border: 1px solid rgba(36, 92, 105, 0.16);
-  border-radius: 6px;
-  background: #fffdf8;
 }
 
 .mini-atlas-stage {
@@ -2187,16 +2173,11 @@ body.dark-mode .learn-book-map,
 body.dark-mode .learn-category,
 body.dark-mode .learn-not-found,
 body.dark-mode .learn-beginner-guide,
-body.dark-mode .learn-beginner-panel,
 body.dark-mode .learn-topic-card,
 body.dark-mode .learn-topic-nav,
 body.dark-mode .learn-note-section {
   background: #22313f;
   border-color: rgba(222, 232, 222, 0.14);
-}
-
-body.dark-mode .learn-beginner-panel[open] {
-  background: #22313f;
 }
 
 body.dark-mode .learn-hero h1,
@@ -2237,12 +2218,14 @@ body.dark-mode .learn-path-card,
 body.dark-mode .learn-discovery-panel,
 body.dark-mode .learn-search-box input,
 body.dark-mode .learn-clear-filters,
-body.dark-mode .learn-category-heading,
 body.dark-mode .learn-category-toggle,
 body.dark-mode .learn-bench-flow,
-body.dark-mode .learn-self-checks details,
 body.dark-mode .learn-book-map-grid button {
   background: #1b2733;
+  border-color: rgba(222, 232, 222, 0.14);
+}
+
+body.dark-mode .learn-self-checks details {
   border-color: rgba(222, 232, 222, 0.14);
 }
 
@@ -2253,12 +2236,7 @@ body.dark-mode .learn-category-toggle {
 }
 
 body.dark-mode .learn-category.open .learn-category-heading {
-  background: #243442;
-  border-color: rgba(94, 234, 212, 0.24);
-}
-
-body.dark-mode .learn-category-heading:hover {
-  background: #263746;
+  border-color: rgba(222, 232, 222, 0.14);
 }
 
 body.dark-mode .learn-filter-chips button {
@@ -2339,7 +2317,6 @@ body.dark-mode .learn-bookmark-status.error {
   color: #ffd2c7 !important;
 }
 
-body.dark-mode .mini-atlas-visual,
 body.dark-mode .mini-atlas-stage.lia-stage,
 body.dark-mode .learn-taxonomy-map-stage,
 body.dark-mode .learn-bacterial-map-stage,
@@ -2520,7 +2497,6 @@ body.dark-mode .mini-atlas-copy p {
 body.dark-mode .learn-mistakes {
   background: #281f1e;
   border-color: rgba(255, 147, 122, 0.24);
-  border-left-color: #f08a73;
 }
 
 body.dark-mode .learn-mistakes h2 {
@@ -2595,6 +2571,11 @@ body.dark-mode .learn-not-found button {
     grid-template-columns: 1fr;
   }
 
+  .learn-beginner-grid > .learn-beginner-panel + .learn-beginner-panel {
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(36, 92, 105, 0.14);
+  }
+
   .learn-topic-nav {
     position: static;
     max-height: none;
@@ -2612,7 +2593,6 @@ body.dark-mode .learn-not-found button {
   .learn-topic-nav a {
     flex: 0 0 auto;
     scroll-snap-align: start;
-    border-left: 0;
     border-bottom: 3px solid transparent;
     border-radius: 5px 5px 0 0;
     background: rgba(36, 92, 105, 0.05);
@@ -2620,7 +2600,6 @@ body.dark-mode .learn-not-found button {
   }
 
   .learn-topic-nav a:hover {
-    border-left-color: transparent;
     border-bottom-color: var(--primary-color);
   }
 

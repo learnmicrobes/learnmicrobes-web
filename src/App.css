@@ -2502,7 +2502,6 @@ body.dark-mode .stat-number {
 body.dark-mode .tool-card {
   background: #1e2532;
   border-color: #2d3748;
-  border-left-color: var(--tool-accent);
   box-shadow: 0 8px 16px rgba(0,0,0,0.24);
 }
 
@@ -2839,11 +2838,11 @@ body.dark-mode .bio-calculator .header-content {
   background: transparent;
 }
 body.dark-mode .bio-calculator fieldset {
-  background: #232934;
+  background: transparent;
   border-color: #2d3748;
 }
 body.dark-mode .bio-calculator legend {
-  background: #232934;
+  background: transparent;
   color: #e2e8f0;
   border-color: #2d3748;
 }

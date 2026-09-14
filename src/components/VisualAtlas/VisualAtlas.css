@@ -155,7 +155,6 @@
   max-width: 760px;
   margin-top: 0.85rem;
   padding: 0.78rem 0.85rem;
-  border: 1px solid var(--va-border);
   border-radius: var(--va-radius);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(251, 250, 247, 0.94)),
@@ -631,8 +630,6 @@
   max-width: 760px;
   margin-bottom: 0.9rem;
   padding: 0.7rem 0.8rem;
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border: 1px solid var(--primary-color);
   border-radius: 6px;
   background: #fbfaf7;
 }
@@ -728,9 +725,8 @@
   display: grid;
   gap: 0.16rem;
   padding: 0.62rem 0.7rem;
-  border: 1px solid rgba(36, 92, 105, 0.12);
   border-radius: 6px;
-  background: #ffffff;
+  background: #fbfaf7;
 }
 
 .visual-result-anchor span {
@@ -1109,7 +1105,6 @@
 
 .visual-remember {
   padding: 1rem;
-  border: 1px solid rgba(219, 151, 41, 0.32);
   border-radius: 7px;
   background: #fff8e8;
 }
@@ -1155,7 +1150,6 @@ body.dark-mode .visual-result-anchor {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
     var(--va-card);
-  border-color: var(--va-border);
 }
 
 body.dark-mode .visual-atlas-hero h1,
@@ -1237,7 +1231,6 @@ body.dark-mode .visual-hero-actions .visual-bookmark-toggle.saved {
 }
 
 body.dark-mode .visual-next-step {
-  border-color: rgba(94, 234, 212, 0.16);
   background:
     linear-gradient(180deg, rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.78)),
     #17212c;
@@ -1551,12 +1544,10 @@ body.dark-mode .visual-table tbody tr:nth-child(even) td {
 
 body.dark-mode .visual-callout {
   background: rgba(30, 41, 59, 0.72);
-  border-left-color: #5eead4;
 }
 
 body.dark-mode .visual-remember {
   background: rgba(47, 42, 28, 0.72);
-  border-color: rgba(229, 199, 118, 0.26);
 }
 
 body.dark-mode .visual-remember strong {

@@ -105,12 +105,13 @@
   gap: 1rem;
 }
 
+/* Fieldsets group inputs inside the section panel without drawing a second box. */
 .bio-calculator fieldset {
-  border: 1px solid rgba(36, 92, 105, 0.14);
-  border-radius: 6px;
-  padding: 0.72rem;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   margin: 0;
-  background: #fbfaf7;
+  background: transparent;
   min-width: 0;
 }
 
@@ -475,12 +476,14 @@
   overflow-wrap: anywhere;
 }
 
+/* The result lives inside the section panel, so a hairline sets it off instead of a box. */
 .result-container {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
-  border: 1px solid rgba(36, 92, 105, 0.14);
+  background: transparent;
+  border-radius: 0;
+  padding: 1rem 0 0;
+  box-shadow: none;
+  border: 0;
+  border-top: 1px solid rgba(36, 92, 105, 0.14);
   font-size: var(--text-md);
   line-height: 1.6;
   min-width: 0;
