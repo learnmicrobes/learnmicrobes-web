@@ -93,7 +93,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It acts as an anticoagulant and helps reduce some inhibitory effects that can interfere with organism recovery.',
     explanation: 'SPS is used in blood culture collection because it prevents clotting and can counter some antimicrobial or host inhibitory effects. It does not replace proper collection technique or identify the organism.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'preanalytic-005-antibiotic-timing',
@@ -147,7 +147,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Include a validated Legionella medium such as BCYE-based media in the culture setup.',
     explanation: 'Legionella recovery requires specialized media and workflow. Routine respiratory plates alone may not answer the clinical question.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'preanalytic-008-stool-selective-media',
@@ -165,7 +165,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The suspected organism and exposure should guide whether special selective media or incubation conditions are needed.',
     explanation: 'Stool culture is not one universal setup. Organisms such as Vibrio, Campylobacter, Yersinia, and routine enteric pathogens may require different media or atmospheres depending on the request and local protocol.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'preanalytic-009-mixed-culture-subculture',
@@ -183,7 +183,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Subculture a representative colony to obtain a pure isolate before interpreting identification reactions.',
     explanation: 'Identification reactions require a pure isolate. Mixed inocula can create impossible patterns and misleading IDs, so colony selection and purity are core preanalytic safeguards.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'preanalytic-010-afb-smear-principle',
@@ -345,7 +345,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nutritionally variant streptococci such as Abiotrophia or Granulicatella.',
     explanation: 'Fastidious Gram-positive cocci associated with endocarditis can require special media or pyridoxal support. They should not be forced into routine streptococcal assumptions.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-004-csf-neonatal-meningitis',
@@ -363,7 +363,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Group B Streptococcus.',
     explanation: 'Group B Streptococcus is a classic neonatal meningitis and sepsis pathogen. The age, sterile-site source, beta hemolysis, and Gram-positive cocci in chains support that branch.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-005-csf-pneumococcus-branch',
@@ -381,7 +381,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Optochin susceptibility or bile solubility using validated methods.',
     explanation: 'Alpha-hemolytic diplococci from CSF should raise Streptococcus pneumoniae concern. Optochin and bile solubility are classic branch tests when interpreted with source and morphology.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-006-lower-respiratory-haemophilus',
@@ -399,7 +399,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Haemophilus species.',
     explanation: 'Haemophilus-like organisms are small pleomorphic Gram-negative coccobacilli that often require X and/or V factors and grow better on chocolate agar than routine blood agar.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-007-legionella-diagnostic-logic',
@@ -417,7 +417,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use Legionella-specific testing such as BCYE culture setup and/or validated antigen or molecular methods as appropriate.',
     explanation: 'Legionella requires targeted diagnostic thinking. Routine culture can miss it, so BCYE-based culture and nonculture tests may be needed depending on the clinical question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-008-campylobacter-growth',
@@ -435,7 +435,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Microaerophilic incubation with appropriate selective media and temperature conditions.',
     explanation: 'Campylobacter-style recovery depends on microaerophilic conditions and appropriate media/temperature. It is a good example of matching setup to the suspected organism.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-009-shigella-screening',
@@ -453,7 +453,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Correlate biochemical screening with approved serologic or identification methods and local reporting policy.',
     explanation: 'Shigella workups require careful biochemical screening and confirmatory identification/serologic logic. Non-lactose fermentation alone is not enough.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-010-yersinia-cold-enrichment',
@@ -489,7 +489,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pseudomonas aeruginosa.',
     explanation: 'Pseudomonas aeruginosa classically connects oxidase positivity, nonfermenting Gram-negative rod morphology, pigment, and characteristic odor in the right culture context.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'published'
+    status: 'draft'
   },
   {
     id: 'bacteriology-012-bite-wound-pasteurella',
@@ -543,7 +543,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use validated enrichment and subculture methods because screening aims to recover colonization that may be present at low levels.',
     explanation: 'GBS screening is a colonization-detection workflow. Enrichment improves recovery and supports prevention decisions in pregnancy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-015-gonorrhea-naat',
@@ -597,7 +597,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Proteus, Morganella, or Providencia-like organisms.',
     explanation: 'PAD positivity is a high-yield branch point for the Proteeae group. Urease, motility, indole, ornithine, and H2S patterns then help separate members.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-018-staph-saprophyticus-novobiocin',
@@ -705,7 +705,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fastidious oral flora can cause endocarditis and may require careful incubation and identification workflow.',
     explanation: 'HACEK organisms connect oral flora, slow or fastidious growth, and endocarditis. The bench lesson is to match growth characteristics and clinical source before forcing routine enteric logic.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-024-neisseria-carbohydrates',
@@ -723,7 +723,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use validated identification methods that may include carbohydrate utilization patterns and source context.',
     explanation: 'Neisseria identification depends on approved methods and source context. Oxidase positivity is an early clue, not a complete species identification.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-025-moraxella-hockey-puck',
@@ -795,7 +795,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Differentiation among selected Clostridium-like anaerobic Gram-positive rods.',
     explanation: 'Anaerobic Gram-positive rod identification can use spore status, aerotolerance, lecithinase, lipase, reverse CAMP, and colony features in an organism-appropriate workflow.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-029-nonfermenter-screen',
@@ -813,7 +813,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Oxidase reaction plus oxidative-fermentative glucose or equivalent metabolism testing.',
     explanation: 'Nonfermenter logic often begins with oxidase, glucose utilization, pigment, odor, motility, growth temperature, and source. MacConkey growth alone is not enough.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-030-burkholderia-stenotrophomonas',
@@ -831,7 +831,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use a validated nonfermenter identification panel or MALDI/biochemical workflow and interpret with source and safety context.',
     explanation: 'Nonfermenters can be clinically important and sometimes safety-relevant. They require validated ID methods, not one isolated reaction.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-031-qc-oxidase',
@@ -885,7 +885,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'High-level aminoglycoside resistance testing because resistance can eliminate expected synergy.',
     explanation: 'Enterococcal endocarditis therapy may rely on synergistic combinations. High-level aminoglycoside resistance can defeat that synergy and must be detected by appropriate methods.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-034-meca-detection',
@@ -903,7 +903,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use an approved method that detects mecA-mediated resistance, such as cefoxitin/oxacillin-based or molecular approaches depending on the lab.',
     explanation: 'Methicillin resistance in S. aureus is tied to mecA/mecC-mediated altered penicillin-binding protein activity. Detection must follow current approved methods and breakpoints.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-035-d-zone-test',
@@ -921,7 +921,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'D-zone test using erythromycin and clindamycin disks placed at the correct distance.',
     explanation: 'The D-zone test detects inducible clindamycin resistance. A positive result changes how clindamycin is reported because apparent susceptibility may be misleading.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-036-esbl-confirmation',
@@ -939,7 +939,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Compare cephalosporin activity with and without a beta-lactamase inhibitor such as clavulanate using an approved method.',
     explanation: 'ESBL confirmation historically relies on demonstrating inhibitor effect with clavulanate or equivalent approved algorithms. Current reporting may depend on instrument, organism, and standards.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-037-chlamydia-obligate-intracellular',
@@ -1029,7 +1029,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Chocolate agar supports fastidious organisms broadly, while modified Thayer-Martin is selective for pathogenic Neisseria from mixed sites.',
     explanation: 'Chocolate agar provides growth factors for fastidious organisms such as Haemophilus and Neisseria. Modified Thayer-Martin adds selective agents to help recover pathogenic Neisseria from specimens with competing flora.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-042-ccfa-cdiff-recovery',
@@ -1047,7 +1047,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They reduce competing stool flora so C. difficile has a better chance of being recovered.',
     explanation: 'Selective C. difficile media are designed to suppress competing stool organisms. Recovery still depends on the correct specimen, atmosphere, incubation conditions, and the lab\'s identification or toxin workflow.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-043-xld-h2s-enteric-interpretation',
@@ -1065,7 +1065,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is a screening clue that should prompt further workup for organisms such as Salmonella.',
     explanation: 'H2S production on enteric media is a useful screening clue, especially for Salmonella-like colonies. It is not a final identification by itself and must be interpreted with the full bench workflow.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-044-cin-yersinia-screen',
@@ -1083,7 +1083,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cefsulodin-irgasan-novobiocin agar.',
     explanation: 'CIN agar is a selective medium used when Yersinia recovery is specifically needed. Targeted media matter because routine stool culture conditions may not recover every requested pathogen equally well.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-045-sorbitol-macconkey-o157-screen',
@@ -1119,7 +1119,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It pushes the workup away from typical Enterobacterales and toward organisms such as Vibrio, Aeromonas, or Plesiomonas.',
     explanation: 'Most Enterobacterales are oxidase negative. An oxidase-positive gram-negative rod changes the branch and should trigger a different identification pathway.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-047-nitrocefin-beta-lactamase',
@@ -1137,7 +1137,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism produced an enzyme that hydrolyzed the beta-lactam ring of the substrate.',
     explanation: 'Chromogenic beta-lactamase tests detect enzymatic hydrolysis of a beta-lactam substrate. The result supports antimicrobial interpretation but must be used according to organism-specific guidance.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-048-mic-breakpoint-meaning',
@@ -1155,7 +1155,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is an interpretive threshold used to relate an MIC or zone result to categories such as susceptible, intermediate, or resistant.',
     explanation: 'Breakpoints connect standardized test results to interpretive categories. They are not just raw numbers; they depend on organism, drug, method, and current interpretive standards.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-049-kirby-bauer-zone-reading',
@@ -1173,7 +1173,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The diameter of the inhibition zone using the method-specific reading rules.',
     explanation: 'Disk diffusion interpretation depends on standardized zone diameter measurement and method-specific rules. Reading the plate consistently is essential before comparing the result with breakpoints.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-050-enterobacterales-core-screen',
@@ -1209,7 +1209,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'ONPG detects beta-galactosidase activity even when visible lactose fermentation is delayed.',
     explanation: 'ONPG helps identify organisms that have beta-galactosidase but may not show prompt lactose fermentation on routine media. It is a useful support test, not a complete identification by itself.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-052-mr-vp-fermentation-split',
@@ -1263,7 +1263,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The pattern screens carbohydrate use, gas production, and possible hydrogen sulfide production.',
     explanation: 'TSI and KIA reactions are pattern-recognition tools. They help guide the next branch by showing acid production in different oxygen zones, gas, and H2S clues.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-055-kia-k-a-glucose-only',
@@ -1281,7 +1281,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism fermented glucose only, with no sustained lactose or sucrose fermentation on the slant.',
     explanation: 'An alkaline slant with an acid butt is a classic glucose-only fermentation pattern. It narrows the branch but does not identify the organism alone.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-056-h2s-enteric-clue',
@@ -1317,7 +1317,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Salmonella commonly keeps an alkaline lysine pattern, while Proteus-like organisms may show lysine deamination.',
     explanation: 'LIA helps sort non-lactose fermenting, H2S-producing enterics by showing lysine decarboxylation or deamination patterns. It supports the branch before final identification.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-058-phenylalanine-deaminase-pmp',
@@ -1389,7 +1389,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Klebsiella pneumoniae.',
     explanation: 'Klebsiella pneumoniae commonly appears as a mucoid lactose fermenter and is nonmotile. Indole negativity helps separate it from Klebsiella oxytoca in many teaching workflows.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-062-klebsiella-oxytoca-indole',
@@ -1407,7 +1407,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Klebsiella oxytoca is typically indole positive, while Klebsiella pneumoniae is typically indole negative.',
     explanation: 'Indole is a useful bench separator for common Klebsiella species. The final call still depends on the full biochemical or instrument-supported identification workflow.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-063-enterobacter-cloacae-motility',
@@ -1425,7 +1425,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Motility.',
     explanation: 'Enterobacter cloacae complex is generally motile, while Klebsiella pneumoniae is nonmotile. Motility can be a helpful branch clue when other reactions overlap.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-064-citrobacter-salmonella-mimic',
@@ -1443,7 +1443,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It may produce H2S and resemble Salmonella-like colonies before the full workup is complete.',
     explanation: 'Citrobacter freundii can share some screening features with Salmonella-like organisms. That is why biochemical pattern, serologic workflow, and lab SOP matter before final interpretation.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-065-shigella-classic-profile',
@@ -1461,7 +1461,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Shigella species.',
     explanation: 'Classic Shigella screening patterns include nonmotility, lack of H2S, and absent or delayed lactose fermentation. Final identification requires the full biochemical and serologic workflow.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-066-shigella-sonnei-late-lactose',
@@ -1479,7 +1479,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Delayed lactose activity does not automatically rule out Shigella, especially Shigella sonnei.',
     explanation: 'Some Shigella patterns are not perfectly textbook negative on every lactose-related test. A learner should use the full organism pattern instead of excluding Shigella from one delayed reaction.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-067-salmonella-serotyping-workflow',
@@ -1497,7 +1497,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use the laboratory confirmation pathway, which may include serologic grouping or referral according to SOP.',
     explanation: 'A Salmonella-like pattern should trigger confirmation steps. H2S and non-lactose fermentation are useful clues, but they are not enough for a final public-health-relevant organism call.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-068-salmonella-antigen-logic',
@@ -1515,7 +1515,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Somatic cell-wall antigen and flagellar antigen patterns used for grouping or serotype workup.',
     explanation: 'Salmonella serology uses antigen patterns to support grouping and serotype-level workup. It sits after the organism has already fit the appropriate biochemical branch.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-069-yersinia-temperature-motility',
@@ -1533,7 +1533,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Motility may be seen at room temperature but not at typical body-temperature incubation.',
     explanation: 'Yersinia enterocolitica has temperature-dependent motility that can help the workup when the organism is suspected. The result should be interpreted with colony pattern and biochemical reactions.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-070-serratia-pigment-dnase',
@@ -1551,7 +1551,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Serratia marcescens.',
     explanation: 'Serratia marcescens can produce a red pigment under some conditions and is often DNase positive. Pigment is a clue, but final identification still depends on the complete workup.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-071-proteus-species-indole',
@@ -1569,7 +1569,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Proteus vulgaris is commonly indole positive, while Proteus mirabilis is commonly indole negative.',
     explanation: 'Indole is a useful separator within Proteus-like isolates. The bench still checks the whole pattern because single-test shortcuts can mislead.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-072-morganella-providencia-branch',
@@ -1587,7 +1587,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Morganella or Providencia.',
     explanation: 'Phenylalanine deaminase positivity is not limited to Proteus. Morganella and Providencia belong in the same broad branch and need additional tests for separation.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-073-esbl-enterobacterales-concept',
@@ -1605,7 +1605,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism may produce a beta-lactamase that affects expanded-spectrum beta-lactam interpretation and requires lab-specific confirmation or reporting rules.',
     explanation: 'ESBL is a resistance-mechanism concept, not an organism name. Learners should connect the flag to the lab\'s AST algorithm and reporting standards rather than guessing from colony appearance.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-074-ampc-enterobacterales-caution',
@@ -1623,7 +1623,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some members can have inducible AmpC-type beta-lactamase behavior, so species context and lab reporting rules matter.',
     explanation: 'Certain Enterobacterales have resistance mechanisms that make AST interpretation more than a simple species-name lookup. The safe bench habit is to follow current lab rules and organism-specific AST guidance.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-075-nonfermenter-core-branch',
@@ -1659,7 +1659,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism uses glucose oxidatively rather than fermentatively.',
     explanation: 'Oxidative organisms need oxygen to produce acid from carbohydrate use, so the open tube changes first. This helps separate nonfermenters from true fermenters.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-077-tsi-kia-nonfermenter-pattern',
@@ -1677,7 +1677,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It supports considering a nonfermenter branch when combined with colony appearance and other screening tests.',
     explanation: 'Nonfermenters may show minimal carbohydrate fermentation on TSI or KIA. This is a branch clue, not a final identification.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-078-oxidase-nonfermenter-caution',
@@ -1695,7 +1695,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Many are oxidase positive, but important nonfermenters such as Acinetobacter and Stenotrophomonas are oxidase negative.',
     explanation: 'Oxidase is helpful, but it is not a one-test answer. Nonfermenter identification depends on a pattern that includes oxidase, motility, pigment, growth conditions, and biochemical reactions.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-079-acinetobacter-coccobacillus-branch',
@@ -1713,7 +1713,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Acinetobacter species.',
     explanation: 'Acinetobacter often appears as gram-negative coccobacilli, is oxidase negative, and is nonmotile. Those early clues help keep it separate from oxidase-positive nonfermenters.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-080-pseudomonas-aeruginosa-pigment',
@@ -1731,7 +1731,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pseudomonas aeruginosa.',
     explanation: 'Pseudomonas aeruginosa is a classic oxidase-positive nonfermenter associated with blue-green pigment production. The pigment is a strong clue, but the full workup still matters.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-081-pseudomonas-aeruginosa-forty-two',
@@ -1749,7 +1749,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Growth at 42C supports Pseudomonas aeruginosa when the rest of the pattern fits.',
     explanation: 'Growth at 42C is a useful support clue for P. aeruginosa. It should be read with oxidase, pigment, nitrate, colony morphology, and the lab\'s identification system.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-082-cetrimide-pseudomonas-aeruginosa',
@@ -1767,7 +1767,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It inhibits many competing organisms and can enhance pigment expression by P. aeruginosa.',
     explanation: 'Cetrimide agar is useful as a selective medium for P. aeruginosa. It supports recovery and pigment-based recognition when interpreted in the full bench workflow.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-083-pseudomonas-cf-mucoid-alginate',
@@ -1785,7 +1785,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Alginate production that supports a biofilm-like growth pattern.',
     explanation: 'Mucoid P. aeruginosa is associated with alginate production, especially in chronic airway settings. For learners, the bench clue is colony texture plus organism pattern, not diagnosis from morphology alone.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-084-pseudomonas-fluorescens-clue',
@@ -1803,7 +1803,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Consider a fluorescent Pseudomonas species and continue the species-level workup.',
     explanation: 'Fluorescent pigment can occur in more than one Pseudomonas species. It is useful for branching, but species identification needs the complete reaction pattern.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-085-pseudomonas-stutzeri-wrinkled',
@@ -1821,7 +1821,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pseudomonas stutzeri.',
     explanation: 'Pseudomonas stutzeri may show dry or wrinkled colony morphology. Colony texture can help guide the workup when paired with oxidase, nitrate, motility, and other reactions.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-086-stenotrophomonas-maltophilia-pattern',
@@ -1857,7 +1857,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It has a different biochemical pattern and important antimicrobial susceptibility interpretation considerations.',
     explanation: 'Stenotrophomonas is a distinct nonfermenter with its own identification and AST considerations. The bench should follow organism-specific rules instead of assuming it behaves like P. aeruginosa.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-088-burkholderia-cepacia-cf',
@@ -1875,7 +1875,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use the laboratory\'s selective media or targeted workflow because routine plates may not be enough.',
     explanation: 'Burkholderia cepacia complex can require targeted recovery and careful identification, especially in cystic fibrosis respiratory workflows. The safest habit is to follow the lab\'s specific culture protocol.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-089-burkholderia-pseudomallei-safety',
@@ -1893,7 +1893,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some Burkholderia species are significant laboratory safety concerns and should be handled according to the lab\'s escalation protocol.',
     explanation: 'Certain Burkholderia species, including B. pseudomallei, require careful laboratory handling. Bench learners should know when an unusual nonfermenter pattern needs escalation instead of extra manipulation.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-090-burkholderia-mallei-nonmotile',
@@ -1911,7 +1911,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nonmotility.',
     explanation: 'Burkholderia mallei is classically nonmotile, while B. pseudomallei is motile. This is an advanced differentiation clue and should be interpreted within safety-aware laboratory protocols.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-091-chryseobacterium-yellow-indole',
@@ -1929,7 +1929,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Chryseobacterium species.',
     explanation: 'Yellow pigment with oxidase and indole positivity can point toward Chryseobacterium-like organisms. This is a pattern-recognition clue, not a one-test final identification.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-092-motility-acinetobacter-separator',
@@ -1965,7 +1965,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nitrate was still present, so the organism did not reduce nitrate.',
     explanation: 'Zinc reduces remaining nitrate to nitrite, causing red color in a true negative nitrate test. If no color appears even after zinc, nitrate may have been reduced beyond nitrite.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-094-macconkey-nonfermenter-context',
@@ -2001,7 +2001,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Achromobacter species.',
     explanation: 'Achromobacter species can appear in chronic respiratory culture workflows and may overlap with other nonfermenter screening patterns. The bench should follow the complete ID workflow rather than forcing every oxidase-positive nonfermenter into P. aeruginosa.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-096-nonfermenter-water-environment',
@@ -2019,7 +2019,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Many are environmental opportunists that can persist in moist settings and become important in the right specimen context.',
     explanation: 'Nonfermenters often live in environmental or moist reservoirs. Their significance depends on source, quantity, patient context, culture purity, and lab workup rules.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-097-nonfermenter-ast-caution',
@@ -2037,7 +2037,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nonfermenters often have important intrinsic or acquired resistance patterns and require organism-specific AST rules.',
     explanation: 'Nonfermenters such as Pseudomonas, Acinetobacter, Stenotrophomonas, and Burkholderia can have complex AST considerations. The safe bench habit is to follow current laboratory and organism-specific guidance.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-098-nonfermenter-full-pattern',
@@ -2055,7 +2055,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Combine source, Gram stain, colony appearance, MacConkey reaction, oxidase, OF glucose, motility, pigment, and key biochemical tests.',
     explanation: 'Nonfermenter identification is pattern-based. Each clue narrows the branch, but the safest answer comes from matching the full workflow rather than relying on a single feature.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-099-pseudomonas-virulence-exotoxin-alginate',
@@ -2073,7 +2073,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Alginate-associated biofilm behavior and toxin/enzyme production.',
     explanation: 'P. aeruginosa has several virulence-associated features, including biofilm-related alginate production in some settings and toxin or enzyme production. These are educational concepts, not standalone diagnostic claims.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-100-nonfermenter-safety-pause',
@@ -2109,7 +2109,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It helps screen sucrose fermentation patterns among Vibrio species.',
     explanation: 'TCBS agar is selective and differential for Vibrio recovery. Sucrose fermentation can guide the early branch, but final identification still requires the full bench workflow.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-102-vibrio-marine-salt-context',
@@ -2127,7 +2127,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some Vibrio species are associated with marine or brackish water exposure and may need salt-aware recovery conditions.',
     explanation: 'Specimen source matters. Marine exposure plus a curved oxidase-positive gram-negative rod should trigger a Vibrio-aware branch instead of a routine Enterobacterales-only mindset.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-103-campylobacter-microaerophilic-setup',
@@ -2163,7 +2163,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Positive hippurate hydrolysis.',
     explanation: 'Hippurate hydrolysis is a classic teaching clue for C. jejuni. It should be interpreted with the full identification workflow and current lab method.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-105-helicobacter-pylori-urease',
@@ -2181,7 +2181,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Strong urease activity.',
     explanation: 'H. pylori is strongly urease positive. The bench concept is to match the organism\'s gastric niche and enzyme pattern to the correct testing workflow.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-106-aeromonas-oxidase-enteric-separator',
@@ -2199,7 +2199,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Aeromonas can resemble enteric gram-negative rods on media but is oxidase positive.',
     explanation: 'Oxidase positivity is a key branch point. Aeromonas may overlap with enteric-looking gram-negative rods but should not be forced into an Enterobacterales pathway.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-107-plesiomonas-shigella-separator',
@@ -2217,7 +2217,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Plesiomonas shigelloides.',
     explanation: 'Plesiomonas can create confusion in stool workflows because some features overlap with enteric pathogens. Oxidase positivity and motility help move the branch away from classic Shigella.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-108-pasteurella-bite-wound-pattern',
@@ -2235,7 +2235,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pasteurella multocida.',
     explanation: 'Pasteurella multocida is a classic animal-exposure-associated gram-negative coccobacillus. Growth pattern, source, oxidase, indole, and MacConkey reaction help guide the branch.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-109-capnocytophaga-canimorsus-context',
@@ -2289,7 +2289,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Kingella kingae.',
     explanation: 'Kingella kingae is a fastidious gram-negative coccobacillus that can show beta hemolysis and oxidase positivity. It belongs in the HACEK-associated learning bucket.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-112-hacek-blood-culture-branch',
@@ -2325,7 +2325,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Recognize that taxonomy changed, but keep the bench concept: fastidious gram-negative rods needing careful identification.',
     explanation: 'Names can change, but the bench pattern still matters. HACEK learning should connect taxonomy awareness with source, growth behavior, and organism-specific ID.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-114-cardiobacterium-pleomorphic',
@@ -2343,7 +2343,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cardiobacterium hominis.',
     explanation: 'Cardiobacterium hominis is a fastidious HACEK organism with pleomorphic morphology. Indole positivity and growth behavior can support the branch during identification.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-115-bordetella-pertussis-collection',
@@ -2361,7 +2361,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use a properly collected nasopharyngeal specimen and the laboratory\'s Bordetella-specific transport or culture workflow.',
     explanation: 'Bordetella testing is highly dependent on correct nasopharyngeal collection and the right transport or culture system. Poor collection can undermine even a good test method.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-116-bordetella-pertussis-fastidious-growth',
@@ -2379,7 +2379,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is fastidious and may require specialized media and longer incubation.',
     explanation: 'B. pertussis culture requires a targeted workflow. The learner should connect organism biology, specimen type, transport, media, and incubation timing.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-117-brucella-safety-pause',
@@ -2397,7 +2397,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Pause extra open-bench manipulation and follow the laboratory safety escalation protocol.',
     explanation: 'Brucella species are important laboratory-acquired infection risks. The safest bench habit is to recognize concerning patterns and escalate according to SOP.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-118-francisella-cysteine-requirement',
@@ -2415,7 +2415,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is fastidious and requires cysteine-enriched media or a laboratory-specific recovery workflow.',
     explanation: 'Francisella tularensis is fastidious and safety-sensitive. Learners should connect cysteine requirement, tiny coccobacillary morphology, and escalation protocols.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-119-francisella-safety-aware-workflow',
@@ -2433,7 +2433,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Francisella can pose a laboratory safety risk and should not be over-manipulated on the open bench.',
     explanation: 'Some fastidious gram-negative coccobacilli are not just ID puzzles. They require safe handling, limited manipulation, and escalation under the lab protocol.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-120-legionella-bcye-medium',
@@ -2469,7 +2469,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It may stain poorly and requires specialized culture conditions rather than routine media alone.',
     explanation: 'Legionella is a fastidious organism. The bench workflow has to match the suspected organism with the correct stain expectations, media, and incubation approach.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-122-haemophilus-x-v-factors',
@@ -2487,7 +2487,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Heating releases growth factors such as X factor and V factor from red blood cells.',
     explanation: 'Haemophilus identification often begins with X and V factor requirements. Chocolate agar makes these factors more available than intact sheep blood agar.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-123-haemophilus-satellitism',
@@ -2505,7 +2505,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Satellitism from V factor availability near the helper organism.',
     explanation: 'Some Haemophilus species need V factor, which can be supplied near organisms such as S. aureus. Satellitism is a classic bench demonstration of that requirement.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-124-haemophilus-influenzae-factor-pattern',
@@ -2541,7 +2541,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Haemophilus parainfluenzae.',
     explanation: 'H. parainfluenzae is commonly taught as V factor dependent but not X factor dependent. This separates it from H. influenzae in classic factor-requirement workflows.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-126-haemophilus-beta-lactamase',
@@ -2559,7 +2559,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism may hydrolyze certain beta-lactam drugs, so the result affects susceptibility interpretation under lab rules.',
     explanation: 'Beta-lactamase is a resistance mechanism, not an organism name. Learners should connect it to AST interpretation and current laboratory reporting guidance.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-127-haemophilus-biotype-concept',
@@ -2577,7 +2577,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Indole, urease, and ornithine reactions.',
     explanation: 'Classic H. influenzae biotyping uses indole, urease, and ornithine patterns. It is an advanced identification layer after the organism fits the Haemophilus branch.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-128-haemophilus-capsule-serotype',
@@ -2595,7 +2595,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It characterizes capsule antigen type, such as type b, after the organism is identified.',
     explanation: 'Serotyping addresses capsule antigen identity. It is not the same as primary organism recovery or basic species identification.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-129-fastidious-gnr-no-macconkey',
@@ -2613,7 +2613,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fastidious gram-negative rods may require enriched media, so lack of MacConkey growth does not rule out importance.',
     explanation: 'Some fastidious gram-negative rods do not grow well on MacConkey agar. The bench should use source, Gram stain, media requirements, atmosphere, and key tests together.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-130-fastidious-gnr-bench-first-workflow',
@@ -2631,7 +2631,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Start with specimen source and Gram stain, then connect colony growth, media needs, atmosphere, and key biochemical clues.',
     explanation: 'Fastidious gram-negative rods require workflow thinking. The safest learning path is source to Gram stain to media and atmosphere to key tests, not memorizing isolated names.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-131-catalase-gpc-branch',
@@ -2685,7 +2685,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Staphylococcus can ferment glucose, while Micrococcus is typically oxidative or nonfermentative.',
     explanation: 'Micrococcus and Staphylococcus can both be catalase positive. Glucose metabolism pattern helps move the learner into the correct branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-134-lysostaphin-staph-micrococcus',
@@ -2703,7 +2703,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Staphylococcus is usually susceptible to lysostaphin, while Micrococcus is resistant.',
     explanation: 'Lysostaphin targets features of the staphylococcal cell wall. It is a useful advanced separator when catalase-positive gram-positive cocci overlap.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-135-slide-vs-tube-coagulase',
@@ -2721,7 +2721,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Perform or follow the tube coagulase workflow because slide testing detects bound coagulase and can miss some isolates.',
     explanation: 'Slide coagulase screens for bound coagulase or clumping factor. Tube coagulase detects free coagulase and is useful when the slide result does not fit the suspected pattern.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-136-staph-latex-agglutination',
@@ -2739,7 +2739,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Surface markers such as clumping factor, protein A, or capsular antigen depending on the kit.',
     explanation: 'Latex agglutination tests support rapid S. aureus screening by detecting surface-associated targets. Results should still fit the organism source, morphology, and laboratory workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-137-mannitol-salt-staph-aureus',
@@ -2757,7 +2757,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism tolerated high salt and fermented mannitol, supporting a Staphylococcus aureus-like pattern.',
     explanation: 'Mannitol salt agar combines salt selection with mannitol differentiation. A yellow reaction supports mannitol fermentation but still belongs in the full Staphylococcus workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-138-mrsa-meca-pbp2a',
@@ -2775,7 +2775,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The isolate may carry mecA or a related mechanism that produces altered penicillin-binding protein activity.',
     explanation: 'MRSA is an antimicrobial resistance concept tied to altered beta-lactam targets such as PBP2a. Bench interpretation follows the lab’s current AST method and reporting rules.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-139-d-test-inducible-clindamycin',
@@ -2811,7 +2811,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some coagulase-negative staphylococci can form biofilm on devices and may be significant in the right context.',
     explanation: 'Coagulase-negative staphylococci often represent skin flora, but source and repeat recovery matter. Device-associated contexts require careful interpretation under the lab’s rules.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-141-staph-saprophyticus-novobiocin',
@@ -2847,7 +2847,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It can behave more aggressively than many coagulase-negative staphylococci, so source and significance need careful review.',
     explanation: 'S. lugdunensis is coagulase-negative in many workflows but can be more clinically significant than typical skin-flora CoNS. Learners should interpret it with source, purity, and lab guidance.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-143-cons-significance-context',
@@ -2865,7 +2865,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Evaluate source, number of positive cultures, timing, organism identity, and lab criteria before deciding significance.',
     explanation: 'Coagulase-negative staphylococci are common skin organisms but can be significant in the right context. Interpretation depends on the full culture pattern, not one label.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-144-streptococcus-catalase-negative',
@@ -2901,7 +2901,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Streptococcus pyogenes.',
     explanation: 'Group A Streptococcus is classically beta-hemolytic and PYR positive. Screening results should be interpreted within the laboratory’s confirmation workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-146-group-b-strep-camp',
@@ -2937,7 +2937,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Consider other beta-hemolytic groups such as C or G and follow the laboratory grouping method.',
     explanation: 'Not all beta-hemolytic streptococci are group A or B. Grouping and organism context keep the workup accurate and prevent oversimplified identification.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-148-strep-pneumoniae-optochin-bile',
@@ -2973,7 +2973,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Viridans group streptococci.',
     explanation: 'Viridans group streptococci are classically optochin resistant and bile insoluble. This pattern helps keep them separate from S. pneumoniae.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-150-bile-esculin-group-d',
@@ -2991,7 +2991,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A group D or Enterococcus branch that needs additional separation.',
     explanation: 'Bile esculin positivity supports the group D or Enterococcus branch. Additional tests such as salt tolerance and PYR help separate organisms within that branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-151-enterococcus-salt-pyr',
@@ -3027,7 +3027,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'A nonenterococcal group D organism such as the Streptococcus bovis or gallolyticus group should be considered.',
     explanation: 'Salt tolerance helps separate Enterococcus from nonenterococcal group D streptococci. Bile esculin alone is not enough to finalize the branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-153-nutritionally-variant-strep-satellite',
@@ -3045,7 +3045,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The organism needs a growth factor supplied near the helper organism.',
     explanation: 'Nutritionally variant streptococci, such as Abiotrophia or Granulicatella, may require additional nutrients and show satellite growth. This is a bench clue for a more specialized identification workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-154-pyr-strep-enterococcus-logic',
@@ -3063,7 +3063,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It helps support organisms such as Streptococcus pyogenes and Enterococcus in the right branch.',
     explanation: 'PYR is a practical support test. It is useful for specific branches, especially group A Streptococcus and Enterococcus, but it is not a universal final identification test.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-155-strep-grouping-not-final-id',
@@ -3081,7 +3081,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Grouping supports the identification branch but should be interpreted with colony morphology, hemolysis, and lab workflow.',
     explanation: 'Lancefield grouping is powerful but still part of a workflow. Bench identification stays strongest when grouping matches the rest of the organism pattern.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-156-staph-aureus-toxin-concept',
@@ -3099,7 +3099,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Some strains produce toxins such as superantigens, exfoliative toxins, or enterotoxins.',
     explanation: 'S. aureus has multiple virulence-associated factors. The educational point is organism capability, not diagnosing a syndrome from a culture result alone.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-157-staph-beta-lactamase-concept',
@@ -3189,7 +3189,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Neisseria meningitidis.',
     explanation: 'N. meningitidis is classically glucose positive and maltose positive. This pattern helps separate it from N. gonorrhoeae in traditional teaching workflows.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-162-neisseria-lactamica-beta-galactosidase',
@@ -3207,7 +3207,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Neisseria lactamica.',
     explanation: 'N. lactamica is classically beta-galactosidase positive and can show lactose-related activity. This helps separate it from pathogenic Neisseria in teaching workflows.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-163-moraxella-catarrhalis-tributyrin',
@@ -3225,7 +3225,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Moraxella catarrhalis.',
     explanation: 'Moraxella catarrhalis can resemble Neisseria by Gram stain and oxidase positivity, but tributyrin and DNase positivity support the Moraxella branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-164-neisseria-cta-principle',
@@ -3261,7 +3261,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use specimen source, growth pattern, oxidase reaction, and selective media context together.',
     explanation: 'Gram-negative diplococci include multiple clinically relevant and commensal possibilities. Source and growth behavior keep the learner from overcalling the organism from morphology alone.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-166-penicillin-resistant-pneumococcus-pbp',
@@ -3279,7 +3279,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Altered penicillin-binding proteins are a key mechanism, not routine beta-lactamase production.',
     explanation: 'Penicillin resistance in S. pneumoniae is classically linked to altered PBPs. This is an AST interpretation concept and should be handled according to current lab standards.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-167-beta-hemolytic-strep-sxt-bacitracin',
@@ -3297,7 +3297,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Disk screening can support presumptive grouping but should be confirmed by the lab’s identification workflow.',
     explanation: 'Bacitracin and SXT patterns are classic teaching tools for beta-hemolytic streptococci. They are screening clues, not standalone final identification.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-168-camp-test-arrowhead',
@@ -3315,7 +3315,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Positive CAMP test.',
     explanation: 'The CAMP test demonstrates enhanced hemolysis near a helper S. aureus streak. It is a classic support test for Group B Streptococcus in the right workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-169-optochin-screening-caution',
@@ -3333,7 +3333,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Zone interpretation depends on standardized disk strength, atmosphere, incubation, and reading rules.',
     explanation: 'Optochin is useful for separating S. pneumoniae from viridans streptococci, but only when read under the correct method rules. Technique matters.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-170-cocci-bench-first-workflow',
@@ -3369,7 +3369,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Bacillus species.',
     explanation: 'Large aerobic gram-positive rods with spores support a Bacillus-like branch. The bench still uses source, colony morphology, hemolysis, motility, and safety context before final interpretation.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-172-bacillus-cereus-anthracis-separator',
@@ -3387,7 +3387,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Beta-hemolysis and motility.',
     explanation: 'B. cereus is classically beta-hemolytic and motile, while B. anthracis-like isolates raise concern when nonhemolytic and nonmotile. Safety protocols matter when a concerning pattern appears.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-173-bacillus-anthracis-safety-pause',
@@ -3405,7 +3405,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Stop extra open-bench manipulation and follow the laboratory safety escalation protocol.',
     explanation: 'Some Bacillus-like patterns require safety-aware handling. The bench-first habit is knowing when to pause and escalate rather than over-manipulate an unusual isolate.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-174-bacillus-cereus-food-workflow',
@@ -3459,7 +3459,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Listeria monocytogenes.',
     explanation: 'Listeria is classically associated with tumbling motility at room temperature. Motility helps separate it from other small gram-positive rods and from beta-hemolytic streptococci.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-177-listeria-cold-growth-concept',
@@ -3477,7 +3477,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It can grow at low temperatures better than many competing organisms.',
     explanation: 'Listeria can tolerate cold conditions better than many bacteria. That concept matters in food and enrichment workflows, but routine clinical interpretation still follows the lab’s organism-specific methods.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-178-erysipelothrix-h2s-meat-fish',
@@ -3495,7 +3495,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Erysipelothrix rhusiopathiae.',
     explanation: 'Erysipelothrix is a slender gram-positive rod associated with animal or fish exposure contexts. Catalase negativity, nonmotility, and H2S production are useful bench clues.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-179-lactobacillus-normal-flora-caution',
@@ -3513,7 +3513,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Interpret with source, quantity, purity, and lab criteria because Lactobacillus may represent normal flora in some sites.',
     explanation: 'Lactobacillus can be part of normal mucosal flora. The learner should avoid overcalling significance without considering source and culture context.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-180-corynebacterium-palisades',
@@ -3531,7 +3531,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Corynebacterium species.',
     explanation: 'Corynebacterium species often show pleomorphic rods with palisading or angular arrangements. Source and species-level workup determine whether the isolate is significant.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-181-corynebacterium-diphtheriae-toxigenicity',
@@ -3585,7 +3585,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Weak acid-fast positivity with a modified acid-fast stain.',
     explanation: 'Nocardia are aerobic branching gram-positive rods that can be weakly acid-fast. This helps separate them from other branching gram-positive rods in the bench workflow.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-184-nocardia-actinomyces-separator',
@@ -3603,7 +3603,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nocardia is aerobic and weakly acid-fast, while Actinomyces is generally anaerobic and non-acid-fast.',
     explanation: 'Both organisms can appear branching and gram positive, but oxygen requirement and modified acid-fast behavior help separate the branches.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-185-rhodococcus-salmon-pink-colonies',
@@ -3621,7 +3621,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Rhodococcus equi.',
     explanation: 'Rhodococcus equi can appear as gram-positive coccobacilli, may be partially acid-fast, and can develop salmon-pink colonies. It belongs in the expanded aerobic gram-positive rod learning bucket.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-186-treponema-no-routine-culture',
@@ -3639,7 +3639,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is not recovered by routine artificial media, so testing relies on serology or specialized direct methods.',
     explanation: 'T. pallidum is not worked up like routine bacteria. Learners should connect spirochete biology with the appropriate serologic or direct detection workflow.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-187-syphilis-serology-two-step',
@@ -3657,7 +3657,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'They answer different parts of the interpretation and are commonly used in paired algorithms.',
     explanation: 'Nontreponemal and treponemal tests have different roles in screening, confirmation, or interpretation depending on the algorithm. The lab follows its validated testing pathway.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-188-spirochete-gram-stain-limitation',
@@ -3693,7 +3693,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Borrelia testing commonly relies on antibody-based algorithms because routine culture is not the standard rapid bench approach.',
     explanation: 'Borrelia burgdorferi does not fit a routine culture workflow for most clinical testing. Serologic algorithms and source-specific molecular testing concepts are more relevant for learners.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-190-borrelia-specimen-context',
@@ -3729,7 +3729,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It lacks a rigid peptidoglycan cell wall.',
     explanation: 'Mycoplasma lacks a conventional cell wall, so routine Gram stain logic does not apply well. Testing uses organism-specific culture, serologic, or molecular approaches depending on the lab.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-192-mycoplasma-pneumoniae-testing',
@@ -3747,7 +3747,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Cold agglutinins are nonspecific, so validated serologic or molecular methods are preferred when available.',
     explanation: 'Cold agglutinins are an older clue, not a definitive standalone identification method. Learners should connect Mycoplasma testing with current validated lab methods.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-193-mycoplasma-hominis-fried-egg',
@@ -3765,7 +3765,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Mycoplasma hominis.',
     explanation: 'M. hominis is classically associated with fried-egg colonies and arginine hydrolysis. Mycoplasma workups require specialized media or molecular methods rather than routine Gram stain logic.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-194-ureaplasma-urease',
@@ -3783,7 +3783,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Ureaplasma urealyticum.',
     explanation: 'Ureaplasma is named for its urea-splitting behavior. Urea hydrolysis helps separate it from Mycoplasma hominis in classic teaching workflows.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-195-chlamydia-obligate-intracellular',
@@ -3819,7 +3819,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use the specimen type validated by the assay, such as first-catch urine or the appropriate swab source.',
     explanation: 'NAAT performance depends on the correct specimen type and collection method. Chlamydia testing is source-specific and assay-specific.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-197-chlamydia-specimen-mismatch',
@@ -3855,7 +3855,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Elementary bodies are infectious forms, while reticulate bodies are replicative intracellular forms.',
     explanation: 'Chlamydia has a distinct intracellular cycle. Elementary and reticulate bodies explain why routine agar culture and Gram stain workflows do not fit well.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-199-chlamydophila-psittaci-bird-exposure',
@@ -3873,7 +3873,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It is an obligate intracellular organism, so testing relies on specialized molecular or serologic workflows rather than routine agar culture.',
     explanation: 'Chlamydophila psittaci belongs in the atypical intracellular organism bucket. Exposure context can guide testing, but the lab still follows validated methods and safety procedures.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-200-atypical-bacteria-bench-first-workflow',
@@ -3891,7 +3891,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Recognize when routine Gram stain and agar culture are limited, then choose the organism-specific testing pathway.',
     explanation: 'Atypical bacteria are important because they do not always follow routine culture logic. The learner should connect organism biology, specimen source, and the correct testing method.',
     source: 'Learn Microbes original question bank: Aerobic Gram-Positive Rods, Spirochetes, Mycoplasmas, Ureaplasmas, and Chlamydia',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-201-anaerobe-oxygen-sensitivity',
@@ -3909,7 +3909,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Oxygen can injure or kill obligate anaerobes before they are recovered in culture.',
     explanation: 'Obligate anaerobes require reduced conditions. Poor collection or transport can expose them to oxygen and lower recovery, even when the organism was present in the specimen.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-202-anaerobe-redox-potential',
@@ -3927,7 +3927,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Reduced media help maintain a low oxidation-reduction potential that supports anaerobic growth.',
     explanation: 'Anaerobic culture depends on both reduced media and an oxygen-limited atmosphere. Low redox conditions help protect oxygen-sensitive organisms during recovery.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-203-deep-aspirate-anaerobe-specimen',
@@ -3945,7 +3945,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Aspirated pus or tissue placed into anaerobic transport.',
     explanation: 'Deep aspirates or tissue are better for anaerobic recovery than superficial swabs. The specimen should be protected from oxygen and transported according to the lab SOP.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-204-anaerobe-swab-caution',
@@ -3981,7 +3981,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It helps create a reduced environment that can support organisms with different oxygen tolerances.',
     explanation: 'Thioglycollate broth contains reducing agents that lower oxygen tension. Growth pattern in the tube can support oxygen-tolerance interpretation but is not a final ID alone.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-206-kv-laked-blood-selective-anaerobes',
@@ -3999,7 +3999,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It helps select for certain gram-negative anaerobic rods by suppressing competing organisms.',
     explanation: 'Selective anaerobic media help recover organisms such as Bacteroides, Prevotella, or Porphyromonas from mixed specimens. Media choice guides the branch but does not replace full identification.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-207-pea-anaerobe-selection',
@@ -4017,7 +4017,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It suppresses many gram-negative rods and supports recovery of gram-positive organisms and some anaerobes.',
     explanation: 'PEA agar is useful when gram-positive organisms may be overgrown by gram-negative rods. In anaerobic setups, it helps organize recovery from mixed flora.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-208-ccfa-cdiff-selective',
@@ -4053,7 +4053,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The metabolic acid profile could support identification of anaerobic bacteria.',
     explanation: 'Some anaerobe workflows used metabolic products such as volatile fatty acids as identification clues. Modern labs may use different systems, but the concept is organism metabolism supporting ID.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-210-clostridium-perfringens-double-zone',
@@ -4089,7 +4089,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Nagler reaction.',
     explanation: 'The Nagler reaction demonstrates lecithinase activity inhibited by antitoxin. It is a classic teaching method for C. perfringens-like identification.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-212-clostridium-spore-location',
@@ -4107,7 +4107,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Terminal or subterminal spores can help narrow the Clostridium branch with other test results.',
     explanation: 'Spore shape and location are classic morphology clues for clostridia. They support, but do not replace, culture behavior and biochemical or toxin-related workflow.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-213-clostridium-tetani-terminal-spore',
@@ -4125,7 +4125,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Clostridium tetani.',
     explanation: 'C. tetani is classically associated with terminal spores. This is a morphology clue, not a substitute for safety-aware laboratory handling and appropriate confirmation.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-214-clostridium-botulinum-toxin-workflow',
@@ -4143,7 +4143,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The workflow centers on toxin detection or reference-lab confirmation, not routine colony appearance alone.',
     explanation: 'C. botulinum is important because of toxin production. Learners should connect suspected toxin-mediated disease with proper specimen handling, safety, and reference testing pathways.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-215-cdiff-toxin-algorithm',
@@ -4161,7 +4161,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'The key question involves toxigenic C. difficile, so toxin, antigen, or molecular results must fit the lab algorithm.',
     explanation: 'C. difficile workflows often combine GDH, toxin testing, NAAT, or culture depending on the lab. The learner should not equate growth alone with toxin-mediated disease.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-216-cdiff-formed-stool-caution',
@@ -4179,7 +4179,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Follow the laboratory rejection or clarification protocol.',
     explanation: 'C. difficile testing depends on appropriate specimen criteria. Labs use rejection and clarification rules to avoid misleading testing on inappropriate specimens.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-217-bacteroides-fragilis-bile-esculin',
@@ -4233,7 +4233,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Prevotella or Porphyromonas species.',
     explanation: 'Some Prevotella and Porphyromonas species produce dark pigment on anaerobic media. Pigment is a useful clue when combined with Gram stain, oxygen tolerance, source, and biochemical testing.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-220-fusobacterium-spindle-rods',
@@ -4251,7 +4251,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fusobacterium species.',
     explanation: 'Fusobacterium species are classically described as fusiform or spindle-shaped anaerobic gram-negative rods. Morphology helps guide the anaerobic branch.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-221-fusobacterium-necrophorum-lipase',
@@ -4269,7 +4269,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Fusobacterium necrophorum.',
     explanation: 'Fusobacterium necrophorum is classically associated with lipase positivity. This is an advanced clue that should be read with the full anaerobe identification pattern.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-222-anaerobic-cocci-branch',
@@ -4287,7 +4287,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Anaerobic gram-positive cocci.',
     explanation: 'Anaerobic gram-positive cocci can be part of polymicrobial abscess or wound cultures. Source, Gram stain, oxygen tolerance, and culture purity guide interpretation.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-223-veillonella-gram-negative-cocci',
@@ -4305,7 +4305,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Veillonella species.',
     explanation: 'Veillonella species are anaerobic gram-negative cocci. This reminds learners that not all anaerobes are rods and not all gram-negative cocci are Neisseria-like organisms.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-224-cutibacterium-acnes-contaminant-caution',
@@ -4323,7 +4323,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Consider skin flora contamination versus true significance using source, number of positive cultures, timing, and lab criteria.',
     explanation: 'C. acnes is common skin flora and may be a contaminant, but it can matter in the right context. Interpretation depends on the full culture pattern and lab rules.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-225-cutibacterium-device-context',
@@ -4341,7 +4341,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'It can be associated with device-related infection patterns in the right clinical and culture context.',
     explanation: 'C. acnes can be normal skin flora, but repeated or sterile-site recovery in a device context may be meaningful. Learners should use source and culture pattern instead of automatic dismissal.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-226-actinomyces-sulfur-granules',
@@ -4359,7 +4359,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Actinomyces species.',
     explanation: 'Actinomyces species are anaerobic branching gram-positive rods classically associated with sulfur granules. They should be separated from Nocardia by oxygen tolerance and acid-fast behavior.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-227-actinomyces-vs-nocardia',
@@ -4395,7 +4395,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Deep abscesses and mucosal-source infections often contain mixtures of anaerobes and facultative organisms.',
     explanation: 'Anaerobic specimens often come from sites with mixed flora. Culture interpretation requires source awareness, Gram stain review, aerobic and anaerobic growth comparison, and lab reporting rules.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-229-anaerobe-ast-methods',
@@ -4413,7 +4413,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Anaerobe AST uses specialized validated methods and interpretive criteria rather than routine aerobic disk rules.',
     explanation: 'Anaerobic susceptibility testing requires validated anaerobe methods and standards. The method must match the organism group and lab policy.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'bacteriology-230-anaerobe-bench-first-workflow',
@@ -4431,7 +4431,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Start with source and collection quality, then connect Gram stain, oxygen tolerance, media, colony clues, and key tests.',
     explanation: 'Anaerobe workups are heavily dependent on preanalytics and pattern recognition. Source, oxygen exposure, Gram stain, media, and key tests work together.',
     source: 'Learn Microbes original question bank: Anaerobic Bacteria',
-    status: 'draft'
+    status: 'published'
   },
   {
   id: 'bacteriology-231-cna-urine-staph-saprophyticus',
@@ -4449,7 +4449,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Staphylococcus saprophyticus.',
   explanation: 'A coagulase-negative Staphylococcus from urine that is novobiocin resistant supports S. saprophyticus. Source and novobiocin pattern are the key bench clues.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-232-mannitol-salt-staph-aureus-screen',
@@ -4467,7 +4467,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Staphylococcus aureus.',
   explanation: 'S. aureus is salt tolerant, often ferments mannitol, and is classically coagulase positive. The workflow combines selective media, colony reaction, and key tests.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-233-enteroinvasive-ecoli-shigella-like',
@@ -4503,7 +4503,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Yersinia enterocolitica.',
   explanation: 'Yersinia enterocolitica is associated with CIN recovery and temperature-dependent motility. Targeted recovery matters because routine stool culture may not detect every requested pathogen.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-235-o157-sorbitol-macconkey',
@@ -4521,7 +4521,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'The finding is a screening clue for possible E. coli O157:H7 and needs confirmatory workup.',
   explanation: 'Non-sorbitol fermentation is a useful screen for E. coli O157:H7. It is not a final identification and should be followed by the laboratory confirmation workflow.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-236-cf-nonfermenter-stenotrophomonas',
@@ -4539,7 +4539,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Stenotrophomonas maltophilia.',
   explanation: 'Stenotrophomonas is an important oxidase-negative nonfermenter. Maltose use and respiratory source can help move the branch away from Pseudomonas.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-237-dog-bite-capnocytophaga',
@@ -4557,7 +4557,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Capnocytophaga species.',
   explanation: 'Capnocytophaga species are fastidious, capnophilic gram-negative rods associated with oral flora and animal exposure contexts. Source and growth conditions are key clues.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-238-hacek-eikenella-pitting',
@@ -4575,7 +4575,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Eikenella corrodens.',
   explanation: 'Eikenella corrodens is associated with oral flora and can pit agar. The organism belongs in the fastidious gram-negative rod or HACEK learning bucket.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-239-h-influenzae-x-v-factor-case',
@@ -4593,7 +4593,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Haemophilus influenzae.',
   explanation: 'H. influenzae classically requires both X and V factors. Chocolate agar supports growth by making these factors available.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-240-group-b-strep-pregnancy-screen',
@@ -4611,7 +4611,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Group B Streptococcus.',
   explanation: 'Group B Streptococcus is classically beta-hemolytic, CAMP positive, and hippurate positive. The source and test pattern support the branch.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-241-enterococcus-bile-salt-pyr',
@@ -4629,7 +4629,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Enterococcus species.',
   explanation: 'Enterococcus is classically bile esculin positive, salt tolerant, and PYR positive. These tests separate it from many other catalase-negative gram-positive cocci.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-242-strep-pneumoniae-optochin-bile-case',
@@ -4647,7 +4647,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Streptococcus pneumoniae.',
   explanation: 'S. pneumoniae is classically alpha-hemolytic, optochin susceptible, and bile soluble. Colony appearance supports the same branch.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-243-neisseria-gonorrhoeae-source-oxidase',
@@ -4665,7 +4665,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Neisseria gonorrhoeae.',
   explanation: 'N. gonorrhoeae is classically glucose positive and maltose negative. Source, oxidase positivity, diplococcal morphology, and selective medium growth all support the branch.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-244-gardnerella-clue-cells-case',
@@ -4683,7 +4683,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Gardnerella vaginalis.',
   explanation: 'Clue cells are epithelial cells coated with bacteria and are classically associated with Gardnerella-centered teaching workflows. This is a lab observation, not a standalone diagnostic claim.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-245-listeria-csf-gbs-mimic',
@@ -4701,7 +4701,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Listeria monocytogenes.',
   explanation: 'Listeria can mimic beta-hemolytic streptococci by colony appearance, but Gram-positive rod morphology, catalase positivity, and tumbling motility redirect the workup.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-246-corynebacterium-diphtheria-safety-workflow',
@@ -4719,7 +4719,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Follow the lab’s Corynebacterium identification and toxigenicity confirmation workflow.',
   explanation: 'C. diphtheriae-like organisms require careful identification and toxin-related confirmation. Species-like morphology alone does not prove toxigenicity.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-247-cdiff-formed-stool-rejection',
@@ -4755,7 +4755,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Bacteroides fragilis group.',
   explanation: 'The Bacteroides fragilis group is classically bile tolerant and esculin positive. Source plus anaerobic gram-negative rod pattern supports the branch.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
   id: 'bacteriology-249-clostridium-perfringens-double-zone-case',
@@ -4773,7 +4773,7 @@ export const questionBank: QuestionBankItem[] = [
   answer: 'Clostridium perfringens.',
   explanation: 'C. perfringens is classically associated with boxcar-shaped rods, double-zone hemolysis, and lecithinase activity. These are bench pattern clues.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
-  status: 'draft'
+  status: 'published'
   },
   {
     id: 'mycobacteriology-001-nocardia-branch',
@@ -8499,7 +8499,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Use defined rules with exception handling for results that need human review, such as critical, discordant, or unusual findings.',
     explanation: 'Autoverification can support efficiency only when rules, exceptions, QC status, and audit trails are controlled. Microbiology results often require source and clinical-context awareness.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'postanalytic-006-contamination-rate-review',
@@ -8517,7 +8517,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'To identify collection-quality problems and support targeted education or process improvement.',
     explanation: 'Contamination-rate monitoring is a quality indicator. Trending by location, collector group, or process can guide education and reduce avoidable false-positive cultures.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'postanalytic-007-discordant-report',
@@ -8535,7 +8535,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Follow the laboratory corrected-report and problem-resolution policy, notify affected parties, and document the investigation.',
     explanation: 'Patient-result errors require controlled correction, communication, and documentation. The goal is patient safety, traceability, and process improvement.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'postanalytic-008-paf-contents',
@@ -8553,7 +8553,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Description of the event, investigation, corrective action, outcome, and follow-up when needed.',
     explanation: 'Useful quality documentation captures what happened, why it happened, how it was corrected, and whether the fix worked. Requirements vary by policy and accrediting framework.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'postanalytic-009-infection-prevention-cluster',
@@ -8571,7 +8571,7 @@ export const questionBank: QuestionBankItem[] = [
     answer: 'Infection prevention or infection control according to facility policy.',
     explanation: 'Clusters of resistant or unusual organisms may signal transmission. Timely communication with infection prevention supports investigation and containment.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
-    status: 'draft'
+    status: 'published'
   },
   {
     id: 'postanalytic-010-public-health-reportable',
