@@ -18,9 +18,8 @@ import { useBookmarks } from '../../hooks/useBookmarks';
 import { useLearnProgress } from '../../hooks/useLearnProgress';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import { subjectStainClass } from '../../data/subjectStains';
+import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import './Learn.css';
-
-export const slugify = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 const categoryOrder = [
   'Foundations',
@@ -64,15 +63,6 @@ const learningLaneMeta: Record<string, { description: string }> = {
     description: 'Unknown isolate thinking, syndrome-to-test logic, exam pathways, tables, and common traps.'
   }
 };
-
-const categoryDisplayNames: Record<string, string> = {
-  'Clinical Lab Principles': 'Clinical Lab Basics',
-  'Core Methods': 'Core Bench Methods',
-  'Molecular and Immunodiagnostics': 'Molecular and Immunodiagnostic Tools',
-  'Bench and Exam Integration': 'Bench and Exam Review'
-};
-
-export const getCategoryDisplayName = (category: string) => categoryDisplayNames[category] ?? category;
 
 const studyPaths = [
   {

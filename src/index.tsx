@@ -3,22 +3,30 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import './styles.css';
-import AppRoutes from './Routes';
+import AppRoutes, { preloadRoute } from './Routes';
 import { AuthProvider } from './context/AuthContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+const renderApp = () => {
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+
+// Pre-rendered pages arrive with their content already in the HTML. Loading the
+// current page's code before the first render lets React show that same page
+// straight away, instead of a loading placeholder while its chunk downloads.
+// A failed download still renders; the route's Suspense boundary takes over.
+preloadRoute(window.location.pathname).then(renderApp, renderApp);
 
 /*
  * Register the service worker for PWA / offline support.

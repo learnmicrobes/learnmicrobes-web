@@ -16,7 +16,10 @@
         "typescript": "^4.9.5"
     },
     "scripts": {
+        "content-index": "node scripts/build-content-index.cjs",
+        "prestart": "node scripts/build-content-index.cjs",
         "start": "react-scripts start",
+        "prebuild": "node scripts/build-content-index.cjs",
         "build": "react-scripts build",
         "prerender": "node scripts/prerender.mjs",
         "serve:build": "node scripts/serve-build.mjs",

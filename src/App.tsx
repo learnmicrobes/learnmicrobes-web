@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faSearch, faUser, faMoon, faSun, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
@@ -7,26 +7,16 @@ import { SUPPORT_URL } from './config/support';
 import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
-import { atlasPages } from './components/VisualAtlas/VisualAtlas';
-import { learnTopics, type LearnTopic } from './data/learnTopics';
-import { slugify as slugifyLearnCategory, getCategoryDisplayName } from './components/Learn/LearnHub';
-import { biochemicalTestsData } from './tools/BiochemicalTests/biochemicalData';
+import type { LearnTopic } from './data/learnTopics';
+import { slugify as slugifyLearnCategory, getCategoryDisplayName } from './data/learnCategories';
+import { learnIndex, visualIndex } from './data/contentIndex.generated';
+import type { DashboardSearchItem } from './data/dashboardSearchContent';
 import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import brandMark from './assets/brand-mark-knockout.svg';
 import { subjectStainClass } from './data/subjectStains';
 import './App.css';
-
-type DashboardSearchItem = {
-  id: string;
-  title: string;
-  category: 'Guide' | 'Learn' | 'Roadmap' | 'Test' | 'Tool' | 'Visual';
-  snippet: string;
-  path: string;
-  keywords: string;
-  priority: number;
-};
 
 type DailyRiddleChoice = {
   id: string;
@@ -179,8 +169,8 @@ const getDailyMicrobeRiddle = () => {
 
 const getDailyFeaturedBenchCard = () => {
   const dayNumber = getDateDayNumber(getLocalDateStamp());
-  const featuredIndex = Math.abs(dayNumber + 3) % atlasPages.length;
-  return atlasPages[featuredIndex] ?? atlasPages[0];
+  const featuredIndex = Math.abs(dayNumber + 3) % visualIndex.length;
+  return visualIndex[featuredIndex] ?? visualIndex[0];
 };
 
 const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replace(/^[A-Z]\)\s*/, '') ?? 'the correct guide';
@@ -489,6 +479,22 @@ export default function App() {
   ), [location.pathname, location.hash]);
 
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
+  // Learn topics, bench tests, and atlas cards are only searched once someone uses the
+  // search box, so their full text downloads then instead of with every page.
+  const [contentSearchItems, setContentSearchItems] = useState<DashboardSearchItem[]>([]);
+  const contentSearchRequested = useRef(false);
+  const loadContentSearchItems = useCallback(() => {
+    if (contentSearchRequested.current) {
+      return;
+    }
+
+    contentSearchRequested.current = true;
+    import('./data/dashboardSearchContent')
+      .then((module) => setContentSearchItems(module.buildContentSearchItems()))
+      .catch(() => {
+        contentSearchRequested.current = false;
+      });
+  }, []);
   const [isDashboardSearchOpen, setIsDashboardSearchOpen] = useState(false);
   const [selectedDashboardSearchIndex, setSelectedDashboardSearchIndex] = useState(0);
   const dailyMicrobeRiddle = useMemo(() => getDailyMicrobeRiddle(), []);
@@ -552,62 +558,6 @@ export default function App() {
         priority: 7
       }
     ];
-
-    const learnItems: DashboardSearchItem[] = learnTopics.map((topic) => ({
-      id: `learn-${topic.slug}`,
-      title: topic.title,
-      category: 'Learn',
-      snippet: topic.summary,
-      path: `/learn/${topic.slug}`,
-      keywords: [
-        topic.title,
-        topic.category,
-        topic.summary,
-        topic.whyItMatters,
-        topic.principle,
-        topic.studentShortcut,
-        ...topic.keywords
-      ].join(' '),
-      priority: 6
-    }));
-
-    const testItems: DashboardSearchItem[] = biochemicalTestsData.map((test) => ({
-      id: `test-${test.id}`,
-      title: test.name,
-      category: 'Test',
-      snippet: test.principle,
-      path: '/biochemical-tests',
-      keywords: [
-        test.name,
-        test.category,
-        test.principle,
-        test.reagents,
-        test.procedure,
-        test.expectedResults
-      ].join(' '),
-      priority: 5
-    }));
-
-    const visualItems: DashboardSearchItem[] = atlasPages.map((page) => ({
-      id: `visual-${page.slug}`,
-      title: page.title,
-      category: 'Visual',
-      snippet: page.summary,
-      path: `/visuals/${page.slug}`,
-      keywords: [
-        page.title,
-        page.eyebrow,
-        page.summary,
-        page.boardTitle,
-        page.boardNote,
-        page.readoutTitle,
-        page.trapTitle,
-        ...page.trapBullets,
-        ...page.interpretationRows.flat(),
-        ...page.takeaways
-      ].join(' '),
-      priority: 5
-    }));
 
     const routeItems: DashboardSearchItem[] = [
       ...dashboardActions.map((action, index) => ({
@@ -677,7 +627,7 @@ export default function App() {
 
     const uniqueItems = new Map<string, DashboardSearchItem>();
 
-    [...routeItems, ...guideItems, ...learnItems, ...testItems, ...visualItems].forEach((item) => {
+    [...routeItems, ...guideItems, ...contentSearchItems].forEach((item) => {
       const key = `${item.path}::${item.title}`;
       if (!uniqueItems.has(key)) {
         uniqueItems.set(key, item);
@@ -685,7 +635,7 @@ export default function App() {
     });
 
     return Array.from(uniqueItems.values());
-  }, [dashboardActions, homeSecondaryLinks, toolGroups]);
+  }, [contentSearchItems, dashboardActions, homeSecondaryLinks, toolGroups]);
 
   const dashboardSearchResults = useMemo<DashboardSearchItem[]>(() => {
     const query = normalizeDashboardSearchText(dashboardSearchQuery);
@@ -930,8 +880,8 @@ export default function App() {
     const baseDescription = 'Clinical microbiology study tools for MLS students, ASCP microbiology review, bench workflows, organism ID, biochemical tests, visual cards, and quiz practice.';
     const learnSlug = path.match(/^\/learn\/([^/]+)$/)?.[1];
     const visualSlug = path.match(/^\/visuals\/([^/]+)$/)?.[1];
-    const learnTopic = learnSlug ? learnTopics.find((topic) => topic.slug === learnSlug) : undefined;
-    const visualPage = visualSlug ? atlasPages.find((page) => page.slug === visualSlug) : undefined;
+    const learnTopic = learnSlug ? learnIndex.find((topic) => topic.slug === learnSlug) : undefined;
+    const visualPage = visualSlug ? visualIndex.find((page) => page.slug === visualSlug) : undefined;
 
     const breadcrumb = (items: Array<{ name: string; path: string }>) => ({
       '@context': 'https://schema.org',
@@ -1452,10 +1402,14 @@ export default function App() {
                           : undefined
                       }
                       onChange={(event) => {
+                        loadContentSearchItems();
                         setDashboardSearchQuery(event.target.value);
                         setIsDashboardSearchOpen(true);
                       }}
-                      onFocus={() => setIsDashboardSearchOpen(true)}
+                      onFocus={() => {
+                        loadContentSearchItems();
+                        setIsDashboardSearchOpen(true);
+                      }}
                       onKeyDown={handleDashboardSearchKeyDown}
                     />
                   </div>
@@ -1638,7 +1592,9 @@ export default function App() {
             />
           </div>
         ) : (
-          <Outlet />
+          <Suspense fallback={<div className="route-loading" aria-busy="true" style={{ minHeight: '60vh' }} />}>
+            <Outlet />
+          </Suspense>
         )}
       </main>
 
