@@ -50,6 +50,10 @@ export const flashcardDecks: FlashcardDeck[] = [
 
 const cleanText = (value: string) => value.replace(/\s+/g, ' ').trim();
 
+// Card fronts say "the X test", so drop a trailing "Test" already in the name
+// ("Aerotolerance Test" would otherwise read "the Aerotolerance Test test").
+const testName = (name: string) => name.replace(/\s+test$/i, '');
+
 /**
  * Cards are generated from the same reference data the tools already use, so a
  * card can never drift from the Biochemical Tests page or the glossary. Difficulty
@@ -66,7 +70,7 @@ const buildBiochemicalCards = (): Flashcard[] => {
         id: `bench-${test.id}`,
         deck: 'bench-tests',
         difficulty: 'beginner',
-        front: `What does the ${test.name} test detect?`,
+        front: `What does the ${testName(test.name)} test detect?`,
         back: cleanText(test.principle),
         hint: test.category,
         relatedPath: '/biochemical-tests'
@@ -90,7 +94,7 @@ const buildBiochemicalCards = (): Flashcard[] => {
         id: `qc-${test.id}`,
         deck: 'qc-organisms',
         difficulty: 'advanced',
-        front: `Name the expected QC organisms for the ${test.name} test.`,
+        front: `Name the expected QC organisms for the ${testName(test.name)} test.`,
         back: `Positive control: ${cleanText(test.qcPositive)}\nNegative control: ${cleanText(test.qcNegative)}`,
         relatedPath: '/biochemical-tests'
       });

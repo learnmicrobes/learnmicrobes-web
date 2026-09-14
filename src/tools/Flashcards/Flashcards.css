@@ -6,11 +6,12 @@
   text-align: left;
 }
 
-.flashcards-hero,
+.flashcards-header,
 .flashcards-controls,
 .flashcards-stage,
 .flashcards-summary,
-.flashcards-empty {
+.flashcards-empty,
+.flashcards-about {
   border: 1px solid var(--rule);
   border-radius: 6px;
   background: var(--surface);
@@ -18,11 +19,6 @@
   margin-bottom: 1rem;
 }
 
-.flashcards-hero {
-  padding: 1.45rem 1.6rem;
-}
-
-.flashcards-kicker,
 .flashcards-label {
   display: inline-flex;
   color: var(--accent);
@@ -32,14 +28,68 @@
   text-transform: uppercase;
 }
 
-.flashcards-hero h1 {
-  margin: 0.35rem 0 0.5rem;
-  color: var(--ink);
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  line-height: 1.15;
+/* Slim title row: keeps the page's h1 and current selection without pushing the
+   card below the fold. */
+.flashcards-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 1.2rem;
 }
 
-.flashcards-hero p {
+.flashcards-header > div {
+  min-width: 0;
+}
+
+.flashcards-header h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-xl);
+  line-height: 1.2;
+}
+
+.flashcards-header p {
+  margin: 0.15rem 0 0;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  line-height: 1.35;
+}
+
+.flashcards-change-deck {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface-sunken);
+  color: var(--accent-strong);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flashcards-change-deck:hover {
+  border-color: rgba(36, 92, 105, 0.34);
+}
+
+/* Page intro, below the card and filters */
+.flashcards-about {
+  padding: 1.3rem 1.2rem;
+}
+
+.flashcards-about h2 {
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-size: var(--text-xl);
+  line-height: 1.2;
+}
+
+.flashcards-about p {
   margin: 0;
   max-width: 62ch;
   color: var(--ink-muted);
@@ -516,18 +566,15 @@ body.dark-mode .flashcards-rating button.got { color: #8fd6a8; }
 
 /* Mobile */
 @media (max-width: 720px) {
-  .flashcards-hero {
-    padding: 1.15rem 1.1rem;
-  }
-
-  .flashcards-hero h1 {
-    font-size: var(--text-xl);
+  .flashcards-header {
+    padding: 0.7rem 1.1rem;
   }
 
   .flashcards-controls,
   .flashcards-stage,
   .flashcards-summary,
-  .flashcards-empty {
+  .flashcards-empty,
+  .flashcards-about {
     padding: 1rem 1.1rem;
   }
 
@@ -554,8 +601,9 @@ body.dark-mode .flashcards-rating button.got { color: #8fd6a8; }
     font-size: var(--text-sm);
   }
 
-  .flashcards-nav {
-    grid-template-columns: 1fr;
+  /* Previous stays beside Reveal answer so the main action isn't pushed down a row. */
+  .flashcards-nav button {
+    padding: 0.65rem 0.75rem;
   }
 
   .flashcards-shortcut-note {
