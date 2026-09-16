@@ -65,6 +65,33 @@ const hasPasswordRecoveryUrl = () => {
   return window.location.hash.includes('type=recovery') || window.location.search.includes('type=recovery');
 };
 
+// A provider hand-off that fails comes back as error params in the URL (usually the
+// hash) with no session. Without reading them the page just sits there signed out.
+const readAuthErrorFromUrl = () => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const hash = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+  const query = new URLSearchParams(window.location.search);
+  const read = (key: string) => hash.get(key) ?? query.get(key);
+  const error = read('error');
+  const errorCode = read('error_code');
+  const description = read('error_description');
+
+  if (!error && !errorCode && !description) {
+    return null;
+  }
+
+  if (error === 'access_denied' && !errorCode) {
+    return 'Sign-in was cancelled before it finished. Try again when you are ready.';
+  }
+
+  return description
+    ? `Sign-in did not finish: ${description}`
+    : 'Sign-in did not finish. Please try again.';
+};
+
 const getPasswordRequirements = (value: string) => [
   { label: 'At least 12 characters', met: value.length >= 12 },
   { label: 'Uppercase letter', met: /[A-Z]/.test(value) },
@@ -111,6 +138,23 @@ const AuthPage: React.FC = () => {
     : isCreatingAccount
     ? 'Save progress, bookmarks, quiz history, and profile details as you study clinical microbiology.'
     : 'Access your saved progress, bookmarks, quiz history, and profile details.';
+
+  // Show what the provider said, then tidy the error out of the address bar.
+  useEffect(() => {
+    const providerError = readAuthErrorFromUrl();
+
+    if (!providerError) {
+      return;
+    }
+
+    setErrorMessage(providerError);
+    trackEvent('auth_provider_error', { location: 'auth_page' });
+
+    const cleanedQuery = new URLSearchParams(window.location.search);
+    ['error', 'error_code', 'error_description'].forEach((key) => cleanedQuery.delete(key));
+    const search = cleanedQuery.toString();
+    window.history.replaceState({}, '', `${window.location.pathname}${search ? `?${search}` : ''}`);
+  }, []);
 
   useEffect(() => {
     if (isAuthReady && user && mode !== 'update-password') {
