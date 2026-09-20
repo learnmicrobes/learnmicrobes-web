@@ -1,0 +1,100 @@
+/* Compact atlas stage for the home featured card. Mirrors the mini-visual rules
+   in Learn.css (not loaded on home), scoped so they cannot leak. The card
+   already shows the title and summary, so the preview's own caption is hidden. */
+
+.home-featured-visual .mini-atlas-visual {
+  display: block;
+  padding: 0;
+}
+
+.home-featured-visual .mini-atlas-copy {
+  display: none;
+}
+
+.home-featured-visual .mini-atlas-stage {
+  position: relative;
+}
+
+.home-featured-visual .mini-atlas-stage.lia-stage {
+  width: 100%;
+  min-height: 13.5rem;
+  max-height: none;
+  padding: 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  overflow: hidden;
+  scroll-snap-type: none;
+  box-sizing: border-box;
+}
+
+.home-featured-visual .mini-atlas-stage.disk-stage {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  max-width: none;
+}
+
+.home-featured-visual .mini-atlas-stage.coagulase-stage {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.42rem;
+  max-width: none;
+  justify-content: stretch;
+}
+
+.home-featured-visual .mini-atlas-stage .lia-tube-card {
+  min-width: 0;
+  gap: 0.24rem;
+}
+
+.home-featured-visual .mini-atlas-stage .lia-letter {
+  font-size: var(--text-xl);
+}
+
+.home-featured-visual .mini-atlas-stage .lia-plate-svg,
+.home-featured-visual .mini-atlas-stage .lia-tube-svg {
+  max-width: 100%;
+}
+
+.home-featured-visual .mini-atlas-stage .lia-tube-card strong {
+  font-size: var(--text-xs);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.home-featured-visual .mini-atlas-stage .lia-tube-card span,
+.home-featured-visual .mini-atlas-stage .lia-tube-card p {
+  font-size: var(--text-xs);
+  line-height: 1.18;
+}
+
+/* The long per-plate explanation lives on the bench card itself; here it would
+   double the card's height and leave the riddle card beside it half empty. */
+.home-featured-visual .mini-atlas-stage .lia-tube-card p {
+  display: none;
+}
+
+.home-featured-visual .mini-atlas-stage.coagulase-stage .lia-letter {
+  font-size: var(--text-md);
+}
+
+/* Its own full-width row under the plates. Floated over the drawing it landed
+   on a caption at the bottom or on a plate letter at the top: this compact
+   stage has no free corner. */
+.home-featured-visual .mini-atlas-signature {
+  position: static;
+  grid-column: 1 / -1;
+  width: auto;
+  height: auto;
+  margin-top: 0.2rem;
+  text-align: right;
+  z-index: 3;
+  color: rgba(36, 92, 105, 0.36);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+body.dark-mode .home-featured-visual .mini-atlas-stage.lia-stage {
+  border-color: rgba(222, 232, 222, 0.14);
+  background: #1b2733;
+}

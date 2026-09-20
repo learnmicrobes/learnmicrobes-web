@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowRight, faFlask, faBookOpen, faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { biochemicalTestsData } from '../../tools/BiochemicalTests/biochemicalData';
@@ -68,7 +68,9 @@ const getResultActionLabel = (type: SearchResult['type']) => {
 };
 
 const GlobalSearch: React.FC = () => {
-  const [query, setQuery] = useState('');
+  // The header search panel's "See all results" link arrives as /search?q=...
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get('q') ?? '');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();

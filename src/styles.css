@@ -70,6 +70,55 @@
     --stain-afb: #9c2f63; /* carbol fuchsin */
 }
 
+/* Design-system 1.0 brand ramps (design-system/tokens). Only names that do not
+   collide with the semantic tokens above are imported: the design system's own
+   --accent, --surface-card and --surface-sunken mean different things there, so
+   components keep using the app's semantic tokens for anything theme-dependent
+   and reach for these ramps only for fixed brand colour, depth and geometry. */
+:root {
+    --teal-900: #1a3d3a;
+    --teal-800: #1d4a54;
+    --teal-700: #21514c;
+    --teal-600: #245c69;
+    --teal-500: #2c7873;
+    --teal-200: #bcd8d4;
+    --teal-50: #eef5f3;
+    --sage-700: #3f7a55;
+    --sage-600: #4f8f67;
+    --sage-400: #7cb494;
+    --sage-200: #cfe5d6;
+    --sage-100: #e4efe6;
+    --gold-500: #c8a24d;
+    --line-on-dark: rgba(255, 255, 255, 0.16);
+    --brand-gradient: linear-gradient(135deg, var(--teal-500), var(--teal-800));
+
+    /* Category accents for tools and study modes (not organism subjects, which
+       keep the stain palette above). */
+    --lm-gram-pos: #6d5b9e;
+    --lm-gram-neg: #c0563f;
+    --lm-anaerobe: #3f6b66;
+    --lm-biochem: #c8a24d;
+    --lm-clay: #c96b4b;
+    --lm-caution: #b64b36;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-2xl: 24px;
+
+    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-sm: 0 6px 16px rgba(15, 23, 42, 0.035);
+    --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.1);
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --dur: 180ms;
+
+    /* Height of the phone tab bar, so fixed UI and page ends can clear it. */
+    --tabbar-height: 64px;
+}
+
 body.dark-mode {
     --ground: #12161a;
     --surface: #22313f;

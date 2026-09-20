@@ -1,22 +1,36 @@
-import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faSearch, faUser, faMoon, faSun, faBars, faXmark, faChevronDown, faToolbox, faGraduationCap, faImages, faRightFromBracket, faRightToBracket, faMicroscope, faFlask, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowRight,
+  faBook,
+  faCheck,
+  faChevronRight,
+  faClipboardList,
+  faFire,
+  faFlask,
+  faGraduationCap,
+  faImages,
+  faMicroscope,
+  faSearch,
+  faTrophy,
+  faXmark
+} from '@fortawesome/free-solid-svg-icons';
 import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
-import { SUPPORT_URL } from './config/support';
 import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
-import type { LearnTopic } from './data/learnTopics';
-import { slugify as slugifyLearnCategory, getCategoryDisplayName } from './data/learnCategories';
 import { learnIndex, visualIndex } from './data/contentIndex.generated';
 import type { DashboardSearchItem } from './data/dashboardSearchContent';
-import AlphaValidationCTA from './components/AlphaValidationCTA/AlphaValidationCTA';
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
-import brandMark from './assets/brand-mark-knockout.svg';
-import { subjectStainClass } from './data/subjectStains';
+import SiteHeader from './components/Shell/SiteHeader';
+import SiteFooter from './components/Shell/SiteFooter';
+import { MobileBackButton, MobileTabBar } from './components/Shell/MobileNav';
+import type { ToolGroup } from './components/Shell/navigation';
+import { searchSiteItems } from './components/Shell/siteSearch';
 import './App.css';
+import './Home.css';
 
 type DailyRiddleChoice = {
   id: string;
@@ -37,10 +51,6 @@ type DailyRiddleResult = {
   completedDate: string;
   riddleId: string;
 };
-
-const normalizeDashboardSearchText = (value: string) => (
-  value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
-);
 
 const getLocalDateStamp = () => {
   const today = new Date();
@@ -175,15 +185,93 @@ const getDailyFeaturedBenchCard = () => {
 
 const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replace(/^[A-Z]\)\s*/, '') ?? 'the correct guide';
 
+// Home task chooser (1.0 design). Accents are tool categories from the design
+// system, not organism subjects, so they do not use the stain palette.
+const homeTasks = [
+  {
+    icon: faMicroscope,
+    title: 'Identify an unknown isolate',
+    sub: 'Gram stain, then morphology, then the branch-point tests that narrow it.',
+    cta: 'Open the workup',
+    path: '/unknown-isolate-workup',
+    accent: 'var(--lm-gram-pos)'
+  },
+  {
+    icon: faFlask,
+    title: 'Read a bench test result',
+    sub: 'Reactions, QC organisms, and the reading traps that cost points.',
+    cta: 'Open bench tests',
+    path: '/biochemical-tests',
+    accent: 'var(--lm-biochem)'
+  },
+  {
+    icon: faGraduationCap,
+    title: 'Study for the M(ASCP) exam',
+    sub: 'Content areas mapped into study passes you can finish in a sitting.',
+    cta: 'Open ASCP prep',
+    path: '/ascp-microbiology-review',
+    accent: 'var(--teal-600)'
+  },
+  {
+    icon: faImages,
+    title: 'See what it looks like',
+    sub: 'Bench cards for plates, tubes, and Gram films, with the trap called out.',
+    cta: 'Open the atlas',
+    path: '/visuals',
+    accent: 'var(--lm-gram-neg)'
+  },
+  {
+    icon: faClipboardList,
+    title: 'Test what I remember',
+    sub: 'Quizzes, flashcards, and staged cases with explanations on every miss.',
+    cta: 'Open practice',
+    path: '/practice',
+    accent: 'var(--sage-600)'
+  },
+  {
+    icon: faBook,
+    title: 'Learn a topic from scratch',
+    sub: 'Plain-language topics that end in what you would do at the bench.',
+    cta: 'Open the learn hub',
+    path: '/learn',
+    accent: 'var(--lm-anaerobe)'
+  }
+];
+
+// Pulls in the Visual Atlas renderer, so it loads only when the featured card
+// nears the viewport (see isFeaturedNear), never with the home shell itself.
+const FeaturedBenchVisual = lazy(() => import('./components/Home/FeaturedBenchVisual'));
+
+type HomeQuizProgress = { answered: number; streak: number; bestStreak: number };
+
+// Reads the same keys StudyQuiz writes, without importing StudyQuiz (and with it
+// the question bank) into the app shell.
+const readHomeQuizProgress = (): HomeQuizProgress => {
+  try {
+    const raw = window.localStorage.getItem('learnmicrobes_study_quiz_state');
+    const parsed = raw ? (JSON.parse(raw) as { answeredIds?: unknown }) : null;
+    const answeredIds = parsed?.answeredIds;
+    const answered = Array.isArray(answeredIds) ? answeredIds.length : 0;
+    const readCount = (key: string) => {
+      const value = Number(window.localStorage.getItem(key));
+      return Number.isFinite(value) && value > 0 ? value : 0;
+    };
+
+    return {
+      answered,
+      streak: readCount('learnmicrobes_study_quiz_streak'),
+      bestStreak: readCount('learnmicrobes_study_quiz_best_streak')
+    };
+  } catch (error) {
+    return { answered: 0, streak: 0, bestStreak: 0 };
+  }
+};
+
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const [isMobile, setIsMobile] = useState(false);
-  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
-  const [isToolsOpen, setIsToolsOpen] = useState(false);
-  const [isLearnMenuOpen, setIsLearnMenuOpen] = useState(false);
-  const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const [isHomeScreenHintDismissed, setIsHomeScreenHintDismissed] = useState(
     () => localStorage.getItem('learnmicrobes_home_screen_hint_dismissed') === 'true'
   );
@@ -251,39 +339,9 @@ export default function App() {
     setIsHomeScreenHintDismissed(true);
   };
 
-  const handleToolChange = (tool: string | null) => {
-    if (!tool) {
-      navigate('/');
-    } else {
-      navigate(tool.toLowerCase().replace(/\s+/g, '-'));
-    }
-  };
-
-  const handleSignOut = async () => {
-    await signOut();
-    setIsAccountMenuOpen(false);
-    setIsToolsOpen(false);
-    setIsNavMenuOpen(false);
-    navigate('/');
-  };
-
-  const closeMobileNavigation = useCallback(() => {
-    if (!isMobile) {
-      return;
-    }
-
-    setIsNavMenuOpen(false);
-    setIsAccountMenuOpen(false);
-    setIsToolsOpen(false);
-  }, [isMobile]);
-
   useEffect(() => {
     const checkIfMobile = () => {
-      const mobile = window.innerWidth <= 900;
-      setIsMobile(mobile);
-      if (!mobile) {
-        setIsNavMenuOpen(false);
-      }
+      setIsMobile(window.innerWidth <= 900);
     };
 
     checkIfMobile();
@@ -395,35 +453,6 @@ export default function App() {
     }
   ]), []);
 
-  const startPath = useMemo(() => ([
-    { step: '01', label: 'Read the beginner path', path: '/learn/clinical-microbiology' },
-    { step: '02', label: 'Practice an unknown', path: '/unknown-isolate-workup' },
-    { step: '03', label: 'Use a bench card', path: '/visuals/indole-production' }
-  ]), []);
-
-  const socialStartPaths = useMemo(() => ([
-    {
-      label: 'I am new to micro',
-      detail: 'Start with taxonomy, Gram stain logic, and the first bench clues.',
-      path: '/learn/clinical-microbiology'
-    },
-    {
-      label: 'I am reviewing for ASCP',
-      detail: 'Use the M(ASCP) review hub for quizzes, visuals, and weak-area loops.',
-      path: '/ascp-microbiology-review'
-    },
-    {
-      label: 'I am learning bench workflow',
-      detail: 'Follow an unknown from first observations to the safest next step.',
-      path: '/unknown-isolate-workup'
-    },
-    {
-      label: 'I need biochemical help',
-      detail: 'Look up reactions, QC organisms, expected results, and traps.',
-      path: '/biochemical-tests'
-    }
-  ]), []);
-
   const featuredBenchCard = useMemo(() => getDailyFeaturedBenchCard(), []);
 
   const homeSecondaryLinks = useMemo(() => ([
@@ -433,7 +462,7 @@ export default function App() {
     { label: 'Gram negative roadmap', path: '/gram-negative-roadmap' }
   ]), []);
 
-  const toolGroups = useMemo(() => ([
+  const toolGroups = useMemo<ToolGroup[]>(() => ([
     {
       label: 'Identification',
       items: [
@@ -454,29 +483,6 @@ export default function App() {
       ]
     }
   ]), []);
-
-  const isToolPathActive = useMemo(() => (
-    toolGroups.some((group) => group.items.some((item) => item.path === location.pathname))
-  ), [location.pathname, toolGroups]);
-
-  const learnCategoryGroups: Array<{ label: string; categories: LearnTopic['category'][] }> = useMemo(() => ([
-    {
-      label: 'Foundations & Methods',
-      categories: ['Foundations', 'Clinical Lab Principles', 'Core Methods']
-    },
-    {
-      label: 'Organism Groups',
-      categories: ['Bacteriology', 'Parasitology', 'Mycology', 'Virology']
-    },
-    {
-      label: 'Diagnostics & Review',
-      categories: ['Molecular and Immunodiagnostics', 'Bench and Exam Integration']
-    }
-  ]), []);
-
-  const isLearnCategoryActive = useCallback((category: LearnTopic['category']) => (
-    location.pathname === '/learn' && location.hash === `#${slugifyLearnCategory(category)}`
-  ), [location.pathname, location.hash]);
 
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
   // Learn topics, bench tests, and atlas cards are only searched once someone uses the
@@ -637,37 +643,10 @@ export default function App() {
     return Array.from(uniqueItems.values());
   }, [contentSearchItems, dashboardActions, homeSecondaryLinks, toolGroups]);
 
-  const dashboardSearchResults = useMemo<DashboardSearchItem[]>(() => {
-    const query = normalizeDashboardSearchText(dashboardSearchQuery);
-    const terms = query.split(' ').filter(Boolean);
-    const scoredResults = dashboardSearchIndex
-      .map((item) => {
-        const title = normalizeDashboardSearchText(item.title);
-        const haystack = normalizeDashboardSearchText(`${item.title} ${item.category} ${item.snippet} ${item.keywords}`);
-
-        if (!query) {
-          return { item, score: item.priority };
-        }
-
-        if (!terms.every((term) => haystack.includes(term))) {
-          return null;
-        }
-
-        let score = item.priority;
-
-        if (title.startsWith(query)) score += 7;
-        if (title.includes(query)) score += 4;
-        if (normalizeDashboardSearchText(item.path).includes(query)) score += 2;
-
-        return { item, score };
-      })
-      .filter((result): result is { item: DashboardSearchItem; score: number } => result !== null);
-
-    return scoredResults
-      .sort((first, second) => second.score - first.score || first.item.title.localeCompare(second.item.title))
-      .slice(0, 6)
-      .map((result) => result.item);
-  }, [dashboardSearchIndex, dashboardSearchQuery]);
+  const dashboardSearchResults = useMemo<DashboardSearchItem[]>(
+    () => searchSiteItems(dashboardSearchIndex, dashboardSearchQuery),
+    [dashboardSearchIndex, dashboardSearchQuery]
+  );
 
   const selectedRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.id === dailyRiddleResult?.selectedId);
   const correctRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.correct);
@@ -764,24 +743,6 @@ export default function App() {
     openExternalForm(FEEDBACK_FORM_URL);
   };
 
-  const handleHomeToolCardClick = (toolName: string, path: string) => {
-    trackEvent('tool_opened', {
-      location: 'home_tool_card',
-      tool_name: toolName,
-      path
-    });
-    navigate(path);
-  };
-
-  const handleStartHereClick = (label: string, path: string) => {
-    trackEvent('start_here_path_clicked', {
-      location: 'home_start_here',
-      path_label: label,
-      path
-    });
-    navigate(path);
-  };
-
   const handleCreateAccountClick = (locationName: string) => {
     trackEvent('signup_cta_clicked', {
       location: locationName,
@@ -822,56 +783,43 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsNavMenuOpen(false);
-    setIsAccountMenuOpen(false);
-    setIsToolsOpen(false);
-    setIsLearnMenuOpen(false);
   }, [location.pathname]);
 
+  const [homeQuizProgress, setHomeQuizProgress] = useState<HomeQuizProgress>(readHomeQuizProgress);
+
+  // Refresh when returning home, so a quiz answered a minute ago shows up.
   useEffect(() => {
-    if (!isMobile || !isNavMenuOpen) {
+    if (isHomeRoute) {
+      setHomeQuizProgress(readHomeQuizProgress());
+    }
+  }, [isHomeRoute]);
+
+  const featuredCardRef = useRef<HTMLDivElement | null>(null);
+  const [isFeaturedNear, setIsFeaturedNear] = useState(false);
+
+  useEffect(() => {
+    if (!isHomeRoute || isFeaturedNear) {
       return undefined;
     }
 
-    const handleScroll = () => closeMobileNavigation();
+    const node = featuredCardRef.current;
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [closeMobileNavigation, isMobile, isNavMenuOpen]);
-
-  useEffect(() => {
-    if (!isAccountMenuOpen && !isToolsOpen && !isLearnMenuOpen) {
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setIsFeaturedNear(true);
       return undefined;
     }
 
-    const handlePointerDown = (event: MouseEvent) => {
-      const target = event.target;
-      if (!(target instanceof Element)) {
-        return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setIsFeaturedNear(true);
+        observer.disconnect();
       }
+    }, { rootMargin: '400px 0px' });
 
-      if (!target.closest('.nav-account-menu-shell')) {
-        setIsAccountMenuOpen(false);
-      }
+    observer.observe(node);
 
-      if (!target.closest('.nav-tools')) {
-        setIsToolsOpen(false);
-      }
-
-      if (!target.closest('.nav-learn-dropdown')) {
-        setIsLearnMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handlePointerDown);
-
-    return () => {
-      document.removeEventListener('mousedown', handlePointerDown);
-    };
-  }, [isAccountMenuOpen, isToolsOpen, isLearnMenuOpen]);
+    return () => observer.disconnect();
+  }, [isHomeRoute, isFeaturedNear]);
 
   const seoMetadata = useMemo(() => {
     // GitHub Pages can answer a directory route such as /learn at /learn/, so both spellings share one entry.
@@ -1075,318 +1023,42 @@ export default function App() {
   return (
     <div className={`app-container ${activeTool === 'Study Quiz' ? 'study-quiz-route' : ''}`}>
       <SEO {...seoMetadata} />
-      <nav className="app-nav">
-        <div className="nav-brand" onClick={() => handleToolChange(null)}>
-          <img
-            className="nav-brand-mark"
-            src={brandMark}
-            alt="Learn Microbes"
-          />
-          {!isMobile && (
-            <span className="nav-brand-text">
-              <span className="nav-brand-name">Learn Microbes</span>
-              <span className="nav-brand-tagline">Clinical Microbiology &amp; ASCP Review</span>
-            </span>
-          )}
-        </div>
+      <SiteHeader
+        isDarkMode={isDarkMode}
+        onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+        toolGroups={toolGroups}
+        searchIndex={dashboardSearchIndex}
+        onSearchIntent={loadContentSearchItems}
+      />
 
-        {isMobile && (
-          <div className="mobile-nav-controls">
-            <button
-              className="mobile-theme-toggle"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-            </button>
-            {user ? (
-              <button
-                className="mobile-auth-shortcut"
-                onClick={() => {
-                  setIsNavMenuOpen(false);
-                  setIsAccountMenuOpen(false);
-                  setIsToolsOpen(false);
-                  navigate('/account');
-                }}
-                aria-label="Open your study account"
-                title="Account"
-              >
-                <FontAwesomeIcon icon={faUser} />
-                <span>Account</span>
-              </button>
-            ) : (
-              <button
-                className="mobile-auth-shortcut"
-                onClick={() => {
-                  setIsNavMenuOpen(false);
-                  setIsAccountMenuOpen(false);
-                  setIsToolsOpen(false);
-                  navigate('/login');
-                }}
-                aria-label="Sign in"
-                title="Sign in"
-              >
-                <FontAwesomeIcon icon={faRightToBracket} />
-                <span>Sign in</span>
-              </button>
-            )}
-            <button
-              className="nav-menu-toggle"
-              onClick={() => setIsNavMenuOpen((open) => !open)}
-              aria-label={isNavMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={isNavMenuOpen}
-            >
-              <FontAwesomeIcon icon={isNavMenuOpen ? faXmark : faBars} />
-            </button>
-          </div>
-        )}
-
-        <div className={`nav-links ${isMobile ? 'mobile-nav' : ''} ${isNavMenuOpen ? 'open' : ''}`}>
-          <div className="nav-links-main">
-            <button
-              className={isHomeRoute ? 'active' : ''}
-              onClick={() => {
-                closeMobileNavigation();
-                handleToolChange(null);
-              }}
-            >
-              <FontAwesomeIcon icon={faHome} />
-              <span className="nav-text">Home</span>
-            </button>
-            <div className="nav-tools nav-learn-dropdown">
-              <button
-                className={`nav-tools-trigger nav-learn-trigger-label ${activeTool === 'Learn' ? 'active' : ''}`}
-                onClick={() => {
-                  closeMobileNavigation();
-                  setIsLearnMenuOpen(false);
-                  navigate('/learn');
-                }}
-              >
-                <FontAwesomeIcon icon={faGraduationCap} />
-                <span className="nav-text">Learn</span>
-              </button>
-              <button
-                className={`nav-tools-trigger nav-learn-trigger-chevron ${activeTool === 'Learn' ? 'active' : ''}`}
-                onClick={() => {
-                  setIsToolsOpen(false);
-                  setIsAccountMenuOpen(false);
-                  setIsLearnMenuOpen((open) => !open);
-                }}
-                aria-expanded={isLearnMenuOpen}
-                aria-haspopup="menu"
-                aria-label="Show Learn categories"
-              >
-                <FontAwesomeIcon icon={faChevronDown} className={`nav-chevron ${isLearnMenuOpen ? 'open' : ''}`} />
-              </button>
-              {isLearnMenuOpen && (
-                <div className="nav-tools-menu nav-learn-menu" role="menu" aria-label="Learn menu">
-                  {learnCategoryGroups.map((group) => (
-                    <div className="nav-tools-group" key={group.label}>
-                      <div className="nav-tools-group-label">{group.label}</div>
-                      {group.categories.map((category) => (
-                        <button
-                          key={category}
-                          className={`${isLearnCategoryActive(category) ? 'active' : ''} ${subjectStainClass(category)}`.trim()}
-                          onClick={() => {
-                            closeMobileNavigation();
-                            setIsLearnMenuOpen(false);
-                            navigate(`/learn#${slugifyLearnCategory(category)}`);
-                          }}
-                          role="menuitem"
-                        >
-                          {subjectStainClass(category) && <i className="subject-stain-drop" aria-hidden="true" />}
-                          {getCategoryDisplayName(category)}
-                        </button>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <button
-              className={activeTool === 'Visual Atlas' ? 'active' : ''}
-              onClick={() => {
-                closeMobileNavigation();
-                navigate('/visuals');
-              }}
-            >
-              <FontAwesomeIcon icon={faImages} />
-              <span className="nav-text">Visuals</span>
-            </button>
-            <div className="nav-tools">
-              <button
-                className={`nav-tools-trigger ${isToolPathActive ? 'active' : ''}`}
-                onClick={() => {
-                  setIsAccountMenuOpen(false);
-                  setIsToolsOpen((open) => !open);
-                }}
-                aria-expanded={isToolsOpen}
-                aria-haspopup="menu"
-              >
-                <FontAwesomeIcon icon={faToolbox} />
-                <span className="nav-text">Tools</span>
-                <FontAwesomeIcon icon={faChevronDown} className={`nav-chevron ${isToolsOpen ? 'open' : ''}`} />
-              </button>
-              {isToolsOpen && (
-                <div className="nav-tools-menu" role="menu" aria-label="Tools menu">
-                  {toolGroups.map((group) => (
-                    <div className="nav-tools-group" key={group.label}>
-                      <div className="nav-tools-group-label">{group.label}</div>
-                      {group.items.map((item) => (
-                        <button
-                          key={item.path}
-                          className={location.pathname === item.path ? 'active' : ''}
-                          onClick={() => {
-                            closeMobileNavigation();
-                            navigate(item.path);
-                          }}
-                          role="menuitem"
-                        >
-                          {item.label}
-                        </button>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <button
-              className={activeTool === 'Practice' || activeTool === 'Study Quiz' || activeTool === 'ASCP Microbiology Review' || activeTool === 'Case Study Simulator' || activeTool === 'Flashcards' || activeTool === 'Certification Study Paths' ? 'active' : ''}
-              onClick={() => {
-                closeMobileNavigation();
-                navigate('/practice');
-              }}
-            >
-              <FontAwesomeIcon icon={faBook} />
-              <span className="nav-text">Practice</span>
-            </button>
-            <button
-              className={activeTool === 'Search' ? 'active' : ''}
-              onClick={() => {
-                closeMobileNavigation();
-                navigate('/search');
-              }}
-            >
-              <FontAwesomeIcon icon={faSearch} />
-              <span className="nav-text">Search</span>
-            </button>
-          </div>
-          {isMobile && user && (
-            <div className="mobile-nav-signout-section">
-              <div className="mobile-nav-signout-divider" aria-hidden="true" />
-              <button
-                className="mobile-nav-signout-btn"
-                onClick={handleSignOut}
-              >
-                <FontAwesomeIcon icon={faRightFromBracket} />
-                <span className="nav-text">Sign out</span>
-              </button>
-            </div>
-          )}
-
-          <div className="nav-links-auth">
-            {!isMobile && (
-              <button
-                className="nav-theme-toggle"
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} />
-              </button>
-            )}
-            {user ? (
-              <div className="nav-account-menu-shell">
-                <button
-                  className={`nav-account-trigger ${activeTool === 'Account' ? 'active' : ''}`}
-                  onClick={() => {
-                    setIsToolsOpen(false);
-                    setIsAccountMenuOpen((open) => !open);
-                  }}
-                  aria-label="Open account menu"
-                  aria-expanded={isAccountMenuOpen}
-                  aria-haspopup="menu"
-                  title={user.email ?? 'Signed in'}
-                >
-                  <FontAwesomeIcon icon={faUser} />
-                  <span className="nav-text">Account</span>
-                  <FontAwesomeIcon icon={faChevronDown} className={`nav-chevron ${isAccountMenuOpen ? 'open' : ''}`} />
-                </button>
-                {isAccountMenuOpen && (
-                  <div className="nav-account-menu" role="menu" aria-label="Account menu">
-                    <div className="nav-account-menu-header">
-                      <span>Signed in</span>
-                      <strong>{user.email ?? 'Learn Microbes account'}</strong>
-                    </div>
-                    <button
-                      onClick={() => {
-                        closeMobileNavigation();
-                        navigate('/account');
-                      }}
-                      role="menuitem"
-                    >
-                      <FontAwesomeIcon icon={faUser} />
-                      <span>Your study account</span>
-                    </button>
-                    <button
-                      className="nav-account-signout"
-                      onClick={handleSignOut}
-                      role="menuitem"
-                    >
-                      <FontAwesomeIcon icon={faRightFromBracket} />
-                      <span>Sign out</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="nav-links-auth-guest">
-                <button
-                  className="nav-signin-btn"
-                  onClick={() => {
-                    setIsAccountMenuOpen(false);
-                    setIsToolsOpen(false);
-                    setIsNavMenuOpen(false);
-                    navigate('/login');
-                  }}
-                >
-                  <FontAwesomeIcon icon={faRightToBracket} />
-                  <span className="nav-text">Sign in</span>
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-
-      <main className="app-main" onPointerDown={isNavMenuOpen ? closeMobileNavigation : undefined}>
+      <main className={`app-main ${isHomeRoute ? 'app-main--home' : ''}`.trim()}>
         {isHomeRoute ? (
-          <div className="home-page home-dashboard">
-            <section className="dashboard-cover-hero" aria-labelledby="dashboard-title">
-              <picture className="dashboard-cover-media" aria-hidden="true">
-                <img
-                  className="dashboard-cover-image"
-                  src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.png`}
-                  alt="Learn Microbes clinical microbiology study desk with reaction tubes, agar plate, Gram stain card, and bench card"
-                />
-              </picture>
-              <div className="dashboard-cover-content">
-                <span className="dashboard-kicker">Clinical microbiology &amp; ASCP review</span>
-                <h1 id="dashboard-title">Learn Microbes</h1>
+          <div className="home-v1">
+            <section className="home-hero" aria-labelledby="home-title">
+              <div className="home-hero-copy">
+                <span className="lm-kicker">Clinical microbiology &amp; ASCP review</span>
+                <h1 id="home-title">Learn the bench, not the list.</h1>
                 <p>
                   Learn clinical microbiology the way the bench actually thinks: follow Gram stain, colony clues, media, key tests, and the next safest step.
                 </p>
-                {!user && (
-                  <div className="dashboard-cover-actions" aria-label="Primary Learn Microbes actions">
-                    <button type="button" onClick={() => handleCreateAccountClick('home_hero')}>
+                <div className="home-hero-actions">
+                  {user ? (
+                    <Link
+                      className="lm-btn lm-btn--primary"
+                      to={homeQuizProgress.answered > 0 ? '/study-quiz' : '/practice'}
+                    >
+                      {homeQuizProgress.answered > 0 ? 'Resume quiz' : 'Start practicing'}
+                    </Link>
+                  ) : (
+                    <button type="button" className="lm-btn lm-btn--primary" onClick={() => handleCreateAccountClick('home_hero')}>
                       Create free account
                     </button>
-                  </div>
-                )}
-                <div className="dashboard-hero-search" ref={dashboardSearchRef}>
-                  <label htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
-                  <div className="dashboard-hero-search-box">
+                  )}
+                </div>
+
+                <div className="home-search" ref={dashboardSearchRef}>
+                  <label className="home-search-label" htmlFor="dashboard-hero-search-input">Search Learn Microbes</label>
+                  <div className="home-search-box">
                     <FontAwesomeIcon icon={faSearch} aria-hidden="true" />
                     <input
                       id="dashboard-hero-search-input"
@@ -1414,14 +1086,14 @@ export default function App() {
                     />
                   </div>
                   {isDashboardSearchOpen && (
-                    <div className="dashboard-hero-search-menu" id="dashboard-hero-search-results" role="listbox">
+                    <div className="home-search-menu" id="dashboard-hero-search-results" role="listbox">
                       {dashboardSearchResults.length > 0 ? (
                         dashboardSearchResults.map((result, index) => (
                           <button
                             type="button"
                             id={`dashboard-hero-search-option-${result.id}`}
                             key={result.id}
-                            className={`dashboard-hero-search-option ${index === selectedDashboardSearchIndex ? 'active' : ''}`}
+                            className={`home-search-option ${index === selectedDashboardSearchIndex ? 'active' : ''}`}
                             role="option"
                             aria-selected={index === selectedDashboardSearchIndex}
                             onMouseEnter={() => setSelectedDashboardSearchIndex(index)}
@@ -1433,11 +1105,51 @@ export default function App() {
                           </button>
                         ))
                       ) : (
-                        <div className="dashboard-hero-search-empty">No close matches yet.</div>
+                        <div className="home-search-empty">No close matches yet.</div>
                       )}
                     </div>
                   )}
                 </div>
+              </div>
+              <div className="home-hero-media" aria-hidden="true">
+                <img src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.png`} alt="" />
+              </div>
+            </section>
+
+            <section className="home-tasks" aria-labelledby="home-tasks-title">
+              <h2 id="home-tasks-title" className="lm-kicker home-tasks-title">What are you trying to do?</h2>
+              <div className="home-task-grid">
+                {homeTasks.map((task) => (
+                  <Link
+                    key={task.path}
+                    to={task.path}
+                    className="home-task lm-tinted"
+                    style={{ '--lm-accent': task.accent } as React.CSSProperties}
+                    onClick={() => trackEvent('tool_opened', { location: 'home_tool_card', tool_name: task.title, path: task.path })}
+                  >
+                    <span className="lm-icon-sq" aria-hidden="true">
+                      <FontAwesomeIcon icon={task.icon} />
+                    </span>
+                    <span className="home-task-copy">
+                      <strong>{task.title}</strong>
+                      <small>{task.sub}</small>
+                    </span>
+                    <span className="home-task-cta">
+                      {task.cta}
+                      <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                    </span>
+                    <FontAwesomeIcon icon={faChevronRight} className="home-task-chevron" aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className="home-bench-tools" aria-labelledby="home-bench-tools-title">
+              <h2 id="home-bench-tools-title" className="lm-kicker">Bench tools</h2>
+              <div className="home-bench-tools-list">
+                {toolGroups.flatMap((group) => group.items).map((item) => (
+                  <Link key={item.path} to={item.path}>{item.label}</Link>
+                ))}
               </div>
             </section>
 
@@ -1456,77 +1168,79 @@ export default function App() {
               </section>
             )}
 
-            <section className="dashboard-intro" aria-label="Study task chooser">
-              <span className="dashboard-kicker">What are you trying to do?</span>
-              <p>Stop memorizing isolated facts. Pick the closest route and study the workflow: clue by clue, test by test, bench decision by bench decision.</p>
-            </section>
-
-            <section className="dashboard-start-here-panel" aria-labelledby="dashboard-start-here-title">
-              <div className="dashboard-start-here-copy">
-                <span className="dashboard-kicker">New here?</span>
-                <h2 id="dashboard-start-here-title">Start with the path that matches your goal.</h2>
-                <p>
-                  Built for MedTech students, ASCP reviewees, and new micro bench learners by a working clinical lab scientist.
-                </p>
-              </div>
-              <div className="dashboard-start-here-grid">
-                {socialStartPaths.map((path) => (
-                  <button
-                    type="button"
-                    key={path.label}
-                    onClick={() => handleStartHereClick(path.label, path.path)}
+            <section className="home-account" aria-labelledby="home-account-title">
+              {user ? (
+                <div className="home-account-panel lm-panel">
+                  <div className="home-account-copy">
+                    <span className="lm-kicker home-kicker-row">
+                      {homeQuizProgress.answered > 0 ? 'Pick up where you left off' : 'Start here'}
+                      {homeQuizProgress.streak > 0 && <FontAwesomeIcon icon={faFire} className="home-streak-icon" aria-hidden="true" />}
+                    </span>
+                    <h2 id="home-account-title">
+                      {homeQuizProgress.answered > 0 ? 'Resume your quiz' : 'A few questions is enough to start.'}
+                    </h2>
+                    <p>
+                      {homeQuizProgress.answered > 0
+                        ? `${homeQuizProgress.answered} question${homeQuizProgress.answered === 1 ? '' : 's'} answered in your last session. Continue where you stopped, or pick a new area.`
+                        : 'Pick an area and answer a few questions. Every answer comes with an explanation.'}
+                    </p>
+                  </div>
+                  {(homeQuizProgress.streak > 0 || homeQuizProgress.bestStreak > 0) && (
+                    <div className="home-account-stats">
+                      <div className="lm-stat">
+                        <span className="lm-stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faFire} /></span>
+                        <div>
+                          <strong>{homeQuizProgress.streak}</strong>
+                          <small>Answer streak</small>
+                        </div>
+                      </div>
+                      <div className="lm-stat">
+                        <span className="lm-stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faTrophy} /></span>
+                        <div>
+                          <strong>{homeQuizProgress.bestStreak}</strong>
+                          <small>Best streak</small>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <Link
+                    className="lm-btn lm-btn--primary lm-btn--block"
+                    to={homeQuizProgress.answered > 0 ? '/study-quiz' : '/practice'}
                   >
-                    <strong>{path.label}</strong>
-                    <span>{path.detail}</span>
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="dashboard-trust-note" aria-label="Educational use note">
-              <strong>Bench-first educational review.</strong>
-              <span>
-                Learn Microbes uses teaching content and de-identified educational visuals. Follow your facility SOPs, institutional policies, and official certification guidance for real clinical work.
-              </span>
-            </section>
-
-            <section className="dashboard-action-grid" aria-label="Primary study tasks">
-              {dashboardActions.map((action) => (
-                <button
-                  type="button"
-                  key={action.label}
-                  className="dashboard-action-card"
-                  onClick={() => handleHomeToolCardClick(action.label, action.path)}
-                >
-                  <span className="dashboard-action-code"><FontAwesomeIcon icon={action.icon} /></span>
-                  <strong>{action.label}</strong>
-                  <small>{action.detail}</small>
-                </button>
-              ))}
-            </section>
-
-            <section className="dashboard-lower-grid" aria-label="Start path, daily riddle, and featured bench card">
-              <div className="dashboard-panel dashboard-start-path">
-                <span className="dashboard-kicker">Start path</span>
-                <h2>Three good first clicks</h2>
-                <div className="dashboard-step-list">
-                  {startPath.map((step) => (
-                    <button type="button" key={step.step} onClick={() => navigate(step.path)}>
-                      <span>{step.step}</span>
-                      {step.label}
-                    </button>
-                  ))}
+                    {homeQuizProgress.answered > 0 ? 'Resume quiz' : 'Start practicing'}
+                    <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                  </Link>
                 </div>
-              </div>
+              ) : (
+                <div className="home-account-panel lm-panel">
+                  <div className="home-account-copy">
+                    <span className="lm-kicker">Free to use</span>
+                    <h2 id="home-account-title">Start free. Learn the patterns.</h2>
+                    <p>
+                      Everything here is open without an account. Sign in only when you want saved quiz history and weak-area tracking.
+                    </p>
+                  </div>
+                  <div className="home-free-actions">
+                    <button type="button" className="lm-btn lm-btn--primary" onClick={() => handleCreateAccountClick('home_free_panel')}>
+                      Create a free account
+                    </button>
+                    <Link className="lm-btn lm-btn--secondary" to="/practice">
+                      Browse practice first
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </section>
 
-              <div className={`dashboard-panel dashboard-riddle-card ${dailyRiddleResult ? (isDailyRiddleCorrect ? 'correct' : 'incorrect') : ''}`}>
-                <span className="dashboard-kicker">Riddle of the day</span>
+            <section className="home-daily-grid" aria-label="Riddle of the day and featured bench card">
+              <div className="home-riddle lm-panel">
+                <span className="lm-kicker">Riddle of the day</span>
                 <h2>Diagnostic quick hit</h2>
-                <p className="dashboard-riddle-prompt">{dailyMicrobeRiddle.prompt}</p>
-                <div className="dashboard-riddle-options" role="radiogroup" aria-label="Daily microbe riddle choices">
+                <p className="home-riddle-prompt">{dailyMicrobeRiddle.prompt}</p>
+                <div className="home-riddle-options" role="radiogroup" aria-label="Daily microbe riddle choices">
                   {dailyMicrobeRiddle.choices.map((choice) => {
                     const isSelected = choice.id === dailyRiddleResult?.selectedId;
-                    const choiceStatusClass = dailyRiddleResult && choice.correct
+                    const choiceState = dailyRiddleResult && choice.correct
                       ? 'correct'
                       : dailyRiddleResult && isSelected
                         ? 'incorrect'
@@ -1536,60 +1250,63 @@ export default function App() {
                       <button
                         type="button"
                         key={choice.id}
-                        className={`dashboard-riddle-choice ${isSelected ? 'selected' : ''} ${choiceStatusClass}`}
+                        className={`home-riddle-choice ${choiceState}`.trim()}
                         role="radio"
                         aria-checked={isSelected}
                         disabled={Boolean(dailyRiddleResult)}
                         onClick={() => handleDailyRiddleChoice(choice.id)}
                       >
-                        {choice.label}
+                        <span>{choice.label}</span>
+                        <FontAwesomeIcon
+                          icon={choiceState === 'correct' ? faCheck : choiceState === 'incorrect' ? faXmark : faChevronRight}
+                          aria-hidden="true"
+                        />
                       </button>
                     );
                   })}
                 </div>
                 {dailyRiddleResult && selectedRiddleChoice && (
-                  <div className="dashboard-riddle-feedback" aria-live="polite">
+                  <div className={`home-riddle-feedback ${isDailyRiddleCorrect ? 'correct' : 'incorrect'}`} aria-live="polite">
                     <strong>{isDailyRiddleCorrect ? 'Correct.' : 'Not this one.'}</strong>
                     <p>
                       {isDailyRiddleCorrect
                         ? dailyMicrobeRiddle.explanation
                         : `Correct choice: ${getRiddleChoiceName(correctRiddleChoice)}. ${dailyMicrobeRiddle.explanation}`}
                     </p>
-                    <button type="button" onClick={() => navigate(dailyMicrobeRiddle.answerPath)}>
+                    <Link className="lm-btn lm-btn--secondary lm-btn--sm" to={dailyMicrobeRiddle.answerPath}>
                       {isDailyRiddleCorrect ? 'Read full guide' : 'Review guide'}
-                    </button>
+                    </Link>
                   </div>
                 )}
               </div>
 
-              <div className="dashboard-panel dashboard-featured-card">
-                <span className="dashboard-kicker">Featured bench card</span>
+              <div className="home-featured lm-panel" ref={featuredCardRef}>
+                <span className="lm-kicker">Featured bench card</span>
                 <h2>{featuredBenchCard.title}</h2>
                 <p>{featuredBenchCard.summary}</p>
-                <button type="button" onClick={() => navigate(`/visuals/${featuredBenchCard.slug}`)}>
+                {/* The drawing is a second way into the card for touch and mouse;
+                    the button below is the keyboard and screen-reader path. */}
+                <Link
+                  className="home-featured-media"
+                  to={`/visuals/${featuredBenchCard.slug}`}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  {isFeaturedNear ? (
+                    <Suspense fallback={<span className="home-featured-placeholder" />}>
+                      <FeaturedBenchVisual slug={featuredBenchCard.slug} />
+                    </Suspense>
+                  ) : (
+                    <span className="home-featured-placeholder" />
+                  )}
+                </Link>
+                <Link className="lm-btn lm-btn--primary" to={`/visuals/${featuredBenchCard.slug}`}>
                   Open bench card
-                </button>
-              </div>
-            </section>
-
-            <section className="dashboard-panel dashboard-secondary" aria-label="Common secondary routes">
-              <span className="dashboard-kicker">Common routes</span>
-              <div className="dashboard-secondary-links">
-                {homeSecondaryLinks.map((link) => (
-                  <button type="button" key={link.path} onClick={() => navigate(link.path)}>
-                    {link.label}
-                  </button>
-                ))}
+                </Link>
               </div>
             </section>
 
             <StudentTestimonials />
-
-            <AlphaValidationCTA
-              location="homepage_dashboard"
-              title="Free beta access for early Learn Microbes users"
-              body="Create an account to save progress, bookmarks, quiz history, and help shape what gets built next. The beta form asks your role, study goal, and hardest micro topic."
-            />
           </div>
         ) : (
           <Suspense fallback={<div className="route-loading" aria-busy="true" style={{ minHeight: '60vh' }} />}>
@@ -1598,69 +1315,9 @@ export default function App() {
         )}
       </main>
 
-      <footer className="sleek-footer">
-        <div className="sleek-footer-content">
-          <div className="sleek-footer-top">
-            <span className="connect-text">Connect With Us</span>
-            <span className="sleek-footer-mini-divider" aria-hidden="true"></span>
-            <div className="sleek-social-icons">
-              <a href="https://www.instagram.com/learn.microbes/" target="_blank" rel="noopener noreferrer" aria-label="Learn Microbes on Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=61575016503288" target="_blank" rel="noopener noreferrer" aria-label="Learn Microbes on Facebook">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="https://x.com/learn_microbes" target="_blank" rel="noopener noreferrer" aria-label="Learn Microbes on X">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="mailto:learnmicrobes@outlook.com?subject=Question%20About%20LearnMicrobes" aria-label="Email Learn Microbes">
-                <i className="fas fa-envelope"></i>
-              </a>
-            </div>
-            <a
-              className="sleek-footer-support"
-              href={SUPPORT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('support_clicked', { location: 'footer', destination: 'kofi' })}
-            >
-              <i className="fas fa-heart" aria-hidden="true"></i>
-              Support Learn Microbes
-            </a>
-          </div>
-          <div className="sleek-footer-bottom">
-            <span className="sleek-footer-legal">
-              <span className="sleek-footer-legal-full">&copy; 2026 LearnMicrobes.com</span>
-              <span className="sleek-footer-legal-short">&copy; 2026 LearnMicrobes.com</span>
-            </span>
-            <nav className="sleek-footer-links" aria-label="Footer links">
-              <Link to="/about">About</Link>
-              <Link to="/mission">Mission</Link>
-              <Link to="/faq">FAQ</Link>
-              <Link to="/disclaimer">Disclaimer</Link>
-              <Link to="/terms">Terms</Link>
-              <Link to="/privacy">Privacy</Link>
-              <a
-                href={ALPHA_SIGNUP_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  trackEvent('alpha_join_clicked', {
-                    location: 'footer',
-                    destination: ALPHA_SIGNUP_FORM_URL
-                  });
-                  trackEvent('lead_form_viewed', {
-                    location: 'footer',
-                    form_name: 'beta_tester_form'
-                  });
-                }}
-              >
-                Join Beta
-              </a>
-            </nav>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
+      <MobileTabBar />
+      <MobileBackButton />
       <button
         type="button"
         className="persistent-feedback-btn"
