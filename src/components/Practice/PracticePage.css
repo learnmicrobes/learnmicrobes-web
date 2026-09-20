@@ -1,603 +1,505 @@
+/* Practice hub, Learn Microbes 1.0 ("Review and practice" screen in the Web and
+   Mobile design files). Sections are layout wrappers; the panels and tiles
+   inside them carry the boundaries. */
+
 .practice-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
   width: 100%;
-  max-width: 1060px;
+  max-width: 1180px;
   margin: 0 auto;
   color: var(--ink);
   text-align: left;
 }
 
-/*
- * One level of containment.
- *
- * Surfaces are sections that ARE the content — the hero, the start panel, the
- * weak-area callout. They get a fill and a hairline.
- *
- * Groups are sections whose children already carry the object boundary. They get
- * space and nothing else, so the cards inside read as the objects rather than
- * competing with a box drawn around them.
- */
-.practice-hero,
-.practice-start,
-.practice-weak-areas {
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  background: var(--surface);
-  margin-bottom: 1rem;
+.practice-page > section {
+  margin: 0;
+  padding: 0;
 }
 
-.practice-quick-start,
-.practice-tools,
-.practice-more {
-  margin-bottom: 1.75rem;
+.practice-page h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
+/* ---------- Hero ---------- */
 .practice-hero {
-  padding: 1.45rem 1.6rem;
-}
-
-.practice-kicker,
-.practice-section-label {
-  display: inline-flex;
-  color: var(--accent);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  align-items: end;
 }
 
 .practice-hero h1 {
-  margin: 0.35rem 0 0.5rem;
+  margin: 8px 0 10px;
   color: var(--ink);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.15;
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 
 .practice-hero p {
+  max-width: 52ch;
   margin: 0;
-  max-width: 60ch;
   color: var(--ink-muted);
   font-size: var(--text-md);
+  font-weight: 500;
   line-height: 1.5;
 }
 
 .practice-hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
-}
-
-.practice-hero-stats span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--rule);
-  /* 10px matches the nav toolbar buttons. */
-  border-radius: 10px;
-  background: var(--surface-sunken);
-  color: var(--ink-muted);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.practice-hero-stats strong {
-  color: var(--accent);
-  font-size: var(--text-md);
-}
-
-/* Start / resume panel */
-.practice-start {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* ---------- Resume / start ---------- */
+.practice-resume-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
   align-items: center;
-  padding: 1.05rem 1.2rem;
+  padding: 24px;
 }
 
-.practice-start h2 {
-  margin: 0.25rem 0 0.35rem;
-  color: var(--ink);
-  font-size: var(--text-lg);
-  line-height: 1.2;
+.practice-resume-copy h2 {
+  margin: 10px 0 6px;
+  font-size: 1.3rem;
 }
 
-.practice-start p {
+.practice-resume-copy p {
+  max-width: 56ch;
   margin: 0;
-  max-width: 62ch;
   color: var(--ink-muted);
-  font-size: var(--text-md);
-  line-height: 1.45;
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .practice-streak-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.7rem;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .practice-streak-row span {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.32rem 0.6rem;
+  gap: 6px;
+  padding: 5px 10px;
   border: 1px solid var(--rule);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--surface-sunken);
-  color: var(--accent-strong);
+  color: var(--ink-muted);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .practice-streak-row svg {
-  color: var(--accent-color);
-  font-size: var(--text-sm);
+  color: var(--gold-500);
 }
 
-.practice-start-actions {
+.practice-resume-actions {
   display: grid;
-  gap: 0.4rem;
-  justify-items: stretch;
+  gap: 8px;
+  justify-self: end;
+  width: 100%;
+  max-width: 280px;
 }
 
-.practice-start-actions small {
+.practice-resume-actions small {
   color: var(--ink-muted);
   font-size: var(--text-sm);
-  line-height: 1.35;
+  font-weight: 600;
   text-align: center;
 }
 
-.practice-primary-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.9rem;
-  padding: 0.7rem 1.25rem;
-  border-radius: 6px;
-  background: var(--accent-fill);
-  color: var(--accent-fill-ink);
-  font-size: var(--text-md);
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background 0.18s ease, transform 0.18s ease;
-}
-
-.practice-primary-link:hover,
-.practice-primary-link:focus-visible {
-  background: var(--accent-fill-hover);
-  transform: translateY(-1px);
-}
-
-/* Weak areas */
-.practice-weak-areas {
-  display: grid;
-  gap: 0.7rem;
-  padding: 1.05rem 1.2rem;
-}
-
-.practice-weak-areas h2 {
-  margin: 0.25rem 0 0;
-  color: var(--ink);
-  font-size: var(--text-lg);
-  line-height: 1.2;
+/* ---------- Weak areas ---------- */
+.practice-weak .lm-callout p {
+  margin-bottom: 10px;
 }
 
 .practice-weak-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 6px;
 }
 
 .practice-weak-chips span {
-  padding: 0.4rem 0.7rem;
-  border: 1px solid rgba(201, 107, 75, 0.28);
-  border-radius: 8px;
-  background: rgba(201, 107, 75, 0.08);
-  color: var(--accent-warm);
+  padding: 4px 10px;
+  border: 1px solid rgba(200, 162, 77, 0.38);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  color: var(--ink);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Quick start */
-.practice-quick-start {
-  padding: 1.05rem 1.2rem;
-}
-
+/* ---------- Quick start ---------- */
 .practice-quick-heading {
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 16px 20px;
 }
 
-.practice-quick-heading h2 {
-  margin: 0.25rem 0 0;
-  color: var(--ink);
-  font-size: var(--text-lg);
-  line-height: 1.2;
-}
-
-.practice-difficulty {
+.practice-levels {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.practice-difficulty button {
-  min-height: 2.2rem;
-  padding: 0.4rem 0.8rem;
+  gap: 6px;
+  padding: 5px;
   border: 1px solid var(--rule);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--surface-sunken);
-  color: var(--accent-strong);
+}
+
+.practice-levels button {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-muted);
   font: inherit;
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.practice-difficulty button:hover {
-  border-color: rgba(36, 92, 105, 0.34);
+.practice-levels button:hover {
+  color: var(--ink);
 }
 
-.practice-difficulty button.active {
-  background: var(--accent-fill);
-  border-color: var(--accent);
-  color: var(--accent-fill-ink);
+.practice-levels button.active {
+  background: var(--surface-card);
+  box-shadow: var(--shadow-xs);
+  color: var(--accent);
 }
 
-.practice-difficulty-note {
-  margin: 0.7rem 0 0.85rem;
+.practice-level-note {
+  margin: 12px 0 18px;
   color: var(--ink-muted);
   font-size: var(--text-base);
-  line-height: 1.45;
+  font-weight: 500;
 }
 
 .practice-category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 0.55rem;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
 }
 
-/* Long labels such as "Mycobacteriology" must not force the column wider. */
-.practice-category-card,
-.practice-card,
-.practice-more-grid a {
+/* Explicit columns: a global mobile rule centres button content. */
+.practice-category {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: space-between;
+  justify-items: start;
+  gap: 12px;
+  width: 100%;
   min-width: 0;
+  min-height: 116px;
+  padding: 18px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: var(--shadow-xs);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
-.practice-card h3,
-.practice-card p,
-.practice-more-grid strong {
-  overflow-wrap: anywhere;
+.practice-category:hover,
+.practice-category:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* break-word + hyphens keeps "Mycobacteriology" from splitting mid-word without a hyphen. */
-.practice-category-card strong {
+/* Subject stains show as a tinted icon well and icon colour, never a solid
+   fill, so they stay a signal (see subjectStains.ts). */
+.practice-category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent-wash);
+  background: color-mix(in oklab, var(--lm-accent, var(--accent-fill)) 18%, transparent);
+  color: var(--lm-accent, var(--accent));
+  font-size: 0.85rem;
+}
+
+.practice-category-copy strong {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
   overflow-wrap: break-word;
   hyphens: auto;
 }
 
-.practice-category-card {
-  display: grid;
-  gap: 0.2rem;
-  justify-items: start;
-  min-height: 4.2rem;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--rule);
-  border-radius: 5px;
-  background: var(--surface-card);
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
-
-.practice-category-card:hover,
-.practice-category-card:focus-visible {
-  transform: translateY(-1px);
-  background: var(--surface-sunken);
-  border-color: var(--rule-strong);
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
-}
-
-.practice-category-card span {
+.practice-category-copy small {
+  display: block;
+  margin-top: 5px;
   color: var(--ink-muted);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: var(--text-sm);
+  font-weight: 700;
 }
 
-.practice-category-card strong {
-  color: var(--ink);
-  font-size: var(--text-md);
-  line-height: 1.25;
+.practice-mix {
+  margin-top: 16px;
 }
 
-/* Subject stain on organism-group tiles (see src/data/subjectStains.ts). */
-.practice-category-card.subject-stain {
-  border-color: var(--rule);
-  border-color: color-mix(in srgb, var(--stain) 32%, transparent);
-  background: color-mix(in srgb, var(--stain) 5%, var(--surface-card));
-}
-
-.practice-category-card.subject-stain:hover,
-.practice-category-card.subject-stain:focus-visible {
-  border-color: color-mix(in srgb, var(--stain) 55%, transparent);
-  background: color-mix(in srgb, var(--stain) 9%, var(--surface-card));
-}
-
-.practice-category-card.subject-stain span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--stain);
-}
-
-.practice-mixed-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  min-height: 2.7rem;
-  margin-top: 0.7rem;
-  padding: 0.6rem 1rem;
-  border: 1px dashed rgba(36, 92, 105, 0.32);
-  border-radius: 6px;
-  background: var(--surface-sunken);
-  color: var(--accent-strong);
-  font: inherit;
-  font-size: var(--text-base);
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease;
-}
-
-.practice-mixed-link:hover,
-.practice-mixed-link:focus-visible {
-  background: rgba(36, 92, 105, 0.06);
-  border-color: rgba(36, 92, 105, 0.5);
-}
-
-/* Full study modes */
-.practice-tools,
+/* ---------- Study modes ---------- */
+.practice-modes,
 .practice-more {
-  padding: 1.05rem 1.2rem;
-}
-
-.practice-tools-heading,
-.practice-more-heading {
-  margin-bottom: 0.8rem;
-}
-
-.practice-tools-heading h2,
-.practice-more-heading h2 {
-  margin: 0.25rem 0 0;
-  color: var(--ink);
-  font-size: var(--text-lg);
-  line-height: 1.2;
-}
-
-.practice-tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0.7rem;
+  gap: 18px;
 }
 
-.practice-card {
+.practice-mode-grid {
   display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
-  gap: 0.45rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.practice-mode {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
   border: 1px solid var(--rule);
-  border-radius: 6px;
-  background: var(--surface-card);
-  color: inherit;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-}
-
-.practice-card:hover,
-.practice-card:focus-visible {
-  transform: translateY(-1px);
-  background: var(--surface-sunken);
-  border-color: var(--rule-strong);
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
-}
-
-.practice-card-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 6px;
-  background: var(--accent-wash);
-  color: var(--accent);
-  font-size: var(--text-md);
-}
-
-.practice-card h3 {
-  margin: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
   color: var(--ink);
-  font-size: var(--text-lg);
-  line-height: 1.2;
+  text-decoration: none;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
-.practice-card p {
-  margin: 0;
+.practice-mode:hover,
+.practice-mode:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.practice-mode-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.practice-mode-copy strong {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.practice-mode-copy small {
+  display: block;
+  margin-top: 8px;
   color: var(--ink-muted);
   font-size: var(--text-base);
+  font-weight: 500;
   line-height: 1.5;
 }
 
-.practice-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.practice-card-meta small {
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  background: var(--accent-wash);
-  color: var(--accent-strong);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.practice-card-action {
+.practice-mode-action {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 6px;
+  margin-top: 12px;
   color: var(--accent);
-  font-size: var(--text-base);
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
-.practice-card:hover .practice-card-action svg {
-  transform: translateX(2px);
+.practice-mode-action svg {
+  font-size: 0.75rem;
 }
 
-.practice-card-action svg {
-  font-size: var(--text-sm);
-  transition: transform 0.18s ease;
+/* ---------- Study alongside ---------- */
+.practice-more h2 {
+  font-size: 1.3rem;
 }
 
-/* Keep going */
 .practice-more-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.55rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
 }
 
 .practice-more-grid a {
-  display: grid;
-  gap: 0.25rem;
-  justify-items: start;
-  padding: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
   border: 1px solid var(--rule);
-  border-radius: 5px;
+  border-radius: 12px;
   background: var(--surface-card);
-  color: inherit;
+  color: var(--ink);
   text-decoration: none;
-  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
 .practice-more-grid a:hover,
 .practice-more-grid a:focus-visible {
-  transform: translateY(-1px);
-  background: var(--surface-sunken);
   border-color: var(--rule-strong);
+  color: var(--ink);
+  text-decoration: none;
 }
 
 .practice-more-grid svg {
+  margin-top: 3px;
   color: var(--accent);
-  font-size: var(--text-md);
 }
 
 .practice-more-grid strong {
-  color: var(--ink);
+  display: block;
   font-size: var(--text-md);
-  line-height: 1.25;
+  font-weight: 700;
 }
 
 .practice-more-grid small {
+  display: block;
+  margin-top: 4px;
   color: var(--ink-muted);
   font-size: var(--text-sm);
   line-height: 1.4;
-}/* Mobile */
+}
+
+/* ---------- Phones ---------- */
 @media (max-width: 720px) {
+  .practice-page {
+    gap: 22px;
+  }
+
+  .practice-page h2 {
+    font-size: 1.12rem;
+  }
+
   .practice-hero {
-    padding: 1.15rem 1.1rem;
+    gap: 14px;
   }
 
-  /* Keep the primary CTA close to the fold on phones. The body copy stays at
-     --text-md; the heading is what gets tightened. */
   .practice-hero h1 {
-    font-size: var(--text-xl);
+    margin: 6px 0 8px;
+    font-size: 1.5rem;
+    line-height: 1.15;
   }
 
-  .practice-hero-stats {
-    margin-top: 0.8rem;
+  .practice-hero p {
+    font-size: var(--text-base);
   }
 
-  .practice-start,
-.practice-weak-areas,
-.practice-quick-start,
-.practice-tools,
-.practice-more {
-    padding: 1rem 1.1rem;
+  .practice-resume-panel {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
   }
 
-  .practice-start {
-    grid-template-columns: 1fr;
-    align-items: stretch;
+  .practice-resume-copy h2 {
+    font-size: 1.02rem;
   }
 
-  .practice-primary-link {
-    width: 100%;
-    min-height: 3rem;
-  }
-
-  .practice-start-actions small {
-    text-align: left;
+  .practice-resume-actions {
+    justify-self: stretch;
+    max-width: none;
   }
 
   .practice-quick-heading {
-    align-items: start;
+    display: grid;
+    gap: 10px;
   }
 
-  .practice-difficulty {
-    width: 100%;
-    flex-wrap: nowrap;
+  .practice-levels {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 4px;
   }
 
-  .practice-difficulty button {
-    flex: 1 1 0;
-    min-width: 0;
-    min-height: 2.6rem;
-    padding: 0.4rem 0.35rem;
+  .practice-levels button {
+    padding: 0 6px;
+    font-size: 0.8rem;
+  }
+
+  .practice-level-note {
+    margin: 10px 0 12px;
+    font-size: var(--text-sm);
   }
 
   .practice-category-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  .practice-category-card {
-    min-height: 3.9rem;
+  .practice-category {
+    min-height: 78px;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .practice-category-copy strong {
+    font-size: 0.9rem;
+  }
+
+  .practice-category-copy small {
+    font-size: var(--text-xs);
+  }
+
+  .practice-mix {
+    display: flex;
+    width: 100%;
+  }
+
+  .practice-mode-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .practice-mode {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .practice-mode .lm-icon-sq {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .practice-mode-copy strong {
+    font-size: 0.94rem;
+  }
+
+  .practice-mode-copy small {
+    margin-top: 5px;
+    font-size: var(--text-sm);
+    line-height: 1.45;
   }
 }
 
-@media (max-width: 420px) {
-  .practice-category-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Phones lose the shell's side padding (full-bleed rule in App.css), so the
+   wrappers supply it and the panels inside keep their corners. */
+@media (max-width: 620px) {
+  .practice-page > section {
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
-  .practice-hero-stats span {
-    flex: 1 1 45%;
-  }
-
-  /* Fit "Mycobacteriology" on one line instead of breaking mid-word. */
-  .practice-category-card {
-    padding: 0.7rem 0.6rem;
-  }
-
-  .practice-category-card strong {
-    font-size: var(--text-base);
+  .practice-page {
+    padding-top: 20px;
   }
 }
