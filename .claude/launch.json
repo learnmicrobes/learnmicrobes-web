@@ -1,0 +1,30 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "learnmicrobes-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start"],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "learnmicrobes-web-3001",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["cross-env", "PORT=3001", "BROWSER=none", "npm", "run", "start"],
+      "port": 3001
+    },
+    {
+      "name": "omcmicro",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "D:/omcmicro", "run", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "learnmicrobes-build",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve-build.mjs"],
+      "port": 4173
+    }
+  ]
+}
