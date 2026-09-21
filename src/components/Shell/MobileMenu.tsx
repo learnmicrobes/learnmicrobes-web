@@ -105,6 +105,25 @@ export default function MobileMenu({
         </div>
 
         <nav className="lm-drawer-body" aria-label="Site">
+          {/* The account sits first: on phones this is the only way in, so it
+              should not be buried under every category and tool. */}
+          <div className="lm-drawer-group">
+            {user ? (
+              <>
+                <span className="lm-drawer-signed">Signed in as {user.email ?? displayName}</span>
+                <Link to="/account" className="lm-drawer-link" onClick={onClose}>
+                  <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                  Your bench
+                </Link>
+              </>
+            ) : (
+              <Link to="/login" className="lm-drawer-link lm-drawer-link--cta" onClick={onClose}>
+                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+                Sign in
+              </Link>
+            )}
+          </div>
+
           <div className="lm-drawer-group">
             {sections.map((section) => (
               <Link
@@ -162,30 +181,18 @@ export default function MobileMenu({
               <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} aria-hidden="true" />
               {isDarkMode ? 'Light mode' : 'Dark mode'}
             </button>
-            {user ? (
-              <>
-                <Link to="/account" className="lm-drawer-link" onClick={onClose}>
-                  <FontAwesomeIcon icon={faUser} aria-hidden="true" />
-                  Your bench
-                </Link>
-                <span className="lm-drawer-signed">Signed in as {user.email ?? displayName}</span>
-                <button
-                  type="button"
-                  className="lm-drawer-link"
-                  onClick={() => {
-                    onClose();
-                    onSignOut();
-                  }}
-                >
-                  <FontAwesomeIcon icon={faRightFromBracket} aria-hidden="true" />
-                  Sign out
-                </button>
-              </>
-            ) : (
-              <Link to="/login" className="lm-drawer-link" onClick={onClose}>
-                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
-                Sign in
-              </Link>
+            {user && (
+              <button
+                type="button"
+                className="lm-drawer-link"
+                onClick={() => {
+                  onClose();
+                  onSignOut();
+                }}
+              >
+                <FontAwesomeIcon icon={faRightFromBracket} aria-hidden="true" />
+                Sign out
+              </button>
             )}
           </div>
         </nav>

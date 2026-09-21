@@ -947,6 +947,20 @@ body.dark-mode .lm-footer {
   color: var(--accent);
 }
 
+.lm-drawer-link--cta,
+.lm-drawer-link--cta:hover,
+.lm-drawer-link--cta:focus-visible {
+  justify-content: center;
+  margin: 6px 0 2px;
+  background: var(--accent);
+  color: #f6fbf8;
+}
+
+.lm-drawer-link--cta svg,
+.lm-drawer-link--cta:hover svg {
+  color: #f6fbf8;
+}
+
 .lm-drawer-signed {
   padding: 4px 12px 8px;
   color: var(--ink-subtle);
@@ -968,7 +982,9 @@ body.dark-mode .lm-footer {
     display: none;
   }
 
+  /* Sign in lives in the drawer too, so the header keeps just the logo,
+     the search and the hamburger. */
   .lm-header-signin {
-    padding: 0 12px;
+    display: none;
   }
 }
