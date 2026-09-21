@@ -904,11 +904,19 @@ body.dark-mode .lm-footer {
   font-size: 0.72rem;
 }
 
-.lm-sheet-row:hover,
 .lm-sheet-row:focus-visible {
   background: var(--accent-wash);
   color: var(--accent);
   text-decoration: none;
+}
+
+/* Touch screens keep :hover after a tap, which left rows looking selected. */
+@media (hover: hover) {
+  .lm-sheet-row:hover {
+    background: var(--accent-wash);
+    color: var(--accent);
+    text-decoration: none;
+  }
 }
 
 .lm-sheet-row.active {
@@ -925,6 +933,10 @@ body.dark-mode .lm-footer {
 
 .lm-sheet-split .lm-sheet-row {
   flex: 1;
+}
+
+.lm-sheet-split .lm-sheet-row--chevron {
+  flex: 0 0 auto;
 }
 
 .lm-sheet-row--chevron {
@@ -972,11 +984,17 @@ body.dark-mode .lm-footer {
   text-decoration: none;
 }
 
-.lm-sheet-sub-link:hover,
 .lm-sheet-sub-link:focus-visible,
 .lm-sheet-sub-link.active {
   color: var(--accent);
   text-decoration: underline;
+}
+
+@media (hover: hover) {
+  .lm-sheet-sub-link:hover {
+    color: var(--accent);
+    text-decoration: underline;
+  }
 }
 
 .lm-sheet-divider {
