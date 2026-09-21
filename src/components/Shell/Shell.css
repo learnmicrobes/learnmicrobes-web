@@ -785,19 +785,29 @@ body.dark-mode .lm-footer {
     height: 38px;
   }
 
+  /* Seven links need about 430px of the 343 a phone gives them, so they take
+     two rows. A four-column grid splits them 4 and 3 instead of letting Join
+     Beta wrap on its own. */
   .lm-footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 4px;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 0 2px;
     justify-content: center;
     width: 100%;
   }
 
+  /* Eight half-columns, so the closing row of three can start on a half
+     column and sit centred under the four above it. */
+  .lm-footer-links a:nth-last-child(3) {
+    grid-column: 2 / span 2;
+  }
+
   .lm-footer-links a {
+    grid-column: span 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 34px;
+    min-height: 32px;
     padding: 0 8px;
     border-radius: var(--radius-md);
     font-size: 0.78rem;
