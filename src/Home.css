@@ -239,6 +239,13 @@ body.dark-mode .home-hero-media::after {
   font-size: var(--text-base);
 }
 
+.home-hero-trust {
+  margin: 16px 0 0;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
 /* ---------- Task chooser ---------- */
 .home-tasks {
   display: grid;
@@ -597,8 +604,29 @@ body.dark-mode .home-riddle-choice.incorrect svg {
   }
 
   .home-hero-copy {
+    display: flex;
+    flex-direction: column;
     max-width: none;
     padding: 0;
+  }
+
+  /* Search first, then the button: search is how people find a test, the
+     button is what we want them to do next. */
+  .home-search {
+    order: 2;
+  }
+
+  .home-hero-actions {
+    order: 3;
+  }
+
+  .home-hero-trust {
+    order: 4;
+    margin: 12px 0 0;
+    color: rgba(244, 239, 228, 0.72);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.01em;
   }
 
   .home-hero {
@@ -617,21 +645,41 @@ body.dark-mode .home-riddle-choice.incorrect svg {
   }
 
   .home-hero h1 {
-    margin: 8px 0 6px;
+    margin: 10px 0 8px;
     color: #f6fbf8;
-    font-size: 1.72rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-size: clamp(1.72rem, 7.6vw, 2.05rem);
+    letter-spacing: -0.028em;
+    line-height: 1.08;
+    text-wrap: balance;
   }
 
   .home-hero p {
-    margin: 0 0 16px;
-    color: rgba(244, 239, 228, 0.86);
+    max-width: 36ch;
+    margin: 0 0 18px;
+    color: rgba(244, 239, 228, 0.88);
     font-size: var(--text-base);
+    line-height: 1.5;
   }
 
   .home-hero-actions {
-    display: none;
+    display: block;
+    margin-top: 12px;
+  }
+
+  .home-hero-actions .lm-btn {
+    width: 100%;
+    min-height: 50px;
+    border: 0;
+    background: #f6fbf8;
+    color: #14343b;
+    font-size: 1rem;
+    box-shadow: 0 8px 20px rgba(9, 28, 32, 0.28);
+  }
+
+  .home-hero-actions .lm-btn:hover,
+  .home-hero-actions .lm-btn:focus-visible {
+    background: #ffffff;
+    color: #14343b;
   }
 
   /* The bench photo carries over from the web view, as it does on the live
@@ -647,7 +695,7 @@ body.dark-mode .home-riddle-choice.incorrect svg {
 
   .home-hero-media::after {
     background:
-      linear-gradient(180deg, rgba(29, 74, 84, 0.95) 0%, rgba(29, 74, 84, 0.88) 46%, rgba(29, 74, 84, 0.66) 100%);
+      linear-gradient(180deg, rgba(29, 74, 84, 0.95) 0%, rgba(29, 74, 84, 0.87) 52%, rgba(29, 74, 84, 0.58) 100%);
   }
 
   body.dark-mode .home-hero-media::after {

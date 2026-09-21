@@ -1110,6 +1110,7 @@ export default function App() {
                     </div>
                   )}
                 </div>
+                <p className="home-hero-trust">Built by a working micro lab tech. Free to use.</p>
               </div>
               <div className="home-hero-media" aria-hidden="true">
                 <img src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.png`} alt="" />
