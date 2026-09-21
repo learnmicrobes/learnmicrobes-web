@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBook,
+  faChevronDown,
   faGraduationCap,
   faHouse,
   faImages,
+  faMagnifyingGlass,
   faMoon,
   faRightFromBracket,
   faSun,
-  faUser,
-  faXmark
+  faToolbox,
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import { subjectStainClass } from '../../data/subjectStains';
@@ -35,9 +37,11 @@ type MobileMenuProps = {
 };
 
 /**
- * Phone navigation drawer. It carries the same destinations as the desktop
- * header — the sections, the Learn categories and the bench tools — so nothing
- * is reachable on a laptop but not on a phone.
+ * Phone menu. It keeps the shape the live site's menu has — Home, Learn,
+ * Visuals, Tools, Practice, Search, with Learn and Tools opening in place —
+ * so someone who has been using the site does not have to relearn it. The
+ * theme toggle and the account sit below the divider, because in the 1.0
+ * header they are no longer icons of their own.
  */
 export default function MobileMenu({
   isOpen,
@@ -50,24 +54,13 @@ export default function MobileMenu({
   onSignOut
 }: MobileMenuProps) {
   const { pathname } = useLocation();
-
-  // Hold the page still behind the drawer, so a flick inside it does not scroll
-  // the article underneath.
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined;
-    }
-
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [isOpen]);
+  const [isLearnOpen, setIsLearnOpen] = useState(false);
+  const [isToolsOpen, setIsToolsOpen] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
+      setIsLearnOpen(false);
+      setIsToolsOpen(false);
       return undefined;
     }
 
@@ -86,116 +79,143 @@ export default function MobileMenu({
     return null;
   }
 
-  const sections = [
-    { label: 'Home', icon: faHouse, path: '/', active: pathname === '/' },
-    { label: 'Learn', icon: faBook, path: '/learn', active: isLearnPath(pathname) },
-    { label: 'Atlas', icon: faImages, path: '/visuals', active: isAtlasPath(pathname) },
-    { label: 'Review', icon: faGraduationCap, path: '/practice', active: isReviewPath(pathname) }
-  ];
+  const isToolsActive = toolGroups.some((group) => group.items.some((item) => item.path === pathname));
 
   return (
     <>
-      <div className="lm-drawer-scrim" onClick={onClose} aria-hidden="true" />
-      <div className="lm-drawer" role="dialog" aria-modal="true" aria-label="Menu">
-        <div className="lm-drawer-head">
-          <span className="lm-drawer-title">Menu</span>
-          <button type="button" className="lm-drawer-close" onClick={onClose} aria-label="Close menu">
-            <FontAwesomeIcon icon={faXmark} aria-hidden="true" />
+      <div className="lm-sheet-scrim" onClick={onClose} aria-hidden="true" />
+      <div className="lm-sheet" role="dialog" aria-label="Menu">
+        <Link to="/" className={`lm-sheet-row ${pathname === '/' ? 'active' : ''}`} onClick={onClose}>
+          <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
+          Home
+        </Link>
+
+        {/* Learn and Tools open in place, as they do on the live site. */}
+        <div className="lm-sheet-split">
+          <Link to="/learn" className={`lm-sheet-row ${isLearnPath(pathname) ? 'active' : ''}`} onClick={onClose}>
+            <FontAwesomeIcon icon={faGraduationCap} aria-hidden="true" />
+            Learn
+          </Link>
+          <button
+            type="button"
+            className={`lm-sheet-row lm-sheet-row--chevron ${isLearnPath(pathname) ? 'active' : ''}`}
+            onClick={() => {
+              setIsToolsOpen(false);
+              setIsLearnOpen((open) => !open);
+            }}
+            aria-expanded={isLearnOpen}
+            aria-label="Show Learn categories"
+          >
+            <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isLearnOpen ? 'open' : ''}`} aria-hidden="true" />
           </button>
         </div>
 
-        <nav className="lm-drawer-body" aria-label="Site">
-          {/* The account sits first: on phones this is the only way in, so it
-              should not be buried under every category and tool. */}
-          <div className="lm-drawer-group">
-            {user ? (
-              <>
-                <span className="lm-drawer-signed">Signed in as {user.email ?? displayName}</span>
-                <Link to="/account" className="lm-drawer-link" onClick={onClose}>
-                  <FontAwesomeIcon icon={faUser} aria-hidden="true" />
-                  Your bench
-                </Link>
-              </>
-            ) : (
-              <Link to="/login" className="lm-drawer-link lm-drawer-link--cta" onClick={onClose}>
-                <FontAwesomeIcon icon={faUser} aria-hidden="true" />
-                Sign in
-              </Link>
-            )}
-          </div>
+        {isLearnOpen && (
+          <div className="lm-sheet-sub">
+            {learnGroups.map((group) => (
+              <div className="lm-sheet-sub-group" key={group.label}>
+                <span className="lm-sheet-sub-label">{group.label}</span>
+                {group.categories.map((category) => {
+                  const stain = subjectStainClass(category);
 
-          <div className="lm-drawer-group">
-            {sections.map((section) => (
-              <Link
-                key={section.path}
-                to={section.path}
-                className={`lm-drawer-link ${section.active ? 'active' : ''}`}
-                aria-current={section.active ? 'page' : undefined}
-                onClick={onClose}
-              >
-                <FontAwesomeIcon icon={section.icon} aria-hidden="true" />
-                {section.label}
-              </Link>
+                  return (
+                    <Link
+                      key={category}
+                      to={`/learn#${slugify(category)}`}
+                      className={`lm-sheet-sub-link ${stain}`.trim()}
+                      onClick={onClose}
+                    >
+                      {stain && <i className="subject-stain-drop" aria-hidden="true" />}
+                      {getCategoryDisplayName(category)}
+                    </Link>
+                  );
+                })}
+              </div>
             ))}
           </div>
+        )}
 
-          {learnGroups.map((group) => (
-            <div className="lm-drawer-group" key={group.label}>
-              <span className="lm-drawer-label">{group.label}</span>
-              {group.categories.map((category) => {
-                const stain = subjectStainClass(category);
+        <Link to="/visuals" className={`lm-sheet-row ${isAtlasPath(pathname) ? 'active' : ''}`} onClick={onClose}>
+          <FontAwesomeIcon icon={faImages} aria-hidden="true" />
+          Visuals
+        </Link>
 
-                return (
+        <button
+          type="button"
+          className={`lm-sheet-row ${isToolsActive ? 'active' : ''}`}
+          onClick={() => {
+            setIsLearnOpen(false);
+            setIsToolsOpen((open) => !open);
+          }}
+          aria-expanded={isToolsOpen}
+        >
+          <FontAwesomeIcon icon={faToolbox} aria-hidden="true" />
+          Tools
+          <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isToolsOpen ? 'open' : ''}`} aria-hidden="true" />
+        </button>
+
+        {isToolsOpen && (
+          <div className="lm-sheet-sub">
+            {toolGroups.map((group) => (
+              <div className="lm-sheet-sub-group" key={group.label}>
+                <span className="lm-sheet-sub-label">{group.label}</span>
+                {group.items.map((item) => (
                   <Link
-                    key={category}
-                    to={`/learn#${slugify(category)}`}
-                    className={`lm-drawer-link lm-drawer-link--sub ${stain}`.trim()}
+                    key={item.path}
+                    to={item.path}
+                    className={`lm-sheet-sub-link ${pathname === item.path ? 'active' : ''}`}
                     onClick={onClose}
                   >
-                    {stain && <i className="subject-stain-drop" aria-hidden="true" />}
-                    {getCategoryDisplayName(category)}
+                    {item.label}
                   </Link>
-                );
-              })}
-            </div>
-          ))}
-
-          {toolGroups.map((group) => (
-            <div className="lm-drawer-group" key={group.label}>
-              <span className="lm-drawer-label">{group.label}</span>
-              {group.items.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`lm-drawer-link lm-drawer-link--sub ${pathname === item.path ? 'active' : ''}`}
-                  onClick={onClose}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          ))}
-
-          <div className="lm-drawer-group lm-drawer-group--last">
-            <button type="button" className="lm-drawer-link" onClick={onToggleTheme}>
-              <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} aria-hidden="true" />
-              {isDarkMode ? 'Light mode' : 'Dark mode'}
-            </button>
-            {user && (
-              <button
-                type="button"
-                className="lm-drawer-link"
-                onClick={() => {
-                  onClose();
-                  onSignOut();
-                }}
-              >
-                <FontAwesomeIcon icon={faRightFromBracket} aria-hidden="true" />
-                Sign out
-              </button>
-            )}
+                ))}
+              </div>
+            ))}
           </div>
-        </nav>
+        )}
+
+        <Link to="/practice" className={`lm-sheet-row ${isReviewPath(pathname) ? 'active' : ''}`} onClick={onClose}>
+          <FontAwesomeIcon icon={faBook} aria-hidden="true" />
+          Practice
+        </Link>
+
+        <Link to="/search" className={`lm-sheet-row ${pathname === '/search' ? 'active' : ''}`} onClick={onClose}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} aria-hidden="true" />
+          Search
+        </Link>
+
+        <div className="lm-sheet-divider" aria-hidden="true" />
+
+        <button type="button" className="lm-sheet-row" onClick={onToggleTheme}>
+          <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} aria-hidden="true" />
+          {isDarkMode ? 'Light mode' : 'Dark mode'}
+        </button>
+
+        {user ? (
+          <>
+            <Link to="/account" className="lm-sheet-row" onClick={onClose}>
+              <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+              Your bench
+            </Link>
+            <button
+              type="button"
+              className="lm-sheet-row"
+              onClick={() => {
+                onClose();
+                onSignOut();
+              }}
+            >
+              <FontAwesomeIcon icon={faRightFromBracket} aria-hidden="true" />
+              Sign out
+            </button>
+            <span className="lm-sheet-signed">Signed in as {user.email ?? displayName}</span>
+          </>
+        ) : (
+          <Link to="/login" className="lm-sheet-row" onClick={onClose}>
+            <FontAwesomeIcon icon={faUser} aria-hidden="true" />
+            Sign in
+          </Link>
+        )}
       </div>
     </>
   );
