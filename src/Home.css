@@ -317,11 +317,6 @@ body.dark-mode .home-hero-media::after {
   display: none;
 }
 
-/* Tools are in the header menu on desktop; phones get this list instead. */
-.home-bench-tools {
-  display: none;
-}
-
 /* ---------- Account / free panel ---------- */
 .home-account-panel {
   display: grid;
@@ -595,6 +590,12 @@ body.dark-mode .home-riddle-choice.incorrect svg {
     padding: 0;
   }
 
+  /* styles.css gives every <section> margin: 1rem 0 below 768px, which opened a
+     cream strip between the header and the teal hero band. */
+  .home-v1 > section {
+    margin: 0;
+  }
+
   .home-hero-copy {
     max-width: none;
     padding: 0;
@@ -695,36 +696,6 @@ body.dark-mode .home-riddle-choice.incorrect svg {
     flex-shrink: 0;
     color: var(--ink-subtle);
     font-size: 0.8rem;
-  }
-
-  .home-bench-tools {
-    display: grid;
-    gap: 10px;
-    padding: 16px 16px 0;
-  }
-
-  .home-bench-tools h2 {
-    margin: 0;
-  }
-
-  .home-bench-tools-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .home-bench-tools-list a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 40px;
-    padding: 0 12px;
-    border: 1px solid var(--rule);
-    border-radius: var(--radius-md);
-    background: var(--surface-card);
-    color: var(--accent);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    text-decoration: none;
   }
 
   .home-v1 > .dashboard-home-screen-hint {

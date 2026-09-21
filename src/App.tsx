@@ -26,7 +26,7 @@ import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
-import { MobileBackButton, MobileTabBar } from './components/Shell/MobileNav';
+import { MobileBackButton } from './components/Shell/MobileNav';
 import type { ToolGroup } from './components/Shell/navigation';
 import { searchSiteItems } from './components/Shell/siteSearch';
 import './App.css';
@@ -1144,14 +1144,6 @@ export default function App() {
               </div>
             </section>
 
-            <section className="home-bench-tools" aria-labelledby="home-bench-tools-title">
-              <h2 id="home-bench-tools-title" className="lm-kicker">Bench tools</h2>
-              <div className="home-bench-tools-list">
-                {toolGroups.flatMap((group) => group.items).map((item) => (
-                  <Link key={item.path} to={item.path}>{item.label}</Link>
-                ))}
-              </div>
-            </section>
 
             {isMobile && !isHomeScreenHintDismissed && (
               <section className="dashboard-home-screen-hint" aria-label="Add Learn Microbes to your phone">
@@ -1316,7 +1308,6 @@ export default function App() {
       </main>
 
       <SiteFooter />
-      <MobileTabBar />
       <MobileBackButton />
       <button
         type="button"

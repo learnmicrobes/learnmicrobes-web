@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faBars,
   faChevronDown,
   faMoon,
   faRightFromBracket,
@@ -14,6 +15,7 @@ import type { DashboardSearchItem } from '../../data/dashboardSearchContent';
 import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import { subjectStainClass } from '../../data/subjectStains';
 import HeaderSearch from './HeaderSearch';
+import MobileMenu from './MobileMenu';
 import {
   getDisplayName,
   getInitials,
@@ -40,6 +42,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
   const [isToolsOpen, setIsToolsOpen] = useState(false);
   const [isLearnOpen, setIsLearnOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toolsRef = useRef<HTMLDivElement | null>(null);
   const learnRef = useRef<HTMLDivElement | null>(null);
   const accountRef = useRef<HTMLDivElement | null>(null);
@@ -49,6 +52,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
     setIsToolsOpen(false);
     setIsLearnOpen(false);
     setIsAccountOpen(false);
+    setIsMenuOpen(false);
   }, [pathname, hash]);
 
   useEffect(() => {
@@ -279,8 +283,33 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
               Sign in
             </Link>
           )}
+          {/* Phones only: the sections, Learn categories, bench tools and the
+              theme toggle all live behind this. */}
+          <button
+            type="button"
+            className="lm-icon-btn lm-burger"
+            onClick={() => {
+              closeMenus();
+              setIsMenuOpen((open) => !open);
+            }}
+            aria-expanded={isMenuOpen}
+            aria-label="Open menu"
+          >
+            <FontAwesomeIcon icon={faBars} aria-hidden="true" />
+          </button>
         </div>
       </div>
+
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        isDarkMode={isDarkMode}
+        onToggleTheme={onToggleTheme}
+        toolGroups={toolGroups}
+        user={user}
+        displayName={displayName}
+        onSignOut={handleSignOut}
+      />
     </header>
   );
 }
