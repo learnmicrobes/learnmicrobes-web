@@ -603,8 +603,8 @@ body.dark-mode .home-riddle-choice.incorrect svg {
 
   .home-hero {
     display: block;
-    min-height: 0;
-    padding: 6px 16px 22px;
+    min-height: 300px;
+    padding: 14px 16px 24px;
     border: 0;
     border-radius: 0;
     background: var(--teal-800);
@@ -630,9 +630,29 @@ body.dark-mode .home-riddle-choice.incorrect svg {
     font-size: var(--text-base);
   }
 
-  .home-hero-actions,
-  .home-hero-media {
+  .home-hero-actions {
     display: none;
+  }
+
+  /* The bench photo carries over from the web view, as it does on the live
+     mobile home. The fade turns vertical and teal here, so the white copy and
+     the search box stay readable over it. */
+  .home-hero-media {
+    display: block;
+  }
+
+  .home-hero-media img {
+    object-position: center 42%;
+  }
+
+  .home-hero-media::after {
+    background:
+      linear-gradient(180deg, rgba(29, 74, 84, 0.95) 0%, rgba(29, 74, 84, 0.88) 46%, rgba(29, 74, 84, 0.66) 100%);
+  }
+
+  body.dark-mode .home-hero-media::after {
+    background:
+      linear-gradient(180deg, rgba(18, 38, 42, 0.95) 0%, rgba(18, 38, 42, 0.88) 46%, rgba(18, 38, 42, 0.7) 100%);
   }
 
   .home-search {
