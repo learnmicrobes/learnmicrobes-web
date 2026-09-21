@@ -41,15 +41,19 @@ export default function SiteFooter() {
               </a>
             ))}
           </div>
+          {/* Phones show only the heart, in the row of social icons. The label
+              is in aria-label so it survives the text being hidden there. */}
           <a
             className="lm-footer-support"
             href={SUPPORT_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Support Learn Microbes"
+            title="Support Learn Microbes"
             onClick={() => trackEvent('support_clicked', { location: 'footer', destination: 'kofi' })}
           >
             <i className="fas fa-heart" aria-hidden="true" />
-            Support Learn Microbes
+            <span className="lm-footer-support-text">Support Learn Microbes</span>
           </a>
         </div>
 

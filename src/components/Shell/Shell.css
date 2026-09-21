@@ -749,9 +749,29 @@ body.dark-mode .lm-footer {
     padding: 16px 16px 18px;
   }
 
+  /* The heart joins the social icons as one more round button, instead of a
+     full-width pill on its own line. */
   .lm-footer-connect {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .lm-footer-support {
+    width: 38px;
+    min-height: 38px;
+    height: 38px;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .lm-footer-support i {
+    font-size: 0.92rem;
+  }
+
+  .lm-footer-support-text {
+    display: none;
   }
 
   .lm-footer-label,
@@ -763,12 +783,6 @@ body.dark-mode .lm-footer {
   .lm-footer-social a {
     width: 38px;
     height: 38px;
-  }
-
-  .lm-footer-support {
-    min-height: 40px;
-    padding: 0 16px;
-    font-size: 0.82rem;
   }
 
   .lm-footer-links {
