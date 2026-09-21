@@ -48,3 +48,5 @@ generate_data.js
 .stylelintcache
 .nyc_output
 coverage/
+# Claude Code local config
+.claude/
