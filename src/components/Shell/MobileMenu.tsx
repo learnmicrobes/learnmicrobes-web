@@ -38,8 +38,9 @@ type MobileMenuProps = {
 
 /**
  * Phone menu. It keeps the shape the live site's menu has — Home, Learn,
- * Visuals, Tools, Practice, Search, with Learn and Tools opening in place —
- * so someone who has been using the site does not have to relearn it. The
+ * Visuals, Tools, Review, Search, with Learn and Tools opening in place —
+ * so someone who has been using the site does not have to relearn it. Labels
+ * follow the desktop header, so a section is called the same thing on both. The
  * theme toggle and the account sit below the divider, because in the 1.0
  * header they are no longer icons of their own.
  */
@@ -176,7 +177,7 @@ export default function MobileMenu({
 
         <Link to="/practice" className={`lm-sheet-row ${isReviewPath(pathname) ? 'active' : ''}`} onClick={onClose}>
           <FontAwesomeIcon icon={faBook} aria-hidden="true" />
-          Practice
+          Review
         </Link>
 
         <Link to="/search" className={`lm-sheet-row ${pathname === '/search' ? 'active' : ''}`} onClick={onClose}>
