@@ -643,10 +643,11 @@ export default function App() {
     return Array.from(uniqueItems.values());
   }, [contentSearchItems, dashboardActions, homeSecondaryLinks, toolGroups]);
 
-  const dashboardSearchResults = useMemo<DashboardSearchItem[]>(
+  const dashboardSearch = useMemo(
     () => searchSiteItems(dashboardSearchIndex, dashboardSearchQuery),
     [dashboardSearchIndex, dashboardSearchQuery]
   );
+  const dashboardSearchResults: DashboardSearchItem[] = dashboardSearch.items;
 
   const selectedRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.id === dailyRiddleResult?.selectedId);
   const correctRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.correct);
@@ -1087,6 +1088,9 @@ export default function App() {
                   </div>
                   {isDashboardSearchOpen && (
                     <div className="home-search-menu" id="dashboard-hero-search-results" role="listbox">
+                      {dashboardSearch.correctedQuery && (
+                        <span className="home-search-correction">Showing results for <strong>{dashboardSearch.correctedQuery}</strong></span>
+                      )}
                       {dashboardSearchResults.length > 0 ? (
                         dashboardSearchResults.map((result, index) => (
                           <button

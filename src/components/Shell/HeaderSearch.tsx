@@ -29,7 +29,8 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
   const panelId = `${baseId}-panel`;
   const listId = `${baseId}-results`;
 
-  const results = useMemo(() => searchSiteItems(searchIndex, query), [searchIndex, query]);
+  const search = useMemo(() => searchSiteItems(searchIndex, query), [searchIndex, query]);
+  const results = search.items;
   const trimmedQuery = query.trim();
 
   useEffect(() => {
@@ -136,7 +137,13 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
             />
           </div>
 
-          <span className="lm-search-caption">{trimmedQuery ? 'Best matches' : 'Popular starting points'}</span>
+          <span className="lm-search-caption">
+            {results.length === 0 && trimmedQuery
+              ? 'Nothing matched'
+              : search.correctedQuery
+                ? <>Showing results for <strong>{search.correctedQuery}</strong></>
+                : (trimmedQuery ? 'Best matches' : 'Popular starting points')}
+          </span>
 
           {results.length > 0 ? (
             <div className="lm-search-results" id={listId} role="listbox">

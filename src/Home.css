@@ -233,6 +233,17 @@ body.dark-mode .home-hero-media::after {
   background: var(--accent-wash);
 }
 
+.home-search-correction {
+  display: block;
+  padding: 8px 12px 4px;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+}
+
+.home-search-correction strong {
+  color: var(--ink);
+}
+
 .home-search-empty {
   padding: 12px;
   color: var(--ink-muted);

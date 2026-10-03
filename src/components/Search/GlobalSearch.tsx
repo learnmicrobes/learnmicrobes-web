@@ -8,6 +8,7 @@ import { glossaryEntries, type GlossaryEntry } from '../../data/glossaryData';
 import { learnTopics } from '../../data/learnTopics';
 import { expandedLearnTopics } from '../../data/learnExpansionTopics';
 import { getSearchAliases } from '../../data/searchAliases';
+import { matchAllTerms, tokenize } from '../../utils/fuzzyMatch';
 import { atlasPages } from '../VisualAtlas/VisualAtlas';
 import ToolBox from '../ToolBox/ToolBox';
 import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
@@ -1120,18 +1121,34 @@ const GlobalSearch: React.FC = () => {
     }
 
     const lowerQuery = query.toLowerCase();
-    const rankedResults = searchIndex
-      .filter((entry) => entry.keywords.includes(lowerQuery) || entry.title.toLowerCase().includes(lowerQuery))
+    const terms = tokenize(lowerQuery);
+
+    // Every term has to land somewhere, rather than the whole query having to
+    // appear as one literal string: "gram stain negative" used to find nothing.
+    // Typos are allowed only when nothing matched as typed.
+    const rankEntries = (allowTypos: boolean) => searchIndex
       .map((entry) => {
+        const haystack = `${entry.title} ${entry.keywords}`;
+        const matches = allowTypos
+          ? matchAllTerms(terms, haystack)
+          : (terms.every((term) => haystack.toLowerCase().includes(term)) ? [] : null);
+
+        if (matches === null) return null;
+
         const titleMatch = entry.title.toLowerCase().includes(lowerQuery) ? 8 : 0;
         const exactMatch = entry.title.toLowerCase() === lowerQuery ? 12 : 0;
         const keywordMatch = entry.keywords.includes(lowerQuery) ? 3 : 0;
+        const penalty = matches.reduce((total, match) => total + match.distance, 0) * 3;
 
         return {
           ...entry,
-          score: entry.priority + titleMatch + exactMatch + keywordMatch
+          score: entry.priority + titleMatch + exactMatch + keywordMatch - penalty
         };
       })
+      .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+
+    const matched = rankEntries(false);
+    const rankedResults = (matched.length > 0 ? matched : rankEntries(true))
       .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
       .slice(0, 24)
       .map(({ score, ...entry }) => entry);
