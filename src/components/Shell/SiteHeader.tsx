@@ -150,14 +150,6 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
             </button>
             {isLearnOpen && (
               <div className="lm-menu lm-menu--mega" role="menu" aria-label="Learn menu">
-                <Link
-                  to="/learn"
-                  role="menuitem"
-                  className={`lm-menu-wide ${pathname === '/learn' && !hash ? 'active' : ''}`}
-                  onClick={() => setIsLearnOpen(false)}
-                >
-                  Browse the Learn hub
-                </Link>
                 {learnGroups.map((group) => (
                   <div className="lm-menu-group" key={group.label}>
                     <span className="lm-menu-label">{group.label}</span>

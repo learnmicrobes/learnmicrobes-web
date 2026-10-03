@@ -378,16 +378,6 @@
   text-align: left;
 }
 
-/* The hub link sits above the columns and spans them. */
-.lm-menu-wide {
-  grid-column: 1 / -1;
-  justify-content: space-between;
-  margin-bottom: 2px;
-  border-bottom: 1px solid var(--rule);
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  font-weight: 700;
-}
-
 /* The Learn menu lays its groups out in columns like the live site. */
 .lm-menu--mega {
   left: 50%;
@@ -957,13 +947,6 @@ body.dark-mode .lm-footer {
   }
 }
 
-.lm-sheet-sub-link--hub {
-  margin-bottom: 4px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
-  border-radius: 0;
-  font-weight: 700;
-}
 
 .lm-sheet-divider {
   margin: 8px 1.5rem;

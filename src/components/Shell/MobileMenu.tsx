@@ -108,9 +108,6 @@ export default function MobileMenu({
 
         {isLearnOpen && (
           <div className="lm-sheet-sub">
-            <Link to="/learn" className="lm-sheet-sub-link lm-sheet-sub-link--hub" onClick={onClose}>
-              Browse the Learn hub
-            </Link>
             {learnGroups.map((group) => (
               <div className="lm-sheet-sub-group" key={group.label}>
                 <span className="lm-sheet-sub-label">{group.label}</span>
