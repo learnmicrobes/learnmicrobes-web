@@ -130,20 +130,13 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
             Home
           </Link>
 
-          {/* Learn keeps its own link so the tab still opens the hub, with the
-              categories behind a chevron the way the live site does it. */}
-          <div className="lm-nav-split" ref={learnRef}>
-            <Link
-              to="/learn"
-              className={`lm-nav-link lm-nav-link--split ${isLearnPath(pathname) ? 'active' : ''}`}
-              aria-current={isLearnPath(pathname) ? 'page' : undefined}
-              onClick={closeMenus}
-            >
-              Learn
-            </Link>
+          {/* One target, like Tools. Learn has a hub page where Tools has none,
+              so the hub is the first item inside the menu rather than a second
+              button someone has to aim at. */}
+          <div className="lm-nav-tools" ref={learnRef}>
             <button
               type="button"
-              className={`lm-nav-link lm-nav-link--chevron ${isLearnPath(pathname) ? 'active' : ''}`}
+              className={`lm-nav-link ${isLearnPath(pathname) ? 'active' : ''}`}
               onClick={() => {
                 setIsToolsOpen(false);
                 setIsAccountOpen(false);
@@ -151,12 +144,20 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
               }}
               aria-expanded={isLearnOpen}
               aria-haspopup="menu"
-              aria-label="Show Learn categories"
             >
+              Learn
               <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isLearnOpen ? 'open' : ''}`} aria-hidden="true" />
             </button>
             {isLearnOpen && (
               <div className="lm-menu lm-menu--mega" role="menu" aria-label="Learn menu">
+                <Link
+                  to="/learn"
+                  role="menuitem"
+                  className={`lm-menu-wide ${pathname === '/learn' && !hash ? 'active' : ''}`}
+                  onClick={() => setIsLearnOpen(false)}
+                >
+                  Browse the Learn hub
+                </Link>
                 {learnGroups.map((group) => (
                   <div className="lm-menu-group" key={group.label}>
                     <span className="lm-menu-label">{group.label}</span>

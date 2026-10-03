@@ -91,28 +91,26 @@ export default function MobileMenu({
           Home
         </Link>
 
-        {/* Learn and Tools open in place, as they do on the live site. */}
-        <div className="lm-sheet-split">
-          <Link to="/learn" className={`lm-sheet-row ${isLearnPath(pathname) ? 'active' : ''}`} onClick={onClose}>
-            <FontAwesomeIcon icon={faGraduationCap} aria-hidden="true" />
-            Learn
-          </Link>
-          <button
-            type="button"
-            className={`lm-sheet-row lm-sheet-row--chevron ${isLearnPath(pathname) ? 'active' : ''}`}
-            onClick={() => {
-              setIsToolsOpen(false);
-              setIsLearnOpen((open) => !open);
-            }}
-            aria-expanded={isLearnOpen}
-            aria-label="Show Learn categories"
-          >
-            <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isLearnOpen ? 'open' : ''}`} aria-hidden="true" />
-          </button>
-        </div>
+        {/* Learn and Tools both open in place, one row and one target each. */}
+        <button
+          type="button"
+          className={`lm-sheet-row ${isLearnPath(pathname) ? 'active' : ''}`}
+          onClick={() => {
+            setIsToolsOpen(false);
+            setIsLearnOpen((open) => !open);
+          }}
+          aria-expanded={isLearnOpen}
+        >
+          <FontAwesomeIcon icon={faGraduationCap} aria-hidden="true" />
+          Learn
+          <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isLearnOpen ? 'open' : ''}`} aria-hidden="true" />
+        </button>
 
         {isLearnOpen && (
           <div className="lm-sheet-sub">
+            <Link to="/learn" className="lm-sheet-sub-link lm-sheet-sub-link--hub" onClick={onClose}>
+              Browse the Learn hub
+            </Link>
             {learnGroups.map((group) => (
               <div className="lm-sheet-sub-group" key={group.label}>
                 <span className="lm-sheet-sub-label">{group.label}</span>

@@ -132,25 +132,6 @@
   position: relative;
 }
 
-/* Learn keeps a link plus its own chevron, so the tab still opens the hub. */
-.lm-nav-split {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.lm-nav-split .lm-nav-link--split {
-  padding-right: 6px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.lm-nav-split .lm-nav-link--chevron {
-  padding: 0 12px 0 6px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
 .lm-header-actions {
   display: flex;
   flex-shrink: 0;
@@ -395,6 +376,16 @@
   box-shadow: var(--shadow-lg);
   color: var(--ink);
   text-align: left;
+}
+
+/* The hub link sits above the columns and spans them. */
+.lm-menu-wide {
+  grid-column: 1 / -1;
+  justify-content: space-between;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--rule);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-weight: 700;
 }
 
 /* The Learn menu lays its groups out in columns like the live site. */
@@ -919,32 +910,6 @@ body.dark-mode .lm-footer {
   color: var(--accent);
 }
 
-/* Learn keeps a tappable label and a separate chevron, as on the live site. */
-.lm-sheet-split {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-}
-
-.lm-sheet-split .lm-sheet-row {
-  flex: 1;
-}
-
-.lm-sheet-split .lm-sheet-row--chevron {
-  flex: 0 0 auto;
-}
-
-.lm-sheet-row--chevron {
-  flex: 0 0 auto;
-  width: auto;
-  justify-content: center;
-  padding: 0 1.5rem;
-}
-
-.lm-sheet-row--chevron .lm-chevron {
-  margin-left: 0;
-}
-
 .lm-sheet-sub {
   display: grid;
   gap: 8px;
@@ -990,6 +955,14 @@ body.dark-mode .lm-footer {
     color: var(--accent);
     text-decoration: underline;
   }
+}
+
+.lm-sheet-sub-link--hub {
+  margin-bottom: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  font-weight: 700;
 }
 
 .lm-sheet-divider {
