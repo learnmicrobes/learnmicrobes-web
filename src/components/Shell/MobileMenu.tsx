@@ -38,7 +38,7 @@ type MobileMenuProps = {
 
 /**
  * Phone menu. It keeps the shape the live site's menu has — Home, Learn,
- * Visuals, Tools, Review, Search, with Learn and Tools opening in place —
+ * Atlas, Tools, Review, Search, with Learn and Tools opening in place —
  * so someone who has been using the site does not have to relearn it. Labels
  * follow the desktop header, so a section is called the same thing on both. The
  * theme toggle and the account sit below the divider, because in the 1.0
@@ -138,7 +138,7 @@ export default function MobileMenu({
 
         <Link to="/visuals" className={`lm-sheet-row ${isAtlasPath(pathname) ? 'active' : ''}`} onClick={onClose}>
           <FontAwesomeIcon icon={faImages} aria-hidden="true" />
-          Visuals
+          Atlas
         </Link>
 
         <button

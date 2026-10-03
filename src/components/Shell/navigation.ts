@@ -22,7 +22,7 @@ export const isLearnPath = (pathname: string) => matchesPath(pathname, '/learn')
 
 export const isAtlasPath = (pathname: string) => matchesPath(pathname, '/visuals');
 
-export const isAccountPath = (pathname: string) => ['/account', '/login', '/register', '/auth'].includes(pathname);
+const isAccountPath = (pathname: string) => ['/account', '/login', '/register', '/auth'].includes(pathname);
 
 // Top-level destinations of the phone tab bar. Everything else is a page inside
 // one of them and gets the floating back button.
