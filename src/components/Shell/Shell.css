@@ -801,10 +801,10 @@ body.dark-mode .lm-footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 32px;
+    min-height: 36px;
     padding: 0 3px;
     border-radius: var(--radius-md);
-    font-size: clamp(0.64rem, calc(4.2vw - 3.2px), 0.78rem);
+    font-size: clamp(0.72rem, calc(4.2vw - 3.2px), 0.78rem);
     font-weight: 600;
     text-align: center;
     white-space: nowrap;
