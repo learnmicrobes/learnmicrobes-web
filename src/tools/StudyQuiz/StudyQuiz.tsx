@@ -106,6 +106,9 @@ const QUIZ_TIMER_SECONDS = 60;
 const GUEST_QUIZ_QUESTION_LIMIT = 15;
 const CONFETTI_PIECES = 20;
 const LEADERBOARD_ROW_LIMIT = 10;
+// A guest who answers this many questions has a session worth keeping, so the
+// sign-in prompt appears then rather than only after the last question.
+const GUEST_SAVE_PROMPT_AFTER = 5;
 
 /**
  * Future freemium leaderboard integration:
@@ -517,6 +520,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const [leaderboardUserRank, setLeaderboardUserRank] = useState<LeaderboardUserRank>(null);
   const [leaderboardScope, setLeaderboardScope] = useState<LeaderboardScope>('weekly');
   const lastSavedAttemptSignature = useRef('');
+  const hasPickedLeaderboardScope = useRef(false);
+  const hasAutoSwitchedLeaderboardScope = useRef(false);
   const hasTrackedQuizStart = useRef(false);
   const hasTrackedGuestGate = useRef(false);
   const missedQuestionIds = useMemo(
@@ -593,6 +598,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     ? Math.round((visibleAnsweredCount / visibleQuestions.length) * 100)
     : 0;
   const isQuizComplete = visibleQuestions.length > 0 && visibleAnsweredCount === visibleQuestions.length;
+  const showGuestSavePrompt = !user && (isQuizComplete || visibleAnsweredCount >= GUEST_SAVE_PROMPT_AFTER);
   const visibleAccuracyPercent = visibleAnsweredCount >= 3
     ? Math.round((visibleCorrectCount / visibleAnsweredCount) * 100)
     : null;
@@ -706,12 +712,15 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   ]);
 
   const handleOpenLeaderboard = () => {
+    hasPickedLeaderboardScope.current = false;
+    hasAutoSwitchedLeaderboardScope.current = false;
     setLeaderboardEntries(null);
     setLeaderboardUserRank(null);
     setIsLeaderboardOpen(true);
   };
 
   const handleLeaderboardScopeChange = (scope: LeaderboardScope) => {
+    hasPickedLeaderboardScope.current = true;
     setLeaderboardScope(scope);
     setLeaderboardEntries(null);
     setLeaderboardUserRank(null);
@@ -761,6 +770,23 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       };
     });
     const currentUserEntry = rankedEntries.find((entry) => entry.isCurrentUser);
+
+    // The weekly board only counts sessions from Monday, so it is legitimately
+    // empty early in the week. Fall back to All time once, unless the learner
+    // picked the scope themselves, rather than opening on a blank list.
+    if (
+      leaderboardScope === 'weekly'
+      && rankedEntries.length === 0
+      && !hasPickedLeaderboardScope.current
+      && !hasAutoSwitchedLeaderboardScope.current
+    ) {
+      hasAutoSwitchedLeaderboardScope.current = true;
+      setLeaderboardScope('allTime');
+      setLeaderboardEntries(null);
+      setLeaderboardUserRank(null);
+      setLeaderboardLoading(false);
+      return;
+    }
 
     setLeaderboardEntries(rankedEntries.filter((entry) => entry.rank <= LEADERBOARD_ROW_LIMIT));
     setLeaderboardUserRank(currentUserEntry ? {
@@ -1221,9 +1247,9 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             </span>
           </div>
 
-          {isQuizComplete && !user && (
+          {showGuestSavePrompt && (
             <div className="study-quiz-save-gate">
-              <p>Sign in to save your score, track missed questions, and keep your streak.</p>
+              <p>Sign in to save this session and join the leaderboard.</p>
               <button
                 type="button"
                 className="study-quiz-save-gate-cta"
