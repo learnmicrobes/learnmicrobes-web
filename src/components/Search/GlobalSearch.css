@@ -19,8 +19,9 @@
   margin-bottom: 0.75rem;
 }
 
-.search-panel-heading span {
+.search-panel-heading h1 {
   display: inline-flex;
+  margin: 0;
   color: var(--primary-color);
   font-size: var(--text-xs);
   font-weight: 600;

@@ -1205,7 +1205,7 @@ const GlobalSearch: React.FC = () => {
       <div className="global-search-container">
         <div className="search-panel">
           <div className="search-panel-heading">
-            <span>Bench Reference Search</span>
+            <h1>Bench Reference Search</h1>
             <p>Find Learn pages, Visual Atlas cards, bench tests, guides, tools, and quick definitions.</p>
           </div>
           <div className="search-input-wrapper">
