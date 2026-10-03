@@ -2440,6 +2440,20 @@ body.dark-mode .result-icon-box {
   }
 }
 
+/* Every page used to start 32px below the header on a phone, and Practice and
+   About further down still, because an earlier .app-main override never won the
+   cascade. Qualified with .app-container so this one does. */
+@media (max-width: 768px) {
+  .app-container .app-main {
+    padding-top: 12px;
+  }
+
+  .app-container .practice-page,
+  .app-container .about-container {
+    padding-top: 0;
+  }
+}
+
 @media (max-width: 620px) {
   .app-main {
     padding-bottom: 1rem;
