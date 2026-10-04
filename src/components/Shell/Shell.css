@@ -816,15 +816,13 @@ body.dark-mode .lm-footer {
   }
 }
 
-/* The floating feedback button and the sign-in nudge.
+/* The floating feedback button and the sign-in nudge's buttons.
 
-   These are styled here rather than in App.css because the build drops three
-   App.css rules — this one, .depth-nudge-cta and .depth-nudge-dismiss — from the
-   bundle. The source is well formed (braces balance, no stray characters, the
-   source map shows the full file was read) and identical declarations survive
-   elsewhere in the same file, so the cause sits somewhere in CSS minification.
-   Shipping them from here is the reliable route; without it the button rendered
-   as a full-width block dumped below the footer on the live site. */
+   These rules used to sit in App.css, where a comment had lost its closing
+   marker: everything from there to the next comment end, about 290 lines
+   including these rules, was read as one long comment and never shipped. The
+   brace check still balanced, which is why it looked like the minifier. The
+   broken comment is gone, and these tokenised versions are the ones in use. */
 .app-container .persistent-feedback-btn {
   position: fixed;
   right: 1.25rem;
@@ -848,7 +846,9 @@ body.dark-mode .lm-footer {
 }
 
 .app-container .depth-nudge-cta {
+  flex-shrink: 0;
   padding: 0.42rem 0.9rem;
+  white-space: nowrap;
   border: 0;
   border-radius: var(--radius-md);
   background: var(--accent-fill);
