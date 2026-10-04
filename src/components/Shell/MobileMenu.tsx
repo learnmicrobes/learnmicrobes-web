@@ -17,9 +17,7 @@ import {
 import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import { subjectStainClass } from '../../data/subjectStains';
 import {
-  isAtlasPath,
-  isLearnPath,
-  isReviewPath,
+  getNavSection,
   learnGroups,
   type ToolGroup
 } from './navigation';
@@ -80,13 +78,13 @@ export default function MobileMenu({
     return null;
   }
 
-  const isToolsActive = toolGroups.some((group) => group.items.some((item) => item.path === pathname));
+  const section = getNavSection(pathname);
 
   return (
     <>
       <div className="lm-sheet-scrim" onClick={onClose} aria-hidden="true" />
       <div className="lm-sheet" role="dialog" aria-label="Menu">
-        <Link to="/" className={`lm-sheet-row ${pathname === '/' ? 'active' : ''}`} onClick={onClose}>
+        <Link to="/" className={`lm-sheet-row ${section === 'home' ? 'active' : ''}`} onClick={onClose}>
           <FontAwesomeIcon icon={faHouse} aria-hidden="true" />
           Home
         </Link>
@@ -94,7 +92,7 @@ export default function MobileMenu({
         {/* Learn and Tools both open in place, one row and one target each. */}
         <button
           type="button"
-          className={`lm-sheet-row ${isLearnPath(pathname) ? 'active' : ''}`}
+          className={`lm-sheet-row ${section === 'learn' ? 'active' : ''}`}
           onClick={() => {
             setIsToolsOpen(false);
             setIsLearnOpen((open) => !open);
@@ -131,14 +129,14 @@ export default function MobileMenu({
           </div>
         )}
 
-        <Link to="/visuals" className={`lm-sheet-row ${isAtlasPath(pathname) ? 'active' : ''}`} onClick={onClose}>
+        <Link to="/visuals" className={`lm-sheet-row ${section === 'atlas' ? 'active' : ''}`} onClick={onClose}>
           <FontAwesomeIcon icon={faImages} aria-hidden="true" />
           Atlas
         </Link>
 
         <button
           type="button"
-          className={`lm-sheet-row ${isToolsActive ? 'active' : ''}`}
+          className={`lm-sheet-row ${section === 'tools' ? 'active' : ''}`}
           onClick={() => {
             setIsLearnOpen(false);
             setIsToolsOpen((open) => !open);
@@ -170,7 +168,7 @@ export default function MobileMenu({
           </div>
         )}
 
-        <Link to="/practice" className={`lm-sheet-row ${isReviewPath(pathname) ? 'active' : ''}`} onClick={onClose}>
+        <Link to="/practice" className={`lm-sheet-row ${section === 'review' ? 'active' : ''}`} onClick={onClose}>
           <FontAwesomeIcon icon={faBook} aria-hidden="true" />
           Review
         </Link>

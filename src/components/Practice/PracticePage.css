@@ -175,13 +175,16 @@
 }
 
 .practice-levels button:hover {
+  background: var(--surface-card);
   color: var(--ink);
 }
 
+/* A solid fill, not a white chip: on the paper ground a white "selected"
+   segment read the same as the unselected ones. */
 .practice-levels button.active {
-  background: var(--surface-card);
+  background: var(--accent-fill);
   box-shadow: var(--shadow-xs);
-  color: var(--accent);
+  color: var(--accent-fill-ink);
 }
 
 .practice-level-note {
@@ -193,34 +196,36 @@
 
 .practice-category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
 }
 
-/* Explicit columns: a global mobile rule centres button content. */
+/* Compact rows: icon beside the label so ten areas scan as a list.
+   Explicit columns: a global mobile rule centres button content. */
 .practice-category {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-content: space-between;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
   justify-items: start;
   gap: 12px;
   width: 100%;
   min-width: 0;
-  min-height: 116px;
-  padding: 18px;
+  min-height: 60px;
+  padding: 10px 14px;
   border: 1px solid var(--rule);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
   box-shadow: var(--shadow-xs);
   color: var(--ink);
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .practice-category:hover,
 .practice-category:focus-visible {
-  transform: translateY(-2px);
+  border-color: var(--rule-strong);
   box-shadow: var(--shadow-md);
 }
 
@@ -241,7 +246,7 @@
 
 .practice-category-copy strong {
   display: block;
-  font-size: 1.02rem;
+  font-size: var(--text-md);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1.25;
@@ -251,10 +256,10 @@
 
 .practice-category-copy small {
   display: block;
-  margin-top: 5px;
+  margin-top: 2px;
   color: var(--ink-muted);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .practice-mix {
@@ -270,19 +275,19 @@
 
 .practice-mode-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
 }
 
 .practice-mode {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+  gap: 14px;
   min-width: 0;
-  padding: 22px;
+  padding: 14px 16px;
   border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
   color: var(--ink);
   text-decoration: none;
   transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
@@ -294,6 +299,13 @@
   box-shadow: var(--shadow-lg);
   color: var(--ink);
   text-decoration: none;
+}
+
+.practice-mode .lm-icon-sq {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  font-size: 0.95rem;
 }
 
 .practice-mode-copy {
@@ -310,25 +322,17 @@
 
 .practice-mode-copy small {
   display: block;
-  margin-top: 8px;
+  margin-top: 3px;
   color: var(--ink-muted);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.practice-mode-action {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 12px;
+.practice-mode-arrow {
+  flex-shrink: 0;
   color: var(--accent);
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-.practice-mode-action svg {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 /* ---------- Study alongside ---------- */
@@ -442,17 +446,24 @@
 
   .practice-category-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 8px;
   }
 
   .practice-category {
-    min-height: 78px;
+    min-height: 54px;
     gap: 8px;
-    padding: 12px;
+    padding: 8px 10px;
+  }
+
+  .practice-category-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    font-size: 0.75rem;
   }
 
   .practice-category-copy strong {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   .practice-category-copy small {
@@ -471,23 +482,11 @@
 
   .practice-mode {
     gap: 12px;
-    padding: 14px;
-  }
-
-  .practice-mode .lm-icon-sq {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    padding: 12px 14px;
   }
 
   .practice-mode-copy strong {
     font-size: 0.94rem;
-  }
-
-  .practice-mode-copy small {
-    margin-top: 5px;
-    font-size: var(--text-sm);
-    line-height: 1.45;
   }
 }
 

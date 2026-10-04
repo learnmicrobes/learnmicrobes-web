@@ -10,6 +10,9 @@
   <rect width="64" height="64" rx="14" fill="#2c7873"/>
   <rect width="64" height="64" rx="14" fill="url(#fv-bg)"/>
 
+  <!-- Artwork runs x=9..48 and y=13..52; this nudge puts its centre on the
+       tile centre (32,32) instead of 3.5 units left and 0.5 low. -->
+  <g transform="translate(3.5 -0.5)">
   <!-- Notebook body, fold, and binding rings -->
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path d="M18 13h22.5L48 20.5V47a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5z" stroke="#f6fbf8" stroke-width="2.3"/>
@@ -31,4 +34,5 @@
     font-size="16"
     letter-spacing="-0.5"
   >LM</text>
+  </g>
 </svg>

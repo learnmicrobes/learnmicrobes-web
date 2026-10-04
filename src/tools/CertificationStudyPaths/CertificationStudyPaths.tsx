@@ -4,6 +4,7 @@ import {
   faArrowLeft,
   faCheck,
   faFlaskVial,
+  faLightbulb,
   faPlay,
   faRoute,
   faTrophy,
@@ -16,8 +17,10 @@ import StudyQuiz from '../StudyQuiz/StudyQuiz';
 import type { StudyQuizCategory, StudyQuizDifficulty } from '../StudyQuiz/StudyQuiz';
 import './CertificationStudyPaths.css';
 
+type ExamLevel = 'M' | 'SM';
+
 type ExamPath = {
-  badge: string;
+  badge: ExamLevel;
   title: string;
   audience: string;
   focus: string[];
@@ -26,6 +29,8 @@ type ExamPath = {
 type StudyArea = {
   id: string;
   title: string;
+  // Fits under a stop on the study-route diagram, even at phone width.
+  shortTitle: string;
   status: 'Covered' | 'Partial' | 'Coming soon';
   highYield: string;
   quizCategory: StudyQuizCategory;
@@ -42,6 +47,7 @@ type QuizTarget = {
 };
 
 const COMPLETION_STORAGE_KEY = 'learnmicrobes_cert_path_completed_steps';
+const LEVEL_STORAGE_KEY = 'learnmicrobes_cert_path_level';
 
 const examPaths: ExamPath[] = [
   {
@@ -72,6 +78,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'preanalytic-safety',
     title: 'Preanalytic + Safety',
+    shortTitle: 'Preanalytic',
     status: 'Covered',
     highYield: 'Start here',
     quizCategory: 'preanalytics',
@@ -87,6 +94,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'bacteriology',
     title: 'Bacteriology',
+    shortTitle: 'Bacteriology',
     status: 'Covered',
     highYield: 'Largest exam lane',
     quizCategory: 'bacteriology',
@@ -103,6 +111,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'mycobacteriology',
     title: 'Mycobacteriology + Nocardia',
+    shortTitle: 'AFB',
     status: 'Partial',
     highYield: 'Safety heavy',
     quizCategory: 'mycobacteriology',
@@ -118,6 +127,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'mycology',
     title: 'Mycology',
+    shortTitle: 'Mycology',
     status: 'Partial',
     highYield: 'Morphology traps',
     quizCategory: 'mycology',
@@ -132,6 +142,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'parasitology',
     title: 'Parasitology',
+    shortTitle: 'Parasitology',
     status: 'Partial',
     highYield: 'Image recognition',
     quizCategory: 'parasitology',
@@ -146,6 +157,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'virology',
     title: 'Virology',
+    shortTitle: 'Virology',
     status: 'Partial',
     highYield: 'Method selection',
     quizCategory: 'virology',
@@ -160,6 +172,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'molecular',
     title: 'Molecular Microbiology',
+    shortTitle: 'Molecular',
     status: 'Partial',
     highYield: 'Know when to use it',
     quizCategory: 'virology',
@@ -174,6 +187,7 @@ const studyAreas: StudyArea[] = [
   {
     id: 'lab-operations-qc',
     title: 'Lab Operations + QC',
+    shortTitle: 'Lab ops + QC',
     status: 'Partial',
     highYield: 'Easy points if organized',
     quizCategory: 'postanalytics',
@@ -223,10 +237,38 @@ const PathHeader: React.FC<PathHeaderProps> = ({
         <span className="cert-path-kicker">Certification study paths</span>
         <h1>M first, SM later: build your microbiology study map by exam goal.</h1>
         <p>
-          Use this alpha pathway to connect ASCP microbiology content areas to Learn Microbes tools. Start with
-          M(ASCP) if you are a student or new learner, then quiz each weak area before moving on.
+          Each ASCP microbiology content area, linked to the Learn Microbes tools that teach it. Start with
+          M(ASCP) if you are a student or new learner, then quiz each area before moving on.
         </p>
       </header>
+      <aside className="cert-did-you-know" aria-labelledby="cert-dyk-title">
+        <span className="cert-dyk-icon" aria-hidden="true">
+          <FontAwesomeIcon icon={faLightbulb} />
+        </span>
+        <div>
+          <strong id="cert-dyk-title">Did you know?</strong>
+          <p>
+            ASCP publishes an official content guideline for the M and SM exams that lists every area the exam
+            draws from. The stops on this page follow that outline. This is a Learn Microbes study organizer, not
+            an ASCP product, so confirm eligibility and the current guideline with ASCP before you book.
+          </p>
+          <div className="cert-dyk-links">
+            <a
+              href="https://ascpcontentwebsite.blob.core.windows.net/boccontent/docs/default-source/explore-credentials/content-guidelines/ascp_ascpi_m_sm_content_guideline2eefb50b-d1b5-4206-9347-7f21af63bf1d.pdf?sfvrsn=b3fa9d78_1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the M/SM content guideline
+            </a>
+            <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/M" target="_blank" rel="noopener noreferrer">
+              M(ASCP) credential
+            </a>
+            <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/SM" target="_blank" rel="noopener noreferrer">
+              SM(ASCP) credential
+            </a>
+          </div>
+        </div>
+      </aside>
       <div className="cert-path-sticky-progress" aria-label="Certification study path progress">
         <div className="cert-path-progress-copy">
           <span>Certification Study Paths</span>
@@ -249,6 +291,7 @@ const PathHeader: React.FC<PathHeaderProps> = ({
 
 type PathCardProps = {
   area: StudyArea;
+  level: ExamLevel;
   completed: boolean;
   highlighted: boolean;
   onNavigate: (path: string) => void;
@@ -256,7 +299,7 @@ type PathCardProps = {
   onComplete: (area: StudyArea) => void;
 };
 
-const PathCard: React.FC<PathCardProps> = ({ area, completed, highlighted, onNavigate, onQuiz, onComplete }) => (
+const PathCard: React.FC<PathCardProps> = ({ area, level, completed, highlighted, onNavigate, onQuiz, onComplete }) => (
   <article
     id={`cert-card-${area.id}`}
     className={`cert-area-card ${completed ? 'completed' : ''} ${highlighted ? 'return-highlight' : ''}`}
@@ -276,16 +319,10 @@ const PathCard: React.FC<PathCardProps> = ({ area, completed, highlighted, onNav
         <span className={`cert-status ${statusClass(area.status)}`}>{area.status}</span>
       </div>
     </div>
-    <div className="cert-level-columns">
-      <div>
-        <span>M(ASCP) must know</span>
-        <p>{area.mFocus}</p>
-      </div>
-      <div>
-        <span>SM(ASCP) depth</span>
-        <p>{area.smFocus}</p>
-      </div>
-    </div>
+    <p className="cert-area-focus">
+      <span>{level === 'M' ? 'M(ASCP) must know' : 'SM(ASCP) depth'}</span>
+      {level === 'M' ? area.mFocus : area.smFocus}
+    </p>
     <div className="cert-tool-links" aria-label={`${area.title} Learn Microbes tools`}>
       {area.tools.map((tool) => (
         <button key={`${area.title}-${tool.label}`} type="button" onClick={() => onNavigate(tool.path)}>
@@ -314,6 +351,80 @@ const PathCard: React.FC<PathCardProps> = ({ area, completed, highlighted, onNav
       </button>
     </div>
   </article>
+);
+
+type RouteLayout = {
+  className: string;
+  viewBox: string;
+  track: string;
+  stops: { x: number; y: number }[];
+};
+
+// Desktop runs the eight stops along one line; phones fold it into two rows of
+// four so the labels stay readable instead of shrinking with the drawing.
+const routeLayouts: RouteLayout[] = [
+  {
+    className: 'cert-route-svg cert-route-svg--wide',
+    viewBox: '0 0 1000 108',
+    track: 'M 62 38 H 938',
+    stops: studyAreas.map((_, index) => ({ x: 62 + index * 125.14, y: 38 }))
+  },
+  {
+    className: 'cert-route-svg cert-route-svg--narrow',
+    viewBox: '0 0 360 196',
+    track: 'M 45 36 H 315 A 46 46 0 0 1 315 128 H 45',
+    stops: studyAreas.map((_, index) => (
+      index < 4
+        ? { x: 45 + index * 90, y: 36 }
+        : { x: 315 - (index - 4) * 90, y: 128 }
+    ))
+  }
+];
+
+type StudyRouteProps = {
+  completed: Set<string>;
+  onPick: (area: StudyArea) => void;
+};
+
+const StudyRoute: React.FC<StudyRouteProps> = ({ completed, onPick }) => (
+  <>
+    {routeLayouts.map((layout) => (
+      <svg
+        key={layout.className}
+        className={layout.className}
+        viewBox={layout.viewBox}
+        role="group"
+        aria-label="Study route: tap a stop to jump to that area"
+      >
+        <path className="cert-route-track" d={layout.track} />
+        {studyAreas.map((area, index) => {
+          const { x, y } = layout.stops[index];
+          const reviewed = completed.has(area.id);
+
+          return (
+            <g
+              key={area.id}
+              className={`cert-route-stop ${reviewed ? 'reviewed' : ''}`}
+              role="button"
+              tabIndex={0}
+              aria-label={`Stop ${index + 1}, ${area.title}, ${reviewed ? 'reviewed' : 'not reviewed yet'}`}
+              onClick={() => onPick(area)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  onPick(area);
+                }
+              }}
+            >
+              <circle cx={x} cy={y} r="17" />
+              <text className="cert-route-num" x={x} y={y + 5}>{reviewed ? '✓' : index + 1}</text>
+              <text className="cert-route-label" x={x} y={y + 42}>{area.shortTitle}</text>
+            </g>
+          );
+        })}
+      </svg>
+    ))}
+  </>
 );
 
 type MiniDiagnosticModalProps = {
@@ -360,6 +471,13 @@ const CertificationStudyPaths: React.FC = () => {
   const [highlightedAreaId, setHighlightedAreaId] = useState('');
   const [announcement, setAnnouncement] = useState('');
   const [isDiagnosticOpen, setIsDiagnosticOpen] = useState(false);
+  const [level, setLevel] = useState<ExamLevel>(() => {
+    try {
+      return localStorage.getItem(LEVEL_STORAGE_KEY) === 'SM' ? 'SM' : 'M';
+    } catch {
+      return 'M';
+    }
+  });
   const completedSet = useMemo(() => new Set(completedSteps), [completedSteps]);
   const allAreasReviewed = completedSteps.length >= studyAreas.length;
 
@@ -402,6 +520,15 @@ const CertificationStudyPaths: React.FC = () => {
     window.addEventListener('keydown', handleEscape);
     return () => window.removeEventListener('keydown', handleEscape);
   }, [isDiagnosticOpen, quizTarget]);
+
+  const chooseLevel = (nextLevel: ExamLevel) => {
+    setLevel(nextLevel);
+    try {
+      localStorage.setItem(LEVEL_STORAGE_KEY, nextLevel);
+    } catch {
+      // Private windows can refuse storage; the choice still applies for this visit.
+    }
+  };
 
   const handleComplete = (area: StudyArea) => {
     setCompletedSteps((steps) => {
@@ -478,44 +605,58 @@ const CertificationStudyPaths: React.FC = () => {
         </section>
       )}
 
-      <section className="cert-path-choice" aria-label="Choose your certification path">
-        {examPaths.map((path) => (
-          <article className="cert-exam-card" key={path.badge}>
-            <span className="cert-exam-badge">{path.badge}</span>
-            <h2>{path.title}</h2>
-            <p>{path.audience}</p>
-            <ul>
-              {path.focus.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
+      <section className="cert-path-choice-wrap" aria-labelledby="cert-path-choice-title">
+        <h2 id="cert-path-choice-title" className="cert-path-choice-title">I am studying for</h2>
+        <div className="cert-path-choice" role="group" aria-labelledby="cert-path-choice-title">
+          {examPaths.map((path) => (
+            <button
+              type="button"
+              className={`cert-exam-card ${level === path.badge ? 'active' : ''}`}
+              key={path.badge}
+              aria-pressed={level === path.badge}
+              onClick={() => chooseLevel(path.badge)}
+            >
+              <span className="cert-exam-card-top">
+                <span className="cert-exam-badge">{path.badge}</span>
+                <strong>{path.title}</strong>
+              </span>
+              <span className="cert-exam-audience">{path.audience}</span>
+              <span className="cert-exam-focus">
+                {path.focus.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </span>
+            </button>
+          ))}
+        </div>
       </section>
 
-      <section className="cert-path-how" aria-labelledby="cert-path-how-title">
-        <div>
-          <span className="cert-path-kicker">How to use it</span>
-          <h2 id="cert-path-how-title">Study in passes, not piles.</h2>
+      <section className="cert-route" aria-labelledby="cert-route-title">
+        <div className="cert-route-head">
+          <span className="cert-path-kicker">Your study route</span>
+          <h2 id="cert-route-title">Eight stops, two passes.</h2>
           <p>
-            First pass: cover the M-level core. Second pass: use weak areas and SM notes to deepen interpretation,
-            troubleshooting, and lab operations. Every content card now pushes you toward a quiz rep.
+            Pass 1 covers the M(ASCP) core at every stop. Pass 2 goes back to your weak stops for SM(ASCP) depth.
+            Tap a stop to jump to it.
           </p>
         </div>
-        <div className="cert-path-steps">
-          <span>1. Open a weak content area</span>
-          <span>2. Use linked tools and reading pages</span>
-          <span>3. Quiz, then mark the area reviewed</span>
-        </div>
+        <StudyRoute completed={completedSet} onPick={(area) => returnToArea(area.id)} />
+        <ol className="cert-route-loop" aria-label="At every stop">
+          <li>Read the linked tools</li>
+          <li>Quiz the area</li>
+          <li>Mark it reviewed</li>
+        </ol>
       </section>
 
       <section className="cert-area-section" aria-labelledby="cert-area-title">
         <div className="cert-area-heading">
-          <span className="cert-path-kicker">Interactive content map</span>
-          <h2 id="cert-area-title">Shared study areas, different depth.</h2>
+          <span className="cert-path-kicker">Study areas</span>
+          <h2 id="cert-area-title">
+            {level === 'M' ? 'What M(ASCP) expects at each stop' : 'What SM(ASCP) adds at each stop'}
+          </h2>
           <p>
-            Coverage labels are intentionally honest for alpha. Some areas already have strong tools; others need
-            dedicated practice sets and deeper visual ID work.
+            Covered means the area has full tools and questions here. Partial means some practice sets and visual
+            ID work are still being built.
           </p>
         </div>
 
@@ -524,6 +665,7 @@ const CertificationStudyPaths: React.FC = () => {
             <PathCard
               key={area.id}
               area={area}
+              level={level}
               completed={completedSet.has(area.id)}
               highlighted={highlightedAreaId === area.id}
               onNavigate={navigate}
@@ -531,29 +673,6 @@ const CertificationStudyPaths: React.FC = () => {
               onComplete={handleComplete}
             />
           ))}
-        </div>
-      </section>
-
-      <section className="cert-source-note" aria-label="Certification source note">
-        <h2>Official-outline note</h2>
-        <p>
-          This page is a Learn Microbes study organizer, not an official ASCP product. Always verify eligibility,
-          content guidelines, and reading lists with ASCP before scheduling an exam.
-        </p>
-        <div>
-          <a
-            href="https://ascpcontentwebsite.blob.core.windows.net/boccontent/docs/default-source/explore-credentials/content-guidelines/ascp_ascpi_m_sm_content_guideline2eefb50b-d1b5-4206-9347-7f21af63bf1d.pdf?sfvrsn=b3fa9d78_1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ASCP M/SM content guideline
-          </a>
-          <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/M" target="_blank" rel="noopener noreferrer">
-            M(ASCP) credential
-          </a>
-          <a href="https://www.ascp.org/boc/explore-credentials/view-all-credentials/SM" target="_blank" rel="noopener noreferrer">
-            SM(ASCP) credential
-          </a>
         </div>
       </section>
 

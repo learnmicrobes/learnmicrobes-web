@@ -18,9 +18,7 @@ import MobileMenu from './MobileMenu';
 import {
   getDisplayName,
   getInitials,
-  isAtlasPath,
-  isLearnPath,
-  isReviewPath,
+  getNavSection,
   learnGroups,
   type ToolGroup
 } from './navigation';
@@ -94,7 +92,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: Si
     };
   }, [isToolsOpen, isLearnOpen, isAccountOpen]);
 
-  const isToolsActive = toolGroups.some((group) => group.items.some((item) => item.path === pathname));
+  const section = getNavSection(pathname);
   const isLearnCategoryActive = (category: string) => pathname === '/learn' && hash === `#${slugify(category)}`;
 
   const displayName = getDisplayName(user);
@@ -123,7 +121,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: Si
         </Link>
 
         <nav className="lm-nav" aria-label="Main">
-          <Link to="/" className={`lm-nav-link ${pathname === '/' ? 'active' : ''}`} aria-current={pathname === '/' ? 'page' : undefined}>
+          <Link to="/" className={`lm-nav-link ${section === 'home' ? 'active' : ''}`} aria-current={section === 'home' ? 'page' : undefined}>
             Home
           </Link>
 
@@ -133,7 +131,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: Si
           <div className="lm-nav-tools" ref={learnRef}>
             <button
               type="button"
-              className={`lm-nav-link ${isLearnPath(pathname) ? 'active' : ''}`}
+              className={`lm-nav-link ${section === 'learn' ? 'active' : ''}`}
               onClick={() => {
                 setIsToolsOpen(false);
                 setIsAccountOpen(false);
@@ -174,15 +172,15 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: Si
 
           <Link
             to="/visuals"
-            className={`lm-nav-link ${isAtlasPath(pathname) ? 'active' : ''}`}
-            aria-current={isAtlasPath(pathname) ? 'page' : undefined}
+            className={`lm-nav-link ${section === 'atlas' ? 'active' : ''}`}
+            aria-current={section === 'atlas' ? 'page' : undefined}
           >
             Atlas
           </Link>
           <div className="lm-nav-tools" ref={toolsRef}>
             <button
               type="button"
-              className={`lm-nav-link ${isToolsActive ? 'active' : ''}`}
+              className={`lm-nav-link ${section === 'tools' ? 'active' : ''}`}
               onClick={() => {
                 setIsAccountOpen(false);
                 setIsLearnOpen(false);
@@ -216,8 +214,8 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: Si
           </div>
           <Link
             to="/practice"
-            className={`lm-nav-link ${isReviewPath(pathname) ? 'active' : ''}`}
-            aria-current={isReviewPath(pathname) ? 'page' : undefined}
+            className={`lm-nav-link ${section === 'review' ? 'active' : ''}`}
+            aria-current={section === 'review' ? 'page' : undefined}
           >
             Review
           </Link>

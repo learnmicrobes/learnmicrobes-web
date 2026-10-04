@@ -124,33 +124,29 @@ const studyModes = [
   {
     icon: faClipboardList,
     label: 'Study Quiz',
-    detail: 'Exam-style recall with instant explanations, category and difficulty filters, answer streaks, and saved history.',
+    detail: 'Exam-style questions with an explanation for every answer.',
     path: '/study-quiz',
-    action: 'Start a quiz',
     accent: 'var(--sage-600)'
   },
   {
     icon: faLayerGroup,
     label: 'Flashcards',
-    detail: 'Flip a card, rate your recall honestly, and anything you miss comes back in a review queue.',
+    detail: 'Rate your recall; missed cards come back for review.',
     path: '/flashcards',
-    action: 'Start flipping',
     accent: 'var(--lm-biochem)'
   },
   {
     icon: faStethoscope,
     label: 'Case Studies',
-    detail: 'Work a specimen from presentation to report, choosing the next move at each bench decision point.',
+    detail: 'Work a specimen from arrival to final report.',
     path: '/case-study-simulator',
-    action: 'Open a case',
     accent: 'var(--lm-gram-pos)'
   },
   {
     icon: faRoute,
     label: 'ASCP Review Hub',
-    detail: 'A guided review loop that ties study paths, quizzes, bench references, and visuals into one exam plan.',
+    detail: 'One exam plan tying paths, quizzes, and references together.',
     path: '/ascp-microbiology-review',
-    action: 'Open review hub',
     accent: 'var(--teal-600)'
   }
 ];
@@ -321,7 +317,7 @@ export default function PracticePage() {
               <button
                 type="button"
                 key={tile.category}
-                className={`practice-category lm-tinted ${stainClass}`.trim()}
+                className={`practice-category ${stainClass}`.trim()}
                 style={stainClass ? ({ '--lm-accent': 'var(--stain)' } as React.CSSProperties) : undefined}
                 onClick={() => startQuiz(tile.category, 'category_grid')}
               >
@@ -362,11 +358,8 @@ export default function PracticePage() {
               <span className="practice-mode-copy">
                 <strong>{mode.label}</strong>
                 <small>{mode.detail}</small>
-                <span className="practice-mode-action">
-                  {mode.action}
-                  <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
-                </span>
               </span>
+              <FontAwesomeIcon className="practice-mode-arrow" icon={faArrowRight} aria-hidden="true" />
             </Link>
           ))}
         </div>

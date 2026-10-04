@@ -23,13 +23,23 @@
     <meta property="og:url" content="https://learnmicrobes.com/" />
     <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
     <meta property="og:locale" content="en_US" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M85ZTJD2ER"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){window.dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-M85ZTJD2ER');
+      // Local development must not report into the live property. Loaded
+      // unconditionally, every dev session counted as a real user and fired real
+      // events, which inflates the same numbers we judge campaigns and releases
+      // by. gtag() stays defined either way, so trackEvent() needs no guard.
+      if (!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+        var lmAnalytics = document.createElement('script');
+        lmAnalytics.async = true;
+        lmAnalytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-M85ZTJD2ER';
+        document.head.appendChild(lmAnalytics);
+
+        gtag('js', new Date());
+        gtag('config', 'G-M85ZTJD2ER');
+      }
     </script>
     <script type="application/ld+json">
     {
