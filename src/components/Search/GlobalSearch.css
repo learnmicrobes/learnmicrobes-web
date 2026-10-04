@@ -665,3 +665,8 @@ body.dark-mode .search-empty-state.error .empty-icon {
     display: none;
   }
 }
+
+.results-correction {
+  color: var(--ink-subtle);
+  font-weight: 500;
+}

@@ -73,6 +73,7 @@ const GlobalSearch: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get('q') ?? '');
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [correctedQuery, setCorrectedQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -1142,16 +1143,23 @@ const GlobalSearch: React.FC = () => {
 
         return {
           ...entry,
+          corrections: matches.map((match) => match.word),
           score: entry.priority + titleMatch + exactMatch + keywordMatch - penalty
         };
       })
       .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
 
     const matched = rankEntries(false);
-    const rankedResults = (matched.length > 0 ? matched : rankEntries(true))
+    const usedTypos = matched.length === 0;
+    const ordered = (usedTypos ? rankEntries(true) : matched)
       .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
-      .slice(0, 24)
-      .map(({ score, ...entry }) => entry);
+      .slice(0, 24);
+
+    // Say which spelling was searched rather than echoing the typo back.
+    const corrected = usedTypos ? (ordered[0]?.corrections ?? []).join(' ') : '';
+    setCorrectedQuery(corrected && corrected !== lowerQuery ? corrected : '');
+
+    const rankedResults = ordered.map(({ score, corrections, ...entry }) => entry);
 
     setResults(rankedResults);
     setSelectedIndex(0);
@@ -1266,7 +1274,8 @@ const GlobalSearch: React.FC = () => {
           ) : results.length > 0 ? (
             <div className="search-results-list animate-step">
               <div className="results-count">
-                Found {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
+                Found {results.length} result{results.length !== 1 ? 's' : ''} for "{correctedQuery || query}"
+                {correctedQuery && <span className="results-correction"> — nothing matched "{query}"</span>}
               </div>
 
               {results.map((result, index) => (
