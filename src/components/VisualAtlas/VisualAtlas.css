@@ -838,17 +838,43 @@
 
 .lia-tube-card {
   display: grid;
+  /* Cards in a row are equal height, and auto rows share out the leftover
+     space. A column with less caption text got taller rows, so its letter,
+     tube and labels all sat lower than its neighbours. Packing to the start
+     keeps every row its own height and the captions on one line. */
+  align-content: start;
   justify-items: center;
   gap: 0.35rem;
   min-width: 120px;
   scroll-snap-align: start;
 }
 
+/* Each tube card is its own grid, so nothing lined up across the row: the
+   letters varied by 9px and the result labels by 19px, which reads as a jumble
+   once the columns are narrow. Fixed rows for the parts whose text length
+   varies keeps the captions on the same line across every column. */
 .lia-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
   color: #111827;
   font-size: var(--text-2xl);
   font-weight: 600;
   line-height: 1;
+}
+
+.lia-tube-card > strong {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.9rem;
+  text-align: center;
+}
+
+.lia-tube-card > span {
+  min-height: 1.7rem;
+  text-align: center;
 }
 
 .lia-tube-svg {
