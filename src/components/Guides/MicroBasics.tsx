@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ToolBox from '../ToolBox/ToolBox';
 import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
 import { trackEvent } from '../../utils/analytics';
 import './MicroBasics.css';
@@ -7747,11 +7746,16 @@ const MicroBasics: React.FC = () => {
   };
 
   return (
-    <ToolBox
-      title="Deep Study Guides"
-      icon="GUIDE"
-      onClose={() => navigate('/')}
-    >
+    <main className="guides-page">
+      <section className="guides-hero" aria-labelledby="guides-title">
+        <span className="guides-kicker">Deep guides</span>
+        <h1 id="guides-title">Exam strategy and long-form walkthroughs</h1>
+        <p>
+          Study pathways, exam strategy, and extended clinical microbiology walkthroughs for
+          the topics that take more than a bench card to explain.
+        </p>
+      </section>
+
       <div className="basics-container">
         {backTarget && (
           <div className="micro-basics-back-row">
@@ -7765,11 +7769,6 @@ const MicroBasics: React.FC = () => {
           </div>
         )}
         <aside className="basics-sidebar">
-          <div className="guide-sidebar-intro">
-            <h3>Deep Guides</h3>
-            <p>Exam strategy, study pathways, and longer clinical microbiology walkthroughs.</p>
-          </div>
-
           <div className="guide-sidebar-search">
             <label htmlFor="guide-library-filter">Find a guide</label>
             <div className="guide-search-row">
@@ -8007,7 +8006,7 @@ const MicroBasics: React.FC = () => {
           </div>
         </div>
       </div>
-    </ToolBox>
+    </main>
   );
 };
 
