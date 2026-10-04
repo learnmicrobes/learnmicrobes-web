@@ -2,22 +2,19 @@ import React, { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import type { DashboardSearchItem } from '../../data/dashboardSearchContent';
 import { trackEvent } from '../../utils/analytics';
-import { searchSiteItems } from './siteSearch';
-
-type HeaderSearchProps = {
-  searchIndex: DashboardSearchItem[];
-  /** Called when the panel opens, so the full content index can load then. */
-  onSearchIntent: () => void;
-};
+import { bestSnippet } from '../../search/searchEngine';
+import { quickSearch, useSearchIndex } from '../../search/useSiteSearch';
+import Highlight from '../../search/Highlight';
+import { searchKindLabels, type SearchDoc } from '../../search/searchTypes';
 
 /**
  * The header magnifier opens a floating search panel over the current page
  * instead of navigating away to /search. Picking a result goes straight to it;
- * "See all results" hands the query to the full search page.
+ * "See all results" hands the query to the full search page. It ranks with the
+ * same engine and index as the search page, so the two always agree.
  */
-export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSearchProps) {
+export default function HeaderSearch() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +25,13 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
   const baseId = useId();
   const panelId = `${baseId}-panel`;
   const listId = `${baseId}-results`;
-
-  const search = useMemo(() => searchSiteItems(searchIndex, query), [searchIndex, query]);
-  const results = search.items;
+  // The index loads the first time the panel opens, not with every page.
+  const index = useSearchIndex(isOpen);
   const trimmedQuery = query.trim();
+
+  const search = useMemo(() => (index ? quickSearch(index, query) : null), [index, query]);
+
+  const results = search?.docs ?? [];
 
   useEffect(() => {
     setIsOpen(false);
@@ -46,7 +46,6 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
       return undefined;
     }
 
-    onSearchIntent();
     inputRef.current?.focus();
 
     const handlePointerDown = (event: MouseEvent) => {
@@ -68,32 +67,33 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
       document.removeEventListener('mousedown', handlePointerDown);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onSearchIntent]);
+  }, [isOpen]);
 
-  const selectResult = (item: DashboardSearchItem) => {
+  const selectResult = (doc: SearchDoc) => {
     trackEvent('search_used', {
       location: 'header_search',
       search_term: trimmedQuery,
-      result_title: item.title,
-      result_path: item.path
+      result_title: doc.title,
+      result_path: doc.path
     });
     setQuery('');
     setIsOpen(false);
-    navigate(item.path);
+    navigate(doc.path);
   };
 
   const openFullSearch = () => {
     setIsOpen(false);
+    setQuery('');
     navigate(trimmedQuery ? `/search?q=${encodeURIComponent(trimmedQuery)}` : '/search');
   };
 
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'ArrowDown') {
       event.preventDefault();
-      setActiveIndex((index) => Math.min(index + 1, Math.max(results.length - 1, 0)));
+      setActiveIndex((position) => Math.min(position + 1, Math.max(results.length - 1, 0)));
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
-      setActiveIndex((index) => Math.max(index - 1, 0));
+      setActiveIndex((position) => Math.max(position - 1, 0));
     } else if (event.key === 'Enter') {
       event.preventDefault();
 
@@ -104,6 +104,14 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
       }
     }
   };
+
+  const caption = !search
+    ? 'Loading…'
+    : results.length === 0
+      ? 'Nothing matched'
+      : search.correctedQuery
+        ? <>Showing results for <strong>{search.correctedQuery}</strong></>
+        : (trimmedQuery ? 'Best matches' : 'Popular starting points');
 
   return (
     <div className="lm-header-search" ref={wrapperRef}>
@@ -128,48 +136,44 @@ export default function HeaderSearch({ searchIndex, onSearchIntent }: HeaderSear
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={handleInputKeyDown}
-              placeholder="Search tests, guides, roadmaps..."
+              placeholder="Organism, test, medium, or term"
               aria-label="Search Learn Microbes"
               role="combobox"
+              autoComplete="off"
+              spellCheck={false}
               aria-expanded={results.length > 0}
               aria-controls={listId}
               aria-activedescendant={results[activeIndex] ? `${listId}-${activeIndex}` : undefined}
             />
           </div>
 
-          <span className="lm-search-caption">
-            {results.length === 0 && trimmedQuery
-              ? 'Nothing matched'
-              : search.correctedQuery
-                ? <>Showing results for <strong>{search.correctedQuery}</strong></>
-                : (trimmedQuery ? 'Best matches' : 'Popular starting points')}
-          </span>
+          <span className="lm-search-caption">{caption}</span>
 
           {results.length > 0 ? (
             <div className="lm-search-results" id={listId} role="listbox">
-              {results.map((result, index) => (
+              {results.map((doc, position) => (
                 <button
                   type="button"
-                  key={result.id}
-                  id={`${listId}-${index}`}
+                  key={doc.id}
+                  id={`${listId}-${position}`}
                   role="option"
-                  aria-selected={index === activeIndex}
-                  className={index === activeIndex ? 'active' : ''}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onClick={() => selectResult(result)}
+                  aria-selected={position === activeIndex}
+                  className={position === activeIndex ? 'active' : ''}
+                  onMouseEnter={() => setActiveIndex(position)}
+                  onClick={() => selectResult(doc)}
                 >
-                  <span>{result.category}</span>
-                  <strong>{result.title}</strong>
-                  <small>{result.snippet}</small>
+                  <span>{searchKindLabels[doc.kind]}</span>
+                  <strong><Highlight text={doc.title} words={search?.highlightWords ?? []} /></strong>
+                  <small><Highlight text={bestSnippet(doc, search?.highlightWords ?? [], 120)} words={search?.highlightWords ?? []} /></small>
                 </button>
               ))}
             </div>
-          ) : (
-            <p className="lm-search-empty">No close matches yet.</p>
-          )}
+          ) : search && trimmedQuery ? (
+            <p className="lm-search-empty">No close matches. The full search page has suggestions.</p>
+          ) : null}
 
           <button type="button" className="lm-search-all" onClick={openFullSearch}>
-            {trimmedQuery ? `See all results for "${trimmedQuery}"` : 'Open full search'}
+            {trimmedQuery ? `See all results for "${trimmedQuery}"` : 'Browse the A–Z index'}
             <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
           </button>
         </div>

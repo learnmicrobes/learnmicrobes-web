@@ -2375,27 +2375,6 @@ body.dark-mode .info-panel {
   color: #e2e8f0;
 }
 
-/* Global Search */
-body.dark-mode .massive-search-input {
-  background: #1e2532;
-  color: white;
-  border-color: #4a5568;
-}
-body.dark-mode .search-result-card {
-  background: #1e2532;
-  border-color: #2d3748;
-}
-body.dark-mode .search-result-card:hover {
-  background: #252d3a;
-  border-color: #4fd1c5;
-}
-body.dark-mode .search-result-card.selected {
-  box-shadow: 0 0 0 3px rgba(79, 209, 197, 0.18);
-}
-body.dark-mode .result-icon-box {
-  background: #141820;
-  color: #a0aec0;
-}
 .home-page.home-dashboard {
   align-items: center;
   justify-content: flex-start;

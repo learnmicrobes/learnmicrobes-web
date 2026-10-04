@@ -11,7 +11,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
 import brandMark from '../../assets/brand-mark-knockout.svg';
-import type { DashboardSearchItem } from '../../data/dashboardSearchContent';
 import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import { subjectStainClass } from '../../data/subjectStains';
 import HeaderSearch from './HeaderSearch';
@@ -31,11 +30,9 @@ type SiteHeaderProps = {
   isDarkMode: boolean;
   onToggleTheme: () => void;
   toolGroups: ToolGroup[];
-  searchIndex: DashboardSearchItem[];
-  onSearchIntent: () => void;
 };
 
-export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, searchIndex, onSearchIntent }: SiteHeaderProps) {
+export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: SiteHeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
@@ -227,7 +224,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
         </nav>
 
         <div className="lm-header-actions">
-          <HeaderSearch searchIndex={searchIndex} onSearchIntent={onSearchIntent} />
+          <HeaderSearch />
           <button
             type="button"
             className="lm-icon-btn"

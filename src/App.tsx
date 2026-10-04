@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -21,14 +21,16 @@ import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
 import { learnIndex, visualIndex } from './data/contentIndex.generated';
-import type { DashboardSearchItem } from './data/dashboardSearchContent';
 import SEO from './components/SEO/SEO';
 import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
 import { MobileBackButton } from './components/Shell/MobileNav';
 import type { ToolGroup } from './components/Shell/navigation';
-import { searchSiteItems } from './components/Shell/siteSearch';
+import { bestSnippet } from './search/searchEngine';
+import { quickSearch, useSearchIndex } from './search/useSiteSearch';
+import Highlight from './search/Highlight';
+import { searchKindLabels, type SearchDoc } from './search/searchTypes';
 import './App.css';
 import './Home.css';
 
@@ -414,53 +416,7 @@ export default function App() {
 
   const isHomeRoute = location.pathname === '/';
 
-  const dashboardActions = useMemo(() => ([
-    {
-      label: 'Learn from scratch',
-      detail: 'Start with the beginner microbiology path.',
-      path: '/learn/clinical-microbiology',
-      icon: faGraduationCap
-    },
-    {
-      label: 'Identify an unknown',
-      detail: 'Use Gram stain, colony clues, and branch tests.',
-      path: '/unknown-isolate-workup',
-      icon: faMicroscope
-    },
-    {
-      label: 'Review biochemical tests',
-      detail: 'Look up reactions, QC, and interpretation traps.',
-      path: '/biochemical-tests',
-      icon: faFlask
-    },
-    {
-      label: 'Study for M(ASCP) / SM(ASCP)',
-      detail: 'Start an ASCP microbiology review loop with paths, quizzes, visuals, and bench tests.',
-      path: '/ascp-microbiology-review',
-      icon: faBook
-    },
-    {
-      label: 'Look up a visual',
-      detail: 'Browse original bench cards and reaction visuals.',
-      path: '/visuals',
-      icon: faImages
-    },
-    {
-      label: 'Practice questions',
-      detail: 'Check recall with bench and exam-style prompts.',
-      path: '/practice',
-      icon: faClipboardList
-    }
-  ]), []);
-
   const featuredBenchCard = useMemo(() => getDailyFeaturedBenchCard(), []);
-
-  const homeSecondaryLinks = useMemo(() => ([
-    { label: 'ASCP microbiology review', path: '/ascp-microbiology-review' },
-    { label: 'Search all content', path: '/search' },
-    { label: 'Gram positive roadmap', path: '/gram-positive-roadmap' },
-    { label: 'Gram negative roadmap', path: '/gram-negative-roadmap' }
-  ]), []);
 
   const toolGroups = useMemo<ToolGroup[]>(() => ([
     {
@@ -485,175 +441,26 @@ export default function App() {
   ]), []);
 
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
-  // Learn topics, bench tests, and atlas cards are only searched once someone uses the
-  // search box, so their full text downloads then instead of with every page.
-  const [contentSearchItems, setContentSearchItems] = useState<DashboardSearchItem[]>([]);
-  const contentSearchRequested = useRef(false);
-  const loadContentSearchItems = useCallback(() => {
-    if (contentSearchRequested.current) {
-      return;
-    }
-
-    contentSearchRequested.current = true;
-    import('./data/dashboardSearchContent')
-      .then((module) => setContentSearchItems(module.buildContentSearchItems()))
-      .catch(() => {
-        contentSearchRequested.current = false;
-      });
-  }, []);
+  // The search index loads the first time someone uses the box, not with the page.
+  const [homeSearchIntent, setHomeSearchIntent] = useState(false);
+  const homeSearchIndex = useSearchIndex(homeSearchIntent);
   const [isDashboardSearchOpen, setIsDashboardSearchOpen] = useState(false);
   const [selectedDashboardSearchIndex, setSelectedDashboardSearchIndex] = useState(0);
   const dailyMicrobeRiddle = useMemo(() => getDailyMicrobeRiddle(), []);
   const [dailyRiddleResult, setDailyRiddleResult] = useState<DailyRiddleResult | null>(() => readDailyRiddleResult(dailyMicrobeRiddle.id));
   const dashboardSearchRef = useRef<HTMLDivElement | null>(null);
 
-  const dashboardSearchIndex = useMemo<DashboardSearchItem[]>(() => {
-    const getRouteCategory = (path: string): DashboardSearchItem['category'] => {
-      if (path.startsWith('/learn')) return 'Learn';
-      if (path.startsWith('/visuals')) return 'Visual';
-      if (path.includes('roadmap')) return 'Roadmap';
-      if (path === '/biochemical-tests') return 'Test';
-      if (path.startsWith('/guides')) return 'Guide';
-      return 'Tool';
-    };
-
-    const guideItems: DashboardSearchItem[] = [
-      {
-        id: 'guide-intro',
-        title: 'Intro to Clinical Microbiology',
-        category: 'Guide',
-        snippet: 'Start-here bench mindset, specimens, Gram stain, media, and first-pass workup logic.',
-        path: '/guides?guide=intro-to-microbiology',
-        keywords: 'guide intro clinical microbiology beginner bench mindset gram stain media workup',
-        priority: 7
-      },
-      {
-        id: 'guide-bacterial-id',
-        title: 'Bacterial ID Strategy',
-        category: 'Guide',
-        snippet: 'Specimen context, colony morphology, branch-point tests, and escalation strategy.',
-        path: '/guides?guide=bacterial-identification-strategy',
-        keywords: 'guide bacterial identification strategy unknown isolate colony morphology catalase oxidase bench',
-        priority: 7
-      },
-      {
-        id: 'guide-strep-enterococcus',
-        title: 'Streptococcus and Enterococcus',
-        category: 'Guide',
-        snippet: 'Catalase-negative cocci, hemolysis, PYR, CAMP, optochin, bile solubility, and bile esculin.',
-        path: '/guides?guide=streptococcus-enterococcus',
-        keywords: 'guide streptococcus enterococcus pneumoniae agalactiae pyogenes faecalis optochin bile solubility pyr camp',
-        priority: 8
-      },
-      {
-        id: 'guide-enterics',
-        title: 'Enterobacteriaceae',
-        category: 'Guide',
-        snippet: 'Oxidase-negative Gram-negative rods, MacConkey patterns, IMViC, H2S, urease, and enteric workflow.',
-        path: '/guides?guide=enterobacteriaceae',
-        keywords: 'guide enterobacteriaceae enterobacterales enterics macconkey lactose indole citrate h2s urease oxidase',
-        priority: 6
-      },
-      {
-        id: 'guide-gram-stain',
-        title: 'Gram Stain',
-        category: 'Guide',
-        snippet: 'Microscopy, stain sequence, morphology, arrangement, and common false Gram patterns.',
-        path: '/guides?guide=gram-stain',
-        keywords: 'guide gram stain crystal violet iodine safranin decolorizer cocci rods morphology',
-        priority: 7
-      }
-    ];
-
-    const routeItems: DashboardSearchItem[] = [
-      ...dashboardActions.map((action, index) => ({
-        id: `action-${index}`,
-        title: action.label,
-        category: getRouteCategory(action.path),
-        snippet: action.detail,
-        path: action.path,
-        keywords: `${action.label} ${action.detail}`,
-        priority: action.path === '/ascp-microbiology-review' ? 9 : 6
-      })),
-      ...homeSecondaryLinks.map((link, index) => ({
-        id: `secondary-${index}`,
-        title: link.label,
-        category: getRouteCategory(link.path),
-        snippet: 'Common Learn Microbes route.',
-        path: link.path,
-        keywords: link.label,
-        priority: 4
-      })),
-      {
-        id: 'practice-hub',
-        title: 'Practice',
-        category: 'Tool',
-        snippet: 'Quiz, ASCP review, and future case study simulator practice.',
-        path: '/practice',
-        keywords: 'practice quiz ascp review case study simulator questions',
-        priority: 8
-      },
-      {
-        id: 'case-study-simulator',
-        title: 'Case Study Simulator',
-        category: 'Tool',
-        snippet: 'Future ASCP-style clinical microbiology case practice placeholder.',
-        path: '/case-study-simulator',
-        keywords: 'case study simulator ascp microbiology practice clinical scenario',
-        priority: 7
-      },
-      {
-        id: 'flashcards',
-        title: 'Flashcards',
-        category: 'Tool',
-        snippet: 'Future rapid-recall microbiology flashcard practice placeholder.',
-        path: '/flashcards',
-        keywords: 'flashcards microbiology ascp review organism identification biochemical tests',
-        priority: 7
-      },
-      {
-        id: 'study-quiz-route',
-        title: 'Study Quiz',
-        category: 'Tool',
-        snippet: 'Practice clinical microbiology questions and save quiz history.',
-        path: '/study-quiz',
-        keywords: 'study quiz practice questions microbiology ascp review',
-        priority: 8
-      },
-      ...toolGroups.flatMap((group) => group.items.map((item) => ({
-        id: `tool-${group.label}-${item.path}`,
-        title: item.label,
-        category: getRouteCategory(item.path),
-        snippet: `${group.label} tool.`,
-        path: item.path,
-        keywords: `${group.label} ${item.label}`,
-        priority: 5
-      })))
-    ];
-
-    const uniqueItems = new Map<string, DashboardSearchItem>();
-
-    [...routeItems, ...guideItems, ...contentSearchItems].forEach((item) => {
-      const key = `${item.path}::${item.title}`;
-      if (!uniqueItems.has(key)) {
-        uniqueItems.set(key, item);
-      }
-    });
-
-    return Array.from(uniqueItems.values());
-  }, [contentSearchItems, dashboardActions, homeSecondaryLinks, toolGroups]);
-
   const dashboardSearch = useMemo(
-    () => searchSiteItems(dashboardSearchIndex, dashboardSearchQuery),
-    [dashboardSearchIndex, dashboardSearchQuery]
+    () => (homeSearchIndex ? quickSearch(homeSearchIndex, dashboardSearchQuery) : null),
+    [homeSearchIndex, dashboardSearchQuery]
   );
-  const dashboardSearchResults: DashboardSearchItem[] = dashboardSearch.items;
+  const dashboardSearchResults = dashboardSearch?.docs ?? [];
 
   const selectedRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.id === dailyRiddleResult?.selectedId);
   const correctRiddleChoice = dailyMicrobeRiddle.choices.find((choice) => choice.correct);
   const isDailyRiddleCorrect = selectedRiddleChoice?.correct ?? false;
 
-  const handleDashboardSearchSelect = (item: DashboardSearchItem) => {
+  const handleDashboardSearchSelect = (item: SearchDoc) => {
     trackEvent('search_used', {
       location: 'home_hero_search',
       search_term: dashboardSearchQuery.trim(),
@@ -668,6 +475,11 @@ export default function App() {
 
   const handleDashboardSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (!dashboardSearchResults.length) {
+      // Nothing close enough to list: the search page can still suggest a way in.
+      if (event.key === 'Enter' && dashboardSearchQuery.trim()) {
+        event.preventDefault();
+        navigate(`/search?q=${encodeURIComponent(dashboardSearchQuery.trim())}`);
+      }
       return;
     }
 
@@ -1028,8 +840,6 @@ export default function App() {
         isDarkMode={isDarkMode}
         onToggleTheme={() => setIsDarkMode(!isDarkMode)}
         toolGroups={toolGroups}
-        searchIndex={dashboardSearchIndex}
-        onSearchIntent={loadContentSearchItems}
       />
 
       <main className={`app-main ${isHomeRoute ? 'app-main--home' : ''}`.trim()}>
@@ -1065,7 +875,7 @@ export default function App() {
                       id="dashboard-hero-search-input"
                       type="search"
                       value={dashboardSearchQuery}
-                      placeholder="Search tests, guides, roadmaps..."
+                      placeholder="Organism, test, medium, or term"
                       role="combobox"
                       aria-expanded={isDashboardSearchOpen}
                       aria-controls="dashboard-hero-search-results"
@@ -1075,12 +885,12 @@ export default function App() {
                           : undefined
                       }
                       onChange={(event) => {
-                        loadContentSearchItems();
+                        setHomeSearchIntent(true);
                         setDashboardSearchQuery(event.target.value);
                         setIsDashboardSearchOpen(true);
                       }}
                       onFocus={() => {
-                        loadContentSearchItems();
+                        setHomeSearchIntent(true);
                         setIsDashboardSearchOpen(true);
                       }}
                       onKeyDown={handleDashboardSearchKeyDown}
@@ -1088,7 +898,7 @@ export default function App() {
                   </div>
                   {isDashboardSearchOpen && (
                     <div className="home-search-menu" id="dashboard-hero-search-results" role="listbox">
-                      {dashboardSearch.correctedQuery && (
+                      {dashboardSearch?.correctedQuery && (
                         <span className="home-search-correction">Showing results for <strong>{dashboardSearch.correctedQuery}</strong></span>
                       )}
                       {dashboardSearchResults.length > 0 ? (
@@ -1103,13 +913,15 @@ export default function App() {
                             onMouseEnter={() => setSelectedDashboardSearchIndex(index)}
                             onClick={() => handleDashboardSearchSelect(result)}
                           >
-                            <span>{result.category}</span>
-                            <strong>{result.title}</strong>
-                            <small>{result.snippet}</small>
+                            <span>{searchKindLabels[result.kind]}</span>
+                            <strong><Highlight text={result.title} words={dashboardSearch?.highlightWords ?? []} /></strong>
+                            <small><Highlight text={bestSnippet(result, dashboardSearch?.highlightWords ?? [], 120)} words={dashboardSearch?.highlightWords ?? []} /></small>
                           </button>
                         ))
                       ) : (
-                        <div className="home-search-empty">No close matches yet.</div>
+                        <div className="home-search-empty">
+                          {dashboardSearch ? 'No close matches. Press Enter for suggestions.' : 'Loading…'}
+                        </div>
                       )}
                     </div>
                   )}

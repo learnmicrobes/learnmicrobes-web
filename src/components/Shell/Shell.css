@@ -287,6 +287,15 @@
   font-weight: 600;
 }
 
+/* Matched words in the header and home search dropdowns. */
+.lm-search-results mark,
+.home-search-option mark {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
+}
+
 .lm-search-results small {
   color: var(--ink-muted);
   font-size: var(--text-sm);
