@@ -6260,12 +6260,17 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
             </button>
           ))}
         </div>
-        <div className="visual-alpha-jump" aria-label="Alphabetical visual sections">
+      </section>
+
+      {/* Outside the filter panel and sticky, so the whole alphabet stays
+          reachable once you have jumped into the list. */}
+      <nav className="visual-alpha-bar" aria-label="Alphabetical visual sections">
+        <div className="visual-alpha-jump">
           {availableLetters.map((letter) => (
             <a href={`#visual-letter-${letter}`} key={letter}>{letter}</a>
           ))}
         </div>
-      </section>
+      </nav>
 
       <section className="visual-atlas-index" aria-label="Visual Atlas pages">
         {groupedPages.length > 0 ? groupedPages.map((group) => (
@@ -6368,6 +6373,17 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     });
 
     setBookmarkStatusMessage(result.message);
+  };
+
+  const handleSignUpClick = () => {
+    const returnPath = `${location.pathname}${location.search}`;
+
+    trackEvent('signup_cta_clicked', {
+      location: 'visual_card',
+      destination: '/register',
+      visual_slug: page.slug
+    });
+    navigate(buildAuthRedirectPath('/register', returnPath));
   };
 
   const renderVisualSequence = (placement: 'top' | 'bottom') => (
@@ -6590,6 +6606,26 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           <p>{page.remember}</p>
         </div>
       </section>
+
+      {!user && (
+        <aside className="visual-signup" aria-labelledby="visual-signup-title">
+          <div className="visual-signup-copy">
+            <span className="visual-kicker">Keep your place</span>
+            <h2 id="visual-signup-title">Save this card and pick up where you left off</h2>
+            <p>
+              A free account keeps your bench cards in one place, remembers which Learn
+              topics you have finished, and stores your quiz history so you can drill the
+              areas you keep missing.
+            </p>
+          </div>
+          <div className="visual-signup-actions">
+            <button type="button" onClick={handleSignUpClick}>Create free account</button>
+            <Link to={buildAuthRedirectPath('/login', `${location.pathname}${location.search}`)}>
+              I already have one
+            </Link>
+          </div>
+        </aside>
+      )}
 
       {renderVisualSequence('bottom')}
     </div>

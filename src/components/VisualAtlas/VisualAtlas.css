@@ -497,6 +497,21 @@
   box-shadow: var(--va-focus);
 }
 
+/* The alphabet sticks below the site header, so jumping to N does not strand
+   you with no way back to A. */
+.visual-alpha-bar {
+  position: sticky;
+  /* 1px under the sticky site header, so nothing shows between them. */
+  top: 68px;
+  z-index: 20;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  background: var(--va-card);
+  box-shadow: var(--va-shadow);
+}
+
 .visual-filter-chips,
 .visual-alpha-jump {
   display: flex;
@@ -551,7 +566,7 @@
 
 .visual-letter-group {
   margin-bottom: 1rem;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 8.5rem;
 }
 
 .visual-letter-group > h2 {
@@ -674,6 +689,10 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(5, minmax(120px, 1fr));
+  /* Most stage variants cap their width (a two-plate disk stage is 620px in a
+     1120px board). Without this they sat against the left edge with the rest of
+     the card empty beside them. */
+  margin-inline: auto;
   gap: 0.85rem;
   padding: 1.35rem 1rem 1rem;
   border: 1px solid rgba(36, 92, 105, 0.12);
@@ -1142,6 +1161,7 @@ body.dark-mode .visual-panel,
 body.dark-mode .visual-takeaways,
 body.dark-mode .visual-index-card,
 body.dark-mode .visual-atlas-controls,
+body.dark-mode .visual-alpha-bar,
 body.dark-mode .visual-empty-state,
 body.dark-mode .bench-card-strip button,
 body.dark-mode .visual-scope-note,
@@ -1552,4 +1572,122 @@ body.dark-mode .visual-remember {
 
 body.dark-mode .visual-remember strong {
   color: #f8d88a;
+}
+
+/* Guest invitation at the end of a bench card. Most readers reach the atlas
+   without an account; the hero's "Sign in to Bookmark" only speaks to people who
+   already have one, so this asks once, after the card has been read. */
+.visual-signup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.4rem;
+  margin-top: 0.9rem;
+  padding: 1.15rem 1.3rem;
+  border: 1px solid var(--va-border-strong);
+  border-radius: var(--va-radius);
+  background: var(--va-card);
+  box-shadow: var(--va-shadow);
+}
+
+.visual-signup-copy {
+  flex: 1 1 22rem;
+}
+
+.visual-signup-copy h2 {
+  margin: 0.3rem 0 0.45rem;
+  color: var(--va-ink);
+  font-size: var(--text-lg);
+  line-height: 1.25;
+}
+
+.visual-signup-copy p {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--va-muted);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.visual-signup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.visual-signup-actions button,
+.visual-signup-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7rem;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--va-border-strong);
+  border-radius: var(--va-radius);
+  background: var(--va-card-strong);
+  color: var(--va-primary-strong);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.visual-signup-actions button {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--va-primary), var(--va-primary-strong));
+  color: #ffffff;
+}
+
+.visual-signup-actions button:focus-visible,
+.visual-signup-actions a:focus-visible {
+  outline: none;
+  box-shadow: var(--va-focus);
+}
+
+/* The dark accent is a bright mint: readable as text, far too loud behind white.
+   Fill it and darken the label instead of inheriting the light-mode gradient. */
+body.dark-mode .visual-signup-actions button {
+  background: var(--va-primary);
+  color: #10212b;
+}
+
+body.dark-mode .visual-signup-actions a {
+  background: var(--va-paper);
+  color: #dffcf8;
+}
+
+@media (max-width: 620px) {
+  .visual-signup {
+    padding: 1rem 1.05rem;
+  }
+
+  .visual-signup-actions {
+    width: 100%;
+  }
+
+  .visual-signup-actions button,
+  .visual-signup-actions a {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-alpha-bar {
+    top: 62px;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .visual-alpha-bar .visual-alpha-jump {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .visual-alpha-bar .visual-alpha-jump::-webkit-scrollbar {
+    display: none;
+  }
+
+  .visual-alpha-bar .visual-alpha-jump a {
+    flex: 0 0 auto;
+  }
 }
