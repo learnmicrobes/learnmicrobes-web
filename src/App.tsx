@@ -195,23 +195,10 @@ const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replac
 const HOME_SCREEN_HINT_KEY = 'learnmicrobes_home_screen_hint_dismissed_at';
 const HOME_SCREEN_HINT_QUIET_MS = 60 * 24 * 60 * 60 * 1000;
 
+// Ordered by how often this audience actually reaches for them: exam prep and
+// recall first, the unknown-isolate workup last — it is the deepest tool here
+// and the one students use least.
 const homeTasks = [
-  {
-    icon: faMicroscope,
-    title: 'Identify an unknown isolate',
-    sub: 'Gram stain, then morphology, then the branch-point tests that narrow it.',
-    cta: 'Open the workup',
-    path: '/unknown-isolate-workup',
-    accent: 'var(--lm-gram-pos)'
-  },
-  {
-    icon: faFlask,
-    title: 'Read a bench test result',
-    sub: 'Reactions, QC organisms, and the reading traps that cost points.',
-    cta: 'Open bench tests',
-    path: '/biochemical-tests',
-    accent: 'var(--lm-biochem)'
-  },
   {
     icon: faGraduationCap,
     title: 'Study for the M(ASCP) exam',
@@ -219,14 +206,6 @@ const homeTasks = [
     cta: 'Open ASCP prep',
     path: '/ascp-microbiology-review',
     accent: 'var(--teal-600)'
-  },
-  {
-    icon: faImages,
-    title: 'See what it looks like',
-    sub: 'Bench cards for plates, tubes, and Gram films, with the trap called out.',
-    cta: 'Open the atlas',
-    path: '/visuals',
-    accent: 'var(--lm-gram-neg)'
   },
   {
     icon: faClipboardList,
@@ -237,12 +216,36 @@ const homeTasks = [
     accent: 'var(--sage-600)'
   },
   {
+    icon: faFlask,
+    title: 'Read a bench test result',
+    sub: 'Reactions, QC organisms, and the reading traps that cost points.',
+    cta: 'Open bench tests',
+    path: '/biochemical-tests',
+    accent: 'var(--lm-biochem)'
+  },
+  {
+    icon: faImages,
+    title: 'See what it looks like',
+    sub: 'Bench cards for plates, tubes, and Gram films, with the trap called out.',
+    cta: 'Open the atlas',
+    path: '/visuals',
+    accent: 'var(--lm-gram-neg)'
+  },
+  {
     icon: faBook,
     title: 'Learn a topic from scratch',
     sub: 'Plain-language topics that end in what you would do at the bench.',
     cta: 'Open the learn hub',
     path: '/learn',
     accent: 'var(--lm-anaerobe)'
+  },
+  {
+    icon: faMicroscope,
+    title: 'Identify an unknown isolate',
+    sub: 'Gram stain, then morphology, then the branch-point tests that narrow it.',
+    cta: 'Open the workup',
+    path: '/unknown-isolate-workup',
+    accent: 'var(--lm-gram-pos)'
   }
 ];
 
