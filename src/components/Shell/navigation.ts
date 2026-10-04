@@ -14,13 +14,50 @@ const reviewPaths = [
   '/certification-study-paths'
 ];
 
+// The Tools menu. Its paths also decide when the Tools tab is current, so a page
+// is listed here once and the menu and the highlight cannot disagree.
+export const toolGroups: ToolGroup[] = [
+  {
+    label: 'Identification',
+    items: [
+      { label: 'Gram Positive Roadmap', path: '/gram-positive-roadmap' },
+      { label: 'Gram Negative Roadmap', path: '/gram-negative-roadmap' },
+      { label: 'Anaerobe Roadmap', path: '/obligate-anaerobe-roadmap' },
+      { label: 'Unknown Isolate Workup', path: '/unknown-isolate-workup' }
+    ]
+  },
+  {
+    label: 'Reference',
+    items: [
+      { label: 'Biochemical Tests', path: '/biochemical-tests' },
+      { label: 'Enterics Calculator', path: '/biochemical-calculator' },
+      { label: 'Special Pathogens Hub', path: '/special-pathogens' },
+      { label: 'Do Not Routine Culture', path: '/do-not-routine-culture' },
+      { label: 'Guides', path: '/guides' }
+    ]
+  }
+];
+
 const matchesPath = (pathname: string, path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
-export const isReviewPath = (pathname: string) => reviewPaths.some((path) => matchesPath(pathname, path));
+const isReviewPath = (pathname: string) => reviewPaths.some((path) => matchesPath(pathname, path));
 
-export const isLearnPath = (pathname: string) => matchesPath(pathname, '/learn') || matchesPath(pathname, '/guides');
+export type NavSection = 'home' | 'learn' | 'atlas' | 'tools' | 'review';
 
-export const isAtlasPath = (pathname: string) => matchesPath(pathname, '/visuals');
+/**
+ * The one section a page belongs to, or null (search, account, about...).
+ * Every nav surface reads this instead of keeping its own rule: the old
+ * per-tab checks overlapped, and /guides lit up Learn and Tools together.
+ * A page belongs to the section whose menu lists it.
+ */
+export const getNavSection = (pathname: string): NavSection | null => {
+  if (pathname === '/') return 'home';
+  if (matchesPath(pathname, '/learn')) return 'learn';
+  if (matchesPath(pathname, '/visuals')) return 'atlas';
+  if (isReviewPath(pathname)) return 'review';
+  if (toolGroups.some((group) => group.items.some((item) => matchesPath(pathname, item.path)))) return 'tools';
+  return null;
+};
 
 const isAccountPath = (pathname: string) => ['/account', '/login', '/register', '/auth'].includes(pathname);
 

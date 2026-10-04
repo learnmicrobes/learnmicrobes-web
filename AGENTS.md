@@ -141,6 +141,12 @@ the desktop header keeps as the magnifier). Routes keep their original paths —
 label never changes a URL. Rename in both `SiteHeader.tsx` and `MobileMenu.tsx`
 in the same change, or the two drift apart.
 
+Which tab is highlighted comes from one function, `getNavSection()` in
+`src/components/Shell/navigation.ts`. Every page belongs to at most one section,
+the one whose menu lists it (`/guides` is in the Tools menu, so it is Tools). Do
+not add a per-tab "is active" check in a component — that is how `/guides` once
+lit up Learn and Tools together.
+
 ### Avoid
 
 - Clutter and excessive animations

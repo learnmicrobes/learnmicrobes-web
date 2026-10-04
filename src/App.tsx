@@ -26,7 +26,7 @@ import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
 import { MobileBackButton } from './components/Shell/MobileNav';
-import type { ToolGroup } from './components/Shell/navigation';
+import { toolGroups } from './components/Shell/navigation';
 import { bestSnippet } from './search/searchEngine';
 import { quickSearch, useSearchIndex } from './search/useSiteSearch';
 import Highlight from './search/Highlight';
@@ -417,28 +417,6 @@ export default function App() {
   const isHomeRoute = location.pathname === '/';
 
   const featuredBenchCard = useMemo(() => getDailyFeaturedBenchCard(), []);
-
-  const toolGroups = useMemo<ToolGroup[]>(() => ([
-    {
-      label: 'Identification',
-      items: [
-        { label: 'Gram Positive Roadmap', path: '/gram-positive-roadmap' },
-        { label: 'Gram Negative Roadmap', path: '/gram-negative-roadmap' },
-        { label: 'Anaerobe Roadmap', path: '/obligate-anaerobe-roadmap' },
-        { label: 'Unknown Isolate Workup', path: '/unknown-isolate-workup' }
-      ]
-    },
-    {
-      label: 'Reference',
-      items: [
-        { label: 'Biochemical Tests', path: '/biochemical-tests' },
-        { label: 'Enterics Calculator', path: '/biochemical-calculator' },
-        { label: 'Special Pathogens Hub', path: '/special-pathogens' },
-        { label: 'Do Not Routine Culture', path: '/do-not-routine-culture' },
-        { label: 'Guides', path: '/guides' }
-      ]
-    }
-  ]), []);
 
   const [dashboardSearchQuery, setDashboardSearchQuery] = useState('');
   // The search index loads the first time someone uses the box, not with the page.

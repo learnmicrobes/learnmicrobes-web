@@ -106,15 +106,19 @@
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
+/* Hover and an open menu share the light fill; only the current section gets
+   the stronger one. Which tab is current comes from getNavSection() in
+   navigation.ts. */
 .lm-nav-link:hover,
-.lm-nav-link:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
+.lm-nav-link:focus-visible,
+.lm-nav-link[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.05);
   color: #f6fbf8;
   text-decoration: none;
 }
 
 .lm-nav-link.active {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.2);
   color: #f6fbf8;
 }
 
