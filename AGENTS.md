@@ -52,6 +52,7 @@ Usage: `const { user } = useAuth()` — guest state is `!user` (null when not si
 
 ## Current feature set
 
+- **App shell** — teal site header (Learn and Tools menus, floating search panel), phone menu behind the hamburger, teal footer (`src/components/Shell/`)
 - **Home dashboard** — hero search, daily riddle, featured bench card, start-here paths
 - **Learn** — topic pages for clinical microbiology organisms and concepts (`src/data/learnTopics.ts`)
 - **Visual Atlas** — original bench cards across bacteriology, parasitology, mycology, and virology-style study cards with SVG renders, DIVR readouts where present, and comparison panels (`src/components/VisualAtlas/`)
@@ -131,6 +132,15 @@ Never imply official ASCP affiliation, guaranteed exam outcomes, medical advice,
 - Simple, instructional visuals — SVG or CSS diagrams that teach one concept clearly
 - **Lab Notebook palette**: warm paper-like background, deep ink text, teal/blue-green primary (`--primary-color: #245c69`)
 
+### Navigation labels
+
+A section is called the same thing everywhere. The phone menu mirrors the desktop
+header: **Home, Learn, Atlas, Tools, Review** (the phone menu adds Search, which
+the desktop header keeps as the magnifier). Routes keep their original paths —
+`/visuals` is labelled Atlas and `/practice` is labelled Review — so changing a
+label never changes a URL. Rename in both `SiteHeader.tsx` and `MobileMenu.tsx`
+in the same change, or the two drift apart.
+
 ### Avoid
 
 - Clutter and excessive animations
@@ -195,12 +205,14 @@ Two traps:
 
 Weights are **400/500/600/700 only**. Body is `--text-md` (16px) and never smaller.
 
-Migration is partial: `PracticePage`, `Flashcards` and `CaseStudySimulator` are
-fully tokenised. `Learn.css`, `App.css`, `VisualAtlas.css`, `AccountPage.css` and
+Migration is partial: `PracticePage`, `Flashcards`, `CaseStudySimulator` and
+`AccountPage` are fully tokenised. `Learn.css`, `App.css`, `VisualAtlas.css` and
 `RoadmapExperience.css` still carry hand-written `body.dark-mode` overrides. The
 token layer is additive, so those keep working — migrate a file at a time by
 pointing its colours at tokens, then deleting the dark rules whose values now
-match the dark token.
+match the dark token. `AccountPage.css` is the worked example: 72 dark rules
+became 5, and the ones that stayed are the amber panels whose colour is not in
+the token set.
 
 #### Verifying UI changes
 
@@ -279,6 +291,14 @@ npm run build
 ```
 
 The build must output `Compiled successfully` with zero errors before any commit.
+
+The question bank has a test suite (`npm test`). One invariant in it is easy to
+misread: **a draft question may repeat a published question's prompt on purpose.**
+Drafts are staged rewrites of questions that are already live, and `StudyQuiz`
+filters to `status === "published"`, so a student never sees both. Prompt
+uniqueness is therefore enforced across published questions only, while ids stay
+unique across the whole bank. A red suite here usually means a genuinely
+duplicated *published* question, not a draft.
 
 For any CSS file you touched, verify brace balance before committing:
 

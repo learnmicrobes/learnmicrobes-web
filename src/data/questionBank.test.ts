@@ -77,10 +77,16 @@ describe('questionBank authored content', () => {
 
       expect(question.answer.trim()).toBeTruthy();
       expect(question.choices).toContain(question.answer);
-      expect(prompts.has(trimmedPrompt)).toBe(false);
+
+      // Only published prompts have to be unique. A draft is a staged rewrite of
+      // a question that is already live, so it shares that prompt on purpose and
+      // the quiz never serves it (StudyQuiz filters to status === "published").
+      if (question.status === "published") {
+        expect(prompts.has(trimmedPrompt)).toBe(false);
+        prompts.add(trimmedPrompt);
+      }
 
       ids.add(trimmedId);
-      prompts.add(trimmedPrompt);
 
       if (question.answer !== question.answer.trim()) {
         throw new Error(`${label} answer has leading or trailing whitespace.`);

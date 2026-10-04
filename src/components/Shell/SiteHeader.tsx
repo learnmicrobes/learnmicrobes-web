@@ -11,7 +11,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../../context/AuthContext';
 import brandMark from '../../assets/brand-mark-knockout.svg';
-import type { DashboardSearchItem } from '../../data/dashboardSearchContent';
 import { getCategoryDisplayName, slugify } from '../../data/learnCategories';
 import { subjectStainClass } from '../../data/subjectStains';
 import HeaderSearch from './HeaderSearch';
@@ -31,11 +30,9 @@ type SiteHeaderProps = {
   isDarkMode: boolean;
   onToggleTheme: () => void;
   toolGroups: ToolGroup[];
-  searchIndex: DashboardSearchItem[];
-  onSearchIntent: () => void;
 };
 
-export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, searchIndex, onSearchIntent }: SiteHeaderProps) {
+export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups }: SiteHeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, signOut } = useAuth();
@@ -130,20 +127,13 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
             Home
           </Link>
 
-          {/* Learn keeps its own link so the tab still opens the hub, with the
-              categories behind a chevron the way the live site does it. */}
-          <div className="lm-nav-split" ref={learnRef}>
-            <Link
-              to="/learn"
-              className={`lm-nav-link lm-nav-link--split ${isLearnPath(pathname) ? 'active' : ''}`}
-              aria-current={isLearnPath(pathname) ? 'page' : undefined}
-              onClick={closeMenus}
-            >
-              Learn
-            </Link>
+          {/* One target, like Tools. Learn has a hub page where Tools has none,
+              so the hub is the first item inside the menu rather than a second
+              button someone has to aim at. */}
+          <div className="lm-nav-tools" ref={learnRef}>
             <button
               type="button"
-              className={`lm-nav-link lm-nav-link--chevron ${isLearnPath(pathname) ? 'active' : ''}`}
+              className={`lm-nav-link ${isLearnPath(pathname) ? 'active' : ''}`}
               onClick={() => {
                 setIsToolsOpen(false);
                 setIsAccountOpen(false);
@@ -151,8 +141,8 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
               }}
               aria-expanded={isLearnOpen}
               aria-haspopup="menu"
-              aria-label="Show Learn categories"
             >
+              Learn
               <FontAwesomeIcon icon={faChevronDown} className={`lm-chevron ${isLearnOpen ? 'open' : ''}`} aria-hidden="true" />
             </button>
             {isLearnOpen && (
@@ -234,7 +224,7 @@ export default function SiteHeader({ isDarkMode, onToggleTheme, toolGroups, sear
         </nav>
 
         <div className="lm-header-actions">
-          <HeaderSearch searchIndex={searchIndex} onSearchIntent={onSearchIntent} />
+          <HeaderSearch />
           <button
             type="button"
             className="lm-icon-btn"

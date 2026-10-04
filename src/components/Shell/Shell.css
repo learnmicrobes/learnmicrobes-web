@@ -132,25 +132,6 @@
   position: relative;
 }
 
-/* Learn keeps a link plus its own chevron, so the tab still opens the hub. */
-.lm-nav-split {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.lm-nav-split .lm-nav-link--split {
-  padding-right: 6px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.lm-nav-split .lm-nav-link--chevron {
-  padding: 0 12px 0 6px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
 .lm-header-actions {
   display: flex;
   flex-shrink: 0;
@@ -304,6 +285,15 @@
 .lm-search-results strong {
   font-size: var(--text-base);
   font-weight: 600;
+}
+
+/* Matched words in the header and home search dropdowns. */
+.lm-search-results mark,
+.home-search-option mark {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 700;
 }
 
 .lm-search-results small {
@@ -801,10 +791,10 @@ body.dark-mode .lm-footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 32px;
+    min-height: 36px;
     padding: 0 3px;
     border-radius: var(--radius-md);
-    font-size: clamp(0.64rem, calc(4.2vw - 3.2px), 0.78rem);
+    font-size: clamp(0.72rem, calc(4.2vw - 3.2px), 0.78rem);
     font-weight: 600;
     text-align: center;
     white-space: nowrap;
@@ -919,32 +909,6 @@ body.dark-mode .lm-footer {
   color: var(--accent);
 }
 
-/* Learn keeps a tappable label and a separate chevron, as on the live site. */
-.lm-sheet-split {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-}
-
-.lm-sheet-split .lm-sheet-row {
-  flex: 1;
-}
-
-.lm-sheet-split .lm-sheet-row--chevron {
-  flex: 0 0 auto;
-}
-
-.lm-sheet-row--chevron {
-  flex: 0 0 auto;
-  width: auto;
-  justify-content: center;
-  padding: 0 1.5rem;
-}
-
-.lm-sheet-row--chevron .lm-chevron {
-  margin-left: 0;
-}
-
 .lm-sheet-sub {
   display: grid;
   gap: 8px;
@@ -991,6 +955,7 @@ body.dark-mode .lm-footer {
     text-decoration: underline;
   }
 }
+
 
 .lm-sheet-divider {
   margin: 8px 1.5rem;

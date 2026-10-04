@@ -64,7 +64,7 @@
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
 }
 
-.global-search-container > .alpha-validation-cta,
+.search-empty .alpha-validation-cta,
 .roadmap-container > .alpha-validation-cta,
 .basics-content .alpha-validation-cta,
 .learn-article > .alpha-validation-cta,
