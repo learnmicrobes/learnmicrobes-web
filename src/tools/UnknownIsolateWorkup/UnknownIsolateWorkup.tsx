@@ -2,7 +2,6 @@ import React, { useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ToolBox from '../../components/ToolBox/ToolBox';
 import { useAuth } from '../../context/AuthContext';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './UnknownIsolateWorkup.css';
@@ -580,16 +579,12 @@ const UnknownIsolateWorkup: React.FC = () => {
   );
 
   return (
-    <ToolBox
-      title="Unknown Isolate Workup"
-      icon="ID"
-      onClose={() => navigate('/')}
-    >
+    <>
       <div className="unknown-workup">
         <section className="unknown-hero">
           <div>
             <span className="unknown-kicker">Guided bench reasoning</span>
-            <h2>Choose what you know. Review the next bench move.</h2>
+            <h1>Choose what you know. Review the next bench move.</h1>
             <p>
               Start with what is already available from the specimen, Gram stain, primary plates, and early bench tests. Then build a suggested workup path without treating it as a final organism ID.
             </p>
@@ -749,7 +744,7 @@ const UnknownIsolateWorkup: React.FC = () => {
           </section>
         </div>
       )}
-    </ToolBox>
+    </>
   );
 };
 
