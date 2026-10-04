@@ -189,6 +189,12 @@ const getRiddleChoiceName = (choice?: DailyRiddleChoice) => choice?.label.replac
 
 // Home task chooser (1.0 design). Accents are tool categories from the design
 // system, not organism subjects, so they do not use the stain palette.
+// The Add to Home Screen hint sleeps for 60 days after a dismissal rather than
+// disappearing for good. The key is new on purpose: the old flag was permanent,
+// so this is what brings the steps back for anyone already carrying it.
+const HOME_SCREEN_HINT_KEY = 'learnmicrobes_home_screen_hint_dismissed_at';
+const HOME_SCREEN_HINT_QUIET_MS = 60 * 24 * 60 * 60 * 1000;
+
 const homeTasks = [
   {
     icon: faMicroscope,
@@ -274,9 +280,15 @@ export default function App() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [isMobile, setIsMobile] = useState(false);
-  const [isHomeScreenHintDismissed, setIsHomeScreenHintDismissed] = useState(
-    () => localStorage.getItem('learnmicrobes_home_screen_hint_dismissed') === 'true'
-  );
+  // Dismissing the Add to Home Screen hint used to hide it forever, so anyone who
+  // tapped Dismiss once could never find the install steps again. It now goes
+  // quiet for a while and comes back, and the new key means the people already
+  // holding the old permanent flag see it once more.
+  const [isHomeScreenHintDismissed, setIsHomeScreenHintDismissed] = useState(() => {
+    const dismissedAt = Number(localStorage.getItem(HOME_SCREEN_HINT_KEY));
+    return Number.isFinite(dismissedAt) && dismissedAt > 0
+      && Date.now() - dismissedAt < HOME_SCREEN_HINT_QUIET_MS;
+  });
   const [showDepthNudge, setShowDepthNudge] = useState(false);
   const [isNudgeDismissed, setIsNudgeDismissed] = useState(
     () => sessionStorage.getItem('lm_nudge_dismissed') === 'true'
@@ -337,7 +349,7 @@ export default function App() {
   }, [location.pathname, isNudgeDismissed, user]);
 
   const dismissHomeScreenHint = () => {
-    localStorage.setItem('learnmicrobes_home_screen_hint_dismissed', 'true');
+    localStorage.setItem(HOME_SCREEN_HINT_KEY, String(Date.now()));
     setIsHomeScreenHintDismissed(true);
   };
 
