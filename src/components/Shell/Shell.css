@@ -619,6 +619,31 @@
   text-underline-offset: 0.18rem;
 }
 
+/* The address in plain text, not only behind the envelope icon: phones have no
+   hover, so the icon alone never tells anyone where their mail would go. */
+.lm-footer-contact {
+  margin: 0;
+  color: rgba(244, 239, 228, 0.72);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.lm-footer-contact a {
+  color: #f6fbf8;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.lm-footer-contact a:hover,
+.lm-footer-contact a:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
 .lm-footer-note {
   display: none;
   margin: 0;

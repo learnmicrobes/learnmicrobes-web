@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SUPPORT_EMAIL } from '../config/contact';
 import './About.css';
 
 type InfoPageKey = 'disclaimer' | 'terms' | 'privacy' | 'faq' | 'mission';
@@ -81,7 +82,7 @@ const infoPages: Record<InfoPageKey, {
       },
       {
         title: 'Feedback, contact, and deletion',
-        body: 'If you send feedback or email Learn Microbes, we use what you share to respond and improve the site. To get a copy of your account data or have it deleted, email learnmicrobes@outlook.com.'
+        body: `If you send feedback or email Learn Microbes, we use what you share to respond and improve the site. To get a copy of your account data or have it deleted, email ${SUPPORT_EMAIL}.`
       }
     ]
   },

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SUPPORT_EMAIL } from '../../config/contact';
 import { ALPHA_SIGNUP_FORM_URL } from '../../config/forms';
 import { SUPPORT_URL } from '../../config/support';
 import { trackEvent } from '../../utils/analytics';
@@ -9,7 +10,7 @@ const socialLinks = [
   { label: 'Learn Microbes on Instagram', href: 'https://www.instagram.com/learn.microbes/', icon: 'fab fa-instagram', external: true },
   { label: 'Learn Microbes on Facebook', href: 'https://www.facebook.com/profile.php?id=61575016503288', icon: 'fab fa-facebook-f', external: true },
   { label: 'Learn Microbes on X', href: 'https://x.com/learn_microbes', icon: 'fab fa-twitter', external: true },
-  { label: 'Email Learn Microbes', href: 'mailto:learnmicrobes@outlook.com?subject=Question%20About%20LearnMicrobes', icon: 'fas fa-envelope', external: false }
+  { label: 'Email Learn Microbes', href: `mailto:${SUPPORT_EMAIL}?subject=Question%20About%20LearnMicrobes`, icon: 'fas fa-envelope', external: false }
 ];
 
 const pageLinks = [
@@ -74,6 +75,11 @@ export default function SiteFooter() {
             Join Beta
           </a>
         </nav>
+
+        <p className="lm-footer-contact">
+          Questions or feedback?{' '}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+        </p>
 
         <p className="lm-footer-note">
           &copy; 2026 LearnMicrobes.com
