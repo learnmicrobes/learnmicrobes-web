@@ -9,8 +9,7 @@ import './Shell.css';
 const socialLinks = [
   { label: 'Learn Microbes on Instagram', href: 'https://www.instagram.com/learn.microbes/', icon: 'fab fa-instagram', external: true },
   { label: 'Learn Microbes on Facebook', href: 'https://www.facebook.com/profile.php?id=61575016503288', icon: 'fab fa-facebook-f', external: true },
-  { label: 'Learn Microbes on X', href: 'https://x.com/learn_microbes', icon: 'fab fa-twitter', external: true },
-  { label: 'Email Learn Microbes', href: `mailto:${SUPPORT_EMAIL}?subject=Question%20About%20LearnMicrobes`, icon: 'fas fa-envelope', external: false }
+  { label: 'Learn Microbes on X', href: 'https://x.com/learn_microbes', icon: 'fab fa-twitter', external: true }
 ];
 
 const pageLinks = [
@@ -42,6 +41,19 @@ export default function SiteFooter() {
               </a>
             ))}
           </div>
+          {/* The envelope carries the address as text on wider screens, so
+              nobody has to click to find out where their mail would go. Phones
+              keep the icon alone, like the heart below. */}
+          <a
+            className="lm-footer-email"
+            href={`mailto:${SUPPORT_EMAIL}?subject=Question%20About%20LearnMicrobes`}
+            aria-label={`Email Learn Microbes at ${SUPPORT_EMAIL}`}
+            title={SUPPORT_EMAIL}
+          >
+            <i className="fas fa-envelope" aria-hidden="true" />
+            <span className="lm-footer-email-text">{SUPPORT_EMAIL}</span>
+          </a>
+
           {/* Phones show only the heart, in the row of social icons. The label
               is in aria-label so it survives the text being hidden there. */}
           <a
@@ -75,11 +87,6 @@ export default function SiteFooter() {
             Join Beta
           </a>
         </nav>
-
-        <p className="lm-footer-contact">
-          Questions or feedback?{' '}
-          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
-        </p>
 
         <p className="lm-footer-note">
           &copy; 2026 LearnMicrobes.com
