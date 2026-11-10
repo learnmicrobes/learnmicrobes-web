@@ -390,6 +390,200 @@ export const searchAliasesBySlug: Record<string, string[]> = {
     'nat',
     'screen reactive',
     'screening algorithm'
+  ],
+  'balantioides-coli-trophozoite-cyst': [
+    'balantidium',
+    'balantidium coli',
+    'neobalantidium',
+    'ciliate',
+    'cilia',
+    'kidney shaped macronucleus',
+    'largest protozoan'
+  ],
+  'free-living-amoebae-naegleria-acanthamoeba': [
+    'naegleria',
+    'acanthamoeba',
+    'balamuthia',
+    'pam',
+    'primary amebic meningoencephalitis',
+    'brain eating amoeba',
+    'amoeba in csf',
+    'keratitis',
+    'contact lens',
+    'flagellation test',
+    'non-nutrient agar'
+  ],
+  'nonpathogenic-amoebae-cyst-comparison': [
+    'entamoeba coli',
+    'e coli cyst',
+    'endolimax nana',
+    'iodamoeba',
+    'commensal amoeba',
+    '8 nuclei',
+    'glycogen vacuole',
+    'nonpathogenic amoeba'
+  ],
+  'chilomastix-mesnili-cyst-trophozoite': [
+    'chilomastix',
+    'lemon shaped cyst',
+    'shepherds crook',
+    'nonpathogenic flagellate',
+    'cytostome'
+  ],
+  'plasmodium-vivax-smear': [
+    'p vivax',
+    'vivax',
+    'schuffner dots',
+    'schuffner',
+    'ameboid trophozoite',
+    'enlarged rbc',
+    'benign tertian',
+    'hypnozoite'
+  ],
+  'plasmodium-malariae-band-form': [
+    'p malariae',
+    'malariae',
+    'band form',
+    'rosette schizont',
+    'daisy head',
+    'quartan malaria',
+    'knowlesi'
+  ],
+  'plasmodium-ovale-smear': [
+    'p ovale',
+    'ovale',
+    'fimbriated',
+    'oval rbc',
+    'james dots',
+    'schuffner dots'
+  ],
+  'microsporidia-modified-trichrome': [
+    'microsporidia',
+    'enterocytozoon',
+    'encephalitozoon',
+    'modified trichrome',
+    'chromotrope',
+    'weber stain',
+    'polar tubule',
+    'belt stripe'
+  ],
+  'sarcoptes-scabiei-skin-scraping': [
+    'scabies',
+    'sarcoptes',
+    'itch mite',
+    'scybala',
+    'skin scraping',
+    'norwegian scabies',
+    'crusted scabies',
+    'demodex',
+    'mite'
+  ],
+  'lice-pediculus-phthirus-comparison': [
+    'lice',
+    'louse',
+    'pediculus',
+    'phthirus',
+    'pthirus',
+    'crab louse',
+    'pubic lice',
+    'head lice',
+    'body lice',
+    'nit',
+    'nits'
+  ],
+  'pneumocystis-jirovecii-gms': [
+    'pneumocystis',
+    'pcp',
+    'pjp',
+    'pneumocystis carinii',
+    'gms',
+    'silver stain',
+    'cup shaped cyst',
+    'crushed ping pong ball',
+    'bal'
+  ],
+  'candida-cornmeal-agar-morphology': [
+    'cornmeal agar',
+    'dalmau',
+    'tween 80',
+    'chlamydospore',
+    'chlamydoconidia',
+    'candida tropicalis',
+    'candida parapsilosis',
+    'candida glabrata',
+    'candida krusei',
+    'pseudohyphae',
+    'blastoconidia'
+  ],
+  'malassezia-furfur-koh': [
+    'malassezia',
+    'tinea versicolor',
+    'pityriasis versicolor',
+    'spaghetti and meatballs',
+    'olive oil overlay',
+    'lipophilic yeast',
+    'collarette'
+  ],
+  'mucorales-genus-comparison': [
+    'rhizopus',
+    'mucor',
+    'lichtheimia',
+    'absidia',
+    'rhizoids',
+    'nodal rhizoids',
+    'internodal rhizoids',
+    'apophysis',
+    'zygomycetes',
+    'mucormycosis',
+    'lid lifter'
+  ],
+  'arthroconidia-comparison-geotrichum-coccidioides-trichosporon': [
+    'arthroconidia',
+    'geotrichum',
+    'coccidioides',
+    'trichosporon',
+    'disjunctor cells',
+    'alternating arthroconidia',
+    'barrel shaped',
+    'hockey stick',
+    'malbranchea'
+  ],
+  'tissue-yeast-size-comparison': [
+    'yeast in tissue',
+    'yeast size',
+    'broad based budding',
+    'narrow based budding',
+    'spherule',
+    'endospores',
+    'intracellular yeast',
+    'histoplasma',
+    'blastomyces',
+    'cryptococcus',
+    'coccidioides'
+  ],
+  'trichophyton-species-comparison': [
+    'trichophyton',
+    't rubrum',
+    't mentagrophytes',
+    't tonsurans',
+    'birds on a wire',
+    'teardrop microconidia',
+    'spiral hyphae',
+    'hair perforation',
+    'urease dermatophyte',
+    'red reverse'
+  ],
+  'hair-invasion-ectothrix-endothrix': [
+    'ectothrix',
+    'endothrix',
+    'favus',
+    'tinea capitis',
+    'wood lamp',
+    'woods lamp',
+    'hair invasion',
+    'black dot',
+    'scalp ringworm',
+    'schoenleinii'
   ]
 };
 
