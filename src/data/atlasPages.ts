@@ -3846,16 +3846,7 @@ export const atlasPages: AtlasPage[] = [
         label: 'A. niger',
         name: 'Radiate biseriate, dark conidia',
         colors: { slant: '#e0dccf', butt: '#6a6048', base: '#33291a' },
-        note: 'Look for a large radiate conidial head with dark conidia and biseriate structures around the vesicle.',
-        recognitionImage: {
-          src: '/visual-atlas/mycology/aspergillus/aspergillus-niger-recognition-v01.webp?v=2',
-          alt: 'Microscopy-style educational recognition image of Aspergillus niger showing a blue-stained radiate conidial head.'
-        },
-        structureMap: {
-          src: '/visual-atlas/mycology/aspergillus/aspergillus-niger-structure-map-v01.svg?v=2',
-          alt: 'Structure map of Aspergillus niger showing conidiophore, vesicle, metulae, phialides, and dark conidia.'
-        },
-        benchTip: 'Start with the head shape, then confirm the arrangement around the vesicle.'
+        note: 'Look for a large radiate conidial head with dark conidia and biseriate structures around the vesicle.'
       },
       {
         id: 'C',
