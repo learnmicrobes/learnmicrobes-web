@@ -8590,5 +8590,977 @@ export const questionBank: QuestionBankItem[] = [
     explanation: 'Public health reporting is jurisdiction-specific and policy-driven. The laboratory must know which results are reportable and how notification is documented.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
+  },
+  {
+    id: 'parasitology-064-balantioides-macronucleus',
+    area: 'analytic-parasitology',
+    topic: 'Ciliate identification',
+    difficulty: 'beginner',
+    tags: ['Balantioides coli', 'Balantidium coli', 'macronucleus', 'stool microscopy'],
+    prompt: 'A very large oval ciliate is seen in a stool wet mount. Which nuclear feature supports Balantioides coli (Balantidium coli)?',
+    choices: [
+      'A large kidney-shaped macronucleus, with a small micronucleus that is often not seen.',
+      'Two identical nuclei side by side above a sucking disk.',
+      'Up to eight nuclei with eccentric karyosomes.',
+      'One nucleus beside a large iodine-staining glycogen vacuole.'
+    ],
+    answer: 'A large kidney-shaped macronucleus, with a small micronucleus that is often not seen.',
+    explanation: 'Balantioides coli is recognized by its size, its cilia, and a kidney-shaped macronucleus present in both the trophozoite and the cyst. The other choices describe Giardia, Entamoeba coli, and Iodamoeba butschlii.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-065-balantioides-permanent-stain-pitfall',
+    area: 'analytic-parasitology',
+    topic: 'Ciliate identification',
+    difficulty: 'intermediate',
+    tags: ['Balantioides coli', 'trichrome stain', 'wet mount', 'pitfall'],
+    prompt: 'Why is a wet mount or concentrate preferred over a trichrome smear for recognizing Balantioides coli?',
+    choices: [
+      'The organism dissolves in the fixative used for permanent stains.',
+      'The organism is so thick that it stains very dark and its detail is lost on the permanent stain.',
+      'Trichrome stains only helminth eggs and not protozoa.',
+      'The cilia fluoresce only in a saline wet mount.'
+    ],
+    answer: 'The organism is so thick that it stains very dark and its detail is lost on the permanent stain.',
+    explanation: 'Thick organisms overstain on trichrome and can be passed over as debris. Size, cilia, and the macronucleus are easier to see in wet preparations and concentrate sediment.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-066-balantioides-pig-reservoir',
+    area: 'analytic-parasitology',
+    topic: 'Ciliate identification',
+    difficulty: 'beginner',
+    tags: ['Balantioides coli', 'reservoir', 'pigs', 'epidemiology'],
+    prompt: 'A stool exam shows Balantioides coli cysts. Which exposure history fits best?',
+    choices: [
+      'Eating undercooked freshwater fish.',
+      'Cleaning a cat litter box.',
+      'Contact with pigs or water contaminated by pig feces.',
+      'Eating raw freshwater crab or crayfish.'
+    ],
+    answer: 'Contact with pigs or water contaminated by pig feces.',
+    explanation: 'Pigs are the main reservoir for Balantioides coli. The other exposures point to fish tapeworm or liver flukes, Toxoplasma, and Paragonimus.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-067-naegleria-flagellation-test',
+    area: 'analytic-parasitology',
+    topic: 'Free-living amoebae',
+    difficulty: 'intermediate',
+    tags: ['Naegleria fowleri', 'Acanthamoeba', 'flagellation test', 'free-living amoebae'],
+    prompt: 'Trophozoites recovered from CSF are placed in distilled water, and some develop two flagella. What does this result indicate?',
+    choices: [
+      'The organism is Acanthamoeba, because only it forms flagella in water.',
+      'The specimen is contaminated with Giardia trophozoites.',
+      'The result is an artifact and has no identification value.',
+      'The organism is Naegleria, because Acanthamoeba has no flagellate stage.'
+    ],
+    answer: 'The organism is Naegleria, because Acanthamoeba has no flagellate stage.',
+    explanation: 'Naegleria can change into a temporary flagellate form in a low-nutrient fluid. Acanthamoeba and Balamuthia cannot. The test supports the genus but never delays reporting motile amoebae in CSF.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-068-free-living-amoebae-culture-lawn',
+    area: 'analytic-parasitology',
+    topic: 'Free-living amoebae',
+    difficulty: 'intermediate',
+    tags: ['Acanthamoeba', 'Naegleria', 'non-nutrient agar', 'culture'],
+    prompt: 'Which culture setup is used to recover Acanthamoeba or Naegleria from a clinical specimen?',
+    choices: [
+      'Non-nutrient agar seeded with a lawn of Escherichia coli or another Gram-negative rod.',
+      'Sabouraud dextrose agar incubated at 25 C.',
+      'Lowenstein-Jensen medium incubated in CO2.',
+      'Thioglycolate broth incubated anaerobically.'
+    ],
+    answer: 'Non-nutrient agar seeded with a lawn of Escherichia coli or another Gram-negative rod.',
+    explanation: 'The amoebae feed on the bacterial lawn and leave visible tracks on the agar. Balamuthia is the exception and does not grow on bacteria-seeded agar.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-069-amoebae-csf-holding-temperature',
+    area: 'analytic-parasitology',
+    topic: 'Free-living amoebae',
+    difficulty: 'beginner',
+    tags: ['Naegleria fowleri', 'CSF', 'specimen handling', 'preanalytic'],
+    prompt: 'CSF is submitted to rule out free-living amoebae and will not be examined for an hour. How should the specimen be held?',
+    choices: [
+      'Refrigerated at 4 C to preserve morphology.',
+      'At room temperature, because refrigeration can kill or immobilize the trophozoites.',
+      'Frozen at -20 C until the wet mount is prepared.',
+      'Fixed in formalin before the wet mount is read.'
+    ],
+    answer: 'At room temperature, because refrigeration can kill or immobilize the trophozoites.',
+    explanation: 'Motility is the main clue on a CSF wet mount, and cold temperatures stop it. The specimen is kept at room temperature and examined as soon as possible.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-070-entamoeba-coli-eight-nuclei',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal amoeba differentiation',
+    difficulty: 'beginner',
+    tags: ['Entamoeba coli', 'cyst', 'nuclei', 'nonpathogen'],
+    prompt: 'An Entamoeba cyst on a trichrome smear has 8 nuclei with eccentric karyosomes. What is the best interpretation?',
+    choices: [
+      'Entamoeba histolytica, because mature cysts have 8 nuclei.',
+      'Endolimax nana, because it is the largest amoeba cyst.',
+      'Entamoeba coli, because Entamoeba histolytica cysts have no more than 4 nuclei.',
+      'Giardia duodenalis, because its cysts have 8 nuclei.'
+    ],
+    answer: 'Entamoeba coli, because Entamoeba histolytica cysts have no more than 4 nuclei.',
+    explanation: 'A mature Entamoeba coli cyst has 8 nuclei with eccentric karyosomes and coarse, uneven peripheral chromatin. Entamoeba histolytica/dispar cysts mature at 4 nuclei.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-071-iodamoeba-glycogen-vacuole',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal amoeba differentiation',
+    difficulty: 'beginner',
+    tags: ['Iodamoeba butschlii', 'glycogen vacuole', 'iodine wet mount', 'cyst'],
+    prompt: 'An iodine wet mount shows a cyst with one nucleus and a large, sharply outlined, dark brown vacuole. Which organism is most likely?',
+    choices: [
+      'Endolimax nana.',
+      'Entamoeba hartmanni.',
+      'Chilomastix mesnili.',
+      'Iodamoeba butschlii.'
+    ],
+    answer: 'Iodamoeba butschlii.',
+    explanation: 'The large glycogen vacuole of Iodamoeba butschlii stains deep brown with iodine and looks like an empty space on a trichrome smear. The cyst has a single nucleus with a large karyosome.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-072-commensal-amoebae-why-report',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal amoeba differentiation',
+    difficulty: 'intermediate',
+    tags: ['Endolimax nana', 'nonpathogen', 'reporting', 'fecal-oral exposure'],
+    prompt: 'A stool exam shows only Endolimax nana cysts. Why do most laboratories still report this nonpathogen?',
+    choices: [
+      'It shows the patient was exposed to fecally contaminated food or water, so pathogens may also be present.',
+      'It is treated the same way as Entamoeba histolytica.',
+      'It always causes diarrhea in children.',
+      'Regulations require every microscopic object to be reported.'
+    ],
+    answer: 'It shows the patient was exposed to fecally contaminated food or water, so pathogens may also be present.',
+    explanation: 'Commensal protozoa share the fecal-oral route with pathogens. Reporting them tells the provider that exposure occurred and that additional specimens may be worthwhile.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-073-chilomastix-lemon-cyst',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal flagellate differentiation',
+    difficulty: 'beginner',
+    tags: ['Chilomastix mesnili', 'cyst', 'lemon shape', 'flagellate'],
+    prompt: 'A 7 um lemon-shaped cyst with a clear knob at one end and a single nucleus is seen on a stained smear. Which organism is it?',
+    choices: [
+      'Giardia duodenalis.',
+      'Chilomastix mesnili.',
+      'Endolimax nana.',
+      'Dientamoeba fragilis.'
+    ],
+    answer: 'Chilomastix mesnili.',
+    explanation: 'The lemon shape with an anterior knob, one nucleus, and a curved cytostomal fibril identifies the Chilomastix mesnili cyst. Dientamoeba fragilis is known mainly as a trophozoite, and Giardia cysts are oval with up to 4 nuclei.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-074-chilomastix-vs-giardia-trophozoite',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal flagellate differentiation',
+    difficulty: 'intermediate',
+    tags: ['Chilomastix mesnili', 'Giardia duodenalis', 'trophozoite', 'differentiation'],
+    prompt: 'Which finding separates a Chilomastix mesnili trophozoite from a Giardia trophozoite?',
+    choices: [
+      'Two nuclei with median bodies, instead of one nucleus.',
+      'Cilia over the whole surface, instead of flagella.',
+      'One nucleus with a spiral groove and a large cytostome, instead of two nuclei and a sucking disk.',
+      'Ingested red blood cells in the cytoplasm.'
+    ],
+    answer: 'One nucleus with a spiral groove and a large cytostome, instead of two nuclei and a sucking disk.',
+    explanation: 'Chilomastix has a single anterior nucleus, a prominent cytostome, and a spiral groove. Giardia is bilaterally symmetrical with two nuclei, a ventral sucking disk, and median bodies.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-075-chilomastix-clinical-significance',
+    area: 'analytic-parasitology',
+    topic: 'Intestinal flagellate differentiation',
+    difficulty: 'beginner',
+    tags: ['Chilomastix mesnili', 'nonpathogen', 'reporting'],
+    prompt: 'Which statement about Chilomastix mesnili in a stool specimen is most accurate?',
+    choices: [
+      'It is a major cause of dysentery with liver abscess.',
+      'It invades the small intestine and causes malabsorption.',
+      'It is found only in immunocompromised patients.',
+      'It is considered a nonpathogen, but its presence shows fecal-oral exposure.'
+    ],
+    answer: 'It is considered a nonpathogen, but its presence shows fecal-oral exposure.',
+    explanation: 'Chilomastix mesnili is a commensal flagellate. Its importance at the bench is that it must not be mistaken for Giardia, and that it signals exposure to contaminated food or water.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-076-plasmodium-vivax-thin-smear-pattern',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'intermediate',
+    tags: ['Plasmodium vivax', 'thin smear', 'ameboid trophozoite', 'Schuffner dots'],
+    prompt: 'On a thin smear, infected red cells are larger than their neighbors, show fine pink stippling, and contain irregular ameboid trophozoites. Schizonts have about 20 merozoites. Which species fits?',
+    choices: [
+      'Plasmodium vivax.',
+      'Plasmodium falciparum.',
+      'Plasmodium malariae.',
+      'Babesia microti.'
+    ],
+    answer: 'Plasmodium vivax.',
+    explanation: 'Enlarged red cells with Schuffner dots narrow the choice to P. vivax or P. ovale. Ameboid trophozoites and schizonts with 12-24 merozoites favor P. vivax.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-077-schuffner-dots-buffer-ph',
+    area: 'analytic-parasitology',
+    topic: 'Malaria smear workflow',
+    difficulty: 'advanced',
+    tags: ['Schuffner dots', 'Giemsa stain', 'buffer pH', 'quality'],
+    prompt: 'A suspected Plasmodium vivax smear shows enlarged infected cells but no stippling. Which technical factor should be checked first?',
+    choices: [
+      'The age of the immersion oil.',
+      'The pH of the stain buffer, because Schuffner dots show best near pH 7.0-7.2.',
+      'Whether the smear was heat fixed.',
+      'The brand of glass slide used for the smear.'
+    ],
+    answer: 'The pH of the stain buffer, because Schuffner dots show best near pH 7.0-7.2.',
+    explanation: 'Stippling depends on staining conditions. A buffer that is too acidic can fail to show Schuffner dots, so cell size and parasite shape should be read along with a check of the buffer.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-078-plasmodium-vivax-gametocyte-shape',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'beginner',
+    tags: ['Plasmodium vivax', 'gametocyte', 'thin smear'],
+    prompt: 'Which gametocyte description fits Plasmodium vivax?',
+    choices: [
+      'Crescent or banana shaped.',
+      'Round, in a red cell of normal size with no stippling.',
+      'Round to oval, filling most of an enlarged red cell.',
+      'Tetrad shaped, resembling a Maltese cross.'
+    ],
+    answer: 'Round to oval, filling most of an enlarged red cell.',
+    explanation: 'P. vivax gametocytes are round to oval in an enlarged, stippled cell. Crescent gametocytes belong to P. falciparum, a round gametocyte in a normal-size cell fits P. malariae, and tetrads are a Babesia clue.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-079-plasmodium-malariae-rosette-schizont',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'intermediate',
+    tags: ['Plasmodium malariae', 'schizont', 'rosette', 'thin smear'],
+    prompt: 'A thin smear shows a schizont with 8 merozoites arranged like petals around a central clump of dark pigment, in a red cell of normal size. Which species fits best?',
+    choices: [
+      'Plasmodium vivax.',
+      'Plasmodium falciparum.',
+      'Plasmodium ovale.',
+      'Plasmodium malariae.'
+    ],
+    answer: 'Plasmodium malariae.',
+    explanation: 'The rosette or daisy-head schizont with 6-12 merozoites in a cell that is not enlarged is the classic P. malariae picture. P. ovale can also have about 8 merozoites, but its host cell is enlarged, oval, and stippled.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-080-plasmodium-malariae-cycle-facts',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'intermediate',
+    tags: ['Plasmodium malariae', 'quartan', 'parasitemia', 'life cycle'],
+    prompt: 'Which statement about Plasmodium malariae is correct?',
+    choices: [
+      'It has a 72-hour cycle, usually low parasitemia, and no dormant liver stage.',
+      'It has a 48-hour cycle and forms hypnozoites that cause relapse.',
+      'It has a 24-hour cycle and often reaches very high parasitemia.',
+      'It infects only reticulocytes and enlarges the red cell.'
+    ],
+    answer: 'It has a 72-hour cycle, usually low parasitemia, and no dormant liver stage.',
+    explanation: 'P. malariae has the longest blood cycle, 72 hours, and usually a low parasite count. Late recurrences come from persisting blood-stage infection, not from hypnozoites.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-081-plasmodium-malariae-red-cell-age',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'advanced',
+    tags: ['Plasmodium malariae', 'red cell age', 'thin smear'],
+    prompt: 'Why are red cells infected with Plasmodium malariae normal in size or slightly small?',
+    choices: [
+      'The parasite prefers reticulocytes.',
+      'The parasite prefers older red cells.',
+      'The parasite invades only Duffy-negative cells.',
+      'The cells shrink because of the Giemsa stain.'
+    ],
+    answer: 'The parasite prefers older red cells.',
+    explanation: 'P. malariae tends to invade older red cells, which are not enlarged. P. vivax and P. ovale prefer young red cells, which explains the enlarged host cells in those infections.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-082-plasmodium-ovale-vs-vivax-features',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'advanced',
+    tags: ['Plasmodium ovale', 'Plasmodium vivax', 'fimbriated', 'differentiation'],
+    prompt: 'Two malaria species enlarge the red cell and show Schuffner dots. Which set of findings favors Plasmodium ovale over Plasmodium vivax?',
+    choices: [
+      'Round cells, an ameboid trophozoite, and schizonts with about 20 merozoites.',
+      'Normal-size cells, band forms, and coarse dark pigment.',
+      'Oval cells with ragged edges, a compact trophozoite, and schizonts with about 8 merozoites.',
+      'Multiple delicate rings per cell and crescent gametocytes.'
+    ],
+    answer: 'Oval cells with ragged edges, a compact trophozoite, and schizonts with about 8 merozoites.',
+    explanation: 'P. ovale is suggested by oval, fimbriated host cells, a compact trophozoite, and a low merozoite count. The other choices describe P. vivax, P. malariae, and P. falciparum.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-083-plasmodium-ovale-read-the-monolayer',
+    area: 'analytic-parasitology',
+    topic: 'Malaria smear workflow',
+    difficulty: 'intermediate',
+    tags: ['thin smear', 'monolayer', 'artifact', 'Plasmodium ovale'],
+    prompt: 'Where on a thin blood film should red cell shape be judged when considering Plasmodium ovale?',
+    choices: [
+      'At the extreme feathered edge.',
+      'In the thick end near the drop.',
+      'Anywhere, because red cell shape is not affected by smear thickness.',
+      'In the monolayer, where cells lie flat and barely touch.'
+    ],
+    answer: 'In the monolayer, where cells lie flat and barely touch.',
+    explanation: 'Cells at the feathered edge and in thick areas are distorted and can look oval. Shape is reliable only in the monolayer, and it has to agree with parasite morphology.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-084-plasmodium-ovale-relapse-reason',
+    area: 'analytic-parasitology',
+    topic: 'Malaria species recognition',
+    difficulty: 'intermediate',
+    tags: ['Plasmodium ovale', 'Plasmodium malariae', 'hypnozoites', 'relapse'],
+    prompt: 'Why does it matter whether a malaria parasite is reported as Plasmodium ovale or Plasmodium malariae?',
+    choices: [
+      'Plasmodium ovale forms dormant liver stages that can cause relapse, and Plasmodium malariae does not.',
+      'Plasmodium malariae forms dormant liver stages, and Plasmodium ovale does not.',
+      'Only Plasmodium malariae can be seen on a thin smear.',
+      'There is no difference; both names describe the same organism.'
+    ],
+    answer: 'Plasmodium ovale forms dormant liver stages that can cause relapse, and Plasmodium malariae does not.',
+    explanation: 'P. vivax and P. ovale have hypnozoites, which is why the species name affects management. The laboratory reports the species and the provider decides on treatment.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-085-microsporidia-belt-stripe',
+    area: 'analytic-parasitology',
+    topic: 'Microsporidia detection',
+    difficulty: 'intermediate',
+    tags: ['microsporidia', 'modified trichrome stain', 'polar tubule', 'spores'],
+    prompt: 'On a modified trichrome stain, which finding is the strongest clue that a 2 um pink-red oval body is a microsporidial spore?',
+    choices: [
+      'A bud attached by a narrow base.',
+      'A pale belt-like stripe across the spore.',
+      'Four nuclei with central karyosomes.',
+      'A thick capsule that excludes the stain.'
+    ],
+    answer: 'A pale belt-like stripe across the spore.',
+    explanation: 'The stripe is the polar tubule seen through the spore wall. Not every spore shows it, but when present it separates spores from bacteria and small yeasts.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-086-microsporidia-versus-yeast',
+    area: 'analytic-parasitology',
+    topic: 'Microsporidia detection',
+    difficulty: 'intermediate',
+    tags: ['microsporidia', 'yeast', 'modified trichrome stain', 'pitfall'],
+    prompt: 'Red-staining oval cells on a modified trichrome smear measure about 5 um, and several are budding. What is the best interpretation?',
+    choices: [
+      'Microsporidia, because any red oval cell is a spore.',
+      'Cryptosporidium oocysts, because they bud in stool.',
+      'Yeast, because microsporidial spores are smaller and do not bud.',
+      'Cyclospora oocysts, because they are the smallest coccidia.'
+    ],
+    answer: 'Yeast, because microsporidial spores are smaller and do not bud.',
+    explanation: 'Microsporidial spores are about 1-4 um and never bud. Yeast cells take up the same stain but are larger and show budding.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-087-microsporidia-reading-requirements',
+    area: 'analytic-parasitology',
+    topic: 'Microsporidia detection',
+    difficulty: 'beginner',
+    tags: ['microsporidia', 'oil immersion', 'quality control', 'stool smear'],
+    prompt: 'Which reading practice is required when screening a stool smear for microsporidia?',
+    choices: [
+      'Low power only, because spores are larger than helminth eggs.',
+      'A saline wet mount, because the spores are actively motile.',
+      'Darkfield microscopy, because the spores do not take up stain.',
+      'Oil immersion, with a positive control slide stained in the same batch.'
+    ],
+    answer: 'Oil immersion, with a positive control slide stained in the same batch.',
+    explanation: 'The spores are close to the size of bacteria, so they are read at oil immersion on a thin smear. A positive control confirms the modified stain worked.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-088-scabies-eggs-and-scybala-positive',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'intermediate',
+    tags: ['Sarcoptes scabiei', 'skin scraping', 'scybala', 'eggs'],
+    prompt: 'A skin scraping in mineral oil shows no mites, but several oval eggs and clusters of golden-brown pellets. How should it be interpreted?',
+    choices: [
+      'Positive for scabies, because eggs or fecal pellets are diagnostic even without a mite.',
+      'Negative, because an adult mite must be seen.',
+      'Unsatisfactory, because mineral oil destroys mites.',
+      'Positive for lice, because the pellets are nits.'
+    ],
+    answer: 'Positive for scabies, because eggs or fecal pellets are diagnostic even without a mite.',
+    explanation: 'Mites, eggs, or fecal pellets (scybala) each confirm scabies. Patients with ordinary scabies carry few mites, so eggs and scybala are often all that is found.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-089-scabies-mineral-oil-mount',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'intermediate',
+    tags: ['Sarcoptes scabiei', 'mineral oil', 'potassium hydroxide', 'specimen preparation'],
+    prompt: 'Why is mineral oil commonly preferred over potassium hydroxide for mounting a scabies scraping?',
+    choices: [
+      'It stains the mites bright red.',
+      'It keeps mites alive and moving and does not dissolve the fecal pellets.',
+      'It dissolves skin cells faster than potassium hydroxide.',
+      'It kills the mites instantly so they cannot move off the slide.'
+    ],
+    answer: 'It keeps mites alive and moving and does not dissolve the fecal pellets.',
+    explanation: 'Movement helps the reader find mites, and scybala remain visible in oil. Potassium hydroxide clears skin debris but dissolves the fecal pellets.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-090-demodex-versus-sarcoptes',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'beginner',
+    tags: ['Demodex', 'Sarcoptes scabiei', 'mite', 'skin scraping'],
+    prompt: 'A skin scraping shows an elongated, worm-like mite with short legs clustered near the front of the body. Which organism fits?',
+    choices: [
+      'Sarcoptes scabiei.',
+      'Pediculus humanus.',
+      'Demodex species.',
+      'Phthirus pubis.'
+    ],
+    answer: 'Demodex species.',
+    explanation: 'Demodex is a long, narrow follicle mite. Sarcoptes scabiei has a round, sac-like body with short legs in two front and two rear pairs. Lice are insects with six legs.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-091-phthirus-pubis-morphology',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'beginner',
+    tags: ['Phthirus pubis', 'crab louse', 'arthropod', 'morphology'],
+    prompt: 'An arthropod about 1.5 mm long from pubic hair has a body nearly as wide as it is long and very large claws on the second and third pairs of legs. Which is it?',
+    choices: [
+      'Pediculus humanus capitis.',
+      'Sarcoptes scabiei.',
+      'Cimex lectularius.',
+      'Phthirus pubis.'
+    ],
+    answer: 'Phthirus pubis.',
+    explanation: 'The broad crab-shaped body and enlarged claws on legs two and three identify the crab louse. Pediculus is elongated with legs of similar size.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-092-body-louse-vector-diseases',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'intermediate',
+    tags: ['Pediculus humanus', 'body louse', 'vector', 'epidemic typhus'],
+    prompt: 'Which louse is the vector of epidemic typhus, trench fever, and louse-borne relapsing fever?',
+    choices: [
+      'The body louse, Pediculus humanus humanus.',
+      'The head louse, Pediculus humanus capitis.',
+      'The crab louse, Phthirus pubis.',
+      'All three human lice transmit them equally.'
+    ],
+    answer: 'The body louse, Pediculus humanus humanus.',
+    explanation: 'The body louse transmits Rickettsia prowazekii, Bartonella quintana, and Borrelia recurrentis. It lives in clothing seams and moves to the skin to feed.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'parasitology-093-nit-versus-hair-cast',
+    area: 'analytic-parasitology',
+    topic: 'Arthropod identification',
+    difficulty: 'beginner',
+    tags: ['nit', 'hair cast', 'Pediculus', 'artifact'],
+    prompt: 'Which observation supports calling a white particle on a hair a nit instead of a hair cast?',
+    choices: [
+      'It slides freely along the hair when pushed.',
+      'It is cemented to the shaft at an angle, has a cap at the free end, and does not slide.',
+      'It surrounds the hair evenly like a sleeve.',
+      'It dissolves immediately in water.'
+    ],
+    answer: 'It is cemented to the shaft at an angle, has a cap at the free end, and does not slide.',
+    explanation: 'A nit is an operculated egg glued to the hair by a cement sheath. Hair casts and dandruff encircle or cling loosely to the hair and slide off.',
+    source: 'Learn Microbes original question bank: Parasitology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-055-pneumocystis-versus-histoplasma-gms',
+    area: 'analytic-mycology',
+    topic: 'Pneumocystis detection',
+    difficulty: 'intermediate',
+    tags: ['Pneumocystis jirovecii', 'Histoplasma capsulatum', 'GMS stain', 'differentiation'],
+    prompt: 'On a GMS-stained lavage smear, which feature separates Pneumocystis jirovecii cysts from Histoplasma capsulatum yeast cells of similar size?',
+    choices: [
+      'Pneumocystis cysts show broad-based budding.',
+      'Pneumocystis cysts are always found inside macrophages.',
+      'Pneumocystis cysts do not bud and often appear cup shaped or crescent shaped.',
+      'Pneumocystis cysts have a thick mucicarmine-positive capsule.'
+    ],
+    answer: 'Pneumocystis cysts do not bud and often appear cup shaped or crescent shaped.',
+    explanation: 'Pneumocystis never buds. Collapsed cup and crescent forms, plus a comma-like thickening inside the cyst, separate it from small budding yeasts.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-056-pneumocystis-giemsa-appearance',
+    area: 'analytic-mycology',
+    topic: 'Pneumocystis detection',
+    difficulty: 'advanced',
+    tags: ['Pneumocystis jirovecii', 'Giemsa stain', 'trophic forms', 'respiratory specimen'],
+    prompt: 'Which statement describes Pneumocystis jirovecii on a Giemsa-type stain?',
+    choices: [
+      'The cyst wall stains black and the contents are not visible.',
+      'Only the capsule stains, as a red halo.',
+      'Nothing stains, so Giemsa has no use for this organism.',
+      'The cyst wall does not stain, but trophic forms and intracystic bodies do.'
+    ],
+    answer: 'The cyst wall does not stain, but trophic forms and intracystic bodies do.',
+    explanation: 'Giemsa-type stains show clusters of small trophic forms and up to 8 intracystic bodies in foamy material. Silver stains show the cyst wall instead.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-057-pneumocystis-not-cultured',
+    area: 'analytic-mycology',
+    topic: 'Pneumocystis detection',
+    difficulty: 'beginner',
+    tags: ['Pneumocystis jirovecii', 'culture', 'test selection', 'PCR'],
+    prompt: 'A fungal culture is requested to rule out Pneumocystis jirovecii. Which statement about testing is correct?',
+    choices: [
+      'Routine culture does not recover this organism; a stain, fluorescent antibody test, or PCR on a respiratory specimen is used.',
+      'It grows on Sabouraud agar within 48 hours.',
+      'It requires an olive oil overlay to grow.',
+      'It grows only on non-nutrient agar with a bacterial lawn.'
+    ],
+    answer: 'Routine culture does not recover this organism; a stain, fluorescent antibody test, or PCR on a respiratory specimen is used.',
+    explanation: 'Pneumocystis jirovecii is not grown in routine culture. Detection relies on microscopy with special stains, direct fluorescent antibody, or molecular testing.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-058-candida-tropicalis-cornmeal-pattern',
+    area: 'analytic-mycology',
+    topic: 'Yeast identification',
+    difficulty: 'intermediate',
+    tags: ['Candida tropicalis', 'cornmeal agar', 'pseudohyphae', 'blastoconidia'],
+    prompt: 'On cornmeal agar a yeast shows long pseudohyphae with blastoconidia scattered singly along them and no chlamydospores. Which species pattern is this?',
+    choices: [
+      'Candida albicans.',
+      'Candida tropicalis.',
+      'Candida glabrata.',
+      'Cryptococcus neoformans.'
+    ],
+    answer: 'Candida tropicalis.',
+    explanation: 'C. tropicalis forms abundant long pseudohyphae with sparse blastoconidia. C. albicans adds terminal chlamydospores and clustered blastoconidia, while C. glabrata and Cryptococcus form no pseudohyphae.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-059-cornmeal-chlamydospore-temperature',
+    area: 'analytic-mycology',
+    topic: 'Yeast identification',
+    difficulty: 'advanced',
+    tags: ['Candida albicans', 'chlamydospores', 'incubation temperature', 'quality control'],
+    prompt: 'A known Candida albicans control fails to form chlamydospores on cornmeal agar incubated at 37 C. What is the most likely explanation?',
+    choices: [
+      'The control must be incubated anaerobically.',
+      'Candida albicans never forms chlamydospores.',
+      'The plate was incubated too warm; chlamydospores form best at about 25-30 C.',
+      'The agar needs added blood for chlamydospores.'
+    ],
+    answer: 'The plate was incubated too warm; chlamydospores form best at about 25-30 C.',
+    explanation: 'Cornmeal agar with Tween 80 is incubated at room temperature for 48-72 hours. Chlamydospore production drops at body temperature, so a failed control points to incubation conditions first.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-060-candida-krusei-crossed-matchsticks',
+    area: 'analytic-mycology',
+    topic: 'Yeast identification',
+    difficulty: 'intermediate',
+    tags: ['Candida krusei', 'Pichia kudriavzevii', 'cornmeal agar', 'fluconazole'],
+    prompt: 'Which yeast shows elongated cells in a crossed-matchstick arrangement on cornmeal agar and is intrinsically resistant to fluconazole?',
+    choices: [
+      'Candida albicans.',
+      'Candida parapsilosis.',
+      'Candida glabrata (Nakaseomyces glabratus).',
+      'Candida krusei (Pichia kudriavzevii).'
+    ],
+    answer: 'Candida krusei (Pichia kudriavzevii).',
+    explanation: 'Candida krusei has elongated cells in a tree-like or crossed-matchstick pattern and is intrinsically resistant to fluconazole. C. glabrata can show reduced azole susceptibility but forms yeast cells only.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-061-malassezia-lipid-supplement',
+    area: 'analytic-mycology',
+    topic: 'Yeast-like fungi',
+    difficulty: 'intermediate',
+    tags: ['Malassezia', 'lipid requirement', 'olive oil overlay', 'blood culture'],
+    prompt: 'A yeast seen in a blood culture smear from an infant receiving intravenous lipid nutrition fails to grow on routine subculture. What should be done to recover it?',
+    choices: [
+      'Subculture to a medium overlaid with sterile olive oil or another lipid source.',
+      'Subculture to MacConkey agar.',
+      'Incubate the routine plates anaerobically.',
+      'Add X and V factor disks to the plate.'
+    ],
+    answer: 'Subculture to a medium overlaid with sterile olive oil or another lipid source.',
+    explanation: 'Most Malassezia species need long-chain fatty acids. An olive oil overlay supplies them, which is why a lipid-dependent yeast can look nonviable on plain media.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-062-malassezia-yeast-cell-shape',
+    area: 'analytic-mycology',
+    topic: 'Yeast-like fungi',
+    difficulty: 'beginner',
+    tags: ['Malassezia', 'collarette', 'budding', 'morphology'],
+    prompt: 'Which description fits Malassezia yeast cells from culture?',
+    choices: [
+      'Large round cells with a thick capsule and narrow-based buds.',
+      'Small bottle-shaped cells that bud from one end on a broad base with a collarette.',
+      'Rectangular cells formed by fragmenting hyphae.',
+      'Cigar-shaped cells with multiple buds.'
+    ],
+    answer: 'Small bottle-shaped cells that bud from one end on a broad base with a collarette.',
+    explanation: 'Malassezia buds repeatedly from one pole through a broad base, leaving a collar. The other choices describe Cryptococcus, arthroconidia-forming yeasts, and the Sporothrix yeast phase.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-063-koh-long-hyphae-no-yeast-clusters',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'beginner',
+    tags: ['KOH preparation', 'dermatophyte', 'Malassezia', 'skin scraping'],
+    prompt: 'A KOH preparation of skin scales shows long, branching, septate hyphae and no yeast clusters. Which interpretation is best?',
+    choices: [
+      'Malassezia, because any hyphae in skin scales are Malassezia.',
+      'A Mucorales mold, because the hyphae are septate.',
+      'A dermatophyte pattern; Malassezia shows short hyphae together with round yeast clusters.',
+      'Candida, because yeast clusters are absent.'
+    ],
+    answer: 'A dermatophyte pattern; Malassezia shows short hyphae together with round yeast clusters.',
+    explanation: 'Dermatophytes appear as long, branching, septate hyphae in keratin. Malassezia gives the short hyphae and round yeast clusters often described as spaghetti and meatballs.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-064-lichtheimia-internodal-rhizoids',
+    area: 'analytic-mycology',
+    topic: 'Mucorales identification',
+    difficulty: 'advanced',
+    tags: ['Lichtheimia', 'Absidia', 'rhizoids', 'apophysis'],
+    prompt: 'A fast-growing mold has broad, sparsely septate hyphae, rhizoids located between the sporangiophores, and pear-shaped sporangia on a funnel-shaped apophysis. Which genus fits?',
+    choices: [
+      'Rhizopus.',
+      'Mucor.',
+      'Aspergillus.',
+      'Lichtheimia.'
+    ],
+    answer: 'Lichtheimia.',
+    explanation: 'Lichtheimia, formerly Absidia, has internodal rhizoids and pyriform sporangia with an apophysis. Rhizopus has rhizoids directly below the sporangiophores, and Mucor has none.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-065-mucor-confirm-absent-rhizoids',
+    area: 'analytic-mycology',
+    topic: 'Mucorales identification',
+    difficulty: 'intermediate',
+    tags: ['Mucor', 'Rhizopus', 'rhizoids', 'tease preparation'],
+    prompt: 'Before reporting a Mucorales isolate as Mucor because no rhizoids are seen, what should the technologist consider?',
+    choices: [
+      'Rhizoids are easily torn off in a tease preparation, so several fields or a gentler preparation should be checked.',
+      'Rhizoids are visible only at 37 C.',
+      'Rhizoids are found only in tissue and never in culture.',
+      'Mucor is defined by having septate hyphae.'
+    ],
+    answer: 'Rhizoids are easily torn off in a tease preparation, so several fields or a gentler preparation should be checked.',
+    explanation: 'A rough preparation can separate sporangiophores from their rhizoids and make Rhizopus look like Mucor. Absence should be confirmed near the agar surface in more than one field.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-066-mucormycosis-tissue-mince',
+    area: 'analytic-mycology',
+    topic: 'Mucorales identification',
+    difficulty: 'intermediate',
+    tags: ['mucormycosis', 'tissue processing', 'fungal culture', 'preanalytic'],
+    prompt: 'Tissue is submitted for fungal culture with suspected mucormycosis. How should it be processed?',
+    choices: [
+      'Ground thoroughly in a tissue grinder to release the hyphae.',
+      'Minced into small pieces, because grinding can destroy the fragile hyphae.',
+      'Decontaminated with sodium hydroxide before plating.',
+      'Frozen and thawed three times before plating.'
+    ],
+    answer: 'Minced into small pieces, because grinding can destroy the fragile hyphae.',
+    explanation: 'Mucorales hyphae have few septa, so grinding can kill them and cause a false-negative culture. Mincing keeps viable hyphal pieces intact.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-067-coccidioides-versus-geotrichum-arthroconidia',
+    area: 'analytic-mycology',
+    topic: 'Yeast-like fungi',
+    difficulty: 'intermediate',
+    tags: ['Coccidioides', 'Geotrichum', 'arthroconidia', 'disjunctor cells'],
+    prompt: 'Which finding separates the arthroconidia of Coccidioides from those of Geotrichum?',
+    choices: [
+      'Coccidioides arthroconidia are consecutive; Geotrichum arthroconidia alternate with empty cells.',
+      'Coccidioides arthroconidia bud; Geotrichum arthroconidia do not.',
+      'Coccidioides arthroconidia are barrel shaped and alternate with empty cells; Geotrichum arthroconidia are consecutive.',
+      'Coccidioides arthroconidia are darkly pigmented; Geotrichum arthroconidia are hyaline.'
+    ],
+    answer: 'Coccidioides arthroconidia are barrel shaped and alternate with empty cells; Geotrichum arthroconidia are consecutive.',
+    explanation: 'Alternating barrel-shaped arthroconidia separated by empty disjunctor cells are the Coccidioides pattern. Geotrichum hyphae break into a continuous row of rectangular cells.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-068-trichosporon-versus-geotrichum-tests',
+    area: 'analytic-mycology',
+    topic: 'Yeast-like fungi',
+    difficulty: 'intermediate',
+    tags: ['Trichosporon', 'Geotrichum', 'urease', 'blastoconidia'],
+    prompt: 'Two yeast-like isolates both form arthroconidia. Which result supports Trichosporon over Geotrichum?',
+    choices: [
+      'No blastoconidia are present and urease is negative.',
+      'The germ tube test is positive.',
+      'A capsule is seen on India ink.',
+      'Blastoconidia are also present and urease is positive.'
+    ],
+    answer: 'Blastoconidia are also present and urease is positive.',
+    explanation: 'Trichosporon forms both arthroconidia and blastoconidia and is urease positive. Geotrichum forms arthroconidia only and is urease negative.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-069-alternating-arthroconidia-need-confirmation',
+    area: 'analytic-mycology',
+    topic: 'Dimorphic fungi',
+    difficulty: 'advanced',
+    tags: ['Coccidioides', 'Malbranchea', 'confirmation', 'arthroconidia'],
+    prompt: 'Why is microscopic morphology alone not enough to confirm Coccidioides when a mold shows alternating arthroconidia?',
+    choices: [
+      'Some environmental molds, such as Malbranchea, produce similar arthroconidia, so a confirmatory method is required.',
+      'Coccidioides never produces arthroconidia in culture.',
+      'Alternating arthroconidia are produced by every hyaline mold.',
+      'Morphology is enough; confirmatory testing is never needed.'
+    ],
+    answer: 'Some environmental molds, such as Malbranchea, produce similar arthroconidia, so a confirmatory method is required.',
+    explanation: 'Malbranchea and a few other molds mimic the Coccidioides pattern. The culture is handled with full precautions and confirmed with a validated probe or molecular method.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-070-cryptococcus-versus-blastomyces-direct',
+    area: 'analytic-mycology',
+    topic: 'Dimorphic fungi',
+    difficulty: 'intermediate',
+    tags: ['Cryptococcus', 'Blastomyces', 'direct exam', 'budding'],
+    prompt: 'Which set of features best separates Cryptococcus from Blastomyces in a direct smear?',
+    choices: [
+      'Cryptococcus has a broad-based bud; Blastomyces has many narrow-based buds.',
+      'Cryptococcus varies in size, buds on a narrow base, and has a capsule; Blastomyces is larger with a thick wall and one broad-based bud.',
+      'Cryptococcus forms spherules; Blastomyces is always intracellular.',
+      'Cryptococcus is 2-4 um and intracellular; Blastomyces has a capsule.'
+    ],
+    answer: 'Cryptococcus varies in size, buds on a narrow base, and has a capsule; Blastomyces is larger with a thick wall and one broad-based bud.',
+    explanation: 'Size and budding pattern do the sorting. Cryptococcus is 4-10 um with marked size variation and narrow-based buds, while Blastomyces is 8-15 um with a double-contoured wall and a single broad-based bud.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-071-intracellular-yeast-cross-wall',
+    area: 'analytic-mycology',
+    topic: 'Dimorphic fungi',
+    difficulty: 'advanced',
+    tags: ['Talaromyces marneffei', 'Histoplasma capsulatum', 'fission', 'intracellular yeast'],
+    prompt: 'Small intracellular yeast-like cells in a smear show a central cross-wall and no budding. Which organism does this suggest?',
+    choices: [
+      'Histoplasma capsulatum.',
+      'Cryptococcus neoformans.',
+      'Talaromyces marneffei.',
+      'Candida glabrata.'
+    ],
+    answer: 'Talaromyces marneffei.',
+    explanation: 'Talaromyces marneffei divides by fission, so cells show a central septum. Histoplasma is also small and intracellular but buds on a narrow base.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-072-released-endospores-mimic-yeast',
+    area: 'analytic-mycology',
+    topic: 'Dimorphic fungi',
+    difficulty: 'advanced',
+    tags: ['Coccidioides', 'endospores', 'spherule', 'pitfall'],
+    prompt: 'Small round bodies 2-5 um across are seen beside fragments of a thick-walled structure in a lung specimen. Why should they not be reported as yeast right away?',
+    choices: [
+      'They are always pollen grains.',
+      'Yeast cells are never found in lung specimens.',
+      'They must be Pneumocystis because they are small.',
+      'They may be endospores released from a ruptured Coccidioides spherule.'
+    ],
+    answer: 'They may be endospores released from a ruptured Coccidioides spherule.',
+    explanation: 'Endospores released from a broken spherule overlap in size with small yeasts but do not bud. Finding spherule wall fragments nearby is the clue.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-073-trichophyton-mentagrophytes-versus-rubrum-tests',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'intermediate',
+    tags: ['Trichophyton mentagrophytes', 'Trichophyton rubrum', 'urease', 'hair perforation'],
+    prompt: 'Which pair of test results supports Trichophyton mentagrophytes over Trichophyton rubrum?',
+    choices: [
+      'Urease positive and hair perforation positive.',
+      'Urease negative and hair perforation negative.',
+      'Germ tube positive and urease negative.',
+      'Catalase negative and oxidase positive.'
+    ],
+    answer: 'Urease positive and hair perforation positive.',
+    explanation: 'T. mentagrophytes is urease positive within a few days and perforates hair in vitro. T. rubrum is usually urease negative or slow and does not perforate hair.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-074-trichophyton-rubrum-pigment-medium',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'advanced',
+    tags: ['Trichophyton rubrum', 'red pigment', 'potato dextrose agar', 'cornmeal dextrose agar'],
+    prompt: 'A suspected Trichophyton rubrum isolate shows little red pigment on Sabouraud agar. Which step helps bring out the pigment?',
+    choices: [
+      'Subculture to MacConkey agar.',
+      'Subculture to cornmeal dextrose agar or potato dextrose agar.',
+      'Incubate the plate at 42 C.',
+      'Flood the plate with potassium hydroxide.'
+    ],
+    answer: 'Subculture to cornmeal dextrose agar or potato dextrose agar.',
+    explanation: 'Pigment production varies with the medium. Cornmeal dextrose and potato dextrose agar promote the deep red reverse of T. rubrum.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-075-trichophyton-tonsurans-recognition',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'intermediate',
+    tags: ['Trichophyton tonsurans', 'thiamine', 'balloon forms', 'tinea capitis'],
+    prompt: 'A dermatophyte from a scalp lesion shows microconidia of many sizes, including balloon forms, and grows better with thiamine. Which species fits?',
+    choices: [
+      'Trichophyton rubrum.',
+      'Microsporum canis.',
+      'Trichophyton tonsurans.',
+      'Epidermophyton floccosum.'
+    ],
+    answer: 'Trichophyton tonsurans.',
+    explanation: 'Variable microconidia with enlarged balloon forms and improved growth with thiamine point to T. tonsurans, a leading cause of scalp ringworm.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-076-endothrix-hair-invasion-pattern',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'beginner',
+    tags: ['endothrix', 'hair invasion', 'KOH preparation', 'tinea capitis'],
+    prompt: 'A KOH preparation of a plucked hair shows chains of arthroconidia filling the inside of the shaft, with the cuticle intact. What is this pattern called?',
+    choices: [
+      'Ectothrix invasion.',
+      'Favus-type invasion.',
+      'Black piedra.',
+      'Endothrix invasion.'
+    ],
+    answer: 'Endothrix invasion.',
+    explanation: 'Endothrix means the arthroconidia are inside the hair shaft and the cuticle is preserved. Ectothrix forms a sheath outside the shaft, and favus shows hyphae with air spaces.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-077-wood-lamp-negative-tinea-capitis',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'intermediate',
+    tags: ['Wood lamp', 'Trichophyton tonsurans', 'Microsporum canis', 'fluorescence'],
+    prompt: 'A child with suspected scalp ringworm has hairs that do not fluoresce under a Wood lamp. What is the correct interpretation?',
+    choices: [
+      'Infection is not excluded, because Trichophyton tonsurans does not fluoresce.',
+      'Infection is excluded, because all dermatophytes fluoresce.',
+      'The result confirms Microsporum canis.',
+      'The lamp result identifies the species without culture.'
+    ],
+    answer: 'Infection is not excluded, because Trichophyton tonsurans does not fluoresce.',
+    explanation: 'Only certain species, such as Microsporum canis and Microsporum audouinii, fluoresce yellow-green. A negative lamp does not rule out tinea capitis, so hairs and scale are still collected.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
+  },
+  {
+    id: 'mycology-078-tinea-capitis-hair-specimen',
+    area: 'analytic-mycology',
+    topic: 'Dermatophyte identification',
+    difficulty: 'beginner',
+    tags: ['tinea capitis', 'specimen collection', 'hair', 'KOH preparation'],
+    prompt: 'Which specimen is best for a direct exam for tinea capitis?',
+    choices: [
+      'Hair cut several centimeters above the scalp.',
+      'Plucked or broken hairs with the root end attached, plus scale from the edge of the lesion.',
+      'A swab of intact scalp skin.',
+      'Hair collected from an unaffected area for comparison.'
+    ],
+    answer: 'Plucked or broken hairs with the root end attached, plus scale from the edge of the lesion.',
+    explanation: 'Fungal invasion is seen at the root end of the hair, so cut hair is of little value. Broken hairs and scale from the active edge give the best yield.',
+    source: 'Learn Microbes original question bank: Mycology',
+    status: 'published'
   }
 ];
