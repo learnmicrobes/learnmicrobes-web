@@ -32,7 +32,7 @@ export type AtlasPage = {
   boardTitle: string;
   boardNote: string;
   ariaLabel: string;
-  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening' | 'virology-em-morphology';
+  visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening' | 'virology-em-morphology' | 'microscope-balantidium' | 'microscope-free-living-amoebae' | 'microscope-commensal-amoebae' | 'microscope-chilomastix' | 'microscope-plasmodium-vivax' | 'microscope-plasmodium-malariae' | 'microscope-plasmodium-ovale' | 'microscope-microsporidia' | 'microscope-sarcoptes' | 'microscope-lice' | 'mycology-pneumocystis' | 'mycology-candida-cornmeal' | 'mycology-malassezia' | 'mycology-mucorales-comparison' | 'mycology-arthroconidia-comparison' | 'mycology-tissue-yeast-comparison' | 'mycology-trichophyton-comparison' | 'mycology-hair-invasion';
   tubes: TubeVisual[];
   readoutTitle: string;
   readoutRows: string[][];
@@ -6348,6 +6348,1173 @@ export const atlasPages: AtlasPage[] = [
       identify: ['T. solium scolex: 4 suckers + rostellum with 2 rows of hooks (22-32 hooks total, ~180 um large + ~130 um small)', 'T. saginata scolex: 4 suckers + NO rostellum + NO hooks', 'Proglottid branches: T. solium 7-13 lateral branches; T. saginata 15-30 lateral branches (Indian ink); Taenia eggs morphologically identical'],
       verify: 'Species ID requires scolex or proglottid morphology; PCR from proglottid or stool for definitive species ID; imaging (CT/MRI) when T. solium found to evaluate for NCC',
       report: 'Report species if scolex/proglottid available; Taenia spp. if egg only; T. solium = urgent NCC risk assessment; clinical correlation required; confirm per lab SOP'
+    }
+  },
+  {
+    slug: 'balantioides-coli-trophozoite-cyst',
+    title: 'Balantioides coli (Balantidium coli): Ciliated Trophozoite and Cyst',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Balantioides coli, formerly Balantidium coli, in stool: a very large ciliated trophozoite with a kidney-shaped macronucleus, and a round thick-walled cyst.',
+    boardTitle: 'Balantioides coli: ciliated trophozoite and thick-walled cyst',
+    boardNote: 'The largest protozoan found in human stool and the only ciliate that causes human disease. Trophozoite: about 40-200 um, oval, covered in short cilia, with a kidney-shaped macronucleus. Cyst: about 50-70 um, round, thick wall, macronucleus still visible. Size and cilia do most of the work, so start on low power with a wet mount.',
+    ariaLabel: 'Illustrated Balantioides coli ciliated trophozoite with kidney-shaped macronucleus beside a round thick-walled cyst',
+    visualType: 'microscope-balantidium',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trophozoite',
+        name: 'Large, ciliated, kidney-shaped macronucleus',
+        colors: { slant: '#eef0dc', butt: '#8a9a5c', base: '#3c4a1c' },
+        note: 'About 40-200 um, oval, with rows of short cilia over the whole surface. A funnel-like cytostome sits at the narrower anterior end. The large kidney-shaped macronucleus is the easy nuclear clue; the small micronucleus beside it is often not seen. Fresh trophozoites show a rotating, boring motility.'
+      },
+      {
+        id: 'B',
+        label: 'Cyst',
+        name: 'Round, thick wall, macronucleus visible',
+        colors: { slant: '#ece8d0', butt: '#9a8a50', base: '#4a3c14' },
+        note: 'About 50-70 um, round to slightly oval, with a thick refractile wall. The macronucleus remains visible. Cilia may be seen inside young cysts but are lost in older ones. The cyst is the infective stage and is passed mostly in formed stool.'
+      }
+    ],
+    readoutTitle: 'What to look for in stool',
+    readoutRows: [
+      ['Very large oval organism on low power', 'Think Balantioides coli', 'No other intestinal protozoan reaches this size'],
+      ['Cilia covering the surface', 'Ciliate, not an amoeba or flagellate', 'The only ciliate that infects humans'],
+      ['Kidney-shaped macronucleus', 'B. coli nuclear clue', 'Seen in both the trophozoite and the cyst'],
+      ['Rotating, boring motility', 'Live trophozoite in fresh stool', 'Motility is lost quickly, so examine liquid stool promptly'],
+      ['Round thick-walled body with one large nucleus', 'B. coli cyst', 'Compare with helminth eggs of similar size before reporting']
+    ],
+    trapTitle: 'Permanent stains can hide this organism',
+    trapBody: 'Because the organism is so thick, it stains very dark on trichrome and can be passed over as debris or mistaken for a helminth egg. Wet mounts and concentration sediment are the better preparations for recognition.',
+    trapBullets: [
+      'Pigs are the main reservoir; ask about exposure to swine or water contaminated by them.',
+      'The name changed from Balantidium coli to Balantioides coli (also published as Neobalantidium coli). Students should recognize both names.',
+      'Free-living ciliates from contaminated water can appear in stool or urine containers. Confirm size, shape, and macronucleus before calling it.'
+    ],
+    interpretationTitle: 'Balantioides coli identification guide',
+    interpretationRows: [
+      ['Large ciliated trophozoite with kidney-shaped macronucleus', 'Balantioides coli trophozoite', 'Report per lab SOP, giving the current and former name if your lab does so'],
+      ['Round thick-walled cyst, 50-70 um, macronucleus visible', 'Balantioides coli cyst', 'Measure with a calibrated ocular micrometer and compare with helminth eggs'],
+      ['Dark, featureless oval body on trichrome only', 'Not enough to report', 'Go back to the wet mount or concentrate to confirm cilia and nucleus']
+    ],
+    takeaways: [
+      'Largest intestinal protozoan and the only ciliate pathogenic to humans.',
+      'Cilia plus a kidney-shaped macronucleus identify it; the micronucleus is rarely seen.',
+      'Use wet mounts and concentrates. Permanent stains are too dark to be reliable for this organism.'
+    ],
+    remember: 'Huge, ciliated, kidney-shaped macronucleus = Balantioides coli. Recognize it on the wet mount.',
+    divr: {
+      detect: 'Fresh liquid stool wet mount for motile trophozoites; formalin concentrate sediment for cysts',
+      identify: ['Trophozoite about 40-200 um, uniformly ciliated, cytostome at the anterior end', 'Kidney-shaped macronucleus in both stages', 'Cyst about 50-70 um, round, thick-walled'],
+      verify: 'Measure the organism and confirm cilia and macronucleus; exclude helminth eggs and free-living ciliates from contaminated containers',
+      report: 'Report as Balantioides coli (Balantidium coli) with the stage seen, following your lab SOP'
+    }
+  },
+  {
+    slug: 'free-living-amoebae-naegleria-acanthamoeba',
+    title: 'Free-Living Amoebae: Naegleria fowleri and Acanthamoeba',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for the free-living amoebae a lab must not miss: Naegleria fowleri trophozoites in CSF, and Acanthamoeba trophozoites and double-walled cysts in corneal or tissue specimens.',
+    boardTitle: 'Naegleria fowleri and Acanthamoeba: trophozoites, flagellate form, and cyst',
+    boardNote: 'Naegleria fowleri: trophozoites about 10-35 um with blunt, eruptive pseudopodia and a nucleus with one large central karyosome; no cysts are seen in CSF. Acanthamoeba: trophozoites about 15-45 um with thin spine-like acanthopodia; cysts about 10-25 um with a wrinkled outer wall and a polygonal inner wall. Suspected Naegleria in CSF is urgent. Examine the specimen warm and promptly, and do not refrigerate it.',
+    ariaLabel: 'Illustrated Naegleria fowleri trophozoite and flagellate form compared with an Acanthamoeba trophozoite with spiny pseudopodia and a double-walled cyst',
+    visualType: 'microscope-free-living-amoebae',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Naegleria trophozoite',
+        name: 'Blunt eruptive pseudopod, large karyosome',
+        colors: { slant: '#e6f0f4', butt: '#7ea6b8', base: '#234a5c' },
+        note: 'About 10-35 um. Moves quickly in one direction with blunt, bulging pseudopodia (lobopodia). The nucleus has one large, dense central karyosome and no peripheral chromatin. In CSF these are easily mistaken for white blood cells, especially in a counting chamber.'
+      },
+      {
+        id: 'B',
+        label: 'Naegleria flagellate',
+        name: 'Temporary pear-shaped form with two flagella',
+        colors: { slant: '#e8f2f0', butt: '#7fb0a4', base: '#1f4c44' },
+        note: 'Trophozoites placed in distilled water can change into a temporary pear-shaped form with two flagella. Acanthamoeba does not do this, so the test separates the two genera. It is a supplemental test and never a reason to delay reporting motile amoebae in CSF.'
+      },
+      {
+        id: 'C',
+        label: 'Acanthamoeba trophozoite',
+        name: 'Spine-like acanthopodia, slow movement',
+        colors: { slant: '#eef0e4', butt: '#9aa86c', base: '#3e4a1e' },
+        note: 'About 15-45 um. Thin, spine-like pseudopodia (acanthopodia) project from the surface, and movement is slow. The nucleus has the same large central karyosome as Naegleria, so the pseudopodia and specimen source matter more than the nucleus.'
+      },
+      {
+        id: 'D',
+        label: 'Acanthamoeba cyst',
+        name: 'Double wall: wrinkled outer, polygonal inner',
+        colors: { slant: '#f0ecdc', butt: '#a89460', base: '#4a3a12' },
+        note: 'About 10-25 um. The outer wall is wrinkled and the inner wall is polygonal or star-shaped. Cysts are found in tissue and corneal specimens and are very resistant to drying and disinfectants. Calcofluor white stains the cyst wall.'
+      }
+    ],
+    readoutTitle: 'Source and morphology anchors',
+    readoutRows: [
+      ['Motile amoebae in CSF, recent warm freshwater exposure', 'Naegleria fowleri until proven otherwise', 'Primary amebic meningoencephalitis; notify immediately'],
+      ['Blunt lobopodia, fast directional movement', 'Naegleria pattern', 'Warm the slide slightly; cold slows the organism'],
+      ['Spine-like acanthopodia, sluggish movement', 'Acanthamoeba pattern', 'Think corneal scraping, contact lens case, or tissue'],
+      ['Double-walled cyst with polygonal inner wall', 'Acanthamoeba cyst', 'Naegleria does not form cysts in human tissue or CSF'],
+      ['Flagellate form after distilled water', 'Naegleria', 'Acanthamoeba and Balamuthia have no flagellate stage']
+    ],
+    trapTitle: 'Amoebae in CSF look like white blood cells',
+    trapBody: 'On a hemocytometer or a Gram stain, Naegleria trophozoites are easily counted as leukocytes. A purulent CSF with no bacteria on Gram stain should prompt a careful wet mount for motile amoebae, plus Giemsa or trichrome stain on a smear.',
+    trapBullets: [
+      'Do not refrigerate or freeze CSF when free-living amoebae are suspected. Cold kills the trophozoites or stops their motility.',
+      'Culture uses non-nutrient agar seeded with a lawn of Escherichia coli or another Gram-negative rod. The amoebae feed on the bacteria and leave tracks.',
+      'Balamuthia mandrillaris also causes granulomatous encephalitis but does not grow on bacteria-seeded agar; it needs cell culture or molecular testing.'
+    ],
+    interpretationTitle: 'Free-living amoebae study readout',
+    interpretationRows: [
+      ['CSF: motile trophozoites, lobopodia, no cysts', 'Presumptive Naegleria fowleri', 'Urgent call to the provider; follow the lab critical-value policy and reference testing'],
+      ['Cornea: spiny trophozoites or double-walled cysts', 'Acanthamoeba', 'Keratitis linked to contact lens wear and poor lens hygiene'],
+      ['Brain tissue: trophozoites and cysts, chronic course', 'Acanthamoeba or Balamuthia', 'Granulomatous amebic encephalitis; genus needs reference methods']
+    ],
+    takeaways: [
+      'Naegleria: CSF, lobopodia, flagellate form, no cysts in the patient.',
+      'Acanthamoeba: cornea or tissue, spiny acanthopodia, double-walled cysts.',
+      'Keep the CSF at room temperature, examine it quickly, and treat motile amoebae in CSF as an urgent finding.'
+    ],
+    remember: 'Lobopodia in CSF = Naegleria. Spines and double-walled cysts = Acanthamoeba. Never refrigerate the specimen.',
+    divr: {
+      detect: 'Unrefrigerated CSF wet mount examined promptly; corneal scrapings or tissue for Acanthamoeba; Giemsa, trichrome, or calcofluor white on smears',
+      identify: ['Naegleria: 10-35 um trophozoite, eruptive lobopodia, large central karyosome', 'Acanthamoeba: 15-45 um trophozoite with acanthopodia; 10-25 um double-walled cyst', 'Flagellation test positive only for Naegleria'],
+      verify: 'Culture on non-nutrient agar with a bacterial lawn; send to a reference lab for molecular confirmation; do not confuse trophozoites with leukocytes',
+      report: 'Report motile amoebae in CSF immediately as a critical result per lab policy; final identification follows reference confirmation'
+    }
+  },
+  {
+    slug: 'nonpathogenic-amoebae-cyst-comparison',
+    title: 'Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original comparison visuals for the three commensal amoeba cysts students confuse with Entamoeba histolytica: Entamoeba coli with up to eight nuclei, tiny Endolimax nana with four blot-like karyosomes, and Iodamoeba butschlii with its large glycogen vacuole.',
+    boardTitle: 'Commensal amoeba cysts: count the nuclei, read the karyosome, check for a vacuole',
+    boardNote: 'Entamoeba coli: about 10-35 um, up to 8 nuclei when mature, eccentric karyosome, coarse uneven peripheral chromatin. Endolimax nana: about 5-10 um, oval, 4 nuclei with large blot-like karyosomes and no peripheral chromatin. Iodamoeba butschlii: about 5-20 um, one nucleus with a large karyosome and a large glycogen vacuole that turns brown in iodine. These are not pathogens, but most labs report them because they show fecal-oral exposure.',
+    ariaLabel: 'Illustrated cysts of Entamoeba coli with eight nuclei, Endolimax nana with four blot-like karyosomes, and Iodamoeba butschlii with a large glycogen vacuole',
+    visualType: 'microscope-commensal-amoebae',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Entamoeba coli',
+        name: 'Large cyst, up to 8 nuclei',
+        colors: { slant: '#eee8d6', butt: '#9c8a5c', base: '#44381a' },
+        note: 'About 10-35 um, round. A mature cyst has 8 nuclei, more than any Entamoeba histolytica cyst. Each nucleus has an eccentric karyosome and coarse, uneven peripheral chromatin. Chromatoid bodies, when present, are splinter-like with pointed ends.'
+      },
+      {
+        id: 'B',
+        label: 'Endolimax nana',
+        name: 'Small oval cyst, 4 blot-like karyosomes',
+        colors: { slant: '#eaeede', butt: '#8fa070', base: '#34421c' },
+        note: 'About 5-10 um, usually oval. Four nuclei, each showing a large blot-like karyosome with no peripheral chromatin, so the nuclei look like four dark dots. One of the smallest amoeba cysts in stool.'
+      },
+      {
+        id: 'C',
+        label: 'Iodamoeba butschlii',
+        name: 'One nucleus, large glycogen vacuole',
+        colors: { slant: '#f0e6d0', butt: '#a88450', base: '#4c300e' },
+        note: 'About 5-20 um, often irregular in shape. One nucleus with a large karyosome. The large, sharply outlined glycogen vacuole stains deep brown with iodine and appears as an empty space on trichrome.'
+      }
+    ],
+    readoutTitle: 'Cyst differential anchors',
+    readoutRows: [
+      ['More than 4 nuclei in an Entamoeba cyst', 'Entamoeba coli', 'E. histolytica/dispar cysts stop at 4'],
+      ['Eccentric karyosome, coarse uneven chromatin', 'Entamoeba coli nucleus', 'E. histolytica: central karyosome, fine even chromatin'],
+      ['Splinter-shaped chromatoid bodies', 'Entamoeba coli', 'E. histolytica chromatoid bodies have rounded ends'],
+      ['Tiny oval cyst with 4 dark dots', 'Endolimax nana', 'No peripheral chromatin on the nuclear membrane'],
+      ['Single large iodine-brown vacuole', 'Iodamoeba butschlii', 'Vacuole is clear and unstained on trichrome']
+    ],
+    trapTitle: 'An immature Entamoeba coli cyst can look like E. histolytica',
+    trapBody: 'Young Entamoeba coli cysts may have only 1, 2, or 4 nuclei. Counting nuclei alone is not enough. Check the karyosome position, the peripheral chromatin, the chromatoid body ends, and the measured size before deciding.',
+    trapBullets: [
+      'Use a calibrated ocular micrometer. Size overlap is real and guessing by eye causes errors.',
+      'The permanent stained smear is the best preparation for nuclear detail; the iodine wet mount is best for the Iodamoeba vacuole.',
+      'Commensals are reported in most labs because their presence shows exposure to fecally contaminated food or water.'
+    ],
+    interpretationTitle: 'Commensal amoeba cyst readout',
+    interpretationRows: [
+      ['Cyst with 8 nuclei, eccentric karyosomes', 'Entamoeba coli', 'Nonpathogen; report per SOP and keep looking for pathogens'],
+      ['Small oval cyst, 4 blot-like karyosomes', 'Endolimax nana', 'Nonpathogen; smallest common amoeba cyst'],
+      ['Cyst with one nucleus and a large glycogen vacuole', 'Iodamoeba butschlii', 'Nonpathogen; iodine makes the vacuole obvious']
+    ],
+    takeaways: [
+      'Eight nuclei rule out Entamoeba histolytica and point to Entamoeba coli.',
+      'Endolimax nana and Iodamoeba butschlii have large karyosomes with no peripheral chromatin.',
+      'Finding a commensal does not end the exam. Mixed infections with pathogens are common.'
+    ],
+    remember: '8 nuclei = E. coli. 4 dots in a tiny oval = E. nana. Big iodine-brown vacuole = Iodamoeba.',
+    divr: {
+      detect: 'Formalin concentrate with iodine wet mount, plus a permanent stained smear (trichrome or iron hematoxylin) for nuclear detail',
+      identify: ['Entamoeba coli: 10-35 um, up to 8 nuclei, eccentric karyosome', 'Endolimax nana: 5-10 um oval, 4 blot-like karyosomes', 'Iodamoeba butschlii: one nucleus, large glycogen vacuole'],
+      verify: 'Measure with a calibrated micrometer and compare nuclear detail against Entamoeba histolytica/dispar before reporting',
+      report: 'Report each species seen and its stage per lab SOP; many labs add a comment that the organism is considered nonpathogenic'
+    }
+  },
+  {
+    slug: 'chilomastix-mesnili-cyst-trophozoite',
+    title: 'Chilomastix mesnili: Lemon-Shaped Cyst and Trophozoite',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for Chilomastix mesnili, a nonpathogenic intestinal flagellate: a small lemon-shaped cyst with an anterior knob, and a pear-shaped trophozoite with a spiral groove and a prominent cytostome.',
+    boardTitle: 'Chilomastix mesnili: lemon-shaped cyst and pear-shaped trophozoite',
+    boardNote: 'Cyst: about 6-10 um, lemon or pear shaped with a clear anterior knob, one nucleus, and a curved cytostomal fibril often compared to a shepherd\'s crook. Trophozoite: about 6-24 um, pear shaped, one nucleus, a spiral groove along the body, and a large cytostome. The main job at the bench is separating it from Giardia.',
+    ariaLabel: 'Illustrated Chilomastix mesnili lemon-shaped cyst with anterior knob and a pear-shaped trophozoite with spiral groove and cytostome',
+    visualType: 'microscope-chilomastix',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Cyst',
+        name: 'Lemon shape with anterior knob',
+        colors: { slant: '#eef0dc', butt: '#96a060', base: '#3a4418' },
+        note: 'About 6-10 um. The clear knob at one end gives the lemon shape. One nucleus. On a permanent stain the curved cytostomal fibril beside the nucleus looks like a shepherd\'s crook or safety pin.'
+      },
+      {
+        id: 'B',
+        label: 'Trophozoite',
+        name: 'Pear shape, spiral groove, cytostome',
+        colors: { slant: '#e8f0e6', butt: '#80a48c', base: '#244a34' },
+        note: 'About 6-24 um. Pear shaped with one anterior nucleus. Three free flagella at the front and one inside the cytostome. A spiral groove gives the body a twisted look, and motility in fresh stool is stiff and rotary.'
+      }
+    ],
+    readoutTitle: 'Chilomastix versus Giardia anchors',
+    readoutRows: [
+      ['Lemon-shaped cyst with a knob', 'Chilomastix mesnili cyst', 'Giardia cysts are oval with no knob'],
+      ['One nucleus in the cyst', 'Chilomastix mesnili', 'A mature Giardia cyst has 4 nuclei'],
+      ['Shepherd\'s crook fibril', 'Cytostome support in Chilomastix', 'Giardia shows axonemes and median bodies instead'],
+      ['Pear-shaped trophozoite, one nucleus, spiral groove', 'Chilomastix trophozoite', 'Giardia has two nuclei and a sucking disk'],
+      ['Stiff rotary motility', 'Chilomastix', 'Giardia is described as falling-leaf motility']
+    ],
+    trapTitle: 'Do not report every flagellate as Giardia',
+    trapBody: 'Chilomastix is a commensal and Giardia is a pathogen, so the difference changes what the provider does. Count nuclei and look for the knob on the cyst before deciding. If the detail is unclear on the wet mount, go to the permanent stain.',
+    trapBullets: [
+      'The cyst is small. Use oil immersion on the permanent smear to see the nucleus and fibril.',
+      'Trophozoites are found mostly in liquid stool and cysts in formed stool.',
+      'Like the commensal amoebae, Chilomastix is usually reported because it shows fecal-oral exposure.'
+    ],
+    interpretationTitle: 'Chilomastix mesnili identification guide',
+    interpretationRows: [
+      ['Lemon-shaped cyst, 6-10 um, one nucleus', 'Chilomastix mesnili cyst', 'Nonpathogen; report per SOP'],
+      ['Pear-shaped trophozoite, one nucleus, large cytostome', 'Chilomastix mesnili trophozoite', 'Confirm on permanent stain'],
+      ['Oval cyst, 4 nuclei, axonemes', 'Giardia duodenalis', 'Pathogen; see the Giardia bench card']
+    ],
+    takeaways: [
+      'The lemon-shaped cyst with an anterior knob is the classic picture.',
+      'One nucleus and a large cytostome separate it from Giardia in both stages.',
+      'It is a commensal, but it still tells you the patient was exposed to contaminated food or water.'
+    ],
+    remember: 'Lemon-shaped cyst + one nucleus + shepherd\'s crook = Chilomastix mesnili, not Giardia.',
+    divr: {
+      detect: 'Wet mount and formalin concentrate; permanent stained smear for the nucleus and cytostomal fibril',
+      identify: ['Cyst 6-10 um, lemon shaped, anterior knob, one nucleus', 'Trophozoite 6-24 um, pear shaped, spiral groove, prominent cytostome', 'Stiff rotary motility in fresh liquid stool'],
+      verify: 'Rule out Giardia by nuclear count, cyst shape, and absence of a sucking disk and median bodies',
+      report: 'Report as Chilomastix mesnili with the stage seen; nonpathogen comment per lab SOP'
+    }
+  },
+  {
+    slug: 'plasmodium-vivax-smear',
+    title: 'Plasmodium vivax: Thin Blood Smear',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Plasmodium vivax on a Giemsa-stained thin smear: enlarged red cells, Schuffner dots, ameboid trophozoites, schizonts with 12-24 merozoites, and round gametocytes.',
+    boardTitle: 'Plasmodium vivax: enlarged RBC, Schuffner dots, ameboid trophozoite',
+    boardNote: 'P. vivax prefers young red cells, so infected cells are enlarged, often up to 1.5-2 times normal. Schuffner dots (fine pink stippling) appear as the parasite grows. All stages circulate: ring, ameboid trophozoite, schizont with 12-24 merozoites, and round gametocyte. The red cell tells you as much as the parasite, so compare each infected cell with its neighbors.',
+    ariaLabel: 'Illustrated Plasmodium vivax stages in enlarged red blood cells with Schuffner dots: ring, ameboid trophozoite, schizont, and gametocyte',
+    visualType: 'microscope-plasmodium-vivax',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Ring',
+        name: 'Large ring, RBC starting to enlarge',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'The ring is about one third of the red cell diameter with a single large chromatin dot. Early rings cannot be separated reliably from other species, so look for older stages on the same smear.'
+      },
+      {
+        id: 'B',
+        label: 'Ameboid trophozoite',
+        name: 'Irregular cytoplasm, Schuffner dots',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'The growing trophozoite has irregular, spread-out cytoplasm, described as ameboid. The red cell is clearly enlarged and shows fine pink Schuffner dots. Fine golden-brown pigment begins to appear.'
+      },
+      {
+        id: 'C',
+        label: 'Schizont',
+        name: '12-24 merozoites',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'A mature schizont holds 12-24 merozoites and nearly fills the enlarged cell, with clumped pigment. This count is higher than in P. malariae or P. ovale.'
+      },
+      {
+        id: 'D',
+        label: 'Gametocyte',
+        name: 'Round to oval, fills the enlarged RBC',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'Round to oval and filling most of the enlarged cell, with scattered pigment. Never banana shaped; a crescent gametocyte points to P. falciparum.'
+      }
+    ],
+    readoutTitle: 'Thin smear anchors',
+    readoutRows: [
+      ['Enlarged infected RBC', 'P. vivax or P. ovale', 'P. falciparum and P. malariae do not enlarge the cell'],
+      ['Schuffner dots', 'P. vivax or P. ovale', 'Seen best when the stain buffer is near pH 7.0-7.2'],
+      ['Ameboid trophozoite', 'P. vivax', 'P. ovale and P. malariae trophozoites are compact'],
+      ['Schizont with 12-24 merozoites', 'P. vivax', 'P. ovale and P. malariae usually have 6-12'],
+      ['All stages present in peripheral blood', 'Not typical P. falciparum', 'P. falciparum usually shows only rings and gametocytes']
+    ],
+    trapTitle: 'Stain pH can erase Schuffner dots',
+    trapBody: 'Schuffner dots depend on staining conditions. With an acidic buffer, the stippling may not show, and an enlarged cell with a compact parasite can be misread. Read cell size and parasite shape as well, and check that the buffer pH is correct when stippling is missing on a suspected case.',
+    trapBullets: [
+      'P. vivax and P. ovale form dormant liver stages (hypnozoites) that cause relapse, which is why species identification matters for treatment.',
+      'P. vivax uses the Duffy antigen to enter red cells, so Duffy-negative individuals are largely resistant.',
+      'Always check for a mixed infection. Finding P. vivax does not rule out P. falciparum.'
+    ],
+    interpretationTitle: 'Plasmodium vivax study readout',
+    interpretationRows: [
+      ['Enlarged RBC, Schuffner dots, ameboid trophozoite', 'Plasmodium vivax', 'Report species and percent parasitemia per SOP'],
+      ['Enlarged oval RBC with ragged edge, compact trophozoite', 'Consider Plasmodium ovale', 'Compare with the P. ovale bench card'],
+      ['Rings only, normal-size RBC', 'Species not established', 'Search more fields for older stages; rule out P. falciparum first']
+    ],
+    takeaways: [
+      'Enlarged red cell plus Schuffner dots narrows the choice to P. vivax or P. ovale.',
+      'Ameboid trophozoites and 12-24 merozoites favor P. vivax.',
+      'A positive malaria smear is a critical result. Species and parasitemia follow your lab policy.'
+    ],
+    remember: 'Big cell, pink dots, ameboid parasite, up to 24 merozoites = P. vivax.',
+    divr: {
+      detect: 'EDTA blood; thick film to detect parasites and thin film for species, Giemsa stain buffered near pH 7.0-7.2',
+      identify: ['Infected RBC enlarged with Schuffner dots', 'Ameboid trophozoites; schizonts with 12-24 merozoites', 'Round gametocytes; all stages may be present'],
+      verify: 'Rule out P. falciparum and mixed infection; separate from P. ovale by trophozoite shape, merozoite count, and red cell outline',
+      report: 'Report as Plasmodium vivax with percent parasitemia; treat as a critical result per lab policy'
+    }
+  },
+  {
+    slug: 'plasmodium-malariae-band-form',
+    title: 'Plasmodium malariae: Band Form and Rosette Schizont',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Plasmodium malariae on a thin smear: normal-size or small red cells, band-form trophozoites, rosette schizonts with 6-12 merozoites, and coarse dark pigment.',
+    boardTitle: 'Plasmodium malariae: band trophozoite and rosette schizont in a normal-size RBC',
+    boardNote: 'P. malariae prefers older red cells, so infected cells are normal in size or slightly small, with no Schuffner dots. The trophozoite is compact and may stretch across the cell as a band. The mature schizont has 6-12 merozoites, often arranged around central pigment like the petals of a daisy. Pigment is coarse and dark brown. Parasitemia is usually low.',
+    ariaLabel: 'Illustrated Plasmodium malariae band-form trophozoite and rosette schizont in normal-sized red blood cells',
+    visualType: 'microscope-plasmodium-malariae',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Band form',
+        name: 'Trophozoite stretched across the RBC',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#4c2a60' },
+        note: 'The compact trophozoite stretches from one side of the red cell to the other as a band, with coarse dark pigment along it. The red cell is not enlarged and has no stippling.'
+      },
+      {
+        id: 'B',
+        label: 'Rosette schizont',
+        name: '6-12 merozoites around central pigment',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#4c2a60' },
+        note: 'The mature schizont has 6-12 merozoites, commonly about 8, arranged in a ring around a central clump of pigment. This daisy or rosette pattern is the classic picture.'
+      },
+      {
+        id: 'C',
+        label: 'Gametocyte',
+        name: 'Round, fills a normal-size RBC',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#4c2a60' },
+        note: 'Round to oval, filling a red cell that stays normal in size. Abundant coarse dark pigment. It resembles a P. vivax gametocyte except that the host cell is not enlarged.'
+      }
+    ],
+    readoutTitle: 'Thin smear anchors',
+    readoutRows: [
+      ['Normal or small infected RBC, no stippling', 'P. malariae or P. falciparum', 'Enlargement points to P. vivax or P. ovale'],
+      ['Band-form trophozoite', 'P. malariae', 'Also seen with P. knowlesi; check travel history'],
+      ['Rosette schizont with 6-12 merozoites', 'P. malariae', 'P. vivax has 12-24'],
+      ['Coarse dark brown pigment', 'P. malariae', 'Heavier pigment than the other species'],
+      ['Low parasitemia, all stages present', 'Typical for P. malariae', 'Long 72-hour cycle, sometimes called quartan malaria']
+    ],
+    trapTitle: 'Plasmodium knowlesi can look like P. malariae',
+    trapBody: 'P. knowlesi, acquired in parts of Southeast Asia, produces band forms that resemble P. malariae. Unlike P. malariae it has a 24-hour cycle and can reach high parasitemia quickly. Band forms with a high parasite count in a traveler from that region should raise the question, and molecular testing settles it.',
+    trapBullets: [
+      'P. malariae has no hypnozoites. Late recurrences come from persisting low-level blood infection (recrudescence), not relapse.',
+      'Because parasitemia is low, examine the thick film carefully and scan many thin-film fields.',
+      'Chronic infection is associated with nephrotic syndrome in the textbook picture.'
+    ],
+    interpretationTitle: 'Plasmodium malariae study readout',
+    interpretationRows: [
+      ['Band forms, rosette schizonts, normal-size RBC', 'Plasmodium malariae', 'Report species and percent parasitemia per SOP'],
+      ['Band forms with high parasitemia, Southeast Asia travel', 'Consider Plasmodium knowlesi', 'Refer for molecular confirmation'],
+      ['Rings only in normal-size RBC', 'Species not established', 'Rule out P. falciparum before anything else']
+    ],
+    takeaways: [
+      'No cell enlargement and no Schuffner dots.',
+      'Band-form trophozoites and rosette schizonts with 6-12 merozoites are the classic clues.',
+      'A 72-hour cycle and low parasitemia fit P. malariae; high counts with band forms should make you think of P. knowlesi.'
+    ],
+    remember: 'Normal-size cell + band form + daisy-head schizont = P. malariae.',
+    divr: {
+      detect: 'EDTA blood; thick and thin Giemsa films, with extra attention to the thick film because parasitemia is low',
+      identify: ['Infected RBC normal or small, no Schuffner dots', 'Compact or band-form trophozoites with coarse dark pigment', 'Rosette schizont with 6-12 merozoites'],
+      verify: 'Rule out P. falciparum and mixed infection; consider P. knowlesi with relevant travel and high parasitemia',
+      report: 'Report as Plasmodium malariae with percent parasitemia; critical result per lab policy'
+    }
+  },
+  {
+    slug: 'plasmodium-ovale-smear',
+    title: 'Plasmodium ovale: Oval Fimbriated Red Cells',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing Plasmodium ovale on a thin smear: slightly enlarged oval red cells with ragged edges, early Schuffner dots, compact trophozoites, and schizonts with about 8 merozoites.',
+    boardTitle: 'Plasmodium ovale: oval RBC with fimbriated edge and compact trophozoite',
+    boardNote: 'P. ovale looks like P. vivax at first: the infected red cell is enlarged and shows Schuffner dots. The differences are that many infected cells are oval with a ragged (fimbriated) edge, the trophozoite stays compact, and the schizont has only 6-14 merozoites, commonly 8. Stippling appears early, even at the ring stage.',
+    ariaLabel: 'Illustrated Plasmodium ovale trophozoite in an oval red blood cell with fimbriated edge and Schuffner dots beside a schizont with eight merozoites',
+    visualType: 'microscope-plasmodium-ovale',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Trophozoite',
+        name: 'Compact parasite, oval ragged RBC',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'The infected red cell is slightly enlarged, oval, and may have a ragged or fimbriated edge at one or both ends. The trophozoite is compact, not ameboid. Schuffner dots are prominent and appear early.'
+      },
+      {
+        id: 'B',
+        label: 'Schizont',
+        name: '6-14 merozoites, commonly 8',
+        colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
+        note: 'The mature schizont has 6-14 merozoites, most often about 8, with a central pigment clump. It does not fill the cell as completely as a P. vivax schizont.'
+      }
+    ],
+    readoutTitle: 'P. ovale versus P. vivax anchors',
+    readoutRows: [
+      ['Oval RBC with fimbriated edge', 'P. ovale', 'Seen in a portion of infected cells, so look at many'],
+      ['Compact trophozoite', 'P. ovale', 'P. vivax trophozoites are ameboid'],
+      ['Schizont with about 8 merozoites', 'P. ovale', 'P. vivax has 12-24'],
+      ['Schuffner dots at the ring stage', 'Favors P. ovale', 'Stippling appears earlier than in P. vivax'],
+      ['Enlarged RBC with stippling', 'P. vivax or P. ovale', 'Both form hypnozoites and can relapse']
+    ],
+    trapTitle: 'Oval cells can be a smear artifact',
+    trapBody: 'Red cells near the feathered edge or in thick areas of the smear can be distorted into oval shapes. Judge cell shape in the monolayer where cells barely touch, and do not call P. ovale on shape alone. The compact parasite and low merozoite count have to agree.',
+    trapBullets: [
+      'P. ovale is found mainly in West Africa and can infect Duffy-negative individuals, where P. vivax is uncommon.',
+      'Hypnozoites mean relapse is possible, so separating P. ovale from P. malariae matters for treatment.',
+      'When morphology cannot separate P. vivax from P. ovale, labs report what they can and refer for molecular testing.'
+    ],
+    interpretationTitle: 'Plasmodium ovale study readout',
+    interpretationRows: [
+      ['Oval fimbriated RBC, compact trophozoite, about 8 merozoites', 'Plasmodium ovale', 'Report species and percent parasitemia per SOP'],
+      ['Enlarged round RBC, ameboid trophozoite, 12-24 merozoites', 'Plasmodium vivax', 'Compare with the P. vivax bench card'],
+      ['Enlarged RBC with stippling, features mixed', 'P. vivax/P. ovale, not separated', 'Report per SOP and refer for confirmation']
+    ],
+    takeaways: [
+      'P. ovale shares enlarged cells and Schuffner dots with P. vivax.',
+      'Oval fimbriated cells, a compact trophozoite, and about 8 merozoites favor P. ovale.',
+      'Read cell shape only in the thin monolayer area of the smear.'
+    ],
+    remember: 'Oval, ragged-edged cell + compact parasite + about 8 merozoites = P. ovale.',
+    divr: {
+      detect: 'EDTA blood; thick and thin Giemsa films, buffer near pH 7.0-7.2 to show stippling',
+      identify: ['Slightly enlarged, oval RBC, sometimes fimbriated', 'Compact trophozoite with early Schuffner dots', 'Schizont with 6-14 merozoites, commonly 8'],
+      verify: 'Compare against P. vivax in the monolayer; rule out P. falciparum and mixed infection; refer for molecular testing if unresolved',
+      report: 'Report as Plasmodium ovale with percent parasitemia; critical result per lab policy'
+    }
+  },
+  {
+    slug: 'microsporidia-modified-trichrome',
+    title: 'Microsporidia: Spores on Modified Trichrome Stain',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for recognizing microsporidia spores in stool on a modified trichrome stain: tiny pink-red oval spores, some with a belt-like stripe, compared with larger budding yeast.',
+    boardTitle: 'Microsporidia spores: tiny, pink-red, some with a belt-like stripe',
+    boardNote: 'Microsporidia spores are only about 1-4 um, close to the size of bacteria, so they are read under oil immersion. On a modified trichrome stain (high chromotrope 2R), spores stain pink-red against a green or blue background. Some show a pale belt-like stripe across the middle, which is a strong clue. A routine trichrome stain does not show them reliably.',
+    ariaLabel: 'Illustrated microsporidia spores stained pink-red with belt-like stripes on modified trichrome, compared with larger budding yeast cells',
+    visualType: 'microscope-microsporidia',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Spores',
+        name: '1-4 um, pink-red, belt-like stripe',
+        colors: { slant: '#dcece4', butt: '#d8687c', base: '#7c1c38' },
+        note: 'Oval spores about 1-4 um with a pink-red wall. Some show a horizontal or diagonal stripe, which is the coiled polar tubule seen through the wall. Enterocytozoon bieneusi spores are at the small end of the range and Encephalitozoon species are slightly larger.'
+      },
+      {
+        id: 'B',
+        label: 'Yeast (comparison)',
+        name: 'Larger, budding, no stripe',
+        colors: { slant: '#dcece4', butt: '#c87888', base: '#5c2438' },
+        note: 'Yeast cells also take up the red stain but are larger, commonly 3-6 um or more, and show budding. They have no belt-like stripe. Bacteria may stain as well but are usually rod shaped or paler.'
+      }
+    ],
+    readoutTitle: 'Modified trichrome anchors',
+    readoutRows: [
+      ['Tiny oval pink-red bodies, 1-4 um', 'Possible microsporidia spores', 'Confirm with oil immersion and controls'],
+      ['Belt-like stripe across the spore', 'Strong clue for microsporidia', 'Represents the polar tubule'],
+      ['Budding cells, larger size', 'Yeast', 'Common in stool; do not report as spores'],
+      ['Chronic watery diarrhea, immunocompromised patient', 'Clinical setting that raises suspicion', 'The stain must be requested or reflexed; the routine O&P misses it'],
+      ['Bright spores with an optical brightener', 'Chitin wall stained', 'Sensitive but not specific; yeast fluoresces too']
+    ],
+    trapTitle: 'A routine ova and parasite exam does not rule out microsporidia',
+    trapBody: 'The spores are too small and stain too poorly on routine trichrome to be detected. If the lab is not asked for microsporidia or does not reflex to a modified trichrome or optical brightener stain, the organism is missed. Always run a positive control slide with the modified stain.',
+    trapBullets: [
+      'Microsporidia are obligate intracellular spore-forming organisms now classified with the fungi, although they are still tested in the parasitology section.',
+      'Stain a thin smear. Thick smears trap stain and make everything look pink-red.',
+      'Species identification needs electron microscopy or molecular testing, and matters because treatment differs.'
+    ],
+    interpretationTitle: 'Microsporidia study readout',
+    interpretationRows: [
+      ['Pink-red oval spores, 1-4 um, some with a stripe; control acceptable', 'Microsporidia spores detected', 'Report per SOP; species requires reference methods'],
+      ['Red-staining budding cells of larger size', 'Yeast, not microsporidia', 'Do not report as spores'],
+      ['Brightener-positive small ovals only', 'Screen positive', 'Confirm with modified trichrome before reporting']
+    ],
+    takeaways: [
+      'Spores are bacteria-sized, so oil immersion and a special stain are required.',
+      'Pink-red oval spores with a belt-like stripe on modified trichrome are the classic finding.',
+      'Size and budding separate yeast from microsporidia.'
+    ],
+    remember: 'Tiny pink-red ovals with a belt stripe on modified trichrome = microsporidia. Routine O&P will miss them.',
+    divr: {
+      detect: 'Thin smear of stool or other fluid stained with modified trichrome (chromotrope-based) or an optical brightener, read under oil immersion',
+      identify: ['Oval spores 1-4 um with pink-red walls', 'Belt-like stripe in some spores', 'No budding'],
+      verify: 'Run a positive control with each batch; separate from yeast and bacteria by size, budding, and stripe; confirm brightener screens with modified trichrome',
+      report: 'Report as microsporidia spores detected; refer for species identification when clinically needed'
+    }
+  },
+  {
+    slug: 'sarcoptes-scabiei-skin-scraping',
+    title: 'Sarcoptes scabiei: Mite, Eggs, and Scybala in Skin Scrapings',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original bench-card visuals for reading a skin scraping for scabies: the round eight-legged Sarcoptes scabiei mite, its oval eggs, and brown fecal pellets (scybala).',
+    boardTitle: 'Scabies skin scraping: mite, eggs, and scybala',
+    boardNote: 'Sarcoptes scabiei is a mite, so the adult has 8 legs. The adult female is about 0.3-0.45 mm, round to oval, with short stubby legs and spines on the back. Eggs are oval and about 0.10-0.15 mm. Scybala are small golden-brown fecal pellets. Finding any one of the three in a scraping confirms scabies. Scrapings are usually mounted in mineral oil and read on low power.',
+    ariaLabel: 'Illustrated Sarcoptes scabiei mite with eight short legs beside oval eggs and brown fecal pellets from a skin scraping',
+    visualType: 'microscope-sarcoptes',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Adult mite',
+        name: 'Round body, 8 short legs, dorsal spines',
+        colors: { slant: '#f2ecdc', butt: '#b89c6c', base: '#4c3818' },
+        note: 'About 0.3-0.45 mm for the adult female. Round, sac-like body with four pairs of short legs, two pairs toward the front and two toward the back. Spines and ridges cover the back. Larvae have only 6 legs.'
+      },
+      {
+        id: 'B',
+        label: 'Eggs and scybala',
+        name: 'Oval eggs, brown fecal pellets',
+        colors: { slant: '#f2ecdc', butt: '#c8ac74', base: '#6c4a14' },
+        note: 'Eggs are oval, thin-shelled, and about 0.10-0.15 mm. Scybala are smaller, irregular, golden-brown pellets, often seen in groups. Either one is enough for a positive scraping even when no mite is found.'
+      }
+    ],
+    readoutTitle: 'Skin scraping anchors',
+    readoutRows: [
+      ['Round mite with 8 short legs', 'Sarcoptes scabiei adult', 'Mites are arachnids; insects such as lice have 6 legs'],
+      ['Oval thin-shelled eggs in skin debris', 'Scabies eggs', 'Diagnostic even without a mite'],
+      ['Golden-brown pellets in clusters', 'Scybala (mite feces)', 'Diagnostic; mineral oil preserves them'],
+      ['Elongated worm-like mite', 'Demodex, not Sarcoptes', 'Follicle mite; different clinical meaning'],
+      ['Very many mites in thick crusts', 'Crusted (Norwegian) scabies', 'Highly contagious; seen in immunocompromised or debilitated patients']
+    ],
+    trapTitle: 'A negative scraping does not rule out scabies',
+    trapBody: 'In ordinary scabies a patient may carry only a small number of mites, so one scraping can easily miss them. Scrape several fresh burrows, such as the finger webs and wrists, and report a negative result as what it is: no mites, eggs, or scybala seen in the material submitted.',
+    trapBullets: [
+      'Mineral oil is the usual mounting fluid because it keeps mites alive and moving and does not dissolve scybala. Potassium hydroxide clears skin but dissolves the fecal pellets.',
+      'Air bubbles, fibers, and plant material are common look-alikes. Look for legs or a defined eggshell.',
+      'Follow contact precautions for suspected crusted scabies specimens per facility policy.'
+    ],
+    interpretationTitle: 'Scabies scraping readout',
+    interpretationRows: [
+      ['Mite, eggs, or scybala seen', 'Positive for Sarcoptes scabiei', 'Any one of the three is sufficient'],
+      ['Elongated follicle mite only', 'Demodex species', 'Report per SOP; not scabies'],
+      ['Skin cells and debris only', 'No mites, eggs, or scybala seen', 'Does not exclude scabies; recollection may be needed']
+    ],
+    takeaways: [
+      'Adult Sarcoptes has a round body and 8 short legs; larvae have 6.',
+      'Mites, eggs, or scybala each confirm the diagnosis.',
+      'Mineral oil mounts are preferred, and a single negative scraping has limited value.'
+    ],
+    remember: 'Round 8-legged mite, oval eggs, or brown scybala in a scraping = scabies.',
+    divr: {
+      detect: 'Skin scraping from fresh burrows mounted in mineral oil, examined at low power',
+      identify: ['Adult female about 0.3-0.45 mm, round, 8 short legs, dorsal spines', 'Oval eggs about 0.10-0.15 mm', 'Golden-brown scybala'],
+      verify: 'Separate from Demodex by body shape; exclude bubbles and fibers; scrape multiple sites when the first is negative',
+      report: 'Report as Sarcoptes scabiei detected, listing mites, eggs, or scybala as seen; follow infection prevention notification policy'
+    }
+  },
+  {
+    slug: 'lice-pediculus-phthirus-comparison',
+    title: 'Human Lice: Pediculus humanus and Phthirus pubis',
+    eyebrow: 'Visual Atlas / Parasitology',
+    summary: 'Original comparison visuals for identifying human lice submitted to the lab: the elongated head or body louse, the broad crab louse with enlarged claws, and a nit cemented to a hair shaft.',
+    boardTitle: 'Lice: elongated Pediculus, crab-shaped Phthirus, and a nit on hair',
+    boardNote: 'Lice are insects, so adults have 6 legs. Pediculus humanus (head and body lice) is elongated, about 2-4 mm, with legs of similar size. Phthirus pubis (crab louse) is shorter and wider, about 1-2 mm, with large claws on the second and third pairs of legs. A nit is an oval egg about 0.8 mm long glued to a hair shaft, with a cap at the free end.',
+    ariaLabel: 'Illustrated elongated Pediculus louse, broad crab-shaped Phthirus pubis with large claws, and a nit attached to a hair shaft',
+    visualType: 'microscope-lice',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Pediculus humanus',
+        name: 'Elongated body, 6 similar legs',
+        colors: { slant: '#f0ece0', butt: '#a8946c', base: '#44361a' },
+        note: 'About 2-4 mm. The body is longer than it is wide, with a distinct head, thorax, and segmented abdomen. All three pairs of legs are similar in size and end in claws. Head lice and body lice look alike; the site of collection separates them.'
+      },
+      {
+        id: 'B',
+        label: 'Phthirus pubis',
+        name: 'Broad crab shape, enlarged claws',
+        colors: { slant: '#f0ece0', butt: '#b09868', base: '#4a3814' },
+        note: 'About 1-2 mm. The body is nearly as wide as it is long, which gives the crab appearance. The second and third pairs of legs carry large, heavy claws for gripping coarse hair. Found on pubic hair and sometimes eyelashes.'
+      },
+      {
+        id: 'C',
+        label: 'Nit',
+        name: 'Oval egg cemented to a hair shaft',
+        colors: { slant: '#f0ece0', butt: '#d8cca4', base: '#5c4a20' },
+        note: 'An oval egg about 0.8 mm long, attached at an angle to the hair by a cement sheath, with a cap (operculum) at the free end. It does not slide along the hair. Hair casts and dandruff slide off easily.'
+      }
+    ],
+    readoutTitle: 'Louse identification anchors',
+    readoutRows: [
+      ['6 legs, wingless, flattened top to bottom', 'Louse (insect)', 'Mites and ticks have 8 legs as adults'],
+      ['Elongated body, legs similar in size', 'Pediculus humanus', 'Head louse or body louse by site'],
+      ['Wide body, large claws on legs 2 and 3', 'Phthirus pubis', 'Crab louse'],
+      ['Oval capped egg fixed to hair', 'Nit', 'Empty nits remain after hatching'],
+      ['Flake that slides freely along the hair', 'Hair cast or dandruff', 'Not a nit']
+    ],
+    trapTitle: 'Only the body louse is a major disease vector',
+    trapBody: 'Students often assign vector status to all lice. The body louse is the one linked to epidemic typhus (Rickettsia prowazekii), trench fever (Bartonella quintana), and louse-borne relapsing fever (Borrelia recurrentis). Head lice and crab lice are mainly a nuisance and a source of itching and secondary infection.',
+    trapBullets: [
+      'Body lice live and lay eggs in clothing seams and move to the skin to feed, so the specimen may be clothing, not hair.',
+      'A nit close to the scalp suggests active infestation; nits far out on the hair may be old and empty.',
+      'Use a dissecting microscope or low power. Do not crush the specimen under a coverslip.'
+    ],
+    interpretationTitle: 'Louse study readout',
+    interpretationRows: [
+      ['Elongated louse from scalp hair', 'Pediculus humanus capitis', 'Head louse'],
+      ['Elongated louse from clothing seams', 'Pediculus humanus humanus', 'Body louse; vector of several bacterial diseases'],
+      ['Broad louse with large claws from pubic hair', 'Phthirus pubis', 'Crab louse']
+    ],
+    takeaways: [
+      'Lice have 6 legs; body shape and claw size separate the two genera.',
+      'A true nit is cemented to the hair and has a cap.',
+      'Body lice are the vectors for epidemic typhus, trench fever, and louse-borne relapsing fever.'
+    ],
+    remember: 'Long body = Pediculus. Crab body with big claws = Phthirus. Stuck to the hair with a cap = nit.',
+    divr: {
+      detect: 'Whole arthropod, hair, or clothing fibers examined under a dissecting microscope or low power',
+      identify: ['Pediculus: 2-4 mm, elongated, legs similar', 'Phthirus: 1-2 mm, crab shaped, enlarged claws on legs 2 and 3', 'Nit: about 0.8 mm, operculated, cemented to hair'],
+      verify: 'Confirm 6 legs to exclude mites and ticks; test whether a suspected nit slides on the hair',
+      report: 'Report genus and species per SOP with the stage seen, for example adult louse or nits'
+    }
+  },
+  {
+    slug: 'pneumocystis-jirovecii-gms',
+    title: 'Pneumocystis jirovecii: Cysts on GMS and Trophic Forms on Giemsa',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visuals for recognizing Pneumocystis jirovecii in respiratory specimens: cup-shaped and crescent cysts on silver stain, and clusters of trophic forms in foamy material on Giemsa.',
+    boardTitle: 'Pneumocystis jirovecii: silver-stained cysts and Giemsa-stained clusters',
+    boardNote: 'Pneumocystis jirovecii is a fungus that cannot be grown in routine culture, so diagnosis depends on stains, immunofluorescence, or molecular testing of respiratory specimens such as bronchoalveolar lavage or induced sputum. On Gomori methenamine silver (GMS), cysts are about 4-7 um, round, cup shaped, or crescent shaped, and do not bud. Giemsa-type stains do not stain the cyst wall but show the small trophic forms and intracystic bodies.',
+    ariaLabel: 'Illustrated Pneumocystis jirovecii cysts on silver stain showing round, cup-shaped and crescent forms, beside a foamy cluster of trophic forms on Giemsa stain',
+    visualType: 'mycology-pneumocystis',
+    tubes: [
+      {
+        id: 'A',
+        label: 'GMS cysts',
+        name: 'Round, cup, and crescent forms, no budding',
+        colors: { slant: '#dfeee6', butt: '#3c3c3c', base: '#16302a' },
+        note: 'Cysts are about 4-7 um with a dark brown-black wall on a green background. Collapsed cysts look like cups, crescents, or crushed ping-pong balls. Many show a dark comma or parenthesis-shaped thickening inside. They occur in clusters and never bud.'
+      },
+      {
+        id: 'B',
+        label: 'Giemsa cluster',
+        name: 'Foamy material, small dots, unstained cyst walls',
+        colors: { slant: '#ece6f0', butt: '#9a84b8', base: '#3c2460' },
+        note: 'Giemsa or a rapid Giemsa-type stain shows clusters of trophic forms about 1-4 um, with small purple nuclei in pale blue cytoplasm, set in foamy material. Cyst walls do not stain and appear as clear circles containing up to 8 intracystic bodies.'
+      }
+    ],
+    readoutTitle: 'Stain anchors',
+    readoutRows: [
+      ['Cup or crescent black cysts on GMS', 'Pneumocystis jirovecii cysts', 'Collapsed cyst shapes are the classic picture'],
+      ['No budding', 'Pneumocystis, not a yeast', 'Histoplasma and Candida bud'],
+      ['Foamy clusters on Giemsa', 'Trophic forms and intracystic bodies', 'The cyst wall itself is unstained'],
+      ['Apple-green cysts with fluorescent antibody', 'Direct fluorescent antibody positive', 'More sensitive than GMS or Giemsa'],
+      ['Positive PCR, negative stain', 'Detected at low level', 'Infection versus colonization needs clinical judgment']
+    ],
+    trapTitle: 'Small yeasts can be mistaken for Pneumocystis',
+    trapBody: 'Histoplasma capsulatum and small Candida cells are in the same size range on GMS. Look for budding, which Pneumocystis never shows, and for the cup and crescent shapes and internal comma-like thickening that yeasts lack. Overstained red cells can also mimic cysts.',
+    trapBullets: [
+      'Bronchoalveolar lavage has a higher yield than induced sputum; expectorated sputum is a poor specimen.',
+      'Pneumocystis was once classified as a protozoan. The human species is P. jirovecii; P. carinii refers to the species in rats.',
+      'Run a positive control with every GMS and fluorescent antibody batch, and read the control first.'
+    ],
+    interpretationTitle: 'Pneumocystis study readout',
+    interpretationRows: [
+      ['Clustered non-budding cysts, cup and crescent forms on GMS', 'Pneumocystis jirovecii detected', 'Report per SOP; this is a significant result in an immunocompromised patient'],
+      ['Budding oval cells of similar size', 'Yeast, not Pneumocystis', 'Consider Histoplasma or Candida; correlate with culture and antigen tests'],
+      ['No cysts in an adequate lavage specimen', 'No Pneumocystis seen', 'A negative stain does not exclude infection; PCR may be requested']
+    ],
+    takeaways: [
+      'Pneumocystis is a fungus that is not recovered in routine culture.',
+      'GMS stains the cyst wall; Giemsa stains the trophic forms and intracystic bodies.',
+      'No budding plus cup and crescent shapes separates it from small yeasts.'
+    ],
+    remember: 'Cup-shaped, non-budding black cysts on GMS in a lavage = Pneumocystis jirovecii.',
+    divr: {
+      detect: 'Bronchoalveolar lavage or induced sputum; GMS, Giemsa-type stain, calcofluor white, direct fluorescent antibody, or PCR',
+      identify: ['GMS: 4-7 um round, cup, or crescent cysts in clusters, no budding', 'Giemsa: trophic forms 1-4 um in foamy material; up to 8 intracystic bodies', 'Fluorescent antibody: apple-green cysts'],
+      verify: 'Read the positive control first; exclude small budding yeasts and overstained red cells',
+      report: 'Report as Pneumocystis jirovecii detected or not detected by the method used, per lab SOP'
+    }
+  },
+  {
+    slug: 'candida-cornmeal-agar-morphology',
+    title: 'Candida on Cornmeal Agar: Species Morphology Comparison',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original comparison visuals for reading yeast morphology on cornmeal agar with Tween 80: Candida albicans chlamydospores, Candida tropicalis blastoconidia along long pseudohyphae, Candida parapsilosis fine curved pseudohyphae, and Candida glabrata with yeast cells only.',
+    boardTitle: 'Cornmeal agar (Dalmau) morphology: four Candida patterns',
+    boardNote: 'The yeast is streaked and cut into cornmeal agar with Tween 80, covered with a coverslip, incubated at room temperature for 48-72 hours, and read through the coverslip on low and high dry power. Look for three things in order: are there pseudohyphae, where do the blastoconidia sit, and are there chlamydospores. Morphology supports identification but is confirmed by biochemical or proteomic methods.',
+    ariaLabel: 'Illustrated cornmeal agar morphology of Candida albicans with terminal chlamydospores, Candida tropicalis, Candida parapsilosis, and Candida glabrata yeast cells without pseudohyphae',
+    visualType: 'mycology-candida-cornmeal',
+    tubes: [
+      {
+        id: 'A',
+        label: 'C. albicans',
+        name: 'Terminal chlamydospores, clustered blastoconidia',
+        colors: { slant: '#eef2e6', butt: '#8aa080', base: '#2c4830' },
+        note: 'Pseudohyphae and true hyphae with dense round clusters of blastoconidia at the septa, plus large, round, thick-walled chlamydospores at the tips. Chlamydospores are the key finding. Candida dubliniensis also forms them and is germ tube positive.'
+      },
+      {
+        id: 'B',
+        label: 'C. tropicalis',
+        name: 'Long pseudohyphae, sparse blastoconidia',
+        colors: { slant: '#eef2e6', butt: '#8aa080', base: '#2c4830' },
+        note: 'Abundant long pseudohyphae with blastoconidia placed singly or in small groups anywhere along them, not in tight clusters. No chlamydospores in the usual picture.'
+      },
+      {
+        id: 'C',
+        label: 'C. parapsilosis',
+        name: 'Fine, short, curved pseudohyphae',
+        colors: { slant: '#eef2e6', butt: '#8aa080', base: '#2c4830' },
+        note: 'Thin, short, curved pseudohyphae that branch off the streak line, often described as sagebrush or spider-like. Occasional large, wide pseudohyphal cells called giant cells may be present.'
+      },
+      {
+        id: 'D',
+        label: 'C. glabrata',
+        name: 'Small yeast cells only, no pseudohyphae',
+        colors: { slant: '#eef2e6', butt: '#8aa080', base: '#2c4830' },
+        note: 'Small oval budding yeast cells, about 2-4 um, with no pseudohyphae and no chlamydospores. Now also published as Nakaseomyces glabratus. Cryptococcus also lacks pseudohyphae but has larger round cells and is urease positive.'
+      }
+    ],
+    readoutTitle: 'Cornmeal agar anchors',
+    readoutRows: [
+      ['Terminal thick-walled chlamydospores', 'C. albicans or C. dubliniensis', 'Pair with a germ tube test'],
+      ['Blastoconidia in tight clusters at septa', 'C. albicans pattern', 'Looks like grape bunches at regular intervals'],
+      ['Blastoconidia scattered singly along long pseudohyphae', 'C. tropicalis pattern', 'No chlamydospores'],
+      ['Fine curved pseudohyphae, giant cells', 'C. parapsilosis pattern', 'Sagebrush or spider-like growth'],
+      ['Small yeast only, no pseudohyphae', 'C. glabrata pattern', 'Rule out Cryptococcus with urease']
+    ],
+    trapTitle: 'Candida tropicalis can give a false germ tube',
+    trapBody: 'In the germ tube test, C. tropicalis may form early pseudohyphae that are pinched at the point where they leave the mother cell. A true germ tube from C. albicans has parallel sides and no constriction at its origin. Reading the constriction correctly prevents a wrong C. albicans call, and cornmeal morphology backs it up.',
+    trapBullets: [
+      'Incubate cornmeal agar at room temperature, about 25-30 C. Chlamydospore production is poor at 35-37 C.',
+      'Candida krusei (Pichia kudriavzevii) shows elongated cells in a crossed-matchstick or tree-like arrangement and is intrinsically resistant to fluconazole.',
+      'Morphology is supporting evidence. Report the species from your lab\'s validated identification method.'
+    ],
+    interpretationTitle: 'Cornmeal morphology study readout',
+    interpretationRows: [
+      ['Chlamydospores present, germ tube positive', 'Candida albicans (or C. dubliniensis)', 'Most labs report C. albicans by rapid tests and confirm when needed'],
+      ['Pseudohyphae present, no chlamydospores', 'Non-albicans Candida', 'Read blastoconidia arrangement and continue identification'],
+      ['Yeast cells only', 'C. glabrata, Cryptococcus, or another non-filamenting yeast', 'Urease and further testing separate them']
+    ],
+    takeaways: [
+      'Read cornmeal agar in order: pseudohyphae, blastoconidia arrangement, chlamydospores.',
+      'Chlamydospores point to C. albicans; yeast cells alone point to C. glabrata.',
+      'A true germ tube has no constriction at its origin.'
+    ],
+    remember: 'Chlamydospores = C. albicans. No pseudohyphae at all = think C. glabrata.',
+    divr: {
+      detect: 'Yeast isolate cut into cornmeal agar with Tween 80 under a coverslip (Dalmau method), 25-30 C for 48-72 hours',
+      identify: ['C. albicans: chlamydospores and clustered blastoconidia', 'C. tropicalis: long pseudohyphae with sparse blastoconidia', 'C. parapsilosis: fine curved pseudohyphae; C. glabrata: yeast only'],
+      verify: 'Correlate with germ tube, urease, and the lab\'s validated identification system; include a known C. albicans control',
+      report: 'Report species from the validated identification method; cornmeal morphology is supporting evidence'
+    }
+  },
+  {
+    slug: 'malassezia-furfur-koh',
+    title: 'Malassezia furfur: Spaghetti and Meatballs on KOH',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visuals for recognizing Malassezia in skin scrapings and culture: short curved hyphae with clusters of round yeast cells on a KOH preparation, and small bottle-shaped yeast with a collarette.',
+    boardTitle: 'Malassezia: short hyphae with round yeast clusters, and bottle-shaped budding cells',
+    boardNote: 'Malassezia is a lipid-loving yeast that lives on normal skin and causes pityriasis (tinea) versicolor. In skin scales cleared with KOH, the classic pattern is short, curved hyphae mixed with clusters of round yeast cells, described as spaghetti and meatballs. In culture the yeast is small, about 3-8 um, and bottle shaped, budding from one end on a broad base with a small collar. Most species need added lipid to grow.',
+    ariaLabel: 'Illustrated Malassezia skin scraping with short curved hyphae and clusters of round yeast, beside bottle-shaped budding yeast cells with collarettes',
+    visualType: 'mycology-malassezia',
+    tubes: [
+      {
+        id: 'A',
+        label: 'KOH skin scales',
+        name: 'Short curved hyphae plus round yeast clusters',
+        colors: { slant: '#eef0e8', butt: '#94a47c', base: '#30421c' },
+        note: 'Short, stubby, curved hyphae lie among grape-like clusters of round, thick-walled yeast cells. Both forms together make the diagnosis from a direct preparation. Calcofluor white makes the pattern easier to see.'
+      },
+      {
+        id: 'B',
+        label: 'Yeast from culture',
+        name: 'Bottle shape, single broad-based bud, collarette',
+        colors: { slant: '#eef0e8', butt: '#94a47c', base: '#30421c' },
+        note: 'Small yeast cells about 3-8 um. Each buds repeatedly from the same end through a broad base, leaving a small collar, so the cell looks like a bottle or bowling pin. No pseudohyphae are formed in routine culture.'
+      }
+    ],
+    readoutTitle: 'Malassezia anchors',
+    readoutRows: [
+      ['Short hyphae plus round yeast clusters in skin scales', 'Malassezia, pityriasis versicolor pattern', 'Direct exam is usually enough; culture is rarely needed'],
+      ['Bottle-shaped yeast with a collarette', 'Malassezia yeast form', 'Budding from one pole on a broad base'],
+      ['No growth on routine fungal media', 'Lipid requirement not met', 'Overlay the agar with sterile olive oil'],
+      ['Yeast in a blood culture from an infant on lipid infusion', 'Consider Malassezia', 'Subculture needs lipid supplementation'],
+      ['Yellow-gold fluorescence of skin under a Wood lamp', 'Supports pityriasis versicolor', 'A clinical clue, not a lab identification']
+    ],
+    trapTitle: 'A lipid-dependent yeast will not grow on a plain plate',
+    trapBody: 'When yeast is seen in a smear but routine subcultures show no growth, think about a lipid requirement before calling it nonviable. Overlaying Sabouraud agar with a thin layer of sterile olive oil supplies the long-chain fatty acids most Malassezia species need.',
+    trapBullets: [
+      'Malassezia pachydermatis is the exception and grows without added lipid.',
+      'Catheter-related bloodstream infection occurs mainly in patients, often neonates, receiving intravenous lipid nutrition.',
+      'The hyphae are short and fragmented. Long branching septate hyphae in skin scales suggest a dermatophyte instead.'
+    ],
+    interpretationTitle: 'Malassezia study readout',
+    interpretationRows: [
+      ['Short hyphae and yeast clusters on KOH of skin scales', 'Consistent with Malassezia', 'Report the direct exam finding per SOP'],
+      ['Long branching septate hyphae, no yeast clusters', 'Dermatophyte pattern', 'Culture on dermatophyte media'],
+      ['Small bottle-shaped yeast growing only with oil overlay', 'Lipid-dependent Malassezia', 'Report per the lab\'s identification method']
+    ],
+    takeaways: [
+      'Spaghetti and meatballs on KOH is the classic direct exam picture.',
+      'The yeast is bottle shaped with a collarette and a broad-based bud.',
+      'Add lipid, such as an olive oil overlay, when culture is required.'
+    ],
+    remember: 'Short hyphae + round yeast clusters on KOH = Malassezia. Needs lipid to grow.',
+    divr: {
+      detect: 'Skin scrapings or tape preparation cleared with KOH, with or without calcofluor white; blood culture in patients on lipid infusions',
+      identify: ['Short curved hyphae with clusters of round yeast in skin scales', 'Culture: 3-8 um bottle-shaped yeast, unipolar broad-based budding, collarette', 'Growth depends on added lipid for most species'],
+      verify: 'Separate from dermatophytes by hyphal length and the presence of yeast clusters; confirm lipid dependence with an oil overlay',
+      report: 'Report direct exam findings as consistent with Malassezia; culture identification per lab method'
+    }
+  },
+  {
+    slug: 'mucorales-genus-comparison',
+    title: 'Mucorales Comparison: Rhizopus, Mucor, and Lichtheimia',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original comparison visuals for separating the common Mucorales genera in culture by one feature students can see on a tease or tape preparation: whether rhizoids are present and where they sit.',
+    boardTitle: 'Mucorales genera: find the rhizoids, then find the sporangiophore',
+    boardNote: 'All three genera have broad, ribbon-like hyphae with few septa and grow fast, filling the plate with cottony growth. The genus comes from the rhizoids. Rhizopus: rhizoids directly at the base of the sporangiophores (nodal). Mucor: no rhizoids. Lichtheimia, formerly Absidia: rhizoids on the stolon between the sporangiophores (internodal), with pear-shaped sporangia sitting on a funnel-shaped apophysis. Handle mold cultures in a biological safety cabinet.',
+    ariaLabel: 'Illustrated comparison of Rhizopus with nodal rhizoids, Mucor without rhizoids, and Lichtheimia with internodal rhizoids and pear-shaped sporangia',
+    visualType: 'mycology-mucorales-comparison',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Rhizopus',
+        name: 'Rhizoids directly below sporangiophores',
+        colors: { slant: '#e6eef0', butt: '#5c6c64', base: '#1f3f3b' },
+        note: 'Unbranched sporangiophores rise in groups from a point on the stolon, and root-like rhizoids grow from the same point. Sporangia are large and round. After the sporangium breaks, the columella collapses into an umbrella shape.'
+      },
+      {
+        id: 'B',
+        label: 'Mucor',
+        name: 'No rhizoids',
+        colors: { slant: '#e6eef0', butt: '#5c6c64', base: '#1f3f3b' },
+        note: 'Sporangiophores arise singly or branch, and no rhizoids are found after a careful search. Sporangia are round. A small collar may remain at the base of the columella when the sporangial wall dissolves.'
+      },
+      {
+        id: 'C',
+        label: 'Lichtheimia',
+        name: 'Rhizoids between sporangiophores, pear-shaped sporangium',
+        colors: { slant: '#e6eef0', butt: '#5c6c64', base: '#1f3f3b' },
+        note: 'Branched sporangiophores arise from the stolon between the rhizoids, not above them. The sporangium is smaller and pear shaped because it sits on a funnel-shaped swelling called the apophysis.'
+      }
+    ],
+    readoutTitle: 'Genus anchors',
+    readoutRows: [
+      ['Rhizoids at the base of the sporangiophore', 'Rhizopus', 'Nodal rhizoids'],
+      ['No rhizoids anywhere', 'Mucor', 'Search several fields before deciding'],
+      ['Rhizoids between sporangiophores', 'Lichtheimia', 'Internodal rhizoids'],
+      ['Pear-shaped sporangium with funnel-shaped apophysis', 'Lichtheimia', 'Rhizopus and Mucor sporangia are round'],
+      ['Broad ribbon-like hyphae with few septa', 'Mucorales as a group', 'Shared by all three; not genus specific']
+    ],
+    trapTitle: 'Rhizoids are easy to tear off',
+    trapBody: 'A rough tease preparation can separate sporangiophores from their rhizoids and make Rhizopus look like Mucor. Use a gentle tape preparation or a slide culture where permitted, and look near the agar surface where rhizoids anchor. Call Mucor only after a real search.',
+    trapBullets: [
+      'Grinding tissue can destroy these fragile, sparsely septate hyphae and give a false-negative culture. Mince tissue instead.',
+      'These molds grow rapidly and may lift the plate lid, which is why they are nicknamed lid lifters.',
+      'Genus-level names are changing with molecular work. Report according to your lab\'s validated method.'
+    ],
+    interpretationTitle: 'Mucorales genus study readout',
+    interpretationRows: [
+      ['Nodal rhizoids, round sporangia, unbranched sporangiophores', 'Rhizopus species', 'Most common agent of mucormycosis'],
+      ['No rhizoids, round sporangia', 'Mucor species', 'Confirm absence in several fields'],
+      ['Internodal rhizoids, pear-shaped sporangia with apophysis', 'Lichtheimia species', 'Formerly Absidia']
+    ],
+    takeaways: [
+      'Hyphae tell you it is a Mucorales mold; rhizoids tell you the genus.',
+      'Nodal = Rhizopus, none = Mucor, internodal = Lichtheimia.',
+      'Mince, do not grind, tissue submitted for suspected mucormycosis.'
+    ],
+    remember: 'Rhizoids under the stalk = Rhizopus. None = Mucor. Between the stalks = Lichtheimia.',
+    divr: {
+      detect: 'Rapidly growing cottony mold; tape or tease preparation in lactophenol cotton blue, prepared in a biological safety cabinet',
+      identify: ['Rhizopus: nodal rhizoids, unbranched sporangiophores, round sporangia', 'Mucor: no rhizoids', 'Lichtheimia: internodal rhizoids, pear-shaped sporangia with apophysis'],
+      verify: 'Search several fields near the agar surface for rhizoids before calling Mucor; correlate with the lab\'s validated identification method',
+      report: 'Report genus per SOP; notify promptly when a Mucorales mold is recovered from tissue or a sterile site'
+    }
+  },
+  {
+    slug: 'arthroconidia-comparison-geotrichum-coccidioides-trichosporon',
+    title: 'Arthroconidia Comparison: Coccidioides, Geotrichum, and Trichosporon',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original comparison visuals for three fungi that form arthroconidia: Coccidioides with alternating barrel-shaped cells, Geotrichum with consecutive rectangular cells, and Trichosporon with arthroconidia plus budding blastoconidia.',
+    boardTitle: 'Arthroconidia: alternating, consecutive, or mixed with budding cells',
+    boardNote: 'Arthroconidia form when a hypha breaks into individual cells. Three patterns matter. Coccidioides: barrel-shaped arthroconidia alternate with empty cells. Geotrichum: rectangular arthroconidia in a continuous row with no empty cells between them, and no budding cells. Trichosporon: rectangular arthroconidia together with budding blastoconidia. A white mold with alternating arthroconidia is treated as Coccidioides until excluded and is never set up as a slide culture.',
+    ariaLabel: 'Illustrated comparison of Coccidioides alternating barrel-shaped arthroconidia, Geotrichum consecutive rectangular arthroconidia, and Trichosporon arthroconidia with blastoconidia',
+    visualType: 'mycology-arthroconidia-comparison',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Coccidioides',
+        name: 'Alternating barrel-shaped arthroconidia',
+        colors: { slant: '#eef0e6', butt: '#a09868', base: '#3c3814' },
+        note: 'Thick-walled, barrel-shaped arthroconidia alternate with thin, empty disjunctor cells. When the chain breaks, pieces of the empty cell wall stay attached to each end. These arthroconidia are highly infectious by inhalation.'
+      },
+      {
+        id: 'B',
+        label: 'Geotrichum',
+        name: 'Consecutive rectangular arthroconidia, no buds',
+        colors: { slant: '#eef0e6', butt: '#98a080', base: '#2c4020' },
+        note: 'Hyphae break into rectangular arthroconidia one after another with no empty cells between. A germ tube growing from one corner gives a hockey-stick shape. No blastoconidia are formed. Urease negative.'
+      },
+      {
+        id: 'C',
+        label: 'Trichosporon',
+        name: 'Arthroconidia plus blastoconidia',
+        colors: { slant: '#eef0e6', butt: '#98a080', base: '#2c4020' },
+        note: 'Rectangular arthroconidia are present together with budding blastoconidia, and pseudohyphae may be seen. The mixture separates it from Geotrichum. Urease positive.'
+      }
+    ],
+    readoutTitle: 'Arthroconidia anchors',
+    readoutRows: [
+      ['Alternating arthroconidia with empty cells', 'Coccidioides pattern', 'Stop open-bench work; use the biosafety level required by your lab'],
+      ['Consecutive rectangular arthroconidia only', 'Geotrichum', 'Hockey-stick germination from a corner'],
+      ['Arthroconidia plus budding cells', 'Trichosporon', 'Urease positive'],
+      ['Urease result', 'Trichosporon positive, Geotrichum negative', 'Useful when buds are hard to find'],
+      ['White mold, alternating arthroconidia, no travel history given', 'Still handle as possible Coccidioides', 'Malbranchea is a look-alike but is excluded by confirmatory testing']
+    ],
+    trapTitle: 'Never make a slide culture of a possible Coccidioides',
+    trapBody: 'Coccidioides arthroconidia become airborne very easily and cause laboratory-acquired infection. If a white to tan mold shows alternating arthroconidia, seal the plate, move work into the appropriate containment, and confirm by a validated method such as a nucleic acid probe or molecular test. Do not sniff plates or prepare slide cultures.',
+    trapBullets: [
+      'Malbranchea and some other environmental molds also produce alternating arthroconidia, so morphology alone does not confirm Coccidioides.',
+      'In tissue Coccidioides appears as spherules with endospores, not as arthroconidia.',
+      'Young cultures may show few arthroconidia. Absence early in growth does not clear the plate.'
+    ],
+    interpretationTitle: 'Arthroconidia study readout',
+    interpretationRows: [
+      ['Alternating barrel-shaped arthroconidia in a white mold', 'Presumptive Coccidioides', 'Containment, confirmatory testing, and notification per policy'],
+      ['Consecutive arthroconidia, no blastoconidia, urease negative', 'Geotrichum', 'Yeast-like colony; often of limited clinical significance'],
+      ['Arthroconidia with blastoconidia, urease positive', 'Trichosporon', 'Can cause invasive infection in immunocompromised patients']
+    ],
+    takeaways: [
+      'Alternating arthroconidia with empty cells between them means think Coccidioides and think safety.',
+      'Geotrichum has consecutive arthroconidia and no buds.',
+      'Trichosporon has both arthroconidia and blastoconidia and is urease positive.'
+    ],
+    remember: 'Alternating = Coccidioides. Consecutive only = Geotrichum. Consecutive plus buds = Trichosporon.',
+    divr: {
+      detect: 'Mold or yeast-like colony; tape or tease preparation made in a biological safety cabinet',
+      identify: ['Coccidioides: alternating barrel-shaped arthroconidia with disjunctor cells', 'Geotrichum: consecutive rectangular arthroconidia, no blastoconidia', 'Trichosporon: arthroconidia plus blastoconidia'],
+      verify: 'Urease separates Trichosporon from Geotrichum; confirm suspected Coccidioides with a validated probe or molecular method under proper containment',
+      report: 'Report per SOP; suspected Coccidioides triggers safety and notification procedures'
+    }
+  },
+  {
+    slug: 'tissue-yeast-size-comparison',
+    title: 'Yeast Forms in Tissue: Size and Budding Comparison',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original comparison visuals for the systemic fungi as they appear in tissue and body fluids: small intracellular Histoplasma, encapsulated Cryptococcus, broad-based budding Blastomyces, and the large Coccidioides spherule.',
+    boardTitle: 'Tissue forms compared: size first, then how the cell buds',
+    boardNote: 'In a direct smear or tissue section, two questions separate most systemic fungi: how big is the cell, and how does it bud. Histoplasma capsulatum: 2-4 um, inside macrophages, narrow-based bud. Cryptococcus: 4-10 um with wide size variation, narrow-based bud, capsule. Blastomyces: 8-15 um, thick wall, one broad-based bud. Coccidioides: spherule about 10-100 um filled with endospores, no budding. Drawings share one scale so the size difference is visible.',
+    ariaLabel: 'Illustrated size comparison of Histoplasma yeast inside a macrophage, encapsulated Cryptococcus, broad-based budding Blastomyces, and a Coccidioides spherule with endospores',
+    visualType: 'mycology-tissue-yeast-comparison',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Histoplasma',
+        name: '2-4 um, intracellular, narrow-based bud',
+        colors: { slant: '#f0ece8', butt: '#b08898', base: '#4a2440' },
+        note: 'Small oval yeast cells packed inside a macrophage. A clear halo around each cell is a staining artifact and not a true capsule. Budding is on a narrow base.'
+      },
+      {
+        id: 'B',
+        label: 'Cryptococcus',
+        name: '4-10 um, variable size, capsule',
+        colors: { slant: '#f0ece8', butt: '#b08898', base: '#4a2440' },
+        note: 'Round yeast cells that vary a lot in size within one field. Narrow-based budding. The polysaccharide capsule shows as a clear zone on India ink and stains with mucicarmine.'
+      },
+      {
+        id: 'C',
+        label: 'Blastomyces',
+        name: '8-15 um, thick wall, broad-based bud',
+        colors: { slant: '#f0ece8', butt: '#b08898', base: '#4a2440' },
+        note: 'Large round yeast with a thick, double-contoured wall and a single bud attached by a wide base. The bud stays attached until it is nearly the size of the mother cell.'
+      },
+      {
+        id: 'D',
+        label: 'Coccidioides',
+        name: 'Spherule with endospores, no budding',
+        colors: { slant: '#f0ece8', butt: '#b08898', base: '#4a2440' },
+        note: 'A thick-walled spherule, commonly 30-60 um and up to about 100 um, filled with endospores 2-5 um across. It does not bud. A ruptured spherule releases endospores that can be mistaken for small yeasts.'
+      }
+    ],
+    readoutTitle: 'Tissue form anchors',
+    readoutRows: [
+      ['2-4 um yeasts inside macrophages', 'Histoplasma capsulatum', 'Bone marrow, blood buffy coat, lung, or lymph node'],
+      ['Round yeasts of mixed sizes with a capsule', 'Cryptococcus', 'CSF India ink; cryptococcal antigen is more sensitive'],
+      ['Thick-walled yeast with one broad-based bud', 'Blastomyces', 'Figure-eight appearance'],
+      ['Large spherule with endospores', 'Coccidioides', 'No budding at any stage'],
+      ['Large cell with many narrow-based buds around it', 'Paracoccidioides', 'Mariner\'s wheel; see its bench card']
+    ],
+    trapTitle: 'Small yeasts are the hardest to separate',
+    trapBody: 'Histoplasma, small Candida glabrata cells, released Coccidioides endospores, and Pneumocystis cysts overlap in size. Location and budding do the sorting: Histoplasma is intracellular with a narrow-based bud, Candida glabrata is usually extracellular, endospores come with spherule fragments, and Pneumocystis does not bud.',
+    trapBullets: [
+      'Talaromyces marneffei is also small and intracellular but divides by a central cross-wall instead of budding.',
+      'These tissue forms are the 35-37 C phase. The mold phase at room temperature is the infectious hazard in the lab.',
+      'A direct exam gives a presumptive answer. Culture, antigen, or molecular testing confirms it.'
+    ],
+    interpretationTitle: 'Tissue yeast study readout',
+    interpretationRows: [
+      ['Small intracellular yeasts, narrow-based budding', 'Consistent with Histoplasma capsulatum', 'Correlate with antigen testing and culture'],
+      ['Encapsulated yeasts, variable size', 'Consistent with Cryptococcus', 'Correlate with cryptococcal antigen'],
+      ['Broad-based budding yeasts or spherules with endospores', 'Consistent with Blastomyces or Coccidioides', 'Notify per policy; cultures need containment']
+    ],
+    takeaways: [
+      'Size and budding pattern separate the systemic fungi in direct specimens.',
+      'Narrow base: Histoplasma and Cryptococcus. Broad base: Blastomyces. No budding: Coccidioides.',
+      'Report direct findings as consistent with an organism and confirm by another method.'
+    ],
+    remember: 'Small and intracellular = Histoplasma. Capsule = Cryptococcus. Broad base = Blastomyces. Spherule = Coccidioides.',
+    divr: {
+      detect: 'Direct smear or tissue section with calcofluor white, GMS, PAS, Giemsa, or India ink as appropriate for the specimen',
+      identify: ['Histoplasma: 2-4 um intracellular yeast', 'Cryptococcus: 4-10 um encapsulated yeast, narrow-based bud', 'Blastomyces: 8-15 um, broad-based bud; Coccidioides: spherule with endospores'],
+      verify: 'Measure the cells and confirm the budding pattern; correlate with antigen, culture, or molecular results',
+      report: 'Report as yeast forms or spherules consistent with the organism, per lab SOP, pending confirmation'
+    }
+  },
+  {
+    slug: 'trichophyton-species-comparison',
+    title: 'Trichophyton Comparison: T. rubrum, T. mentagrophytes, T. tonsurans',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original comparison visuals for the three Trichophyton species most often asked about: teardrop microconidia along the hyphae in T. rubrum, grape-like clusters and spiral hyphae in T. mentagrophytes, and microconidia of mixed sizes in T. tonsurans.',
+    boardTitle: 'Trichophyton species: read the microconidia',
+    boardNote: 'In Trichophyton, microconidia are numerous and macroconidia are few, so the microconidia carry the identification. T. rubrum: teardrop-shaped microconidia placed singly along the sides of the hyphae. T. mentagrophytes: round microconidia in grape-like clusters, with spiral hyphae. T. tonsurans: microconidia of many sizes and shapes, including enlarged balloon forms. Urease and hair perforation tests back up the microscopy.',
+    ariaLabel: 'Illustrated comparison of Trichophyton rubrum teardrop microconidia along hyphae, Trichophyton mentagrophytes grape-like clusters with spiral hyphae, and Trichophyton tonsurans variable microconidia',
+    visualType: 'mycology-trichophyton-comparison',
+    tubes: [
+      {
+        id: 'A',
+        label: 'T. rubrum',
+        name: 'Teardrop microconidia along the hyphae',
+        colors: { slant: '#f2ece8', butt: '#a88478', base: '#5c2420' },
+        note: 'Small teardrop or club-shaped microconidia sit one by one along both sides of the hyphae, often compared to birds on a wire. Macroconidia are rare, thin, and pencil shaped. The colony is white and fluffy with a deep red reverse.'
+      },
+      {
+        id: 'B',
+        label: 'T. mentagrophytes',
+        name: 'Grape-like clusters, spiral hyphae',
+        colors: { slant: '#f2ece8', butt: '#a89878', base: '#4c3a18' },
+        note: 'Round microconidia gather in dense grape-like clusters. Coiled spiral hyphae are often present. Macroconidia, when found, are thin-walled and cigar shaped. The colony is commonly powdery to granular.'
+      },
+      {
+        id: 'C',
+        label: 'T. tonsurans',
+        name: 'Microconidia of mixed size and shape',
+        colors: { slant: '#f2ece8', butt: '#a89070', base: '#4c3418' },
+        note: 'Microconidia vary within one field: teardrop, club, and large swollen balloon forms, some on short stalks. Growth is improved by thiamine. This species is a leading cause of scalp ringworm with infection inside the hair shaft.'
+      }
+    ],
+    readoutTitle: 'Trichophyton anchors',
+    readoutRows: [
+      ['Teardrop microconidia singly along hyphae', 'T. rubrum', 'Red reverse supports it'],
+      ['Round microconidia in clusters, spiral hyphae', 'T. mentagrophytes', 'Cigar-shaped macroconidia'],
+      ['Mixed microconidia with balloon forms', 'T. tonsurans', 'Thiamine improves growth'],
+      ['Urease positive within a few days', 'T. mentagrophytes', 'T. rubrum is usually negative or slow'],
+      ['Hair perforation test positive', 'T. mentagrophytes', 'T. rubrum is negative']
+    ],
+    trapTitle: 'Red pigment is not always there',
+    trapBody: 'Some T. rubrum isolates make little red pigment on routine Sabouraud agar, and some T. mentagrophytes isolates show a reddish-brown reverse. Subculture to cornmeal dextrose or potato dextrose agar to bring out the red pigment of T. rubrum, and rely on microconidia arrangement, urease, and hair perforation together.',
+    trapBullets: [
+      'Trichophyton: many microconidia, few smooth thin-walled macroconidia. Microsporum: many rough thick-walled macroconidia. Epidermophyton: club-shaped macroconidia and no microconidia.',
+      'Names within the T. mentagrophytes group are being revised. Report according to your lab\'s validated method.',
+      'Dermatophytes are slow. Hold cultures for the full time in your SOP before reporting no growth.'
+    ],
+    interpretationTitle: 'Trichophyton species study readout',
+    interpretationRows: [
+      ['Teardrop microconidia along hyphae, red reverse, urease negative, hair perforation negative', 'Trichophyton rubrum', 'Common cause of athlete\'s foot and nail infection'],
+      ['Clustered round microconidia, spiral hyphae, urease positive, hair perforation positive', 'Trichophyton mentagrophytes complex', 'Report per the lab\'s naming convention'],
+      ['Variable microconidia with balloon forms, better growth with thiamine', 'Trichophyton tonsurans', 'Scalp ringworm with infection inside the hair']
+    ],
+    takeaways: [
+      'In Trichophyton, read the microconidia first.',
+      'Urease and hair perforation are positive for T. mentagrophytes and negative for T. rubrum.',
+      'T. tonsurans shows microconidia of many shapes and benefits from thiamine.'
+    ],
+    remember: 'Birds on a wire + red reverse = T. rubrum. Grape clusters + spirals + urease positive = T. mentagrophytes.',
+    divr: {
+      detect: 'Skin, hair, or nail on dermatophyte media at 25-30 C; tape preparation in lactophenol cotton blue',
+      identify: ['T. rubrum: teardrop microconidia singly along hyphae, red reverse', 'T. mentagrophytes: clustered round microconidia, spiral hyphae', 'T. tonsurans: variable microconidia, balloon forms'],
+      verify: 'Urease and hair perforation tests; pigment on cornmeal dextrose or potato dextrose agar; thiamine response for T. tonsurans',
+      report: 'Report species or species complex per the lab\'s validated method'
+    }
+  },
+  {
+    slug: 'hair-invasion-ectothrix-endothrix',
+    title: 'Dermatophyte Hair Invasion: Ectothrix, Endothrix, and Favus',
+    eyebrow: 'Visual Atlas / Mycology',
+    summary: 'Original bench-card visuals for reading a KOH preparation of an infected hair: arthroconidia forming a sheath outside the shaft (ectothrix), arthroconidia packed inside the shaft (endothrix), and hyphae with air spaces (favus).',
+    boardTitle: 'Hair invasion patterns: outside the shaft, inside the shaft, or hyphae with air spaces',
+    boardNote: 'Pluck hairs with the root attached, clear them in KOH, and look at where the fungal elements sit. Ectothrix: arthroconidia coat the outside of the shaft and the cuticle is damaged; typical of Microsporum canis and Microsporum audouinii, which fluoresce yellow-green under a Wood lamp. Endothrix: arthroconidia fill the inside of the shaft and the cuticle stays intact; typical of Trichophyton tonsurans and Trichophyton violaceum, with no fluorescence. Favus: hyphae and air spaces inside the shaft; Trichophyton schoenleinii.',
+    ariaLabel: 'Illustrated hair shafts showing ectothrix arthroconidia on the outside, endothrix arthroconidia inside the shaft, and favus-type hyphae with air spaces',
+    visualType: 'mycology-hair-invasion',
+    tubes: [
+      {
+        id: 'A',
+        label: 'Ectothrix',
+        name: 'Arthroconidia sheath outside the shaft',
+        colors: { slant: '#f2eee0', butt: '#b89c64', base: '#4c3a14' },
+        note: 'Small arthroconidia form a mosaic sheath around the outside of the hair, and the cuticle is broken down. Microsporum canis and M. audouinii give this pattern and fluoresce yellow-green under a Wood lamp. Some Trichophyton species produce a larger-spored ectothrix without that fluorescence.'
+      },
+      {
+        id: 'B',
+        label: 'Endothrix',
+        name: 'Arthroconidia packed inside the shaft',
+        colors: { slant: '#f2eee0', butt: '#b89c64', base: '#4c3a14' },
+        note: 'Arthroconidia fill the inside of the hair shaft in chains while the cuticle remains intact. The weakened hair snaps at the scalp surface, leaving black dots. Trichophyton tonsurans and T. violaceum give this pattern. No Wood lamp fluorescence.'
+      },
+      {
+        id: 'C',
+        label: 'Favus',
+        name: 'Hyphae and air spaces in the shaft',
+        colors: { slant: '#f2eee0', butt: '#b89c64', base: '#4c3a14' },
+        note: 'Loose hyphae run along the inside of the shaft with air spaces or bubbles where hyphae have broken down. Arthroconidia are few. Caused by Trichophyton schoenleinii, with cup-shaped crusts on the scalp and a dull fluorescence.'
+      }
+    ],
+    readoutTitle: 'Hair invasion anchors',
+    readoutRows: [
+      ['Conidia outside the shaft, cuticle damaged', 'Ectothrix', 'Microsporum canis, M. audouinii, and others'],
+      ['Conidia inside the shaft, cuticle intact', 'Endothrix', 'Trichophyton tonsurans, T. violaceum'],
+      ['Hyphae and air spaces inside the shaft', 'Favus', 'Trichophyton schoenleinii'],
+      ['Yellow-green fluorescence under a Wood lamp', 'Microsporum canis or M. audouinii', 'A negative lamp does not rule out ringworm'],
+      ['Black dots at the scalp surface', 'Endothrix infection', 'Hairs break at the follicle opening']
+    ],
+    trapTitle: 'A negative Wood lamp does not exclude tinea capitis',
+    trapBody: 'Trichophyton tonsurans, a leading cause of scalp ringworm, does not fluoresce. If collection relies on the lamp to choose hairs, the infection is missed. Collect broken hairs and scale from the edge of the lesion whether or not anything fluoresces.',
+    trapBullets: [
+      'Cut hair has no value for this exam. The root end is where invasion is seen.',
+      'Give KOH time to clear the hair, with gentle warming if your SOP allows, before reading.',
+      'The hair invasion pattern suggests a group of organisms. Culture provides the species.'
+    ],
+    interpretationTitle: 'Hair invasion study readout',
+    interpretationRows: [
+      ['Ectothrix pattern, fluorescent hairs', 'Suggests Microsporum canis or M. audouinii', 'Culture confirms'],
+      ['Endothrix pattern, no fluorescence', 'Suggests Trichophyton tonsurans or T. violaceum', 'Culture confirms'],
+      ['Hyphae with air spaces', 'Favus pattern, Trichophyton schoenleinii', 'Culture confirms']
+    ],
+    takeaways: [
+      'Ectothrix means outside the shaft; endothrix means inside the shaft.',
+      'Fluorescence under a Wood lamp points to certain Microsporum species only.',
+      'The direct hair exam narrows the list and culture names the species.'
+    ],
+    remember: 'Outside = ectothrix (Microsporum, fluoresces). Inside = endothrix (T. tonsurans, no fluorescence).',
+    divr: {
+      detect: 'Plucked hairs with roots, cleared in KOH with or without calcofluor white',
+      identify: ['Ectothrix: arthroconidia sheath outside the shaft', 'Endothrix: arthroconidia chains inside the shaft, cuticle intact', 'Favus: hyphae and air spaces inside the shaft'],
+      verify: 'Correlate with Wood lamp findings and culture on dermatophyte media',
+      report: 'Report fungal elements seen and the invasion pattern per SOP; species from culture'
     }
   }
 ];
