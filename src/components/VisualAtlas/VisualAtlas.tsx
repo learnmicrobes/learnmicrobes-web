@@ -10,6 +10,7 @@ import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import { subjectStainClass } from '../../data/subjectStains';
 import './VisualAtlas.css';
 import { atlasPages, type AtlasPage, type TubeVisual } from '../../data/atlasPages';
+import { renderExpansionVisual } from './atlasExpansionRenderers';
 
 export { atlasPages };
 export type { AtlasPage, TubeVisual };
@@ -5522,6 +5523,11 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
 }
 
 function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
+  const expansionVisual = renderExpansionVisual(tube, visualType);
+  if (expansionVisual) {
+    return expansionVisual;
+  }
+
   if (visualType === 'litmus-milk') {
     return renderLitmusMilk(tube);
   }
@@ -5780,7 +5786,11 @@ const intestinalParasiteTypes: AtlasPage['visualType'][] = [
   'microscope-blastocystis',
   'microscope-dientamoeba',
   'microscope-dipylidium',
-  'microscope-taenia-scolex'
+  'microscope-taenia-scolex',
+  'microscope-balantidium',
+  'microscope-commensal-amoebae',
+  'microscope-chilomastix',
+  'microscope-microsporidia'
 ];
 
 const bloodParasiteTypes: AtlasPage['visualType'][] = [
@@ -5789,14 +5799,23 @@ const bloodParasiteTypes: AtlasPage['visualType'][] = [
   'microscope-trypanosoma',
   'microscope-microfilaria',
   'microscope-schistosoma',
-  'microscope-plasmodium-panel'
+  'microscope-plasmodium-panel',
+  'microscope-plasmodium-vivax',
+  'microscope-plasmodium-malariae',
+  'microscope-plasmodium-ovale'
 ];
 
 const tissueParasiteTypes: AtlasPage['visualType'][] = [
   'microscope-toxoplasma',
   'microscope-leishmania',
   'microscope-trichinella',
-  'microscope-echinococcus'
+  'microscope-echinococcus',
+  'microscope-free-living-amoebae'
+];
+
+const arthropodTypes: AtlasPage['visualType'][] = [
+  'microscope-sarcoptes',
+  'microscope-lice'
 ];
 
 const trematodeEggTypes: AtlasPage['visualType'][] = [
@@ -5812,7 +5831,8 @@ const dimorphicFungusTypes: AtlasPage['visualType'][] = [
   'mycology-coccidioides',
   'mycology-sporothrix',
   'mycology-paracoccidioides',
-  'mycology-penicillium-talaromyces'
+  'mycology-penicillium-talaromyces',
+  'mycology-tissue-yeast-comparison'
 ];
 
 const hyalineMoldTypes: AtlasPage['visualType'][] = [
@@ -5823,7 +5843,22 @@ const hyalineMoldTypes: AtlasPage['visualType'][] = [
 const yeastFormTypes: AtlasPage['visualType'][] = [
   'mycology-candida-germ-tube',
   'mycology-cryptococcus',
-  'mycology-trichosporon'
+  'mycology-trichosporon',
+  'mycology-pneumocystis',
+  'mycology-candida-cornmeal',
+  'mycology-malassezia',
+  'mycology-arthroconidia-comparison'
+];
+
+const mucoralesTypes: AtlasPage['visualType'][] = [
+  'mycology-mucorales',
+  'mycology-mucorales-comparison'
+];
+
+const dermatophyteTypes: AtlasPage['visualType'][] = [
+  'mycology-dermatophyte-panel',
+  'mycology-trichophyton-comparison',
+  'mycology-hair-invasion'
 ];
 
 const opportunisticMoldTypes: AtlasPage['visualType'][] = [
@@ -5965,7 +6000,11 @@ function getVisualCategory(page: AtlasPage) {
     return 'Trematode Eggs';
   }
 
-  if (page.visualType === 'mycology-mucorales') {
+  if (arthropodTypes.includes(page.visualType)) {
+    return 'Arthropods';
+  }
+
+  if (mucoralesTypes.includes(page.visualType)) {
     return 'Mucorales';
   }
 
@@ -5989,7 +6028,7 @@ function getVisualCategory(page: AtlasPage) {
     return 'Dematiaceous Molds';
   }
 
-  if (page.visualType === 'mycology-dermatophyte-panel') {
+  if (dermatophyteTypes.includes(page.visualType)) {
     return 'Dermatophytes';
   }
 
@@ -6116,9 +6155,9 @@ function getVisualNextStep(page: AtlasPage): VisualNextStep {
   }
 
   return {
-    to: STUDY_QUIZ_PATH,
-    label: 'Practice related review questions',
-    description: 'Reinforce this visual pattern with mixed clinical microbiology questions.'
+    to: `${STUDY_QUIZ_PATH}?category=${discipline}`,
+    label: `Practice ${visualDisciplineLabels[discipline].toLowerCase()} questions`,
+    description: 'Reinforce this visual pattern with review questions from the same subject.'
   };
 }
 

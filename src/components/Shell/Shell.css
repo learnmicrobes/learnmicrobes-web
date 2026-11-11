@@ -619,6 +619,30 @@
   text-underline-offset: 0.18rem;
 }
 
+/* The envelope reads out the address instead of hiding it behind a click, and
+   does it inside the connect row so the footer keeps its height. */
+.lm-footer-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  color: rgba(244, 239, 228, 0.9);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.lm-footer-email:hover,
+.lm-footer-email:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
+.lm-footer-email i {
+  font-size: 1rem;
+}
+
 .lm-footer-note {
   display: none;
   margin: 0;
@@ -765,6 +789,24 @@ body.dark-mode .lm-footer {
   }
 
   .lm-footer-support-text {
+    display: none;
+  }
+
+  /* Same reasoning as the heart: the envelope becomes one more round button,
+     and the address itself stays reachable on the Privacy page. */
+  .lm-footer-email {
+    width: 38px;
+    min-height: 38px;
+    height: 38px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .lm-footer-email i {
+    font-size: 0.92rem;
+  }
+
+  .lm-footer-email-text {
     display: none;
   }
 

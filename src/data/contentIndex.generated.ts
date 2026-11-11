@@ -945,5 +945,95 @@ export const visualIndex: ContentIndexEntry[] = [
     "slug": "taenia-scolex-comparison",
     "title": "Taenia Scolex Comparison: T. solium vs. T. saginata",
     "summary": "Bench-card comparison of Taenia solium (pork tapeworm) and T. saginata (beef tapeworm) scoleces: T. solium has 4 suckers + rostellum with 2 rows of hooks (armed); T. saginata has 4 suckers only, NO rostellum, NO hooks (unarmed). Critical distinction for cysticercosis risk assessment."
+  },
+  {
+    "slug": "balantioides-coli-trophozoite-cyst",
+    "title": "Balantioides coli (Balantidium coli): Ciliated Trophozoite and Cyst",
+    "summary": "Original bench-card visuals for recognizing Balantioides coli, formerly Balantidium coli, in stool: a very large ciliated trophozoite with a kidney-shaped macronucleus, and a round thick-walled cyst."
+  },
+  {
+    "slug": "free-living-amoebae-naegleria-acanthamoeba",
+    "title": "Free-Living Amoebae: Naegleria fowleri and Acanthamoeba",
+    "summary": "Original bench-card visuals for the free-living amoebae a lab must not miss: Naegleria fowleri trophozoites in CSF, and Acanthamoeba trophozoites and double-walled cysts in corneal or tissue specimens."
+  },
+  {
+    "slug": "nonpathogenic-amoebae-cyst-comparison",
+    "title": "Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii",
+    "summary": "Original comparison visuals for the three commensal amoeba cysts students confuse with Entamoeba histolytica: Entamoeba coli with up to eight nuclei, tiny Endolimax nana with four blot-like karyosomes, and Iodamoeba butschlii with its large glycogen vacuole."
+  },
+  {
+    "slug": "chilomastix-mesnili-cyst-trophozoite",
+    "title": "Chilomastix mesnili: Lemon-Shaped Cyst and Trophozoite",
+    "summary": "Original bench-card visuals for Chilomastix mesnili, a nonpathogenic intestinal flagellate: a small lemon-shaped cyst with an anterior knob, and a pear-shaped trophozoite with a spiral groove and a prominent cytostome."
+  },
+  {
+    "slug": "plasmodium-vivax-smear",
+    "title": "Plasmodium vivax: Thin Blood Smear",
+    "summary": "Original bench-card visuals for recognizing Plasmodium vivax on a Giemsa-stained thin smear: enlarged red cells, Schuffner dots, ameboid trophozoites, schizonts with 12-24 merozoites, and round gametocytes."
+  },
+  {
+    "slug": "plasmodium-malariae-band-form",
+    "title": "Plasmodium malariae: Band Form and Rosette Schizont",
+    "summary": "Original bench-card visuals for recognizing Plasmodium malariae on a thin smear: normal-size or small red cells, band-form trophozoites, rosette schizonts with 6-12 merozoites, and coarse dark pigment."
+  },
+  {
+    "slug": "plasmodium-ovale-smear",
+    "title": "Plasmodium ovale: Oval Fimbriated Red Cells",
+    "summary": "Original bench-card visuals for recognizing Plasmodium ovale on a thin smear: slightly enlarged oval red cells with ragged edges, early Schuffner dots, compact trophozoites, and schizonts with about 8 merozoites."
+  },
+  {
+    "slug": "microsporidia-modified-trichrome",
+    "title": "Microsporidia: Spores on Modified Trichrome Stain",
+    "summary": "Original bench-card visuals for recognizing microsporidia spores in stool on a modified trichrome stain: tiny pink-red oval spores, some with a belt-like stripe, compared with larger budding yeast."
+  },
+  {
+    "slug": "sarcoptes-scabiei-skin-scraping",
+    "title": "Sarcoptes scabiei: Mite, Eggs, and Scybala in Skin Scrapings",
+    "summary": "Original bench-card visuals for reading a skin scraping for scabies: the round eight-legged Sarcoptes scabiei mite, its oval eggs, and brown fecal pellets (scybala)."
+  },
+  {
+    "slug": "lice-pediculus-phthirus-comparison",
+    "title": "Human Lice: Pediculus humanus and Phthirus pubis",
+    "summary": "Original comparison visuals for identifying human lice submitted to the lab: the elongated head or body louse, the broad crab louse with enlarged claws, and a nit cemented to a hair shaft."
+  },
+  {
+    "slug": "pneumocystis-jirovecii-gms",
+    "title": "Pneumocystis jirovecii: Cysts on GMS and Trophic Forms on Giemsa",
+    "summary": "Original bench-card visuals for recognizing Pneumocystis jirovecii in respiratory specimens: cup-shaped and crescent cysts on silver stain, and clusters of trophic forms in foamy material on Giemsa."
+  },
+  {
+    "slug": "candida-cornmeal-agar-morphology",
+    "title": "Candida on Cornmeal Agar: Species Morphology Comparison",
+    "summary": "Original comparison visuals for reading yeast morphology on cornmeal agar with Tween 80: Candida albicans chlamydospores, Candida tropicalis blastoconidia along long pseudohyphae, Candida parapsilosis fine curved pseudohyphae, and Candida glabrata with yeast cells only."
+  },
+  {
+    "slug": "malassezia-furfur-koh",
+    "title": "Malassezia furfur: Spaghetti and Meatballs on KOH",
+    "summary": "Original bench-card visuals for recognizing Malassezia in skin scrapings and culture: short curved hyphae with clusters of round yeast cells on a KOH preparation, and small bottle-shaped yeast with a collarette."
+  },
+  {
+    "slug": "mucorales-genus-comparison",
+    "title": "Mucorales Comparison: Rhizopus, Mucor, and Lichtheimia",
+    "summary": "Original comparison visuals for separating the common Mucorales genera in culture by one feature students can see on a tease or tape preparation: whether rhizoids are present and where they sit."
+  },
+  {
+    "slug": "arthroconidia-comparison-geotrichum-coccidioides-trichosporon",
+    "title": "Arthroconidia Comparison: Coccidioides, Geotrichum, and Trichosporon",
+    "summary": "Original comparison visuals for three fungi that form arthroconidia: Coccidioides with alternating barrel-shaped cells, Geotrichum with consecutive rectangular cells, and Trichosporon with arthroconidia plus budding blastoconidia."
+  },
+  {
+    "slug": "tissue-yeast-size-comparison",
+    "title": "Yeast Forms in Tissue: Size and Budding Comparison",
+    "summary": "Original comparison visuals for the systemic fungi as they appear in tissue and body fluids: small intracellular Histoplasma, encapsulated Cryptococcus, broad-based budding Blastomyces, and the large Coccidioides spherule."
+  },
+  {
+    "slug": "trichophyton-species-comparison",
+    "title": "Trichophyton Comparison: T. rubrum, T. mentagrophytes, T. tonsurans",
+    "summary": "Original comparison visuals for the three Trichophyton species most often asked about: teardrop microconidia along the hyphae in T. rubrum, grape-like clusters and spiral hyphae in T. mentagrophytes, and microconidia of mixed sizes in T. tonsurans."
+  },
+  {
+    "slug": "hair-invasion-ectothrix-endothrix",
+    "title": "Dermatophyte Hair Invasion: Ectothrix, Endothrix, and Favus",
+    "summary": "Original bench-card visuals for reading a KOH preparation of an infected hair: arthroconidia forming a sheath outside the shaft (ectothrix), arthroconidia packed inside the shaft (endothrix), and hyphae with air spaces (favus)."
   }
 ];

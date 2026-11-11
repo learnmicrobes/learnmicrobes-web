@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SUPPORT_EMAIL } from '../../config/contact';
 import './FeedbackModal.css';
 
 interface FeedbackModalProps {
@@ -12,7 +13,7 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({ onClose }) => {
     e.preventDefault();
     const subject = encodeURIComponent('Learn Microbes Feedback');
     const body = encodeURIComponent(message);
-    const mailto = `mailto:learnmicrobes@outlook.com?subject=${subject}&body=${body}`;
+    const mailto = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
     window.location.href = mailto;
   };
 
