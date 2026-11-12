@@ -24,6 +24,7 @@
 .visual-atlas-hero,
 .visual-board,
 .visual-panel,
+.visual-photo-reference,
 .visual-takeaways,
 .visual-index-card {
   border: 1px solid var(--va-border);
@@ -77,6 +78,14 @@
   max-width: 660px;
   margin: 0;
   font-size: var(--text-md);
+}
+
+/* Synonym line. It sits between the title and the summary because a student
+   who knows the organism under a different name needs to recognise the page
+   before they read anything else on it. */
+.visual-atlas-hero p.visual-also-called {
+  margin: 0 0 0.5rem;
+  color: var(--va-muted);
 }
 
 .visual-hero-actions {
@@ -935,6 +944,15 @@
   text-align: left;
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-card {
+  grid-column: auto;
+  gap: 0.65rem;
+  max-width: none;
+  padding: 0.85rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1);
+}
+
 .mycology-recognition-card-id {
   position: absolute;
   top: 1rem;
@@ -952,10 +970,23 @@
   font-weight: 600;
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-card-id {
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  font-size: var(--text-sm);
+}
+
 .mycology-recognition-heading {
   display: grid;
   gap: 0.35rem;
   padding-right: 2.4rem;
+}
+
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-heading {
+  gap: 0.16rem;
+  padding-right: 1.9rem;
 }
 
 .mycology-recognition-heading span {
@@ -969,12 +1000,20 @@
   text-transform: uppercase;
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-heading span {
+  font-size: var(--text-xs);
+}
+
 .mycology-recognition-heading strong {
   color: #10212b;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(2.3rem, 8vw, 4.2rem);
   font-weight: 500;
   line-height: 1.1;
+}
+
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-heading strong {
+  font-size: clamp(1.55rem, 4vw, 2.2rem);
 }
 
 .mycology-recognition-image,
@@ -998,11 +1037,24 @@
   box-shadow: inset 0 0 0 1px rgba(36, 92, 105, 0.12), 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-image img {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(36, 92, 105, 0.12), 0 6px 14px rgba(15, 23, 42, 0.1);
+}
+
 .mycology-recognition-card .mycology-recognition-differentiator {
   color: #143f46;
   font-size: clamp(1.3rem, 4vw, 1.85rem);
   font-weight: 600;
   line-height: 1.25;
+}
+
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-card .mycology-recognition-differentiator {
+  min-height: 0;
+  color: var(--primary-strong);
+  font-size: var(--text-md);
+  text-align: center;
 }
 
 .mycology-recognition-card .mycology-recognition-note {
@@ -1015,6 +1067,13 @@
   text-align: left;
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-card .mycology-recognition-note {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.35;
+  text-align: center;
+}
+
 .mycology-recognition-tip {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -1024,6 +1083,12 @@
   border: 1px solid rgba(103, 135, 102, 0.24);
   border-radius: 16px;
   background: linear-gradient(135deg, rgba(238, 246, 235, 0.82), rgba(250, 249, 241, 0.9));
+}
+
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-tip {
+  gap: 0.55rem;
+  padding: 0.65rem;
+  border-radius: 8px;
 }
 
 .mycology-recognition-tip span {
@@ -1038,6 +1103,13 @@
   font-size: var(--text-xl);
 }
 
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-tip span {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 8px;
+  font-size: var(--text-md);
+}
+
 .mycology-recognition-tip p {
   max-width: none;
   margin: 0;
@@ -1046,6 +1118,11 @@
   font-weight: 500;
   line-height: 1.45;
   text-align: left;
+}
+
+.mycology-stage:not(.mycology-comparison-stage) .mycology-recognition-tip p {
+  font-size: var(--text-sm);
+  line-height: 1.35;
 }
 
 .mycology-structure-map {
@@ -1184,6 +1261,7 @@ body.dark-mode .visual-atlas-shell {
 body.dark-mode .visual-atlas-hero,
 body.dark-mode .visual-board,
 body.dark-mode .visual-panel,
+body.dark-mode .visual-photo-reference,
 body.dark-mode .visual-takeaways,
 body.dark-mode .visual-index-card,
 body.dark-mode .visual-atlas-controls,
@@ -1379,6 +1457,7 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
   .visual-atlas-hero,
   .visual-board,
   .visual-panel,
+  .visual-photo-reference,
   .visual-takeaways,
   .visual-index-card,
   .visual-atlas-controls,
@@ -1716,4 +1795,101 @@ body.dark-mode .visual-signup-actions a {
   .visual-alpha-bar .visual-alpha-jump a {
     flex: 0 0 auto;
   }
+}
+
+/* ---------- Real-specimen reference ---------- */
+/* Sits under the drawn board: the diagram teaches the pattern, the photograph
+   shows it in a real field. Images are never annotated or cropped for meaning,
+   because the sources we borrow from allow reuse only without substantive
+   change. */
+.visual-photo-reference {
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.visual-photo-heading h2 {
+  margin: 0.3rem 0 0.4rem;
+  color: var(--va-ink);
+  font-size: var(--text-xl);
+  line-height: 1.25;
+}
+
+.visual-photo-heading p {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--va-muted);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+.visual-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.visual-photo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--va-border);
+  border-radius: var(--va-radius);
+  background: var(--va-card-strong);
+}
+
+/* Black matte: a microscope field is dark at the edges, and a white card around
+   it makes the specimen look washed out. */
+.visual-photo-card img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 6px;
+  background: #11181c;
+}
+
+.visual-photo-card figcaption {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.visual-photo-card figcaption strong {
+  color: var(--va-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.visual-photo-card figcaption p {
+  margin: 0;
+  color: var(--va-ink);
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+.visual-photo-credit,
+.visual-photo-terms {
+  color: var(--va-muted);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.visual-photo-terms {
+  margin: 0.9rem 0 0;
+}
+
+.visual-photo-credit a,
+.visual-photo-terms a {
+  color: var(--va-primary);
+  font-weight: 600;
+}
+
+body.dark-mode .visual-photo-card {
+  border-color: var(--va-border-strong);
+  background: rgba(255, 255, 255, 0.04);
 }

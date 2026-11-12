@@ -30,6 +30,7 @@ const GlobalSearch = lazyWithPreload(() => import("./components/Search/GlobalSea
 const AuthPage = lazyWithPreload(() => import("./components/Auth/AuthPage"));
 const AccountPage = lazyWithPreload(() => import("./components/Account/AccountPage"));
 const ASCPReviewPage = lazyWithPreload(() => import("./components/ASCPReview/ASCPReviewPage"));
+const ImageCredits = lazyWithPreload(() => import("./components/ImageCredits/ImageCredits"));
 const PracticePage = lazyWithPreload(() => import("./components/Practice/PracticePage"));
 
 // First path segment -> the lazy pages that route can render.
@@ -56,7 +57,8 @@ const pagesBySection: Record<string, Array<{ preload: () => Promise<unknown> }>>
   "study-quiz": [StudyQuiz],
   "case-study-simulator": [CaseStudySimulator],
   flashcards: [Flashcards],
-  "certification-study-paths": [CertificationStudyPaths]
+  "certification-study-paths": [CertificationStudyPaths],
+  "image-credits": [ImageCredits]
 };
 
 /** Downloads the code for the page at `pathname`. Resolves immediately for eager pages. */
@@ -102,6 +104,7 @@ export default function AppRoutes() {
         <Route path="case-study-simulator" element={<CaseStudySimulator />} />
         <Route path="flashcards" element={<Flashcards />} />
         <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
+        <Route path="image-credits" element={<ImageCredits />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -24,16 +24,44 @@ export type TubeVisual = {
   benchTip?: string;
 };
 
+/**
+ * A real clinical image shown beside the drawn board. Every field below the
+ * caption exists because reusing someone else's image carries conditions: the
+ * source has to be named, the licence stated, and the original reachable.
+ * Nothing goes in here that we have not confirmed the terms for.
+ */
+export type AtlasPhoto = {
+  src: string;
+  alt: string;
+  /** What the student should actually find in this frame. */
+  caption: string;
+  /** The stage or tube on the board this photo matches. */
+  stageLabel: string;
+  /** Rendered under the image, verbatim. */
+  credit: string;
+  license: string;
+  /** The page the image is published on, free of charge. */
+  sourceUrl: string;
+};
+
 export type AtlasPage = {
   slug: string;
   title: string;
   eyebrow: string;
   summary: string;
+  /**
+   * Other valid names for the same organism, shown under the title. Students
+   * meet the synonyms in different textbooks and sources, and not knowing they
+   * are one organism costs them marks.
+   */
+  alsoCalled?: string[];
   boardTitle: string;
   boardNote: string;
   ariaLabel: string;
   visualType: 'lia' | 'utilization' | 'disk-susceptibility' | 'esculin-hydrolysis' | 'fermentation' | 'flagella-stain' | 'gelatin-hydrolysis' | 'growth-temperature' | 'hippurate-hydrolysis' | 'indole-production' | 'lap-test' | 'litmus-milk' | 'bile-esculin' | 'bile-solubility' | 'butyrate-disk' | 'camp-test' | 'catalase' | 'cetrimide' | 'citrate' | 'coagulase' | 'decarboxylase' | 'dnase' | 'mrvp' | 'microdase' | 'motility' | 'mrs-broth' | 'mug-test' | 'nitrate-reduction' | 'nitrite-reduction' | 'onpg-test' | 'optochin-test' | 'oxidase-test' | 'of-medium' | 'phenylalanine-deaminase' | 'pyr-test' | 'pyruvate-broth' | 'salt-tolerance' | 'spot-indole' | 'tsi-test' | 'urease-test' | 'xv-factor-test' | 'microscope-giardia' | 'microscope-cryptosporidium' | 'microscope-entamoeba' | 'microscope-trichomonas' | 'microscope-enterobius' | 'microscope-strongyloides' | 'microscope-hookworm' | 'microscope-trichuris' | 'microscope-plasmodium' | 'microscope-babesia' | 'microscope-trypanosoma' | 'microscope-toxoplasma' | 'microscope-leishmania' | 'microscope-ascaris' | 'microscope-trichostrongylus' | 'microscope-trichinella' | 'microscope-microfilaria' | 'microscope-taenia-egg' | 'microscope-paragonimus' | 'microscope-schistosoma' | 'microscope-hymenolepis' | 'microscope-diphyllobothrium' | 'microscope-echinococcus' | 'microscope-plasmodium-panel' | 'microscope-cyclospora-cystoisospora' | 'microscope-entamoeba-panel' | 'microscope-operculated-eggs' | 'microscope-blastocystis' | 'microscope-dientamoeba' | 'microscope-clonorchis' | 'microscope-fasciola' | 'microscope-dipylidium' | 'microscope-taenia-scolex' | 'mycology-mucorales' | 'mycology-aspergillus-fumigatus' | 'mycology-histoplasma' | 'mycology-blastomyces' | 'mycology-coccidioides' | 'mycology-dermatophyte-panel' | 'mycology-candida-germ-tube' | 'mycology-cryptococcus' | 'mycology-sporothrix' | 'mycology-paracoccidioides' | 'mycology-fusarium' | 'mycology-penicillium-talaromyces' | 'mycology-scopulariopsis' | 'mycology-paecilomyces' | 'mycology-scedosporium' | 'mycology-trichosporon' | 'mycology-dematiaceous-panel' | 'mycology-aspergillus-comparison' | 'mycology-sclerotic-bodies' | 'mycology-bipolaris-exserohilum' | 'mycology-cladosporium' | 'mycology-chromo-agents' | 'mycology-exophiala' | 'virology-cpe-panel' | 'virology-herpesvirus-cpe' | 'virology-cmv-inclusion' | 'virology-respiratory-naat' | 'virology-hepatitis-b-serology' | 'virology-hiv-screening' | 'virology-em-morphology' | 'microscope-balantidium' | 'microscope-free-living-amoebae' | 'microscope-commensal-amoebae' | 'microscope-chilomastix' | 'microscope-plasmodium-vivax' | 'microscope-plasmodium-malariae' | 'microscope-plasmodium-ovale' | 'microscope-microsporidia' | 'microscope-sarcoptes' | 'microscope-lice' | 'mycology-pneumocystis' | 'mycology-candida-cornmeal' | 'mycology-malassezia' | 'mycology-mucorales-comparison' | 'mycology-arthroconidia-comparison' | 'mycology-tissue-yeast-comparison' | 'mycology-trichophyton-comparison' | 'mycology-hair-invasion';
   tubes: TubeVisual[];
+  /** Real-specimen images paired with the drawn board. */
+  photoReferences?: AtlasPhoto[];
   readoutTitle: string;
   readoutRows: string[][];
   trapTitle: string;
@@ -3484,14 +3512,24 @@ export const atlasPages: AtlasPage[] = [
         label: 'Alternaria',
         name: 'Muriform conidia with a beak',
         colors: { slant: '#e6e0d4', butt: '#7a6a4a', base: '#3f3320' },
-        note: 'Conidia are muriform, divided by both crosswise and lengthwise septa, and taper into a beak-like extension. Chains often form in branching arrangements.'
+        note: 'Conidia are muriform, divided by both crosswise and lengthwise septa, and taper into a beak-like extension. Chains often form in branching arrangements.',
+        recognitionImage: {
+          src: '/visual-atlas/mycology/dematiaceous/alternaria-recognition-v01.webp?v=1',
+          alt: 'Lactophenol cotton blue tape-prep style educational recognition image of Alternaria showing septate hyphae and beaked muriform conidia.'
+        },
+        benchTip: 'Confirm the pattern by finding both the beak and lengthwise septa.'
       },
       {
         id: 'B',
         label: 'Curvularia',
         name: 'Curved conidia, swollen central cell',
         colors: { slant: '#e4ddd0', butt: '#806c48', base: '#42321c' },
-        note: 'Conidia are curved by an enlarged central cell that bends the conidium. Cross septa divide it, but there are no lengthwise septa and no beak.'
+        note: 'Conidia are curved by an enlarged central cell that bends the conidium. Cross septa divide it, but there are no lengthwise septa and no beak.',
+        recognitionImage: {
+          src: '/visual-atlas/mycology/dematiaceous/curvularia-recognition-v01.webp?v=1',
+          alt: 'Lactophenol cotton blue tape-prep style educational recognition image of Curvularia showing curved conidia with swollen darker central cells.'
+        },
+        benchTip: 'The swollen central cell creates the curve; do not call it Alternaria without a beak and muriform septa.'
       }
     ],
     readoutTitle: 'Dematiaceous comparison anchors',
@@ -4367,6 +4405,7 @@ export const atlasPages: AtlasPage[] = [
     title: 'Giardia lamblia: Trophozoite and Cyst',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Giardia trophozoite and cyst morphology in wet preparations and stained stool concentrates, including median body placement and nuclear arrangement.',
+    alsoCalled: ['Giardia duodenalis', 'Giardia intestinalis'],
     boardTitle: 'Giardia lamblia: trophozoite and cyst',
     boardNote: 'Trophozoite (en face): bilateral symmetry, paired nuclei ("owl eyes"), two comma-shaped median bodies, ventral sucking disc. Lateral view: "shepherd\'s crook" shape. Cyst: oval, up to 4 nuclei, retracted curved axonemes.',
     ariaLabel: 'Illustrated Giardia lamblia trophozoite showing bilateral symmetry and paired nuclei, and cyst form showing four nuclei with retracted axonemes',
@@ -4385,6 +4424,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Oval cyst, curved axoneme fibrils on iodine',
         colors: { slant: '#e8d48a', butt: '#c49a3a', base: '#5c3210' },
         note: '8-14 um oval. Mature: 4 nuclei; immature: 1-2. Curved axoneme fibrils visible on iodine stain. Chlorine-resistant, environmentally stable.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/giardia-trophozoite-trichrome-cdc-dpdx.jpg',
+        alt: 'Giardia duodenalis trophozoite on a trichrome-stained stool smear, showing the pear shape, paired anterior nuclei and curved median bodies.',
+        caption: 'Trichrome smear. The two anterior nuclei and the curved median bodies behind them are the pair of features no other intestinal protozoan shows together.',
+        stageLabel: 'Trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/giardiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/giardia-cyst-iodine-cdc-dpdx.jpg',
+        alt: 'Giardia duodenalis cyst in an iodine-stained wet mount, showing the oval cyst wall, internal nuclei and curved axoneme fibrils.',
+        caption: 'Iodine wet mount. Look for the oval wall with a clear gap beneath it, the nuclei pushed toward one end, and the curved fibrils crossing the body.',
+        stageLabel: 'Cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/giardiasis/index.html'
       }
     ],
     readoutTitle: 'What to look for by stage',
@@ -4448,6 +4507,26 @@ export const atlasPages: AtlasPage[] = [
         note: '3-8 um, non-acid-fast: retains green counterstain. May bud or form pseudohyphae. A slide with only green structures = no Cryptosporidium.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/cryptosporidium-oocyst-acidfast-cdc-dpdx.jpg',
+        alt: 'Cryptosporidium oocysts stained bright pink-red by modified acid-fast against a blue-green counterstained field.',
+        caption: 'Modified acid-fast. The oocysts hold the carbol fuchsin and sit bright pink-red against the blue-green background. At 4 to 6 um they are smaller than anything else in the field that stains red.',
+        stageLabel: 'Oocyst, modified acid-fast',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/cryptosporidiosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/cryptosporidium-oocyst-dic-cdc-dpdx.jpg',
+        alt: 'Six Cryptosporidium oocysts in an unstained wet mount under differential interference contrast, with internal sporozoites visible.',
+        caption: 'Unstained wet mount under DIC. Round, 4 to 6 um, with the curved sporozoites visible inside the wall. This is the size and shape you are hunting for before any stain goes on.',
+        stageLabel: 'Oocyst, unstained wet mount',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/cryptosporidiosis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for on modified acid-fast stain',
     readoutRows: [
       ['Pink-red round structures, 4-6 um', 'Cryptosporidium oocysts (positive)', 'Staining intensity varies on the same slide - scan multiple fields before calling negative'],
@@ -4507,6 +4586,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Round cyst, blunt chromatoid bars',
         colors: { slant: '#e8d890', butt: '#c4a040', base: '#5c3210' },
         note: '10-20 um round. Mature: 4 nuclei with central karyosome, fine even chromatin. Chromatoidal bars: smooth blunt ends (vs. E. coli: splintered, pointed). Iodine stain shows glycogen mass in immature cysts.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-trophozoite-rbc-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba histolytica trophozoite on a trichrome-stained stool smear, containing dark ingested erythrocytes.',
+        caption: 'Trichrome smear. The dark inclusions packed inside the amoeba are swallowed red cells. On morphology alone that is the one finding that separates E. histolytica from the identical-looking E. dispar.',
+        stageLabel: 'Trophozoite with ingested red cells',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba histolytica cyst on a trichrome-stained stool smear, showing nuclei with small central karyosomes.',
+        caption: 'Trichrome smear. Count nuclei across focal planes rather than in one: a mature cyst has four, each with a small central karyosome and fine, evenly spread peripheral chromatin.',
+        stageLabel: 'Cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html'
       }
     ],
     readoutTitle: 'What to look for by stage',
@@ -4631,6 +4730,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Older or post-hatch eggs lose internal larval detail and the shell may appear wrinkled or collapsed. Still D-shaped in outline. Distinction from fresh egg is primarily internal content - shell outline persists. Correct collection timing (early morning, before bathing) maximizes fresh egg yield.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/enterobius-eggs-tape-prep-cdc-dpdx.jpg',
+        alt: 'A dense cluster of Enterobius vermicularis eggs collected on a cellulose tape preparation.',
+        caption: 'Cellulose tape prep from the perianal skin, which is how this one is actually found. Stool is the wrong specimen. Note how many eggs a single positive tape can carry.',
+        stageLabel: 'Eggs on a tape prep',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/enterobiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/enterobius-egg-wetmount-cdc-dpdx.jpg',
+        alt: 'A single Enterobius vermicularis egg in a wet mount, oval with one side flattened.',
+        caption: 'One egg up close. Oval with one side flattened and the other curved, so it looks slightly lopsided. That asymmetry is the feature to hold on to.',
+        stageLabel: 'Single egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/enterobiasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for on tape prep',
     readoutRows: [
       ['D-shaped egg, one flat side', 'Enterobius vermicularis', 'Asymmetric shape is pathognomonic - no other intestinal helminth egg has this morphology'],
@@ -4688,6 +4807,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Notched tail, ~550 um, infective stage',
         colors: { slant: '#d8e8d0', butt: '#4a7848', base: '#1a3810' },
         note: '~550 um. Infective stage - develops from rhabditiform in soil or intestine (autoinfection). Notched tail (vs. hookworm filariform: pointed tail). No genital primordium. Finding filariform larvae in stool suggests hyperinfection - a clinical emergency in immunocompromised patients.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/strongyloides-rhabditiform-larva-cdc-dpdx.jpg',
+        alt: 'A Strongyloides stercoralis rhabditiform larva in a wet mount, with arrows added by the source marking the short buccal cavity and the prominent genital primordium.',
+        caption: 'Wet mount. The arrows are the source’s own: they mark the short buccal cavity at the head and the large genital primordium partway down. Those two features separate this from a hookworm larva.',
+        stageLabel: 'Rhabditiform larva',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/strongyloidiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/strongyloides-filariform-larva-cdc-dpdx.jpg',
+        alt: 'A Strongyloides stercoralis filariform larva in a wet mount, long and slender with a notched tail.',
+        caption: 'Wet mount, no markings. The infective stage: longer, slimmer, with no obvious buccal cavity and a notched tail at the end.',
+        stageLabel: 'Filariform larva',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/strongyloidiasis/index.html'
       }
     ],
     readoutTitle: 'What to look for by larval stage',
@@ -4749,6 +4888,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'If stool is not examined fresh, hookworm eggs embryonate and may hatch, releasing rhabditiform larvae that mimic Strongyloides. Key: fresh hookworm stool shows morula (not larvae). Finding larvae in fresh stool (not old specimen) = Strongyloides. Refrigerate stool if processing is delayed.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/hookworm-egg-wetmount-cdc-dpdx.jpg',
+        alt: 'A hookworm egg in an unstained wet mount, thin-shelled with a multicelled morula inside and a clear space under the shell.',
+        caption: 'Unstained wet mount. Thin, smooth, colourless shell with a clear gap under it and a ball of four to eight cells inside. Hookworm species cannot be told apart on the egg.',
+        stageLabel: 'Egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hookworm/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/hookworm-rhabditiform-larva-cdc-dpdx.jpg',
+        alt: 'A hookworm rhabditiform larva in a wet preparation.',
+        caption: 'Wet preparation. Larvae appear when a stool sits too long before examination, and a hookworm larva has a long buccal cavity, unlike the short one in Strongyloides.',
+        stageLabel: 'Rhabditiform larva',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hookworm/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in fresh stool',
     readoutRows: [
       ['Oval, thin colorless shell, 55-75 um', 'Hookworm egg', 'Thin shell + clear space between shell and morula is the bench clue; size distinguishes from Strongyloides (no eggs in stool)'],
@@ -4808,6 +4967,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'In older or soil-derived specimens, the single cell develops into a fully formed larva. Bipolar plugs remain intact. The barrel outline and plug morphology are unchanged regardless of internal development stage - shape alone identifies this egg. Embryonated eggs are infective; handle with standard precautions.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/trichuris-egg-typical-cdc-dpdx.jpg',
+        alt: 'Trichuris trichiura egg in a wet mount, barrel-shaped with a clear polar plug at each end.',
+        caption: 'Wet mount. The barrel outline with a clear plug at each end is unmistakable once you have seen it, and the plugs sit flush rather than protruding.',
+        stageLabel: 'Typical egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichuriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichuris-egg-atypical-cdc-dpdx.jpg',
+        alt: 'An atypical Trichuris trichiura egg in a wet mount, distorted in shape with irregular polar plugs.',
+        caption: 'Wet mount. The same species, distorted. Atypical eggs turn up in treated patients and in heavy infections, so an odd shape is not a reason to call it something else.',
+        stageLabel: 'Atypical egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichuriasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
       ['Barrel (football) shape', 'Trichuris trichiura', 'Pathognomonic among intestinal helminths - no other common egg has this symmetric barrel outline'],
@@ -4865,6 +5044,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Banana (crescent) shape, pathognomonic for P. falciparum',
         colors: { slant: '#e8d0c8', butt: '#9848580', base: '#5a2028' },
         note: 'Banana/crescent shape is pathognomonic - no other Plasmodium species produces crescent gametocytes. Appear 7-15 days into infection. Macro- (female) and microgametocytes (male) differ slightly in color and chromatin. Their presence alongside ring forms confirms P. falciparum. Peripheral smear may show gametocytes even after ring forms clear with treatment.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-falciparum-rings-cdc-dpdx.jpg',
+        alt: 'Plasmodium falciparum ring-form trophozoites on a Giemsa-stained thin blood film, several small rings in normal-sized red cells.',
+        caption: 'Thin film, Giemsa. Small delicate rings, some carrying two chromatin dots, and more than one parasite in a single cell. Heavy parasitaemia with rings and nothing else points hard at falciparum.',
+        stageLabel: 'Ring forms',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-falciparum-gametocyte-cdc-dpdx.jpg',
+        alt: 'A banana-shaped Plasmodium falciparum gametocyte on a Giemsa-stained thin blood film.',
+        caption: 'Thin film. The banana-shaped gametocyte. Nothing else on a malaria film looks like this, so finding one settles the species even when the rings are ambiguous.',
+        stageLabel: 'Gametocyte',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-falciparum-maurers-clefts-cdc-dpdx.jpg',
+        alt: 'Plasmodium falciparum ring forms on a Giemsa-stained thin film, with coarse red Maurer\'s clefts in the host cell cytoplasm.',
+        caption: 'Thin film. The coarse red blotches in the infected cells are Maurer\'s clefts. Fewer and coarser than the fine, even Schuffner\'s stippling of vivax and ovale, and the host cells stay normal size.',
+        stageLabel: 'Maurer\'s clefts',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
       }
     ],
     readoutTitle: 'What to look for on thin blood smear',
@@ -4927,6 +5135,35 @@ export const atlasPages: AtlasPage[] = [
         note: '4 merozoites arranged in a cross (Maltese cross or tetrad) - pathognomonic for Babesia, never seen in Plasmodium. Not always visible; absence does not exclude Babesia. Scanning multiple low-power fields before calling negative is essential. When found, report as Babesia spp. and note the tetrad.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/babesia-rings-cdc-dpdx.jpg',
+        alt: 'Babesia ring forms in a Giemsa-stained thin blood smear, several small rings of varying size inside red cells.',
+        caption: 'Thin Giemsa smear. Several small rings in one cell, each a slightly different size and shape. Nothing brown or black anywhere, because Babesia makes no malaria pigment.',
+        stageLabel: 'Ring forms',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/babesiosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/babesia-tetrad-cdc-dpdx.jpg',
+        alt: 'Babesia tetrad in a Giemsa-stained thin blood smear, four merozoites joined in a cross inside one red cell.',
+        caption: 'The cross sits in the middle of the field: four merozoites joined at a point. One of these in a whole smear is enough to call Babesia.',
+        stageLabel: 'Tetrad (Maltese cross)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/babesiosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/babesia-extracellular-cdc-dpdx.jpg',
+        alt: 'Babesia in a Giemsa-stained thin blood smear showing ring forms lying free in the plasma outside red cells.',
+        caption: 'Look in the plasma between the cells, not only inside them. Rings lying free outside a red cell are a Babesia finding; Plasmodium does not do this.',
+        stageLabel: 'Ring forms',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/babesiosis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for on thin blood smear',
     readoutRows: [
       ['Tetrad (Maltese cross) - 4 merozoites in cross', 'Babesia - pathognomonic', 'Not always present; absence does not exclude Babesia; presence confirms species'],
@@ -4985,6 +5222,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Round amastigotes in macrophage, two dark dots',
         colors: { slant: '#e8dcd0', butt: '#6848a0', base: '#2c1858' },
         note: '1-4 um. Found intracellularly in cardiac muscle, smooth muscle, and macrophages during chronic Chagas disease. Round to oval, no external flagellum, small dark nucleus + bar-shaped kinetoplast side by side. Pseudocysts (nests of amastigotes) in cardiac tissue are the hallmark of chronic disease. Not typically found in blood smear - require tissue biopsy or PCR for diagnosis in chronic phase.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/tcruzi-trypomastigote-cshape-cdc-dpdx.jpg',
+        alt: 'Trypanosoma cruzi trypomastigote in a Giemsa-stained thin blood film, curved into a C between the red cells.',
+        caption: 'Thin Giemsa film at scanning power. The organism is the curved body lying between the red cells. Find the C first, then look for anything smaller.',
+        stageLabel: 'Trypomastigote',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trypanosomiasisamerican/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/tcruzi-trypomastigote-kinetoplast-cdc-dpdx.jpg',
+        alt: 'High magnification of a Trypanosoma cruzi trypomastigote showing the large dark posterior kinetoplast and undulating membrane.',
+        caption: 'The same stage at high power. The dark blob at the back end is the kinetoplast, and its size is what separates T. cruzi from T. brucei.',
+        stageLabel: 'Trypomastigote',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trypanosomiasisamerican/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/tcruzi-amastigotes-heart-cdc-dpdx.jpg',
+        alt: 'Trypanosoma cruzi amastigotes packed inside a cardiac muscle fibre in a hematoxylin and eosin stained tissue section.',
+        caption: 'Heart muscle, H&E. A pseudocyst: a nest of round amastigotes packed inside one muscle fibre. This is chronic Chagas, and it is a tissue finding, not a blood one.',
+        stageLabel: 'Amastigote',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trypanosomiasisamerican/index.html'
       }
     ],
     readoutTitle: 'What to look for in blood film and tissue',
@@ -5046,6 +5312,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Tissue cyst: up to 100 um, thin but distinct wall, PAS-positive. Contains hundreds of bradyzoites (slow-multiplying form, chronic stage). Bradyzoites are morphologically similar to tachyzoites but smaller and within the cyst. Preferentially located in brain, retina, cardiac and skeletal muscle. Cysts persist lifelong; reactivate under immunosuppression (CD4 <100 cells/umL).'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/toxoplasma-tachyzoites-cdc-dpdx.jpg',
+        alt: 'Toxoplasma gondii tachyzoites in a Giemsa-stained smear of peritoneal fluid, crescent shaped with the nucleus toward the broad end.',
+        caption: 'Giemsa smear of peritoneal fluid. Each crescent is asymmetric: one end pointed, the other blunt, with the nucleus sitting toward the blunt end.',
+        stageLabel: 'Tachyzoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/toxoplasmosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/toxoplasma-tissue-cyst-brain-cdc-dpdx.jpg',
+        alt: 'Toxoplasma gondii tissue cyst in brain tissue stained with hematoxylin and eosin, filled with bradyzoites.',
+        caption: 'Brain tissue, H&E. The cyst is the round body filling the centre of the field, and the grain inside it is hundreds of bradyzoites.',
+        stageLabel: 'Tissue cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/toxoplasmosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/toxoplasma-tissue-cyst-unstained-cdc-dpdx.jpg',
+        alt: 'Unstained Toxoplasma gondii tissue cyst showing the thin cyst wall and densely packed bradyzoites.',
+        caption: 'The same structure unstained. With no colour to read, the thin wall and the packed bradyzoites inside are easier to make out.',
+        stageLabel: 'Tissue cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/toxoplasmosis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in stained preparations',
     readoutRows: [
       ['Crescent/banana shape, 4-8 um, nucleus at broad end', 'Toxoplasma tachyzoite', 'Giemsa or Wright stain shows pale blue cytoplasm and red nucleus; BAL or CSF are the most common diagnostic specimens'],
@@ -5105,6 +5400,44 @@ export const atlasPages: AtlasPage[] = [
         note: '15-25 um elongated body. Anterior kinetoplast. Single anterior free flagellum. This is the form found in the sand fly vector (Lutzomyia in New World; Phlebotomus in Old World) and in NNN (Novy-MacNeal-Nicolle) culture medium. Not found in tissue smears from patients. Identifying promastigotes in culture confirms Leishmania but species-level ID requires molecular methods or isoenzyme analysis.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/leishmania-amastigotes-giemsa-cdc-dpdx.jpg',
+        alt: 'Leishmania amastigotes in a Giemsa-stained tissue scraping, small round bodies in and around host macrophages.',
+        caption: 'Giemsa tissue scraping. The large purple cells are host macrophages, and the speckling in and around them is amastigotes. Each one carries two dark dots.',
+        stageLabel: 'Amastigote (LD body)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/leishmaniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/leishmania-amastigotes-touchprep-cdc-dpdx.jpg',
+        alt: 'Leishmania amastigotes in a Giemsa-stained touch preparation, one macrophage filled with organisms.',
+        caption: 'Touch prep, Giemsa. One macrophage is filled with amastigotes while the cells around it are empty. That is what a positive looks like at the bench.',
+        stageLabel: 'Amastigote (LD body)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/leishmaniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/leishmania-amastigotes-he-cdc-dpdx.jpg',
+        alt: 'Leishmania amastigotes in a skin biopsy stained with hematoxylin and eosin, lining the walls of vacuoles.',
+        caption: 'Skin biopsy, H&E. The amastigotes line the walls of the vacuoles in a ring. H&E shows you they are there; Giemsa is what shows the kinetoplast.',
+        stageLabel: 'Amastigote (LD body)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/leishmaniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/leishmania-promastigotes-culture-cdc-dpdx.jpg',
+        alt: 'Leishmania promastigotes from culture, elongated bodies with anterior flagella clustered into rosettes.',
+        caption: 'Culture, not patient tissue. Long bodies with a free flagellum, gathered into rosettes. You will not see this stage in a smear from a patient.',
+        stageLabel: 'Promastigote',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/leishmaniasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in tissue smears and biopsies',
     readoutRows: [
       ['Round 2-4 um organisms in macrophage cytoplasm', 'Leishmania amastigotes (LD bodies)', 'Giemsa on tissue impression smear or aspirate; bone marrow and spleen aspirate for visceral disease'],
@@ -5162,6 +5495,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Smooth surface or irregular elongated content',
         colors: { slant: '#ece4c0', butt: '#9a7028', base: '#50280a' },
         note: 'Decorticate: fertile egg that has lost its mammillated coat - oval, thick inner shell, smooth surface. Common after zinc sulfate flotation or mechanical processing. Infertile: more elongated (80-90 um), irregular outline, disorganized granular content - the most difficult Ascaris egg to recognize. Finding classic mammillated eggs in the same specimen is the best confirmation for decorticate and infertile forms.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/ascaris-egg-fertilized-cdc-dpdx.jpg',
+        alt: 'Fertilized Ascaris lumbricoides egg in a wet mount, oval with a thick shell and a bumpy outer coat.',
+        caption: 'Wet mount. Round to oval, thick-shelled, with the lumpy mammillated coat around the outside and a single dense cell filling the middle. This is the common form you will meet.',
+        stageLabel: 'Fertilized egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/ascariasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/ascaris-egg-unfertilized-cdc-dpdx.jpg',
+        alt: 'Unfertilized Ascaris lumbricoides egg in a wet mount, longer and narrower with a thin irregular coat and disorganised granular contents.',
+        caption: 'Wet mount. Longer, narrower, with a thinner and more irregular coat and coarse disorganised granules inside instead of one tidy cell. Same worm, and it still counts as a positive.',
+        stageLabel: 'Unfertilized egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/ascariasis/index.html'
       }
     ],
     readoutTitle: 'What to look for in stool',
@@ -5339,6 +5692,44 @@ export const atlasPages: AtlasPage[] = [
         name: 'Sheathed, nuclei to tail tip - diurnal periodicity',
         colors: { slant: '#f0e8d8', butt: '#907050', base: '#402010' },
         note: '250-300 um long. Sheath present and stains pink-red on Giemsa. Body nuclei extend continuously all the way to the tail tip - key differentiator. Diurnal periodicity (peak 10 am-2 pm); collect blood mid-day. Transmitted by Chrysops (deer fly) in Central/West Africa. Do NOT administer DEC or ivermectin without caution in high microfilaria burden - risk of encephalopathy.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/microfilaria-wbancrofti-whole-cdc-dpdx.jpg',
+        alt: 'Wuchereria bancrofti microfilaria in a Giemsa-stained thick blood smear, a gently curved thread among white cell nuclei.',
+        caption: 'Thick Giemsa smear. The whole microfilaria is a gently curved thread. The dark clumps scattered around it are white cell nuclei, not part of the worm.',
+        stageLabel: 'W. bancrofti',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/lymphaticfilariasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/microfilaria-wbancrofti-tail-cdc-dpdx.jpg',
+        alt: 'Close-up of the posterior end of a Wuchereria bancrofti microfilaria, with the column of nuclei stopping short of a clear tail tip.',
+        caption: 'The tail end of that same worm. Follow the column of nuclei down and watch where it stops: the tip itself stays clear. That is W. bancrofti.',
+        stageLabel: 'W. bancrofti',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/lymphaticfilariasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/microfilaria-loaloa-tail-nuclei-cdc-dpdx.jpg',
+        alt: 'Loa loa microfilaria in a Giemsa-stained thick blood smear, with nuclei continuing to the tip of the tail.',
+        caption: 'Loa loa for contrast, from the DPDx loiasis page. Here the nuclei keep going all the way to the end of the tail, with no clear tip.',
+        stageLabel: 'Loa loa',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/loiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/microfilaria-bmalayi-cdc-dpdx.jpg',
+        alt: 'Brugia malayi microfilaria in a Giemsa-stained thick blood smear showing two terminal nuclei separated by a gap.',
+        caption: 'Brugia malayi, the third pattern in the same family: nuclei run to the tail, but the last two sit apart at the very tip with a clear gap between them.',
+        stageLabel: 'B. malayi (comparison)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/lymphaticfilariasis/index.html'
       }
     ],
     readoutTitle: 'Microfilaria species - key discriminators',
@@ -5755,6 +6146,44 @@ export const atlasPages: AtlasPage[] = [
         note: 'RBC normal size or slightly smaller. No Schüffner dots. Band-form trophozoite: stretches across full width of RBC - pathognomonic for malariae. Rosette schizont: 6-12 merozoites arranged in a daisy-wheel around central pigment mass. Quartan fever (72h cycle). Low parasitemia. P. knowlesi mimics malariae on smear but causes rapidly severe disease - PCR required in Southeast Asia travelers.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-compare-falciparum-rings-cdc-dpdx.jpg',
+        alt: 'Plasmodium falciparum ring forms on a Giemsa-stained thin film, small rings in normal-sized red cells.',
+        caption: 'Small delicate rings, often several in one cell, in host cells of normal size. Some sit flat against the cell membrane as applique forms.',
+        stageLabel: 'P. falciparum rings',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-compare-vivax-rings-cdc-dpdx.jpg',
+        alt: 'A Plasmodium vivax ring form on a Giemsa-stained thin film, in a visibly enlarged pale red cell.',
+        caption: 'A larger ring in a host cell that is visibly enlarged and pale. At this stage the size of the cell tells you more than the shape of the ring.',
+        stageLabel: 'P. vivax rings',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-compare-malariae-rings-cdc-dpdx.jpg',
+        alt: 'A Plasmodium malariae ring form on a Giemsa-stained thin film, compact and thick in a normal-sized red cell.',
+        caption: 'A compact, thick-walled ring in a host cell of normal size or smaller. The cytoplasm looks denser than vivax at the same stage.',
+        stageLabel: 'P. malariae rings',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-compare-ovale-rings-cdc-dpdx.jpg',
+        alt: 'A Plasmodium ovale ring form on a Giemsa-stained thin film, in a slightly enlarged red cell.',
+        caption: 'A ring in a slightly enlarged cell. Ovale and vivax overlap heavily at ring stage; the oval outline and fimbriated edge come later, so do not commit on rings alone.',
+        stageLabel: 'P. ovale rings',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      }
+    ],
     readoutTitle: 'Species-level morphology differentiation guide',
     readoutRows: [
       ['Enlarged RBC + Schüffner dots + ameboid trophozoite', 'P. vivax', 'RBC enlargement is the first low-power clue; Schüffner dots visible on Giemsa in well-stained films'],
@@ -5814,6 +6243,35 @@ export const atlasPages: AtlasPage[] = [
         name: '25-30 um elongated oval, strongly acid-fast, single sporoblast',
         colors: { slant: '#d8e0d0', butt: '#d06040', base: '#602010' },
         note: '25-30 um, elongated oval (longer than wide). Usually strongly acid-fast (pink-red). Immature oocysts (most common in stool) contain a single round sporoblast. Mature oocysts contain 2 sporocysts. Larger than Cyclospora (~3x larger) - size is the primary bench differentiator. Immunocompromised patients (especially HIV/AIDS) are at highest risk for severe/disseminated disease. Sporadic in immunocompetent hosts in temperate regions.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/cyclospora-oocyst-acidfast-cdc-dpdx.jpg',
+        alt: 'Cyclospora cayetanensis oocysts on a modified acid-fast stain, one deeply stained and the surrounding oocysts unstained.',
+        caption: 'Modified acid-fast. Cyclospora stains unevenly: the oocyst at centre took the stain while those around it stayed clear. Variable uptake across 8 to 10 um spheres is the pattern, not a failed stain.',
+        stageLabel: 'Cyclospora oocyst, modified acid-fast',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/cyclosporiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/cyclospora-oocyst-uv-autofluorescence-cdc-dpdx.jpg',
+        alt: 'A Cyclospora cayetanensis oocyst autofluorescing as a bright blue ring under ultraviolet microscopy.',
+        caption: 'The same organism under UV, with no stain at all. Cyclospora autofluoresces as a blue ring, which is the fastest way to settle an equivocal modified acid-fast.',
+        stageLabel: 'Cyclospora oocyst, UV',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/cyclosporiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/cystoisospora-oocyst-acidfast-cdc-dpdx.jpg',
+        alt: 'A large ellipsoidal Cystoisospora belli oocyst on a modified acid-fast stain, containing a single sporoblast.',
+        caption: 'Modified acid-fast. Cystoisospora is in a different size class: a 25 to 30 um ellipse rather than a sphere, with the sporoblast inside. If it is long and oval, it is not Cyclospora.',
+        stageLabel: 'Cystoisospora belli oocyst, modified acid-fast',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/cystoisosporiasis/index.html'
       }
     ],
     readoutTitle: 'Modified acid-fast size and staining comparison',
@@ -5980,6 +6438,7 @@ export const atlasPages: AtlasPage[] = [
     title: 'Blastocystis hominis: Central Body, Granular, and Ameboid Forms',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for recognizing Blastocystis hominis in stool: the dominant central body form (large central vacuole, peripheral nuclei), granular form, and ameboid form; size range 6-40 um; clinical significance and report context.',
+    alsoCalled: ['Blastocystis sp.'],
     boardTitle: 'Blastocystis hominis: central body form and granular form',
     boardNote: 'Central body form (most common in stool): large central vacuole (takes up most of cell), 1-4 peripheral nuclei at the margin. Granular form: central vacuole filled with granules. Ameboid form: rare, irregular pseudopods. Size highly variable: 6-40 um. Modified trichrome or Giemsa for best detail. Clinical significance remains controversial - often considered commensal; treat only with clinical correlation.',
     ariaLabel: 'Illustrated Blastocystis hominis central body form showing large central vacuole with peripheral nuclei, and granular form with granule-filled center',
@@ -5998,6 +6457,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Central vacuole filled with metabolic or lipid granules',
         colors: { slant: '#e0dcc8', butt: '#788088', base: '#283040' },
         note: 'Central vacuole filled with granules (metabolic, lipid, or reproductive). Peripheral cytoplasm with 1-4 nuclei still visible at margins. May appear darker or denser than the classic central body form. Ameboid form (not shown): rare, irregular pseudopods, seen predominantly in immunocompromised hosts, may be associated with pathogenicity. Cyst form (not shown): small, ~3-10 um, thick wall, environmentally resistant - the infective stage.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/blastocystis-vacuolar-trichrome-cdc-dpdx.jpg',
+        alt: 'Blastocystis vacuolar forms on a trichrome-stained stool smear, with nuclei pushed to a thin peripheral rim.',
+        caption: 'Trichrome smear. The large central body fills the cell and pushes the nuclei out to a thin rim at the edge, where they stain purple. Permanent stain beats a wet mount here, because debris mimics this shape well.',
+        stageLabel: 'Vacuolar form, trichrome',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/blastocystis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/blastocystis-vacuolar-iodine-cdc-dpdx.jpg',
+        alt: 'Several Blastocystis vacuolar forms of differing sizes in an iodine-stained wet mount.',
+        caption: 'Iodine wet mount. Several forms in one field, varying widely in size. That variation within a single specimen is normal for Blastocystis and is not evidence of more than one organism.',
+        stageLabel: 'Vacuolar form, iodine wet mount',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/blastocystis/index.html'
       }
     ],
     readoutTitle: 'Blastocystis form recognition guide',
@@ -6059,6 +6538,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'No cyst stage - any cyst in specimen is another species',
         colors: { slant: '#d4e0cc', butt: '#487888', base: '#183050' },
         note: 'Dientamoeba fragilis has NO known cyst stage in humans - only trophozoites are found in stool. If cysts are seen in the same specimen, they belong to another organism (Giardia, Entamoeba, etc.). Finding only trophozoites and no cysts is consistent with Dientamoeba diagnosis. Transmission is not fully understood but proposed to involve Enterobius eggs as a protective vehicle. Recommend co-examination for Enterobius (perianal tape prep) when Dientamoeba is found.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/dientamoeba-binucleate-trichrome-cdc-dpdx.jpg',
+        alt: 'A pale-staining binucleate Dientamoeba fragilis trophozoite on a trichrome-stained smear, each karyosome fragmented into granules.',
+        caption: 'Trichrome smear. Note how pale it is: that is what makes D. fragilis easy to scan straight past. Two nuclei, each karyosome broken into separate chromatin granules rather than one solid dot.',
+        stageLabel: 'Binucleate trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/dientamoeba/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/dientamoeba-uninucleate-trichrome-cdc-dpdx.jpg',
+        alt: 'A uninucleate Dientamoeba fragilis trophozoite on a trichrome-stained smear.',
+        caption: 'Trichrome smear. Most trophozoites are binucleate, but a single nucleus is common and does not rule it out. There is no cyst stage to fall back on, so concentration methods miss this organism entirely.',
+        stageLabel: 'Uninucleate trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/dientamoeba/index.html'
       }
     ],
     readoutTitle: 'Dientamoeba fragilis trophozoite recognition guide',
@@ -6637,6 +7136,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Round to oval and filling most of the enlarged cell, with scattered pigment. Never banana shaped; a crescent gametocyte points to P. falciparum.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-vivax-rings-cdc-dpdx.jpg',
+        alt: 'Plasmodium vivax ring forms on a Giemsa-stained thin blood film, in host cells larger and paler than the surrounding cells.',
+        caption: 'Thin film, Giemsa. Large rings in cells already bigger and paler than their neighbours. The enlarged host cell is the first vivax clue, before you judge the parasite at all.',
+        stageLabel: 'Ring forms',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-vivax-trophozoite-cdc-dpdx.jpg',
+        alt: 'A Plasmodium vivax ameboid trophozoite in an enlarged red cell with Schuffner\'s stippling, Giemsa-stained thin film.',
+        caption: 'Thin film. The trophozoite sprawls ameboid-fashion inside an enlarged cell, with fine Schuffner\'s stippling across the cytoplasm. Vivax invades young cells, which is why the host cell swells.',
+        stageLabel: 'Ameboid trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-vivax-schizont-cdc-dpdx.jpg',
+        alt: 'A mature Plasmodium vivax schizont packed with merozoites on a Giemsa-stained thin blood film.',
+        caption: 'Thin film. A mature schizont crowded with merozoites, typically 12 to 24 of them. That is more than any other species you will meet on a routine film.',
+        stageLabel: 'Mature schizont',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      }
+    ],
     readoutTitle: 'Thin smear anchors',
     readoutRows: [
       ['Enlarged infected RBC', 'P. vivax or P. ovale', 'P. falciparum and P. malariae do not enlarge the cell'],
@@ -6703,6 +7231,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Round to oval, filling a red cell that stays normal in size. Abundant coarse dark pigment. It resembles a P. vivax gametocyte except that the host cell is not enlarged.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-malariae-band-form-cdc-dpdx.jpg',
+        alt: 'A Plasmodium malariae band-form trophozoite stretched across a normal-sized red cell with coarse dark pigment, Giemsa-stained thin film.',
+        caption: 'Thin film, Giemsa. The trophozoite stretched as a band straight across the cell, carrying coarse dark pigment. The host cell stays normal size or smaller, never enlarged.',
+        stageLabel: 'Band form trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-malariae-basket-schizont-cdc-dpdx.jpg',
+        alt: 'A Plasmodium malariae mature schizont with merozoites arranged around central pigment, Giemsa-stained thin film.',
+        caption: 'Thin film. A mature schizont with the merozoites set around a clump of central pigment, the rosette or basket arrangement. The count is low, usually 6 to 12.',
+        stageLabel: 'Basket schizont',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      }
+    ],
     readoutTitle: 'Thin smear anchors',
     readoutRows: [
       ['Normal or small infected RBC, no stippling', 'P. malariae or P. falciparum', 'Enlargement points to P. vivax or P. ovale'],
@@ -6760,6 +7308,26 @@ export const atlasPages: AtlasPage[] = [
         name: '6-14 merozoites, commonly 8',
         colors: { slant: '#f6ece6', butt: '#d88a86', base: '#5a2c5c' },
         note: 'The mature schizont has 6-14 merozoites, most often about 8, with a central pigment clump. It does not fill the cell as completely as a P. vivax schizont.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-ovale-trophozoite-cdc-dpdx.jpg',
+        alt: 'A compact Plasmodium ovale trophozoite in a slightly enlarged oval red cell with Schuffner\'s stippling, Giemsa-stained thin film.',
+        caption: 'Thin film, Giemsa. A compact trophozoite, not sprawling like vivax, in a cell that is slightly enlarged and often oval with Schuffner\'s stippling. Watch the cell edge: ovale cells frequently have a ragged, fimbriated margin.',
+        stageLabel: 'Trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/plasmodium-ovale-schizont-cdc-dpdx.jpg',
+        alt: 'A mature Plasmodium ovale schizont with merozoites around a clump of pigment in an oval host cell, Giemsa-stained thin film.',
+        caption: 'Thin film. Roughly 6 to 14 merozoites around a clump of pigment, in a host cell that is still oval. Fewer merozoites than vivax, in a cell that is less enlarged.',
+        stageLabel: 'Mature schizont',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html'
       }
     ],
     readoutTitle: 'P. ovale versus P. vivax anchors',

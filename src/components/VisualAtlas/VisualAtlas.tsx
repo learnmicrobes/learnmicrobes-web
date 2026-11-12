@@ -6493,6 +6493,11 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       <header className="visual-atlas-hero">
         <span className="visual-kicker">{disciplineKicker}</span>
         <h1>{page.title}</h1>
+        {page.alsoCalled && page.alsoCalled.length > 0 && (
+          <p className="visual-also-called">
+            Also called {page.alsoCalled.join(' or ')}. Same organism, different name depending on the source.
+          </p>
+        )}
         <p>{page.summary}</p>
         <div className="visual-hero-actions">
           {getDiscipline(page) === 'bacteriology' && (
@@ -6585,6 +6590,47 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
           })}
         </div>
       </section>
+
+      {page.photoReferences && page.photoReferences.length > 0 && (
+        <section className="visual-photo-reference" aria-labelledby="visual-photo-title">
+          <div className="visual-photo-heading">
+            <span className="visual-kicker">On a real slide</span>
+            <h2 id="visual-photo-title">What this looks like down the scope</h2>
+            <p>
+              The board above is drawn to isolate the pattern. These are clinical images of the same stages,
+              published as you see them, so you can find the pattern with everything else still in the field.
+            </p>
+          </div>
+          <div className="visual-photo-grid">
+            {page.photoReferences.map((photo) => (
+              <figure className="visual-photo-card" key={photo.src}>
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={300}
+                  height={300}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <strong>{photo.stageLabel}</strong>
+                  <p>{photo.caption}</p>
+                  <span className="visual-photo-credit">
+                    {photo.credit} | {photo.license} |{' '}
+                    <a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">
+                      Original
+                    </a>
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="visual-photo-terms">
+            Shown as published and free of charge from the source above, which does not endorse Learn Microbes.{' '}
+            <Link to="/image-credits">Full image credits</Link>
+          </p>
+        </section>
+      )}
 
       <section className="visual-panel">
         <span className="visual-kicker">What to look for</span>
