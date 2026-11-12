@@ -308,7 +308,6 @@ export default function PracticePage() {
             ))}
           </div>
         </div>
-        <p className="practice-level-note">{studyQuizDifficultyDescriptions[difficulty]}</p>
         <div className="practice-category-grid">
           {quickStartTiles.map((tile) => {
             const stainClass = subjectStainClass(tile.category);

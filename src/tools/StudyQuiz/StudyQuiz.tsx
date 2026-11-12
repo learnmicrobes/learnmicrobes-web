@@ -97,6 +97,9 @@ type LeaderboardRpcRow = {
 
 type LeaderboardScope = 'weekly' | 'allTime';
 
+// Room for the sticky site header when the takeaway scrolls to the top.
+// Keep in step with the scroll margins on .study-quiz-feedback.
+const REVEAL_TOP_CLEARANCE = 96;
 const QUIZ_STORAGE_KEY = 'learnmicrobes_study_quiz_state';
 const STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_streak';
 const BEST_STREAK_STORAGE_KEY = 'learnmicrobes_study_quiz_best_streak';
@@ -524,6 +527,11 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const hasAutoSwitchedLeaderboardScope = useRef(false);
   const hasTrackedQuizStart = useRef(false);
   const hasTrackedGuestGate = useRef(false);
+  const feedbackRef = useRef<HTMLDivElement | null>(null);
+  const actionsRef = useRef<HTMLDivElement | null>(null);
+  // Set only by a fresh answer, so stepping back to an answered question
+  // does not move the page.
+  const shouldRevealFeedback = useRef(false);
   const missedQuestionIds = useMemo(
     () => missedAttempts.map((attempt) => attempt.questionId),
     [missedAttempts]
@@ -901,12 +909,40 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     setReviewMissedOnly(false);
   };
 
+  // After an answer the takeaway renders below the choices, usually past the
+  // fold. The Next button is already on screen (the action bar is sticky), so
+  // bring the takeaway up to sit just above that bar; if it is too long to fit,
+  // show it from its first line instead.
+  useEffect(() => {
+    if (!selectedAnswer || !shouldRevealFeedback.current) {
+      return;
+    }
+
+    shouldRevealFeedback.current = false;
+    const feedback = feedbackRef.current;
+    const actions = actionsRef.current;
+
+    if (!feedback || !actions) {
+      return;
+    }
+
+    const behavior: ScrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    const fits = feedback.offsetHeight <= window.innerHeight - REVEAL_TOP_CLEARANCE - actions.offsetHeight - 16;
+
+    if (fits) {
+      feedback.scrollIntoView({ behavior, block: 'nearest' });
+    } else {
+      feedback.scrollIntoView({ behavior, block: 'start' });
+    }
+  }, [selectedAnswer]);
+
   const handleAnswer = (choice: string) => {
     if (!currentQuestion || isAnswered || isQuestionLockedForGuest) {
       return;
     }
 
     const isNewGuestAnswer = !user && !answeredIds.includes(currentQuestion.id);
+    shouldRevealFeedback.current = true;
     setSelectedAnswer(choice);
     setAnsweredIds((ids) => ids.includes(currentQuestion.id) ? ids : [...ids, currentQuestion.id]);
     if (isNewGuestAnswer) {
@@ -1329,6 +1365,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
 
               {isAnswered && (
                 <div
+                  ref={feedbackRef}
                   className={`study-quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`}
                   role="status"
                   aria-live="polite"
@@ -1343,7 +1380,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
                 </div>
               )}
 
-              <div className="study-quiz-actions">
+              <div className="study-quiz-actions" ref={actionsRef}>
                 <button type="button" onClick={handlePrevious} aria-label="Previous question">
                   Previous
                 </button>

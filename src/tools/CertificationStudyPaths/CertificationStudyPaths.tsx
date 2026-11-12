@@ -319,10 +319,7 @@ const PathCard: React.FC<PathCardProps> = ({ area, level, completed, highlighted
         <span className={`cert-status ${statusClass(area.status)}`}>{area.status}</span>
       </div>
     </div>
-    <p className="cert-area-focus">
-      <span>{level === 'M' ? 'M(ASCP) must know' : 'SM(ASCP) depth'}</span>
-      {level === 'M' ? area.mFocus : area.smFocus}
-    </p>
+    <p className="cert-area-focus">{level === 'M' ? area.mFocus : area.smFocus}</p>
     <div className="cert-tool-links" aria-label={`${area.title} Learn Microbes tools`}>
       {area.tools.map((tool) => (
         <button key={`${area.title}-${tool.label}`} type="button" onClick={() => onNavigate(tool.path)}>
@@ -500,6 +497,22 @@ const CertificationStudyPaths: React.FC = () => {
   }, [quizTarget]);
 
   useEffect(() => {
+    if (!quizTarget) {
+      return undefined;
+    }
+
+    // Guarded: React's development double-mount would otherwise stack two
+    // entries and swallow the first Back press.
+    if (!window.history.state?.lmCertQuiz) {
+      window.history.pushState({ ...window.history.state, lmCertQuiz: true }, '');
+    }
+    const handlePopState = () => finishQuizModal();
+    window.addEventListener('popstate', handlePopState);
+
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [quizTarget]);
+
+  useEffect(() => {
     if (!quizTarget && !isDiagnosticOpen) {
       return undefined;
     }
@@ -555,12 +568,35 @@ const CertificationStudyPaths: React.FC = () => {
     window.setTimeout(() => setHighlightedAreaId(''), 2200);
   };
 
-  function closeQuizModal() {
+  function finishQuizModal() {
     const returnAreaId = activeAreaId;
     setQuizTarget(null);
     setAnnouncement('Returned to your certification study path.');
     returnToArea(returnAreaId);
   }
+
+  // The quiz is a modal, so the phone's Back gesture should close it and land
+  // back on the area card. Without a history entry of its own, Back left the
+  // page entirely and the student lost their place.
+  function closeQuizModal() {
+    if (window.history.state?.lmCertQuiz) {
+      window.history.back();
+      return;
+    }
+
+    finishQuizModal();
+  }
+
+  // Leaving for the full quiz page means the modal's history entry is never
+  // popped, so clear its marker before navigating away.
+  const openFullQuizPage = () => {
+    if (window.history.state?.lmCertQuiz) {
+      const { lmCertQuiz, ...rest } = window.history.state;
+      window.history.replaceState(rest, '');
+    }
+
+    navigate('/study-quiz');
+  };
 
   const handleQuiz = (area: StudyArea) => {
     const target = {
@@ -655,8 +691,8 @@ const CertificationStudyPaths: React.FC = () => {
             {level === 'M' ? 'What M(ASCP) expects at each stop' : 'What SM(ASCP) adds at each stop'}
           </h2>
           <p>
-            Covered means the area has full tools and questions here. Partial means some practice sets and visual
-            ID work are still being built.
+            Covered: full tools and questions here. Partial: some practice sets and visual ID work are
+            still being built.
           </p>
         </div>
 
@@ -691,25 +727,21 @@ const CertificationStudyPaths: React.FC = () => {
             aria-labelledby="cert-quiz-modal-title"
             onClick={(event) => event.stopPropagation()}
           >
+            <div className="cert-quiz-modal-bar">
+              <button type="button" className="cert-back-to-path-btn" onClick={closeQuizModal}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+                Study path
+              </button>
+              <button type="button" className="cert-open-full-quiz-btn" onClick={openFullQuizPage}>
+                Full quiz page
+              </button>
+            </div>
             <div className="cert-modal-header">
               <div>
-                <span className="cert-path-kicker">Quiz this area</span>
                 <h2 id="cert-quiz-modal-title">{quizTarget.title}</h2>
                 <p>{quizTarget.category} / {quizTarget.difficulty}</p>
               </div>
             </div>
-            <div className="cert-quiz-modal-actions">
-              <button type="button" className="cert-back-to-path-btn" onClick={closeQuizModal}>
-                <FontAwesomeIcon icon={faArrowLeft} />
-                Back to study path
-              </button>
-              <button type="button" className="cert-open-full-quiz-btn" onClick={() => navigate('/study-quiz')}>
-                Open full quiz page
-              </button>
-            </div>
-            <p className="cert-return-note">
-              Returning will bring you back to the {quizTarget.title} card.
-            </p>
             <div className="cert-quiz-shell">
               <StudyQuiz
                 embedded

@@ -187,17 +187,11 @@
   color: var(--accent-fill-ink);
 }
 
-.practice-level-note {
-  margin: 12px 0 18px;
-  color: var(--ink-muted);
-  font-size: var(--text-base);
-  font-weight: 500;
-}
-
 .practice-category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 10px;
+  margin-top: 18px;
 }
 
 /* Compact rows: icon beside the label so ten areas scan as a list.
@@ -439,14 +433,10 @@
     font-size: 0.8rem;
   }
 
-  .practice-level-note {
-    margin: 10px 0 12px;
-    font-size: var(--text-sm);
-  }
-
   .practice-category-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    margin-top: 12px;
   }
 
   .practice-category {

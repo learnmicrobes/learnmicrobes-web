@@ -531,12 +531,15 @@ body.dark-mode .study-quiz-page {
   padding: 0 0.1rem;
 }
 
+/* overflow: clip, not hidden: hidden makes the card a scroll container, which
+   stops the sticky action bar from sticking to the screen. */
 .study-quiz-card {
+  --quiz-card-pad: 1.35rem;
   position: relative;
   margin-block: 0;
   min-height: 610px;
-  overflow: hidden;
-  padding: 1.35rem;
+  overflow: clip;
+  padding: var(--quiz-card-pad);
   border-radius: 16px;
   text-align: left;
 }
@@ -839,12 +842,30 @@ body.dark-mode .study-quiz-timer-alert {
   box-shadow: 0 16px 30px rgba(36, 92, 105, 0.22);
 }
 
+/* Previous / Next stay pinned to the bottom of the screen for the whole
+   question, so they sit in the same place however long the question or the
+   takeaway is. The bar runs to the card's edges so text scrolls under a clean
+   strip rather than peeking past its sides. */
 .study-quiz-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 1rem;
+  margin: 1rem calc(-1 * var(--quiz-card-pad, 1.35rem)) 0;
+  padding: 0.75rem var(--quiz-card-pad, 1.35rem) calc(0.75rem + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--rule);
+  background: inherit;
+}
+
+/* The quiz scrolls the takeaway into view after an answer; these keep it clear
+   of the sticky header above and the action bar below (REVEAL_TOP_CLEARANCE in
+   StudyQuiz.tsx). */
+.study-quiz-feedback {
+  scroll-margin-top: 96px;
+  scroll-margin-bottom: 96px;
 }
 
 .study-quiz-mobile-save-row {
@@ -1443,6 +1464,7 @@ body.dark-mode .study-quiz-timer-alert {
   }
 
   .study-quiz-card {
+    --quiz-card-pad: 1rem;
     min-height: 0;
   }
 

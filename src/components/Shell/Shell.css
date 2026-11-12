@@ -747,6 +747,11 @@ body.dark-mode .lm-footer {
     font-size: 0.8rem;
   }
 
+  /* Above the Study Quiz's pinned Previous / Next bar, not over Previous. */
+  body:has(.study-quiz-actions) .lm-back-fab {
+    bottom: calc(86px + env(safe-area-inset-bottom));
+  }
+
   /* Phones: the panel spans the screen just under the sticky header. */
   .lm-search-panel {
     position: fixed;
@@ -880,6 +885,20 @@ body.dark-mode .lm-footer {
   font-weight: 600;
   box-shadow: var(--shadow-lg);
   cursor: pointer;
+}
+
+/* The Study Quiz pins Previous / Next to the bottom of the screen; lift the
+   floating buttons above that bar so neither sits on top of a quiz button. */
+body:has(.study-quiz-actions) .app-container .persistent-feedback-btn,
+body:has(.study-quiz-actions) .app-container .depth-nudge {
+  bottom: 5.75rem;
+}
+
+@media (max-width: 900px) {
+  /* Same 60px gap the nudge normally keeps above the floating buttons. */
+  body:has(.study-quiz-actions) .app-container .depth-nudge {
+    bottom: calc(150px + env(safe-area-inset-bottom));
+  }
 }
 
 .app-container .persistent-feedback-btn:hover,
