@@ -697,6 +697,10 @@ export default function App() {
         title: baseTitle,
         description: baseDescription
       },
+      '/image-credits': {
+        title: 'Image Credits | Learn Microbes',
+        description: 'Sources, licences and terms for every photograph used in the Learn Microbes Visual Atlas, alongside our original bench-card artwork.'
+      },
       '/about': {
         title: 'About Learn Microbes | Clinical Microbiology Study Platform',
         description: 'Learn about the Learn Microbes clinical microbiology study platform, mission, study tools, organism ID roadmaps, visual reactions, and beta product direction.'
@@ -921,7 +925,14 @@ export default function App() {
                 </div>
               </div>
               <div className="home-hero-media" aria-hidden="true">
-                <img src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.png`} alt="" />
+                <img
+                  src={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover.webp`}
+                  srcSet={`${process.env.PUBLIC_URL}/learn-microbes-bench-cover-960.webp 960w, ${process.env.PUBLIC_URL}/learn-microbes-bench-cover.webp 1672w`}
+                  sizes="(max-width: 760px) 100vw, 1100px"
+                  width={1672}
+                  height={941}
+                  alt=""
+                />
               </div>
             </section>
 
