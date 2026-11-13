@@ -2645,6 +2645,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'A. fumigatus classically shows a flask-shaped vesicle with phialides over the upper portion and compact columnar conidia.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-fumigatus-conidial-head-cdc-phil.jpg',
+        alt: 'Aspergillus fumigatus conidial head at 1125x, a vesicle at the tip of the conidiophore bearing uniseriate phialides with chains of conidia.',
+        caption: 'Culture mount at 1125x. Follow the stalk up to the swollen vesicle at its tip, then out to the single row of phialides. One row, not two - that is what uniseriate means and it is half the identification.',
+        stageLabel: 'Culture mount',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24973'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-fumigatus-columnar-chains-cdc-phil.jpg',
+        alt: 'Aspergillus fumigatus conidial head at 970x with columnar chains of conidia sweeping upward from the vesicle.',
+        caption: 'The same head slightly lower power, where the chains of conidia have stayed intact and sweep upward in a column. In a real mount they usually fall apart, so a head this complete is worth studying.',
+        stageLabel: 'Culture mount',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24963'
+      }
+    ],
     readoutTitle: 'Aspergillus bench anchors',
     readoutRows: [
       ['Septate hyphae', 'Hyaline mold pattern', 'Narrow hyphae with regular septa'],
@@ -2701,6 +2721,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Tuberculate macroconidia',
         colors: { slant: '#e2efe9', butt: '#789b6d', base: '#345c3a' },
         note: 'Mold phase can form thick-walled macroconidia with knob-like projections. Handle suspected dimorphic fungi according to safety policy.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/histoplasma-yeasts-in-histiocyte-cdc-phil.jpg',
+        alt: 'Gridley-stained liver tissue smear with macrophages packed full of small oval yeast-phase Histoplasma capsulatum cells.',
+        caption: 'Gridley stain on a tissue smear. The large cells are macrophages and they are stuffed with small oval yeasts, each with a clear halo around it. You are looking for the host cell first, then the filling.',
+        stageLabel: 'Tissue / smear',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26843'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/histoplasma-tuberculate-macroconidia-cdc-phil.jpg',
+        alt: 'Histoplasma capsulatum mycelial phase at 258x, showing conidiophores each bearing a single knobby tuberculate macroconidium.',
+        caption: 'The mould phase at 258x. Each stalk carries one round macroconidium covered in blunt knobs - tuberculate. Nothing else in the mould world looks like this, which is why the term is worth learning.',
+        stageLabel: 'Mold phase',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28877'
       }
     ],
     readoutTitle: 'Histoplasma visual anchors',
@@ -2819,6 +2859,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Barrel-shaped arthroconidia are the culture hazard. Do not manipulate suspected Coccidioides culture outside approved containment.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/coccidioides-spherules-tissue-he-cdc-phil.jpg',
+        alt: 'Hematoxylin and eosin stained tissue section at 480x with several Coccidioides spherules among inflammatory cells.',
+        caption: 'Tissue, H&E, 480x. This is the honest view: spherules sitting in a busy inflammatory field, not isolated. Find the round double-walled outlines first and worry about the contents afterwards.',
+        stageLabel: 'Tissue phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28457'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/coccidioides-single-spherule-cdc-phil.jpg',
+        alt: 'A single round Coccidioides immitis spherule with a thick wall and granular endospores inside.',
+        caption: 'One spherule on its own. Thick wall, and the granular contents are endospores packed inside. A spherule that has not yet ruptured looks deceptively like a large yeast until you notice there is no bud.',
+        stageLabel: 'Tissue phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=29013'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/coccidioides-barrel-arthroconidia-cdc-phil.jpg',
+        alt: 'Coccidioides immitis mold phase at 500x showing chains of barrel-shaped arthroconidia along the hyphae.',
+        caption: 'The mould phase at 500x, and the stage that makes this organism dangerous in the lab. Barrel-shaped arthroconidia in chains, with collapsed empty cells between them. Treat any suspicion of this as a biosafety call before an identification one.',
+        stageLabel: 'Mold phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=29018'
+      }
+    ],
     readoutTitle: 'Coccidioides visual anchors',
     readoutRows: [
       ['Spherule with endospores', 'Tissue-phase clue', 'Large round structure packed with internal endospores'],
@@ -2882,6 +2951,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Smooth club macroconidia, no microconidia',
         colors: { slant: '#f0efe4', butt: '#a18f5d', base: '#5f4e24' },
         note: 'Smooth, club-shaped macroconidia often occur in clusters. Microconidia are absent, which helps separate it from the other two genera.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/trichophyton-microconidia-along-hyphae-cdc-phil.jpg',
+        alt: 'Trichophyton yaoundei at 400x under phase contrast, with pear-shaped microconidia sprouting along the length of the septate hyphae.',
+        caption: 'Trichophyton (here T. yaoundei) at 400x. The small pear-shaped microconidia sprout singly along the sides of the hyphae. Many small spores along the filament is the genus pattern, whichever Trichophyton species you have.',
+        stageLabel: 'Trichophyton',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=27155'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/microsporum-spindle-macroconidia-cdc-phil.jpg',
+        alt: 'Microsporum canis var. equinum at 475x with multicellular spindle-shaped macroconidia among a mass of hyphae.',
+        caption: 'Microsporum at 475x. Large multicellular macroconidia shaped like spindles, pointed at both ends, with visibly rough walls. Compare the size against the Trichophyton frame above - these are an order of magnitude bigger.',
+        stageLabel: 'Microsporum',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28339'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/epidermophyton-club-macroconidia-cdc-phil.jpg',
+        alt: 'Epidermophyton floccosum showing smooth thin-walled club-shaped multicellular macroconidia in clusters on septate hyphae.',
+        caption: 'Epidermophyton floccosum. Club-shaped macroconidia with smooth walls, in clusters, and no microconidia anywhere in the field. The absence is as diagnostic as the presence.',
+        stageLabel: 'Epidermophyton',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=4207'
       }
     ],
     readoutTitle: 'Dermatophyte genus anchors',
