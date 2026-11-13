@@ -4669,6 +4669,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Pear shape, single anterior nucleus, axostyle visible posteriorly. Flagella and undulating membrane countable on Giemsa or Pap stain. NAAT is the diagnostic standard; stain is backup when motility is lost.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/trichomonas-trophozoite-culture-cdc-dpdx.jpg',
+        alt: 'Two Trichomonas vaginalis trophozoites from culture stained with Giemsa, pear shaped with anterior flagella and an undulating membrane.',
+        caption: 'Giemsa, from culture. Pear shaped, with the flagella at the front and the undulating membrane running back along one side - the cleanest view of the structures you will get.',
+        stageLabel: 'Stained',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichomoniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichomonas-trophozoite-vaginal-smear-cdc-dpdx.jpg',
+        alt: 'Trichomonas vaginalis trophozoites in a Giemsa-stained vaginal smear among host cells and debris.',
+        caption: 'The same organism in a real vaginal smear. Smaller, paler and sitting among host cells - and this is why the still image misleads.',
+        stageLabel: 'Stained',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichomoniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichomonas-trophozoite-giemsa-cdc-dpdx.jpg',
+        alt: 'Trichomonas vaginalis trophozoites in a Giemsa-stained vaginal smear at higher magnification.',
+        caption: 'Worth saying plainly: the bench diagnosis is a saline wet mount, and it is made on the jerky twitching motility, which no photograph can show. Treat these as orientation, not as the test.',
+        stageLabel: 'Stained',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichomoniasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for by preparation',
     readoutRows: [
       ['Tumbling, jerky, non-progressive motility', 'Live trophozoite - wet mount positive', 'Most reliable real-time clue; must process specimen within ~30 min of collection to preserve motility'],
@@ -5655,6 +5684,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'H&E tissue section: spindle-shaped fibrous capsule (pale pink) surrounding a coiled larva in cross or longitudinal profile. Eosinophilic inflammatory infiltrate during acute infection; fibrosis and eventual calcification in chronic/resolved infection. Adult worms are in the small intestinal mucosa during weeks 1-2 of infection - rarely recovered in tissue biopsy. Calcified cysts may be incidentally noted on X-ray in old resolved infections.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/trichinella-encysted-larvae-he-cdc-dpdx.jpg',
+        alt: 'Encysted Trichinella larvae coiled inside skeletal muscle tissue, stained with hematoxylin and eosin at 400x.',
+        caption: 'Skeletal muscle, H&E. Each larva lies coiled inside a nurse cell the parasite made out of the host muscle fibre itself.',
+        stageLabel: 'H&E section',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichinellosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichinella-nurse-cell-he-cdc-dpdx.jpg',
+        alt: 'Trichinella larvae in muscle tissue stained with hematoxylin and eosin, showing several coiled larvae in nurse cells.',
+        caption: 'Several in one field. The coil is the giveaway - a cross-section through a coiled worm gives you several cuts of the same larva in one capsule.',
+        stageLabel: 'H&E section',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichinellosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichinella-larvae-pepsin-digest-cdc-dpdx.jpg',
+        alt: 'Trichinella larvae released from pressed bear meat after partial digestion with pepsin.',
+        caption: 'The other bench method: digest the muscle with pepsin and look at what is freed. These came out of bear meat, and the larvae uncoil once released.',
+        stageLabel: 'Muscle squash',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichinellosis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in muscle biopsy',
     readoutRows: [
       ['Oval nurse cell capsule with coiled larva in muscle fiber', 'T. spiralis - diagnostic', 'Muscle squash is most sensitive; HCl-pepsin digestion releases larvae for identification and larval burden count (LPG)'],
@@ -6261,6 +6319,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Histology of cyst wall: thick outer laminated layer (wavy, acellular, eosinophilic - like a stack of membranes or "frosted glass" appearance) and a thin inner germinal (nucleated epithelial) layer from which protoscoleces and brood capsules bud. A fibrous host-derived pericyst surrounds the laminated wall. The laminated wall is pathognomonic for Echinococcus - Entamoeba hepatic abscess and pyogenic abscess lack this structure. PAS stain highlights the laminated wall.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/echinococcus-cyst-wall-layers-cdc-dpdx.jpg',
+        alt: 'Cross-section of an Echinococcus granulosus hydatid cyst stained with hematoxylin and eosin, with letters published by the source marking each layer.',
+        caption: 'The letters are the source\'s own: A host tissue, B the acellular laminated layer, C the germinal layer, D a brood capsule arising from it, E protoscolices inside, F their hooklets.',
+        stageLabel: 'Laminated cyst wall',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/echinococcosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/echinococcus-protoscolex-hooklets-cdc-dpdx.jpg',
+        alt: 'Magnified Echinococcus granulosus protoscolex stained with hematoxylin and eosin showing a row of hooklets.',
+        caption: 'One protoscolex at higher power. The row of hooklets across the middle is what you are hunting for in the aspirate.',
+        stageLabel: 'Protoscolex (hydatid sand)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/echinococcosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/echinococcus-hydatid-sand-cdc-dpdx.jpg',
+        alt: 'Protoscolices liberated from a hydatid cyst, two of them evaginated with the scolex everted.',
+        caption: 'Hydatid sand: protoscolices freed from the cyst fluid. The two at the right have turned themselves inside out, which is why they look like a different organism.',
+        stageLabel: 'Protoscolex (hydatid sand)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/echinococcosis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in hydatid fluid or tissue',
     readoutRows: [
       ['Small oval structures with suckers and hooklets in fluid', 'Echinococcus protoscoleces (hydatid sand)', 'Evaginated forms show 4 suckers and rostellar hooklets clearly; invaginated forms appear as granular ovals - look for free hooklets to confirm'],
@@ -6507,6 +6594,44 @@ export const atlasPages: AtlasPage[] = [
         name: 'Up to 8 nuclei, eccentric karyosome, splintered chromatoids',
         colors: { slant: '#e4dcc8', butt: '#7890a8', base: '#2c4058' },
         note: 'Cyst: round, 15-25 um (often larger than E. histolytica/dispar). Mature: up to 8 nuclei - >4 nuclei confirms E. coli. Each nucleus: eccentric (off-center) karyosome + coarse irregular peripheral chromatin. Chromatoid bars: splintered, pointed, irregular ends - distinguishes from E. histolytica/dispar blunt bars. E. coli is nonpathogenic; no treatment needed. Trophozoite 15-50 um; ingests bacteria and debris but NOT RBCs.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-trophozoite-rbc-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba histolytica trophozoite on a trichrome-stained smear containing ingested red blood cells.',
+        caption: 'E. histolytica trophozoite with red cells inside it. Ingested red cells are the one morphological finding that separates histolytica from dispar.',
+        stageLabel: 'E. histolytica/dispar',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba histolytica cyst on a trichrome-stained smear showing nuclei with central karyosomes.',
+        caption: 'The cyst. Up to four nuclei, each with a small central karyosome and evenly beaded peripheral chromatin.',
+        stageLabel: 'E. histolytica/dispar',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-coli-trophozoite-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba coli trophozoite on a trichrome-stained smear with an eccentric karyosome and coarse peripheral chromatin.',
+        caption: 'E. coli trophozoite. The karyosome is pushed off to one side and the chromatin around the rim is coarse and uneven - the opposite of histolytica on both counts.',
+        stageLabel: 'E. coli',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-coli-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Mature Entamoeba coli cyst on a trichrome-stained smear with five nuclei visible in one focal plane.',
+        caption: 'E. coli cyst. Count nuclei: a mature one holds up to eight, and more than four rules out histolytica outright.',
+        stageLabel: 'E. coli',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
       }
     ],
     readoutTitle: 'Nuclear structure and cyst count differentiation',
@@ -7211,6 +7336,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'About 50-70 um, round to slightly oval, with a thick refractile wall. The macronucleus remains visible. Cilia may be seen inside young cysts but are lost in older ones. The cyst is the infective stage and is passed mostly in formed stool.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/balantioides-trophozoite-cilia-cdc-dpdx.jpg',
+        alt: 'Balantioides coli trophozoite in a wet mount at 500x with cilia visible on the cell surface.',
+        caption: 'Enormous by protozoan standards, and covered in cilia. Nothing else in a stool prep is this big - that alone usually makes the call.',
+        stageLabel: 'Trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/balantidiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/balantioides-cyst-wetmount-cdc-dpdx.jpg',
+        alt: 'Unstained Balantioides coli cyst in a wet mount, round with a thick wall.',
+        caption: 'The cyst: round, thick walled, still very large. The bean-shaped macronucleus inside may or may not be visible depending on focus.',
+        stageLabel: 'Cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/balantidiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/balantioides-trophozoites-colon-he-cdc-dpdx.jpg',
+        alt: 'Balantioides coli trophozoites in colon tissue stained with hematoxylin and eosin at 200x.',
+        caption: 'Colon tissue, H&E. This organism invades the bowel wall, so biopsy is a legitimate route to the diagnosis when stool is negative.',
+        stageLabel: 'Trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/balantidiasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
       ['Very large oval organism on low power', 'Think Balantioides coli', 'No other intestinal protozoan reaches this size'],
@@ -7284,6 +7438,44 @@ export const atlasPages: AtlasPage[] = [
         note: 'About 10-25 um. The outer wall is wrinkled and the inner wall is polygonal or star-shaped. Cysts are found in tissue and corneal specimens and are very resistant to drying and disinfectants. Calcofluor white stains the cyst wall.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/naegleria-trophozoite-csf-cdc-dpdx.jpg',
+        alt: 'Naegleria fowleri trophozoite in cerebrospinal fluid surrounded by white blood cells.',
+        caption: 'CSF. The large pale cell in the middle, among the white cells, is the amoeba - and finding one here is a medical emergency, not a routine report.',
+        stageLabel: 'Naegleria trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/freelivingamebic/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/naegleria-flagellate-form-cdc-dpdx.jpg',
+        alt: 'Naegleria fowleri ameboflagellate trophozoite with two anterior flagella.',
+        caption: 'The flagellate form, which Naegleria switches into in water and only rarely shows in CSF. Acanthamoeba never does this at all.',
+        stageLabel: 'Naegleria flagellate',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/freelivingamebic/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/acanthamoeba-trophozoite-acanthapodia-cdc-dpdx.jpg',
+        alt: 'Acanthamoeba trophozoite from culture showing slender spine-like acanthapodia.',
+        caption: 'Acanthamoeba trophozoite. The fine spines radiating off it are acanthapodia, and they are what the genus is named for.',
+        stageLabel: 'Acanthamoeba trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/freelivingamebic/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/acanthamoeba-cysts-double-wall-cdc-dpdx.jpg',
+        alt: 'Acanthamoeba cysts in culture showing the double wall with a wrinkled outer layer.',
+        caption: 'The cysts have two walls: a wrinkled outer one and a polygonal inner one. Naegleria cysts are smooth and single walled, and are not formed in human tissue.',
+        stageLabel: 'Acanthamoeba cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/freelivingamebic/index.html'
+      }
+    ],
     readoutTitle: 'Source and morphology anchors',
     readoutRows: [
       ['Motile amoebae in CSF, recent warm freshwater exposure', 'Naegleria fowleri until proven otherwise', 'Primary amebic meningoencephalitis; notify immediately'],
@@ -7350,6 +7542,62 @@ export const atlasPages: AtlasPage[] = [
         note: 'About 5-20 um, often irregular in shape. One nucleus with a large karyosome. The large, sharply outlined glycogen vacuole stains deep brown with iodine and appears as an empty space on trichrome.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-coli-cyst-wetmount-cdc-dpdx.jpg',
+        alt: 'Entamoeba coli cyst in an unstained concentrated wet mount with six nuclei visible in one focal plane.',
+        caption: 'Six nuclei in this plane alone. Rack the focus and more appear - up to eight in a mature cyst, which no pathogen in this group reaches.',
+        stageLabel: 'Entamoeba coli',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/entamoeba-hartmanni-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Entamoeba hartmanni cyst on a trichrome-stained smear with blunt-ended chromatoid bodies.',
+        caption: 'E. hartmanni: built like E. histolytica but under 10 um. Size alone separates them, so this is a call that needs a measured eyepiece, not an impression.',
+        stageLabel: 'E. hartmanni (comparison)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/endolimax-nana-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Endolimax nana cysts on a trichrome-stained smear, small and oval with large blot-like karyosomes.',
+        caption: 'Endolimax nana cysts, small and oval. The karyosomes are large, irregular blots that fill much of each nucleus, and there is no peripheral chromatin at all.',
+        stageLabel: 'Endolimax nana',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/endolimax-nana-trophozoite-trichrome-cdc-dpdx.jpg',
+        alt: 'Endolimax nana trophozoite on a trichrome-stained smear with a single large irregular karyosome.',
+        caption: 'The trophozoite, with that same blot-like karyosome. A nucleus with no rim of chromatin is the quickest way to rule Entamoeba out.',
+        stageLabel: 'Endolimax nana',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/iodamoeba-butschlii-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Iodamoeba butschlii cyst on a trichrome-stained smear with a large glycogen vacuole occupying much of the cell.',
+        caption: 'Iodamoeba butschlii. The dark mass taking up most of the cyst is a glycogen vacuole - large, single, and present in no other cyst here.',
+        stageLabel: 'Iodamoeba butschlii',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/iodamoeba-butschlii-cyst-iodine-cdc-dpdx.jpg',
+        alt: 'Iodamoeba butschlii cyst in an iodine-stained wet mount of concentrated stool.',
+        caption: 'The same species in iodine, which is where the name comes from: iodine stains that glycogen mass a deep brown.',
+        stageLabel: 'Iodamoeba butschlii',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html'
+      }
+    ],
     readoutTitle: 'Cyst differential anchors',
     readoutRows: [
       ['More than 4 nuclei in an Entamoeba cyst', 'Entamoeba coli', 'E. histolytica/dispar cysts stop at 4'],
@@ -7407,6 +7655,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Pear shape, spiral groove, cytostome',
         colors: { slant: '#e8f0e6', butt: '#80a48c', base: '#244a34' },
         note: 'About 6-24 um. Pear shaped with one anterior nucleus. Three free flagella at the front and one inside the cytostome. A spiral groove gives the body a twisted look, and motility in fresh stool is stiff and rotary.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/chilomastix-cyst-trichrome-cdc-dpdx.jpg',
+        alt: 'Chilomastix mesnili cyst in a trichrome-stained stool specimen at 1000x, lemon shaped with an anterior nipple.',
+        caption: 'Lemon shaped with a small nipple at one end. That outline is the whole identification - it looks like nothing else in stool.',
+        stageLabel: 'Cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/chilomastix/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/chilomastix-trophozoite-trichrome-cdc-dpdx.jpg',
+        alt: 'Chilomastix mesnili trophozoite in a trichrome-stained stool specimen at 1000x showing the cytostome groove.',
+        caption: 'The trophozoite, pear shaped with a spiral groove, the cytostome, cut into one side. Non-pathogenic, but it means the patient swallowed something they should not have.',
+        stageLabel: 'Trophozoite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/chilomastix/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/chilomastix-cyst-and-trophozoite-cdc-dpdx.jpg',
+        alt: 'Chilomastix mesnili cyst and trophozoite in the same trichrome-stained field.',
+        caption: 'Both stages in one field, cyst below and trophozoite above, which is a useful size and shape comparison in a single frame.',
+        stageLabel: 'Cyst',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/chilomastix/index.html'
       }
     ],
     readoutTitle: 'Chilomastix versus Giardia anchors',
@@ -7735,6 +8012,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Yeast cells also take up the red stain but are larger, commonly 3-6 um or more, and show budding. They have no belt-like stripe. Bacteria may stain as well but are usually rod shaped or paler.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/microsporidia-spores-chromotrope-2r-cdc-dpdx.jpg',
+        alt: 'Enterocytozoon bieneusi spores stained with Chromotrope 2R, small pink-red ovals against a pale background.',
+        caption: 'Chromotrope 2R. The spores are tiny pink-red ovals, 1-3 um - near the limit of what light microscopy can resolve, which is why this stain exists.',
+        stageLabel: 'Spores',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/microsporidiosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/microsporidia-spores-gram-chromotrope-cdc-dpdx.jpg',
+        alt: 'Encephalitozoon cuniculi spores stained with Gram chromotrope, appearing as dark oval bodies.',
+        caption: 'Gram chromotrope on the same kind of specimen, which darkens the spores and makes them easier to pick out of debris.',
+        stageLabel: 'Spores',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/microsporidiosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/microsporidia-spores-unidentified-cdc-dpdx.jpg',
+        alt: 'Unidentified microsporidia spores stained with Chromotrope 2R among fecal debris.',
+        caption: 'Spores among debris, which is the realistic view. Look for the uniform size and the crisp oval outline; bacteria and yeast in the same field are neither.',
+        stageLabel: 'Spores',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/microsporidiosis/index.html'
+      }
+    ],
     readoutTitle: 'Modified trichrome anchors',
     readoutRows: [
       ['Tiny oval pink-red bodies, 1-4 um', 'Possible microsporidia spores', 'Confirm with oil immersion and controls'],
@@ -7792,6 +8098,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Oval eggs, brown fecal pellets',
         colors: { slant: '#f2ecdc', butt: '#c8ac74', base: '#6c4a14' },
         note: 'Eggs are oval, thin-shelled, and about 0.10-0.15 mm. Scybala are smaller, irregular, golden-brown pellets, often seen in groups. Either one is enough for a positive scraping even when no mite is found.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/sarcoptes-mite-skin-scraping-cdc-dpdx.jpg',
+        alt: 'Sarcoptes scabiei mite in a skin scraping stained with lactophenol cotton blue.',
+        caption: 'Skin scraping, lactophenol cotton blue. Round body, short stubby legs, no wings and no segmented abdomen - a mite, not an insect.',
+        stageLabel: 'Adult mite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/scabies/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/sarcoptes-mite-lactophenol-cdc-dpdx.jpg',
+        alt: 'Sarcoptes scabiei mite in a skin scraping stained with lactophenol cotton blue at higher magnification.',
+        caption: 'Closer in. One mite in a scraping is a positive; the yield is low, so a negative scraping never rules scabies out.',
+        stageLabel: 'Adult mite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/scabies/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/sarcoptes-mite-skin-biopsy-cdc-dpdx.jpg',
+        alt: 'Sarcoptes scabiei mite within a burrow in a skin biopsy stained with hematoxylin and eosin.',
+        caption: 'Skin biopsy, H&E, with the mite sitting inside its burrow in the stratum corneum. This is how it is found when the scraping was negative.',
+        stageLabel: 'Adult mite',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/scabies/index.html'
       }
     ],
     readoutTitle: 'Skin scraping anchors',
@@ -7858,6 +8193,44 @@ export const atlasPages: AtlasPage[] = [
         name: 'Oval egg cemented to a hair shaft',
         colors: { slant: '#f0ece0', butt: '#d8cca4', base: '#5c4a20' },
         note: 'An oval egg about 0.8 mm long, attached at an angle to the hair by a cement sheath, with a cap (operculum) at the free end. It does not slide along the hair. Hair casts and dandruff slide off easily.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/pediculus-humanus-adult-cdc-dpdx.jpg',
+        alt: 'Adult Pediculus humanus capitis louse, elongated with a narrow body and legs of similar size.',
+        caption: 'Pediculus: long and narrow, roughly three times as long as wide, with six similar legs. Head and body lice look the same - the site decides which it is.',
+        stageLabel: 'Pediculus humanus',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pediculosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/phthirus-pubis-female-cdc-dpdx.jpg',
+        alt: 'Adult female Phthirus pubis louse, short and broad with large grasping claws on the rear legs.',
+        caption: 'Phthirus: short, broad and crab-like, almost as wide as it is long. The back two pairs of legs end in heavy claws built to grip a thick hair.',
+        stageLabel: 'Phthirus pubis',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pthiriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/phthirus-pubis-on-hair-shaft-cdc-dpdx.jpg',
+        alt: 'Three Phthirus pubis specimens gripping a hair shaft.',
+        caption: 'Three of them holding a hair. Seen like this the shape difference needs no measuring, and the claws make obvious sense.',
+        stageLabel: 'Phthirus pubis',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pthiriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/pediculus-nit-hatching-cdc-dpdx.jpg',
+        alt: 'Egg or nit of Pediculus humanus capitis cemented to a hair shaft with a first-instar nymph beginning to hatch.',
+        caption: 'A nit cemented to the hair shaft, with the nymph coming out of the lid. Nits within 6 mm of the scalp suggest active infestation; further out they are old.',
+        stageLabel: 'Nit',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pediculosis/index.html'
       }
     ],
     readoutTitle: 'Louse identification anchors',
