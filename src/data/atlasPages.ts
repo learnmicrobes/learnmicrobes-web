@@ -4292,6 +4292,44 @@ export const atlasPages: AtlasPage[] = [
         note: 'Small compact columnar biseriate head, plus accessory aleurioconidia borne singly on the hyphae. The accessory conidia are the terreus clue.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-fumigatus-conidial-head-cdc-phil.jpg',
+        alt: 'Aspergillus fumigatus conidial head at 1125x with a single row of phialides on the vesicle and columnar chains of conidia.',
+        caption: 'Start here. One row of phialides on the vesicle, chains sweeping upward in a narrow column, smooth stalk. Every other species on this card is read against it.',
+        stageLabel: 'A. fumigatus',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24973'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-niger-conidial-head-cdc-phil.jpg',
+        alt: 'Aspergillus niger conidial head attached to its conidiophore, large, globose and dark brown with conidia radiating in all directions.',
+        caption: 'A complete sphere rather than a column - conidia radiate out on every side, and they are dark enough to see without any stain. Radiate and black is the whole call.',
+        stageLabel: 'A. niger',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=3965'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-flavus-rough-stipe-head-cdc-phil.jpg',
+        alt: 'Aspergillus flavus at 258x with a rough-textured conidiophore stipe running to the edge of a conidial head.',
+        caption: 'The head itself sits at the frame edge here, so read the stalk instead: its wall is visibly rough and pitted, where fumigatus is smooth. That roughness is the feature, and it is the one PHIL shows well for this species.',
+        stageLabel: 'A. flavus',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=25203'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/aspergillus-terreus-columnar-head-cdc-phil.jpg',
+        alt: 'Aspergillus terreus conidial heads showing compact columnar biseriate arrangement with long chains of spherical conidia on smooth-walled stalks.',
+        caption: 'Several heads at once, each a tight compact column. Two rows of cells sit between vesicle and conidia rather than one, which is what biseriate means - compare the single row on the fumigatus frame.',
+        stageLabel: 'A. terreus',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=19340'
+      }
+    ],
     readoutTitle: 'Aspergillus comparison anchors',
     readoutRows: [
       ['Compact columnar, uniseriate', 'A. fumigatus pattern', 'Phialides on the upper vesicle only; thermotolerant'],
@@ -9016,6 +9054,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Rectangular arthroconidia are present together with budding blastoconidia, and pseudohyphae may be seen. The mixture separates it from Geotrichum. Urease positive.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/coccidioides-barrel-arthroconidia-cdc-phil.jpg',
+        alt: 'Coccidioides immitis at 500x with chains of barrel-shaped arthroconidia separated by collapsed empty cells.',
+        caption: 'Barrel-shaped, and crucially alternating: every other cell has collapsed and emptied, leaving gaps along the chain. That alternation is unique here, and this is the one of the three that is a biosafety emergency.',
+        stageLabel: 'Coccidioides',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=29018'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/geotrichum-rectangular-arthroconidia-cdc-phil.jpg',
+        alt: 'Geotrichum candidum at 970x with hyphae fragmenting into chains of unicellular rectangular arthroconidia.',
+        caption: 'Rectangular and consecutive - every cell in the chain is present, none collapsed, and nothing buds off anywhere. Square corners end to end with no gaps.',
+        stageLabel: 'Geotrichum',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28056'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/trichosporon-rectangular-arthroconidia-cdc-phil.jpg',
+        alt: 'Cutaneotrichosporon cutaneum at 1200x with rectangular arthroconidia and blastoconidia on the same hyphae.',
+        caption: 'Rectangular arthroconidia like Geotrichum, but look for buds as well - round blastoconidia budding off the same filament. Doing both is what separates it from Geotrichum.',
+        stageLabel: 'Trichosporon',
+        credit: 'Source: CDC / PHIL - Dr. William Kaplan',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28129'
+      }
+    ],
     readoutTitle: 'Arthroconidia anchors',
     readoutRows: [
       ['Alternating arthroconidia with empty cells', 'Coccidioides pattern', 'Stop open-bench work; use the biosafety level required by your lab'],
@@ -9087,6 +9154,44 @@ export const atlasPages: AtlasPage[] = [
         name: 'Spherule with endospores, no budding',
         colors: { slant: '#f0ece8', butt: '#b08898', base: '#4a2440' },
         note: 'A thick-walled spherule, commonly 30-60 um and up to about 100 um, filled with endospores 2-5 um across. It does not bud. A ruptured spherule releases endospores that can be mistaken for small yeasts.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/histoplasma-yeasts-in-histiocyte-cdc-phil.jpg',
+        alt: 'Gridley-stained tissue smear with macrophages filled with small oval Histoplasma capsulatum yeast cells.',
+        caption: 'Smallest, at 2-4 um, and almost always inside a host cell. If you are looking at free yeasts in the open field, you are probably not looking at Histoplasma.',
+        stageLabel: 'Histoplasma',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26843'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/cryptococcus-india-ink-capsule-cdc-phil.jpg',
+        alt: 'India ink preparation with round Cryptococcus neoformans cells surrounded by clear capsular halos.',
+        caption: 'Next up at 4-10 um, and the only one on this card with a capsule. Cell size varies a lot within one field, which none of the others do.',
+        stageLabel: 'Cryptococcus',
+        credit: 'Source: CDC / PHIL - Sherry A. Brinkman',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24018'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/blastomyces-yeasts-in-pus-cdc-phil.jpg',
+        alt: 'Pus specimen with large round thick-walled Blastomyces dermatitidis yeasts, several budding.',
+        caption: 'Larger again at 8-15 um, with a wall thick enough to read as a double line and buds joined across a broad neck. Size plus wall thickness plus the broad bud, in that order.',
+        stageLabel: 'Blastomyces',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26849'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/coccidioides-single-spherule-cdc-phil.jpg',
+        alt: 'A single round thick-walled Coccidioides immitis spherule containing granular endospores.',
+        caption: 'Not a yeast at all. A spherule reaches 20-60 um or more and is filled with endospores, and it never buds - so if you cannot find a bud anywhere, stop and measure.',
+        stageLabel: 'Coccidioides',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=29013'
       }
     ],
     readoutTitle: 'Tissue form anchors',
