@@ -3755,6 +3755,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Budding blastoconidia appear alongside the arthroconidia. The combination of both forms is what defines the Trichosporon pattern.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/trichosporon-rectangular-arthroconidia-cdc-phil.jpg',
+        alt: 'Cutaneotrichosporon cutaneum at 1200x with hyphae fragmenting into chains of rectangular arthroconidia.',
+        caption: 'At 1200x, follow a hypha and watch it break into rectangles end to end. Arthroconidia are cut from the hypha rather than budded off it, which is why the corners stay square.',
+        stageLabel: 'Arthroconidia',
+        credit: 'Source: CDC / PHIL - Dr. William Kaplan',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28129'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/trichosporon-blastoconidia-brightfield-cdc-phil.jpg',
+        alt: 'Slide culture at 400x under bright field showing Trichosporon pseudohyphae, blastoconidia and rectangular arthroconidia together.',
+        caption: 'A wider field at 400x with all three elements at once: pseudohyphae, budding blastoconidia and square arthroconidia. Producing both budded and fragmented cells is the genus feature.',
+        stageLabel: 'Blastoconidia',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=22955'
+      }
+    ],
     readoutTitle: 'Trichosporon visual anchors',
     readoutRows: [
       ['Rectangular arthroconidia', 'Trichosporon pattern', 'End-to-end fragmentation is the main clue'],
@@ -8663,6 +8683,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Giemsa or a rapid Giemsa-type stain shows clusters of trophic forms about 1-4 um, with small purple nuclei in pale blue cytoplasm, set in foamy material. Cyst walls do not stain and appear as clear circles containing up to 8 intracystic bodies.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/pneumocystis-cysts-gms-cdc-dpdx.jpg',
+        alt: 'Lung tissue stained with methenamine silver, with Pneumocystis jirovecii cyst walls appearing black against pink alveolar exudate.',
+        caption: 'Methenamine silver turns the cyst wall black and leaves everything else pink. Look for round, cup-shaped and crescent outlines, some collapsed - and never a bud, because this organism does not bud.',
+        stageLabel: 'GMS cysts',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pneumocystis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/pneumocystis-cysts-gms-field-cdc-dpdx.jpg',
+        alt: 'A second methenamine silver stained lung section with Pneumocystis jirovecii cysts filling the alveolar spaces.',
+        caption: 'A wider field. The cysts sit inside the frothy alveolar exudate rather than in the tissue itself, which is where to look first on a low-power scan.',
+        stageLabel: 'GMS cysts',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pneumocystis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/pneumocystis-trophozoites-bal-giemsa-cdc-dpdx.jpg',
+        alt: 'Giemsa-stained bronchoalveolar lavage from an AIDS patient, with arrows published by the source marking Pneumocystis jirovecii trophozoites in foamy exudate.',
+        caption: 'The arrows are the source\'s own. Giemsa stains the trophozoite nuclei as small dots inside a foamy mass and leaves the cyst wall unstained, so there is nothing with an outline to find - which is exactly why CDC marked them.',
+        stageLabel: 'Giemsa cluster',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/pneumocystis/index.html'
+      }
+    ],
     readoutTitle: 'Stain anchors',
     readoutRows: [
       ['Cup or crescent black cysts on GMS', 'Pneumocystis jirovecii cysts', 'Collapsed cyst shapes are the classic picture'],
@@ -8736,6 +8785,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Small oval budding yeast cells, about 2-4 um, with no pseudohyphae and no chlamydospores. Now also published as Nakaseomyces glabratus. Cryptococcus also lacks pseudohyphae but has larger round cells and is urease positive.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/candida-albicans-chlamydospores-cornmeal-cdc-phil.jpg',
+        alt: 'Candida albicans on cornmeal agar at 475x with round thick-walled chlamydospores along the pseudohyphae and clusters of blastoconidia.',
+        caption: 'Cornmeal agar at 475x. The large round thick-walled bodies at the ends of the pseudohyphae are chlamydospores, and clusters of small blastoconidia sit at the joints. Only C. albicans and C. dubliniensis make these.',
+        stageLabel: 'C. albicans',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26603'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/candida-tropicalis-cornmeal-cdc-phil.jpg',
+        alt: 'Candida tropicalis on cornmeal Tween 80 agar with long pseudohyphae bearing sparse blastoconidia.',
+        caption: 'Long branching pseudohyphae running across the field with blastoconidia scattered singly or in small groups rather than in tight clusters. No chlamydospores anywhere.',
+        stageLabel: 'C. tropicalis',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23607'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/candida-parapsilosis-cornmeal-cdc-phil.jpg',
+        alt: 'Candida parapsilosis on cornmeal Tween 80 agar, with fine pseudohyphae projecting from two microcolonies and blastoconidia along their length.',
+        caption: 'Two microcolonies with fine pseudohyphae spraying out from the edge, curved and short. Compare the delicacy against the C. tropicalis frame: same structure, very different build.',
+        stageLabel: 'C. parapsilosis',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24274'
+      }
+    ],
     readoutTitle: 'Cornmeal agar anchors',
     readoutRows: [
       ['Terminal thick-walled chlamydospores', 'C. albicans or C. dubliniensis', 'Pair with a germ tube test'],
@@ -8793,6 +8871,17 @@ export const atlasPages: AtlasPage[] = [
         name: 'Bottle shape, single broad-based bud, collarette',
         colors: { slant: '#eef0e8', butt: '#94a47c', base: '#30421c' },
         note: 'Small yeast cells about 3-8 um. Each buds repeatedly from the same end through a broad base, leaving a small collar, so the cell looks like a bottle or bowling pin. No pseudohyphae are formed in routine culture.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/malassezia-yeast-hyphae-lpcb-cdc-phil.jpg',
+        alt: 'Lactophenol cotton blue stained skin scraping at 970x from a case of tinea versicolor, with clusters of round Malassezia yeast cells and short pseudohyphal elements among debris.',
+        caption: 'A skin scraping at 970x. Round yeast cells in clusters with short curved hyphal pieces scattered between them - the spaghetti and meatballs pattern. Both elements together make the call; neither alone does.',
+        stageLabel: 'KOH skin scales',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24943'
       }
     ],
     readoutTitle: 'Malassezia anchors',
@@ -9130,6 +9219,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Hyphae and air spaces in the shaft',
         colors: { slant: '#f2eee0', butt: '#b89c64', base: '#4c3a14' },
         note: 'Loose hyphae run along the inside of the shaft with air spaces or bubbles where hyphae have broken down. Arthroconidia are few. Caused by Trichophyton schoenleinii, with cup-shaped crusts on the scalp and a dull fluorescence.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/hair-ectothrix-microsporum-cdc-phil.jpg',
+        alt: 'Methylene blue stained hair shaft with Microsporum canis arthroconidia forming a dense sheath on the outside of the shaft.',
+        caption: 'The spores form a sleeve on the outside of the shaft and the shaft itself stays clear. Ectothrix, and in Microsporum infections this is also where the Wood lamp fluorescence comes from.',
+        stageLabel: 'Ectothrix',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26618'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/hair-endothrix-trichophyton-cdc-phil.jpg',
+        alt: 'Hair shaft at 475x with Trichophyton arthroconidia packed inside the shaft rather than coating its surface.',
+        caption: 'The same question answered the other way at 475x: the spores are inside the shaft, filling it, and the outer surface is bare. Endothrix. The hair breaks at the scalp because the shaft has been hollowed out.',
+        stageLabel: 'Endothrix',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24385'
       }
     ],
     readoutTitle: 'Hair invasion anchors',
