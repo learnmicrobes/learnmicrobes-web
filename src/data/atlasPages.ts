@@ -5900,6 +5900,35 @@ export const atlasPages: AtlasPage[] = [
         note: '28-34 x 12-19 um. Very small - the smallest common trematode egg. Flask or vase-shaped (narrow at opercular end, widening toward the middle). Yellow-brown. Prominent opercular shoulders (inner ridge clearly visible at opercular rim - diagnostic). Small knob at the abopercular end. Embryonated (miracidium inside) when passed. Found in stool. Bile duct fluke - acquired from raw or undercooked freshwater fish. Opisthorchis viverrini (Southeast Asia) is morphologically identical.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/paragonimus-egg-operculum-cdc-dpdx.jpg',
+        alt: 'Paragonimus westermani egg in an unstained wet mount, golden brown with a flattened operculum seated on shoulders at one end.',
+        caption: 'Golden brown and large. One end is flattened where the operculum sits, and the rim steps outward on either side of it - those are the shoulders.',
+        stageLabel: 'Paragonimus westermani',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/paragonimiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/paragonimus-egg-abopercular-thickening-cdc-dpdx.jpg',
+        alt: 'Paragonimus westermani egg in an unstained wet mount of stool showing the thickened shell at the abopercular end.',
+        caption: 'Follow the shell away from the operculum to the far end, where it thickens visibly. That thickening plus the shoulders is the pair that makes the call.',
+        stageLabel: 'Paragonimus westermani',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/paragonimiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/paragonimus-egg-lung-biopsy-cdc-dpdx.jpg',
+        alt: 'Paragonimus egg in a lung biopsy section stained with hematoxylin and eosin, surrounded by inflammatory cells.',
+        caption: 'Lung tissue, H&E. Worth knowing because this organism reaches the lab in rust-coloured sputum as often as in stool, and in tissue the shell is all you get.',
+        stageLabel: 'Paragonimus westermani',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/paragonimiasis/index.html'
+      }
+    ],
     readoutTitle: 'Trematode egg differential - what to look for',
     readoutRows: [
       ['Large ovoid egg, 80-120 um, shouldered operculum, golden-brown, thickened abopercular shell', 'Paragonimus westermani', 'Largest common trematode egg in sputum; shouldered operculum + abopercular thickening = diagnostic pattern'],
@@ -6541,6 +6570,44 @@ export const atlasPages: AtlasPage[] = [
         note: 'Clonorchis sinensis/Opisthorchis: ~28-35 um, flask-shaped, prominent shoulder rim at opercular end, tiny knob at abopercular end - smallest common operculated egg. Diphyllobothrium latum: ~58-75 um, oval, slight opercular shoulder, prominent abopercular knob. Paragonimus westermani: ~80-100 um, thick shell, golden-brown color, shouldered operculum, abopercular knob. Fasciola hepatica / Fasciolopsis buski: ~130-150 um (largest), thin shell, yellow-brown, opercular shoulder present - both essentially identical; clinical context differentiates (Fasciola: liver/bile ducts; Fasciolopsis: intestinal).'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/clonorchis-egg-opercular-shoulders-cdc-dpdx.jpg',
+        alt: 'Clonorchis sinensis egg, around 30 micrometres, the smallest of the operculated eggs.',
+        caption: 'Smallest rung. At about 30 um a Clonorchis egg is barely larger than a white cell, and is routinely missed at scanning power.',
+        stageLabel: 'Clonorchis ~30 um',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/clonorchiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/diphyllobothrium-egg-operculum-cdc-dpdx.jpg',
+        alt: 'Diphyllobothrium egg, around 65 micrometres, oval with a smooth flush operculum.',
+        caption: 'About twice that. Smooth oval, lid seated flush with no shoulders, small knob at the far end.',
+        stageLabel: 'Diphyllobothrium ~65 um',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/diphyllobothriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/paragonimus-egg-operculum-cdc-dpdx.jpg',
+        alt: 'Paragonimus westermani egg, around 90 micrometres, golden brown with a shouldered operculum.',
+        caption: 'Larger again, and now the colour helps: golden brown rather than pale. Shoulders present, shell thickened opposite the lid.',
+        stageLabel: 'Paragonimus ~90 um',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/paragonimiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/fasciola-hepatica-egg-cdc-dpdx.jpg',
+        alt: 'Fasciola hepatica egg, around 140 micrometres, the largest of the common operculated eggs.',
+        caption: 'Largest rung, roughly four times the Clonorchis egg. Thin shelled and pale, with an operculum that is easy to miss.',
+        stageLabel: 'Fasciola ~140 um',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/fascioliasis/index.html'
+      }
+    ],
     readoutTitle: 'Operculated egg identification by size and features',
     readoutRows: [
       ['~28-35 um, flask-shaped, shoulder rim at opercular end, tiny abopercular knob', 'Clonorchis sinensis / Opisthorchis spp.', 'Smallest; bile-stained, clustered in bile ducts; East/Southeast Asia exposure; bile-stained yellow-brown'],
@@ -6766,6 +6833,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Clonorchis egg at ~30 um is the smallest of the four common operculated eggs. Diphyllobothrium latum (~65 um) is more than twice the size and has a more prominent abopercular knob. Heterophyes heterophyes and Metagonimus yokogawai eggs (~30 um) mimic Clonorchis in size but lack the shoulder rim and have a less prominent knob - differentiation requires careful morphology at oil immersion. Clinical context: East/Southeast Asian fish consumption; chronic infection is a risk factor for cholangiocarcinoma (especially O. viverrini).'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/clonorchis-egg-opercular-shoulders-cdc-dpdx.jpg',
+        alt: 'Clonorchis sinensis egg in a wet mount at 400x, flask shaped with the operculum resting on distinct shoulders.',
+        caption: 'The smallest operculated egg you will meet, and the most distinctive: a flask shape with the lid seated on clear shoulders, like a jar with its stopper in.',
+        stageLabel: 'Clonorchis/Opisthorchis egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/clonorchiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/clonorchis-egg-abopercular-knob-cdc-dpdx.jpg',
+        alt: 'Clonorchis sinensis egg in a wet mount with a small knob visible at the abopercular end.',
+        caption: 'The same egg with the other end in focus, where a small knob sits opposite the operculum. Shoulders at one end, knob at the other.',
+        stageLabel: 'Clonorchis/Opisthorchis egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/clonorchiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/opisthorchis-viverrini-egg-cdc-dpdx.jpg',
+        alt: 'Opisthorchis viverrini egg in an unstained wet mount of concentrated stool at 400x magnification.',
+        caption: 'This one is Opisthorchis, not Clonorchis - and you cannot tell from the egg. They are reported together for exactly this reason; travel history is what separates them.',
+        stageLabel: 'Clonorchis/Opisthorchis egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/opisthorchiasis/index.html'
+      }
+    ],
     readoutTitle: 'Clonorchis/Opisthorchis egg recognition guide',
     readoutRows: [
       ['Flask/vase shape, ~28-35 um, prominent opercular shoulder rim', 'Clonorchis sinensis or Opisthorchis spp.', 'Shoulder rim distinguishes from Heterophyes/Metagonimus which lack this thickening'],
@@ -6827,6 +6923,44 @@ export const atlasPages: AtlasPage[] = [
         note: '130-140 um, oval. Morphologically essentially identical to Fasciola hepatica - same size range, same thin shell, same yellow-brown bile staining, same opercular shoulder. Disease context is the ONLY differentiator: Fasciolopsis causes intestinal disease (diarrhea, malabsorption, edema in heavy infections) in Southeast/East Asia. Transmitted by eating raw aquatic plants (water caltrops, lotus roots, water chestnuts) in pig-raising endemic regions. No hepatic phase - worm lives in the small intestine attached to the mucosa. Treatment: praziquantel (both species).'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/fasciola-hepatica-egg-cdc-dpdx.jpg',
+        alt: 'Fasciola hepatica egg in an unstained wet mount at 400x with the operculum lifted at one end.',
+        caption: 'Large, oval and thin shelled, with the operculum lifted at the upper end so you can see it is a lid. Around 140 um - the largest egg in routine stool work.',
+        stageLabel: 'Fasciola hepatica (liver fluke)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/fascioliasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/fasciola-hepatica-egg-operculum-cdc-dpdx.jpg',
+        alt: 'Fasciola hepatica egg in an unstained wet mount with the operculum closed and difficult to see.',
+        caption: 'The same species with the lid shut, which is the usual presentation. The operculum is now almost invisible - do not rule out a fluke egg because you cannot find one.',
+        stageLabel: 'Fasciola hepatica (liver fluke)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/fascioliasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/fasciolopsis-buski-egg-cdc-dpdx.jpg',
+        alt: 'Fasciolopsis buski egg in an unstained wet mount, large and oval with a thin shell.',
+        caption: 'Fasciolopsis buski. Same size, same shape, same thin shell, same faint operculum. Put it beside the Fasciola frames above and look for a difference - there is not one.',
+        stageLabel: 'Fasciolopsis buski (intestinal fluke)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/fasciolopsiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/fasciolopsis-buski-egg-400x-cdc-dpdx.jpg',
+        alt: 'Fasciolopsis buski egg in an unstained wet mount of stool at 400x magnification.',
+        caption: 'At 400x the shell detail is clearer and the point still holds. These two are separated by where the adult lives and what the patient has, not by the egg.',
+        stageLabel: 'Fasciolopsis buski (intestinal fluke)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/fasciolopsiasis/index.html'
+      }
+    ],
     readoutTitle: 'Fasciola vs. Fasciolopsis morphology and differentiation',
     readoutRows: [
       ['Large oval egg ~130-150 um, thin shell, opercular shoulder', 'Fasciola hepatica or Fasciolopsis buski - morphologically identical', 'Size and morphology alone cannot differentiate - clinical/geographic context is mandatory'],
@@ -6886,6 +7020,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Double genital pores - unique to Dipylidium',
         colors: { slant: '#ece0b8', butt: '#907840', base: '#403008' },
         note: 'Proglottid: ~1-3 cm, elongated oval - resembles a cucumber seed or rice grain. Double genital pores (one on each lateral side) is the single most diagnostic feature of D. caninum - no other common tapeworm has two functional genital pores. Proglottids may be passed intact in stool or observed migrating perianally (patients may report "moving seeds" in their underwear or on pets). Gravid proglottids are filled with egg capsules. Scolex: ~0.5 mm, 4 suckers + rostellum with multiple rows of rose-thorn hooks.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/dipylidium-egg-packet-cdc-dpdx.jpg',
+        alt: 'Dipylidium caninum egg packet in a wet mount containing eight round eggs inside a single membrane.',
+        caption: 'Eight round eggs held together inside one thin membrane. A packet, not a clump - the membrane is what makes this Dipylidium rather than debris.',
+        stageLabel: 'Egg packet (egg capsule)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/dipylidium/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/dipylidium-eggs-hooklets-cdc-dpdx.jpg',
+        alt: 'Dipylidium caninum eggs clumped together in a wet mount at 400x with hooklets visible inside several of the eggs.',
+        caption: 'At 400x the oncosphere hooklets show inside several of the eggs. Packets also break open, so loose clusters of round hooked eggs count too.',
+        stageLabel: 'Egg packet (egg capsule)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/dipylidium/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/dipylidium-proglottid-genital-pores-cdc-dpdx.jpg',
+        alt: 'Carmine-stained Dipylidium caninum proglottid with an arrow published by the source marking a genital pore on the lateral margin.',
+        caption: 'The arrow is the source\'s own, pointing at a genital pore on the side of the segment. There is a second one on the opposite margin, and two pores on one proglottid is unique to Dipylidium.',
+        stageLabel: 'Cucumber-seed proglottid',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/dipylidium/index.html'
       }
     ],
     readoutTitle: 'Dipylidium caninum diagnostic recognition guide',
