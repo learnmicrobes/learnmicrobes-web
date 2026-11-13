@@ -2587,6 +2587,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'KOH or tissue may show broad, folded, pauci-septate hyphae with irregular right-angle branching. Do not overcall from one broken fragment.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/rhizopus-sporangiophores-sporangia-cdc-phil.jpg',
+        alt: 'Rhizopus arrhizus at 20x with two tall unbranched sporangiophores, each topped by a dark globose spore-filled sporangium.',
+        caption: 'Only 20x, and that low power is the point: the sporangiophores are tall enough to see without oil. Each ends in a dark round sporangium packed with spores, like a pin head.',
+        stageLabel: 'Culture mount',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26741'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/rhizopus-rhizoid-cdc-phil.jpg',
+        alt: 'Rhizopus rhizoid at 475x, a branching root-like structure arising from the hyphae.',
+        caption: 'The rhizoid at 475x. These root-like anchors sit where the sporangiophore meets the hypha, and in Rhizopus they sit directly opposite it. Where they arise separates the genera in this group.',
+        stageLabel: 'Culture mount',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=22047'
+      }
+    ],
     readoutTitle: 'What to look for first',
     readoutRows: [
       ['Broad ribbon-like hyphae', 'Mucorales pattern', 'Width and folded ribbon shape are the first clue'],
@@ -3354,6 +3374,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Septate hyphae support a hyaline mold pattern. Use macroconidia and validated methods to separate from lookalikes.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/fusarium-sickle-macroconidia-cdc-phil.jpg',
+        alt: 'Fusarium species at 475x with clumps of elongated sickle-shaped multicellular macroconidia along the hyphae.',
+        caption: 'At 475x, clumps of long curved macroconidia with internal cross walls - canoe or sickle shaped, tapering at both ends. Once you have seen a field like this the genus is hard to mistake.',
+        stageLabel: 'Macroconidia',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23085'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/fusarium-hyphae-cornea-pas-cdc-phil.jpg',
+        alt: 'PAS-stained corneal tissue from a case of mycotic keratitis, with filamentous Fusarium oxysporum hyphae running through the stroma.',
+        caption: 'Corneal tissue, PAS, from a keratitis case - which is how this organism usually reaches a lab. In tissue you get hyphae and nothing else: no macroconidia, no genus clue. Culture is what names it.',
+        stageLabel: 'Hyphae',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=21786'
+      }
+    ],
     readoutTitle: 'Fusarium visual anchors',
     readoutRows: [
       ['Curved macroconidia', 'Fusarium pattern', 'Canoe or sickle shape is the main clue'],
@@ -3410,6 +3450,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Fission yeast with central septum',
         colors: { slant: '#efe9e0', butt: '#9a765f', base: '#5a3928' },
         note: 'Talaromyces marneffei yeast divides by fission and may show a central transverse septum rather than budding.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/penicillium-penicillus-brush-cdc-phil.jpg',
+        alt: 'Penicillium at 570x with septate hyaline hyphae and several penicilli, brush-like clusters of conidia at the ends of the conidiophores.',
+        caption: 'At 570x the conidiophore splits near its tip into a tight brush of phialides, each shedding a chain of conidia. That brush is the penicillus, and it is where the genus gets its name.',
+        stageLabel: 'Mold phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26587'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/talaromyces-fission-yeast-gms-cdc-phil.jpg',
+        alt: 'Grocott-Gomori methenamine silver stained specimen at 1400x showing Talaromyces marneffei yeast cells dividing by fission.',
+        caption: 'GMS at 1400x. These cells divide by splitting across a central septum rather than budding, so look for a cross wall through the middle instead of a daughter cell on the outside. That single feature separates Talaromyces from every yeast on the previous cards.',
+        stageLabel: 'Yeast phase',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=25884'
       }
     ],
     readoutTitle: 'Penicillium/Talaromyces anchors',
@@ -3470,6 +3530,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Conidia are rough or echinulate with a flat truncate base, often described as lemon-shaped. Surface texture separates it from smooth Penicillium conidia.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/scopulariopsis-annellide-chains-cdc-phil.jpg',
+        alt: 'Scopulariopsis at 475x with septate hyphae bearing numerous basipetal chains of rough-walled conidia from annellides.',
+        caption: 'At 475x, chains of conidia rising from the conidiophore in a loose brush. New conidia form at the base and push the older ones up the chain, so the oldest sits at the tip.',
+        stageLabel: 'Conidiophore',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23076'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/scopulariopsis-rough-conidia-cdc-phil.jpg',
+        alt: 'Scopulariopsis slide culture at 970x showing chains of knobby, spherical, tuberculated conidia.',
+        caption: 'At 970x the wall texture carries the identification: knobby and tuberculated, not smooth. Compare against the Penicillium brush, which produces a similar shape with a smooth wall.',
+        stageLabel: 'Conidia',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=16419'
+      }
+    ],
     readoutTitle: 'Scopulariopsis visual anchors',
     readoutRows: [
       ['Penicillus-like brush', 'Penicillium mimic clue', 'Looks brush-like, so check conidial surface before calling Penicillium'],
@@ -3528,6 +3608,17 @@ export const atlasPages: AtlasPage[] = [
         note: 'Chains of small oval conidia spread apart in loose divergent arrangements rather than forming a tight columnar brush.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/paecilomyces-tapering-phialides-cdc-phil.jpg',
+        alt: 'Paecilomyces at 475x with branched conidiophores on septate hyaline hyphae, each tipped by a tapered phialide bearing a chain of elliptical conidia.',
+        caption: 'At 475x, each phialide narrows to a fine point and the conidial chains spray outward rather than sitting in a tight column. Beside the Penicillium frame the difference reads immediately: divergent and delicate, not a compact brush.',
+        stageLabel: 'Phialides',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg and Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23113'
+      }
+    ],
     readoutTitle: 'Paecilomyces visual anchors',
     readoutRows: [
       ['Long tapering phialides', 'Paecilomyces pattern', 'Fine narrowing neck is the main clue'],
@@ -3584,6 +3675,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Hyaline septate mold',
         colors: { slant: '#edf4f0', butt: '#6f9a86', base: '#335c48' },
         note: 'Septate hyphae place this in the hyaline mold group. Conidiogenous cell shape, not hyphae alone, points toward Scedosporium or Lomentospora.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/scedosporium-conidiogenous-cells-cdc-phil.jpg',
+        alt: 'Pseudallescheria boydii at 475x with septate hyaline hyphae and long conidiophores bearing smooth round single conidia, some formed directly on the hyphae.',
+        caption: 'At 475x, a single smooth oval conidium sits at the tip of each stalk, and some sit directly on the hypha with no stalk at all. One conidium per tip, never a chain - that is the whole pattern.',
+        stageLabel: 'Conidiogenous cell',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26590'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/scedosporium-hyphae-tissue-cdc-phil.jpg',
+        alt: 'Tissue section with invasive filamentous septate hyphae from an experimental Pseudallescheria boydii infection.',
+        caption: 'In tissue it is septate hyphae and nothing more, indistinguishable from Aspergillus or Fusarium at this magnification. The card beside this one exists because tissue cannot answer the question and culture has to.',
+        stageLabel: 'Hyphae',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=27778'
       }
     ],
     readoutTitle: 'Scedosporium / Lomentospora anchors',
