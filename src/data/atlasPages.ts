@@ -2801,6 +2801,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Mycelial form can show oval conidia borne laterally on hyphae. Culture work follows dimorphic mold safety SOPs.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/blastomyces-yeasts-in-pus-cdc-phil.jpg',
+        alt: 'Pus specimen with numerous large round thick-walled yeast-phase Blastomyces dermatitidis cells, several of them budding.',
+        caption: 'Pus, straight from the lesion. Large round cells with a wall thick enough to read as a double line, and several caught mid-bud. Size and wall thickness are what you register first.',
+        stageLabel: 'Yeast phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26849'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/blastomyces-broad-based-bud-cdc-phil.jpg',
+        alt: 'Blastomyces dermatitidis yeast at 970x in a pus sample, with an arrow published by the source marking a broad-based bud.',
+        caption: 'The arrow is the source\'s own, marking the broad-based bud: mother and daughter joined across a wide neck rather than pinched at a point. That width is the whole distinction from Cryptococcus, and it is genuinely hard to see in a murky pus field, which is why CDC marked it.',
+        stageLabel: 'Yeast phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28149'
+      }
+    ],
     readoutTitle: 'Blastomyces recognition anchors',
     readoutRows: [
       ['Large thick-walled yeast', 'Blastomyces yeast phase', 'Larger than Histoplasma and often visible as single cells'],
@@ -3040,6 +3060,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Pseudohyphae have constrictions at septa and attachment points. Do not count these as true germ tubes.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/candida-germ-tubes-serum-cdc-phil.jpg',
+        alt: 'Unstained Candida albicans cells suspended in serum, producing filamentous germ tubes with parallel walls.',
+        caption: 'Cells grown in serum, unstained. The outgrowths run with parallel walls and there is no pinch where each one leaves the mother cell. No constriction at the base is the whole test.',
+        stageLabel: 'True germ tube',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=21794'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/candida-pseudohyphae-gram-smear-cdc-phil.jpg',
+        alt: 'Gram-stained vaginal smear with filamentous Candida pseudohyphae running through epithelial cells and debris.',
+        caption: 'A Gram-stained vaginal smear, which is where you actually meet this. Follow a filament and you will find pinch points along it where each segment joins the next. Those constrictions make it a pseudohypha, not a germ tube.',
+        stageLabel: 'Pseudohyphae',
+        credit: 'Source: CDC / PHIL - Sherry A. Brinkman',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24036'
+      }
+    ],
     readoutTitle: 'Yeast form readout',
     readoutRows: [
       ['No constriction at origin', 'True germ tube', 'Classic germ tube-positive Candida pattern'],
@@ -3096,6 +3136,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Narrow-based budding',
         colors: { slant: '#f1efe8', butt: '#8c7a58', base: '#4b3d24' },
         note: 'Buds attach by a narrow neck, unlike Blastomyces broad-based budding. Correlate with antigen or culture workflow.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/cryptococcus-india-ink-capsule-cdc-phil.jpg',
+        alt: 'India ink preparation showing round Cryptococcus neoformans yeast cells, each with a thick capsule appearing as a clear halo against the dark background.',
+        caption: 'India ink. The ink cannot enter the capsule, so each yeast sits inside a clear halo on a dark ground. You are reading an absence of ink, not a stain - the capsule itself is never coloured.',
+        stageLabel: 'Capsule prep',
+        credit: 'Source: CDC / PHIL - Sherry A. Brinkman',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24018'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/cryptococcus-india-ink-field-cdc-phil.jpg',
+        alt: 'India ink preparation at 475x with numerous encapsulated Cryptococcus neoformans cells of varying size across the field.',
+        caption: 'A wider field at 475x. Halo width varies a lot between cells, and some are barely encapsulated - a thin halo does not rule Cryptococcus out. Air bubbles and fat droplets also sit clear in ink, so confirm a cell wall inside the halo.',
+        stageLabel: 'Capsule prep',
+        credit: 'Source: CDC / PHIL - Sherry A. Brinkman',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24002'
       }
     ],
     readoutTitle: 'Cryptococcus visual anchors',
@@ -3156,6 +3216,17 @@ export const atlasPages: AtlasPage[] = [
         note: 'Conidia may cluster at the tip of a conidiophore in a flowerette arrangement. Culture work follows dimorphic fungus safety workflow.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/sporothrix-cigar-yeast-cdc-phil.jpg',
+        alt: 'Sporothrix schenckii yeast phase at 1200x showing elongated cigar-shaped cells, some budding.',
+        caption: 'The yeast phase at 1200x. Elongated, tapered at the ends, genuinely cigar-shaped rather than round - and far smaller and sparser in real tissue than a culture field like this suggests.',
+        stageLabel: 'Yeast phase',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26624'
+      }
+    ],
     readoutTitle: 'Sporothrix anchors',
     readoutRows: [
       ['Cigar-shaped yeast', 'Tissue clue', 'May be sparse; do not expect every field to show it'],
@@ -3212,6 +3283,17 @@ export const atlasPages: AtlasPage[] = [
         name: 'Single broad bud is not the same pattern',
         colors: { slant: '#e9f0ed', butt: '#8a8f70', base: '#4c5133' },
         note: 'Blastomyces typically shows a single broad-based bud. Paracoccidioides shows multiple buds around one mother cell.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/paracoccidioides-steering-wheel-cdc-phil.jpg',
+        alt: 'Paracoccidioides brasiliensis yeast phase at 970x with mother cells carrying multiple daughter buds around the periphery in a steering-wheel pattern.',
+        caption: 'At 970x, look for a mother cell ringed by daughter buds on narrow necks - the mariner-wheel or steering-wheel pattern. Not every cell shows it, so scan the field rather than judging the first yeast you land on.',
+        stageLabel: 'Tissue yeast',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26606'
       }
     ],
     readoutTitle: 'Paracoccidioides anchors',
