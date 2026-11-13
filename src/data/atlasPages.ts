@@ -5576,6 +5576,26 @@ export const atlasPages: AtlasPage[] = [
         note: '55-75 x 35-45 um. Rounder, symmetric oval with blunt ends at both poles. Early morula (2-8 cells) when freshly passed - less developed than Trichostrongylus at time of passing. Thin shell with clear space between shell and embryo. Differentiation from Trichostrongylus requires careful size measurement and assessment of end shape and morula cell count.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/trichostrongylus-egg-wetmount-cdc-dpdx.jpg',
+        alt: 'Trichostrongylus egg in an unstained wet mount of stool beside a 100 micrometre scale bar published with the image.',
+        caption: 'The source published this frame with its own 100 um scale bar, which is exactly what this call needs: the egg runs most of that length, well past hookworm size, and one end tapers while the other stays blunt.',
+        stageLabel: 'Trichostrongylus',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichostrongylosis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/trichostrongylus-egg-developing-larva-cdc-dpdx.jpg',
+        alt: 'Trichostrongylus egg in an unstained wet mount containing a developing larva.',
+        caption: 'A more advanced egg, with a larva already coiled inside. Hookworm eggs passed fresh hold an early morula of a few cells, not this.',
+        stageLabel: 'Trichostrongylus',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/trichostrongylosis/index.html'
+      }
+    ],
     readoutTitle: 'Trichostrongylus vs. hookworm - key discriminators',
     readoutRows: [
       ['More elongated oval, asymmetric outline', 'Trichostrongylus, not hookworm', 'Higher length-to-width ratio; one end typically more tapered - key low-power shape clue'],
@@ -5792,6 +5812,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Gravid proglottid (excreted segment): inject with India ink through uterine pore to visualize lateral uterine branches. T. saginata: >13 lateral branches per side - dichotomously branching, thin. T. solium: 8-13 branches per side - fewer, thicker. Species distinction is critical: T. solium tapeworm carriers shed eggs that can cause cysticercosis (CNS, eye, muscle) in contacts and in the patient themselves via autoinfection.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-egg-hooks-cdc-dpdx.jpg',
+        alt: 'Taenia egg teased from a proglottid, showing the thick radially striated embryophore and the hooks of the oncosphere inside.',
+        caption: 'The taeniid egg at its clearest: a thick shell crossed by radial lines like the spokes of a wheel. Inside, the small dark hooks belong to the oncosphere.',
+        stageLabel: 'Taenia egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-eggs-wetmount-cdc-dpdx.jpg',
+        alt: 'Two Taenia eggs in an unstained wet mount of stool among debris.',
+        caption: 'The same egg as you will actually meet it: two of them in a field of debris, small and dark. The radial striations are what pick them out from everything else.',
+        stageLabel: 'Taenia egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-egg-striated-shell-cdc-dpdx.jpg',
+        alt: 'A single Taenia egg in an unstained wet mount, the striated shell visible against surrounding debris.',
+        caption: 'A single egg at higher power. Nothing here tells you which Taenia species it is, and nothing ever will - the eggs are identical. That is why the proglottid matters.',
+        stageLabel: 'Taenia egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      }
+    ],
     readoutTitle: 'What to look for in stool',
     readoutRows: [
       ['Round, thick radially striated embryophore, 30-45 um', 'Taenia spp. egg - cannot determine species by egg alone', 'Also indistinguishable from Echinococcus granulosus eggs; clinical context is essential'],
@@ -5910,6 +5959,35 @@ export const atlasPages: AtlasPage[] = [
         note: '110-170 x 40-70 um. Elongated, pointed at one end. Terminal spine at the abopercular (posterior) pole - the spine projects from the very tip. Found primarily in urine (bladder venule worms) - collect urine at noon when egg excretion peaks; may also be found in stool. Associated with urinary schistosomiasis, hematuria, and bladder cancer risk in endemic regions. Endemic in Africa and Middle East.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/schistosoma-mansoni-egg-lateral-spine-cdc-dpdx.jpg',
+        alt: 'Schistosoma mansoni egg in an unstained wet mount with a prominent spine projecting from the side of the shell.',
+        caption: 'The spine comes off the side, near one end, and points away from the long axis. Lateral spine, stool specimen: S. mansoni.',
+        stageLabel: 'S. mansoni',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/schistosomiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/schistosoma-haematobium-egg-terminal-spine-cdc-dpdx.jpg',
+        alt: 'Schistosoma haematobium egg in a wet mount of a urine concentrate with a spine at one end of the shell.',
+        caption: 'Here the spine sits at the end, continuing the long axis like a point on a lemon. Terminal spine, urine specimen: S. haematobium.',
+        stageLabel: 'S. haematobium',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/schistosomiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/schistosoma-japonicum-egg-cdc-dpdx.jpg',
+        alt: 'Schistosoma japonicum egg in an unstained wet mount of stool, rounder than the other species with no obvious spine.',
+        caption: 'S. japonicum for contrast: rounder, and the spine is so small it is usually not visible at all. A round schistosome egg with no spine you can find is not a negative.',
+        stageLabel: 'S. japonicum (comparison)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/schistosomiasis/index.html'
+      }
+    ],
     readoutTitle: 'Schistosoma species - what to look for',
     readoutRows: [
       ['Large elongated egg, prominent lateral spine, in stool', 'Schistosoma mansoni', 'Lateral spine at mid-to-posterior portion is pathognomonic for S. mansoni; examine stool with concentration method'],
@@ -5969,6 +6047,44 @@ export const atlasPages: AtlasPage[] = [
         note: '70-85 um. Larger than H. nana. Round to oval, yellow-brown outer shell. Inner oncosphere with 3 hooklet pairs. NO polar filaments between oncosphere and outer shell - clear space is empty. Transmitted via accidental ingestion of insect intermediate hosts (flour beetles, grain beetles) - rare human infection. Rats and mice are the natural definitive hosts. H. diminuta infection in humans is uncommon and typically mild.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/hymenolepis-nana-egg-hooks-cdc-dpdx.jpg',
+        alt: 'Hymenolepis nana egg in an unstained wet mount showing the oncosphere with hooks and polar filaments in the space around it.',
+        caption: 'Two shells, one inside the other. The inner one holds the oncosphere and its hooks; the gap between them is where to look next.',
+        stageLabel: 'H. nana',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hymenolepiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/hymenolepis-nana-egg-polar-filaments-cdc-dpdx.jpg',
+        alt: 'Hymenolepis nana egg in an unstained wet mount with polar filaments clearly visible between the oncosphere and the outer shell.',
+        caption: 'Here the gap has fine threads crossing it, running from the poles of the inner shell. Polar filaments. Find those and the call is H. nana.',
+        stageLabel: 'H. nana',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hymenolepiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/hymenolepis-nana-egg-wetmount-cdc-dpdx.jpg',
+        alt: 'Hymenolepis nana egg in an unstained wet mount of stool.',
+        caption: 'A third example, because the filaments do not always sit in one plane of focus. If you cannot see them, rack the fine focus through the egg before deciding.',
+        stageLabel: 'H. nana',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hymenolepiasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/hymenolepis-diminuta-egg-cdc-dpdx.jpg',
+        alt: 'Hymenolepis diminuta egg in an unstained wet mount, larger than H. nana with no polar filaments in the space around the oncosphere.',
+        caption: 'H. diminuta for contrast. Bigger, rounder, and the gap around the oncosphere is empty - no filaments. That absence is the whole distinction.',
+        stageLabel: 'H. diminuta',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/hymenolepiasis/index.html'
+      }
+    ],
     readoutTitle: 'Hymenolepis egg differential',
     readoutRows: [
       ['Small round egg 30-47 um, thin shell, polar filaments in clear space', 'Hymenolepis nana', 'Polar filaments (thread-like strands between oncosphere and outer shell) are pathognomonic for H. nana'],
@@ -6026,6 +6142,35 @@ export const atlasPages: AtlasPage[] = [
         name: 'Paragonimus (shouldered rim) vs. Fasciola (no knob, larger)',
         colors: { slant: '#e8e0cc', butt: '#907848', base: '#3a2810' },
         note: 'Paragonimus westermani (80-120 um): larger, prominent shouldered opercular rim (the operculum sits in a groove with a widened shell rim - absent in D. latum). Fasciola hepatica (130-150 um): largest operculated egg, no opercular shoulder, no abopercular knob, very large. Clonorchis sinensis (28-34 um): much smaller, vase-shaped with prominent shoulder and knob. D. latum occupies the middle size range with a smooth rim and small knob - no other common trematode/cestode occupies this morphologic space.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/diphyllobothrium-egg-operculum-cdc-dpdx.jpg',
+        alt: 'Diphyllobothrium egg in an unstained wet mount showing the smooth oval shell and the operculum at one end.',
+        caption: 'An oval shell with a lid at one end, seated flush and smooth - no shoulders where it meets the shell. The opposite end carries a small knob.',
+        stageLabel: 'D. latum egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/diphyllobothriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/diphyllobothrium-eggs-open-operculum-cdc-dpdx.jpg',
+        alt: 'Two diphyllobothrium eggs in an unstained wet mount of stool with the opercula open.',
+        caption: 'Two eggs with the lid sprung open. An open operculum is a useful find: it proves the structure is a lid rather than a thin patch of shell.',
+        stageLabel: 'D. latum egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/diphyllobothriasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/diphyllobothrium-eggs-in-proglottid-cdc-dpdx.jpg',
+        alt: 'Diphyllobothriid eggs still inside a proglottid.',
+        caption: 'Eggs still packed inside a proglottid. Worth recognising, because a segment passed whole can be the specimen you are handed rather than a stool smear.',
+        stageLabel: 'D. latum egg',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/diphyllobothriasis/index.html'
       }
     ],
     readoutTitle: 'D. latum vs. operculated trematode eggs',
@@ -6802,6 +6947,44 @@ export const atlasPages: AtlasPage[] = [
         name: '4 suckers only, NO rostellum, NO hooks',
         colors: { slant: '#ece4d0', butt: '#806030', base: '#381808' },
         note: '~1-2 mm scolex (slightly larger than T. solium). 4 prominent suckers arranged symmetrically. NO rostellum - apex is rounded and smooth. NO hooks - completely absent. The "unarmed" tapeworm. Gravid proglottids: 15-30 uterine branches per side (T. solium: 7-13 branches per side) - proglottid branch counting is an alternative species ID method when scolex is unavailable. T. saginata does NOT cause cysticercosis - humans are the only definitive host for the adult worm; cattle are the intermediate host (cysticerci in muscle).'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-solium-scolex-cdc-dpdx.jpg',
+        alt: 'Scolex of Taenia solium showing four large suckers and a rostellum bearing two rows of hooks.',
+        caption: 'Four suckers, and at the apex a raised rostellum ringed with hooks. Armed. This is the species that carries the cysticercosis risk.',
+        stageLabel: 'T. solium (armed)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-saginata-scolex-cdc-dpdx.jpg',
+        alt: 'Scolex of Taenia saginata showing four large suckers and no rostellum or hooks.',
+        caption: 'The same four suckers, but the apex is bare - no rostellum, no hooks. Unarmed. Compare the two tips side by side and the distinction is obvious.',
+        stageLabel: 'T. saginata (unarmed)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-solium-proglottid-cdc-dpdx.jpg',
+        alt: 'Mature proglottid of Taenia solium stained with carmine, showing the primary lateral uterine branches.',
+        caption: 'When no scolex is passed, the proglottid decides it. Count the primary branches running off the central stem on one side: T. solium stays under about 13.',
+        stageLabel: 'T. solium (armed)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
+      },
+      {
+        src: '/visual-atlas/photos/parasitology/taenia-saginata-proglottid-cdc-dpdx.jpg',
+        alt: 'Mature proglottid of Taenia saginata stained with carmine, showing more than twelve primary lateral uterine branches.',
+        caption: 'The same count in T. saginata runs higher, over about 13 a side. Count primary branches only - the ones leaving the stem - not every fork further out.',
+        stageLabel: 'T. saginata (unarmed)',
+        credit: 'Source: CDC / DPDx',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://www.cdc.gov/dpdx/taeniasis/index.html'
       }
     ],
     readoutTitle: 'Taenia scolex and proglottid species differentiation',
