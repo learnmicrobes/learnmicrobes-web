@@ -3881,6 +3881,26 @@ export const atlasPages: AtlasPage[] = [
         note: 'Brown septate hyphae, sometimes with budding yeast forms. Pigmented hyphae in tissue point to phaeohyphomycosis rather than chromoblastomycosis.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/sclerotic-bodies-medlar-tissue-cdc-phil.jpg',
+        alt: 'Three pigmented thick-walled sclerotic bodies in tissue from a case of human chromoblastomycosis at 1125x.',
+        caption: 'Tissue at 1125x, and the cluster in the centre is the finding: thick-walled brown cells dividing by splitting across the middle rather than budding. Medlar bodies, and they mean chromoblastomycosis whichever species caused it.',
+        stageLabel: 'Sclerotic bodies',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=28111'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/dematiaceous-pigmented-hyphae-brain-cdc-phil.jpg',
+        alt: 'Brain tissue section with darkly stained septate filamentous hyphae of Cladophialophora bantiana.',
+        caption: 'The other half of the distinction. Brain tissue showing dark septate hyphae rather than round sclerotic cells - that is phaeohyphomycosis, and it is a different disease from the one above even when the same group of fungi causes it.',
+        stageLabel: 'Pigmented hyphae',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24679'
+      }
+    ],
     readoutTitle: 'Tissue-form anchors',
     readoutRows: [
       ['Clustered muriform brown cells', 'Sclerotic bodies', 'Septa in two planes; copper-penny look defines chromoblastomycosis'],
@@ -3997,6 +4017,17 @@ export const atlasPages: AtlasPage[] = [
         note: 'Elliptical dark conidia form branching chains that break apart easily during mount preparation. Intact chains are best seen on a tape prep.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/cladosporium-shield-cells-chains-cdc-phil.jpg',
+        alt: 'Cladosporium slide culture at 970x showing a conidiophore branching into chains of conidia.',
+        caption: 'At 970x, trace a chain back to where it branches. The cell sitting at each branch point is a shield cell, carrying scars where two chains left it. The chains break apart easily, so expect loose conidia everywhere in the field.',
+        stageLabel: 'Shield cells',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26386'
+      }
+    ],
     readoutTitle: 'Cladosporium visual anchors',
     readoutRows: [
       ['Shield cells at branch points', 'Cladosporium pattern', 'Two or more dark attachment scars per cell'],
@@ -4062,6 +4093,35 @@ export const atlasPages: AtlasPage[] = [
         note: 'Long, sparsely branched, fragile chains of elliptical conidia without prominent shield cells. Chains break apart easily during mount preparation.'
       }
     ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/phialophora-collarette-phialide-cdc-phil.jpg',
+        alt: 'Phialophora verrucosa at 1960x with septate hyphae and clumps of mucilaginous conidia gathered at the tip of a flask-shaped phialide.',
+        caption: 'At 1960x, flask-shaped phialides with conidia balled up at the mouth. The conidia are held in mucilage so they stay put instead of forming chains, and the flared collarette at the opening is the feature to find.',
+        stageLabel: 'Phialophora',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=27787'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/fonsecaea-shield-cell-chains-cdc-phil.jpg',
+        alt: 'Fonsecaea pedrosoi at 1550x, where shield-shaped primary conidia give rise to branching chains of secondary conidia.',
+        caption: 'Fonsecaea at 1550x runs several sporulation types at once, which is the genus feature. Here it is the Cladosporium type: shield-shaped primary cells throwing short branching chains.',
+        stageLabel: 'Fonsecaea',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=25144'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/cladophialophora-wavy-conidial-chains-cdc-phil.jpg',
+        alt: 'Cladophialophora bantiana at 475x with long wavy branching chains of conidia.',
+        caption: 'Long, sparsely branched, distinctly wavy chains at 475x. Much longer than the Fonsecaea chains above and far more fragile - the chains are usually broken by the time the mount reaches the scope.',
+        stageLabel: 'Cladophialophora',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=29188'
+      }
+    ],
     readoutTitle: 'Chromoblastomycosis sporulation anchors',
     readoutRows: [
       ['Collarette phialides', 'Phialophora type', 'Saucer-like collarette with conidia at the apical pore'],
@@ -4118,6 +4178,26 @@ export const atlasPages: AtlasPage[] = [
         name: 'Tapered tube-like annellophores',
         colors: { slant: '#dad6c6', butt: '#5f5238', base: '#2f2616' },
         note: 'With age, septate hyphae form annellophores that taper to a narrow tip. Clusters of oval to round conidia gather at and below the tip.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/exophiala-annellides-conidia-cdc-phil.jpg',
+        alt: 'Exophiala jeanselmei slide culture at 970x with hyphal swellings and annellides bearing clusters of ellipsoidal conidia.',
+        caption: 'Slide culture at 970x. The conidia gather in loose balls at the tips of tapered conidiogenous cells rather than in chains, and the hyphae carry swellings along their length.',
+        stageLabel: 'Mature culture',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23776'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/exophiala-peg-conidiogenous-cells-cdc-phil.jpg',
+        alt: 'Exophiala jeanselmei at 970x with short peg-like conidiogenous cells bearing clusters of elongated cigar-shaped conidia on vacuolated septate hyphae.',
+        caption: 'A second mount of the same organism. Here the conidiogenous cells are short pegs rather than long tubes - the same structure at a different stage, which is why one mount is never enough to call this genus.',
+        stageLabel: 'Mature culture',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23413'
       }
     ],
     readoutTitle: 'Black yeast visual anchors',
