@@ -11,6 +11,7 @@ import { subjectStainClass } from '../../data/subjectStains';
 import './VisualAtlas.css';
 import { atlasPages, type AtlasPage, type TubeVisual } from '../../data/atlasPages';
 import { renderExpansionVisual } from './atlasExpansionRenderers';
+import AtlasImageData from '../SEO/AtlasImageData';
 
 export { atlasPages };
 export type { AtlasPage, TubeVisual };
@@ -6591,6 +6592,13 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
         </div>
       </section>
 
+      {page.photoReferences && page.photoReferences.length > 0 && (
+        <AtlasImageData
+          pageTitle={page.title}
+          canonicalPath={`/visuals/${page.slug}`}
+          photos={page.photoReferences}
+        />
+      )}
       {page.photoReferences && page.photoReferences.length > 0 && (
         <section className="visual-photo-reference" aria-labelledby="visual-photo-title">
           <div className="visual-photo-heading">

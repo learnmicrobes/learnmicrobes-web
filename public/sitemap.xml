@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://learnmicrobes.com/</loc>
     <lastmod>2026-05-25</lastmod>
@@ -534,67 +535,222 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/mucorales-rhizopus</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/rhizopus-sporangiophores-sporangia-cdc-phil.jpg</image:loc>
+      <image:title>Mucorales / Rhizopus: Broad Hyphae and Sporangia - Culture mount</image:title>
+      <image:caption>Rhizopus arrhizus at 20x with two tall unbranched sporangiophores, each topped by a dark globose spore-filled sporangium.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/rhizopus-rhizoid-cdc-phil.jpg</image:loc>
+      <image:title>Mucorales / Rhizopus: Broad Hyphae and Sporangia - Culture mount</image:title>
+      <image:caption>Rhizopus rhizoid at 475x, a branching root-like structure arising from the hyphae.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/aspergillus-fumigatus</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-fumigatus-conidial-head-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus fumigatus: Septate Hyphae and Conidial Head - Culture mount</image:title>
+      <image:caption>Aspergillus fumigatus conidial head at 1125x, a vesicle at the tip of the conidiophore bearing uniseriate phialides with chains of conidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-fumigatus-columnar-chains-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus fumigatus: Septate Hyphae and Conidial Head - Culture mount</image:title>
+      <image:caption>Aspergillus fumigatus conidial head at 970x with columnar chains of conidia sweeping upward from the vesicle.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/histoplasma-capsulatum</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/histoplasma-yeasts-in-histiocyte-cdc-phil.jpg</image:loc>
+      <image:title>Histoplasma capsulatum: Intracellular Yeast and Tuberculate Macroconidia - Tissue / smear</image:title>
+      <image:caption>Gridley-stained liver tissue smear with macrophages packed full of small oval yeast-phase Histoplasma capsulatum cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/histoplasma-tuberculate-macroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Histoplasma capsulatum: Intracellular Yeast and Tuberculate Macroconidia - Mold phase</image:title>
+      <image:caption>Histoplasma capsulatum mycelial phase at 258x, showing conidiophores each bearing a single knobby tuberculate macroconidium.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/blastomyces-dermatitidis</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/blastomyces-yeasts-in-pus-cdc-phil.jpg</image:loc>
+      <image:title>Blastomyces dermatitidis: Broad-Based Budding Yeast - Yeast phase</image:title>
+      <image:caption>Pus specimen with numerous large round thick-walled yeast-phase Blastomyces dermatitidis cells, several of them budding.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/blastomyces-broad-based-bud-cdc-phil.jpg</image:loc>
+      <image:title>Blastomyces dermatitidis: Broad-Based Budding Yeast - Yeast phase</image:title>
+      <image:caption>Blastomyces dermatitidis yeast at 970x in a pus sample, with an arrow published by the source marking a broad-based bud.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/coccidioides-immitis</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/coccidioides-spherules-tissue-he-cdc-phil.jpg</image:loc>
+      <image:title>Coccidioides: Spherule and Arthroconidia - Tissue phase</image:title>
+      <image:caption>Hematoxylin and eosin stained tissue section at 480x with several Coccidioides spherules among inflammatory cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/coccidioides-single-spherule-cdc-phil.jpg</image:loc>
+      <image:title>Coccidioides: Spherule and Arthroconidia - Tissue phase</image:title>
+      <image:caption>A single round Coccidioides immitis spherule with a thick wall and granular endospores inside.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/coccidioides-barrel-arthroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Coccidioides: Spherule and Arthroconidia - Mold phase</image:title>
+      <image:caption>Coccidioides immitis mold phase at 500x showing chains of barrel-shaped arthroconidia along the hyphae.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/dermatophyte-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/trichophyton-microconidia-along-hyphae-cdc-phil.jpg</image:loc>
+      <image:title>Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton - Trichophyton</image:title>
+      <image:caption>Trichophyton yaoundei at 400x under phase contrast, with pear-shaped microconidia sprouting along the length of the septate hyphae.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/microsporum-spindle-macroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton - Microsporum</image:title>
+      <image:caption>Microsporum canis var. equinum at 475x with multicellular spindle-shaped macroconidia among a mass of hyphae.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/epidermophyton-club-macroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton - Epidermophyton</image:title>
+      <image:caption>Epidermophyton floccosum showing smooth thin-walled club-shaped multicellular macroconidia in clusters on septate hyphae.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/candida-albicans-germ-tube</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/candida-germ-tubes-serum-cdc-phil.jpg</image:loc>
+      <image:title>Candida albicans: Germ Tube and Pseudohyphae - True germ tube</image:title>
+      <image:caption>Unstained Candida albicans cells suspended in serum, producing filamentous germ tubes with parallel walls.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/candida-pseudohyphae-gram-smear-cdc-phil.jpg</image:loc>
+      <image:title>Candida albicans: Germ Tube and Pseudohyphae - Pseudohyphae</image:title>
+      <image:caption>Gram-stained vaginal smear with filamentous Candida pseudohyphae running through epithelial cells and debris.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/cryptococcus-neoformans-capsule</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/cryptococcus-india-ink-capsule-cdc-phil.jpg</image:loc>
+      <image:title>Cryptococcus neoformans/gattii: Capsule and Narrow-Based Budding - Capsule prep</image:title>
+      <image:caption>India ink preparation showing round Cryptococcus neoformans yeast cells, each with a thick capsule appearing as a clear halo against the dark background.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/cryptococcus-india-ink-field-cdc-phil.jpg</image:loc>
+      <image:title>Cryptococcus neoformans/gattii: Capsule and Narrow-Based Budding - Capsule prep</image:title>
+      <image:caption>India ink preparation at 475x with numerous encapsulated Cryptococcus neoformans cells of varying size across the field.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/sporothrix-schenckii</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/sporothrix-cigar-yeast-cdc-phil.jpg</image:loc>
+      <image:title>Sporothrix schenckii: Cigar Yeast and Flowerette Conidia - Yeast phase</image:title>
+      <image:caption>Sporothrix schenckii yeast phase at 1200x showing elongated cigar-shaped cells, some budding.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/paracoccidioides-brasiliensis</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/paracoccidioides-steering-wheel-cdc-phil.jpg</image:loc>
+      <image:title>Paracoccidioides brasiliensis: Multiple Budding Yeast - Tissue yeast</image:title>
+      <image:caption>Paracoccidioides brasiliensis yeast phase at 970x with mother cells carrying multiple daughter buds around the periphery in a steering-wheel pattern.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/fusarium-sickle-macroconidia</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/fusarium-sickle-macroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Fusarium spp.: Sickle-Shaped Macroconidia - Macroconidia</image:title>
+      <image:caption>Fusarium species at 475x with clumps of elongated sickle-shaped multicellular macroconidia along the hyphae.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/fusarium-hyphae-cornea-pas-cdc-phil.jpg</image:loc>
+      <image:title>Fusarium spp.: Sickle-Shaped Macroconidia - Hyphae</image:title>
+      <image:caption>PAS-stained corneal tissue from a case of mycotic keratitis, with filamentous Fusarium oxysporum hyphae running through the stroma.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/penicillium-talaromyces</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/penicillium-penicillus-brush-cdc-phil.jpg</image:loc>
+      <image:title>Penicillium / Talaromyces: Brush Conidiophores and Fission Yeast - Mold phase</image:title>
+      <image:caption>Penicillium at 570x with septate hyaline hyphae and several penicilli, brush-like clusters of conidia at the ends of the conidiophores.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/talaromyces-fission-yeast-gms-cdc-phil.jpg</image:loc>
+      <image:title>Penicillium / Talaromyces: Brush Conidiophores and Fission Yeast - Yeast phase</image:title>
+      <image:caption>Grocott-Gomori methenamine silver stained specimen at 1400x showing Talaromyces marneffei yeast cells dividing by fission.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/scopulariopsis-rough-conidia</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/scopulariopsis-annellide-chains-cdc-phil.jpg</image:loc>
+      <image:title>Scopulariopsis spp.: Penicillus-Like Brush and Rough Conidia - Conidiophore</image:title>
+      <image:caption>Scopulariopsis at 475x with septate hyphae bearing numerous basipetal chains of rough-walled conidia from annellides.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/scopulariopsis-rough-conidia-cdc-phil.jpg</image:loc>
+      <image:title>Scopulariopsis spp.: Penicillus-Like Brush and Rough Conidia - Conidia</image:title>
+      <image:caption>Scopulariopsis slide culture at 970x showing chains of knobby, spherical, tuberculated conidia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/paecilomyces-tapering-phialides</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/paecilomyces-tapering-phialides-cdc-phil.jpg</image:loc>
+      <image:title>Paecilomyces spp.: Long Tapering Phialides - Phialides</image:title>
+      <image:caption>Paecilomyces at 475x with branched conidiophores on septate hyaline hyphae, each tipped by a tapered phialide bearing a chain of elliptical conidia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/scedosporium-lomentospora</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/scedosporium-conidiogenous-cells-cdc-phil.jpg</image:loc>
+      <image:title>Scedosporium / Lomentospora: Flask Cells and Annelloconidia - Conidiogenous cell</image:title>
+      <image:caption>Pseudallescheria boydii at 475x with septate hyaline hyphae and long conidiophores bearing smooth round single conidia, some formed directly on the hyphae.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/scedosporium-hyphae-tissue-cdc-phil.jpg</image:loc>
+      <image:title>Scedosporium / Lomentospora: Flask Cells and Annelloconidia - Hyphae</image:title>
+      <image:caption>Tissue section with invasive filamentous septate hyphae from an experimental Pseudallescheria boydii infection.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichosporon-arthroconidia</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/trichosporon-rectangular-arthroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Trichosporon spp.: Arthroconidia and Blastoconidia - Arthroconidia</image:title>
+      <image:caption>Cutaneotrichosporon cutaneum at 1200x with hyphae fragmenting into chains of rectangular arthroconidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/trichosporon-blastoconidia-brightfield-cdc-phil.jpg</image:loc>
+      <image:title>Trichosporon spp.: Arthroconidia and Blastoconidia - Blastoconidia</image:title>
+      <image:caption>Slide culture at 400x under bright field showing Trichosporon pseudohyphae, blastoconidia and rectangular arthroconidia together.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/dematiaceous-alternaria-curvularia</loc>
@@ -602,7 +758,17 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/sclerotic-bodies-chromo-vs-phaeo</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/sclerotic-bodies-medlar-tissue-cdc-phil.jpg</image:loc>
+      <image:title>Sclerotic Bodies: Chromoblastomycosis vs Phaeohyphomycosis - Sclerotic bodies</image:title>
+      <image:caption>Three pigmented thick-walled sclerotic bodies in tissue from a case of human chromoblastomycosis at 1125x.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/dematiaceous-pigmented-hyphae-brain-cdc-phil.jpg</image:loc>
+      <image:title>Sclerotic Bodies: Chromoblastomycosis vs Phaeohyphomycosis - Pigmented hyphae</image:title>
+      <image:caption>Brain tissue section with darkly stained septate filamentous hyphae of Cladophialophora bantiana.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/bipolaris-exserohilum-poroconidia</loc>
@@ -610,19 +776,69 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/cladosporium-shield-cells</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/cladosporium-shield-cells-chains-cdc-phil.jpg</image:loc>
+      <image:title>Cladosporium: Shield Cells and Fragile Chains - Shield cells</image:title>
+      <image:caption>Cladosporium slide culture at 970x showing a conidiophore branching into chains of conidia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/chromoblastomycosis-agents</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/phialophora-collarette-phialide-cdc-phil.jpg</image:loc>
+      <image:title>Chromoblastomycosis Agents: Sporulation Types - Phialophora</image:title>
+      <image:caption>Phialophora verrucosa at 1960x with septate hyphae and clumps of mucilaginous conidia gathered at the tip of a flask-shaped phialide.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/fonsecaea-shield-cell-chains-cdc-phil.jpg</image:loc>
+      <image:title>Chromoblastomycosis Agents: Sporulation Types - Fonsecaea</image:title>
+      <image:caption>Fonsecaea pedrosoi at 1550x, where shield-shaped primary conidia give rise to branching chains of secondary conidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/cladophialophora-wavy-conidial-chains-cdc-phil.jpg</image:loc>
+      <image:title>Chromoblastomycosis Agents: Sporulation Types - Cladophialophora</image:title>
+      <image:caption>Cladophialophora bantiana at 475x with long wavy branching chains of conidia.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/exophiala-black-yeast</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/exophiala-annellides-conidia-cdc-phil.jpg</image:loc>
+      <image:title>Exophiala / Hortaea: Black Yeast to Annellophores - Mature culture</image:title>
+      <image:caption>Exophiala jeanselmei slide culture at 970x with hyphal swellings and annellides bearing clusters of ellipsoidal conidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/exophiala-peg-conidiogenous-cells-cdc-phil.jpg</image:loc>
+      <image:title>Exophiala / Hortaea: Black Yeast to Annellophores - Mature culture</image:title>
+      <image:caption>Exophiala jeanselmei at 970x with short peg-like conidiogenous cells bearing clusters of elongated cigar-shaped conidia on vacuolated septate hyphae.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/aspergillus-species-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-fumigatus-conidial-head-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus Species: Conidial Head Comparison - A. fumigatus</image:title>
+      <image:caption>Aspergillus fumigatus conidial head at 1125x with a single row of phialides on the vesicle and columnar chains of conidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-niger-conidial-head-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus Species: Conidial Head Comparison - A. niger</image:title>
+      <image:caption>Aspergillus niger conidial head attached to its conidiophore, large, globose and dark brown with conidia radiating in all directions.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-flavus-rough-stipe-head-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus Species: Conidial Head Comparison - A. flavus</image:title>
+      <image:caption>Aspergillus flavus at 258x with a rough-textured conidiophore stipe running to the edge of a conidial head.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/aspergillus-terreus-columnar-head-cdc-phil.jpg</image:loc>
+      <image:title>Aspergillus Species: Conidial Head Comparison - A. terreus</image:title>
+      <image:caption>Aspergillus terreus conidial heads showing compact columnar biseriate arrangement with long chains of spherical conidia on smooth-walled stalks.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/viral-cytopathic-effect-panel</loc>
@@ -654,187 +870,867 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/giardia-lamblia</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/giardia-trophozoite-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Giardia lamblia: Trophozoite and Cyst - Trophozoite</image:title>
+      <image:caption>Giardia duodenalis trophozoite on a trichrome-stained stool smear, showing the pear shape, paired anterior nuclei and curved median bodies.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/giardia-cyst-iodine-cdc-dpdx.jpg</image:loc>
+      <image:title>Giardia lamblia: Trophozoite and Cyst - Cyst</image:title>
+      <image:caption>Giardia duodenalis cyst in an iodine-stained wet mount, showing the oval cyst wall, internal nuclei and curved axoneme fibrils.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/cryptosporidium-oocyst</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/cryptosporidium-oocyst-acidfast-cdc-dpdx.jpg</image:loc>
+      <image:title>Cryptosporidium: Modified Acid-Fast Oocyst - Oocyst, modified acid-fast</image:title>
+      <image:caption>Cryptosporidium oocysts stained bright pink-red by modified acid-fast against a blue-green counterstained field.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/cryptosporidium-oocyst-dic-cdc-dpdx.jpg</image:loc>
+      <image:title>Cryptosporidium: Modified Acid-Fast Oocyst - Oocyst, unstained wet mount</image:title>
+      <image:caption>Six Cryptosporidium oocysts in an unstained wet mount under differential interference contrast, with internal sporozoites visible.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/entamoeba-histolytica</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-trophozoite-rbc-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba histolytica: Trophozoite and Cyst - Trophozoite with ingested red cells</image:title>
+      <image:caption>Entamoeba histolytica trophozoite on a trichrome-stained stool smear, containing dark ingested erythrocytes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba histolytica: Trophozoite and Cyst - Cyst</image:title>
+      <image:caption>Entamoeba histolytica cyst on a trichrome-stained stool smear, showing nuclei with small central karyosomes.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichomonas-vaginalis</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichomonas-trophozoite-culture-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichomonas vaginalis: Wet Mount and Stained - Stained</image:title>
+      <image:caption>Two Trichomonas vaginalis trophozoites from culture stained with Giemsa, pear shaped with anterior flagella and an undulating membrane.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichomonas-trophozoite-vaginal-smear-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichomonas vaginalis: Wet Mount and Stained - Stained</image:title>
+      <image:caption>Trichomonas vaginalis trophozoites in a Giemsa-stained vaginal smear among host cells and debris.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichomonas-trophozoite-giemsa-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichomonas vaginalis: Wet Mount and Stained - Stained</image:title>
+      <image:caption>Trichomonas vaginalis trophozoites in a Giemsa-stained vaginal smear at higher magnification.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/enterobius-vermicularis-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/enterobius-eggs-tape-prep-cdc-dpdx.jpg</image:loc>
+      <image:title>Enterobius vermicularis: Perianal Tape Prep Egg - Eggs on a tape prep</image:title>
+      <image:caption>A dense cluster of Enterobius vermicularis eggs collected on a cellulose tape preparation.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/enterobius-egg-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Enterobius vermicularis: Perianal Tape Prep Egg - Single egg</image:title>
+      <image:caption>A single Enterobius vermicularis egg in a wet mount, oval with one side flattened.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/strongyloides-stercoralis-larva</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/strongyloides-rhabditiform-larva-cdc-dpdx.jpg</image:loc>
+      <image:title>Strongyloides stercoralis: Rhabditiform Larva - Rhabditiform larva</image:title>
+      <image:caption>A Strongyloides stercoralis rhabditiform larva in a wet mount, with arrows added by the source marking the short buccal cavity and the prominent genital primordium.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/strongyloides-filariform-larva-cdc-dpdx.jpg</image:loc>
+      <image:title>Strongyloides stercoralis: Rhabditiform Larva - Filariform larva</image:title>
+      <image:caption>A Strongyloides stercoralis filariform larva in a wet mount, long and slender with a notched tail.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/hookworm-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hookworm-egg-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Hookworm: Oval Thin-Shelled Egg with Morula - Egg</image:title>
+      <image:caption>A hookworm egg in an unstained wet mount, thin-shelled with a multicelled morula inside and a clear space under the shell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hookworm-rhabditiform-larva-cdc-dpdx.jpg</image:loc>
+      <image:title>Hookworm: Oval Thin-Shelled Egg with Morula - Rhabditiform larva</image:title>
+      <image:caption>A hookworm rhabditiform larva in a wet preparation.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichuris-trichiura-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichuris-egg-typical-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs - Typical egg</image:title>
+      <image:caption>Trichuris trichiura egg in a wet mount, barrel-shaped with a clear polar plug at each end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichuris-egg-atypical-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs - Atypical egg</image:title>
+      <image:caption>An atypical Trichuris trichiura egg in a wet mount, distorted in shape with irregular polar plugs.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/plasmodium-falciparum-smear</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-falciparum-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium falciparum: Thin Blood Smear - Ring forms</image:title>
+      <image:caption>Plasmodium falciparum ring-form trophozoites on a Giemsa-stained thin blood film, several small rings in normal-sized red cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-falciparum-gametocyte-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium falciparum: Thin Blood Smear - Gametocyte</image:title>
+      <image:caption>A banana-shaped Plasmodium falciparum gametocyte on a Giemsa-stained thin blood film.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-falciparum-maurers-clefts-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium falciparum: Thin Blood Smear - Maurer&apos;s clefts</image:title>
+      <image:caption>Plasmodium falciparum ring forms on a Giemsa-stained thin film, with coarse red Maurer&apos;s clefts in the host cell cytoplasm.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/babesia-ring-forms</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/babesia-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Babesia spp.: Ring Forms and Maltese Cross Tetrad - Ring forms</image:title>
+      <image:caption>Babesia ring forms in a Giemsa-stained thin blood smear, several small rings of varying size inside red cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/babesia-tetrad-cdc-dpdx.jpg</image:loc>
+      <image:title>Babesia spp.: Ring Forms and Maltese Cross Tetrad - Tetrad (Maltese cross)</image:title>
+      <image:caption>Babesia tetrad in a Giemsa-stained thin blood smear, four merozoites joined in a cross inside one red cell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/babesia-extracellular-cdc-dpdx.jpg</image:loc>
+      <image:title>Babesia spp.: Ring Forms and Maltese Cross Tetrad - Ring forms</image:title>
+      <image:caption>Babesia in a Giemsa-stained thin blood smear showing ring forms lying free in the plasma outside red cells.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trypanosoma-trypomastigote</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/tcruzi-trypomastigote-cshape-cdc-dpdx.jpg</image:loc>
+      <image:title>Trypanosoma cruzi: Trypomastigote in Blood Film - Trypomastigote</image:title>
+      <image:caption>Trypanosoma cruzi trypomastigote in a Giemsa-stained thin blood film, curved into a C between the red cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/tcruzi-trypomastigote-kinetoplast-cdc-dpdx.jpg</image:loc>
+      <image:title>Trypanosoma cruzi: Trypomastigote in Blood Film - Trypomastigote</image:title>
+      <image:caption>High magnification of a Trypanosoma cruzi trypomastigote showing the large dark posterior kinetoplast and undulating membrane.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/tcruzi-amastigotes-heart-cdc-dpdx.jpg</image:loc>
+      <image:title>Trypanosoma cruzi: Trypomastigote in Blood Film - Amastigote</image:title>
+      <image:caption>Trypanosoma cruzi amastigotes packed inside a cardiac muscle fibre in a hematoxylin and eosin stained tissue section.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/toxoplasma-gondii-tachyzoite</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/toxoplasma-tachyzoites-cdc-dpdx.jpg</image:loc>
+      <image:title>Toxoplasma gondii: Tachyzoite and Tissue Cyst - Tachyzoite</image:title>
+      <image:caption>Toxoplasma gondii tachyzoites in a Giemsa-stained smear of peritoneal fluid, crescent shaped with the nucleus toward the broad end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/toxoplasma-tissue-cyst-brain-cdc-dpdx.jpg</image:loc>
+      <image:title>Toxoplasma gondii: Tachyzoite and Tissue Cyst - Tissue cyst</image:title>
+      <image:caption>Toxoplasma gondii tissue cyst in brain tissue stained with hematoxylin and eosin, filled with bradyzoites.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/toxoplasma-tissue-cyst-unstained-cdc-dpdx.jpg</image:loc>
+      <image:title>Toxoplasma gondii: Tachyzoite and Tissue Cyst - Tissue cyst</image:title>
+      <image:caption>Unstained Toxoplasma gondii tissue cyst showing the thin cyst wall and densely packed bradyzoites.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/leishmania-amastigotes</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/leishmania-amastigotes-giemsa-cdc-dpdx.jpg</image:loc>
+      <image:title>Leishmania spp.: Amastigotes in Tissue - Amastigote (LD body)</image:title>
+      <image:caption>Leishmania amastigotes in a Giemsa-stained tissue scraping, small round bodies in and around host macrophages.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/leishmania-amastigotes-touchprep-cdc-dpdx.jpg</image:loc>
+      <image:title>Leishmania spp.: Amastigotes in Tissue - Amastigote (LD body)</image:title>
+      <image:caption>Leishmania amastigotes in a Giemsa-stained touch preparation, one macrophage filled with organisms.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/leishmania-amastigotes-he-cdc-dpdx.jpg</image:loc>
+      <image:title>Leishmania spp.: Amastigotes in Tissue - Amastigote (LD body)</image:title>
+      <image:caption>Leishmania amastigotes in a skin biopsy stained with hematoxylin and eosin, lining the walls of vacuoles.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/leishmania-promastigotes-culture-cdc-dpdx.jpg</image:loc>
+      <image:title>Leishmania spp.: Amastigotes in Tissue - Promastigote</image:title>
+      <image:caption>Leishmania promastigotes from culture, elongated bodies with anterior flagella clustered into rosettes.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/ascaris-lumbricoides-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/ascaris-egg-fertilized-cdc-dpdx.jpg</image:loc>
+      <image:title>Ascaris lumbricoides: Mammillated and Decorticate Eggs - Fertilized egg</image:title>
+      <image:caption>Fertilized Ascaris lumbricoides egg in a wet mount, oval with a thick shell and a bumpy outer coat.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/ascaris-egg-unfertilized-cdc-dpdx.jpg</image:loc>
+      <image:title>Ascaris lumbricoides: Mammillated and Decorticate Eggs - Unfertilized egg</image:title>
+      <image:caption>Unfertilized Ascaris lumbricoides egg in a wet mount, longer and narrower with a thin irregular coat and disorganised granular contents.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichostrongylus-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichostrongylus-egg-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichostrongylus spp.: Elongated Hookworm-Like Egg - Trichostrongylus</image:title>
+      <image:caption>Trichostrongylus egg in an unstained wet mount of stool beside a 100 micrometre scale bar published with the image.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichostrongylus-egg-developing-larva-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichostrongylus spp.: Elongated Hookworm-Like Egg - Trichostrongylus</image:title>
+      <image:caption>Trichostrongylus egg in an unstained wet mount containing a developing larva.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichinella-spiralis-larva</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichinella-encysted-larvae-he-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichinella spiralis: Encysted Larva in Striated Muscle - H&amp;E section</image:title>
+      <image:caption>Encysted Trichinella larvae coiled inside skeletal muscle tissue, stained with hematoxylin and eosin at 400x.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichinella-nurse-cell-he-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichinella spiralis: Encysted Larva in Striated Muscle - H&amp;E section</image:title>
+      <image:caption>Trichinella larvae in muscle tissue stained with hematoxylin and eosin, showing several coiled larvae in nurse cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/trichinella-larvae-pepsin-digest-cdc-dpdx.jpg</image:loc>
+      <image:title>Trichinella spiralis: Encysted Larva in Striated Muscle - Muscle squash</image:title>
+      <image:caption>Trichinella larvae released from pressed bear meat after partial digestion with pepsin.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/microfilariae-blood-smear</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microfilaria-wbancrofti-whole-cdc-dpdx.jpg</image:loc>
+      <image:title>Microfilariae: Sheathed vs. Unsheathed - Blood Smear - W. bancrofti</image:title>
+      <image:caption>Wuchereria bancrofti microfilaria in a Giemsa-stained thick blood smear, a gently curved thread among white cell nuclei.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microfilaria-wbancrofti-tail-cdc-dpdx.jpg</image:loc>
+      <image:title>Microfilariae: Sheathed vs. Unsheathed - Blood Smear - W. bancrofti</image:title>
+      <image:caption>Close-up of the posterior end of a Wuchereria bancrofti microfilaria, with the column of nuclei stopping short of a clear tail tip.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microfilaria-loaloa-tail-nuclei-cdc-dpdx.jpg</image:loc>
+      <image:title>Microfilariae: Sheathed vs. Unsheathed - Blood Smear - Loa loa</image:title>
+      <image:caption>Loa loa microfilaria in a Giemsa-stained thick blood smear, with nuclei continuing to the tip of the tail.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microfilaria-bmalayi-cdc-dpdx.jpg</image:loc>
+      <image:title>Microfilariae: Sheathed vs. Unsheathed - Blood Smear - B. malayi (comparison)</image:title>
+      <image:caption>Brugia malayi microfilaria in a Giemsa-stained thick blood smear showing two terminal nuclei separated by a gap.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/taenia-spp-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-egg-hooks-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia spp. Egg and Gravid Proglottid - Taenia egg</image:title>
+      <image:caption>Taenia egg teased from a proglottid, showing the thick radially striated embryophore and the hooks of the oncosphere inside.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-eggs-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia spp. Egg and Gravid Proglottid - Taenia egg</image:title>
+      <image:caption>Two Taenia eggs in an unstained wet mount of stool among debris.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-egg-striated-shell-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia spp. Egg and Gravid Proglottid - Taenia egg</image:title>
+      <image:caption>A single Taenia egg in an unstained wet mount, the striated shell visible against surrounding debris.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/paragonimus-westermani-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/paragonimus-egg-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Paragonimus westermani and Clonorchis sinensis Eggs - Paragonimus westermani</image:title>
+      <image:caption>Paragonimus westermani egg in an unstained wet mount, golden brown with a flattened operculum seated on shoulders at one end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/paragonimus-egg-abopercular-thickening-cdc-dpdx.jpg</image:loc>
+      <image:title>Paragonimus westermani and Clonorchis sinensis Eggs - Paragonimus westermani</image:title>
+      <image:caption>Paragonimus westermani egg in an unstained wet mount of stool showing the thickened shell at the abopercular end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/paragonimus-egg-lung-biopsy-cdc-dpdx.jpg</image:loc>
+      <image:title>Paragonimus westermani and Clonorchis sinensis Eggs - Paragonimus westermani</image:title>
+      <image:caption>Paragonimus egg in a lung biopsy section stained with hematoxylin and eosin, surrounded by inflammatory cells.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/schistosoma-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/schistosoma-mansoni-egg-lateral-spine-cdc-dpdx.jpg</image:loc>
+      <image:title>Schistosoma spp. Eggs: Spine Location by Species - S. mansoni</image:title>
+      <image:caption>Schistosoma mansoni egg in an unstained wet mount with a prominent spine projecting from the side of the shell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/schistosoma-haematobium-egg-terminal-spine-cdc-dpdx.jpg</image:loc>
+      <image:title>Schistosoma spp. Eggs: Spine Location by Species - S. haematobium</image:title>
+      <image:caption>Schistosoma haematobium egg in a wet mount of a urine concentrate with a spine at one end of the shell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/schistosoma-japonicum-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Schistosoma spp. Eggs: Spine Location by Species - S. japonicum (comparison)</image:title>
+      <image:caption>Schistosoma japonicum egg in an unstained wet mount of stool, rounder than the other species with no obvious spine.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/hymenolepis-nana-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hymenolepis-nana-egg-hooks-cdc-dpdx.jpg</image:loc>
+      <image:title>Hymenolepis nana and H. diminuta Eggs - H. nana</image:title>
+      <image:caption>Hymenolepis nana egg in an unstained wet mount showing the oncosphere with hooks and polar filaments in the space around it.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hymenolepis-nana-egg-polar-filaments-cdc-dpdx.jpg</image:loc>
+      <image:title>Hymenolepis nana and H. diminuta Eggs - H. nana</image:title>
+      <image:caption>Hymenolepis nana egg in an unstained wet mount with polar filaments clearly visible between the oncosphere and the outer shell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hymenolepis-nana-egg-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Hymenolepis nana and H. diminuta Eggs - H. nana</image:title>
+      <image:caption>Hymenolepis nana egg in an unstained wet mount of stool.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/hymenolepis-diminuta-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Hymenolepis nana and H. diminuta Eggs - H. diminuta</image:title>
+      <image:caption>Hymenolepis diminuta egg in an unstained wet mount, larger than H. nana with no polar filaments in the space around the oncosphere.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/diphyllobothrium-latum-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/diphyllobothrium-egg-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Diphyllobothrium latum: Operculated Fish Tapeworm Egg - D. latum egg</image:title>
+      <image:caption>Diphyllobothrium egg in an unstained wet mount showing the smooth oval shell and the operculum at one end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/diphyllobothrium-eggs-open-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Diphyllobothrium latum: Operculated Fish Tapeworm Egg - D. latum egg</image:title>
+      <image:caption>Two diphyllobothrium eggs in an unstained wet mount of stool with the opercula open.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/diphyllobothrium-eggs-in-proglottid-cdc-dpdx.jpg</image:loc>
+      <image:title>Diphyllobothrium latum: Operculated Fish Tapeworm Egg - D. latum egg</image:title>
+      <image:caption>Diphyllobothriid eggs still inside a proglottid.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/echinococcus-granulosus-hydatid</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/echinococcus-cyst-wall-layers-cdc-dpdx.jpg</image:loc>
+      <image:title>Echinococcus granulosus: Hydatid Sand and Protoscoleces - Laminated cyst wall</image:title>
+      <image:caption>Cross-section of an Echinococcus granulosus hydatid cyst stained with hematoxylin and eosin, with letters published by the source marking each layer.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/echinococcus-protoscolex-hooklets-cdc-dpdx.jpg</image:loc>
+      <image:title>Echinococcus granulosus: Hydatid Sand and Protoscoleces - Protoscolex (hydatid sand)</image:title>
+      <image:caption>Magnified Echinococcus granulosus protoscolex stained with hematoxylin and eosin showing a row of hooklets.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/echinococcus-hydatid-sand-cdc-dpdx.jpg</image:loc>
+      <image:title>Echinococcus granulosus: Hydatid Sand and Protoscoleces - Protoscolex (hydatid sand)</image:title>
+      <image:caption>Protoscolices liberated from a hydatid cyst, two of them evaginated with the scolex everted.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/plasmodium-species-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-compare-falciparum-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium Species Comparison: vivax, ovale, malariae vs. falciparum - P. falciparum rings</image:title>
+      <image:caption>Plasmodium falciparum ring forms on a Giemsa-stained thin film, small rings in normal-sized red cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-compare-vivax-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium Species Comparison: vivax, ovale, malariae vs. falciparum - P. vivax rings</image:title>
+      <image:caption>A Plasmodium vivax ring form on a Giemsa-stained thin film, in a visibly enlarged pale red cell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-compare-malariae-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium Species Comparison: vivax, ovale, malariae vs. falciparum - P. malariae rings</image:title>
+      <image:caption>A Plasmodium malariae ring form on a Giemsa-stained thin film, compact and thick in a normal-sized red cell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-compare-ovale-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium Species Comparison: vivax, ovale, malariae vs. falciparum - P. ovale rings</image:title>
+      <image:caption>A Plasmodium ovale ring form on a Giemsa-stained thin film, in a slightly enlarged red cell.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/cyclospora-cystoisospora-maf</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/cyclospora-oocyst-acidfast-cdc-dpdx.jpg</image:loc>
+      <image:title>Cyclospora vs. Cystoisospora on Modified Acid-Fast - Cyclospora oocyst, modified acid-fast</image:title>
+      <image:caption>Cyclospora cayetanensis oocysts on a modified acid-fast stain, one deeply stained and the surrounding oocysts unstained.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/cyclospora-oocyst-uv-autofluorescence-cdc-dpdx.jpg</image:loc>
+      <image:title>Cyclospora vs. Cystoisospora on Modified Acid-Fast - Cyclospora oocyst, UV</image:title>
+      <image:caption>A Cyclospora cayetanensis oocyst autofluorescing as a bright blue ring under ultraviolet microscopy.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/cystoisospora-oocyst-acidfast-cdc-dpdx.jpg</image:loc>
+      <image:title>Cyclospora vs. Cystoisospora on Modified Acid-Fast - Cystoisospora belli oocyst, modified acid-fast</image:title>
+      <image:caption>A large ellipsoidal Cystoisospora belli oocyst on a modified acid-fast stain, containing a single sporoblast.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/entamoeba-comparison-panel</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-trophozoite-rbc-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba Comparison Panel: E. histolytica/dispar, E. coli, E. hartmanni - E. histolytica/dispar</image:title>
+      <image:caption>Entamoeba histolytica trophozoite on a trichrome-stained smear containing ingested red blood cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba Comparison Panel: E. histolytica/dispar, E. coli, E. hartmanni - E. histolytica/dispar</image:title>
+      <image:caption>Entamoeba histolytica cyst on a trichrome-stained smear showing nuclei with central karyosomes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-coli-trophozoite-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba Comparison Panel: E. histolytica/dispar, E. coli, E. hartmanni - E. coli</image:title>
+      <image:caption>Entamoeba coli trophozoite on a trichrome-stained smear with an eccentric karyosome and coarse peripheral chromatin.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-coli-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Entamoeba Comparison Panel: E. histolytica/dispar, E. coli, E. hartmanni - E. coli</image:title>
+      <image:caption>Mature Entamoeba coli cyst on a trichrome-stained smear with five nuclei visible in one focal plane.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/operculated-egg-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/clonorchis-egg-opercular-shoulders-cdc-dpdx.jpg</image:loc>
+      <image:title>Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis - Clonorchis ~30 um</image:title>
+      <image:caption>Clonorchis sinensis egg, around 30 micrometres, the smallest of the operculated eggs.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/diphyllobothrium-egg-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis - Diphyllobothrium ~65 um</image:title>
+      <image:caption>Diphyllobothrium egg, around 65 micrometres, oval with a smooth flush operculum.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/paragonimus-egg-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis - Paragonimus ~90 um</image:title>
+      <image:caption>Paragonimus westermani egg, around 90 micrometres, golden brown with a shouldered operculum.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/fasciola-hepatica-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis - Fasciola ~140 um</image:title>
+      <image:caption>Fasciola hepatica egg, around 140 micrometres, the largest of the common operculated eggs.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/blastocystis-hominis-forms</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/blastocystis-vacuolar-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Blastocystis hominis: Central Body, Granular, and Ameboid Forms - Vacuolar form, trichrome</image:title>
+      <image:caption>Blastocystis vacuolar forms on a trichrome-stained stool smear, with nuclei pushed to a thin peripheral rim.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/blastocystis-vacuolar-iodine-cdc-dpdx.jpg</image:loc>
+      <image:title>Blastocystis hominis: Central Body, Granular, and Ameboid Forms - Vacuolar form, iodine wet mount</image:title>
+      <image:caption>Several Blastocystis vacuolar forms of differing sizes in an iodine-stained wet mount.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/dientamoeba-fragilis-trophozoite</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/dientamoeba-binucleate-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Dientamoeba fragilis: Binucleate Trophozoite - Binucleate trophozoite</image:title>
+      <image:caption>A pale-staining binucleate Dientamoeba fragilis trophozoite on a trichrome-stained smear, each karyosome fragmented into granules.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/dientamoeba-uninucleate-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Dientamoeba fragilis: Binucleate Trophozoite - Uninucleate trophozoite</image:title>
+      <image:caption>A uninucleate Dientamoeba fragilis trophozoite on a trichrome-stained smear.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/clonorchis-opisthorchis-egg</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/clonorchis-egg-opercular-shoulders-cdc-dpdx.jpg</image:loc>
+      <image:title>Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg - Clonorchis/Opisthorchis egg</image:title>
+      <image:caption>Clonorchis sinensis egg in a wet mount at 400x, flask shaped with the operculum resting on distinct shoulders.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/clonorchis-egg-abopercular-knob-cdc-dpdx.jpg</image:loc>
+      <image:title>Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg - Clonorchis/Opisthorchis egg</image:title>
+      <image:caption>Clonorchis sinensis egg in a wet mount with a small knob visible at the abopercular end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/opisthorchis-viverrini-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg - Clonorchis/Opisthorchis egg</image:title>
+      <image:caption>Opisthorchis viverrini egg in an unstained wet mount of concentrated stool at 400x magnification.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/fasciolopsis-fasciola-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/fasciola-hepatica-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Fasciola hepatica vs. Fasciolopsis buski: Large Operculated Egg Comparison - Fasciola hepatica (liver fluke)</image:title>
+      <image:caption>Fasciola hepatica egg in an unstained wet mount at 400x with the operculum lifted at one end.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/fasciola-hepatica-egg-operculum-cdc-dpdx.jpg</image:loc>
+      <image:title>Fasciola hepatica vs. Fasciolopsis buski: Large Operculated Egg Comparison - Fasciola hepatica (liver fluke)</image:title>
+      <image:caption>Fasciola hepatica egg in an unstained wet mount with the operculum closed and difficult to see.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/fasciolopsis-buski-egg-cdc-dpdx.jpg</image:loc>
+      <image:title>Fasciola hepatica vs. Fasciolopsis buski: Large Operculated Egg Comparison - Fasciolopsis buski (intestinal fluke)</image:title>
+      <image:caption>Fasciolopsis buski egg in an unstained wet mount, large and oval with a thin shell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/fasciolopsis-buski-egg-400x-cdc-dpdx.jpg</image:loc>
+      <image:title>Fasciola hepatica vs. Fasciolopsis buski: Large Operculated Egg Comparison - Fasciolopsis buski (intestinal fluke)</image:title>
+      <image:caption>Fasciolopsis buski egg in an unstained wet mount of stool at 400x magnification.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/dipylidium-caninum-egg-packet</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/dipylidium-egg-packet-cdc-dpdx.jpg</image:loc>
+      <image:title>Dipylidium caninum: Egg Packets and Cucumber-Seed Proglottids - Egg packet (egg capsule)</image:title>
+      <image:caption>Dipylidium caninum egg packet in a wet mount containing eight round eggs inside a single membrane.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/dipylidium-eggs-hooklets-cdc-dpdx.jpg</image:loc>
+      <image:title>Dipylidium caninum: Egg Packets and Cucumber-Seed Proglottids - Egg packet (egg capsule)</image:title>
+      <image:caption>Dipylidium caninum eggs clumped together in a wet mount at 400x with hooklets visible inside several of the eggs.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/dipylidium-proglottid-genital-pores-cdc-dpdx.jpg</image:loc>
+      <image:title>Dipylidium caninum: Egg Packets and Cucumber-Seed Proglottids - Cucumber-seed proglottid</image:title>
+      <image:caption>Carmine-stained Dipylidium caninum proglottid with an arrow published by the source marking a genital pore on the lateral margin.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/taenia-scolex-comparison</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-solium-scolex-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia Scolex Comparison: T. solium vs. T. saginata - T. solium (armed)</image:title>
+      <image:caption>Scolex of Taenia solium showing four large suckers and a rostellum bearing two rows of hooks.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-saginata-scolex-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia Scolex Comparison: T. solium vs. T. saginata - T. saginata (unarmed)</image:title>
+      <image:caption>Scolex of Taenia saginata showing four large suckers and no rostellum or hooks.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-solium-proglottid-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia Scolex Comparison: T. solium vs. T. saginata - T. solium (armed)</image:title>
+      <image:caption>Mature proglottid of Taenia solium stained with carmine, showing the primary lateral uterine branches.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/taenia-saginata-proglottid-cdc-dpdx.jpg</image:loc>
+      <image:title>Taenia Scolex Comparison: T. solium vs. T. saginata - T. saginata (unarmed)</image:title>
+      <image:caption>Mature proglottid of Taenia saginata stained with carmine, showing more than twelve primary lateral uterine branches.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/balantioides-coli-trophozoite-cyst</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/balantioides-trophozoite-cilia-cdc-dpdx.jpg</image:loc>
+      <image:title>Balantioides coli (Balantidium coli): Ciliated Trophozoite and Cyst - Trophozoite</image:title>
+      <image:caption>Balantioides coli trophozoite in a wet mount at 500x with cilia visible on the cell surface.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/balantioides-cyst-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Balantioides coli (Balantidium coli): Ciliated Trophozoite and Cyst - Cyst</image:title>
+      <image:caption>Unstained Balantioides coli cyst in a wet mount, round with a thick wall.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/balantioides-trophozoites-colon-he-cdc-dpdx.jpg</image:loc>
+      <image:title>Balantioides coli (Balantidium coli): Ciliated Trophozoite and Cyst - Trophozoite</image:title>
+      <image:caption>Balantioides coli trophozoites in colon tissue stained with hematoxylin and eosin at 200x.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/free-living-amoebae-naegleria-acanthamoeba</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/naegleria-trophozoite-csf-cdc-dpdx.jpg</image:loc>
+      <image:title>Free-Living Amoebae: Naegleria fowleri and Acanthamoeba - Naegleria trophozoite</image:title>
+      <image:caption>Naegleria fowleri trophozoite in cerebrospinal fluid surrounded by white blood cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/naegleria-flagellate-form-cdc-dpdx.jpg</image:loc>
+      <image:title>Free-Living Amoebae: Naegleria fowleri and Acanthamoeba - Naegleria flagellate</image:title>
+      <image:caption>Naegleria fowleri ameboflagellate trophozoite with two anterior flagella.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/acanthamoeba-trophozoite-acanthapodia-cdc-dpdx.jpg</image:loc>
+      <image:title>Free-Living Amoebae: Naegleria fowleri and Acanthamoeba - Acanthamoeba trophozoite</image:title>
+      <image:caption>Acanthamoeba trophozoite from culture showing slender spine-like acanthapodia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/acanthamoeba-cysts-double-wall-cdc-dpdx.jpg</image:loc>
+      <image:title>Free-Living Amoebae: Naegleria fowleri and Acanthamoeba - Acanthamoeba cyst</image:title>
+      <image:caption>Acanthamoeba cysts in culture showing the double wall with a wrinkled outer layer.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/nonpathogenic-amoebae-cyst-comparison</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-coli-cyst-wetmount-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - Entamoeba coli</image:title>
+      <image:caption>Entamoeba coli cyst in an unstained concentrated wet mount with six nuclei visible in one focal plane.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/entamoeba-hartmanni-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - E. hartmanni (comparison)</image:title>
+      <image:caption>Entamoeba hartmanni cyst on a trichrome-stained smear with blunt-ended chromatoid bodies.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/endolimax-nana-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - Endolimax nana</image:title>
+      <image:caption>Endolimax nana cysts on a trichrome-stained smear, small and oval with large blot-like karyosomes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/endolimax-nana-trophozoite-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - Endolimax nana</image:title>
+      <image:caption>Endolimax nana trophozoite on a trichrome-stained smear with a single large irregular karyosome.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/iodamoeba-butschlii-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - Iodamoeba butschlii</image:title>
+      <image:caption>Iodamoeba butschlii cyst on a trichrome-stained smear with a large glycogen vacuole occupying much of the cell.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/iodamoeba-butschlii-cyst-iodine-cdc-dpdx.jpg</image:loc>
+      <image:title>Nonpathogenic Amoeba Cysts: Entamoeba coli, Endolimax nana, Iodamoeba butschlii - Iodamoeba butschlii</image:title>
+      <image:caption>Iodamoeba butschlii cyst in an iodine-stained wet mount of concentrated stool.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/chilomastix-mesnili-cyst-trophozoite</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/chilomastix-cyst-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Chilomastix mesnili: Lemon-Shaped Cyst and Trophozoite - Cyst</image:title>
+      <image:caption>Chilomastix mesnili cyst in a trichrome-stained stool specimen at 1000x, lemon shaped with an anterior nipple.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/chilomastix-trophozoite-trichrome-cdc-dpdx.jpg</image:loc>
+      <image:title>Chilomastix mesnili: Lemon-Shaped Cyst and Trophozoite - Trophozoite</image:title>
+      <image:caption>Chilomastix mesnili trophozoite in a trichrome-stained stool specimen at 1000x showing the cytostome groove.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/chilomastix-cyst-and-trophozoite-cdc-dpdx.jpg</image:loc>
+      <image:title>Chilomastix mesnili: Lemon-Shaped Cyst and Trophozoite - Cyst</image:title>
+      <image:caption>Chilomastix mesnili cyst and trophozoite in the same trichrome-stained field.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/plasmodium-vivax-smear</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-vivax-rings-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium vivax: Thin Blood Smear - Ring forms</image:title>
+      <image:caption>Plasmodium vivax ring forms on a Giemsa-stained thin blood film, in host cells larger and paler than the surrounding cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-vivax-trophozoite-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium vivax: Thin Blood Smear - Ameboid trophozoite</image:title>
+      <image:caption>A Plasmodium vivax ameboid trophozoite in an enlarged red cell with Schuffner&apos;s stippling, Giemsa-stained thin film.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-vivax-schizont-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium vivax: Thin Blood Smear - Mature schizont</image:title>
+      <image:caption>A mature Plasmodium vivax schizont packed with merozoites on a Giemsa-stained thin blood film.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/plasmodium-malariae-band-form</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-malariae-band-form-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium malariae: Band Form and Rosette Schizont - Band form trophozoite</image:title>
+      <image:caption>A Plasmodium malariae band-form trophozoite stretched across a normal-sized red cell with coarse dark pigment, Giemsa-stained thin film.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-malariae-basket-schizont-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium malariae: Band Form and Rosette Schizont - Basket schizont</image:title>
+      <image:caption>A Plasmodium malariae mature schizont with merozoites arranged around central pigment, Giemsa-stained thin film.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/plasmodium-ovale-smear</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-ovale-trophozoite-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium ovale: Oval Fimbriated Red Cells - Trophozoite</image:title>
+      <image:caption>A compact Plasmodium ovale trophozoite in a slightly enlarged oval red cell with Schuffner&apos;s stippling, Giemsa-stained thin film.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/plasmodium-ovale-schizont-cdc-dpdx.jpg</image:loc>
+      <image:title>Plasmodium ovale: Oval Fimbriated Red Cells - Mature schizont</image:title>
+      <image:caption>A mature Plasmodium ovale schizont with merozoites around a clump of pigment in an oval host cell, Giemsa-stained thin film.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/microsporidia-modified-trichrome</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microsporidia-spores-chromotrope-2r-cdc-dpdx.jpg</image:loc>
+      <image:title>Microsporidia: Spores on Modified Trichrome Stain - Spores</image:title>
+      <image:caption>Enterocytozoon bieneusi spores stained with Chromotrope 2R, small pink-red ovals against a pale background.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microsporidia-spores-gram-chromotrope-cdc-dpdx.jpg</image:loc>
+      <image:title>Microsporidia: Spores on Modified Trichrome Stain - Spores</image:title>
+      <image:caption>Encephalitozoon cuniculi spores stained with Gram chromotrope, appearing as dark oval bodies.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/microsporidia-spores-unidentified-cdc-dpdx.jpg</image:loc>
+      <image:title>Microsporidia: Spores on Modified Trichrome Stain - Spores</image:title>
+      <image:caption>Unidentified microsporidia spores stained with Chromotrope 2R among fecal debris.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/sarcoptes-scabiei-skin-scraping</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/sarcoptes-mite-skin-scraping-cdc-dpdx.jpg</image:loc>
+      <image:title>Sarcoptes scabiei: Mite, Eggs, and Scybala in Skin Scrapings - Adult mite</image:title>
+      <image:caption>Sarcoptes scabiei mite in a skin scraping stained with lactophenol cotton blue.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/sarcoptes-mite-lactophenol-cdc-dpdx.jpg</image:loc>
+      <image:title>Sarcoptes scabiei: Mite, Eggs, and Scybala in Skin Scrapings - Adult mite</image:title>
+      <image:caption>Sarcoptes scabiei mite in a skin scraping stained with lactophenol cotton blue at higher magnification.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/sarcoptes-mite-skin-biopsy-cdc-dpdx.jpg</image:loc>
+      <image:title>Sarcoptes scabiei: Mite, Eggs, and Scybala in Skin Scrapings - Adult mite</image:title>
+      <image:caption>Sarcoptes scabiei mite within a burrow in a skin biopsy stained with hematoxylin and eosin.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/lice-pediculus-phthirus-comparison</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/pediculus-humanus-adult-cdc-dpdx.jpg</image:loc>
+      <image:title>Human Lice: Pediculus humanus and Phthirus pubis - Pediculus humanus</image:title>
+      <image:caption>Adult Pediculus humanus capitis louse, elongated with a narrow body and legs of similar size.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/phthirus-pubis-female-cdc-dpdx.jpg</image:loc>
+      <image:title>Human Lice: Pediculus humanus and Phthirus pubis - Phthirus pubis</image:title>
+      <image:caption>Adult female Phthirus pubis louse, short and broad with large grasping claws on the rear legs.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/phthirus-pubis-on-hair-shaft-cdc-dpdx.jpg</image:loc>
+      <image:title>Human Lice: Pediculus humanus and Phthirus pubis - Phthirus pubis</image:title>
+      <image:caption>Three Phthirus pubis specimens gripping a hair shaft.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/parasitology/pediculus-nit-hatching-cdc-dpdx.jpg</image:loc>
+      <image:title>Human Lice: Pediculus humanus and Phthirus pubis - Nit</image:title>
+      <image:caption>Egg or nit of Pediculus humanus capitis cemented to a hair shaft with a first-instar nymph beginning to hatch.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/pneumocystis-jirovecii-gms</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/pneumocystis-cysts-gms-cdc-dpdx.jpg</image:loc>
+      <image:title>Pneumocystis jirovecii: Cysts on GMS and Trophic Forms on Giemsa - GMS cysts</image:title>
+      <image:caption>Lung tissue stained with methenamine silver, with Pneumocystis jirovecii cyst walls appearing black against pink alveolar exudate.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/pneumocystis-cysts-gms-field-cdc-dpdx.jpg</image:loc>
+      <image:title>Pneumocystis jirovecii: Cysts on GMS and Trophic Forms on Giemsa - GMS cysts</image:title>
+      <image:caption>A second methenamine silver stained lung section with Pneumocystis jirovecii cysts filling the alveolar spaces.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/pneumocystis-trophozoites-bal-giemsa-cdc-dpdx.jpg</image:loc>
+      <image:title>Pneumocystis jirovecii: Cysts on GMS and Trophic Forms on Giemsa - Giemsa cluster</image:title>
+      <image:caption>Giemsa-stained bronchoalveolar lavage from an AIDS patient, with arrows published by the source marking Pneumocystis jirovecii trophozoites in foamy exudate.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/candida-cornmeal-agar-morphology</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/candida-albicans-chlamydospores-cornmeal-cdc-phil.jpg</image:loc>
+      <image:title>Candida on Cornmeal Agar: Species Morphology Comparison - C. albicans</image:title>
+      <image:caption>Candida albicans on cornmeal agar at 475x with round thick-walled chlamydospores along the pseudohyphae and clusters of blastoconidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/candida-tropicalis-cornmeal-cdc-phil.jpg</image:loc>
+      <image:title>Candida on Cornmeal Agar: Species Morphology Comparison - C. tropicalis</image:title>
+      <image:caption>Candida tropicalis on cornmeal Tween 80 agar with long pseudohyphae bearing sparse blastoconidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/candida-parapsilosis-cornmeal-cdc-phil.jpg</image:loc>
+      <image:title>Candida on Cornmeal Agar: Species Morphology Comparison - C. parapsilosis</image:title>
+      <image:caption>Candida parapsilosis on cornmeal Tween 80 agar, with fine pseudohyphae projecting from two microcolonies and blastoconidia along their length.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/malassezia-furfur-koh</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/malassezia-yeast-hyphae-lpcb-cdc-phil.jpg</image:loc>
+      <image:title>Malassezia furfur: Spaghetti and Meatballs on KOH - KOH skin scales</image:title>
+      <image:caption>Lactophenol cotton blue stained skin scraping at 970x from a case of tinea versicolor, with clusters of round Malassezia yeast cells and short pseudohyphal elements among debris.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/mucorales-genus-comparison</loc>
@@ -842,11 +1738,46 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/arthroconidia-comparison-geotrichum-coccidioides-trichosporon</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/coccidioides-barrel-arthroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Arthroconidia Comparison: Coccidioides, Geotrichum, and Trichosporon - Coccidioides</image:title>
+      <image:caption>Coccidioides immitis at 500x with chains of barrel-shaped arthroconidia separated by collapsed empty cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/geotrichum-rectangular-arthroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Arthroconidia Comparison: Coccidioides, Geotrichum, and Trichosporon - Geotrichum</image:title>
+      <image:caption>Geotrichum candidum at 970x with hyphae fragmenting into chains of unicellular rectangular arthroconidia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/trichosporon-rectangular-arthroconidia-cdc-phil.jpg</image:loc>
+      <image:title>Arthroconidia Comparison: Coccidioides, Geotrichum, and Trichosporon - Trichosporon</image:title>
+      <image:caption>Cutaneotrichosporon cutaneum at 1200x with rectangular arthroconidia and blastoconidia on the same hyphae.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/tissue-yeast-size-comparison</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/histoplasma-yeasts-in-histiocyte-cdc-phil.jpg</image:loc>
+      <image:title>Yeast Forms in Tissue: Size and Budding Comparison - Histoplasma</image:title>
+      <image:caption>Gridley-stained tissue smear with macrophages filled with small oval Histoplasma capsulatum yeast cells.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/cryptococcus-india-ink-capsule-cdc-phil.jpg</image:loc>
+      <image:title>Yeast Forms in Tissue: Size and Budding Comparison - Cryptococcus</image:title>
+      <image:caption>India ink preparation with round Cryptococcus neoformans cells surrounded by clear capsular halos.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/blastomyces-yeasts-in-pus-cdc-phil.jpg</image:loc>
+      <image:title>Yeast Forms in Tissue: Size and Budding Comparison - Blastomyces</image:title>
+      <image:caption>Pus specimen with large round thick-walled Blastomyces dermatitidis yeasts, several budding.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/coccidioides-single-spherule-cdc-phil.jpg</image:loc>
+      <image:title>Yeast Forms in Tissue: Size and Budding Comparison - Coccidioides</image:title>
+      <image:caption>A single round thick-walled Coccidioides immitis spherule containing granular endospores.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/trichophyton-species-comparison</loc>
@@ -854,7 +1785,17 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/hair-invasion-ectothrix-endothrix</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/hair-ectothrix-microsporum-cdc-phil.jpg</image:loc>
+      <image:title>Dermatophyte Hair Invasion: Ectothrix, Endothrix, and Favus - Ectothrix</image:title>
+      <image:caption>Methylene blue stained hair shaft with Microsporum canis arthroconidia forming a dense sheath on the outside of the shaft.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/hair-endothrix-trichophyton-cdc-phil.jpg</image:loc>
+      <image:title>Dermatophyte Hair Invasion: Ectothrix, Endothrix, and Favus - Endothrix</image:title>
+      <image:caption>Hair shaft at 475x with Trichophyton arthroconidia packed inside the shaft rather than coating its surface.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/biochemical-tests</loc>
