@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faChevronLeft, faChevronRight, faMicroscope } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { getSearchAliases } from '../../data/searchAliases';
 import { trackEvent } from '../../utils/analytics';
 import { useAuth } from '../../context/AuthContext';
@@ -4599,43 +4599,7 @@ function renderTaeniaScolex(tube: TubeVisual) {
   );
 }
 
-function renderMycologyRecognitionCard(tube: TubeVisual) {
-  if (!tube.recognitionImage) {
-    return null;
-  }
-
-  return (
-    <div className="lia-tube-card lia-plate-card mycology-recognition-card" key={tube.id}>
-      <div className="mycology-recognition-card-id" aria-label={`Visual ${tube.id}`}>{tube.id}</div>
-      <div className="mycology-recognition-heading">
-        <span>Microscopy recognition</span>
-        <strong><em>{tube.label}</em></strong>
-      </div>
-      <figure className="mycology-recognition-image">
-        <img src={tube.recognitionImage.src} alt={tube.recognitionImage.alt} loading="eager" />
-      </figure>
-      <strong className="mycology-recognition-differentiator">{tube.name}</strong>
-      <p className="mycology-recognition-note">{tube.note}</p>
-      {tube.benchTip && (
-        <aside className="mycology-recognition-tip">
-          <span aria-hidden="true"><FontAwesomeIcon icon={faMicroscope} /></span>
-          <p>{tube.benchTip}</p>
-        </aside>
-      )}
-      {tube.structureMap && (
-        <figure className="mycology-structure-map">
-          <img src={tube.structureMap.src} alt={tube.structureMap.alt} loading="lazy" />
-        </figure>
-      )}
-    </div>
-  );
-}
-
 function renderMycology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
-  if (tube.recognitionImage) {
-    return renderMycologyRecognitionCard(tube);
-  }
-
   const bg = tube.colors.slant;
   const body = tube.colors.butt;
   const detail = tube.colors.base;

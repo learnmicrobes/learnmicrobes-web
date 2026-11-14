@@ -754,7 +754,27 @@
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/dematiaceous-alternaria-curvularia</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/alternaria-muriform-conidia-cdc-phil.jpg</image:loc>
+      <image:title>Alternaria vs Curvularia: Dematiaceous Conidia - Alternaria</image:title>
+      <image:caption>Lactophenol cotton blue photomicrograph of Alternaria with septate hyphae and multicellular obclavate conidia showing both transverse and longitudinal septa.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/alternaria-beaked-conidia-chain-cdc-phil.jpg</image:loc>
+      <image:title>Alternaria vs Curvularia: Dematiaceous Conidia - Alternaria</image:title>
+      <image:caption>Lactophenol cotton blue photomicrograph at 400x of an Alternaria branching chain of pigmented conidia, each tapering to a beak-like apex.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/curvularia-curved-conidia-conidiophore-cdc-phil.jpg</image:loc>
+      <image:title>Alternaria vs Curvularia: Dematiaceous Conidia - Curvularia</image:title>
+      <image:caption>Photomicrograph at 570x of Curvularia showing sympodial geniculate conidiophores bearing septate conidia, with several conidia free in the field.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://learnmicrobes.com/visual-atlas/photos/mycology/curvularia-conidiophore-apex-cdc-phil.jpg</image:loc>
+      <image:title>Alternaria vs Curvularia: Dematiaceous Conidia - Curvularia</image:title>
+      <image:caption>Photomicrograph of a Curvularia conidiophore apex with a cluster of septate conidia radiating from the tip.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://learnmicrobes.com/visuals/sclerotic-bodies-chromo-vs-phaeo</loc>

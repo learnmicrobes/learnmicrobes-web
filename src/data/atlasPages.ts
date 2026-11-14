@@ -13,15 +13,6 @@ export type TubeVisual = {
   };
   note: string;
   growth?: 'heavy' | 'light' | 'none';
-  recognitionImage?: {
-    src: string;
-    alt: string;
-  };
-  structureMap?: {
-    src: string;
-    alt: string;
-  };
-  benchTip?: string;
 };
 
 /**
@@ -3823,24 +3814,52 @@ export const atlasPages: AtlasPage[] = [
         label: 'Alternaria',
         name: 'Muriform conidia with a beak',
         colors: { slant: '#e6e0d4', butt: '#7a6a4a', base: '#3f3320' },
-        note: 'Conidia are muriform, divided by both crosswise and lengthwise septa, and taper into a beak-like extension. Chains often form in branching arrangements.',
-        recognitionImage: {
-          src: '/visual-atlas/mycology/dematiaceous/alternaria-recognition-v01.webp?v=1',
-          alt: 'Lactophenol cotton blue tape-prep style educational recognition image of Alternaria showing septate hyphae and beaked muriform conidia.'
-        },
-        benchTip: 'Confirm the pattern by finding both the beak and lengthwise septa.'
+        note: 'Conidia are muriform, divided by both crosswise and lengthwise septa, and taper into a beak-like extension. Chains often form in branching arrangements.'
       },
       {
         id: 'B',
         label: 'Curvularia',
         name: 'Curved conidia, swollen central cell',
         colors: { slant: '#e4ddd0', butt: '#806c48', base: '#42321c' },
-        note: 'Conidia are curved by an enlarged central cell that bends the conidium. Cross septa divide it, but there are no lengthwise septa and no beak.',
-        recognitionImage: {
-          src: '/visual-atlas/mycology/dematiaceous/curvularia-recognition-v01.webp?v=1',
-          alt: 'Lactophenol cotton blue tape-prep style educational recognition image of Curvularia showing curved conidia with swollen darker central cells.'
-        },
-        benchTip: 'The swollen central cell creates the curve; do not call it Alternaria without a beak and muriform septa.'
+        note: 'Conidia are curved by an enlarged central cell that bends the conidium. Cross septa divide it, but there are no lengthwise septa and no beak.'
+      }
+    ],
+    photoReferences: [
+      {
+        src: '/visual-atlas/photos/mycology/alternaria-muriform-conidia-cdc-phil.jpg',
+        alt: 'Lactophenol cotton blue photomicrograph of Alternaria with septate hyphae and multicellular obclavate conidia showing both transverse and longitudinal septa.',
+        caption: 'Start here for the septa. Each conidium is crossed by transverse walls, and several are also divided lengthwise - that two-way division is what muriform means. The conidia at upper right show the tapered end clearly.',
+        stageLabel: 'Alternaria',
+        credit: 'Source: CDC / PHIL - Dr. Lucille K. Georg',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=27938'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/alternaria-beaked-conidia-chain-cdc-phil.jpg',
+        alt: 'Lactophenol cotton blue photomicrograph at 400x of an Alternaria branching chain of pigmented conidia, each tapering to a beak-like apex.',
+        caption: 'The same organism read for shape instead. Conidia sit in a branching chain, each rounded at the base and drawn out into a beak at the tip. The pigment sits in the conidia themselves, which is what dematiaceous means.',
+        stageLabel: 'Alternaria',
+        credit: 'Source: CDC / PHIL - Dr. Hilliard F. Hardin',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=23084'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/curvularia-curved-conidia-conidiophore-cdc-phil.jpg',
+        alt: 'Photomicrograph at 570x of Curvularia showing sympodial geniculate conidiophores bearing septate conidia, with several conidia free in the field.',
+        caption: 'The whole Curvularia call in one frame at 570x. Each conidium carries three or four cross walls and one swollen, darker central cell that bends it into a curve. No lengthwise septa anywhere, and no beak.',
+        stageLabel: 'Curvularia',
+        credit: 'Source: CDC / PHIL',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=26583'
+      },
+      {
+        src: '/visual-atlas/photos/mycology/curvularia-conidiophore-apex-cdc-phil.jpg',
+        alt: 'Photomicrograph of a Curvularia conidiophore apex with a cluster of septate conidia radiating from the tip.',
+        caption: 'A closer look at where the conidia attach. The conidiophore bends at each point it produced one, leaving a knee-like zig-zag - that is what sympodial means. Set one conidium against the Alternaria frames: curved and smooth-ended, never beaked.',
+        stageLabel: 'Curvularia',
+        credit: 'Source: CDC / PHIL - Dr. Libero Ajello',
+        license: 'Public domain (U.S. federal government work)',
+        sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=27185'
       }
     ],
     readoutTitle: 'Dematiaceous comparison anchors',
