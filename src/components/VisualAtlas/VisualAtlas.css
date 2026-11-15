@@ -1497,6 +1497,26 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
     max-width: none;
   }
 
+  /* The three min-heights on a panel card reserve a fixed slot for the letter,
+     the label and the caption so that those parts line up across the columns of
+     a row: without them a one-line label sits a line higher than its two-line
+     neighbour and the row reads as a jumble. These three stages collapse to a
+     single column at this width, so there is no neighbour left to line up with
+     and the reserved space is simply empty - about 50px per panel, on the cards
+     that are already the tallest on a phone. Stages that stay multi-column below
+     keep their alignment. */
+  .camp-stage .lia-letter,
+  .parasite-stage .lia-letter,
+  .mycology-comparison-stage .lia-letter,
+  .camp-stage .lia-tube-card > strong,
+  .parasite-stage .lia-tube-card > strong,
+  .mycology-comparison-stage .lia-tube-card > strong,
+  .camp-stage .lia-tube-card > span,
+  .parasite-stage .lia-tube-card > span,
+  .mycology-comparison-stage .lia-tube-card > span {
+    min-height: 0;
+  }
+
   .visual-table {
     min-width: 620px;
   }

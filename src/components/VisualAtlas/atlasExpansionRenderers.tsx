@@ -58,7 +58,6 @@ const scaleBar = (label: string, length: number, fill: string) => (
 
 function renderCard(tube: TubeVisual, visualType: VisualType, shapes: React.ReactNode) {
   const bg = tube.colors.slant;
-  const detail = tube.colors.base;
   const gradientId = `exp-bg-${visualType}-${tube.id}`;
 
   return (
@@ -73,7 +72,6 @@ function renderCard(tube: TubeVisual, visualType: VisualType, shapes: React.Reac
         </defs>
         <rect x="8" y="8" width="184" height="184" rx="10" fill={`url(#${gradientId})`} stroke="#b8a880" strokeWidth="1.2" />
         {shapes}
-        <text x="100" y="190" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>

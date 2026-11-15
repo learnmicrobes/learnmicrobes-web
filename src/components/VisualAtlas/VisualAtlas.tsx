@@ -781,7 +781,6 @@ function renderFlagellaStain(tube: TubeVisual) {
           <path d="M76 100 C80 83, 119 82, 125 99 C130 117, 91 122, 76 100 Z" fill={cellFill} opacity="0.88" stroke="#312e81" strokeWidth="1.5" />
           <path d="M86 94 C96 89, 111 91, 119 99" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.35" strokeLinecap="round" />
         </g>
-        <text x="100" y="171" textAnchor="middle" fill="#334155" fontSize="10" fontWeight="bold" fontFamily="sans-serif">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2576,7 +2575,6 @@ function renderGiardia(tube: TubeVisual) {
             <path d="M 68 110 C 82 106, 100 112, 122 108" fill="none" stroke="#ffffff" strokeWidth="1.2" opacity="0.3" />
           </g>
         )}
-        <text x="100" y="193" textAnchor="middle" fill="#3a2d6a" fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2625,7 +2623,6 @@ function renderCryptosporidium(tube: TubeVisual) {
             <ellipse cx="140" cy="146" rx="16" ry="15" fill={fill} fillOpacity="0.68" stroke={edge} strokeWidth="1.4" />
           </>
         )}
-        <text x="100" y="193" textAnchor="middle" fill={isOocyst ? '#8a1840' : '#2a5c38'} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2691,7 +2688,6 @@ function renderEntamoeba(tube: TubeVisual) {
             <rect x="80" y="104" width="24" height="6" rx="2.5" fill={detail} opacity="0.38" transform="rotate(18 92 107)" />
           </g>
         )}
-        <text x="100" y="193" textAnchor="middle" fill="#2a4858" fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2736,7 +2732,6 @@ function renderTrichomonas(tube: TubeVisual) {
           <path d="M 100 150 L 100 184" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.58" strokeLinecap="round" />
           <circle cx="100" cy="185" r="1.8" fill={detail} opacity="0.5" />
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2779,7 +2774,6 @@ function renderEnterobius(tube: TubeVisual) {
             <ellipse cx="112" cy="100" rx="26" ry="34" fill={detail} fillOpacity="0.1" stroke={detail} strokeWidth="1.2" strokeDasharray="4 3" opacity="0.5" />
           )}
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2827,7 +2821,6 @@ function renderStrongyloides(tube: TubeVisual) {
             </>
           )}
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2874,7 +2867,6 @@ function renderHookworm(tube: TubeVisual) {
             <path d="M 100 62 C 128 70, 136 90, 122 108 C 108 126, 84 122, 82 104 C 80 86, 100 82, 108 96" fill="none" stroke={detail} strokeWidth="2.5" opacity="0.6" strokeLinecap="round" />
           )}
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2915,7 +2907,6 @@ function renderTrichurisEgg(tube: TubeVisual) {
           {/* Right bipolar hyaline plug */}
           <ellipse cx="150" cy="100" rx="15" ry="13" fill="#f8f2d8" stroke={shell} strokeWidth="2" opacity="0.92" />
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -2973,7 +2964,6 @@ function renderPlasmodium(tube: TubeVisual) {
             <ellipse cx="100" cy="96" rx="11" ry="9" fill={detail} opacity="0.72" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3041,7 +3031,6 @@ function renderBabesia(tube: TubeVisual) {
             <circle cx="149" cy="138" r="2" fill={detail} opacity="0.7" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3100,7 +3089,6 @@ function renderTrypanosoma(tube: TubeVisual) {
             ))}
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3154,7 +3142,6 @@ function renderToxoplasma(tube: TubeVisual) {
             ))}
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3215,7 +3202,6 @@ function renderLeishmania(tube: TubeVisual) {
             <path d="M 100 24 C 108 14, 118 8, 128 4" fill="none" stroke={detail} strokeWidth="2" opacity="0.68" strokeLinecap="round" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3271,7 +3257,6 @@ function renderAscaris(tube: TubeVisual) {
             <ellipse cx="97" cy="140" rx="11" ry="8" fill={detail} fillOpacity="0.22" stroke={detail} strokeWidth="1" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3329,7 +3314,6 @@ function renderTrichostrongylus(tube: TubeVisual) {
             ))}
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3387,7 +3371,6 @@ function renderTrichinella(tube: TubeVisual) {
             ))}
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3441,7 +3424,6 @@ function renderMicrofilaria(tube: TubeVisual) {
         {nuclei.map(([cx,cy],i) => (
           <circle key={i} cx={cx} cy={cy} r="2.2" fill={bg} opacity="0.85" />
         ))}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3528,7 +3510,6 @@ function renderTaeniaEgg(tube: TubeVisual) {
             <text x="144" y="24" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif" fontWeight="bold">T. solium 8-13</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3583,7 +3564,6 @@ function renderParagonimus(tube: TubeVisual) {
             <ellipse cx="100" cy="102" rx="30" ry="42" fill={detail} fillOpacity="0.18" stroke={detail} strokeWidth="1" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3631,7 +3611,6 @@ function renderSchistosoma(tube: TubeVisual) {
             <path d="M 92 158 L 100 182 L 108 158 Z" fill={shell} fillOpacity="0.7" stroke={shell} strokeWidth="1.5" />
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3693,7 +3672,6 @@ function renderHymenolepis(tube: TubeVisual) {
             </>
           )}
         </g>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3748,7 +3726,6 @@ function renderDiphyllobothrium(tube: TubeVisual) {
             <text x="142" y="159" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">largest, no spine</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3822,7 +3799,6 @@ function renderEchinococcus(tube: TubeVisual) {
             <text x="100" y="151" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Germinal (nucleated) layer</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3891,7 +3867,6 @@ function renderPlasmodiumPanel(tube: TubeVisual) {
             <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">(P. malariae)</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -3958,7 +3933,6 @@ function renderCyclosporaCystoisospora(tube: TubeVisual) {
             <text x="100" y="178" textAnchor="middle" fill={edge} fontSize="7" fontFamily="sans-serif">Single sporoblast (immature)</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={edge} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4023,7 +3997,6 @@ function renderEntamoebaPanel(tube: TubeVisual) {
             <text x="100" y="174" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">splintered chromatoid bars</text>
           </g>
         )}
-        <text x="100" y="193" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4109,7 +4082,6 @@ function renderOperculated(tube: TubeVisual) {
             <text x="148" y="139" textAnchor="middle" fill={detail} fontSize="6" fontFamily="sans-serif">Thick golden-brown shell</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4181,11 +4153,9 @@ function renderBlastocystis(tube: TubeVisual) {
                 <circle cx={cx} cy={cy} r="3.5" fill={detail} opacity="0.8" />
               </g>
             ))}
-            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Granular form</text>
             <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Granule-filled central area</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4254,7 +4224,6 @@ function renderDientamoeba(tube: TubeVisual) {
             <text x="100" y="175" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Recommend perianal tape prep</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4323,7 +4292,6 @@ function renderClonorchis(tube: TubeVisual) {
             <text x="148" y="178" textAnchor="middle" fill={detail} fontSize="6.5" fontFamily="sans-serif">~65 um</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4382,7 +4350,6 @@ function renderFasciola(tube: TubeVisual) {
           </g>
         )}
         <text x="100" y="18" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">~130-150 um - Morphologically identical</text>
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4455,11 +4422,9 @@ function renderDipylidium(tube: TubeVisual) {
               const cy = 96 + Math.round(36 * Math.sin(angle));
               return <ellipse key={i} cx={cx} cy={cy} rx="5" ry="4" fill={detail} fillOpacity="0.3" stroke={detail} strokeWidth="0.8" />;
             })}
-            <text x="100" y="168" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">Cucumber-seed proglottid</text>
             <text x="100" y="178" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Double genital pores = D. caninum</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -4506,7 +4471,6 @@ function renderTaeniaScolex(tube: TubeVisual) {
             {[78,87,96,105,114,122].map((x,i) => (
               <path key={i+7} d={`M ${x} 54 C ${x-2} 48, ${x+1} 45, ${x+2} 50`} fill="none" stroke={detail} strokeWidth="2" strokeLinecap="round" opacity="0.65" />
             ))}
-            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">T. solium (ARMED)</text>
             <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">Rostellum + 2 rows of hooks</text>
           </g>
         ) : (
@@ -4519,11 +4483,9 @@ function renderTaeniaScolex(tube: TubeVisual) {
             {/* NO hooks indicator */}
             <line x1="72" y1="36" x2="128" y2="36" stroke={detail} strokeWidth="2" opacity="0.3" strokeDasharray="4,3" />
             <text x="100" y="28" textAnchor="middle" fill={detail} fontSize="7.5" fontFamily="sans-serif">No rostellum - No hooks</text>
-            <text x="100" y="172" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">T. saginata (UNARMED)</text>
             <text x="100" y="182" textAnchor="middle" fill={detail} fontSize="7" fontFamily="sans-serif">4 suckers only - Smooth apex</text>
           </g>
         )}
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -5140,7 +5102,6 @@ function renderMycology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
           </g>
         )}
 
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
@@ -5262,7 +5223,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
                 <circle cx={cx} cy={cy} r="4" fill={detail} fillOpacity="0.4" />
               </g>
             ))}
-            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
           </g>
         )}
 
@@ -5297,7 +5257,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
                 <circle cx="126" cy="118" r="7" fill={bg} stroke={detail} strokeWidth="2" />
               </>
             )}
-            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
           </g>
         )}
 
@@ -5310,7 +5269,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
                 <text x="68" y={67 + index * 34} fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{marker}</text>
               </g>
             ))}
-            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
           </g>
         )}
 
@@ -5339,7 +5297,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
                 <text x="100" y="126" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">RNA target</text>
               </>
             )}
-            <text x="100" y="162" textAnchor="middle" fill={detail} fontSize="8" fontFamily="sans-serif" fontWeight="bold">{tube.label.toLowerCase()}</text>
           </g>
         )}
 
@@ -5409,7 +5366,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
           </g>
         )}
 
-        <text x="100" y="195" textAnchor="middle" fill={detail} fontSize="9" fontFamily="sans-serif" fontWeight="bold">{tube.label}</text>
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
