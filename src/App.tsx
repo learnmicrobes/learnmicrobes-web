@@ -785,6 +785,34 @@ export default function App() {
         title: 'Gram-Negative Organism ID Roadmap | Learn Microbes',
         description: 'Review Gram-negative organism identification with oxidase, lactose fermentation, biochemical patterns, and clinical microbiology workflow logic.'
       },
+      '/obligate-anaerobe-roadmap': {
+        title: 'Obligate Anaerobe Identification Roadmap | Learn Microbes',
+        description: 'Work through obligate anaerobe ID by Gram reaction, spore formation, Clostridium and GPAC branches, key differentiators, and the safest next bench step.'
+      },
+      '/unknown-isolate-workup': {
+        title: 'Unknown Isolate Workup | Organism ID Path | Learn Microbes',
+        description: 'Build a bench workup path from specimen, Gram stain, colony, and early test clues. Organism identification practice for MLS students and ASCP review.'
+      },
+      '/syndrome-diagnostic-path': {
+        title: 'Syndrome to Diagnostic Path | Clinical Microbiology | Learn Microbes',
+        description: 'Match the presentation to a test strategy: bloodstream, CNS, respiratory, genital, and zoonotic syndromes mapped to specimens, NAAT, serology, and microscopy.'
+      },
+      '/special-pathogens': {
+        title: 'Special Pathogens Hub | Anaerobic, Acid-Fast, Fastidious | Learn Microbes',
+        description: 'For organisms where routine plate logic is the wrong start: anaerobic, acid-fast, intracellular, and fastidious agents, with specimen choice and safety steps.'
+      },
+      '/biochemical-calculator': {
+        title: 'Enterics Biochemical Calculator | Enterobacteriaceae ID | Learn Microbes',
+        description: 'Enter indole, methyl red, VP, citrate, H2S, urea, motility, and decarboxylase results to narrow Enterobacteriaceae. Biochemical ID practice for ASCP review.'
+      },
+      '/guides': {
+        title: 'Clinical Microbiology Study Guides | ASCP Review | Learn Microbes',
+        description: 'Long-form clinical microbiology walkthroughs: study strategy, organism ID and separation logic, parasitology, mycology, and virology for MLS and ASCP review.'
+      },
+      '/join-alpha': {
+        title: 'Join the Micro Bench Beta | Learn Microbes',
+        description: 'Join the free Learn Microbes beta for clinical microbiology study tools: saved progress, bookmarks, quiz history, and ASCP review features still in development.'
+      },
       '/do-not-routine-culture': {
         title: 'Special Pathogen Safety Review | Do Not Routine Culture | Learn Microbes',
         description: 'Review clinical microbiology safety escalation traps, special pathogens, and do-not-routine-culture workflows for bench learners and ASCP microbiology review.'
