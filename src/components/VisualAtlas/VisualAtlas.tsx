@@ -6120,6 +6120,15 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
       }))
   ), [categories, disciplinePages]);
 
+  /* The same numbers the bench card strip shows. At phone width that strip is
+     hidden and the counts ride on the filter chips instead, so they are kept
+     here rather than read off the strip. */
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<string, number>(benchCardGroups.map((group) => [group.category, group.count]));
+    counts.set('All', disciplinePages.length);
+    return counts;
+  }, [benchCardGroups, disciplinePages]);
+
   useEffect(() => {
     setDiscipline(initialDiscipline);
     setActiveCategory('All');
@@ -6190,6 +6199,7 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
               onClick={() => setActiveCategory(category)}
             >
               {category}
+              <span className="visual-chip-count">{categoryCounts.get(category) ?? 0}</span>
             </button>
           ))}
         </div>

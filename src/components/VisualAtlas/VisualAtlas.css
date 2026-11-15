@@ -547,6 +547,52 @@
   cursor: pointer;
 }
 
+/* The bench card strip above and these chips set the same filter and list the
+   same categories. Side by side on a wide screen the strip reads as a summary,
+   but from 900px down the rule further on forces it to one column: five
+   full-width rows, 340px tall, which is most of the reason the first bench card
+   sat a screen and a half down on a phone. The same 900px is used here so there
+   is one breakpoint rather than two: below it the strip goes and its counts move
+   onto the chips, so no number is lost. The count is hidden above that width,
+   which leaves the desktop strip and chip row exactly as they were. */
+.visual-chip-count {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .bench-card-strip {
+    display: none;
+  }
+
+  .visual-filter-chips button {
+    gap: 0.4rem;
+  }
+
+  .visual-chip-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4rem;
+    padding: 0 0.3rem;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--va-primary) 10%, #ffffff);
+    color: var(--va-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
+  /* The badge deliberately keeps one treatment in every state. Inverting it on
+     the active chip would have to assume what the active fill looks like, and
+     that fill is a dark teal in light mode but a bright mint in dark, so no
+     single inverted pairing reads on both. A pale badge on the light fill and a
+     dark badge on the mint one both read as inset, and neither depends on the
+     fill staying what it is. */
+  body.dark-mode .visual-chip-count {
+    background: var(--va-paper);
+    color: #dffcf8;
+  }
+}
+
 .visual-alpha-jump a {
   min-width: 2rem;
 }
