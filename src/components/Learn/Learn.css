@@ -2208,7 +2208,8 @@ body.dark-mode .learn-category-heading p,
 body.dark-mode .learn-topic-card p,
 body.dark-mode .learn-book-map-heading p,
 body.dark-mode .learn-note-section p,
-body.dark-mode .learn-note-section li {
+body.dark-mode .learn-note-section li,
+body.dark-mode .learn-not-found p {
   color: #cbd5df;
 }
 
@@ -2542,6 +2543,12 @@ body.dark-mode .learn-reference-table tbody tr:nth-child(even) td {
 
 body.dark-mode .learn-shortcut {
   background: #202a34 !important;
+}
+
+/* Light side uses --dark-color, which has no dark value; without this the
+   paragraph fell back to the blanket dark-mode rule in App.css. */
+body.dark-mode .learn-shortcut p {
+  color: #f8fffd;
 }
 
 body.dark-mode .learn-primary-link,

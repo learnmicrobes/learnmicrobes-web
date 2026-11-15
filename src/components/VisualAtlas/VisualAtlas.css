@@ -769,10 +769,11 @@
   line-height: 1.25;
 }
 
-/* Shell-scoped so it outranks the app-wide "body.dark-mode p" in App.css,
-   which is how .visual-photo-card figcaption p wins too. Without it the note
-   falls back to a muted grey in dark mode and stops matching the photo
-   captions it is meant to sit alongside. */
+/* Shell-scoped to outrank the broader ".visual-panel p" muted-grey rule near
+   the top of this file; without it the note stops matching the photo captions
+   it is meant to sit alongside. (It once also had to outrank an app-wide
+   "body.dark-mode p" in App.css; that rule is :where()-wrapped now and no
+   longer competes with any component.) */
 .visual-atlas-shell .visual-result-anchor p {
   margin: 0;
   color: var(--va-ink);

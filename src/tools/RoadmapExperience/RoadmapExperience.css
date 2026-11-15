@@ -966,6 +966,12 @@ body.dark-mode .roadmap-guidance-panel {
   border-color: rgba(79, 209, 197, 0.2);
 }
 
+/* The panel goes dark here but its paragraph colour is --muted-color, which
+   has no dark value; it was relying on the blanket rule in App.css. */
+body.dark-mode .roadmap-guidance-panel p {
+  color: #cbd5df;
+}
+
 body.dark-mode .roadmap-shortlist-panel {
   background: rgba(30, 37, 50, 0.82);
   border-color: rgba(79, 209, 197, 0.16);

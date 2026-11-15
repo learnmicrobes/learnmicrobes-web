@@ -1696,7 +1696,22 @@ body.dark-mode h5 {
   color: #f7fafc !important;
 }
 
-body.dark-mode p {
+/* Zero specificity on purpose. As a plain `body.dark-mode p` this outranked
+   every component's own `.card p` rule, so the dark paragraph colour here won
+   against each component's token — including the fully tokenised files, whose
+   --ink-muted never reached the page in dark mode, and the few panels that stay
+   light in dark mode, whose text was being greyed out against a cream card.
+   Wrapping both halves in :where() drops this to specificity 0: it still
+   colours a paragraph nothing else claims, and loses to any component that
+   does claim one. Add a component rule rather than raising this back up. */
+:where(body.dark-mode) :where(p) {
+  color: #cbd5e0;
+}
+
+/* These two carry a dark background but had no paragraph colour of their own,
+   so they were living off the blanket rule above. */
+body.dark-mode .hero-section p,
+body.dark-mode .tool-card p {
   color: #cbd5e0;
 }
 
