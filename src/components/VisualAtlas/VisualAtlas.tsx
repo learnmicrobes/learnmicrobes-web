@@ -106,7 +106,6 @@ function renderCatalaseTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -192,7 +191,6 @@ function renderBileSolubility(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -248,7 +246,6 @@ function renderButyrateDisk(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -334,7 +331,6 @@ function renderCAMPTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -411,7 +407,6 @@ function renderPlate(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -481,7 +476,6 @@ function renderCoagulase(tube: TubeVisual) {
         </svg>
         <strong>{tube.label}</strong>
         <span>{tube.name}</span>
-        <p>{tube.note}</p>
       </div>
     );
   } else {
@@ -543,7 +537,6 @@ function renderCoagulase(tube: TubeVisual) {
         </svg>
         <strong>{tube.label}</strong>
         <span>{tube.name}</span>
-        <p>{tube.note}</p>
       </div>
     );
   }
@@ -609,7 +602,6 @@ function renderDecarboxylase(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -672,7 +664,6 @@ function renderDNase(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -730,7 +721,6 @@ function renderFermentation(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -795,7 +785,6 @@ function renderFlagellaStain(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -851,7 +840,6 @@ function renderGelatinHydrolysis(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -901,7 +889,6 @@ function renderHippurateHydrolysis(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -954,7 +941,6 @@ function renderIndoleProduction(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1003,7 +989,6 @@ function renderLAPTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1056,7 +1041,6 @@ function renderLitmusMilk(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1141,7 +1125,6 @@ function renderMRVP(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1206,7 +1189,6 @@ function renderMicrodase(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1297,7 +1279,6 @@ function renderMotility(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1391,7 +1372,6 @@ function renderMRSBroth(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1467,7 +1447,6 @@ function renderMUGTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1570,7 +1549,6 @@ function renderNitrateReduction(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1673,7 +1651,6 @@ function renderNitriteReduction(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1748,7 +1725,6 @@ function renderONPGTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1826,7 +1802,6 @@ function renderOptochinTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1883,7 +1858,6 @@ function renderOxidaseTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -1980,7 +1954,6 @@ function renderOFMedium(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2057,7 +2030,6 @@ function renderPhenylalanineDeaminase(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2114,7 +2086,6 @@ function renderPYRTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2179,7 +2150,6 @@ function renderPyruvateBroth(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2254,7 +2224,6 @@ function renderSaltTolerance(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2311,7 +2280,6 @@ function renderSpotIndole(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2402,7 +2370,6 @@ function renderTSITest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2458,7 +2425,6 @@ function renderUreaseTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2549,7 +2515,6 @@ function renderXVFactorTest(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2615,7 +2580,6 @@ function renderGiardia(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2665,7 +2629,6 @@ function renderCryptosporidium(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2732,7 +2695,6 @@ function renderEntamoeba(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2778,7 +2740,6 @@ function renderTrichomonas(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2822,7 +2783,6 @@ function renderEnterobius(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2871,7 +2831,6 @@ function renderStrongyloides(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2919,7 +2878,6 @@ function renderHookworm(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -2961,7 +2919,6 @@ function renderTrichurisEgg(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3020,7 +2977,6 @@ function renderPlasmodium(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3089,7 +3045,6 @@ function renderBabesia(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3149,7 +3104,6 @@ function renderTrypanosoma(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3204,7 +3158,6 @@ function renderToxoplasma(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3266,7 +3219,6 @@ function renderLeishmania(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3323,7 +3275,6 @@ function renderAscaris(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3382,7 +3333,6 @@ function renderTrichostrongylus(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3441,7 +3391,6 @@ function renderTrichinella(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3496,7 +3445,6 @@ function renderMicrofilaria(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3584,7 +3532,6 @@ function renderTaeniaEgg(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3640,7 +3587,6 @@ function renderParagonimus(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3689,7 +3635,6 @@ function renderSchistosoma(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3752,7 +3697,6 @@ function renderHymenolepis(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3808,7 +3752,6 @@ function renderDiphyllobothrium(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3883,7 +3826,6 @@ function renderEchinococcus(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -3953,7 +3895,6 @@ function renderPlasmodiumPanel(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4021,7 +3962,6 @@ function renderCyclosporaCystoisospora(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4087,7 +4027,6 @@ function renderEntamoebaPanel(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4174,7 +4113,6 @@ function renderOperculated(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4251,7 +4189,6 @@ function renderBlastocystis(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4321,7 +4258,6 @@ function renderDientamoeba(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4391,7 +4327,6 @@ function renderClonorchis(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4451,7 +4386,6 @@ function renderFasciola(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4529,7 +4463,6 @@ function renderDipylidium(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -4594,7 +4527,6 @@ function renderTaeniaScolex(tube: TubeVisual) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -5212,7 +5144,6 @@ function renderMycology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -5482,7 +5413,6 @@ function renderVirology(tube: TubeVisual, visualType: AtlasPage['visualType']) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
@@ -5677,7 +5607,6 @@ function renderTube(tube: TubeVisual, visualType: AtlasPage['visualType']) {
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }

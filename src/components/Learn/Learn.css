@@ -1999,8 +1999,7 @@
   text-align: center;
 }
 
-.mini-atlas-stage .lia-tube-card span,
-.mini-atlas-stage .lia-tube-card p {
+.mini-atlas-stage .lia-tube-card span {
   font-size: var(--text-xs);
   line-height: 1.18;
 }

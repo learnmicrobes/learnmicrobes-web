@@ -454,8 +454,7 @@
   text-align: center;
 }
 
-.test-inline-visual .mini-atlas-stage .lia-tube-card span,
-.test-inline-visual .mini-atlas-stage .lia-tube-card p {
+.test-inline-visual .mini-atlas-stage .lia-tube-card span {
   font-size: var(--text-xs);
   line-height: 1.18;
 }

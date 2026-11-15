@@ -77,7 +77,6 @@ function renderCard(tube: TubeVisual, visualType: VisualType, shapes: React.Reac
       </svg>
       <strong>{tube.label}</strong>
       <span>{tube.name}</span>
-      <p>{tube.note}</p>
     </div>
   );
 }
