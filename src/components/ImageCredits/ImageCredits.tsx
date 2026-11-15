@@ -63,8 +63,11 @@ export default function ImageCredits() {
             <h2>{credit}</h2>
             <p className="image-credits-license">{items[0].license}</p>
             <ul className="image-credits-list">
+              {/* Keyed by page as well as src: thirteen photographs appear on both
+                  an organism card and a comparison card, so src alone collides
+                  within a credit group. A page never repeats the same src. */}
               {items.map((item) => (
-                <li key={item.src}>
+                <li key={`${item.pageSlug}-${item.src}`}>
                   <img src={item.src} alt="" width={64} height={64} loading="lazy" decoding="async" />
                   <div>
                     <strong>
