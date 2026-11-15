@@ -581,15 +581,21 @@
     font-weight: 600;
   }
 
-  /* The badge deliberately keeps one treatment in every state. Inverting it on
-     the active chip would have to assume what the active fill looks like, and
-     that fill is a dark teal in light mode but a bright mint in dark, so no
-     single inverted pairing reads on both. A pale badge on the light fill and a
-     dark badge on the mint one both read as inset, and neither depends on the
-     fill staying what it is. */
   body.dark-mode .visual-chip-count {
     background: var(--va-paper);
     color: #dffcf8;
+  }
+
+  /* The chip under the badge goes light when selected in dark mode, so the badge
+     has to turn over with it; left alone it would be a pale pill on mint. In
+     light mode the selected chip is already dark, so the pale badge stands and
+     needs no state of its own. */
+  body.dark-mode .visual-filter-chips button.active .visual-chip-count,
+  body.dark-mode .visual-filter-chips button[aria-pressed="true"] .visual-chip-count,
+  body.dark-mode .visual-filter-chips button:hover .visual-chip-count,
+  body.dark-mode .visual-filter-chips button:focus-visible .visual-chip-count {
+    background: rgba(16, 33, 43, 0.16);
+    color: #10212b;
   }
 }
 
@@ -1159,6 +1165,13 @@ body.dark-mode .bench-card-strip span {
   color: #dffcf8;
 }
 
+/* --va-primary is a deep teal in light mode and a bright mint in dark, so the
+   light-mode pairing of that fill with white text does not survive the theme
+   flip: white on #5eead4 is about 1.6:1. The signup button further down already
+   solved this by keeping the mint and darkening the label, which is the right
+   call for a selected state because the mint is what makes "selected" read at a
+   glance on a dark ground. Flat rather than the gradient: the gradient's far end
+   is dark enough that dark ink on it drops to about 4:1. */
 body.dark-mode .visual-filter-chips button.active,
 body.dark-mode .visual-filter-chips button[aria-pressed="true"],
 body.dark-mode .visual-filter-chips button:hover,
@@ -1166,8 +1179,28 @@ body.dark-mode .visual-filter-chips button:focus-visible,
 body.dark-mode .visual-alpha-jump a:hover,
 body.dark-mode .visual-alpha-jump a:focus-visible {
   border-color: transparent;
-  background: linear-gradient(135deg, var(--va-primary), var(--va-primary-strong));
-  color: #ffffff;
+  background: var(--va-primary);
+  color: #10212b;
+}
+
+/* Two fills, two jobs. A selected state keeps the mint and darkens its label,
+   so "selected" still reads at a glance; a button that takes you somewhere uses
+   the dark teal, the same one the next-step link uses, and keeps a light label.
+   Neither can inherit the light-mode pairing, which is white on mint in dark. */
+body.dark-mode .visual-discipline-tabs button.active {
+  border-color: var(--va-primary);
+  background: var(--va-primary);
+  color: #10212b;
+}
+
+/* The ring around the subject drop was white, to sit on the light-mode teal. */
+body.dark-mode .visual-discipline-tabs button.active .subject-stain-drop {
+  box-shadow: 0 0 0 2px rgba(16, 33, 43, 0.75);
+}
+
+body.dark-mode .visual-hero-actions button {
+  background: #245c69;
+  color: #f8fafc;
 }
 
 body.dark-mode .visual-hero-actions .visual-bookmark-toggle {
@@ -1218,13 +1251,15 @@ body.dark-mode .visual-sequence-status strong {
 
 body.dark-mode .bench-card-strip button[aria-pressed="true"] {
   border-color: transparent;
-  background: linear-gradient(135deg, var(--va-primary), var(--va-primary-strong));
-  color: #ffffff;
+  background: var(--va-primary);
+  color: #10212b;
 }
 
+/* The count rode on a translucent white pill, which over the mint was white on
+   near-white. It darkens the fill instead, to match the label above. */
 body.dark-mode .bench-card-strip button[aria-pressed="true"] span {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: rgba(16, 33, 43, 0.16);
+  color: #10212b;
 }
 
 body.dark-mode .visual-table th {
