@@ -1468,8 +1468,15 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
     justify-content: center;
   }
 
+  /* Matched to .mycology-stage above. These two had the same two-column rule
+     on a wide screen and different answers here: parasitology dropped to one
+     column while mycology stayed at two, so a parasitology card gave one huge
+     panel per row and ran about a screen longer than a mycology card holding
+     the same number of panels. 38 of the 43 parasitology cards carry exactly
+     two panels, which is the case this suits best. */
   .parasite-stage {
-    grid-template-columns: minmax(180px, 1fr);
+    grid-template-columns: repeat(2, 150px);
+    max-width: none;
   }
 
   .mycology-stage {
@@ -1500,19 +1507,16 @@ body.dark-mode .visual-panel::-webkit-scrollbar-thumb {
   /* The three min-heights on a panel card reserve a fixed slot for the letter,
      the label and the caption so that those parts line up across the columns of
      a row: without them a one-line label sits a line higher than its two-line
-     neighbour and the row reads as a jumble. These three stages collapse to a
+     neighbour and the row reads as a jumble. These two stages collapse to a
      single column at this width, so there is no neighbour left to line up with
      and the reserved space is simply empty - about 50px per panel, on the cards
      that are already the tallest on a phone. Stages that stay multi-column below
      keep their alignment. */
   .camp-stage .lia-letter,
-  .parasite-stage .lia-letter,
   .mycology-comparison-stage .lia-letter,
   .camp-stage .lia-tube-card > strong,
-  .parasite-stage .lia-tube-card > strong,
   .mycology-comparison-stage .lia-tube-card > strong,
   .camp-stage .lia-tube-card > span,
-  .parasite-stage .lia-tube-card > span,
   .mycology-comparison-stage .lia-tube-card > span {
     min-height: 0;
   }
