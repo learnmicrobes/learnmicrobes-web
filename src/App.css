@@ -1688,12 +1688,21 @@ body.dark-mode .app-container {
 }
 
 /* Headers & Text */
+/* No !important. It was here to beat the unscoped `h2` and `h3` rules in
+   styles.css, but those are (0,0,1) and this list is (0,1,2), so plain
+   specificity already wins. What !important actually did was outrank every
+   component that had written its own dark heading colour: fifty such rules
+   existed across the app and none of them reached the page, including the
+   deliberately tinted ones (the salmon mistakes heading, the cream heading on
+   the amber shortcut card, the red safety heading on a roadmap endpoint).
+   Those work again now. A component that needs a different heading colour in
+   dark mode should write its own rule rather than restore !important here. */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
 body.dark-mode h4,
 body.dark-mode h5 {
-  color: #f7fafc !important;
+  color: #f7fafc;
 }
 
 /* Zero specificity on purpose. As a plain `body.dark-mode p` this outranked

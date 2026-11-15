@@ -369,6 +369,13 @@ button {
     line-height: 1.6;
 }
 
+/* An id selector, so it outranks every dark-mode paragraph rule in the app and
+   kept --dark-color against the calculator's dark panel. Stated explicitly here
+   rather than by raising specificity somewhere else. */
+body.dark-mode #result-text {
+    color: #cbd5e0;
+}
+
 /* Footer Styles */
 footer {
     background: var(--primary-color); /* Matches header gradient */

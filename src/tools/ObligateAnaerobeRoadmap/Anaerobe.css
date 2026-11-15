@@ -214,3 +214,18 @@
     width: 100%;
   }
 }
+
+/* This file had no dark-mode rules at all. Its heading colours (--roadmap-accent,
+   --roadmap-dark) have no dark value, so they were only ever invisible against the
+   dark card the shared roadmap styles paint; the app-wide !important heading rule in
+   App.css happened to cover for them. It no longer does, so the colours are stated
+   here, matching the gram-positive and gram-negative roadmaps.
+
+   The clues container is left out on purpose: it is one of the few panels that stays
+   white in dark mode here, unlike those two roadmaps where it goes dark, so its
+   heading keeps the dark ink that reads on white. */
+body.dark-mode .anaerobe-roadmap .current-question h3,
+body.dark-mode .anaerobe-roadmap .conclusion-panel h3,
+body.dark-mode .anaerobe-roadmap .option-card h3 {
+  color: #dff8f0;
+}

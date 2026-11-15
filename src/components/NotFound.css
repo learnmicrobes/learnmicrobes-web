@@ -76,3 +76,10 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+/* The card keeps its white background in dark mode, so the heading keeps the teal
+   that reads on it. Without this it inherits the app-wide dark heading colour and
+   goes near-white on white. */
+body.dark-mode .not-found-card h1 {
+  color: var(--primary-color, #2c7873);
+}
