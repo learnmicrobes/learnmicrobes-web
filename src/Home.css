@@ -267,6 +267,7 @@ body.dark-mode .home-hero-media::after {
 }
 
 .home-task {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -311,21 +312,25 @@ body.dark-mode .home-hero-media::after {
   line-height: 1.5;
 }
 
-.home-task-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--accent);
-  font-size: 0.86rem;
-  font-weight: 700;
-}
+/* The card is itself the link, so a line reading "Open bench tests" under a
+   card titled "Read a bench test result" named the destination twice and cost
+   a line on each of six cards. The phone layout had already dropped it for a
+   chevron; this is that same answer applied at every width.
 
-.home-task-cta svg {
-  font-size: 0.75rem;
+   A chevron rather than nothing at all: the hover lift only speaks to someone
+   who already suspects the card is clickable and goes to check, and it does
+   not exist on a touch screen. The chevron says so at rest. Kept in the markup
+   so reverting is a CSS change on its own. */
+.home-task-cta {
+  display: none;
 }
 
 .home-task-chevron {
-  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--ink-subtle);
+  font-size: 0.8rem;
 }
 
 /* ---------- Account / free panel ---------- */
@@ -750,15 +755,11 @@ body.dark-mode .home-riddle-choice.incorrect svg {
     line-height: 1.35;
   }
 
-  .home-task-cta {
-    display: none;
-  }
-
+  /* Back in the flow here: the phone card is a row, so the chevron sits at the
+     end of it rather than pinned to a corner. */
   .home-task-chevron {
-    display: block;
+    position: static;
     flex-shrink: 0;
-    color: var(--ink-subtle);
-    font-size: 0.8rem;
   }
 
   .home-v1 > .dashboard-home-screen-hint {
