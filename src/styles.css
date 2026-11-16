@@ -244,12 +244,13 @@ h2 {
     gap: 0.5rem;
 }
 
+/* No border here. It drew a faint rule under every h3 on the site, which read
+   as a stray underline on cards. Components that want a divider under their
+   headings (Guides, search A-Z, the biochemical calculator) set their own. */
 h3 {
     color: var(--secondary-color);
     margin: 1rem 0 0.5rem;
     font-size: var(--text-lg);
-    border-bottom: 2px solid var(--light-color);
-    padding-bottom: 0.3rem;
 }
 
 /* Form Styles */
