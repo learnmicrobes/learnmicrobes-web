@@ -547,6 +547,12 @@
   gap: 0.45rem;
 }
 
+/* The topic list stays in the markup so its links are crawlable; the accordion
+   hides it here instead of not rendering it. */
+.learn-category.collapsed .learn-lane-list {
+  display: none;
+}
+
 .learn-topic-card {
   display: grid;
   row-gap: 0.25rem;

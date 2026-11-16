@@ -6035,6 +6035,15 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
 
   const sortedAtlasPages = useMemo(() => getAlphabetizedAtlasPages(), []);
 
+  // Every bench card, grouped by discipline. The tabs render one discipline at
+  // a time, so without this the markup only ever holds the cards of whichever
+  // discipline loaded first and a crawler never sees the other three.
+  const allDisciplineGroups = useMemo(() => (
+    visualDisciplineSlugs
+      .map((slug) => ({ slug, pages: sortedAtlasPages.filter((page) => getDiscipline(page) === slug) }))
+      .filter((group) => group.pages.length > 0)
+  ), [sortedAtlasPages]);
+
   const disciplinePages = useMemo(
     () => sortedAtlasPages.filter((page) => getDiscipline(page) === discipline),
     [sortedAtlasPages, discipline]
@@ -6194,6 +6203,22 @@ function VisualAtlasHub({ initialDiscipline = 'bacteriology' }: { initialDiscipl
           </div>
         )}
       </section>
+
+      <details className="visual-full-index">
+        <summary>Browse all {sortedAtlasPages.length} bench cards</summary>
+        {allDisciplineGroups.map((group) => (
+          <div className="visual-full-index-group" key={group.slug}>
+            <h2>{visualDisciplineLabels[group.slug]}</h2>
+            <ul>
+              {group.pages.map((page) => (
+                <li key={page.slug}>
+                  <Link to={`/visuals/${page.slug}`}>{page.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </details>
     </div>
   );
 }

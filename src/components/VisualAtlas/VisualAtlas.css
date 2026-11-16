@@ -1875,3 +1875,57 @@ body.dark-mode .visual-photo-card {
     width: 100%;
   }
 }
+
+/* The complete card list. Collapsed by default so it stays out of the way, but
+   present in the markup on every visit, so each card has a real link from the
+   hub instead of a sitemap entry alone. */
+.visual-full-index {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.visual-full-index > summary {
+  cursor: pointer;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.visual-full-index-group {
+  margin-top: 1rem;
+}
+
+.visual-full-index-group h2 {
+  margin: 0 0 0.4rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.visual-full-index-group ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.25rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visual-full-index-group a {
+  color: var(--accent);
+  font-size: var(--text-md);
+  text-decoration: none;
+}
+
+.visual-full-index-group a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 620px) {
+  .visual-full-index-group ul {
+    grid-template-columns: 1fr;
+  }
+}

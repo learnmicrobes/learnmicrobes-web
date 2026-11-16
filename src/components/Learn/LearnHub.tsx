@@ -888,26 +888,27 @@ export const LearnHub: React.FC = () => {
               </span>
             </div>
 
-            {isCategoryOpen && (
-              <div className="learn-lane-list" id={`${slugify(group.category)}-topic-list`}>
-                {group.topics.map((topic) => (
-                  <Link className={`learn-topic-card ${completedTopicSet.has(topic.slug) ? 'mastered' : ''}`} to={`/learn/${topic.slug}`} key={topic.slug}>
-                    <div className="learn-topic-card-body">
-                      <h3>
-                        {topic.title}
-                        {completedTopicSet.has(topic.slug) && <small className="learn-mastered-check" aria-label="Completed">✓</small>}
-                      </h3>
-                      <p>{topic.summary}</p>
-                      <div className="learn-topic-badges" aria-label={`${topic.title} study tags`}>
-                        {getTopicBadges(topic).map((badge) => (
-                          <small key={badge}>{badge}</small>
-                        ))}
-                      </div>
+            {/* Always in the markup, hidden by CSS when collapsed. A link that
+                only appears after a click is a link a crawler never follows, and
+                most topics sit in categories that start collapsed. */}
+            <div className="learn-lane-list" id={`${slugify(group.category)}-topic-list`}>
+              {group.topics.map((topic) => (
+                <Link className={`learn-topic-card ${completedTopicSet.has(topic.slug) ? 'mastered' : ''}`} to={`/learn/${topic.slug}`} key={topic.slug}>
+                  <div className="learn-topic-card-body">
+                    <h3>
+                      {topic.title}
+                      {completedTopicSet.has(topic.slug) && <small className="learn-mastered-check" aria-label="Completed">✓</small>}
+                    </h3>
+                    <p>{topic.summary}</p>
+                    <div className="learn-topic-badges" aria-label={`${topic.title} study tags`}>
+                      {getTopicBadges(topic).map((badge) => (
+                        <small key={badge}>{badge}</small>
+                      ))}
                     </div>
-                  </Link>
-                ))}
-              </div>
-            )}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </section>
           );
         })}
