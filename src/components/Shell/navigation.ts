@@ -38,6 +38,21 @@ export const toolGroups: ToolGroup[] = [
   }
 ];
 
+// URLs people type from the nav labels. The header says Atlas, Review and
+// Tools while the routes are /visuals, /practice and /guides, so those three
+// spellings returned a real 404 from GitHub Pages. Each is served as a page of
+// its own that canonicals to its target; a client-side redirect cannot help,
+// because the 404 happens before React boots, and the pre-render skips any
+// route that redirects, leaving no file to serve.
+export const routeAliases: Record<string, string> = {
+  '/atlas': '/visuals',
+  '/review': '/practice',
+  '/tools': '/guides'
+};
+
+/** The real route an alias stands for, or the pathname unchanged. */
+export const resolveRouteAlias = (pathname: string) => routeAliases[pathname] ?? pathname;
+
 const matchesPath = (pathname: string, path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
 const isReviewPath = (pathname: string) => reviewPaths.some((path) => matchesPath(pathname, path));
@@ -51,11 +66,12 @@ export type NavSection = 'home' | 'learn' | 'atlas' | 'tools' | 'review';
  * A page belongs to the section whose menu lists it.
  */
 export const getNavSection = (pathname: string): NavSection | null => {
-  if (pathname === '/') return 'home';
-  if (matchesPath(pathname, '/learn')) return 'learn';
-  if (matchesPath(pathname, '/visuals')) return 'atlas';
-  if (isReviewPath(pathname)) return 'review';
-  if (toolGroups.some((group) => group.items.some((item) => matchesPath(pathname, item.path)))) return 'tools';
+  const path = resolveRouteAlias(pathname);
+  if (path === '/') return 'home';
+  if (matchesPath(path, '/learn')) return 'learn';
+  if (matchesPath(path, '/visuals')) return 'atlas';
+  if (isReviewPath(path)) return 'review';
+  if (toolGroups.some((group) => group.items.some((item) => matchesPath(path, item.path)))) return 'tools';
   return null;
 };
 

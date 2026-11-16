@@ -26,7 +26,7 @@ import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
 import { MobileBackButton } from './components/Shell/MobileNav';
-import { toolGroups } from './components/Shell/navigation';
+import { toolGroups, resolveRouteAlias } from './components/Shell/navigation';
 import { bestSnippet } from './search/searchEngine';
 import { quickSearch, useSearchIndex } from './search/useSiteSearch';
 import Highlight from './search/Highlight';
@@ -629,7 +629,9 @@ export default function App() {
 
   const seoMetadata = useMemo(() => {
     // GitHub Pages can answer a directory route such as /learn at /learn/, so both spellings share one entry.
-    const path = location.pathname.replace(/(.)\/+$/, '$1');
+    // An alias such as /atlas resolves to /visuals here, so the title,
+    // description, canonical and breadcrumb all describe the real page.
+    const path = resolveRouteAlias(location.pathname.replace(/(.)\/+$/, '$1'));
     const baseTitle = 'Learn Microbes - Clinical Microbiology & ASCP Review';
     const baseDescription = 'Clinical microbiology study tools for MLS students, ASCP microbiology review, bench workflows, organism ID, biochemical tests, visual cards, and quiz practice.';
     const learnSlug = path.match(/^\/learn\/([^/]+)$/)?.[1];

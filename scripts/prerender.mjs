@@ -28,8 +28,11 @@ const CONCURRENCY = 4;
 const MAX_ROUTES = 1000;
 const NAV_TIMEOUT_MS = 45000;
 
-// Not in the sitemap, but visited directly (auth emails, links shared on social).
-const EXTRA_ROUTES = ['/auth', '/login', '/register', '/account', '/join-alpha'];
+// Not in the sitemap and linked from no page, so crawling cannot reach them:
+// auth routes arrive from emails and shared links, and the last three are the
+// nav-label aliases (see routeAliases in src/components/Shell/navigation.ts).
+// Without a file of its own each one is a real 404 before React ever boots.
+const EXTRA_ROUTES = ['/auth', '/login', '/register', '/account', '/join-alpha', '/atlas', '/review', '/tools'];
 
 // Keep analytics out of GA4, and skip assets that never change the markup.
 const BLOCKED_REQUEST = /googletagmanager\.com|google-analytics\.com|doubleclick\.net/;

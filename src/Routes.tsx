@@ -58,7 +58,11 @@ const pagesBySection: Record<string, Array<{ preload: () => Promise<unknown> }>>
   "case-study-simulator": [CaseStudySimulator],
   flashcards: [Flashcards],
   "certification-study-paths": [CertificationStudyPaths],
-  "image-credits": [ImageCredits]
+  "image-credits": [ImageCredits],
+  // Label aliases; see routeAliases in Shell/navigation.ts.
+  atlas: [VisualAtlas],
+  review: [PracticePage],
+  tools: [MicroBasics]
 };
 
 /** Downloads the code for the page at `pathname`. Resolves immediately for eager pages. */
@@ -105,6 +109,12 @@ export default function AppRoutes() {
         <Route path="flashcards" element={<Flashcards />} />
         <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
         <Route path="image-credits" element={<ImageCredits />} />
+        {/* The nav labels say Atlas, Review and Tools, so people type those
+            URLs. Each renders its section's page and canonicals to the real
+            route. See routeAliases in Shell/navigation.ts. */}
+        <Route path="atlas" element={<VisualAtlas />} />
+        <Route path="review" element={<PracticePage />} />
+        <Route path="tools" element={<MicroBasics />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
