@@ -811,7 +811,7 @@ export default function App() {
       },
       '/join-alpha': {
         title: 'Join the Lab List | Learn Microbes',
-        description: 'Join the Learn Microbes Lab List for updates on clinical microbiology study tools, saved progress, bookmarks, quiz history, and ASCP review features as they are built. Learn Microbes is free to use.'
+        description: 'Join the Learn Microbes Lab List for updates as new study tools are built: saved progress, bookmarks, quiz history, and ASCP microbiology review. Free to use.'
       },
       '/do-not-routine-culture': {
         title: 'Special Pathogen Safety Review | Do Not Routine Culture | Learn Microbes',
