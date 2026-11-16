@@ -1703,9 +1703,16 @@ body.dark-mode .visual-signup-actions a {
   line-height: 1.5;
 }
 
+/* Capped rather than 1fr. The photo now fills its card instead of being a
+   300px image centred in whatever width the card happened to take, so without
+   a ceiling a card page carrying only two photos stretched them to 420px
+   squares that dominated the section. A card with four photos was already
+   landing near 290px, so the cap only affects the sparse pages and makes the
+   section the same size whatever the photo count. */
 .visual-photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 340px));
+  justify-content: center;
   gap: 0.9rem;
   margin-top: 1rem;
 }
@@ -1722,19 +1729,46 @@ body.dark-mode .visual-signup-actions a {
 }
 
 /* Black matte: a microscope field is dark at the edges, and a white card around
-   it makes the specimen look washed out. */
+   it makes the specimen look washed out.
+
+   Square box, and the photo is fitted inside it rather than filled to it. The
+   179 photos are not one shape - 110 are exactly square, 28 near 4:3 and 41
+   as wide as 1.8 - so with height: auto each card ended its image at a
+   different point and the caption beneath started at a different line, which
+   is what made a row of them look ragged.
+
+   cover, so the box is filled rather than letterboxed. The 110 square photos
+   are untouched by it: a square image in a square box fills exactly and no
+   pixel is lost. The wider ones are centre-cropped, up to about a quarter of
+   their width on the widest. That is a real crop, so the wording on the image
+   credits page was changed to say so rather than claim images are never
+   cropped, and every caption still links the uncropped original.
+
+   max-width and margin-inline are gone with it. They centred a 300px image in
+   a card that could be wider, so the picture sat narrower than its own caption
+   and the left edges disagreed. */
 .visual-photo-card img {
   display: block;
   width: 100%;
-  max-width: 300px;
+  /* The img carries height="300", which is a presentational hint and beats
+     aspect-ratio once nothing else sets height. height: auto puts the ratio
+     back in charge; the attributes stay because they reserve the right space
+     before the photo loads. */
   height: auto;
-  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 6px;
   background: #11181c;
 }
 
+/* The caption fills whatever height is left, with the credit pinned to the
+   last row. Grid items already stretch to the tallest card in the row, so the
+   source lines then sit on one baseline across the row instead of floating up
+   under whichever caption happened to be shortest. */
 .visual-photo-card figcaption {
   display: grid;
+  grid-template-rows: auto 1fr auto;
+  flex: 1;
   gap: 0.3rem;
 }
 

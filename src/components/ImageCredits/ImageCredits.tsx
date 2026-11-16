@@ -94,9 +94,14 @@ export default function ImageCredits() {
         <ul>
           <li>Each image names the agency or photographer that produced it, on the page where it appears.</li>
           <li>
-            Images are shown exactly as published. We never label, crop or retouch a clinical image to make a
-            teaching point; that is what the drawn board beside it is for. Where an image carries arrows or
-            lettering, they are the source&rsquo;s own, and the caption says so.
+            We never label or retouch a clinical image to make a teaching point; that is what the drawn board
+            beside it is for. Where an image carries arrows or lettering, they are the source&rsquo;s own, and the
+            caption says so.
+          </li>
+          <li>
+            Some images are shown cropped to a square so that a row of them reads evenly. The crop is taken from
+            the centre and never moves, hides or adds anything a reader needs; the uncropped original is linked
+            beside every image on this page and under every image where it appears.
           </li>
           <li>Every image remains available free of charge from the source linked above.</li>
           <li>
