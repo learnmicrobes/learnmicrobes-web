@@ -120,7 +120,7 @@ const StudentTestimonials: React.FC = () => {
                 key={`${testimonial.name}-${testimonial.role}-${index}`}
                 className={`testimonial-card accent-${testimonial.accent}`}
               >
-                <div className="testimonial-quote-mark" aria-hidden="true">"</div>
+                <div className="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
                 <p className="testimonial-quote">{testimonial.quote}</p>
                 <div className="testimonial-meta">
                   <strong>{testimonial.name}</strong>
