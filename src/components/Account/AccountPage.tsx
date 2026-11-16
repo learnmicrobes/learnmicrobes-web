@@ -481,7 +481,7 @@ const AccountPage: React.FC = () => {
       <section className="account-hero" aria-labelledby="account-title">
         <div className="account-avatar" aria-hidden="true">{accountInitial}</div>
         <div>
-          <span className="account-kicker">Learn Microbes Beta</span>
+          <span className="account-kicker">Learn Microbes</span>
           <h1 id="account-title">Your study account</h1>
           <p>
             Your profile anchors saved progress, bookmarks, quiz history, and future certification-path personalization.
@@ -617,7 +617,7 @@ const AccountPage: React.FC = () => {
               />
             </label>
 
-            <div className="account-profile-grid" aria-label="Beta learner profile">
+            <div className="account-profile-grid" aria-label="Learner profile">
               <label>
                 What best describes you?
                 <select value={learnerRole} onChange={(event) => setLearnerRole(event.target.value)}>
@@ -656,7 +656,7 @@ const AccountPage: React.FC = () => {
                 checked={emailUpdateOptIn}
                 onChange={(event) => setEmailUpdateOptIn(event.target.checked)}
               />
-              <span>Email me occasional Learn Microbes beta updates and study-tool news.</span>
+              <span>Email me occasional Learn Microbes updates and study-tool news.</span>
             </label>
 
             <button type="submit" className="account-save-btn" disabled={isSavingProfile}>

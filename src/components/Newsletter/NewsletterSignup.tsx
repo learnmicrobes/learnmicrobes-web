@@ -59,19 +59,19 @@ const NewsletterSignup: React.FC = () => {
           </div>
 
           <div className="newsletter-copy-text">
-            <span className="newsletter-kicker">Beta tester list</span>
+            <span className="newsletter-kicker">Lab List</span>
             <h2 id="newsletter-title">Join the Lab List</h2>
             <p>
-              Join the external beta list for updates, study-tool previews, and a say in what gets built next,
+              Join the Lab List for updates, study-tool previews, and a say in what gets built next,
               including saved progress, bookmarks, quiz history, and ASCP review support.
             </p>
           </div>
         </div>
 
         <div className="newsletter-form-shell">
-          <div className="newsletter-form newsletter-alpha-actions" aria-label="Alpha list actions">
+          <div className="newsletter-form newsletter-alpha-actions" aria-label="Lab List actions">
             <button type="button" className="newsletter-submit" onClick={handleJoinAlpha}>
-              Join Beta
+              Join the Lab List
             </button>
             <button type="button" className="newsletter-feedback-btn" onClick={handleFeedback}>
               Send Feedback

@@ -84,7 +84,7 @@ export default function SiteFooter() {
               trackEvent('lead_form_viewed', { location: 'footer', form_name: 'beta_tester_form' });
             }}
           >
-            Join Beta
+            Join the Lab List
           </a>
         </nav>
 

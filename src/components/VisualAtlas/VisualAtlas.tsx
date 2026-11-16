@@ -6600,9 +6600,9 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
         <div className="visual-updates-strip">
           <div>
             <span className="visual-updates-kicker">Get updates</span>
-            <p>New bench cards and study tools are still being built. Join the beta list to hear about new cards and have a say in what gets built next.</p>
+            <p>New bench cards and study tools are added regularly. Join the Lab List to hear about new cards and have a say in what gets built next.</p>
           </div>
-          <button type="button" onClick={handleJoinBetaClick}>Join the beta list</button>
+          <button type="button" onClick={handleJoinBetaClick}>Join the Lab List</button>
         </div>
       )}
     </div>

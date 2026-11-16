@@ -15,8 +15,8 @@ const openExternalForm = (url: string) => {
 
 const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
   location,
-  title = 'Free beta access for early Learn Microbes users',
-  body = 'Create an account to save progress, bookmarks, and quiz history. Use the beta form to tell us your role, study goal, hardest topic, and what we should build next.'
+  title = 'Help shape Learn Microbes',
+  body = 'Create an account to save progress, bookmarks, and quiz history. Use the sign-up form to tell us your role, study goal, hardest topic, and what we should build next.'
 }) => {
   const handleJoinAlpha = () => {
     trackEvent('alpha_join_clicked', {
@@ -45,12 +45,12 @@ const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
   return (
     <section className="alpha-validation-cta" aria-label={title}>
       <div>
-        <span>Beta feedback</span>
+        <span>Feedback</span>
         <h2>{title}</h2>
         <p>{body}</p>
       </div>
       <div className="alpha-validation-actions">
-        <button type="button" onClick={handleJoinAlpha}>Join the Micro Bench Beta</button>
+        <button type="button" onClick={handleJoinAlpha}>Join the Lab List</button>
         <button type="button" onClick={handleFeedback}>Send feedback</button>
       </div>
     </section>

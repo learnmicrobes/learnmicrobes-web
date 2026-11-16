@@ -20,7 +20,7 @@ const EmailSentPanel: React.FC<EmailSentPanelProps> = ({ email, onTryAgain, onGo
   <div className="auth-page">
     <section className="auth-card auth-card--confirmation" aria-labelledby="auth-title">
       <div className="auth-card-copy">
-        <span className="auth-kicker">Learn Microbes Beta</span>
+        <span className="auth-kicker">Learn Microbes</span>
         <h1 id="auth-title">Check your email</h1>
         <p>
           We sent a confirmation link to <strong>{email}</strong>. Open it to activate your
@@ -389,7 +389,7 @@ const AuthPage: React.FC = () => {
     <div className="auth-page">
       <section className="auth-card" aria-labelledby="auth-title">
         <div className="auth-card-copy">
-          <span className="auth-kicker">Learn Microbes Beta</span>
+          <span className="auth-kicker">Learn Microbes</span>
           <h1 id="auth-title">{authTitle}</h1>
           <p>{authBody}</p>
         </div>

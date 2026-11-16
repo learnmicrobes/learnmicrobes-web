@@ -39,7 +39,7 @@ const infoPages: Record<InfoPageKey, {
   terms: {
     kicker: 'Terms of Use',
     title: 'Use Learn Microbes as a learning resource',
-    intro: 'These plain-language terms describe the expected use of Learn Microbes during beta.',
+    intro: 'These plain-language terms describe the expected use of Learn Microbes.',
     sections: [
       {
         title: 'Acceptable use',
@@ -47,7 +47,7 @@ const infoPages: Record<InfoPageKey, {
       },
       {
         title: 'Content limits',
-        body: 'Content may change as the beta improves. We aim for accuracy, but errors can occur, and official or local sources should be used when requirements matter.'
+        body: 'Content may change. We aim for accuracy, but errors can occur, and official or local sources should be used when requirements matter.'
       },
       {
         title: 'Ownership',
@@ -57,7 +57,7 @@ const infoPages: Record<InfoPageKey, {
   },
   privacy: {
     kicker: 'Privacy Policy',
-    title: 'A practical privacy summary for beta users',
+    title: 'A practical privacy summary',
     intro: 'What Learn Microbes collects, why, and which services handle it. We do not sell your data.',
     sections: [
       {
@@ -89,7 +89,7 @@ const infoPages: Record<InfoPageKey, {
   faq: {
     kicker: 'FAQ',
     title: 'Common Learn Microbes questions',
-    intro: 'Quick answers for beta users, students, and clinical microbiology learners.',
+    intro: 'Quick answers for students, reviewees, and clinical microbiology learners.',
     sections: [
       {
         title: 'Is Learn Microbes official ASCP content?',
@@ -100,8 +100,8 @@ const infoPages: Record<InfoPageKey, {
         body: 'No separate username is used. Sign in with your email/password account or Google sign-in.'
       },
       {
-        title: 'What is still beta?',
-        body: 'Some tools are placeholders or still being polished, including expanded flashcards, case simulation, and deeper saved-progress workflows.'
+        title: 'What is still being built?',
+        body: 'Learn Microbes is actively developed. New Learn pages, bench cards, and practice questions are added regularly, and saved-progress features are still growing. Tell us what is confusing or missing.'
       }
     ]
   },
@@ -120,7 +120,7 @@ const infoPages: Record<InfoPageKey, {
       },
       {
         title: 'Product direction',
-        body: 'The beta prioritizes useful study workflows, saved progress, quiz history, organism identification support, and polished mobile-friendly review tools.'
+        body: 'Current work prioritizes useful study workflows, saved progress, quiz history, organism identification support, and polished mobile-friendly review tools.'
       }
     ]
   }

@@ -414,7 +414,7 @@ export default function App() {
                                     : location.pathname.includes('register')
                                       ? 'Create Account'
                                       : location.pathname.includes('join-alpha')
-                                        ? 'Join Beta'
+                                        ? 'Join the Lab List'
                                         : location.pathname.includes('about')
                                         ? 'About'
                                         : location.pathname.includes('mission')
@@ -703,7 +703,7 @@ export default function App() {
       },
       '/about': {
         title: 'About Learn Microbes | Clinical Microbiology Study Platform',
-        description: 'Learn about the Learn Microbes clinical microbiology study platform, mission, study tools, organism ID roadmaps, visual reactions, and beta product direction.'
+        description: 'Learn about the Learn Microbes clinical microbiology study platform, mission, study tools, organism ID roadmaps, visual reactions, and what we are building next.'
       },
       '/mission': {
         title: 'Mission and Vision | Learn Microbes',
@@ -711,7 +711,7 @@ export default function App() {
       },
       '/faq': {
         title: 'FAQ | Learn Microbes',
-        description: 'Frequently asked questions about Learn Microbes accounts, ASCP review, beta tools, usernames, saved progress, and clinical microbiology study content.'
+        description: 'Frequently asked questions about Learn Microbes accounts, ASCP review, new study tools, usernames, saved progress, and clinical microbiology study content.'
       },
       '/disclaimer': {
         title: 'Disclaimer | Learn Microbes',
@@ -719,7 +719,7 @@ export default function App() {
       },
       '/terms': {
         title: 'Terms of Use | Learn Microbes',
-        description: 'Plain-language Learn Microbes terms of use for beta clinical microbiology study tools, educational content, and acceptable platform use.'
+        description: 'Plain-language Learn Microbes terms of use for clinical microbiology study tools, educational content, and acceptable platform use.'
       },
       '/privacy': {
         title: 'Privacy Policy | Learn Microbes',
@@ -810,8 +810,8 @@ export default function App() {
         description: 'Long-form clinical microbiology walkthroughs: study strategy, organism ID and separation logic, parasitology, mycology, and virology for MLS and ASCP review.'
       },
       '/join-alpha': {
-        title: 'Join the Micro Bench Beta | Learn Microbes',
-        description: 'Join the free Learn Microbes beta for clinical microbiology study tools: saved progress, bookmarks, quiz history, and ASCP review features still in development.'
+        title: 'Join the Lab List | Learn Microbes',
+        description: 'Join the Learn Microbes Lab List for updates on clinical microbiology study tools, saved progress, bookmarks, quiz history, and ASCP review features as they are built. Learn Microbes is free to use.'
       },
       '/do-not-routine-culture': {
         title: 'Special Pathogen Safety Review | Do Not Routine Culture | Learn Microbes',
