@@ -565,32 +565,6 @@
   color: #ffffff;
 }
 
-.lm-footer-support {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 44px;
-  padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 999px;
-  color: #f6fbf8;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.lm-footer-support:hover,
-.lm-footer-support:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.lm-footer-support i {
-  color: var(--lm-clay);
-  font-size: 0.8rem;
-}
-
 .lm-footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -753,9 +727,11 @@ body.dark-mode .lm-footer {
     font-size: 0.8rem;
   }
 
-  /* Above the Study Quiz's pinned Previous / Next bar, not over Previous. */
+  /* The Study Quiz pins Previous / Next to the bottom; a Back button stacked
+     above that bar sat over the question text. The quiz has its own
+     navigation, so the floating Back button stays out of the way there. */
   body:has(.study-quiz-actions) .lm-back-fab {
-    bottom: calc(86px + env(safe-area-inset-bottom));
+    display: none;
   }
 
   /* Phones: the panel spans the screen just under the sticky header. */
@@ -778,33 +754,15 @@ body.dark-mode .lm-footer {
     padding: 16px 16px 18px;
   }
 
-  /* The heart joins the social icons as one more round button, instead of a
-     full-width pill on its own line. */
+  /* The envelope joins the social icons as one more round button, instead
+     of a full-width pill on its own line. */
   .lm-footer-connect {
     flex-direction: row;
     gap: 4px;
     justify-content: center;
   }
 
-  .lm-footer-support {
-    width: 38px;
-    min-height: 38px;
-    height: 38px;
-    padding: 0;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .lm-footer-support i {
-    font-size: 0.92rem;
-  }
-
-  .lm-footer-support-text {
-    display: none;
-  }
-
-  /* Same reasoning as the heart: the envelope becomes one more round button,
-     and the address itself stays reachable on the Privacy page. */
+  /* The address itself stays reachable on the Privacy page. */
   .lm-footer-email {
     width: 38px;
     min-height: 38px;
@@ -895,16 +853,14 @@ body.dark-mode .lm-footer {
 
 /* The Study Quiz pins Previous / Next to the bottom of the screen; lift the
    floating buttons above that bar so neither sits on top of a quiz button. */
-body:has(.study-quiz-actions) .app-container .persistent-feedback-btn,
-body:has(.study-quiz-actions) .app-container .depth-nudge {
+body:has(.study-quiz-actions) .app-container .persistent-feedback-btn {
   bottom: 5.75rem;
 }
 
-@media (max-width: 900px) {
-  /* Same 60px gap the nudge normally keeps above the floating buttons. */
-  body:has(.study-quiz-actions) .app-container .depth-nudge {
-    bottom: calc(150px + env(safe-area-inset-bottom));
-  }
+/* The sign-in nudge covered the takeaway mid-question. A quiz already offers
+   sign-in at its guest limit, so the nudge waits for the next non-quiz page. */
+body:has(.study-quiz-actions) .app-container .depth-nudge {
+  display: none;
 }
 
 .app-container .persistent-feedback-btn:hover,

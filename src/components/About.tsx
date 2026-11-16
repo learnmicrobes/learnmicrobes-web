@@ -41,19 +41,16 @@ export default function About() {
           <div className="about-subtitle">Who's behind Learn Microbes</div>
           <h2 id="about-founder-title">Hi, I'm Franz.</h2>
           <p>
-            I'm a medical technologist with almost ten years at the bench. I started as a generalist in Cebu
-            hospitals, covering blood bank, hematology, chemistry and clinical microscopy, then ran PCR testing
-            through the pandemic. Today I'm a lead technologist in microbiology at Louisiana's biggest hospital,
-            home to the state's biggest microbiology reference lab, where I also train new techs and students.
+            I'm a medical technologist with a decade of experience at the bench. I started as a generalist,
+            covering blood bank, hematology, chemistry, and clinical microscopy, then ran PCR testing through the
+            pandemic. Today I'm a lead technologist in a large microbiology reference lab at a major hospital in
+            Louisiana, where I also train new techs and students.
           </p>
           <p>
-            I built Learn Microbes for the version of me who was studying for the boards and the ASCPi: someone who
-            needed to understand why the bench does what it does, not just memorize charts. Everything here is
-            written the way I would explain it to a new tech at my bench.
-          </p>
-          <p>
-            Microbiology comes first because it is my favorite department. Hematology, urinalysis and the other lab
-            sections are next, built the same bench-first way.
+            I built Learn Microbes for the version of me who was studying for the boards and the ASCP exam,
+            someone who needed to understand why the bench does what it does, not just memorize charts. Some pages
+            walk through the bench step by step, and others explain the theory behind it, so you can see how the two
+            fit together.
           </p>
           <a
             className="about-founder-link"

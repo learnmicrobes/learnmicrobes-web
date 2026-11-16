@@ -430,6 +430,15 @@ body.dark-mode .study-quiz-page {
   box-shadow: 0 8px 20px rgba(95, 91, 215, 0.2);
 }
 
+/* Dark mode: the gradient ends in bright mint, where white text washes out.
+   Dark ink reads on both ends of it. */
+body.dark-mode .study-quiz-page:not(.embedded) .study-quiz-actions button:not(:first-child),
+body.dark-mode .study-quiz-missed-header button:first-of-type,
+body.dark-mode .study-quiz-categories button.active,
+body.dark-mode .study-quiz-difficulty button.active {
+  color: #0f172a;
+}
+
 .study-quiz-actions button:hover,
 .study-quiz-missed-header button:first-of-type:hover {
   transform: translateY(-2px);

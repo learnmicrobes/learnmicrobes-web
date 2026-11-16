@@ -78,7 +78,7 @@ const infoPages: Record<InfoPageKey, {
       },
       {
         title: 'Other services',
-        body: 'The site is hosted on GitHub Pages, account data is stored with Supabase, fonts load from Google Fonts, and Support links open Ko-fi. Each of these services has its own privacy policy.'
+        body: 'The site is hosted on GitHub Pages, account data is stored with Supabase, and fonts load from Google Fonts. Each of these services has its own privacy policy.'
       },
       {
         title: 'Feedback, contact, and deletion',

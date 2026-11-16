@@ -1053,7 +1053,8 @@ body.dark-mode .study-quiz-page.embedded {
 .study-quiz-page.embedded .study-quiz-actions button {
   min-height: 40px;
   border-radius: 6px;
-  background: var(--cert-primary);
+  background: var(--accent-fill);
+  color: var(--accent-fill-ink);
   box-shadow: 0 8px 16px rgba(36, 92, 105, 0.12);
 }
 

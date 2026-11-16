@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SUPPORT_EMAIL } from '../../config/contact';
 import { ALPHA_SIGNUP_FORM_URL } from '../../config/forms';
-import { SUPPORT_URL } from '../../config/support';
 import { trackEvent } from '../../utils/analytics';
 import './Shell.css';
 
@@ -43,7 +42,7 @@ export default function SiteFooter() {
           </div>
           {/* The envelope carries the address as text on wider screens, so
               nobody has to click to find out where their mail would go. Phones
-              keep the icon alone, like the heart below. */}
+              keep the icon alone. */}
           <a
             className="lm-footer-email"
             href={`mailto:${SUPPORT_EMAIL}?subject=Question%20About%20LearnMicrobes`}
@@ -52,21 +51,6 @@ export default function SiteFooter() {
           >
             <i className="fas fa-envelope" aria-hidden="true" />
             <span className="lm-footer-email-text">{SUPPORT_EMAIL}</span>
-          </a>
-
-          {/* Phones show only the heart, in the row of social icons. The label
-              is in aria-label so it survives the text being hidden there. */}
-          <a
-            className="lm-footer-support"
-            href={SUPPORT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Support Learn Microbes"
-            title="Support Learn Microbes"
-            onClick={() => trackEvent('support_clicked', { location: 'footer', destination: 'kofi' })}
-          >
-            <i className="fas fa-heart" aria-hidden="true" />
-            <span className="lm-footer-support-text">Support Learn Microbes</span>
           </a>
         </div>
 

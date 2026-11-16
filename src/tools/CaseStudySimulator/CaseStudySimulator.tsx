@@ -17,7 +17,6 @@ import {
 } from '../../data/caseStudies';
 import { trackEvent } from '../../utils/analytics';
 import { subjectStainClass } from '../../data/subjectStains';
-import SupportNote from '../../components/Support/SupportNote';
 import './CaseStudySimulator.css';
 
 const difficultyOrder: CaseDifficulty[] = ['beginner', 'intermediate', 'advanced'];
@@ -233,7 +232,6 @@ export default function CaseStudySimulator() {
             <button type="button" onClick={exitCase}>Choose another case</button>
             <Link to="/practice">Back to Practice</Link>
           </div>
-          <SupportNote location="case_complete" />
         </section>
       </main>
     );

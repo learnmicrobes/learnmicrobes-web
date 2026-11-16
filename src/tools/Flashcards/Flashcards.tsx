@@ -20,7 +20,6 @@ import {
   type FlashcardDifficulty
 } from '../../data/flashcardDecks';
 import { trackEvent } from '../../utils/analytics';
-import SupportNote from '../../components/Support/SupportNote';
 import './Flashcards.css';
 
 const PROGRESS_STORAGE_KEY = 'learnmicrobes_flashcard_progress';
@@ -342,7 +341,6 @@ export default function Flashcards() {
               )}
               <Link to="/practice">Back to Practice</Link>
             </div>
-            <SupportNote location="flashcards_complete" />
           </section>
         ) : currentCard && (
           <section className="flashcards-stage" aria-labelledby="flashcards-card-title">
