@@ -219,20 +219,16 @@ const main = async () => {
     }
   });
 
-  // /learn is both a page and the folder holding /learn/gram-stain. Writing
-  // learn.html and learn/index.html serves it whichever way GitHub Pages resolves it.
-  const folders = new Set();
-  pages.forEach(({ route }) => {
-    const segments = route.split('/').filter(Boolean);
-    for (let depth = 1; depth < segments.length; depth += 1) {
-      folders.add(`/${segments.slice(0, depth).join('/')}`);
-    }
-  });
-
+  // Every route is written twice: practice.html and practice/index.html. GitHub
+  // Pages resolves /practice and /practice/ to those two different files and
+  // cannot redirect between them, so a route with only one of them returns a
+  // real 404 on the other form. The prerendered canonical is absolute and
+  // slash-free, so Google folds the trailing-slash copy into the bare route
+  // rather than indexing both.
   await Promise.all(pages.flatMap(({ route, html }) => {
     const files = route === '/'
       ? ['index.html']
-      : [`${route.slice(1)}.html`, ...(folders.has(route) ? [`${route.slice(1)}/index.html`] : [])];
+      : [`${route.slice(1)}.html`, `${route.slice(1)}/index.html`];
 
     return files.map(async (file) => {
       const target = path.join(BUILD_DIR, file);
