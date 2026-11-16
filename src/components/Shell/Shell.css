@@ -653,6 +653,12 @@
   text-align: center;
 }
 
+.lm-footer-note a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 body.dark-mode .lm-header {
   background: #14343b;
 }
