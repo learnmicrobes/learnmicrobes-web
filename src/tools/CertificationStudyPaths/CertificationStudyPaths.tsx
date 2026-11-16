@@ -633,10 +633,10 @@ const CertificationStudyPaths: React.FC = () => {
           <FontAwesomeIcon icon={faTrophy} />
           <div>
             <span>Path cleared</span>
-            <strong>Leaderboard-ready streak</strong>
+            <strong>Every area reviewed</strong>
           </div>
           <button type="button" onClick={() => navigate('/study-quiz')}>
-            Future premium leaderboard
+            Take a mixed review quiz
           </button>
         </section>
       )}

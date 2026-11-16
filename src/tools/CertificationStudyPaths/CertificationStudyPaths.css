@@ -709,8 +709,12 @@ body.dark-mode .cert-high-yield-badge {
   color: #f8d88a;
 }
 
+/* border-bottom and padding: the unscoped h3 rule in styles.css draws a faint
+   rule under every h3, which read as a stray underline on these titles. */
 .cert-area-card h3 {
   margin: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
   color: var(--cert-ink);
   font-size: var(--text-lg);
   line-height: 1.25;

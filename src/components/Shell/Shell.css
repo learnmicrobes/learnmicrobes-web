@@ -727,6 +727,22 @@ body.dark-mode .lm-footer {
     font-size: 0.8rem;
   }
 
+  .lm-back-fab {
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  .lm-back-fab.is-tucked {
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lm-back-fab {
+      transition: none;
+    }
+  }
+
   /* The Study Quiz pins Previous / Next to the bottom; a Back button stacked
      above that bar sat over the question text. The quiz has its own
      navigation, so the floating Back button stays out of the way there. */
