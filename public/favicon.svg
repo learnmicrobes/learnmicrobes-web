@@ -1,38 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="fv-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2c7873"/>
-      <stop offset="100%" stop-color="#1d4a54"/>
+      <stop offset="0%" stop-color="#245c69"/>
+      <stop offset="100%" stop-color="#1a3d3a"/>
     </linearGradient>
   </defs>
 
-  <!-- Background tile — solid fill for reliable favicon rendering, gradient as visual enhancement -->
-  <rect width="64" height="64" rx="14" fill="#2c7873"/>
+  <!-- Background tile, teal-600 -> teal-900. These are the brand teals: the
+       icon used to be teal-500, the lightest step, which matched neither the
+       header (teal-800) nor the accent (teal-600) it opens into.
+
+       rx is kept here because browsers draw this SVG unmasked in a tab.
+       scripts/render-icons.mjs strips it for the app icons, where iOS and
+       Android apply their own corner mask: a baked corner leaves a wedge of
+       flat tile colour that the platform mask does not fully cover. -->
+  <rect width="64" height="64" rx="14" fill="#245c69"/>
   <rect width="64" height="64" rx="14" fill="url(#fv-bg)"/>
 
-  <!-- Artwork runs x=9..48 and y=13..52; this nudge puts its centre on the
-       tile centre (32,32) instead of 3.5 units left and 0.5 low. -->
-  <g transform="translate(3.5 -0.5)">
-  <!-- Notebook body, fold, and binding rings -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 13h22.5L48 20.5V47a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5z" stroke="#f6fbf8" stroke-width="2.3"/>
-    <path d="M40.5 13v7.5H48" stroke="#f6fbf8" stroke-width="2.3"/>
-    <path d="M13 22h-4M13 30h-4M13 38h-4M13 46h-4" stroke="#d6e6df" stroke-width="2.2"/>
-    <!-- Rule sits under the wordmark and matches its measured width (22 units). -->
-    <path d="M19.5 40.5h22" stroke="#9fcfc8" stroke-width="1.7" opacity="0.8"/>
-  </g>
+  <!-- Artwork runs x=9..48 and y=13..52. Two transforms, outer applied first.
 
-  <!-- LM wordmark, centred on the notebook body axis (x13..x48 -> x=30.5). -->
-  <text
-    x="30.5"
-    y="31"
-    text-anchor="middle"
-    dominant-baseline="central"
-    fill="#f6fbf8"
-    font-family="Arial, Helvetica, sans-serif"
-    font-weight="700"
-    font-size="16"
-    letter-spacing="-0.5"
-  >LM</text>
+       The scale takes the mark from 61% to 73% of the tile, the share an app
+       icon normally occupies; below about 70% a home-screen icon reads timid
+       and the rule line under the wordmark turns to mush at 60pt.
+
+       The translate puts the centre of VISUAL MASS on the tile centre, which
+       is deliberately NOT the centre of the bounding box. The four binding
+       rings widen the box to the left while carrying almost no weight, so
+       centring the box - which is what this used to do - leaves the mark
+       reading 2.7% right of centre. -->
+  <g transform="translate(32 32) scale(1.205) translate(-32 -32)">
+    <g transform="translate(1.8 -0.5)">
+      <!-- Notebook body, fold, and binding rings -->
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13h22.5L48 20.5V47a5 5 0 0 1-5 5H18a5 5 0 0 1-5-5V18a5 5 0 0 1 5-5z" stroke="#ffffff" stroke-width="2.3"/>
+        <path d="M40.5 13v7.5H48" stroke="#ffffff" stroke-width="2.3"/>
+        <path d="M13 22h-4M13 30h-4M13 38h-4M13 46h-4" stroke="#bcd8d4" stroke-width="2.2"/>
+        <!-- Rule sits under the wordmark and matches its measured width (22 units). -->
+        <path d="M19.5 40.5h22" stroke="#7fc4bd" stroke-width="1.7" opacity="0.8"/>
+      </g>
+
+      <!-- LM wordmark, centred on the notebook body axis (x13..x48 -> x=30.5). -->
+      <text
+        x="30.5"
+        y="31"
+        text-anchor="middle"
+        dominant-baseline="central"
+        fill="#ffffff"
+        font-family="Arial, Helvetica, sans-serif"
+        font-weight="700"
+        font-size="16"
+        letter-spacing="-0.5"
+      >LM</text>
+    </g>
   </g>
 </svg>

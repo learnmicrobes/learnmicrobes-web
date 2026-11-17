@@ -23,6 +23,22 @@ const BROWSER_CANDIDATES = [
 const ROOT = process.cwd();
 const svg = await readFile(path.join(ROOT, 'public/favicon.svg'), 'utf8');
 
+// The tile in favicon.svg is rounded, because a browser draws that file
+// unmasked in a tab. Every rasterised app icon below strips the rounding:
+// iOS masks a web clip with a superellipse ~22.4% of the tile, the baked
+// corner was 17.2%, and the difference showed as a wedge of flat tile colour
+// in each corner - lightest exactly where the gradient should be darkest.
+const squareTile = (markup) => markup.replace(/ rx="14"/g, '');
+
+// For the maskable icon the artwork shrinks but the tile must not, or the
+// inset leaves a flat border around a gradient square. Dropping the tile
+// rects and letting the page paint the gradient full bleed keeps one
+// continuous background behind the smaller mark.
+const artworkOnly = (markup) => markup.replace(/<rect width="64" height="64"[^>]*\/>\s*/g, '');
+
+// Same geometry as the SVG gradient: corner to corner, teal-600 -> teal-900.
+const TILE = 'linear-gradient(135deg, #245c69, #1a3d3a)';
+
 const targets = [
   { file: 'apple-touch-icon.png', size: 180, scale: 1 },
   { file: 'icon-192.png', size: 192, scale: 1 },
@@ -41,12 +57,13 @@ for (const target of targets) {
   const page = await browser.newPage();
   await page.setViewport({ width: target.size, height: target.size, deviceScaleFactor: 1 });
 
+  const source = target.scale === 1 ? squareTile(svg) : artworkOnly(svg);
   const inner = target.scale === 1
-    ? svg.replace('<svg ', `<svg width="${target.size}" height="${target.size}" `)
-    : `<div class="pad">${svg.replace('<svg ', `<svg width="${Math.round(target.size * target.scale)}" height="${Math.round(target.size * target.scale)}" `)}</div>`;
+    ? source.replace('<svg ', `<svg width="${target.size}" height="${target.size}" `)
+    : `<div class="pad">${source.replace('<svg ', `<svg width="${Math.round(target.size * target.scale)}" height="${Math.round(target.size * target.scale)}" `)}</div>`;
 
   await page.setContent(`<!doctype html><html><head><style>
-    html,body{margin:0;padding:0;width:${target.size}px;height:${target.size}px;overflow:hidden;background:#2c7873}
+    html,body{margin:0;padding:0;width:${target.size}px;height:${target.size}px;overflow:hidden;background:${TILE}}
     svg{display:block}
     .pad{width:${target.size}px;height:${target.size}px;display:flex;align-items:center;justify-content:center}
   </style></head><body>${inner}</body></html>`, { waitUntil: 'load' });
@@ -68,7 +85,7 @@ for (const size of icoSizes) {
   const sized = svg.replace('<svg ', '<svg width="' + size + '" height="' + size + '" ');
   await page.setContent(
     '<!doctype html><html><head><style>html,body{margin:0;padding:0;width:' + size +
-    'px;height:' + size + 'px;overflow:hidden;background:#2c7873}svg{display:block}</style></head><body>' +
+    'px;height:' + size + 'px;overflow:hidden;background:' + TILE + '}svg{display:block}</style></head><body>' +
     sized + '</body></html>',
     { waitUntil: 'load' }
   );
