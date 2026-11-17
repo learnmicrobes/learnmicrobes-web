@@ -10,9 +10,14 @@ permissions:
   pages: write
   id-token: write
 
+# Two pushes close together used to take the site down: the newer run cancelled
+# the older one mid-deploy, and Pages was left serving a half-published artifact
+# until the next run finished. Queue instead of cancelling. GitHub keeps only one
+# run pending per group, so a burst of pushes still deploys just the newest -- it
+# simply never starts on top of a deploy that is already running.
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
