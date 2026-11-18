@@ -56,16 +56,21 @@ for (const page of atlasPages) {
   }
 }
 
-let xml = fs.readFileSync(SITEMAP, 'utf8');
-const original = xml;
+const original = fs.readFileSync(SITEMAP, 'utf8');
+
+// Git stores this file with LF. A Windows checkout (core.autocrlf) has CRLF and
+// the Linux CI runner has LF, so work in LF and write back whatever ending the
+// file arrived with. Matching on '\r\n' alone made --check fail every CI run.
+const eol = original.includes('\r\n') ? '\r\n' : '\n';
+let xml = original.replace(/\r\n/g, '\n');
 
 // Start from a clean slate so a rerun never duplicates or strands an entry.
-xml = xml.replace(/\r\n {4}<image:image>[\s\S]*?<\/image:image>/g, '');
+xml = xml.replace(/\n {4}<image:image>[\s\S]*?<\/image:image>/g, '');
 
 if (!xml.includes(`xmlns:image="${IMAGE_NS}"`)) {
   xml = xml.replace(
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\r\n        xmlns:image="${IMAGE_NS}">`
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:image="${IMAGE_NS}">`
   );
 }
 
@@ -82,7 +87,7 @@ for (const [slug, { title, photos }] of photosBySlug) {
     continue;
   }
 
-  const closeAt = xml.indexOf('\r\n  </url>', at);
+  const closeAt = xml.indexOf('\n  </url>', at);
 
   if (closeAt < 0) {
     unmatched.push(slug);
@@ -99,7 +104,7 @@ for (const [slug, { title, photos }] of photosBySlug) {
     `      <image:title>${escapeXml(`${title} - ${photo.stageLabel}`)}</image:title>`,
     `      <image:caption>${escapeXml(photo.alt)}</image:caption>`,
     '    </image:image>'
-  ].join('\r\n')).join('');
+  ].join('\n')).join('');
 
   xml = xml.slice(0, closeAt) + block + xml.slice(closeAt);
   cards += 1;
@@ -112,10 +117,11 @@ for (const [slug, { title, photos }] of photosBySlug) {
 // photo batch lands and the sitemap is never regenerated. Running this in CI
 // turns that silent drift into a failed build without taking the file over.
 const checkOnly = process.argv.includes('--check');
-const drifted = xml !== original;
+const output = eol === '\n' ? xml : xml.replace(/\n/g, eol);
+const drifted = output !== original;
 
 if (drifted && !checkOnly) {
-  fs.writeFileSync(SITEMAP, xml);
+  fs.writeFileSync(SITEMAP, output);
 }
 
 console.log(
