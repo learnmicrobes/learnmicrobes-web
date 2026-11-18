@@ -86,17 +86,32 @@ const readSavedQuiz = (): SavedQuizSnapshot | null => {
   }
 };
 
-const quickStartCategories: StudyQuizCategory[] = [
+/**
+ * Two lists, because these are two different kinds of thing.
+ *
+ * The five subjects plus the two analytic phases are WHERE a specimen is in
+ * the bench workflow. Organism ID, bench tests and safety are skills that cut
+ * across all of them. They used to share one grid sorted by question count,
+ * which interleaved the two - bench tests landed between parasitology and
+ * mycology - so a student hunting for one subject had to read all ten tiles.
+ *
+ * Bench order is fixed on purpose. The old sort moved as the bank grew, so the
+ * grid never sat still long enough for anyone to learn where anything was.
+ */
+const benchOrderCategories: StudyQuizCategory[] = [
+  'preanalytics',
+  'bacteriology',
+  'mycobacteriology',
+  'parasitology',
+  'mycology',
+  'virology',
+  'postanalytics'
+];
+
+const crossCuttingCategories: StudyQuizCategory[] = [
   'organism-id',
   'bench-tests',
-  'bacteriology',
-  'safety',
-  'mycology',
-  'parasitology',
-  'preanalytics',
-  'virology',
-  'mycobacteriology',
-  'postanalytics'
+  'safety'
 ];
 
 const categoryIcons: Partial<Record<StudyQuizCategory, IconDefinition>> = {
@@ -115,6 +130,13 @@ const categoryIcons: Partial<Record<StudyQuizCategory, IconDefinition>> = {
 type QuickStartTile = {
   category: StudyQuizCategory;
   count: number;
+};
+
+type QuickStartGroup = {
+  id: string;
+  title: string;
+  hint: string;
+  tiles: QuickStartTile[];
 };
 
 const difficultyOrder: StudyQuizDifficulty[] = ['beginner', 'intermediate', 'advanced'];
@@ -170,17 +192,29 @@ export default function PracticePage() {
 
   const lastAttempt = quizAttempts[0] ?? null;
 
-  // Biggest areas lead so the grid never opens on a thin category; this re-sorts
-  // itself as more of the question bank is published.
-  const quickStartTiles = useMemo<QuickStartTile[]>(() => (
-    quickStartCategories
+  const quickStartGroups = useMemo<QuickStartGroup[]>(() => {
+    const build = (categories: StudyQuizCategory[]) => categories
       .map((category) => ({
         category,
         count: quizStats.categoryCounts[category as Exclude<StudyQuizCategory, 'all'>] ?? 0
       }))
-      .filter((tile) => tile.count > 0)
-      .sort((first, second) => second.count - first.count)
-  ), [quizStats.categoryCounts]);
+      .filter((tile) => tile.count > 0);
+
+    return [
+      {
+        id: 'bench',
+        title: 'Work the bench',
+        hint: 'In the order a specimen moves',
+        tiles: build(benchOrderCategories)
+      },
+      {
+        id: 'across',
+        title: 'Across every subject',
+        hint: 'Skills that turn up everywhere',
+        tiles: build(crossCuttingCategories)
+      }
+    ].filter((group) => group.tiles.length > 0);
+  }, [quizStats.categoryCounts]);
 
   const startQuiz = (category: StudyQuizCategory, source: string) => {
     trackEvent('practice_quick_start', {
@@ -214,7 +248,7 @@ export default function PracticePage() {
           <div className="lm-stat">
             <span className="lm-stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faLayerGroup} /></span>
             <div>
-              <strong>{quickStartTiles.length}</strong>
+              <strong>{quickStartGroups.reduce((total, group) => total + group.tiles.length, 0)}</strong>
               <small>Content areas</small>
             </div>
           </div>
@@ -308,37 +342,49 @@ export default function PracticePage() {
             ))}
           </div>
         </div>
-        <div className="practice-category-grid">
-          {quickStartTiles.map((tile) => {
-            const stainClass = subjectStainClass(tile.category);
-
-            return (
-              <button
-                type="button"
-                key={tile.category}
-                className={`practice-category ${stainClass}`.trim()}
-                style={stainClass ? ({ '--lm-accent': 'var(--stain)' } as React.CSSProperties) : undefined}
-                onClick={() => startQuiz(tile.category, 'category_grid')}
-              >
-                <span className="practice-category-icon" aria-hidden="true">
-                  <FontAwesomeIcon icon={categoryIcons[tile.category] ?? faClipboardList} />
-                </span>
-                <span className="practice-category-copy">
-                  <strong>{studyQuizCategoryLabels[tile.category]}</strong>
-                  <small>{tile.count} question{tile.count === 1 ? '' : 's'}</small>
-                </span>
-              </button>
-            );
-          })}
-        </div>
+        <p className="practice-quick-lead">
+          Not sure where to start?
+        </p>
         <button
           type="button"
-          className="lm-btn lm-btn--secondary practice-mix"
+          className="lm-btn lm-btn--primary practice-mix"
           onClick={() => startQuiz('all', 'mixed_button')}
         >
           <FontAwesomeIcon icon={faBolt} aria-hidden="true" />
           Mix every area ({quizStats.totalQuestions.toLocaleString()} questions)
         </button>
+
+        {quickStartGroups.map((group) => (
+          <div className="practice-category-group" key={group.id}>
+            <h3 className="practice-group-title">
+              {group.title}
+              <span>{group.hint}</span>
+            </h3>
+            <div className="practice-category-grid">
+              {group.tiles.map((tile) => {
+                const stainClass = subjectStainClass(tile.category);
+
+                return (
+                  <button
+                    type="button"
+                    key={tile.category}
+                    className={`practice-category ${stainClass}`.trim()}
+                    style={stainClass ? ({ '--lm-accent': 'var(--stain)' } as React.CSSProperties) : undefined}
+                    onClick={() => startQuiz(tile.category, 'category_grid')}
+                  >
+                    <span className="practice-category-icon" aria-hidden="true">
+                      <FontAwesomeIcon icon={categoryIcons[tile.category] ?? faClipboardList} />
+                    </span>
+                    <span className="practice-category-copy">
+                      <strong>{studyQuizCategoryLabels[tile.category]}</strong>
+                      <small>{tile.count} question{tile.count === 1 ? '' : 's'}</small>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </section>
 
       <section className="practice-modes" aria-labelledby="practice-tools-title">
