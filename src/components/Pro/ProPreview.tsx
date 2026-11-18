@@ -20,9 +20,14 @@ type Interest = {
 
 const INTERESTS: Interest[] = [
   {
+    id: 'adaptive_mock_exam',
+    label: 'Timed adaptive mock exam',
+    detail: 'A 100-question microbiology practice exam on a real clock, where each question adjusts to how you are doing. Modeled on the adaptive format, not an official exam or a pass predictor.'
+  },
+  {
     id: 'unlimited_quizzes',
     label: 'Unlimited quizzes',
-    detail: 'Practise past the guest limit without the question count running out.'
+    detail: 'Practice past the guest limit without the question count running out.'
   },
   {
     id: 'saved_progress',
