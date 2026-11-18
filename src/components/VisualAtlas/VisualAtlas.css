@@ -208,7 +208,7 @@
 .visual-bookmark-status {
   margin: 0.62rem 0 0 !important;
   color: var(--va-primary);
-  font-size: 0.84rem !important;
+  font-size: var(--text-sm) !important;
   font-weight: 600;
 }
 
@@ -1802,6 +1802,23 @@ body.dark-mode .visual-signup-actions a {
 .visual-photo-terms a {
   color: var(--va-primary);
   font-weight: 600;
+}
+
+/* "Original" tap target */
+/* One short word on a 13px caption line gives a 47x17 hit area, under the 24px
+   minimum. Vertical padding takes it to 25px.
+
+   The link stays `inline`. Padding on an inline box grows the painted and
+   hit area without feeding into line height, so the caption, the credit line
+   and the photo below all stay exactly where they were. inline-block also
+   reaches 25px but its padding DOES feed into the line box, which pushed
+   every credit line down 8px - measured, not assumed.
+
+   Scoped to the per-photo credit: the "Full image credits" link in
+   .visual-photo-terms is a phrase that already wraps to 36px and needs
+   nothing. */
+.visual-photo-credit a {
+  padding: 4px 0;
 }
 
 body.dark-mode .visual-photo-card {

@@ -233,14 +233,12 @@ function renderButyrateDisk(tube: TubeVisual) {
             <circle cx="115" cy="100" r="18" fill="#1e40af" filter={`url(#subtle-blur-butyrate-${tube.id})`} />
             {/* Smudged colony texture rubbed on the disk */}
             <path d="M 105,95 Q 115,90 125,100 T 115,110" fill="none" stroke="#94a3b8" strokeWidth="6" strokeLinecap="round" opacity="0.3" />
-            <text x="115" y="104" textAnchor="middle" fill="#ffffff" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Positive</text>
             <text x="115" y="150" textAnchor="middle" fill="#2563eb" fontSize="10" fontWeight="bold" fontFamily="sans-serif">Blue-Violet Color</text>
           </>
         ) : (
           <>
             {/* Negative: Remains white/faint grey-pink colony smear */}
             <path d="M 105,95 Q 115,90 125,100 T 115,110" fill="none" stroke="#cbd5e1" strokeWidth="6" strokeLinecap="round" opacity="0.75" />
-            <text x="115" y="104" textAnchor="middle" fill="#64748b" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Negative</text>
             <text x="115" y="150" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="bold" fontFamily="sans-serif">No Color Change</text>
           </>
         )}
@@ -1170,7 +1168,6 @@ function renderMicrodase(tube: TubeVisual) {
             <circle cx="115" cy="100" r="30" fill={`url(#disk-color-md-${tube.id})`} filter={`url(#subtle-blur-md-${tube.id})`} opacity="0.92" />
             {/* Colony smear texture */}
             <path d="M 104,95 Q 115,91 126,101 T 115,110" fill="none" stroke="#7c3aed" strokeWidth="6" strokeLinecap="round" opacity="0.28" />
-            <text x="115" y="104" textAnchor="middle" fill="#ede9fe" fontSize="8" fontWeight="bold" fontFamily="sans-serif">Positive</text>
             <text x="115" y="151" textAnchor="middle" fill="#7c3aed" fontSize="10" fontWeight="bold" fontFamily="sans-serif">Blue-Purple Color</text>
           </>
         ) : (
@@ -1179,7 +1176,6 @@ function renderMicrodase(tube: TubeVisual) {
             <circle cx="115" cy="100" r="29" fill="#f8fafc" opacity="0.9" />
             {/* Colony smear texture (grey) */}
             <path d="M 104,95 Q 115,91 126,101 T 115,110" fill="none" stroke="#cbd5e1" strokeWidth="6" strokeLinecap="round" opacity="0.75" />
-            <text x="115" y="104" textAnchor="middle" fill="#64748b" fontSize="8" fontWeight="bold" fontFamily="sans-serif">Negative</text>
             <text x="115" y="151" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="bold" fontFamily="sans-serif">No Color Change</text>
           </>
         )}
@@ -1844,7 +1840,6 @@ function renderOxidaseTest(tube: TubeVisual) {
             <circle cx="135" cy="100" r="9" fill="#3b0764" opacity="0.95" />
             <path d="M 128,95 Q 135,90 142,102 T 135,108" fill="none" stroke="#6b21a8" strokeWidth="4" strokeLinecap="round" opacity="0.4" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#a78bfa" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Positive</text>
           </>
         ) : (
           <>
@@ -1852,7 +1847,6 @@ function renderOxidaseTest(tube: TubeVisual) {
             <circle cx="135" cy="100" r="12" fill="#e2e8f0" opacity="0.45" filter={`url(#subtle-blur-ox-${tube.id})`} />
             <path d="M 128,95 Q 135,90 142,102 T 135,108" fill="none" stroke="#cbd5e1" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Negative</text>
           </>
         )}
       </svg>
@@ -2072,7 +2066,6 @@ function renderPYRTest(tube: TubeVisual) {
             <circle cx="135" cy="100" r="9" fill="#9f1239" opacity="0.95" />
             <path d="M 127,95 Q 135,91 143,103 T 135,109" fill="none" stroke="#db2777" strokeWidth="4" strokeLinecap="round" opacity="0.45" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#f43f5e" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Positive</text>
           </>
         ) : (
           <>
@@ -2080,7 +2073,6 @@ function renderPYRTest(tube: TubeVisual) {
             <circle cx="135" cy="100" r="12" fill="#ffedd5" opacity="0.4" filter={`url(#subtle-blur-pyr-${tube.id})`} />
             <path d="M 127,95 Q 135,91 143,103 T 135,109" fill="none" stroke="#fed7aa" strokeWidth="3" strokeLinecap="round" opacity="0.35" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Negative</text>
           </>
         )}
       </svg>
@@ -2266,7 +2258,6 @@ function renderSpotIndole(tube: TubeVisual) {
             <circle cx="135" cy="100" r="9" fill="#0284c7" opacity="0.95" />
             <path d="M 128,95 Q 135,90 142,102 T 135,108" fill="none" stroke="#0284c7" strokeWidth="4" strokeLinecap="round" opacity="0.4" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#38bdf8" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Positive</text>
           </>
         ) : (
           <>
@@ -2274,7 +2265,6 @@ function renderSpotIndole(tube: TubeVisual) {
             <circle cx="135" cy="100" r="12" fill="#fce7f3" opacity="0.45" filter={`url(#subtle-blur-sp-${tube.id})`} />
             <path d="M 128,95 Q 135,90 142,102 T 135,108" fill="none" stroke="#fbcfe8" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
             
-            <text x="135" y="148" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="bold" fontFamily="sans-serif">Negative</text>
           </>
         )}
       </svg>
