@@ -13,6 +13,7 @@ import {
   faXmarkCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import EmailCaptureForm from '../../components/EmailCapture/EmailCaptureForm';
 import { biochemicalTestsData } from '../BiochemicalTests/biochemicalData';
 import { gramPositiveRoadmap } from '../GramPositiveRoadmap/data';
 import { gramNegativeRoadmap } from '../GramNegativeRoadmap/gnrdata';
@@ -1296,6 +1297,16 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
             </div>
           )}
 
+          {/* The end of a set is the one moment someone has proof the site is
+              worth hearing from again, so the update list is offered here and
+              nowhere else in the quiz. */}
+          {isQuizComplete && (
+            <section className="study-quiz-updates" aria-labelledby="study-quiz-updates-title">
+              <h2 id="study-quiz-updates-title">Hear when new practice lands</h2>
+              <EmailCaptureForm source="quiz_result" />
+            </section>
+          )}
+
           {currentQuestion ? (
             <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
               {showConfetti && (
@@ -1426,13 +1437,29 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
               You have completed {GUEST_QUIZ_QUESTION_LIMIT} guest questions. Sign in to keep going and save your quiz history, missed review, and progress.
             </p>
             <div className="study-quiz-guest-modal-actions">
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent('gate_cta_signup_clicked', { gate: 'quiz_gate' });
+                  navigate(buildAuthRedirectPath('/register', currentAuthRedirect));
+                }}
+              >
+                Create free account to save your progress
+              </button>
               <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
-                Register for free
-              </button>
             </div>
+            <button
+              type="button"
+              className="study-quiz-guest-modal-secondary"
+              onClick={() => {
+                trackEvent('gate_cta_pro_clicked', { gate: 'quiz_gate' });
+                navigate('/pro');
+              }}
+            >
+              Get notified about Pro
+            </button>
             <button
               type="button"
               className="study-quiz-guest-modal-secondary"

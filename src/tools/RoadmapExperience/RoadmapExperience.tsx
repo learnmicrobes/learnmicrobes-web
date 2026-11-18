@@ -1022,13 +1022,29 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
               You have reached 5 identification endpoints in this roadmap. Sign in to keep going and track your progress.
             </p>
             <div className="roadmap-guest-modal-actions">
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent('gate_cta_signup_clicked', { gate: 'roadmap_gate' });
+                  navigate(buildAuthRedirectPath('/register', currentAuthRedirect));
+                }}
+              >
+                Create free account to save your progress
+              </button>
               <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
-                Create account
-              </button>
             </div>
+            <button
+              type="button"
+              className="roadmap-guest-modal-secondary"
+              onClick={() => {
+                trackEvent('gate_cta_pro_clicked', { gate: 'roadmap_gate' });
+                navigate('/pro');
+              }}
+            >
+              Get notified about Pro
+            </button>
             <button
               type="button"
               className="roadmap-guest-modal-secondary"

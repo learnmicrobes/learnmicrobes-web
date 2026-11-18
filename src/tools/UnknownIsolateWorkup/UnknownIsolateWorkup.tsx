@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAuth } from '../../context/AuthContext';
+import { trackEvent } from '../../utils/analytics';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import './UnknownIsolateWorkup.css';
 
@@ -727,13 +728,29 @@ const UnknownIsolateWorkup: React.FC = () => {
               You have built 3 workup paths as a guest. Sign in to keep going and save your workup history and progress.
             </p>
             <div className="unknown-guest-modal-actions">
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent('gate_cta_signup_clicked', { gate: 'workup_gate' });
+                  navigate(buildAuthRedirectPath('/register', currentAuthRedirect));
+                }}
+              >
+                Create free account to save your progress
+              </button>
               <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
               </button>
-              <button type="button" onClick={() => navigate(buildAuthRedirectPath('/register', currentAuthRedirect))}>
-                Create account
-              </button>
             </div>
+            <button
+              type="button"
+              className="unknown-guest-modal-secondary"
+              onClick={() => {
+                trackEvent('gate_cta_pro_clicked', { gate: 'workup_gate' });
+                navigate('/pro');
+              }}
+            >
+              Get notified about Pro
+            </button>
             <button
               type="button"
               className="unknown-guest-modal-secondary"

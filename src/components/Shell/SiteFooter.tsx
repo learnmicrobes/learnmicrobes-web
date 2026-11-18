@@ -12,6 +12,7 @@ const socialLinks = [
 ];
 
 const pageLinks = [
+  { label: "What's next", path: '/pro' },
   { label: 'About', path: '/about' },
   { label: 'Mission', path: '/mission' },
   { label: 'FAQ', path: '/faq' },

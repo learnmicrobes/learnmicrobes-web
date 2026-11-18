@@ -703,6 +703,10 @@ export default function App() {
         title: 'Image Credits | Learn Microbes',
         description: 'Sources, licences and terms for every photograph used in the Learn Microbes Visual Atlas, alongside our original bench-card artwork.'
       },
+      '/pro': {
+        title: "What's Next for Learn Microbes | Learn Microbes",
+        description: 'The core of Learn Microbes stays free. See the optional extras we are considering for people who study here often, and tell us which ones would actually help.'
+      },
       '/about': {
         title: 'About Learn Microbes | Clinical Microbiology Study Platform',
         description: 'Learn about the Learn Microbes clinical microbiology study platform, mission, study tools, organism ID roadmaps, visual reactions, and what we are building next.'

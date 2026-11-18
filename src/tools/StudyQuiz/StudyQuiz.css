@@ -211,6 +211,22 @@ body.dark-mode .study-quiz-page {
   transition: width 240ms ease;
 }
 
+/* Shown once a set is finished. A panel, not a card: the form inside it brings
+   its own fields and needs no second frame around them. */
+.study-quiz-updates {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.study-quiz-updates h2 {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 .study-quiz-save-gate {
   display: flex;
   align-items: center;

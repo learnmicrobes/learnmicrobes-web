@@ -31,6 +31,7 @@ const AuthPage = lazyWithPreload(() => import("./components/Auth/AuthPage"));
 const AccountPage = lazyWithPreload(() => import("./components/Account/AccountPage"));
 const ASCPReviewPage = lazyWithPreload(() => import("./components/ASCPReview/ASCPReviewPage"));
 const ImageCredits = lazyWithPreload(() => import("./components/ImageCredits/ImageCredits"));
+const ProPreview = lazyWithPreload(() => import("./components/Pro/ProPreview"));
 const PracticePage = lazyWithPreload(() => import("./components/Practice/PracticePage"));
 
 // First path segment -> the lazy pages that route can render.
@@ -59,6 +60,7 @@ const pagesBySection: Record<string, Array<{ preload: () => Promise<unknown> }>>
   flashcards: [Flashcards],
   "certification-study-paths": [CertificationStudyPaths],
   "image-credits": [ImageCredits],
+  pro: [ProPreview],
   // Label aliases; see routeAliases in Shell/navigation.ts.
   atlas: [VisualAtlas],
   review: [PracticePage],
@@ -109,6 +111,7 @@ export default function AppRoutes() {
         <Route path="flashcards" element={<Flashcards />} />
         <Route path="certification-study-paths" element={<CertificationStudyPaths />} />
         <Route path="image-credits" element={<ImageCredits />} />
+        <Route path="pro" element={<ProPreview />} />
         {/* The nav labels say Atlas, Review and Tools, so people type those
             URLs. Each renders its section's page and canonicals to the real
             route. See routeAliases in Shell/navigation.ts. */}

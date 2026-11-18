@@ -1,0 +1,227 @@
+/* /pro: a page that asks a question rather than selling anything. One column,
+   three blocks, no cards inside cards. */
+
+.pro-page {
+  display: grid;
+  gap: 28px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--ink);
+  text-align: left;
+}
+
+.pro-kicker {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink-subtle);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pro-hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.pro-hero p {
+  margin: 0 0 12px;
+  color: var(--ink-muted);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.pro-options h2,
+.pro-form-panel h2 {
+  margin: 0 0 14px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.pro-option-list {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hairline rows, not four bordered cards: this is a list of ideas, and each
+   one is the same weight as the next. */
+.pro-option-list li {
+  display: grid;
+  gap: 3px;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.pro-option-list li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.pro-option-list strong {
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.pro-option-list small {
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+.pro-form-panel {
+  padding: 22px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg, 10px);
+  background: var(--surface);
+}
+
+.pro-form-intro {
+  margin: 0 0 18px;
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+.pro-field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.pro-form-panel input[type='email'],
+.pro-form-panel textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface-card);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+}
+
+.pro-form-panel input[type='email'] {
+  min-height: 44px;
+}
+
+.pro-form-panel textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.pro-form-panel input:focus-visible,
+.pro-form-panel textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.pro-consent {
+  margin: 6px 0 18px;
+  color: var(--ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.pro-interests {
+  margin: 0 0 18px;
+  padding: 0;
+  border: none;
+}
+
+.pro-interests legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.pro-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  color: var(--ink);
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+
+.pro-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-fill);
+}
+
+.pro-submit {
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  background: var(--accent-fill);
+  color: var(--accent-fill-ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pro-submit:hover:not(:disabled) {
+  background: var(--accent-fill-hover);
+}
+
+.pro-submit:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.pro-status {
+  margin: 12px 0 0;
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.pro-status.done {
+  color: var(--accent-strong);
+}
+
+.pro-status.error {
+  color: #a4341f;
+}
+
+body.dark-mode .pro-status.error {
+  color: #f0a28e;
+}
+
+.pro-footnote {
+  margin: 0;
+  color: var(--ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.pro-footnote a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* The shell drops its side padding on phones, so the page supplies its own. */
+@media (max-width: 620px) {
+  .pro-page {
+    gap: 22px;
+    padding: 0 16px;
+  }
+
+  .pro-form-panel {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,102 @@
+/* One field, one button, and the consent line. Used on /pro and on the quiz
+   results panel, so it carries no surface of its own: whatever it sits in
+   supplies the background. */
+
+.email-capture {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  max-width: 460px;
+}
+
+.email-capture-label {
+  color: var(--ink);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.email-capture-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.email-capture-row input {
+  flex: 1 1 220px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md, 8px);
+  background: var(--surface-card);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+}
+
+.email-capture-row input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.email-capture-row input:disabled {
+  opacity: 0.7;
+}
+
+.email-capture-row button {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: var(--radius-md, 8px);
+  background: var(--accent-fill);
+  color: var(--accent-fill-ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.email-capture-row button:hover:not(:disabled) {
+  background: var(--accent-fill-hover);
+}
+
+.email-capture-row button:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.email-capture-consent {
+  margin: 0;
+  color: var(--ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.email-capture-status {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.email-capture-status.done {
+  color: var(--accent-strong);
+}
+
+.email-capture-status.error {
+  color: #a4341f;
+}
+
+body.dark-mode .email-capture-status.error {
+  color: #f0a28e;
+}
+
+/* The phone keyboard leaves very little room, so the button takes its own
+   line rather than squeezing the field down to a few characters. */
+@media (max-width: 480px) {
+  .email-capture-row input,
+  .email-capture-row button {
+    flex: 1 1 100%;
+  }
+}
