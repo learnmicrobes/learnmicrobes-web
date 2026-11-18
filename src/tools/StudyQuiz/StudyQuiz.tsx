@@ -530,6 +530,8 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
   const hasTrackedGuestGate = useRef(false);
   const feedbackRef = useRef<HTMLDivElement | null>(null);
   const actionsRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLElement | null>(null);
+  const shouldScrollToQuestion = useRef(false);
   // Set only by a fresh answer, so stepping back to an answered question
   // does not move the page.
   const shouldRevealFeedback = useRef(false);
@@ -937,6 +939,44 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
     }
   }, [selectedAnswer]);
 
+  // Moving to another question does not move the page, and the page is tall:
+  // a long prompt, four multi-line choices and a takeaway put the action bar
+  // several hundred pixels below the question it belongs to. Measured on a
+  // 390px screen, the next question landed between 105 and 301 pixels ABOVE
+  // the viewport on six consecutive questions, so a student had to scroll up
+  // every single time to read what they were answering.
+  //
+  // Only fires when a nav button asked for it, so changing category or
+  // difficulty - which also resets the index - does not yank the page.
+  useEffect(() => {
+    if (!shouldScrollToQuestion.current) {
+      return;
+    }
+
+    shouldScrollToQuestion.current = false;
+    const card = cardRef.current;
+
+    if (!card) {
+      return;
+    }
+
+    const { top } = card.getBoundingClientRect();
+
+    // Already sitting below the sticky header: leave the page where it is
+    // rather than nudging it for no reason.
+    if (top >= REVEAL_TOP_CLEARANCE) {
+      return;
+    }
+
+    // Instant, not smooth. Two reasons. Moving to another question is a context
+    // switch rather than a reveal, so animating 300px of travel on every tap
+    // just reads as lag. And smooth is not dependable: measured here, a browser
+    // reporting prefers-reduced-motion: false still dropped a smooth scrollTo
+    // entirely - no scroll events, no movement - while the same call with auto
+    // landed exactly on target. A guard cannot catch that, so do not rely on it.
+    window.scrollTo({ top: Math.max(0, top + window.scrollY - REVEAL_TOP_CLEARANCE) });
+  }, [questionIndex]);
+
   const handleAnswer = (choice: string) => {
     if (!currentQuestion || isAnswered || isQuestionLockedForGuest) {
       return;
@@ -1000,6 +1040,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       return;
     }
 
+    shouldScrollToQuestion.current = true;
     setQuestionIndex((index) => (index + 1) % visibleQuestions.length);
     setSelectedAnswer('');
   };
@@ -1009,6 +1050,7 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
       return;
     }
 
+    shouldScrollToQuestion.current = true;
     setQuestionIndex((index) => (index - 1 + visibleQuestions.length) % visibleQuestions.length);
     setSelectedAnswer('');
     setIsGuestLimitModalOpen(false);
@@ -1308,7 +1350,10 @@ const StudyQuiz: React.FC<StudyQuizProps> = ({ initialCategory, initialDifficult
           )}
 
           {currentQuestion ? (
-            <main className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}>
+            <main
+              ref={cardRef}
+              className={`study-quiz-card ${isAnswered && !isCorrect ? 'shake' : ''}`}
+            >
               {showConfetti && (
                 <div className="study-quiz-confetti" aria-hidden="true">
                   {Array.from({ length: CONFETTI_PIECES }).map((_, index) => (
