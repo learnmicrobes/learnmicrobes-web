@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowRight,
   faCheckCircle,
+  faCircleQuestion,
   faFlaskVial,
   faRotate,
   faVial,
@@ -254,30 +255,21 @@ export default function CaseStudySimulator() {
           </span>
           <h1 id="case-runner-title">{activeCase.title}</h1>
           <p className="case-presentation">{activeCase.presentation}</p>
-          <span className="case-specimen-chip">
-            <FontAwesomeIcon icon={faVial} aria-hidden="true" />
-            {activeCase.specimen}
-          </span>
-        </div>
-
-        <div className="case-stepper" aria-label={`Step ${stageIndex + 1} of ${activeCase.stages.length}`}>
-          {activeCase.stages.map((stage, i) => (
-            <span
-              key={stage.id}
-              className={i < stageIndex ? 'done' : i === stageIndex ? 'current' : ''}
-            >
-              {stage.stageLabel}
-            </span>
-          ))}
         </div>
 
         {currentStage && (
           <>
             <div className="case-findings">
-              <span className="case-label">
-                <FontAwesomeIcon icon={faFlaskVial} aria-hidden="true" />
-                What came back
-              </span>
+              <div className="case-findings-head">
+                <span className="case-label">
+                  <FontAwesomeIcon icon={faFlaskVial} aria-hidden="true" />
+                  What came back
+                </span>
+                <span className="case-specimen-chip">
+                  <FontAwesomeIcon icon={faVial} aria-hidden="true" />
+                  {activeCase.specimen}
+                </span>
+              </div>
               <ul>
                 {currentStage.findings.map((finding) => (
                   <li key={finding}>{finding}</li>
@@ -285,7 +277,37 @@ export default function CaseStudySimulator() {
               </ul>
             </div>
 
+            {currentStage.image && (
+              <figure className="case-image">
+                <img
+                  src={currentStage.image.src}
+                  alt={currentStage.image.alt}
+                  width={currentStage.image.width}
+                  height={currentStage.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <p>{currentStage.image.caption}</p>
+                  <span className="case-image-credit">
+                    {currentStage.image.credit} | {currentStage.image.license} |{' '}
+                    <a
+                      href={currentStage.image.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Original
+                    </a>
+                  </span>
+                </figcaption>
+              </figure>
+            )}
+
             <div className="case-question">
+              <span className="case-label">
+                <FontAwesomeIcon icon={faCircleQuestion} aria-hidden="true" />
+                Your call
+              </span>
               <h2>{currentStage.question}</h2>
               <div className="case-choices" role="group" aria-label="Answer choices">
                 {currentStage.choices.map((choice) => {
@@ -305,6 +327,9 @@ export default function CaseStudySimulator() {
                       onClick={() => submitChoice(choice.id)}
                       disabled={revealed}
                     >
+                      <span className="case-choice-letter" aria-hidden="true">
+                        {choice.id.toUpperCase()}
+                      </span>
                       <span className="case-choice-body">{choice.label}</span>
                       {revealed && choice.correct && (
                         <FontAwesomeIcon icon={faCheckCircle} aria-hidden="true" />
@@ -333,6 +358,20 @@ export default function CaseStudySimulator() {
                 </button>
               </div>
             )}
+
+            <div
+              className="case-stepper"
+              aria-label={`Step ${stageIndex + 1} of ${activeCase.stages.length}`}
+            >
+              {activeCase.stages.map((stage, i) => (
+                <span
+                  key={stage.id}
+                  className={i < stageIndex ? 'done' : i === stageIndex ? 'current' : ''}
+                >
+                  {stage.stageLabel}
+                </span>
+              ))}
+            </div>
           </>
         )}
       </section>

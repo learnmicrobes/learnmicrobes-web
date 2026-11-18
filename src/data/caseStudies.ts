@@ -1,4 +1,32 @@
+import type { AtlasPhoto } from './atlasPages';
+
 export type CaseDifficulty = 'beginner' | 'intermediate' | 'advanced';
+
+/**
+ * A stage photograph.
+ *
+ * Same fields as an Atlas photo, and deliberately so: a case points at a file
+ * the Atlas already ships, so the image is already listed on /image-credits and
+ * adding a case can never put an uncredited image on the site. The import is
+ * type-only, so no atlas data is pulled into this chunk.
+ */
+export type CaseImage = Pick<AtlasPhoto, 'src' | 'alt' | 'credit' | 'license' | 'sourceUrl'> & {
+  /**
+   * Shown under the photo BEFORE the learner answers, so it says what the prep
+   * is, never what it shows. The moment a caption names the morphology the
+   * photo stops being a question and goes back to being an illustration.
+   */
+  caption: string;
+  /**
+   * The file's own pixel size. Rendered as width/height attributes so the
+   * browser reserves the right box before a lazily loaded photo arrives;
+   * without them the figure is 2px tall and the question jumps down the
+   * screen as the image lands. CSS keeps height:auto, so these only supply
+   * the intrinsic ratio and never fix the displayed size.
+   */
+  width: number;
+  height: number;
+};
 
 export type CaseChoice = {
   id: string;
@@ -11,6 +39,8 @@ export type CaseStage = {
   id: string;
   stageLabel: string;
   findings: string[];
+  /** Optional. Only the stages where a learner should READ a field, not be told. */
+  image?: CaseImage;
   question: string;
   choices: CaseChoice[];
   teachingPoint: string;
@@ -306,9 +336,23 @@ export const caseStudies: CaseStudy[] = [
         stageLabel: 'Direct exam',
         findings: [
           'CSF slightly cloudy, lymphocyte predominance',
-          'India ink preparation: encapsulated budding yeast with wide capsules',
+          'India ink preparation made from CSF sediment, shown below',
           'Gram stain: rare yeast forms'
         ],
+        image: {
+          src: '/visual-atlas/photos/mycology/cryptococcus-india-ink-capsule-cdc-phil.jpg',
+          // Describes the field without naming the organism. Alt text should say
+          // what is visible, not hand over the identification the stage is asking
+          // for - a screen-reader user gets the same question everyone else does.
+          alt:
+            'India ink preparation: round budding yeast cells, each sitting inside a wide clear halo against a dark background.',
+          caption: 'India ink preparation, CSF sediment. Read the field before you answer.',
+          credit: 'Source: CDC / PHIL - Sherry A. Brinkman',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://phil.cdc.gov/Details.aspx?pid=24018',
+          width: 700,
+          height: 460
+        },
         question: 'What should you do with this India ink finding?',
         choices: [
           {

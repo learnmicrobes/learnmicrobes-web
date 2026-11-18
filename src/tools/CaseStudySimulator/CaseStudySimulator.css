@@ -241,11 +241,25 @@
 }
 
 /* Runner */
+/* Card metrics are taken from .study-quiz-card so a case and a quiz question
+   read as the same kind of object: 1.35rem of padding and a 16px radius.
+
+   The width cap is gone. A quiz question is short, so it can run the full
+   card; the one piece of long prose here is .case-presentation, and that is
+   capped on its own below rather than squeezing the photo and the answers
+   to suit a single paragraph. */
 .case-runner,
 .case-result {
   display: grid;
   gap: 0.9rem;
-  padding: 1.1rem 1.2rem;
+  padding: 1.35rem;
+  border-radius: 16px;
+  /* 744 - 43.2 of padding leaves a 700.8px column, which is exactly an Atlas
+     photograph. That is the whole reason for the number: at the full 860 the
+     photo finished 115px short of every other right edge and read as a mistake.
+     A quiz card can run wider because its rows are all text. */
+  max-width: 744px;
+  margin-inline: auto;
 }
 
 .case-exit {
@@ -271,6 +285,10 @@
 
 .case-presentation {
   margin: 0 0 0.6rem;
+  /* The clinical history is the only long prose on the page. At the full card
+     width it ran 104 characters a line, well past the 45-75 that stays easy to
+     read, so the measure lives here instead of on the whole card. */
+  max-width: 70ch;
   color: var(--ink-muted);
   font-size: var(--text-md);
   line-height: 1.55;
@@ -289,10 +307,28 @@
   font-weight: 600;
 }
 
+/* The stepper sits BELOW the stage now, and the specimen chip moved into the
+   findings panel. Both used to stand between the clinical history and the
+   evidence, so a student met two rows of navigation before meeting anything
+   to think about. Progress is worth showing, but it is not worth reading
+   first - at the foot it answers "how much is left" after the work, and the
+   rule above it closes the stage off. */
 .case-stepper {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+  margin-top: 0.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* Label left, specimen right, wrapping to two lines on a narrow phone. */
+.case-findings-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .case-stepper span {
@@ -341,28 +377,109 @@
   line-height: 1.45;
 }
 
+/* Stage photograph.
+
+   Sits between the findings and the question because that is the order the
+   bench works in: you are handed the specimen notes, then you look down the
+   scope, then you decide.
+
+   No fixed ratio and no object-fit, unlike the Atlas photo grid. That grid
+   crops to a square so a ROW of photos reads evenly; a case stage shows one
+   image with nothing to line up against, so a ratio would only cost field.
+   Forcing this 700x460 frame into 4:3 cropped 12.4% off its width - and on a
+   microscope field the thing you crop away is organisms. */
+.case-image {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+/* Never upscale. The img carries its own pixel size as attributes, so with a
+   width of auto it draws at native size and max-width only shrinks it on a
+   narrow screen. justify-self is what makes that work: a grid item stretches
+   to its track by default, which would blow a 700px frame up to 820px on a
+   desktop - 17% of invented pixels across a microscope field, exactly where
+   softness costs the reader the detail the question turns on. */
+.case-image img {
+  display: block;
+  /* start, not center: everything else on the page begins at the same left
+     edge, and centring the one big element meant the eye landed on it and
+     then had to travel back left to find the words. */
+  justify-self: start;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--surface-sunken);
+}
+
+.case-image figcaption {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.case-image figcaption p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+.case-image-credit {
+  color: var(--ink-subtle);
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.case-image-credit a {
+  color: var(--accent);
+  font-weight: 600;
+  /* One short word on a caption line is a 17px tap target. Padding on an
+     inline box grows the hit area to 25px without moving the line. */
+  padding: 4px 0;
+}
+
+/* The decision, not the case title, is what a learner has to act on, so it
+   outranks everything except the title itself. It used to be --text-lg,
+   a step below the title and far below a 700px photograph, which left the
+   actual task as the third thing the eye found. */
+.case-question {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
 .case-question h2 {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.2rem;
   color: var(--ink);
-  font-size: var(--text-lg);
+  /* Same clamp as .study-quiz-card h2. */
+  font-size: clamp(1.3rem, 3vw, 1.82rem);
   line-height: 1.35;
 }
 
 .case-choices {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
+/* Geometry copied from .study-quiz-choices button: the lettered badge, the
+   64px row, the 16px radius. The letter is the real difference - it gives the
+   eye a fixed column to run down instead of four equal slabs of prose, which
+   is most of why a quiz question scans faster than this used to.
+
+   Three columns, not the quiz's two: a case row also carries a trailing
+   correct/incorrect icon once answered, and auto collapses to nothing while
+   that icon is absent. */
 .case-choice {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
+  gap: 0.8rem;
   width: 100%;
-  min-height: 3rem;
-  padding: 0.75rem 0.9rem;
+  min-height: 64px;
+  padding: 0.9rem 1rem;
   border: 1px solid rgba(36, 92, 105, 0.2);
-  border-radius: 8px;
+  border-radius: 16px;
   background: var(--surface-card);
   color: var(--ink);
   font: inherit;
@@ -403,6 +520,22 @@
 
 .case-choice.muted {
   opacity: 0.5;
+}
+
+/* Matches .study-quiz-choice-letter. */
+.case-choice-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid rgba(36, 92, 105, 0.2);
+  border-radius: 10px;
+  background: rgba(36, 92, 105, 0.08);
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  font-weight: 700;
 }
 
 .case-choice-body {
