@@ -106,11 +106,29 @@ for (const [slug, { title, photos }] of photosBySlug) {
   images += photos.length;
 }
 
-if (xml !== original) {
+// --check verifies the committed file instead of rewriting it. sitemap.xml is
+// deliberately committed rather than generated at build time (see the header),
+// which is what keeps it reviewable - but it also means nothing notices when a
+// photo batch lands and the sitemap is never regenerated. Running this in CI
+// turns that silent drift into a failed build without taking the file over.
+const checkOnly = process.argv.includes('--check');
+const drifted = xml !== original;
+
+if (drifted && !checkOnly) {
   fs.writeFileSync(SITEMAP, xml);
 }
 
-console.log(`image sitemap: ${images} images across ${cards} atlas cards${xml === original ? ' (unchanged)' : ' (written)'}`);
+console.log(
+  `image sitemap: ${images} images across ${cards} atlas cards` +
+    (drifted ? (checkOnly ? ' (OUT OF DATE)' : ' (written)') : ' (unchanged)')
+);
+
+if (drifted && checkOnly) {
+  console.error('');
+  console.error('public/sitemap.xml does not match the atlas photo data.');
+  console.error('Run "npm run sitemap:images" and commit the result.');
+  process.exitCode = 1;
+}
 
 if (unmatched.length > 0) {
   console.log(`\nNOT IN sitemap.xml - add the page URL first:\n  ${unmatched.join('\n  ')}`);

@@ -1,0 +1,6 @@
+# scripts/build-content-index.cjs writes this file with LF endings. Without
+# this line core.autocrlf=true wants it checked out as CRLF, so the next
+# `npm start` or `npm run build` rewrites it as LF and it shows as modified
+# forever - while `git diff` correctly reports no change, because the content
+# never differed. Marking it eol=lf stops Git trying to convert it.
+src/data/contentIndex.generated.ts text eol=lf

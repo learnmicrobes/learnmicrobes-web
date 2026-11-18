@@ -36,6 +36,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # public/sitemap.xml is committed, not generated at build time, so that it
+      # stays reviewable. Nothing otherwise notices when a photo batch lands and
+      # the sitemap is not regenerated, so check it here rather than rewrite it.
+      - name: Check the image sitemap is current
+        run: npm run sitemap:images:check
+
       - name: Build React App
         run: npm run build
         env:

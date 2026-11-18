@@ -17,6 +17,8 @@
     },
     "scripts": {
         "content-index": "node scripts/build-content-index.cjs",
+        "sitemap:images": "node scripts/build-image-sitemap.cjs",
+        "sitemap:images:check": "node scripts/build-image-sitemap.cjs --check",
         "prestart": "node scripts/build-content-index.cjs",
         "start": "react-scripts start",
         "prebuild": "node scripts/build-content-index.cjs",
