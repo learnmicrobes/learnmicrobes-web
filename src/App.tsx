@@ -652,8 +652,10 @@ export default function App() {
 
     if (learnTopic) {
       return {
-        title: `${learnTopic.title} | Clinical Microbiology Review | Learn Microbes`,
-        description: `${learnTopic.summary} Learn this clinical microbiology topic for MLS coursework, ASCP review, and bench reference.`,
+        title: learnTopic.searchTitle ?? `${learnTopic.title} | Clinical Microbiology Review | Learn Microbes`,
+        description:
+          learnTopic.searchDescription ??
+          `${learnTopic.summary} Learn this clinical microbiology topic for MLS coursework, ASCP review, and bench reference.`,
         canonicalPath: `/learn/${learnTopic.slug}`,
         ogType: 'article',
         structuredData: [
@@ -682,9 +684,18 @@ export default function App() {
     }
 
     if (visualPage) {
+      // A page that has earned search impressions gets a listing written for the
+      // person typing the query. Everything else keeps the generated form: card
+      // title plus "Visual Guide", and the summary plus a shared tail. That tail
+      // reads as boilerplate in a result listing, which is exactly why the pages
+      // that get seen override it.
       return {
-        title: `${/guide$/i.test(visualPage.title) ? visualPage.title : `${visualPage.title} Visual Guide`} | Learn Microbes`,
-        description: `${visualPage.summary} Visual clinical microbiology bench card for students, ASCP review, and laboratory learning.`,
+        title:
+          visualPage.searchTitle ??
+          `${/guide$/i.test(visualPage.title) ? visualPage.title : `${visualPage.title} Visual Guide`} | Learn Microbes`,
+        description:
+          visualPage.searchDescription ??
+          `${visualPage.summary} Visual clinical microbiology bench card for students, ASCP review, and laboratory learning.`,
         canonicalPath: `/visuals/${visualPage.slug}`,
         structuredData: breadcrumb([
           { name: 'Learn Microbes', path: '/' },
@@ -812,8 +823,8 @@ export default function App() {
         description: 'Enter indole, methyl red, VP, citrate, H2S, urea, motility, and decarboxylase results to narrow Enterobacteriaceae. Biochemical ID practice for ASCP review.'
       },
       '/guides': {
-        title: 'Clinical Microbiology Study Guides | ASCP Review | Learn Microbes',
-        description: 'Long-form clinical microbiology walkthroughs: study strategy, organism ID and separation logic, parasitology, mycology, and virology for MLS and ASCP review.'
+        title: 'Clinical Microbiology Study Guides | Learn Microbes',
+        description: 'Long-form walkthroughs that join Gram stain, colony, media and key tests into one decision: organism separation logic, parasitology, mycology and virology.'
       },
       '/join-alpha': {
         title: 'Join the Lab List | Learn Microbes',

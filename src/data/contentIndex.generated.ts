@@ -5,6 +5,8 @@ export type ContentIndexEntry = {
   slug: string;
   title: string;
   summary: string;
+  searchTitle?: string;
+  searchDescription?: string;
 };
 
 export const learnIndex: ContentIndexEntry[] = [
@@ -56,7 +58,9 @@ export const learnIndex: ContentIndexEntry[] = [
   {
     "slug": "acid-fast-stain",
     "title": "Acid-Fast Stain",
-    "summary": "Acid-fast stains help detect organisms with waxy cell walls, especially Mycobacterium and partially acid-fast organisms such as Nocardia."
+    "summary": "Acid-fast stains help detect organisms with waxy cell walls, especially Mycobacterium and partially acid-fast organisms such as Nocardia.",
+    "searchTitle": "Acid-Fast Stain: What It Catches and What It Misses",
+    "searchDescription": "Why mycolic acid holds carbol fuchsin through acid-alcohol, how the fluorochrome method differs, and why AFB is a method flag rather than a species name."
   },
   {
     "slug": "culture-media",
@@ -86,7 +90,9 @@ export const learnIndex: ContentIndexEntry[] = [
   {
     "slug": "hanging-drop-preparation",
     "title": "Hanging Drop Preparation",
-    "summary": "A hanging drop preparation is a wet mount method used to observe true motility in living organisms."
+    "summary": "A hanging drop preparation is a wet mount method used to observe true motility in living organisms.",
+    "searchTitle": "Hanging Drop Method: True Motility vs Brownian Motion",
+    "searchDescription": "How to set up a hanging drop on a depression slide and read it: true motility travels somewhere, while Brownian motion only wiggles in place."
   },
   {
     "slug": "specimen-quality",
@@ -241,7 +247,9 @@ export const learnIndex: ContentIndexEntry[] = [
   {
     "slug": "enterobacterales",
     "title": "Enterobacterales",
-    "summary": "A study page for common enteric Gram-negative rods, lactose reaction, oxidase, IMViC, H2S, urease, decarboxylases, and stool-pathogen thinking."
+    "summary": "A study page for common enteric Gram-negative rods, lactose reaction, oxidase, IMViC, H2S, urease, decarboxylases, and stool-pathogen thinking.",
+    "searchTitle": "Enterobacterales: The Organisms and What They Share",
+    "searchDescription": "E. coli, Klebsiella, Proteus, Salmonella, Shigella and the rest, organized by lactose reaction, oxidase, IMViC, H2S, urease and the decarboxylases."
   },
   {
     "slug": "nonfermenting-gram-negative-rods",
@@ -371,7 +379,9 @@ export const learnIndex: ContentIndexEntry[] = [
   {
     "slug": "pcr-naat",
     "title": "PCR and NAAT",
-    "summary": "A study page for PCR, RT-PCR, real-time amplification, cycle threshold concepts, multiplex panels, and result limitations."
+    "summary": "A study page for PCR, RT-PCR, real-time amplification, cycle threshold concepts, multiplex panels, and result limitations.",
+    "searchTitle": "PCR and NAAT: The Difference, and What a Positive Means",
+    "searchDescription": "PCR is one kind of nucleic acid amplification test. What a cycle threshold does and does not tell you, and what a positive result does not prove on its own."
   },
   {
     "slug": "sequencing-basics",
@@ -439,22 +449,30 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "bacitracin-susceptibility",
     "title": "Bacitracin Susceptibility (A Disk)",
-    "summary": "An original bench-card visual demonstrating bacitracin susceptibility for presumptive Group A strep identification."
+    "summary": "An original bench-card visual demonstrating bacitracin susceptibility for presumptive Group A strep identification.",
+    "searchTitle": "Bacitracin (A Disk): Any Zone Means Group A Strep",
+    "searchDescription": "Any zone around the 0.04 unit Taxo A disk is susceptible and presumptively S. pyogenes. Growth right up to the 6 mm disk edge is resistant."
   },
   {
     "slug": "bile-esculin",
     "title": "Bile Esculin Reaction Guide",
-    "summary": "A visual reference for recognizing esculin hydrolysis in the presence of 4% bile salts as a key marker for Enterococci and Group D Streptococci."
+    "summary": "A visual reference for recognizing esculin hydrolysis in the presence of 4% bile salts as a key marker for Enterococci and Group D Streptococci.",
+    "searchTitle": "Bile Esculin: Blackening Means Enterococcus or Group D",
+    "searchDescription": "Blackening of the slant is positive: the organism tolerates 4% bile and hydrolyzes esculin. Honey-amber is negative, which is where most viridans strep land."
   },
   {
     "slug": "esculin-hydrolysis",
     "title": "Esculin Hydrolysis Visual Guide",
-    "summary": "An original bench visual for reading esculin hydrolysis without confusing the plain esculin test with bile esculin."
+    "summary": "An original bench visual for reading esculin hydrolysis without confusing the plain esculin test with bile esculin.",
+    "searchTitle": "Esculin Hydrolysis: Blackening, and Not the Bile Test",
+    "searchDescription": "Dark brown to black medium is positive; tan or amber is negative. Plain esculin asks only whether esculin is split, while bile esculin adds a bile hurdle."
   },
   {
     "slug": "bile-solubility",
     "title": "Bile Solubility Test Guide",
-    "summary": "An original bench reference illustrating the dissolution of Streptococcus pneumoniae colonies under 10% sodium desoxycholate."
+    "summary": "An original bench reference illustrating the dissolution of Streptococcus pneumoniae colonies under 10% sodium desoxycholate.",
+    "searchTitle": "Bile Solubility: Pneumococcus Dissolves, Viridans Does Not",
+    "searchDescription": "A drop of 10% sodium desoxycholate on active growth lyses S. pneumoniae colonies. Colonies that stay intact and raised are insoluble and not pneumococcus."
   },
   {
     "slug": "fermentation-media",
@@ -529,12 +547,16 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "decarboxylase-tests",
     "title": "Decarboxylase Tests (Moeller's Method)",
-    "summary": "An original Learn Microbes bench guide for reading amino acid decarboxylation (Lysine, Ornithine, Arginine) reactions using Moeller's broth and mineral oil."
+    "summary": "An original Learn Microbes bench guide for reading amino acid decarboxylation (Lysine, Ornithine, Arginine) reactions using Moeller's broth and mineral oil.",
+    "searchTitle": "Decarboxylase Tests: Purple Positive, Yellow Negative",
+    "searchDescription": "Under oil in Moeller's broth, purple means the lysine, ornithine or arginine decarboxylase is active. The control tube must be yellow or the test is void."
   },
   {
     "slug": "dnase-test",
     "title": "DNA Hydrolysis (DNase Test Agar)",
-    "summary": "An original Learn Microbes bench guide for recognizing deoxyribonuclease (DNase) activity on methyl green agar to differentiate key staphylococci, enterics, and respiratory cocci."
+    "summary": "An original Learn Microbes bench guide for recognizing deoxyribonuclease (DNase) activity on methyl green agar to differentiate key staphylococci, enterics, and respiratory cocci.",
+    "searchTitle": "DNase Agar: A Cleared Zone in the Methyl Green",
+    "searchDescription": "A colorless cleared zone around the growth is DNase positive; unchanged teal-green agar is negative. Among staphylococci it points to S. aureus."
   },
   {
     "slug": "methyl-red-voges-proskauer",
@@ -544,12 +566,16 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "microdase-test",
     "title": "Microdase Test (Modified Oxidase)",
-    "summary": "An original disk bench visual for reading modified oxidase activity to rapidly differentiate Micrococcus from Staphylococcus among catalase-positive Gram-positive cocci."
+    "summary": "An original disk bench visual for reading modified oxidase activity to rapidly differentiate Micrococcus from Staphylococcus among catalase-positive Gram-positive cocci.",
+    "searchTitle": "Microdase (Modified Oxidase): Micrococcus vs Staph",
+    "searchDescription": "A blue to purple disk at two minutes is positive and means Micrococcus. No color change means Staphylococcus. Read it at two minutes and no later."
   },
   {
     "slug": "motility-testing",
     "title": "Motility Testing",
-    "summary": "A bench visual for reading semisolid motility medium deeps containing TTC indicator, used to determine whether bacterial species are motile."
+    "summary": "A bench visual for reading semisolid motility medium deeps containing TTC indicator, used to determine whether bacterial species are motile.",
+    "searchTitle": "Motility Medium: Diffuse Growth vs a Sharp Stab Line",
+    "searchDescription": "Red cloudiness spreading away from the stab is motile; a sharp red line along the stab alone is non-motile. TTC makes a faint haze easier to see."
   },
   {
     "slug": "mrs-broth",
@@ -564,7 +590,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "nitrate-reduction",
     "title": "Nitrate Reduction Test",
-    "summary": "A visual guide to the nitrate reduction test, illustrating the three distinct metabolic endpoints (reduction to nitrite, reduction to nitrogen gas, or no reduction) using a Durham tube and zinc dust."
+    "summary": "A visual guide to the nitrate reduction test, illustrating the three distinct metabolic endpoints (reduction to nitrite, reduction to nitrogen gas, or no reduction) using a Durham tube and zinc dust.",
+    "searchTitle": "Nitrate Reduction: Why You Still Have to Add Zinc",
+    "searchDescription": "Red after reagents A and B is positive. No color is not yet negative: add zinc. Red then means nitrate was never reduced; still no color means it went to gas."
   },
   {
     "slug": "nitrite-reduction",
@@ -574,12 +602,16 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "onpg-test",
     "title": "ONPG Test",
-    "summary": "A bench visual for the ONPG test, used to detect β-galactosidase activity to differentiate late lactose fermenters from true non-lactose fermenters."
+    "summary": "A bench visual for the ONPG test, used to detect β-galactosidase activity to differentiate late lactose fermenters from true non-lactose fermenters.",
+    "searchTitle": "ONPG Test: Yellow Positive, Colorless Negative",
+    "searchDescription": "A yellow tube is ONPG positive: the organism has beta-galactosidase and is a late lactose fermenter, not a true non-fermenter. Colorless is negative."
   },
   {
     "slug": "optochin-test",
     "title": "Optochin (P Disk) Susceptibility Test",
-    "summary": "A visual guide to the Optochin susceptibility test, key for the presumptive identification of Streptococcus pneumoniae."
+    "summary": "A visual guide to the Optochin susceptibility test, key for the presumptive identification of Streptococcus pneumoniae.",
+    "searchTitle": "Optochin (P Disk): The 14 mm Zone That Means Pneumococcus",
+    "searchDescription": "A zone of 14 mm or more around the P disk is susceptible and presumptively S. pneumoniae. Under 14 mm is equivocal, so confirm with bile solubility."
   },
   {
     "slug": "oxidase-test",
@@ -599,7 +631,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "pyr-test",
     "title": "L-Pyrrolidonyl Arylamidase (PYR) Test",
-    "summary": "A bench guide to the PYR test, used for the presumptive identification of Group A streptococci (S. pyogenes) and Enterococci by detecting PYRase activity."
+    "summary": "A bench guide to the PYR test, used for the presumptive identification of Group A streptococci (S. pyogenes) and Enterococci by detecting PYRase activity.",
+    "searchTitle": "PYR Test: Bright Red Means Group A Strep or Enterococcus",
+    "searchDescription": "A bright red color after the developer reagent is PYR positive, which points to Streptococcus pyogenes or Enterococcus. Orange with no change is negative."
   },
   {
     "slug": "pyruvate-broth",
@@ -609,27 +643,37 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "salt-tolerance",
     "title": "Salt Tolerance Test (6.5% NaCl)",
-    "summary": "A bench guide to the 6.5% NaCl salt tolerance test, used to differentiate salt-tolerant Enterococci (positive) from salt-sensitive nonenterococci (negative)."
+    "summary": "A bench guide to the 6.5% NaCl salt tolerance test, used to differentiate salt-tolerant Enterococci (positive) from salt-sensitive nonenterococci (negative).",
+    "searchTitle": "6.5% NaCl Test: Growth Means Enterococcus",
+    "searchDescription": "Turbidity, or a purple-to-yellow shift, in 6.5% NaCl broth is positive and points to Enterococcus. A clear purple tube means the salt inhibited growth."
   },
   {
     "slug": "spot-indole",
     "title": "Spot Indole Test",
-    "summary": "A bench guide to the rapid Spot Indole test, detecting tryptophanase activity within 20 seconds to quickly differentiate Escherichia coli from Klebsiella."
+    "summary": "A bench guide to the rapid Spot Indole test, detecting tryptophanase activity within 20 seconds to quickly differentiate Escherichia coli from Klebsiella.",
+    "searchTitle": "Spot Indole: Blue Within 20 Seconds Is Positive",
+    "searchDescription": "Blue to blue-green on the strip within 20 seconds is positive for tryptophanase, separating E. coli from Klebsiella. A faint pink is just the reagent."
   },
   {
     "slug": "tsi-test",
     "title": "Triple Sugar Iron Agar (TSI)",
-    "summary": "A visual guide to Triple Sugar Iron Agar (TSI), used to determine glucose/lactose/sucrose fermentation, gas production, and hydrogen sulfide (H2S) synthesis in Gram-negative rods."
+    "summary": "A visual guide to Triple Sugar Iron Agar (TSI), used to determine glucose/lactose/sucrose fermentation, gas production, and hydrogen sulfide (H2S) synthesis in Gram-negative rods.",
+    "searchTitle": "TSI Agar: Reading Slant, Butt, Gas and H2S",
+    "searchDescription": "Yellow over yellow is A/A, red over yellow is K/A from glucose only, and red over red is K/K. A black butt is H2S; cracks or bubbles are gas."
   },
   {
     "slug": "urease-test",
     "title": "Urease Test (Christensen's Method)",
-    "summary": "A bench guide to Christensen's urea agar slant test, used to detect urease activity to rapidly identify Proteus species and differentiate other Enterobacteriaceae."
+    "summary": "A bench guide to Christensen's urea agar slant test, used to detect urease activity to rapidly identify Proteus species and differentiate other Enterobacteriaceae.",
+    "searchTitle": "Urease Test: Pink Within 24 Hours Means Proteus",
+    "searchDescription": "Christensen's urea agar turns magenta when urease frees ammonia and lifts the pH. Proteus does it within 24 hours; a peach slant stays negative."
   },
   {
     "slug": "xv-factor-test",
     "title": "X and V Factor Test",
-    "summary": "A diagnostic guide for determining X (hemin) and V (NAD) factor requirements to differentiate and identify Haemophilus species."
+    "summary": "A diagnostic guide for determining X (hemin) and V (NAD) factor requirements to differentiate and identify Haemophilus species.",
+    "searchTitle": "X and V Factors: Reading Haemophilus Growth Patterns",
+    "searchDescription": "Growth only around the XV strip is H. influenzae. Around V and XV is H. parainfluenzae, around X and XV is H. ducreyi, and a full lawn needs neither."
   },
   {
     "slug": "mucorales-rhizopus",
@@ -644,7 +688,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "histoplasma-capsulatum",
     "title": "Histoplasma capsulatum: Intracellular Yeast and Tuberculate Macroconidia",
-    "summary": "Original bench-card visual for recognizing Histoplasma: tiny intracellular yeasts in macrophages and tuberculate macroconidia in mold phase."
+    "summary": "Original bench-card visual for recognizing Histoplasma: tiny intracellular yeasts in macrophages and tuberculate macroconidia in mold phase.",
+    "searchTitle": "Tuberculate Macroconidia: Histoplasma in the Mold Phase",
+    "searchDescription": "Thick-walled macroconidia with blunt knobs identify the mold phase. In tissue it is a 2 to 5 micron yeast inside macrophages, narrow-budding, not broad."
   },
   {
     "slug": "blastomyces-dermatitidis",
@@ -659,12 +705,16 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "dermatophyte-comparison",
     "title": "Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton",
-    "summary": "Original bench-card comparison for dermatophyte morphology: microconidia-heavy Trichophyton, spindle macroconidia of Microsporum, and club-shaped macroconidia of Epidermophyton."
+    "summary": "Original bench-card comparison for dermatophyte morphology: microconidia-heavy Trichophyton, spindle macroconidia of Microsporum, and club-shaped macroconidia of Epidermophyton.",
+    "searchTitle": "Trichophyton, Microsporum, Epidermophyton Compared",
+    "searchDescription": "Many microconidia mean Trichophyton. Rough spindle macroconidia mean Microsporum. Smooth club macroconidia with no microconidia mean Epidermophyton."
   },
   {
     "slug": "candida-albicans-germ-tube",
     "title": "Candida albicans: Germ Tube and Pseudohyphae",
-    "summary": "Original bench-card visual for recognizing Candida albicans-style germ tubes and separating true germ tubes from pseudohyphae."
+    "summary": "Original bench-card visual for recognizing Candida albicans-style germ tubes and separating true germ tubes from pseudohyphae.",
+    "searchTitle": "Germ Tube Test: True Germ Tube vs Pseudohypha",
+    "searchDescription": "A true germ tube leaves the yeast cell with no constriction at the origin. A pinch at the attachment point makes it a pseudohypha, not a positive result."
   },
   {
     "slug": "cryptococcus-neoformans-capsule",
@@ -744,7 +794,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "aspergillus-species-comparison",
     "title": "Aspergillus Species: Conidial Head Comparison",
-    "summary": "Original bench-card visual comparing Aspergillus conidial heads: fumigatus compact columnar, niger biseriate radiate, flavus variable, and terreus with accessory aleurioconidia."
+    "summary": "Original bench-card visual comparing Aspergillus conidial heads: fumigatus compact columnar, niger biseriate radiate, flavus variable, and terreus with accessory aleurioconidia.",
+    "searchTitle": "Aspergillus: Conidial Heads of fumigatus, flavus, niger",
+    "searchDescription": "A. fumigatus has a compact uniseriate columnar head. A. niger is a biseriate radiate sphere with black conidia; A. flavus is yellow-green with a rough stalk."
   },
   {
     "slug": "viral-cytopathic-effect-panel",
@@ -759,7 +811,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "cmv-owl-eye-inclusion",
     "title": "CMV Inclusion Pattern: Owl-Eye Study Card",
-    "summary": "Original bench-card visual for recognizing the classic cytomegalovirus inclusion pattern as a morphology review anchor."
+    "summary": "Original bench-card visual for recognizing the classic cytomegalovirus inclusion pattern as a morphology review anchor.",
+    "searchTitle": "Owl's Eye Inclusion: The Classic CMV Pattern",
+    "searchDescription": "A markedly enlarged cell holding one large intranuclear inclusion with a dense center and a pale halo. That combination is the cytomegalovirus owl's eye."
   },
   {
     "slug": "respiratory-virus-naat-panel",
@@ -784,17 +838,23 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "giardia-lamblia",
     "title": "Giardia lamblia: Trophozoite and Cyst",
-    "summary": "Original bench-card visuals for recognizing Giardia trophozoite and cyst morphology in wet preparations and stained stool concentrates, including median body placement and nuclear arrangement."
+    "summary": "Original bench-card visuals for recognizing Giardia trophozoite and cyst morphology in wet preparations and stained stool concentrates, including median body placement and nuclear arrangement.",
+    "searchTitle": "Giardia: Falling-Leaf Trophozoite and Four-Nucleus Cyst",
+    "searchDescription": "The trophozoite is pear-shaped with paired anterior nuclei and two comma-shaped median bodies. The oval cyst holds up to four nuclei and curved fibrils."
   },
   {
     "slug": "cryptosporidium-oocyst",
     "title": "Cryptosporidium: Modified Acid-Fast Oocyst",
-    "summary": "Original bench-card visual for recognizing Cryptosporidium oocysts on modified acid-fast stain: staining intensity variability, thick-wall vs. thin-wall biology, and yeast as the primary morphologic mimic."
+    "summary": "Original bench-card visual for recognizing Cryptosporidium oocysts on modified acid-fast stain: staining intensity variability, thick-wall vs. thin-wall biology, and yeast as the primary morphologic mimic.",
+    "searchTitle": "Cryptosporidium Oocysts on Modified Acid-Fast",
+    "searchDescription": "Oocysts are round, 4 to 6 microns and stain pink-red, while yeasts keep the green counterstain. Staining is patchy, so scan several fields before reporting."
   },
   {
     "slug": "entamoeba-histolytica",
     "title": "Entamoeba histolytica: Trophozoite and Cyst",
-    "summary": "Original bench-card visuals for recognizing E. histolytica/dispar trophozoite and cyst morphology, with nuclear structure detail, erythrophagocytosis as the pathogenicity clue, and E. coli chromatoid comparison."
+    "summary": "Original bench-card visuals for recognizing E. histolytica/dispar trophozoite and cyst morphology, with nuclear structure detail, erythrophagocytosis as the pathogenicity clue, and E. coli chromatoid comparison.",
+    "searchTitle": "Entamoeba histolytica: Trophozoite and Cyst Features",
+    "searchDescription": "A central karyosome with fine even peripheral chromatin, up to four nuclei in the mature cyst, and blunt chromatoid bars. Ingested red cells mean pathogenic."
   },
   {
     "slug": "trichomonas-vaginalis",
@@ -819,7 +879,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "trichuris-trichiura-egg",
     "title": "Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs",
-    "summary": "Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end - one of the most visually distinctive helminth eggs."
+    "summary": "Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end - one of the most visually distinctive helminth eggs.",
+    "searchTitle": "Trichuris Eggs: Barrel Shape With a Plug at Each End",
+    "searchDescription": "The whipworm egg is a 50 to 55 micron barrel with a thick golden-brown shell and a clear hyaline plug at both poles. A fresh egg holds a single cell."
   },
   {
     "slug": "plasmodium-falciparum-smear",
@@ -839,7 +901,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "toxoplasma-gondii-tachyzoite",
     "title": "Toxoplasma gondii: Tachyzoite and Tissue Cyst",
-    "summary": "Original bench-card visuals for recognizing Toxoplasma gondii tachyzoites and bradyzoite-filled tissue cysts: crescent-shaped tachyzoites, nucleus toward the broad end, and bradyzoites in PAS-positive tissue cysts."
+    "summary": "Original bench-card visuals for recognizing Toxoplasma gondii tachyzoites and bradyzoite-filled tissue cysts: crescent-shaped tachyzoites, nucleus toward the broad end, and bradyzoites in PAS-positive tissue cysts.",
+    "searchTitle": "Toxoplasma Tachyzoites: Crescent Shape, Nucleus at One End",
+    "searchDescription": "Tachyzoites are crescent-shaped and 4 to 8 microns, with one pointed end and the nucleus toward the broad end. Giemsa gives blue cytoplasm and a red nucleus."
   },
   {
     "slug": "leishmania-amastigotes",
@@ -849,7 +913,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "ascaris-lumbricoides-egg",
     "title": "Ascaris lumbricoides: Mammillated and Decorticate Eggs",
-    "summary": "Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg - the most recognizable helminth egg in clinical parasitology - and the decorticate variant that has lost its outer coat."
+    "summary": "Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg - the most recognizable helminth egg in clinical parasitology - and the decorticate variant that has lost its outer coat.",
+    "searchTitle": "Ascaris Eggs: Mammillated, Decorticate and Infertile",
+    "searchDescription": "The fertile egg is oval and 45 to 70 microns with a thick bumpy coat. Decorticate eggs have lost that coat; infertile eggs are longer with granular content."
   },
   {
     "slug": "trichostrongylus-egg",
@@ -864,7 +930,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "microfilariae-blood-smear",
     "title": "Microfilariae: Sheathed vs. Unsheathed - Blood Smear",
-    "summary": "Bench-card visuals for distinguishing microfilariae in thick blood smears: sheath presence and nuclei in the tail differentiate Wuchereria bancrofti (sheathed, no tail nuclei) from Loa loa (sheathed, nuclei to tail tip). Brugia malayi and Onchocerca volvulus noted for comparison."
+    "summary": "Bench-card visuals for distinguishing microfilariae in thick blood smears: sheath presence and nuclei in the tail differentiate Wuchereria bancrofti (sheathed, no tail nuclei) from Loa loa (sheathed, nuclei to tail tip). Brugia malayi and Onchocerca volvulus noted for comparison.",
+    "searchTitle": "Microfilariae: Sheath First, Then Nuclei in the Tail",
+    "searchDescription": "Nuclei running to the very tip mean Loa loa. No nuclei at the tip means W. bancrofti, or Brugia malayi when two discrete terminal nuclei follow a body kink."
   },
   {
     "slug": "taenia-spp-egg",
@@ -879,7 +947,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "schistosoma-egg",
     "title": "Schistosoma spp. Eggs: Spine Location by Species",
-    "summary": "Bench-card visuals for Schistosoma species identification by egg spine position: S. mansoni (large, prominent lateral spine), S. haematobium (terminal spine), and S. japonicum (small, rudimentary lateral spine or none)."
+    "summary": "Bench-card visuals for Schistosoma species identification by egg spine position: S. mansoni (large, prominent lateral spine), S. haematobium (terminal spine), and S. japonicum (small, rudimentary lateral spine or none).",
+    "searchTitle": "Schistosoma Eggs: Terminal vs Lateral Spine",
+    "searchDescription": "A terminal spine means S. haematobium in urine. A large lateral spine means S. mansoni in stool; a rudimentary one means S. japonicum. None are operculated."
   },
   {
     "slug": "hymenolepis-nana-egg",
@@ -914,7 +984,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "operculated-egg-comparison",
     "title": "Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis",
-    "summary": "Bench-card comparison of the four common operculated helminth eggs: Diphyllobothrium latum (~65 um, abopercular knob), Paragonimus westermani (~90 um, shouldered operculum), Fasciola hepatica/Fasciolopsis buski (~140 um, largest, thin shell), and Clonorchis/Opisthorchis (~30 um, smallest, shoulder rim)."
+    "summary": "Bench-card comparison of the four common operculated helminth eggs: Diphyllobothrium latum (~65 um, abopercular knob), Paragonimus westermani (~90 um, shouldered operculum), Fasciola hepatica/Fasciolopsis buski (~140 um, largest, thin shell), and Clonorchis/Opisthorchis (~30 um, smallest, shoulder rim).",
+    "searchTitle": "Operculated Eggs: Which Four, and How to Tell Them Apart",
+    "searchDescription": "Size orders them: Clonorchis near 30 microns, Diphyllobothrium near 65 with a knob, Paragonimus near 90 with shoulders, Fasciola near 140 and thin-shelled."
   },
   {
     "slug": "blastocystis-hominis-forms",
@@ -929,7 +1001,9 @@ export const visualIndex: ContentIndexEntry[] = [
   {
     "slug": "clonorchis-opisthorchis-egg",
     "title": "Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg",
-    "summary": "Bench-card visuals for recognizing Clonorchis sinensis and Opisthorchis spp. eggs: the smallest common operculated helminth egg (~28-35 um), flask or vase shape, prominent shoulder rim at the opercular end, tiny knob at the abopercular end, and bile-staining."
+    "summary": "Bench-card visuals for recognizing Clonorchis sinensis and Opisthorchis spp. eggs: the smallest common operculated helminth egg (~28-35 um), flask or vase shape, prominent shoulder rim at the opercular end, tiny knob at the abopercular end, and bile-staining.",
+    "searchTitle": "Clonorchis Egg: Shoulder Rim and Abopercular Knob",
+    "searchDescription": "At 28 to 35 microns it is the smallest common operculated egg: flask-shaped, bile-stained, with a shoulder rim at the lid and a tiny knob at the far end."
   },
   {
     "slug": "fasciolopsis-fasciola-comparison",

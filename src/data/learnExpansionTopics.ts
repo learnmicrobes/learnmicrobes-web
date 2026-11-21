@@ -5,6 +5,8 @@ type StarterTopicInput = {
   title: string;
   category: LearnTopic['category'];
   summary: string;
+  searchTitle?: string;
+  searchDescription?: string;
   anchors: string[];
   keywords: string[];
   relatedLinks?: LearnTopic['relatedLinks'];
@@ -15,6 +17,8 @@ const makeStarterTopic = ({
   title,
   category,
   summary,
+  searchTitle,
+  searchDescription,
   anchors,
   keywords,
   relatedLinks = []
@@ -23,6 +27,8 @@ const makeStarterTopic = ({
   title,
   category,
   summary,
+  searchTitle,
+  searchDescription,
   whyItMatters: `${title} gives students a place to organize the topic before memorizing organism lists, test names, or isolated exam facts.`,
   principle: `Learn this topic by asking what the specimen, method, organism group, and clinical setting are trying to prove. Build the topic around practical study anchors and bench reasoning.`,
   basicSteps: [
@@ -998,6 +1004,9 @@ const baseExpandedLearnTopics: LearnTopic[] = [
     title: 'Enterobacterales',
     category: 'Bacteriology',
     summary: 'A study page for common enteric Gram-negative rods, lactose reaction, oxidase, IMViC, H2S, urease, decarboxylases, and stool-pathogen thinking.',
+    searchTitle: 'Enterobacterales: The Organisms and What They Share',
+    searchDescription:
+      'E. coli, Klebsiella, Proteus, Salmonella, Shigella and the rest, organized by lactose reaction, oxidase, IMViC, H2S, urease and the decarboxylases.',
     anchors: [
       'MacConkey reaction: lactose fermenter versus non-lactose fermenter',
       'Oxidase: usually negative for classic Enterobacterales',
@@ -1388,6 +1397,9 @@ const baseExpandedLearnTopics: LearnTopic[] = [
     title: 'PCR and NAAT',
     category: 'Molecular and Immunodiagnostics',
     summary: 'A study page for PCR, RT-PCR, real-time amplification, cycle threshold concepts, multiplex panels, and result limitations.',
+    searchTitle: 'PCR and NAAT: The Difference, and What a Positive Means',
+    searchDescription:
+      'PCR is one kind of nucleic acid amplification test. What a cycle threshold does and does not tell you, and what a positive result does not prove on its own.',
     anchors: [
       'PCR: amplifies DNA target',
       'RT-PCR: converts RNA to DNA before amplification',

@@ -41,6 +41,23 @@ export type AtlasPage = {
   eyebrow: string;
   summary: string;
   /**
+   * What Google shows in the result listing, where the card's own title and
+   * summary make a poor one.
+   *
+   * The summary is written for someone who has already opened the card, so it
+   * opens with a definition. A searcher typing "pyr test" already has the
+   * definition and wants the reading. Where these two fields are set, App.tsx
+   * uses them verbatim in place of the generated title and the shared
+   * "Visual clinical microbiology bench card..." tail that every card
+   * otherwise carries.
+   *
+   * Keep searchTitle near 60 characters and searchDescription near 155, or
+   * Google truncates them mid-sentence. Only pages that earn real impressions
+   * need them; everything else falls back to the generated form.
+   */
+  searchTitle?: string;
+  searchDescription?: string;
+  /**
    * Other valid names for the same organism, shown under the title. Students
    * meet the synonyms in different textbooks and sources, and not knowing they
    * are one organism costs them marks.
@@ -267,6 +284,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Bacitracin Susceptibility (A Disk)',
     eyebrow: 'Visual Atlas',
     summary: 'An original bench-card visual demonstrating bacitracin susceptibility for presumptive Group A strep identification.',
+    searchTitle: 'Bacitracin (A Disk): Any Zone Means Group A Strep',
+    searchDescription:
+      'Any zone around the 0.04 unit Taxo A disk is susceptible and presumptively S. pyogenes. Growth right up to the 6 mm disk edge is resistant.',
     boardTitle: 'Bacitracin plates A-B',
     boardNote: 'Compare the zone of inhibition around the 0.04-unit bacitracin (A) disk.',
     ariaLabel: 'Illustrated bacitracin susceptibility plates showing susceptible and resistant reactions',
@@ -321,6 +341,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Bile Esculin Reaction Guide',
     eyebrow: 'Visual Atlas',
     summary: 'A visual reference for recognizing esculin hydrolysis in the presence of 4% bile salts as a key marker for Enterococci and Group D Streptococci.',
+    searchTitle: 'Bile Esculin: Blackening Means Enterococcus or Group D',
+    searchDescription:
+      'Blackening of the slant is positive: the organism tolerates 4% bile and hydrolyzes esculin. Honey-amber is negative, which is where most viridans strep land.',
     boardTitle: 'Bile Esculin slants A-B',
     boardNote: 'Hydrolysis of esculin in the presence of bile creates a dark brown to black complex.',
     ariaLabel: 'Bile Esculin agar slants showing positive and negative reactions',
@@ -376,6 +399,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Esculin Hydrolysis Visual Guide',
     eyebrow: 'Visual Atlas',
     summary: 'An original bench visual for reading esculin hydrolysis without confusing the plain esculin test with bile esculin.',
+    searchTitle: 'Esculin Hydrolysis: Blackening, and Not the Bile Test',
+    searchDescription:
+      'Dark brown to black medium is positive; tan or amber is negative. Plain esculin asks only whether esculin is split, while bile esculin adds a bile hurdle.',
     boardTitle: 'Esculin slants A-B',
     boardNote: 'Positive reactions darken as esculetin reacts with ferric ions; negative tubes stay tan/amber.',
     ariaLabel: 'Esculin hydrolysis slants showing positive blackening and negative unchanged medium',
@@ -432,6 +458,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Bile Solubility Test Guide',
     eyebrow: 'Visual Atlas',
     summary: 'An original bench reference illustrating the dissolution of Streptococcus pneumoniae colonies under 10% sodium desoxycholate.',
+    searchTitle: 'Bile Solubility: Pneumococcus Dissolves, Viridans Does Not',
+    searchDescription:
+      'A drop of 10% sodium desoxycholate on active growth lyses S. pneumoniae colonies. Colonies that stay intact and raised are insoluble and not pneumococcus.',
     boardTitle: 'Bile Solubility plates A-B',
     boardNote: 'Observe colony integrity inside the drop of 10% sodium desoxycholate after 30 minutes.',
     ariaLabel: 'Illustrated colony reactions showing lysis (positive) and intact colonies (negative) under reagent drops',
@@ -1327,6 +1356,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Decarboxylase Tests (Moeller\'s Method)',
     eyebrow: 'Visual Atlas',
     summary: 'An original Learn Microbes bench guide for reading amino acid decarboxylation (Lysine, Ornithine, Arginine) reactions using Moeller\'s broth and mineral oil.',
+    searchTitle: 'Decarboxylase Tests: Purple Positive, Yellow Negative',
+    searchDescription:
+      'Under oil in Moeller\'s broth, purple means the lysine, ornithine or arginine decarboxylase is active. The control tube must be yellow or the test is void.',
     boardTitle: 'Decarboxylase tubes A-D',
     boardNote: 'Always read the specific amino acid tube alongside the control tube (no amino acid). A valid test requires the control tube to be acid (yellow).',
     ariaLabel: 'Illustrated Moeller\'s decarboxylase broth tubes showing positive, negative, control, and uninoculated states',
@@ -1397,6 +1429,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'DNA Hydrolysis (DNase Test Agar)',
     eyebrow: 'Visual Atlas',
     summary: 'An original Learn Microbes bench guide for recognizing deoxyribonuclease (DNase) activity on methyl green agar to differentiate key staphylococci, enterics, and respiratory cocci.',
+    searchTitle: 'DNase Agar: A Cleared Zone in the Methyl Green',
+    searchDescription:
+      'A colorless cleared zone around the growth is DNase positive; unchanged teal-green agar is negative. Among staphylococci it points to S. aureus.',
     boardTitle: 'DNase agar plates A-B',
     boardNote: 'Look for a clear, colorless zone surrounding the streak of growth, indicating DNA-methyl green complex degradation.',
     ariaLabel: 'Illustrated DNase test agar plates showing positive cleared zone and negative unchanged green agar reactions',
@@ -1524,6 +1559,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Microdase Test (Modified Oxidase)',
     eyebrow: 'Visual Atlas',
     summary: 'An original disk bench visual for reading modified oxidase activity to rapidly differentiate Micrococcus from Staphylococcus among catalase-positive Gram-positive cocci.',
+    searchTitle: 'Microdase (Modified Oxidase): Micrococcus vs Staph',
+    searchDescription:
+      'A blue to purple disk at two minutes is positive and means Micrococcus. No color change means Staphylococcus. Read it at two minutes and no later.',
     boardTitle: 'Microdase disks A-B',
     boardNote: 'Read the disk at exactly 2 minutes. Blue to purple-blue is positive; no color change is negative.',
     ariaLabel: 'Illustrated microdase disks showing blue-purple positive Micrococcus reaction and unchanged white negative Staphylococcus reaction',
@@ -1578,6 +1616,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Motility Testing',
     eyebrow: 'Visual Atlas',
     summary: 'A bench visual for reading semisolid motility medium deeps containing TTC indicator, used to determine whether bacterial species are motile.',
+    searchTitle: 'Motility Medium: Diffuse Growth vs a Sharp Stab Line',
+    searchDescription:
+      'Red cloudiness spreading away from the stab is motile; a sharp red line along the stab alone is non-motile. TTC makes a faint haze easier to see.',
     boardTitle: 'Motility tubes A-B',
     boardNote: 'Diffuse red growth radiating from the stab line indicates motility. Growth restricted to the stab line indicates non-motility.',
     ariaLabel: 'Illustrated motility tubes showing diffuse red growth of E. coli (motile) and sharp red line of growth of S. aureus (non-motile)',
@@ -1741,6 +1782,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Nitrate Reduction Test',
     eyebrow: 'Visual Atlas',
     summary: 'A visual guide to the nitrate reduction test, illustrating the three distinct metabolic endpoints (reduction to nitrite, reduction to nitrogen gas, or no reduction) using a Durham tube and zinc dust.',
+    searchTitle: 'Nitrate Reduction: Why You Still Have to Add Zinc',
+    searchDescription:
+      'Red after reagents A and B is positive. No color is not yet negative: add zinc. Red then means nitrate was never reduced; still no color means it went to gas.',
     boardTitle: 'Nitrate Reduction Broths A-D',
     boardNote: 'Differentiate reduction of nitrate to nitrite, complete reduction to gaseous nitrogen (N2), and negative reactions after adding reagents A & B and zinc dust.',
     ariaLabel: 'Four tubes of nitrate broth showing positive and negative reactions with gas bubbles and zinc dust',
@@ -1867,6 +1911,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'ONPG Test',
     eyebrow: 'Visual Atlas',
     summary: 'A bench visual for the ONPG test, used to detect β-galactosidase activity to differentiate late lactose fermenters from true non-lactose fermenters.',
+    searchTitle: 'ONPG Test: Yellow Positive, Colorless Negative',
+    searchDescription:
+      'A yellow tube is ONPG positive: the organism has beta-galactosidase and is a late lactose fermenter, not a true non-fermenter. Colorless is negative.',
     boardTitle: 'ONPG Tubes A-B',
     boardNote: 'An ONPG disk is added to a saline suspension of the organism. A yellow color shift indicates β-galactosidase hydrolyzed the substrate.',
     ariaLabel: 'Two ONPG test tubes showing a yellow positive reaction and a colorless negative reaction',
@@ -1919,6 +1966,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Optochin (P Disk) Susceptibility Test',
     eyebrow: 'Visual Atlas',
     summary: 'A visual guide to the Optochin susceptibility test, key for the presumptive identification of Streptococcus pneumoniae.',
+    searchTitle: 'Optochin (P Disk): The 14 mm Zone That Means Pneumococcus',
+    searchDescription:
+      'A zone of 14 mm or more around the P disk is susceptible and presumptively S. pneumoniae. Under 14 mm is equivocal, so confirm with bile solubility.',
     boardTitle: 'Optochin plates A-B',
     boardNote: 'Compare the zone of inhibition around the ethyl hydrocupreine hydrochloride (P) disk on blood agar.',
     ariaLabel: 'Two blood agar plates showing Optochin susceptibility (zone of inhibition) and resistance (growth to disk)',
@@ -2158,6 +2208,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'L-Pyrrolidonyl Arylamidase (PYR) Test',
     eyebrow: 'Visual Atlas',
     summary: 'A bench guide to the PYR test, used for the presumptive identification of Group A streptococci (S. pyogenes) and Enterococci by detecting PYRase activity.',
+    searchTitle: 'PYR Test: Bright Red Means Group A Strep or Enterococcus',
+    searchDescription:
+      'A bright red color after the developer reagent is PYR positive, which points to Streptococcus pyogenes or Enterococcus. Orange with no change is negative.',
     boardTitle: 'PYR reaction cards A-B',
     boardNote: 'Organisms are rubbed onto a dry PYR disk, incubated for 2 minutes, and then treated with detector reagent. A red color is positive.',
     ariaLabel: 'Two PYR reaction cards showing a red positive reaction and a colorless negative reaction',
@@ -2262,6 +2315,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Salt Tolerance Test (6.5% NaCl)',
     eyebrow: 'Visual Atlas',
     summary: 'A bench guide to the 6.5% NaCl salt tolerance test, used to differentiate salt-tolerant Enterococci (positive) from salt-sensitive nonenterococci (negative).',
+    searchTitle: '6.5% NaCl Test: Growth Means Enterococcus',
+    searchDescription:
+      'Turbidity, or a purple-to-yellow shift, in 6.5% NaCl broth is positive and points to Enterococcus. A clear purple tube means the salt inhibited growth.',
     boardTitle: 'Salt tolerance tubes A-B',
     boardNote: 'Organisms are inoculated into brain-heart infusion broth with 6.5% NaCl. Growth (turbidity) and acid (yellow) are positive.',
     ariaLabel: 'Two salt tolerance tubes showing positive (yellow and turbid) and negative (purple and clear) reactions',
@@ -2314,6 +2370,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Spot Indole Test',
     eyebrow: 'Visual Atlas',
     summary: 'A bench guide to the rapid Spot Indole test, detecting tryptophanase activity within 20 seconds to quickly differentiate Escherichia coli from Klebsiella.',
+    searchTitle: 'Spot Indole: Blue Within 20 Seconds Is Positive',
+    searchDescription:
+      'Blue to blue-green on the strip within 20 seconds is positive for tryptophanase, separating E. coli from Klebsiella. A faint pink is just the reagent.',
     boardTitle: 'Spot Indole reaction cards A-B',
     boardNote: 'Organisms are rubbed onto filter paper saturated with spot indole reagent (paradimethylaminocinnamaldehyde). A blue color shift is positive.',
     ariaLabel: 'Two spot indole reaction cards showing a blue positive reaction and a colorless negative reaction',
@@ -2366,6 +2425,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Triple Sugar Iron Agar (TSI)',
     eyebrow: 'Visual Atlas',
     summary: 'A visual guide to Triple Sugar Iron Agar (TSI), used to determine glucose/lactose/sucrose fermentation, gas production, and hydrogen sulfide (H2S) synthesis in Gram-negative rods.',
+    searchTitle: 'TSI Agar: Reading Slant, Butt, Gas and H2S',
+    searchDescription:
+      'Yellow over yellow is A/A, red over yellow is K/A from glucose only, and red over red is K/K. A black butt is H2S; cracks or bubbles are gas.',
     boardTitle: 'TSI slants A-D',
     boardNote: 'Read both the slant (aerobic) and butt (anaerobic) color reactions, gas cracks, and black H2S precipitate.',
     ariaLabel: 'Four TSI tubes showing A/A with gas, K/A with gas and H2S, K/K non-fermenter, and uninoculated control',
@@ -2436,6 +2498,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Urease Test (Christensen\'s Method)',
     eyebrow: 'Visual Atlas',
     summary: 'A bench guide to Christensen\'s urea agar slant test, used to detect urease activity to rapidly identify Proteus species and differentiate other Enterobacteriaceae.',
+    searchTitle: 'Urease Test: Pink Within 24 Hours Means Proteus',
+    searchDescription:
+      'Christensen\'s urea agar turns magenta when urease frees ammonia and lifts the pH. Proteus does it within 24 hours; a peach slant stays negative.',
     boardTitle: 'Urea slants A-B',
     boardNote: 'Compare the slant and butt color reactions. Hydrolysis of urea creates basic ammonia, turning the phenol red indicator pink/magenta.',
     ariaLabel: 'Two urea agar slants showing positive (bright magenta-pink) and negative (light orange) reactions',
@@ -2489,6 +2554,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'X and V Factor Test',
     eyebrow: 'Visual Atlas',
     summary: 'A diagnostic guide for determining X (hemin) and V (NAD) factor requirements to differentiate and identify Haemophilus species.',
+    searchTitle: 'X and V Factors: Reading Haemophilus Growth Patterns',
+    searchDescription:
+      'Growth only around the XV strip is H. influenzae. Around V and XV is H. parainfluenzae, around X and XV is H. ducreyi, and a full lawn needs neither.',
     boardTitle: 'XV Plates A-D',
     boardNote: 'Observe the growth around the paper disks impregnated with X, V, and XV factors. Growth only occurs where required accessory growth factors have diffused.',
     ariaLabel: 'Four tryptic soy agar plates streaked with bacterial suspensions and showing growth around X, V, or XV disks depending on their factor requirements.',
@@ -2714,6 +2782,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Histoplasma capsulatum: Intracellular Yeast and Tuberculate Macroconidia',
     eyebrow: 'Visual Atlas / Mycology',
     summary: 'Original bench-card visual for recognizing Histoplasma: tiny intracellular yeasts in macrophages and tuberculate macroconidia in mold phase.',
+    searchTitle: 'Tuberculate Macroconidia: Histoplasma in the Mold Phase',
+    searchDescription:
+      'Thick-walled macroconidia with blunt knobs identify the mold phase. In tissue it is a 2 to 5 micron yeast inside macrophages, narrow-budding, not broad.',
     boardTitle: 'Histoplasma: tiny intracellular yeast vs mold-phase macroconidia',
     boardNote: 'Yeast phase is the clinical recognition anchor: tiny oval yeasts inside macrophages. Mold phase may show tuberculate macroconidia, but culture handling requires safety-aware workflow.',
     ariaLabel: 'Illustrated Histoplasma showing intracellular tiny yeasts in a macrophage and mold phase tuberculate macroconidia',
@@ -2957,6 +3028,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Dermatophyte Comparison: Trichophyton, Microsporum, Epidermophyton',
     eyebrow: 'Visual Atlas / Mycology',
     summary: 'Original bench-card comparison for dermatophyte morphology: microconidia-heavy Trichophyton, spindle macroconidia of Microsporum, and club-shaped macroconidia of Epidermophyton.',
+    searchTitle: 'Trichophyton, Microsporum, Epidermophyton Compared',
+    searchDescription:
+      'Many microconidia mean Trichophyton. Rough spindle macroconidia mean Microsporum. Smooth club macroconidia with no microconidia mean Epidermophyton.',
     boardTitle: 'Dermatophyte comparison: microconidia and macroconidia shapes',
     boardNote: 'Read dermatophytes as a pattern comparison. Trichophyton often leans on microconidia, Microsporum has rough spindle macroconidia, and Epidermophyton has smooth club-shaped macroconidia without microconidia.',
     ariaLabel: 'Illustrated dermatophyte comparison showing Trichophyton microconidia, Microsporum spindle macroconidia, and Epidermophyton club-shaped macroconidia',
@@ -3051,6 +3125,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Candida albicans: Germ Tube and Pseudohyphae',
     eyebrow: 'Visual Atlas / Mycology',
     summary: 'Original bench-card visual for recognizing Candida albicans-style germ tubes and separating true germ tubes from pseudohyphae.',
+    searchTitle: 'Germ Tube Test: True Germ Tube vs Pseudohypha',
+    searchDescription:
+      'A true germ tube leaves the yeast cell with no constriction at the origin. A pinch at the attachment point makes it a pseudohypha, not a positive result.',
     boardTitle: 'Candida albicans: germ tube vs pseudohyphae',
     boardNote: 'A true germ tube has parallel walls and no constriction at the yeast cell. Pseudohyphae show constriction at the attachment point and look more segmented.',
     ariaLabel: 'Illustrated Candida albicans yeast with a true germ tube and pseudohyphae comparison',
@@ -4277,6 +4354,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Aspergillus Species: Conidial Head Comparison',
     eyebrow: 'Visual Atlas / Mycology',
     summary: 'Original bench-card visual comparing Aspergillus conidial heads: fumigatus compact columnar, niger biseriate radiate, flavus variable, and terreus with accessory aleurioconidia.',
+    searchTitle: 'Aspergillus: Conidial Heads of fumigatus, flavus, niger',
+    searchDescription:
+      'A. fumigatus has a compact uniseriate columnar head. A. niger is a biseriate radiate sphere with black conidia; A. flavus is yellow-green with a rough stalk.',
     boardTitle: 'Aspergillus comparison: head shape and seriation across four species',
     boardNote: 'These four share septate acute-angle hyphae. Separate them by conidial head shape and seriation, not by hyphae. Keep species claims tied to culture morphology and validated workflow.',
     ariaLabel: 'Illustrated comparison of Aspergillus fumigatus, niger, flavus, and terreus conidial heads',
@@ -4525,6 +4605,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'CMV Inclusion Pattern: Owl-Eye Study Card',
     eyebrow: 'Visual Atlas / Virology',
     summary: 'Original bench-card visual for recognizing the classic cytomegalovirus inclusion pattern as a morphology review anchor.',
+    searchTitle: 'Owl\'s Eye Inclusion: The Classic CMV Pattern',
+    searchDescription:
+      'A markedly enlarged cell holding one large intranuclear inclusion with a dense center and a pale halo. That combination is the cytomegalovirus owl\'s eye.',
     boardTitle: 'CMV inclusion pattern: enlarged cell with owl-eye nucleus',
     boardNote: 'The study pattern is cytomegaly plus a large intranuclear inclusion and a surrounding halo. Use morphology as an anchor, not a complete result.',
     ariaLabel: 'Illustrated CMV owl-eye inclusion pattern with enlarged cell, intranuclear inclusion, and clear halo',
@@ -4853,6 +4936,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Giardia lamblia: Trophozoite and Cyst',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Giardia trophozoite and cyst morphology in wet preparations and stained stool concentrates, including median body placement and nuclear arrangement.',
+    searchTitle: 'Giardia: Falling-Leaf Trophozoite and Four-Nucleus Cyst',
+    searchDescription:
+      'The trophozoite is pear-shaped with paired anterior nuclei and two comma-shaped median bodies. The oval cyst holds up to four nuclei and curved fibrils.',
     alsoCalled: ['Giardia duodenalis', 'Giardia intestinalis'],
     boardTitle: 'Giardia lamblia: trophozoite and cyst',
     boardNote: 'Trophozoite (en face): bilateral symmetry, paired nuclei ("owl eyes"), two comma-shaped median bodies, ventral sucking disc. Lateral view: "shepherd\'s crook" shape. Cyst: oval, up to 4 nuclei, retracted curved axonemes.',
@@ -4935,6 +5021,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Cryptosporidium: Modified Acid-Fast Oocyst',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visual for recognizing Cryptosporidium oocysts on modified acid-fast stain: staining intensity variability, thick-wall vs. thin-wall biology, and yeast as the primary morphologic mimic.',
+    searchTitle: 'Cryptosporidium Oocysts on Modified Acid-Fast',
+    searchDescription:
+      'Oocysts are round, 4 to 6 microns and stain pink-red, while yeasts keep the green counterstain. Staining is patchy, so scan several fields before reporting.',
     boardTitle: 'Cryptosporidium oocyst: modified AFB vs. yeast comparator',
     boardNote: 'Oocysts stain pink-red (acid-fast positive) with variable intensity against malachite green. About 80% are thick-walled (passed in stool); about 20% are thin-walled (cause autoinfection). Yeast co-occurs and stays green.',
     ariaLabel: 'Illustrated Cryptosporidium oocysts shown pink-red against a blue-green background, and yeast comparator cells shown in green',
@@ -5016,6 +5105,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Entamoeba histolytica: Trophozoite and Cyst',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing E. histolytica/dispar trophozoite and cyst morphology, with nuclear structure detail, erythrophagocytosis as the pathogenicity clue, and E. coli chromatoid comparison.',
+    searchTitle: 'Entamoeba histolytica: Trophozoite and Cyst Features',
+    searchDescription:
+      'A central karyosome with fine even peripheral chromatin, up to four nuclei in the mature cyst, and blunt chromatoid bars. Ingested red cells mean pathogenic.',
     boardTitle: 'Entamoeba histolytica: trophozoite and cyst',
     boardNote: 'Trophozoite: ameboid, single nucleus (central karyosome, fine even peripheral chromatin), ingested RBCs = pathogenic E. histolytica. Cyst: round, <=4 nuclei, chromatoidal bars with smooth blunt ends (vs. E. coli: splintered).',
     ariaLabel: 'Illustrated Entamoeba histolytica trophozoite showing ameboid shape and ingested RBCs, and cyst form showing four nuclei and chromatoidal bars',
@@ -5424,6 +5516,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Trichuris trichiura: Barrel-Shaped Egg with Bipolar Plugs',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Trichuris trichiura (whipworm) eggs in stool: barrel-shaped brown shell with hyaline bipolar plugs at each end - one of the most visually distinctive helminth eggs.',
+    searchTitle: 'Trichuris Eggs: Barrel Shape With a Plug at Each End',
+    searchDescription:
+      'The whipworm egg is a 50 to 55 micron barrel with a thick golden-brown shell and a clear hyaline plug at both poles. A fresh egg holds a single cell.',
     boardTitle: 'Trichuris trichiura egg: barrel shape and bipolar plugs',
     boardNote: 'Barrel-shaped (football-shaped), golden-brown shell, 50-55 x 22-24 um. Hyaline (colorless) plugs protrude from both poles. Unsegmented single cell inside when freshly passed. Eggs float with zinc sulfate but not with formalin-ethyl acetate sedimentation alone.',
     ariaLabel: 'Illustrated Trichuris trichiura egg showing barrel shape with bipolar hyaline plugs at each end',
@@ -5769,6 +5864,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Toxoplasma gondii: Tachyzoite and Tissue Cyst',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Original bench-card visuals for recognizing Toxoplasma gondii tachyzoites and bradyzoite-filled tissue cysts: crescent-shaped tachyzoites, nucleus toward the broad end, and bradyzoites in PAS-positive tissue cysts.',
+    searchTitle: 'Toxoplasma Tachyzoites: Crescent Shape, Nucleus at One End',
+    searchDescription:
+      'Tachyzoites are crescent-shaped and 4 to 8 microns, with one pointed end and the nucleus toward the broad end. Giemsa gives blue cytoplasm and a red nucleus.',
     boardTitle: 'Toxoplasma gondii: tachyzoite and tissue cyst with bradyzoites',
     boardNote: 'Tachyzoite: crescent/banana shape, 2-3 um wide x 4-8 um long, Giemsa: pale blue cytoplasm, red nucleus at broad end. Bradyzoites: within tissue cysts (up to 100 um), cyst wall PAS-positive. Brain, eye, heart, and skeletal muscle are primary tissue cyst locations.',
     ariaLabel: 'Illustrated Toxoplasma gondii tachyzoite showing crescent shape with nucleus at broad end, and tissue cyst containing bradyzoites',
@@ -5954,6 +6052,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Ascaris lumbricoides: Mammillated and Decorticate Eggs',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Ascaris lumbricoides eggs: the bile-stained mammillated (bumpy) fertile egg - the most recognizable helminth egg in clinical parasitology - and the decorticate variant that has lost its outer coat.',
+    searchTitle: 'Ascaris Eggs: Mammillated, Decorticate and Infertile',
+    searchDescription:
+      'The fertile egg is oval and 45 to 70 microns with a thick bumpy coat. Decorticate eggs have lost that coat; infertile eggs are longer with granular content.',
     boardTitle: 'Ascaris lumbricoides egg: fertile mammillated vs. decorticate/infertile',
     boardNote: 'Fertile egg: oval 45-70 um, thick bile-stained mammillated outer coat (bumpy), thick inner shell, unsegmented single cell. Decorticate: same fertile egg without mammillated coat - smooth surface, common after zinc sulfate flotation. Infertile: elongated 80-90 um, irregular outline, disorganized granular content - hardest form to identify.',
     ariaLabel: 'Illustrated Ascaris lumbricoides fertile egg showing bile-stained mammillated bumpy outer coat and inner shell, beside a decorticate or infertile egg without outer coat',
@@ -6200,6 +6301,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Microfilariae: Sheathed vs. Unsheathed - Blood Smear',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for distinguishing microfilariae in thick blood smears: sheath presence and nuclei in the tail differentiate Wuchereria bancrofti (sheathed, no tail nuclei) from Loa loa (sheathed, nuclei to tail tip). Brugia malayi and Onchocerca volvulus noted for comparison.',
+    searchTitle: 'Microfilariae: Sheath First, Then Nuclei in the Tail',
+    searchDescription:
+      'Nuclei running to the very tip mean Loa loa. No nuclei at the tip means W. bancrofti, or Brugia malayi when two discrete terminal nuclei follow a body kink.',
     boardTitle: 'Microfilaria ID: sheath + tail nuclei - the two critical features',
     boardNote: 'W. bancrofti: sheathed (sheath stains faintly or not on Giemsa), no nuclei in tail tip. Loa loa: sheathed (pink-red sheath on Giemsa), nuclei extend continuously to tail tip. Brugia malayi: sheathed (pink-red sheath), two discrete nuclei at tail tip separated by a clear space. Onchocerca volvulus: unsheathed, no tail nuclei - in skin snip, not blood.',
     ariaLabel: 'Illustrated microfilaria of Wuchereria bancrofti in blood smear showing sheath and clean tail, compared to Loa loa with sheath and continuous nuclei to tail tip',
@@ -6474,6 +6578,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Schistosoma spp. Eggs: Spine Location by Species',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for Schistosoma species identification by egg spine position: S. mansoni (large, prominent lateral spine), S. haematobium (terminal spine), and S. japonicum (small, rudimentary lateral spine or none).',
+    searchTitle: 'Schistosoma Eggs: Terminal vs Lateral Spine',
+    searchDescription:
+      'A terminal spine means S. haematobium in urine. A large lateral spine means S. mansoni in stool; a rudimentary one means S. japonicum. None are operculated.',
     boardTitle: 'Schistosoma egg spine: lateral = S. mansoni, terminal = S. haematobium, small/absent = S. japonicum',
     boardNote: 'S. mansoni: 140-240 x 50-80 um - large, prominent lateral spine. In stool. S. haematobium: 110-170 x 40-70 um - terminal spine. In urine (or stool). S. japonicum: 70-100 x 55-65 um - smallest, nearly round, small rudimentary lateral spine (may be absent). In stool. All eggs are non-operculated, acid-fast negative, and contain a fully developed miracidium when fresh.',
     ariaLabel: 'Illustrated Schistosoma mansoni egg with prominent lateral spine and Schistosoma haematobium egg with terminal spine',
@@ -7123,6 +7230,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Operculated Trematode Egg Comparison: Diphyllobothrium, Paragonimus, Fasciola, Clonorchis',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card comparison of the four common operculated helminth eggs: Diphyllobothrium latum (~65 um, abopercular knob), Paragonimus westermani (~90 um, shouldered operculum), Fasciola hepatica/Fasciolopsis buski (~140 um, largest, thin shell), and Clonorchis/Opisthorchis (~30 um, smallest, shoulder rim).',
+    searchTitle: 'Operculated Eggs: Which Four, and How to Tell Them Apart',
+    searchDescription:
+      'Size orders them: Clonorchis near 30 microns, Diphyllobothrium near 65 with a knob, Paragonimus near 90 with shoulders, Fasciola near 140 and thin-shelled.',
     boardTitle: 'Operculated egg size ladder: Clonorchis < Diphyllobothrium < Paragonimus < Fasciola',
     boardNote: 'Size ladder (smallest to largest): Clonorchis/Opisthorchis ~30 um (tiny operculum, shoulder rim, abopercular knob) -> Diphyllobothrium latum ~65 um (oval, opercular shoulder, abopercular knob) -> Paragonimus westermani ~90 um (thick shell, shouldered operculum, golden-brown) -> Fasciola/Fasciolopsis ~140 um (largest, thin shell, indistinct operculum, yellow-brown). All pass in feces (Paragonimus also in sputum).',
     ariaLabel: 'Illustrated size comparison of four operculated helminth eggs from smallest Clonorchis at 30 um to largest Fasciola at 140 um',
@@ -7386,6 +7496,9 @@ export const atlasPages: AtlasPage[] = [
     title: 'Clonorchis sinensis / Opisthorchis spp.: Operculated Biliary Fluke Egg',
     eyebrow: 'Visual Atlas / Parasitology',
     summary: 'Bench-card visuals for recognizing Clonorchis sinensis and Opisthorchis spp. eggs: the smallest common operculated helminth egg (~28-35 um), flask or vase shape, prominent shoulder rim at the opercular end, tiny knob at the abopercular end, and bile-staining.',
+    searchTitle: 'Clonorchis Egg: Shoulder Rim and Abopercular Knob',
+    searchDescription:
+      'At 28 to 35 microns it is the smallest common operculated egg: flask-shaped, bile-stained, with a shoulder rim at the lid and a tiny knob at the far end.',
     boardTitle: 'Clonorchis / Opisthorchis egg: flask-shaped, opercular shoulder, abopercular knob',
     boardNote: 'Clonorchis sinensis (Chinese liver fluke) and Opisthorchis spp. eggs are morphologically identical. ~28-35 um - the smallest common operculated egg (smaller than Diphyllobothrium ~65 um). Flask/vase shape. Prominent shoulder rim (thickening) at the opercular end where the operculum sits. Tiny knob or protuberance at the abopercular (non-opercular) end. Bile-stained golden-brown. Fully embryonated (miracidium inside) when shed in feces.',
     ariaLabel: 'Illustrated Clonorchis sinensis egg showing flask shape with opercular shoulder rim and tiny abopercular knob, approximately 30 um',

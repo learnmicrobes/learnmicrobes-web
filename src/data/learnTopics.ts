@@ -14,6 +14,9 @@ export type LearnTopic = {
     | 'Molecular and Immunodiagnostics'
     | 'Bench and Exam Integration';
   summary: string;
+  /** See AtlasPage.searchTitle - same purpose, same length limits. */
+  searchTitle?: string;
+  searchDescription?: string;
   whyItMatters: string;
   principle: string;
   basicSteps: string[];
@@ -451,6 +454,9 @@ const coreLearnTopics: LearnTopic[] = [
     title: 'Acid-Fast Stain',
     category: 'Core Methods',
     summary: 'Acid-fast stains help detect organisms with waxy cell walls, especially Mycobacterium and partially acid-fast organisms such as Nocardia.',
+    searchTitle: 'Acid-Fast Stain: What It Catches and What It Misses',
+    searchDescription:
+      'Why mycolic acid holds carbol fuchsin through acid-alcohol, how the fluorochrome method differs, and why AFB is a method flag rather than a species name.',
     whyItMatters: 'AFB concern changes safety, processing, media, incubation time, and reporting urgency.',
     principle: 'Mycolic acid-rich cell walls resist routine staining but retain carbol fuchsin or fluorochrome stains after acid-alcohol decolorization.',
     basicSteps: [
@@ -721,6 +727,9 @@ const coreLearnTopics: LearnTopic[] = [
     title: 'Hanging Drop Preparation',
     category: 'Core Methods',
     summary: 'A hanging drop preparation is a wet mount method used to observe true motility in living organisms.',
+    searchTitle: 'Hanging Drop Method: True Motility vs Brownian Motion',
+    searchDescription:
+      'How to set up a hanging drop on a depression slide and read it: true motility travels somewhere, while Brownian motion only wiggles in place.',
     whyItMatters: 'Motility can support identification branches, but it must be separated from Brownian motion and preparation artifacts.',
     principle: 'A drop of suspension hangs from a coverslip over a depression slide, allowing organisms to move in a thicker fluid space.',
     basicSteps: [
