@@ -18,8 +18,40 @@ import {
 } from '../../data/caseStudies';
 import { trackEvent } from '../../utils/analytics';
 import { subjectStainClass } from '../../data/subjectStains';
-import { benchAreaKey, benchAreaLabel } from '../../data/benchAreas';
+import { benchAreaKey, benchAreaLabel, benchAreaOrder } from '../../data/benchAreas';
 import './CaseStudySimulator.css';
+
+/**
+ * Where the right answer appears.
+ *
+ * Everyone drafts a question with the right answer first, and every case here
+ * was written that way: all 15 correct answers sat at A. That was a latent tell
+ * until the lettered badges went on, and then it became one a student reads off
+ * in two questions. Fixing the data would only last until the next case is
+ * written, so the order is decided here instead.
+ *
+ * It has to be stable. Reshuffling on every render would move the choices
+ * the moment one is tapped, so the rotation is derived from the case and stage
+ * ids (FNV-1a) and is the same every time that stage is shown. Across the
+ * current bank it lands A 5, B 4, C 6.
+ */
+const stableOffset = (key: string, length: number): number => {
+  let hash = 2166136261;
+  for (let index = 0; index < key.length; index += 1) {
+    hash ^= key.charCodeAt(index);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return length > 0 ? hash % length : 0;
+};
+
+const orderChoices = <T,>(choices: T[], key: string): T[] => {
+  const offset = stableOffset(key, choices.length);
+  return [...choices.slice(offset), ...choices.slice(0, offset)];
+};
+
+// Below this a stage photo sits beside its caption on a wide screen instead of
+// above it. The DPDx malaria frames are 300px; the India ink frame is 700.
+const COMPACT_IMAGE_WIDTH = 480;
 
 const difficultyOrder: CaseDifficulty[] = ['beginner', 'intermediate', 'advanced'];
 
@@ -48,9 +80,20 @@ export default function CaseStudySimulator() {
   const [answers, setAnswers] = useState<StageAnswer[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
 
-  const visibleCases = useMemo(() => (
-    difficulty === 'all' ? caseStudies : caseStudies.filter((item) => item.difficulty === difficulty)
-  ), [difficulty]);
+  // Bench order, then difficulty - the same order the Practice page drills in.
+  // The array is in the order cases happened to be written, which put
+  // preanalytics sixth and virology after postanalytics. A student should meet
+  // the cases the way a specimen meets the lab: before the bench, at it, after.
+  const visibleCases = useMemo(() => {
+    const filtered = difficulty === 'all'
+      ? caseStudies
+      : caseStudies.filter((item) => item.difficulty === difficulty);
+
+    return [...filtered].sort((first, second) => (
+      benchAreaOrder.indexOf(first.area) - benchAreaOrder.indexOf(second.area)
+      || difficultyOrder.indexOf(first.difficulty) - difficultyOrder.indexOf(second.difficulty)
+    ));
+  }, [difficulty]);
 
   const startCase = (caseStudy: CaseStudy) => {
     trackEvent('case_study_started', { caseId: caseStudy.id, difficulty: caseStudy.difficulty });
@@ -284,7 +327,11 @@ export default function CaseStudySimulator() {
             </div>
 
             {currentStage.image && (
-              <figure className="case-image">
+              <figure
+                className={`case-image${
+                  currentStage.image.width < COMPACT_IMAGE_WIDTH ? ' case-image--compact' : ''
+                }`}
+              >
                 <img
                   src={currentStage.image.src}
                   alt={currentStage.image.alt}
@@ -316,7 +363,7 @@ export default function CaseStudySimulator() {
               </span>
               <h2>{currentStage.question}</h2>
               <div className="case-choices" role="group" aria-label="Answer choices">
-                {currentStage.choices.map((choice) => {
+                {orderChoices(currentStage.choices, `${activeCase.id}:${currentStage.id}`).map((choice, position) => {
                   const isPicked = currentAnswer?.choiceId === choice.id || selectedChoice === choice.id;
                   const revealed = Boolean(currentAnswer);
                   const state = !revealed
@@ -333,8 +380,10 @@ export default function CaseStudySimulator() {
                       onClick={() => submitChoice(choice.id)}
                       disabled={revealed}
                     >
+                      {/* The position on screen, not the data id: once the order is
+                          rotated, the id would read C, A, B down the column. */}
                       <span className="case-choice-letter" aria-hidden="true">
-                        {choice.id.toUpperCase()}
+                        {String.fromCharCode(65 + position)}
                       </span>
                       <span className="case-choice-body">{choice.label}</span>
                       {revealed && choice.correct && (

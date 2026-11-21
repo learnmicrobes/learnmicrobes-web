@@ -418,6 +418,23 @@
   gap: 0.3rem;
 }
 
+/* A small source cannot fill the column. The DPDx malaria frames are 300px,
+   and blowing one up to 700 would invent the very detail the question turns
+   on - which ring sits in which cell. Left alone it took 43% of the column
+   with 399px of nothing beside it and the caption stranded underneath.
+
+   So on a wide screen the caption moves into that space: photo left, words
+   right, one block across the column. On a phone the column is barely wider
+   than the photo, so it stays stacked. 621px is where the full-bleed phone
+   layout ends. */
+@media (min-width: 621px) {
+  .case-image--compact {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 1.1rem;
+  }
+}
+
 .case-image figcaption p {
   margin: 0;
   color: var(--ink-muted);
