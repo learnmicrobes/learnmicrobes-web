@@ -30,10 +30,14 @@ import './CaseStudySimulator.css';
  * in two questions. Fixing the data would only last until the next case is
  * written, so the order is decided here instead.
  *
- * It has to be stable. Reshuffling on every render would move the choices
- * the moment one is tapped, so the rotation is derived from the case and stage
- * ids (FNV-1a) and is the same every time that stage is shown. Across the
- * current bank it lands A 5, B 4, C 6.
+ * It has to be stable. Reshuffling on every render would move the choices the
+ * moment one is tapped, so each position comes from a hash (FNV-1a) of the case
+ * and stage ids and is the same every time that stage is shown.
+ *
+ * A hash alone was not enough. It spread the bank well but put all three
+ * answers of the schistosoma case at B - the same tell again, just inside one
+ * case. So the position is planned per case: hashed, but never the same as the
+ * stage before it. Across the bank that gives no back-to-back repeats at all.
  */
 const stableOffset = (key: string, length: number): number => {
   let hash = 2166136261;
@@ -44,8 +48,34 @@ const stableOffset = (key: string, length: number): number => {
   return length > 0 ? hash % length : 0;
 };
 
-const orderChoices = <T,>(choices: T[], key: string): T[] => {
-  const offset = stableOffset(key, choices.length);
+/** Where the right answer should sit on screen, for every stage of a case. */
+const planCorrectPositions = (item: CaseStudy): number[] => {
+  const positions: number[] = [];
+
+  item.stages.forEach((stage, index) => {
+    const length = stage.choices.length;
+    let target = stableOffset(`${item.id}:${stage.id}`, length);
+
+    if (index > 0 && length > 1 && target === positions[index - 1]) {
+      target = (target + 1) % length;
+    }
+
+    positions.push(target);
+  });
+
+  return positions;
+};
+
+/** Rotates the choices so the correct one lands on `target`, order otherwise kept. */
+const orderChoices = <T extends { correct: boolean }>(choices: T[], target: number): T[] => {
+  const length = choices.length;
+  const correctIndex = choices.findIndex((choice) => choice.correct);
+
+  if (length === 0 || correctIndex < 0) {
+    return choices;
+  }
+
+  const offset = (((correctIndex - target) % length) + length) % length;
   return [...choices.slice(offset), ...choices.slice(0, offset)];
 };
 
@@ -112,6 +142,10 @@ export default function CaseStudySimulator() {
   };
 
   const currentStage = activeCase?.stages[stageIndex] ?? null;
+  const correctPositions = useMemo(
+    () => (activeCase ? planCorrectPositions(activeCase) : []),
+    [activeCase]
+  );
   const currentAnswer = answers[stageIndex] ?? null;
   const isCaseComplete = Boolean(activeCase) && stageIndex >= (activeCase?.stages.length ?? 0);
 
@@ -363,7 +397,7 @@ export default function CaseStudySimulator() {
               </span>
               <h2>{currentStage.question}</h2>
               <div className="case-choices" role="group" aria-label="Answer choices">
-                {orderChoices(currentStage.choices, `${activeCase.id}:${currentStage.id}`).map((choice, position) => {
+                {orderChoices(currentStage.choices, correctPositions[stageIndex] ?? 0).map((choice, position) => {
                   const isPicked = currentAnswer?.choiceId === choice.id || selectedChoice === choice.id;
                   const revealed = Boolean(currentAnswer);
                   const state = !revealed
