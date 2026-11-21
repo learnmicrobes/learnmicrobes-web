@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SUPPORT_EMAIL } from '../../config/contact';
-import { ALPHA_SIGNUP_FORM_URL } from '../../config/forms';
-import { trackEvent } from '../../utils/analytics';
 import './Shell.css';
 
 const socialLinks = [
@@ -60,17 +58,6 @@ export default function SiteFooter() {
           {pageLinks.map((link) => (
             <Link key={link.path} to={link.path}>{link.label}</Link>
           ))}
-          <a
-            href={ALPHA_SIGNUP_FORM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => {
-              trackEvent('alpha_join_clicked', { location: 'footer', destination: ALPHA_SIGNUP_FORM_URL });
-              trackEvent('lead_form_viewed', { location: 'footer', form_name: 'beta_tester_form' });
-            }}
-          >
-            Join the Lab List
-          </a>
         </nav>
 
         <p className="lm-footer-note">

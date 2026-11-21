@@ -32,7 +32,7 @@ const NAV_TIMEOUT_MS = 45000;
 // auth routes arrive from emails and shared links, and the last three are the
 // nav-label aliases (see routeAliases in src/components/Shell/navigation.ts).
 // Without a file of its own each one is a real 404 before React ever boots.
-const EXTRA_ROUTES = ['/auth', '/login', '/register', '/account', '/join-alpha', '/atlas', '/review', '/tools'];
+const EXTRA_ROUTES = ['/auth', '/login', '/register', '/account', '/atlas', '/review', '/tools'];
 
 // Keep analytics out of GA4, and skip assets that never change the markup.
 const BLOCKED_REQUEST = /googletagmanager\.com|google-analytics\.com|doubleclick\.net/;

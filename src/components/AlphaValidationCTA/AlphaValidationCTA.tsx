@@ -1,5 +1,5 @@
 import React from 'react';
-import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from '../../config/forms';
+import { FEEDBACK_FORM_URL } from '../../config/forms';
 import { trackEvent } from '../../utils/analytics';
 import './AlphaValidationCTA.css';
 
@@ -16,20 +16,8 @@ const openExternalForm = (url: string) => {
 const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
   location,
   title = 'Help shape Learn Microbes',
-  body = 'Create an account to save progress, bookmarks, and quiz history. Use the sign-up form to tell us your role, study goal, hardest topic, and what we should build next.'
+  body = 'Tell us what helped, what still feels unclear, and what we should build next. Your notes go into the next round of bench cards and study tools.'
 }) => {
-  const handleJoinAlpha = () => {
-    trackEvent('alpha_join_clicked', {
-      location,
-      destination: ALPHA_SIGNUP_FORM_URL
-    });
-    trackEvent('lead_form_viewed', {
-      location,
-      form_name: 'beta_tester_form'
-    });
-    openExternalForm(ALPHA_SIGNUP_FORM_URL);
-  };
-
   const handleFeedback = () => {
     trackEvent('feedback_clicked', {
       location,
@@ -50,7 +38,6 @@ const AlphaValidationCTA: React.FC<AlphaValidationCTAProps> = ({
         <p>{body}</p>
       </div>
       <div className="alpha-validation-actions">
-        <button type="button" onClick={handleJoinAlpha}>Join the Lab List</button>
         <button type="button" onClick={handleFeedback}>Send feedback</button>
       </div>
     </section>

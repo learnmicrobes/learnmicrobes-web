@@ -52,12 +52,6 @@
   cursor: pointer;
 }
 
-.alpha-validation-actions button:first-child {
-  background: var(--primary-color);
-  border-color: transparent;
-  color: #ffffff;
-}
-
 .alpha-validation-actions button:hover,
 .alpha-validation-actions button:focus-visible {
   border-color: rgba(36, 92, 105, 0.34);
@@ -86,11 +80,6 @@ body.dark-mode .alpha-validation-actions button {
   background: #111827;
   border-color: #2d3748;
   color: #5eead4;
-}
-
-body.dark-mode .alpha-validation-actions button:first-child {
-  background: #4fd1c5;
-  color: #1a202c;
 }
 
 @media (max-width: 720px) {

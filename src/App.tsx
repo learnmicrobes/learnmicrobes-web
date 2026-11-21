@@ -16,7 +16,7 @@ import {
   faTrophy,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
-import { ALPHA_SIGNUP_FORM_URL, FEEDBACK_FORM_URL } from './config/forms';
+import { FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
@@ -413,9 +413,7 @@ export default function App() {
                                     ? 'Sign In'
                                     : location.pathname.includes('register')
                                       ? 'Create Account'
-                                      : location.pathname.includes('join-alpha')
-                                        ? 'Join the Lab List'
-                                        : location.pathname.includes('about')
+                                      : location.pathname.includes('about')
                                         ? 'About'
                                         : location.pathname.includes('mission')
                                           ? 'Mission'
@@ -523,18 +521,6 @@ export default function App() {
 
   const openExternalForm = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleAlphaSignupClick = (locationName: string) => {
-    trackEvent('alpha_join_clicked', {
-      location: locationName,
-      destination: ALPHA_SIGNUP_FORM_URL
-    });
-    trackEvent('lead_form_viewed', {
-      location: locationName,
-      form_name: 'beta_tester_form'
-    });
-    openExternalForm(ALPHA_SIGNUP_FORM_URL);
   };
 
   const handleFeedbackClick = (locationName: string) => {
@@ -825,10 +811,6 @@ export default function App() {
       '/guides': {
         title: 'Clinical Microbiology Study Guides | Learn Microbes',
         description: 'Long-form walkthroughs that join Gram stain, colony, media and key tests into one decision: organism separation logic, parasitology, mycology and virology.'
-      },
-      '/join-alpha': {
-        title: 'Join the Lab List | Learn Microbes',
-        description: 'Join the Learn Microbes Lab List for updates as new study tools are built: saved progress, bookmarks, quiz history, and ASCP microbiology review. Free to use.'
       },
       '/do-not-routine-culture': {
         title: 'Special Pathogen Safety Review | Do Not Routine Culture | Learn Microbes',

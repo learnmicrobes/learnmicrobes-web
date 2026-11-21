@@ -8,7 +8,6 @@ import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
 import { buildAuthRedirectPath } from '../../utils/authRedirect';
 import { subjectStainClass } from '../../data/subjectStains';
-import { ALPHA_SIGNUP_FORM_URL } from '../../config/forms';
 import './VisualAtlas.css';
 import { atlasPages, type AtlasPage, type TubeVisual } from '../../data/atlasPages';
 import { renderExpansionVisual } from './atlasExpansionRenderers';
@@ -6301,20 +6300,6 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
     navigate(buildAuthRedirectPath('/register', returnPath));
   };
 
-  const handleJoinBetaClick = () => {
-    trackEvent('alpha_join_clicked', {
-      location: 'atlas_card_footer',
-      destination: ALPHA_SIGNUP_FORM_URL,
-      visual_slug: page.slug
-    });
-    trackEvent('lead_form_viewed', {
-      location: 'atlas_card_footer',
-      form_name: 'beta_tester_form',
-      visual_slug: page.slug
-    });
-    window.open(ALPHA_SIGNUP_FORM_URL, '_blank', 'noopener,noreferrer');
-  };
-
   const renderVisualSequence = (placement: 'top' | 'bottom') => (
     <nav
       ref={placement === 'top' ? visualSequenceRef : undefined}
@@ -6610,16 +6595,6 @@ function VisualAtlasPage({ page }: { page: AtlasPage }) {
       )}
 
       {renderVisualSequence('bottom')}
-
-      {!user && (
-        <div className="visual-updates-strip">
-          <div>
-            <span className="visual-updates-kicker">Get updates</span>
-            <p>New bench cards and study tools are added regularly. Join the Lab List to hear about new cards and have a say in what gets built next.</p>
-          </div>
-          <button type="button" onClick={handleJoinBetaClick}>Join the Lab List</button>
-        </div>
-      )}
     </div>
   );
 }

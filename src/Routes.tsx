@@ -3,7 +3,6 @@ import App from "./App";
 import About from "./components/About";
 import InfoPage from "./components/InfoPages";
 import NotFound from "./components/NotFound";
-import JoinAlpha from "./components/JoinAlpha";
 import { lazyWithPreload } from "./utils/lazyWithPreload";
 
 // Every page except the small static ones downloads on first visit, so a phone
@@ -95,7 +94,6 @@ export default function AppRoutes() {
         <Route path="login" element={<AuthPage />} />
         <Route path="register" element={<AuthPage />} />
         <Route path="account" element={<AccountPage />} />
-        <Route path="join-alpha" element={<JoinAlpha />} />
         <Route path="ascp-microbiology-review" element={<ASCPReviewPage />} />
         <Route path="biochemical-calculator" element={<BioCalculator />} />
         <Route path="gram-positive-roadmap" element={<GramPositiveRoadmap />} />
