@@ -1255,6 +1255,203 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Stool ova and parasite', path: '/learn/stool-ova-and-parasite' },
       { label: 'Helminths', path: '/learn/helminths' }
     ]
+  },
+  {
+    id: 'entamoeba-dysentery',
+    title: 'Two weeks of bloody diarrhea',
+    area: 'analytic-parasitology',
+    difficulty: 'intermediate',
+    specimen: 'Stool for ova and parasites',
+    presentation:
+      'A 29-year-old has had two weeks of cramping abdominal pain and frequent loose stools with blood and mucus, with little fever. Two people in the same household have had milder diarrhea. The first stool is collected at home and brought in later that morning.',
+    stages: [
+      {
+        id: 'setup',
+        stageLabel: 'Specimen and setup',
+        findings: [
+          'Liquid stool with blood and mucus, in a clean container with no preservative',
+          'Passed about two hours before it reached the laboratory'
+        ],
+        question: 'What is the problem with this specimen, if any?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Trophozoites in unpreserved liquid stool break down quickly, so ask for a fresh specimen placed into preservative as soon as it is passed.',
+            correct: true,
+            feedback:
+              'Correct. Liquid stool from dysentery carries trophozoites rather than cysts, and trophozoites disintegrate soon after passage. That is why many laboratories ask for liquid stool to be examined within about 30 minutes or preserved straight away. A specimen placed into fixative at collection keeps them intact for the permanent stain.'
+          },
+          {
+            id: 'b',
+            label: 'None: amoebae are hardy, so a two-hour delay will not affect the result.',
+            correct: false,
+            feedback:
+              'Cysts are hardy; trophozoites are not. A liquid, bloody stool is exactly where trophozoites are expected, and two hours unpreserved is long enough for them to break down and be missed.'
+          },
+          {
+            id: 'c',
+            label: 'Refrigerate it and examine it with tomorrow\'s batch, since the cold will preserve the trophozoites.',
+            correct: false,
+            feedback:
+              'Refrigeration slows decay but does not keep trophozoites recognizable overnight. Preservation at the time of collection is what keeps them intact.'
+          }
+        ],
+        teachingPoint:
+          'Cysts survive the trip; trophozoites do not. Match the handling to the stage you expect: liquid stool means trophozoites, and trophozoites need fixative fast.'
+      },
+      {
+        id: 'cyst',
+        stageLabel: 'Cysts on the trichrome',
+        findings: [
+          'New specimen, preserved at collection; trichrome-stained smear shown below',
+          'Four nuclei counted across focal planes, each with a small central karyosome',
+          'Cysts about 12 to 15 micrometers across'
+        ],
+        image: {
+          src: '/visual-atlas/photos/parasitology/entamoeba-cyst-trichrome-cdc-dpdx.jpg',
+          // Describes the cyst without naming the organism the stage asks about.
+          alt:
+            'Trichrome-stained stool smear: a round cyst with one nucleus in sharp focus, a dot-like karyosome at its center. Other nuclei sit in different focal planes.',
+          caption: 'Trichrome smear. Count the nuclei across focal planes, not in one.',
+          credit: 'Source: CDC / DPDx',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html',
+          width: 300,
+          height: 300
+        },
+        question: 'What can be reported from these cysts?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Entamoeba histolytica/E. dispar: the two have identical cysts, so the report names both.',
+            correct: true,
+            feedback:
+              'Correct. Four nuclei with small central karyosomes, at this size, fit the E. histolytica/E. dispar group. Cyst morphology cannot separate the pathogen from its harmless twin, so the report names both and leaves the distinction to antigen or molecular testing.'
+          },
+          {
+            id: 'b',
+            label: 'Entamoeba histolytica, since the patient has bloody diarrhea.',
+            correct: false,
+            feedback:
+              'The symptoms make E. histolytica likely, but the cyst cannot prove it. E. dispar is common and looks exactly the same, so naming E. histolytica from a cyst overcalls the finding.'
+          },
+          {
+            id: 'c',
+            label: 'Entamoeba hartmanni, a harmless small amoeba.',
+            correct: false,
+            feedback:
+              'E. hartmanni is built the same way but measures under 10 micrometers. These cysts are well above that, so size rules it out.'
+          }
+        ],
+        teachingPoint:
+          'Report what the morphology can prove. For a four-nucleate Entamoeba cyst, that is E. histolytica/E. dispar, not one or the other.'
+      },
+      {
+        id: 'trophozoite',
+        stageLabel: 'A trophozoite',
+        findings: [
+          'Same smear: an amoebic trophozoite, shown below',
+          'Single nucleus with a small central karyosome and fine, even peripheral chromatin'
+        ],
+        image: {
+          src: '/visual-atlas/photos/parasitology/entamoeba-trophozoite-rbc-trichrome-cdc-dpdx.jpg',
+          // Describes what is visible without naming what it proves.
+          alt:
+            'Trichrome-stained stool smear: an amoeba trophozoite with dark, round inclusions inside it.',
+          caption: 'Trichrome smear. Look at what is inside the amoeba, not just its outline.',
+          credit: 'Source: CDC / DPDx',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://www.cdc.gov/dpdx/amebiasis/index.html',
+          width: 300,
+          height: 300
+        },
+        question: 'What does this trophozoite change?',
+        choices: [
+          {
+            id: 'a',
+            label: 'It supports Entamoeba histolytica: ingested red cells are the one morphologic feature that separates it from E. dispar.',
+            correct: true,
+            feedback:
+              'Correct. The dark inclusions are swallowed red cells. E. dispar is not associated with ingested red cells, so on morphology this is the finding that names E. histolytica, and it fits the bloody diarrhea.'
+          },
+          {
+            id: 'b',
+            label: 'Nothing: trophozoites cannot be told apart either, so the report stays E. histolytica/E. dispar.',
+            correct: false,
+            feedback:
+              'Usually that is true, but this trophozoite carries the exception. Ingested red cells are the one feature morphology can use to separate E. histolytica from E. dispar.'
+          },
+          {
+            id: 'c',
+            label: 'It points to Entamoeba coli, whose trophozoites are larger.',
+            correct: false,
+            feedback:
+              'E. coli trophozoites have an off-center karyosome and coarse, uneven chromatin, and they do not swallow red cells. This one has a central karyosome, fine chromatin, and red cells inside it.'
+          }
+        ],
+        teachingPoint:
+          'A trophozoite with ingested red cells is where morphology finally gets to name E. histolytica. Without that finding, the report stays at E. histolytica/E. dispar.'
+      },
+      {
+        id: 'commensal',
+        stageLabel: 'Another organism',
+        findings: [
+          'Same smear: a second kind of cyst, shown below',
+          'Five nuclei visible in a single focal plane'
+        ],
+        image: {
+          src: '/visual-atlas/photos/parasitology/entamoeba-coli-cyst-trichrome-cdc-dpdx.jpg',
+          // Describes the cyst without naming the species the stage asks about.
+          alt:
+            'Trichrome-stained stool smear: a large, round cyst with several faint, ring-shaped nuclei.',
+          caption: 'Trichrome smear. Several nuclei show in this plane; focus up and down to count them all.',
+          credit: 'Source: CDC / DPDx',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://www.cdc.gov/dpdx/intestinalamebae/index.html',
+          width: 300,
+          height: 300
+        },
+        question: 'What is this, and what happens to it in the report?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Entamoeba coli: more than four nuclei rules out E. histolytica. It is reported as well, as a harmless organism that marks fecal-oral exposure.',
+            correct: true,
+            feedback:
+              'Correct. A mature E. histolytica or E. dispar cyst stops at four nuclei, while E. coli carries up to eight, so five already rules out the pathogen. Many laboratories still report nonpathogens, because they show the patient swallowed fecally contaminated food or water - the same route that brought the pathogen.'
+          },
+          {
+            id: 'b',
+            label: 'A second Entamoeba histolytica cyst, since Entamoeba cysts all look alike.',
+            correct: false,
+            feedback:
+              'Count the nuclei. Four is the most an E. histolytica or E. dispar cyst carries, so a cyst with five cannot be either.'
+          },
+          {
+            id: 'c',
+            label: 'Entamoeba coli, but it is left off the report because it does not cause disease.',
+            correct: false,
+            feedback:
+              'Policies differ, but many laboratories report nonpathogens because they are evidence of fecal-oral exposure, the same route the pathogen took. They do not explain the symptoms, but they are not noise either.'
+          }
+        ],
+        teachingPoint:
+          'Count the nuclei before you name an Entamoeba cyst. More than four is E. coli: harmless itself, but a sign of how the patient was exposed.'
+      }
+    ],
+    finalAnswer: 'Entamoeba histolytica trophozoites with ingested red cells; Entamoeba coli cysts also seen',
+    reportingNote:
+      'Report each organism separately, with the stage seen. Where only cysts are found, report E. histolytica/E. dispar and follow your laboratory\'s policy on recommending antigen or molecular testing to separate them. Policies on reporting nonpathogenic amoebae vary, so follow yours.',
+    takeaways: [
+      'Liquid stool carries trophozoites, and trophozoites break down fast, so preserve at collection.',
+      'A four-nucleate Entamoeba cyst is reported as E. histolytica/E. dispar; only ingested red cells in a trophozoite let morphology name E. histolytica.',
+      'Count the nuclei: more than four is E. coli, harmless itself but a sign of how the patient was exposed.'
+    ],
+    relatedLinks: [
+      { label: 'Entamoeba histolytica', path: '/visuals/entamoeba-histolytica' },
+      { label: 'Entamoeba compared', path: '/visuals/entamoeba-comparison-panel' },
+      { label: 'Intestinal protozoa', path: '/learn/intestinal-protozoa' }
+    ]
   }
 ];
 
