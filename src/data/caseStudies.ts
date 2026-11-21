@@ -101,14 +101,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'This is Streptococcus pyogenes and no further workup is needed.',
+            label: 'This is Streptococcus pyogenes, a common cause of wound infection, so no further workup is needed.',
             correct: false,
             feedback:
               'Streptococci appear as cocci in chains or pairs, not clusters. Shape and arrangement are part of the read, not just the Gram reaction.'
           },
           {
             id: 'c',
-            label: 'Report the Gram stain as normal skin flora and stop.',
+            label: 'Report the Gram stain as normal skin flora and stop, since skin organisms are expected here.',
             correct: false,
             feedback:
               'Many neutrophils with a single predominant organism from a deep specimen is not a normal-flora picture. Specimen source and inflammation change the interpretation.'
@@ -135,14 +135,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Oxidase, to confirm the organism is a Staphylococcus.',
+            label: 'Oxidase, since it is the standard first split for Gram-positive cocci seen in clusters.',
             correct: false,
             feedback:
               'Oxidase is a Gram-negative workhorse, especially for separating the non-fermenters. It is not the first split for Gram-positive cocci.'
           },
           {
             id: 'c',
-            label: 'Optochin, since the colonies show hemolysis.',
+            label: 'Optochin, since the colonies are clearly hemolytic on the blood agar plate.',
             correct: false,
             feedback:
               'Optochin is used for alpha-hemolytic streptococci to identify S. pneumoniae. It does not apply to clustered Gram-positive cocci.'
@@ -169,7 +169,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Coagulase-negative Staphylococcus. Report as probable contaminant.',
+            label: 'Coagulase-negative Staphylococcus, so report it as a probable skin contaminant and stop there.',
             correct: false,
             feedback:
               'The coagulase test was positive. A positive coagulase moves you to S. aureus, which from a purulent deep wound is clinically significant.'
@@ -227,14 +227,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'It sterilizes the specimen before plating.',
+            label: 'It delivers a measured volume and sterilizes the specimen as it is plated.',
             correct: false,
             feedback:
               'A calibrated loop delivers a known volume. It does not sterilize anything, and sterilizing the specimen would defeat the culture.'
           },
           {
             id: 'c',
-            label: 'It is only used to make the plate look tidy.',
+            label: 'It is only there to give a tidy streak pattern on the plate.',
             correct: false,
             feedback:
               'Streaking pattern matters for isolation, but the purpose of the calibrated loop is quantitation.'
@@ -269,7 +269,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Set up an anaerobic culture, since urine is a sterile site.',
+            label: 'Set up an anaerobic culture in addition to the routine plates, since urine comes from a normally sterile site.',
             correct: false,
             feedback:
               'Routine urine cultures are not set anaerobically. The organism is already growing well aerobically on routine media.'
@@ -377,7 +377,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Call it artifact, since yeast in CSF is always contamination.',
+            label: 'Call it artifact, since yeast seen in CSF is nearly always contamination.',
             correct: false,
             feedback:
               'CSF is a sterile site. Encapsulated yeast there is a significant finding, particularly in an immunocompromised patient.'
@@ -405,14 +405,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Growth on Sabouraud agar, which only Cryptococcus can do.',
+            label: 'Growth on Sabouraud agar at 30 degrees, which only Cryptococcus among the yeasts can manage.',
             correct: false,
             feedback:
               'Sabouraud agar supports many yeasts and molds including Candida. Growth there does not discriminate.'
           },
           {
             id: 'c',
-            label: 'The presence of budding, which is unique to Cryptococcus.',
+            label: 'The presence of budding yeast forms, which among the pathogenic fungi is unique to Cryptococcus.',
             correct: false,
             feedback:
               'Budding is common to many yeasts. The capsule and urease result are the discriminating findings here.'
@@ -463,7 +463,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Process on the open bench, since sputum is a routine respiratory specimen.',
+            label: 'Process on the open bench with standard precautions, since sputum is a routine respiratory specimen handled daily.',
             correct: false,
             feedback:
               'This is the highest-risk error in the scenario. Aerosolizing M. tuberculosis on an open bench endangers the whole laboratory.'
@@ -497,14 +497,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'The patient definitively has tuberculosis.',
+            label: 'The patient definitively has tuberculosis, since acid-fast bacilli in sputum are specific for M. tuberculosis.',
             correct: false,
             feedback:
               'Non-tuberculous mycobacteria are also acid fast. Calling TB from a smear alone overstates what the method can support.'
           },
           {
             id: 'c',
-            label: 'The specimen is contaminated and should be rejected.',
+            label: 'The specimen is contaminated with oral flora and should be rejected and recollected before any further testing.',
             correct: false,
             feedback:
               'Acid-fast bacilli in sputum from this patient is a meaningful positive finding, not evidence of contamination.'
@@ -532,14 +532,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Hold the result until culture growth confirms it in six weeks.',
+            label: 'Hold the result until culture growth confirms it, since culture is the reference method and takes up to six weeks.',
             correct: false,
             feedback:
               'Waiting weeks on a result that changes isolation and public health action is unsafe. NAAT exists to shorten exactly this gap.'
           },
           {
             id: 'c',
-            label: 'Report only the smear result, since NAAT is a screening test.',
+            label: 'Report only the smear result for now, since NAAT is a screening test that still needs culture confirmation.',
             correct: false,
             feedback:
               'NAAT for M. tuberculosis complex is a confirmatory diagnostic in this context, not a screen to be withheld.'
@@ -597,7 +597,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Make a thin film only, since that is the one used to identify the species.',
+            label: 'Make a thin film only, since that is the film used for the species.',
             correct: false,
             feedback:
               'The thin film names the species, but the thick film stacks many layers of blood under one field and is far more sensitive when parasites are scarce. A thin film alone can miss a real infection. Both are made.'
@@ -624,7 +624,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Wait until the species is confirmed on the thin film before telling anyone.',
+            label: 'Wait until the species and parasitemia are confirmed on the thin film, so the clinician receives one complete answer.',
             correct: false,
             feedback:
               'Holding a positive result while you work out the species costs the patient time. Say that parasites are present now, then follow up with the species and the count.'
@@ -671,7 +671,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Plasmodium vivax: larger rings in enlarged red cells that carry fine Schuffner\'s stippling.',
+            label: 'Plasmodium vivax: larger amoeboid rings in enlarged red cells that carry fine Schuffner\'s stippling.',
             correct: false,
             feedback:
               'Vivax enlarges the cells it infects and fills them with fine, even Schuffner\'s stippling. The cells here are normal size and unstippled, and several rings share one cell, which points away from vivax.'
@@ -771,7 +771,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Plate it straight away; the label and transport time are acceptable, so quality is not in question.',
+            label: 'Plate it straight away; the label and the transport time are both acceptable, so specimen quality is not in question here.',
             correct: false,
             feedback:
               'Labels and transport are only half of acceptability. A correctly labeled, promptly delivered cup of saliva still produces a misleading culture.'
@@ -806,7 +806,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Some neutrophils are present, so the specimen is adequate and culture should go ahead.',
+            label: 'Some neutrophils are present, so the specimen is adequate and the culture should be set up as requested.',
             correct: false,
             feedback:
               'A few neutrophils do not outweigh this many squamous cells. The screen weighs both: plenty of inflammatory cells and few squamous cells is what makes a specimen worth culturing.'
@@ -826,14 +826,14 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Call the ward, explain the rejection, and ask for a new specimen coached for a deep cough after rinsing the mouth with water; document the rejection and the call.',
+            label: 'Call the ward, explain the rejection, and ask for a fresh deep-cough specimen taken after a mouth rinse. Document the call.',
             correct: true,
             feedback:
               'Correct. A rejection only helps the patient if a better specimen follows. Telling the ward how to collect it - rinse with water, cough deeply, bring up material from the chest - is what makes the second sample better than the first.'
           },
           {
             id: 'b',
-            label: 'Discard the specimen without telling anyone, since nothing was cultured.',
+            label: 'Discard the specimen without contacting the ward, since nothing was cultured and there is no result worth reporting.',
             correct: false,
             feedback:
               'A silent rejection leaves the team waiting for a result that will never arrive, and the patient goes without a culture at all. Rejections have to be communicated.'
@@ -892,14 +892,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Release it to the record and let the team see it on morning rounds.',
+            label: 'Release it to the electronic record and let the clinical team see it on morning rounds with the other results.',
             correct: false,
             feedback:
               'Results that drive urgent treatment are not left for someone to find. Critical-result policies exist so that the right person hears it within a defined time.'
           },
           {
             id: 'c',
-            label: 'Phone it, but skip the read-back, since the result is only a short phrase.',
+            label: 'Phone it to the ward, but skip the read-back, since the result is only a short phrase that is hard to mishear.',
             correct: false,
             feedback:
               'Short phrases are exactly the ones that get misheard. Read-back is required for critical results because "cocci" and "rods", or "positive" and "negative", are easy to confuse over the phone.'
@@ -920,14 +920,14 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'It cannot be called from the identification alone: one positive catheter set fits contamination or catheter infection, and the clinical picture decides which.',
+            label: 'The identification alone cannot decide: one positive catheter set fits contamination or catheter infection, and the clinical picture decides.',
             correct: true,
             feedback:
               'Correct. Coagulase-negative staphylococci are both the commonest blood culture contaminant and a leading cause of catheter infection. A positive catheter set with a negative peripheral set leans away from true bloodstream infection, but the decision rests on the whole picture, and the laboratory\'s job is to supply all of the data for it.'
           },
           {
             id: 'b',
-            label: 'Yes. Coagulase-negative staphylococci are always skin contaminants.',
+            label: 'Yes. Coagulase-negative staphylococci are ordinary skin flora, so one positive catheter bottle is always reported as a probable contaminant.',
             correct: false,
             feedback:
               'They are common contaminants, and they are also a leading cause of infections of catheters and implanted devices. "Always" is how real infections get dismissed.'
@@ -954,7 +954,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Issue a corrected report that keeps the original visible and marked as corrected, and phone the change, since S. aureus in blood is never treated as a contaminant.',
+            label: 'Issue a corrected report that keeps the original visible and marked as corrected, and phone the change through.',
             correct: true,
             feedback:
               'Correct. A corrected report shows what was released, what replaced it, and when, so anyone who acted on the first version can see that it changed. This correction also changes care: Staphylococcus aureus in a blood culture is treated as a true infection, so the change is phoned rather than just posted.'
@@ -968,7 +968,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Release the new identification as a separate report and leave the old one as it is.',
+            label: 'Release the new identification as a separate report and leave the original standing, since both results were accurate when issued.',
             correct: false,
             feedback:
               'Two unlinked reports leave the reader to guess which one is true. A corrected report replaces the old result explicitly and says that it did.'
@@ -1012,7 +1012,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Only that the algorithm continues: it is a screening result, and the next step is the supplemental differentiation assay.',
+            label: 'Only that the algorithm continues: this is a screening result, and the differentiation assay comes next.',
             correct: true,
             feedback:
               'Correct. A reactive screen is the start of the algorithm, not the answer. It is tuned to be highly sensitive, so it is followed by supplemental testing before anything is reported as a diagnosis.'
@@ -1026,7 +1026,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Very little, since screening assays give too many false positives to act on.',
+            label: 'Very little, since fourth-generation screening assays give too many false positives to act on without confirmation.',
             correct: false,
             feedback:
               'Reactive screens are followed up, not dismissed. The algorithm exists precisely to separate true reactives from false ones, and skipping it would miss real infections.'
@@ -1046,14 +1046,14 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'As discordant: a false-reactive screen, or acute infection caught by antigen before antibodies form. HIV-1 nucleic acid testing is next.',
+            label: 'As discordant: a false-reactive screen, or acute infection caught before antibodies form. HIV-1 nucleic acid testing is next.',
             correct: true,
             feedback:
               'Correct. The fourth-generation screen detects p24 antigen, which appears before antibodies do. A reactive screen with a negative differentiation assay is the pattern of very early infection - or of a false reactive - and an HIV-1 nucleic acid test tells the two apart.'
           },
           {
             id: 'b',
-            label: 'As negative, since the differentiation assay is the more specific test.',
+            label: 'As negative overall, since the differentiation assay is the more specific test and it found antibodies to neither virus.',
             correct: false,
             feedback:
               'The differentiation assay looks only for antibodies. In the first weeks of infection there may not be any yet, so a negative antibody result cannot overrule a reactive antigen/antibody screen.'
@@ -1087,14 +1087,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'A false-reactive screen, since no antibodies were found.',
+            label: 'A false-reactive screen, since no antibodies to either virus were found on the differentiation assay.',
             correct: false,
             feedback:
               'A false-reactive screen would leave the nucleic acid test negative. Detectable HIV-1 RNA confirms that the reactivity was real.'
           },
           {
             id: 'c',
-            label: 'HIV-2 infection, since the HIV-1 antibody result was negative.',
+            label: 'HIV-2 infection, since the HIV-1 antibody result on the differentiation assay was negative.',
             correct: false,
             feedback:
               'The differentiation assay was negative for HIV-2 as well, and the nucleic acid test detected HIV-1. Nothing here points at HIV-2.'
@@ -1138,7 +1138,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Stool is right: the adult worms live in blood vessels, but the eggs they lay in the intestinal veins leave the body in the stool, so a concentrated stool is examined.',
+            label: 'Stool is right: the adults live in blood vessels, but their eggs pass through the bowel wall and leave in the stool.',
             correct: true,
             feedback:
               'Correct. "Blood fluke" describes where the adults live, not where the lab finds them. The eggs work their way through the bowel wall and pass in the stool, and a concentration method improves the chance of finding them.'
@@ -1152,7 +1152,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Ask for a midday urine instead, since schistosome eggs are recovered from urine.',
+            label: 'Ask for a midday urine collection instead, since schistosome eggs are recovered from urine rather than from stool.',
             correct: false,
             feedback:
               'Urine is the specimen for S. haematobium, whose adults live around the bladder. A patient from Leyte with bloody diarrhea and an enlarged liver points to an intestinal species, whose eggs pass in the stool.'
@@ -1172,14 +1172,14 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Very little on its own: eggs can pass in small numbers and unevenly, so more specimens are examined, as the laboratory\'s policy defines.',
+            label: 'Very little on its own: eggs pass in small numbers and unevenly, so more specimens are examined per policy.',
             correct: true,
             feedback:
               'Correct. Schistosome eggs pass irregularly and often in small numbers, especially in light or long-standing infection. One negative concentrate lowers the likelihood but does not rule the infection out, so more specimens are examined before anyone calls it negative.'
           },
           {
             id: 'b',
-            label: 'Schistosomiasis is excluded, so the laboratory should suggest another diagnosis.',
+            label: 'Schistosomiasis is excluded by a negative concentrate, so the laboratory should suggest looking for another diagnosis.',
             correct: false,
             feedback:
               'One negative stool cannot exclude a parasite whose eggs pass irregularly. Calling it negative here would miss real infections, and the light ones most of all.'
@@ -1225,7 +1225,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Schistosoma mansoni: large and elongated, with a prominent spine on its side.',
+            label: 'Schistosoma mansoni: large and elongated, with a prominent lateral spine that is hard to miss.',
             correct: false,
             feedback:
               'S. mansoni eggs are much larger and elongated, with a lateral spine that is hard to miss. This egg is small and broad, and nothing projects from its side.'
@@ -1276,7 +1276,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Trophozoites in unpreserved liquid stool break down quickly, so ask for a fresh specimen placed into preservative as soon as it is passed.',
+            label: 'Trophozoites in unpreserved liquid stool break down fast, so ask for a fresh specimen put into preservative at collection.',
             correct: true,
             feedback:
               'Correct. Liquid stool from dysentery carries trophozoites rather than cysts, and trophozoites disintegrate soon after passage. That is why many laboratories ask for liquid stool to be examined within about 30 minutes or preserved straight away. A specimen placed into fixative at collection keeps them intact for the permanent stain.'
@@ -1290,7 +1290,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Refrigerate it and examine it with tomorrow\'s batch, since the cold will preserve the trophozoites.',
+            label: 'Refrigerate it and examine it with tomorrow\'s batch, since refrigeration will keep the trophozoites intact until the morning run.',
             correct: false,
             feedback:
               'Refrigeration slows decay but does not keep trophozoites recognizable overnight. Preservation at the time of collection is what keeps them intact.'
@@ -1330,14 +1330,14 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Entamoeba histolytica, since the patient has bloody diarrhea.',
+            label: 'Entamoeba histolytica, since the patient has bloody diarrhea and the cysts are the right size for it.',
             correct: false,
             feedback:
               'The symptoms make E. histolytica likely, but the cyst cannot prove it. E. dispar is common and looks exactly the same, so naming E. histolytica from a cyst overcalls the finding.'
           },
           {
             id: 'c',
-            label: 'Entamoeba hartmanni, a harmless small amoeba.',
+            label: 'Entamoeba hartmanni, a harmless small amoeba that is easily mistaken for E. histolytica on a smear.',
             correct: false,
             feedback:
               'E. hartmanni is built the same way but measures under 10 micrometers. These cysts are well above that, so size rules it out.'
@@ -1376,7 +1376,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Nothing: trophozoites cannot be told apart either, so the report stays E. histolytica/E. dispar.',
+            label: 'Nothing: trophozoites cannot be told apart on morphology either, so the report stays at E. histolytica/E. dispar.',
             correct: false,
             feedback:
               'Usually that is true, but this trophozoite carries the exception. Ingested red cells are the one feature morphology can use to separate E. histolytica from E. dispar.'
@@ -1415,7 +1415,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'Entamoeba coli: more than four nuclei rules out E. histolytica. It is reported as well, as a harmless organism that marks fecal-oral exposure.',
+            label: 'Entamoeba coli: more than four nuclei rules out E. histolytica. It is reported too, as a marker of fecal-oral exposure.',
             correct: true,
             feedback:
               'Correct. A mature E. histolytica or E. dispar cyst stops at four nuclei, while E. coli carries up to eight, so five already rules out the pathogen. Many laboratories still report nonpathogens, because they show the patient swallowed fecally contaminated food or water - the same route that brought the pathogen.'
@@ -1429,7 +1429,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'Entamoeba coli, but it is left off the report because it does not cause disease.',
+            label: 'Entamoeba coli, but it is left off the final report because it is harmless and does not explain the patient symptoms.',
             correct: false,
             feedback:
               'Policies differ, but many laboratories report nonpathogens because they are evidence of fecal-oral exposure, the same route the pathogen took. They do not explain the symptoms, but they are not noise either.'
@@ -1523,7 +1523,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'c',
-            label: 'A coagulase test, to rule out Staphylococcus aureus.',
+            label: 'A coagulase test, to rule out Staphylococcus aureus before going further down this lane.',
             correct: false,
             feedback:
               'The negative catalase has already moved this out of the staphylococcal lane. Coagulase answers a question nobody is asking here.'
@@ -1676,7 +1676,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             id: 'b',
-            label: 'Set the subculture up on the open bench as usual, since Gram-negative rods from blood are routine work.',
+            label: 'Set the subculture up on the open bench, since Gram-negative rods are routine.',
             correct: false,
             feedback:
               'These are not the plump rods of an enteric. Tiny, faint coccobacilli are the warning sign, and open-bench work is how laboratory Brucella infections happen.'
