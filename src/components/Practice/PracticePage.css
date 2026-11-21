@@ -151,6 +151,17 @@
   gap: 16px 20px;
 }
 
+.practice-levels-label {
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+/* Qualified: .practice-page h2 sets margin: 0 and would otherwise win. */
+.practice-page .practice-quick-title {
+  margin-top: 22px;
+}
+
 .practice-levels {
   display: flex;
   gap: 6px;
@@ -189,8 +200,9 @@
 
 /* One line of help above the one button that always makes sense. Most people
    arriving here cannot name the area they are weakest in - that is the thing
-   they came to find out - so the mixed set is the primary action and the
-   grid below it is the "or pick one" path. */
+   they came to find out - so the mixed set leads and the grid below it is
+   the "or pick one" path. It is a secondary button: "Start practicing" above
+   is the page's one primary action. */
 .practice-quick-lead {
   margin: 14px 0 0;
   color: var(--ink-muted);
@@ -213,8 +225,10 @@
   font-weight: 600;
 }
 
+/* --ink-muted, not --ink-subtle: subtle is 3.4:1 on the light ground, below
+   AA for 13px text. */
 .practice-group-title span {
-  color: var(--ink-subtle);
+  color: var(--ink-muted);
   font-size: var(--text-sm);
   font-weight: 400;
 }

@@ -325,9 +325,12 @@ export default function PracticePage() {
       )}
 
       <section className="practice-quick" aria-labelledby="practice-quick-title">
+        {/* Difficulty first, then the areas it applies to. The selector carries
+            a plain label rather than the section heading, which used to read
+            "Choose an area" while sitting on top of the difficulty buttons. */}
         <div className="practice-quick-heading">
-          <h2 id="practice-quick-title">Choose an area to drill</h2>
-          <div className="practice-levels" role="group" aria-label="Difficulty level">
+          <span id="practice-levels-label" className="practice-levels-label">Pick a difficulty</span>
+          <div className="practice-levels" role="group" aria-labelledby="practice-levels-label">
             {difficultyOrder.map((level) => (
               <button
                 type="button"
@@ -342,12 +345,13 @@ export default function PracticePage() {
             ))}
           </div>
         </div>
+        <h2 id="practice-quick-title" className="practice-quick-title">Choose an area to drill</h2>
         <p className="practice-quick-lead">
           Not sure where to start?
         </p>
         <button
           type="button"
-          className="lm-btn lm-btn--primary practice-mix"
+          className="lm-btn lm-btn--secondary practice-mix"
           onClick={() => startQuiz('all', 'mixed_button')}
         >
           <FontAwesomeIcon icon={faBolt} aria-hidden="true" />

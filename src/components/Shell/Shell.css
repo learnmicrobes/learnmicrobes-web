@@ -743,10 +743,12 @@ body.dark-mode .lm-footer {
     }
   }
 
-  /* The Study Quiz pins Previous / Next to the bottom; a Back button stacked
-     above that bar sat over the question text. The quiz has its own
-     navigation, so the floating Back button stays out of the way there. */
-  body:has(.study-quiz-actions) .lm-back-fab {
+  /* Screens with their own exit control: the Study Quiz pins Previous / Next
+     to the bottom, and an active case has "Leave case". A floating Back button
+     there sat over the question text and the answer choices, so it stays out
+     of the way on those screens. */
+  body:has(.study-quiz-actions) .lm-back-fab,
+  body:has(.case-runner) .lm-back-fab {
     display: none;
   }
 

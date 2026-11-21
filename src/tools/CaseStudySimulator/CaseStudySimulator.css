@@ -762,11 +762,14 @@ body.dark-mode .case-card-tags small {
     width: 100%;
   }
 
+  /* Sized by their labels, then grown to fill the row. Equal widths squeezed
+     "Intermediate" past its edges at 375px; if the row is too narrow the
+     pills wrap instead of clipping. */
   .case-difficulty button {
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 1 1 auto;
     min-height: 2.6rem;
-    padding: 0.4rem 0.3rem;
+    padding: 0.4rem 0.6rem;
+    white-space: nowrap;
   }
 
   .case-grid {

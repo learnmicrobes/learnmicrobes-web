@@ -94,7 +94,7 @@ export const caseStudies: CaseStudy[] = [
         choices: [
           {
             id: 'a',
-            label: 'A staphylococcal lane is reasonable, and the neutrophils support a real infection.',
+            label: 'A staphylococcal workup is reasonable, and the neutrophils support a real infection.',
             correct: true,
             feedback:
               'Correct. Gram-positive cocci in clusters point toward Staphylococcus, and abundant neutrophils with a deep specimen support infection rather than surface contamination.'
@@ -188,7 +188,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     finalAnswer: 'Staphylococcus aureus from a deep wound specimen',
     reportingNote:
-      'Report the organism with susceptibility results. Include the methicillin surrogate result, since it changes the treatment lane entirely.',
+      'Report the organism with susceptibility results. Include the methicillin surrogate result, since it changes the treatment choice entirely.',
     takeaways: [
       'Deep specimen plus neutrophils plus one predominant organism supports true infection.',
       'Catalase splits staphylococci from streptococci and enterococci.',
@@ -276,7 +276,7 @@ export const caseStudies: CaseStudy[] = [
           }
         ],
         teachingPoint:
-          'Lactose fermentation on MacConkey plus a significant count narrows the lane quickly.'
+          'Lactose fermentation on MacConkey plus a significant count narrows the possibilities quickly.'
       },
       {
         id: 'id',
@@ -1476,7 +1476,7 @@ export const caseStudies: CaseStudy[] = [
             label: 'A streptococcal pattern. The pointed pairs suggest S. pneumoniae, but the stain cannot confirm it.',
             correct: true,
             feedback:
-              'Correct. Pairs and chains put this in the streptococcal lane, and lancet-shaped pairs fit S. pneumoniae. But pneumococci often form short chains in broth, and other streptococci can pair up, so the stain narrows the lane without naming the organism.'
+              'Correct. Pairs and chains point this toward the streptococcal workup, and lancet-shaped pairs fit S. pneumoniae. But pneumococci often form short chains in broth, and other streptococci can pair up, so the stain narrows the possibilities without naming the organism.'
           },
           {
             id: 'b',
@@ -1490,11 +1490,11 @@ export const caseStudies: CaseStudy[] = [
             label: 'Gram-positive cocci, so it is probably Staphylococcus. Set up a coagulase test.',
             correct: false,
             feedback:
-              'Staphylococci grow in clusters. Pairs and chains point to streptococci, and coagulase is a staphylococcal test that does not belong in this lane.'
+              'Staphylococci grow in clusters. Pairs and chains point to streptococci, and coagulase is a staphylococcal test that does not belong in this workup.'
           }
         ],
         teachingPoint:
-          'Read the arrangement, not just the color. Clusters mean the staphylococcal lane; pairs and chains mean the streptococcal one.'
+          'Read the arrangement, not just the color. Clusters point to the staphylococcal workup; pairs and chains point to the streptococcal one.'
       },
       {
         id: 'culture',
@@ -1519,14 +1519,14 @@ export const caseStudies: CaseStudy[] = [
             label: 'Bacitracin and PYR, to look for Streptococcus pyogenes and the other beta-hemolytic streptococci.',
             correct: false,
             feedback:
-              'Bacitracin and PYR belong to the beta-hemolytic lane. These colonies show partial, green hemolysis, which is alpha, so the question is pneumococcus or viridans, not group A.'
+              'Bacitracin and PYR belong to the beta-hemolytic workup. These colonies show partial, green hemolysis, which is alpha, so the question is pneumococcus or viridans, not group A.'
           },
           {
             id: 'c',
-            label: 'A coagulase test, to rule out Staphylococcus aureus before going further down this lane.',
+            label: 'A coagulase test, to rule out Staphylococcus aureus before going further down this pathway.',
             correct: false,
             feedback:
-              'The negative catalase has already moved this out of the staphylococcal lane. Coagulase answers a question nobody is asking here.'
+              'The negative catalase has already moved this out of the staphylococcal workup. Coagulase answers a question nobody is asking here.'
           }
         ],
         teachingPoint:
@@ -1605,7 +1605,7 @@ export const caseStudies: CaseStudy[] = [
     reportingNote:
       'Release the identification as soon as it is confirmed and follow with susceptibility results. Penicillin results for S. pneumoniae are interpreted with different breakpoints for meningitis and non-meningitis infections, so follow your laboratory\'s current standard and report the interpretation that fits the source.',
     takeaways: [
-      'Pairs and chains put a Gram-positive coccus in the streptococcal lane; lancet-shaped pairs raise pneumococcus but do not prove it.',
+      'Pairs and chains point a Gram-positive coccus toward the streptococcal workup; lancet-shaped pairs raise pneumococcus but do not prove it.',
       'For a catalase-negative, alpha-hemolytic coccus, optochin is the first split, and a zone under 14 mm needs bile solubility to settle it.',
       'S. pneumoniae in blood is significant even in one bottle, because it is not a skin contaminant.'
     ],
