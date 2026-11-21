@@ -885,9 +885,14 @@ export default function App() {
                       {homeQuizProgress.answered > 0 ? 'Resume quiz' : 'Start practicing'}
                     </Link>
                   ) : (
-                    <button type="button" className="lm-btn lm-btn--primary" onClick={() => handleCreateAccountClick('home_hero')}>
-                      Create free account
-                    </button>
+                    <>
+                      <Link className="lm-btn lm-btn--primary" to="/study-quiz">
+                        Try practice questions
+                      </Link>
+                      <button type="button" className="lm-btn lm-btn--secondary" onClick={() => handleCreateAccountClick('home_hero')}>
+                        Create free account
+                      </button>
+                    </>
                   )}
                 </div>
 
@@ -1056,7 +1061,7 @@ export default function App() {
                     <span className="lm-kicker">Free to use</span>
                     <h2 id="home-account-title">Start free. Learn the patterns.</h2>
                     <p>
-                      Everything here is open without an account. Sign in only when you want saved quiz history and weak-area tracking.
+                      Free to start. Try the quiz, roadmaps, and workups without an account, then create one to keep going and save your history.
                     </p>
                   </div>
                   <div className="home-free-actions">

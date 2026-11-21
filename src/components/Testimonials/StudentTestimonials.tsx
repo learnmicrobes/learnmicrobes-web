@@ -119,6 +119,11 @@ const StudentTestimonials: React.FC = () => {
               <article
                 key={`${testimonial.name}-${testimonial.role}-${index}`}
                 className={`testimonial-card accent-${testimonial.accent}`}
+                /* The list is rendered twice so the marquee can loop without a
+                   visible seam. The second copy is the same quotes again, so it
+                   is hidden from assistive tech — otherwise every quote is read
+                   out twice. */
+                aria-hidden={index >= testimonials.length ? true : undefined}
               >
                 <div className="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
                 <p className="testimonial-quote">{testimonial.quote}</p>

@@ -682,6 +682,27 @@ body.dark-mode .home-riddle-choice.incorrect svg {
     color: #14343b;
   }
 
+  /* The rule above turns every hero button into the same white block, which
+     would make the secondary action look exactly as loud as the primary one.
+     The fill is solid rather than translucent: the hero band carries the bench
+     photo at this width, and a translucent button let the watermark show
+     through the label. teal-900 sits a step below the band's teal-800, so the
+     button still reads as the quieter of the two. The margin supplies the
+     spacing that display: block on .home-hero-actions does not. */
+  .home-hero-actions .lm-btn--secondary {
+    margin-top: 10px;
+    border: 1px solid var(--line-on-dark);
+    background: var(--teal-900);
+    color: #f6fbf8;
+    box-shadow: none;
+  }
+
+  .home-hero-actions .lm-btn--secondary:hover,
+  .home-hero-actions .lm-btn--secondary:focus-visible {
+    background: var(--teal-700);
+    color: #f6fbf8;
+  }
+
   /* The bench photo carries over from the web view, as it does on the live
      mobile home. The fade turns vertical and teal here, so the white copy and
      the search box stay readable over it. */
