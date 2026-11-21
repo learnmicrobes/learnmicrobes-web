@@ -1117,6 +1117,144 @@ export const caseStudies: CaseStudy[] = [
       { label: 'HIV basics', path: '/learn/hiv-basics' },
       { label: 'Serology interpretation', path: '/learn/serology-interpretation' }
     ]
+  },
+  {
+    id: 'schistosoma-japonicum-leyte',
+    title: 'Abdominal swelling in a rice farmer from Leyte',
+    area: 'analytic-parasitology',
+    difficulty: 'intermediate',
+    specimen: 'Stool for ova and parasites',
+    presentation:
+      'A 45-year-old rice farmer from Leyte has had months of intermittent bloody diarrhea and abdominal pain, and examination now finds an enlarged liver and spleen. The work involves wading through irrigation canals and flooded paddies every day without boots. The clinician suspects schistosomiasis.',
+    stages: [
+      {
+        id: 'specimen',
+        stageLabel: 'The right specimen',
+        findings: [
+          'Stool received for ova and parasites, query schistosomiasis',
+          'The clinician phones to ask whether blood would be a better specimen for a "blood fluke"'
+        ],
+        question: 'What is the right answer to give?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Stool is right: the adult worms live in blood vessels, but the eggs they lay in the intestinal veins leave the body in the stool, so a concentrated stool is examined.',
+            correct: true,
+            feedback:
+              'Correct. "Blood fluke" describes where the adults live, not where the lab finds them. The eggs work their way through the bowel wall and pass in the stool, and a concentration method improves the chance of finding them.'
+          },
+          {
+            id: 'b',
+            label: 'Agree, and ask for a thin blood film instead.',
+            correct: false,
+            feedback:
+              'The name is the trap. The adult worms sit in veins, but their eggs are not found on a blood film. Changing to blood would swap a useful specimen for one that cannot answer the question.'
+          },
+          {
+            id: 'c',
+            label: 'Ask for a midday urine instead, since schistosome eggs are recovered from urine.',
+            correct: false,
+            feedback:
+              'Urine is the specimen for S. haematobium, whose adults live around the bladder. A patient from Leyte with bloody diarrhea and an enlarged liver points to an intestinal species, whose eggs pass in the stool.'
+          }
+        ],
+        teachingPoint:
+          'Look for the eggs where the adults send them: through the bowel for the intestinal species, through the bladder for S. haematobium. A blood film is the wrong specimen for a blood fluke.'
+      },
+      {
+        id: 'negative',
+        stageLabel: 'A negative first specimen',
+        findings: [
+          'First stool, formalin-ethyl acetate concentrate: no eggs seen',
+          'Symptoms and exposure history unchanged'
+        ],
+        question: 'The first specimen is negative. What does that tell you?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Very little on its own: eggs can pass in small numbers and unevenly, so more specimens are examined, as the laboratory\'s policy defines.',
+            correct: true,
+            feedback:
+              'Correct. Schistosome eggs pass irregularly and often in small numbers, especially in light or long-standing infection. One negative concentrate lowers the likelihood but does not rule the infection out, so more specimens are examined before anyone calls it negative.'
+          },
+          {
+            id: 'b',
+            label: 'Schistosomiasis is excluded, so the laboratory should suggest another diagnosis.',
+            correct: false,
+            feedback:
+              'One negative stool cannot exclude a parasite whose eggs pass irregularly. Calling it negative here would miss real infections, and the light ones most of all.'
+          },
+          {
+            id: 'c',
+            label: 'The specimen must have been collected incorrectly, so it should be rejected.',
+            correct: false,
+            feedback:
+              'Nothing about the specimen was wrong. A negative result from a correctly collected stool is a valid result; it is simply not enough on its own.'
+          }
+        ],
+        teachingPoint:
+          'For a parasite that sheds eggs unevenly, a single negative is a reason to look again, not a conclusion.'
+      },
+      {
+        id: 'egg',
+        stageLabel: 'Identifying the egg',
+        findings: [
+          'Second stool, concentrate wet mount: eggs seen, shown below',
+          'Measured with a calibrated ocular micrometer: about 80 micrometers long'
+        ],
+        image: {
+          src: '/visual-atlas/photos/parasitology/schistosoma-japonicum-egg-cdc-dpdx.jpg',
+          // Describes the egg without naming the species the stage is asking for.
+          alt:
+            'Unstained wet mount of a stool concentrate: a small, broadly oval egg with a smooth shell and no spine that can be seen.',
+          caption: 'Stool concentrate, unstained wet mount. Note the shape and the size, not just the shell.',
+          credit: 'Source: CDC / DPDx',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://www.cdc.gov/dpdx/schistosomiasis/index.html',
+          width: 300,
+          height: 300
+        },
+        question: 'Which identification does this egg support?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Schistosoma japonicum: small and broadly oval, with a spine so small it is often not visible.',
+            correct: true,
+            feedback:
+              'Correct. A small, broadly oval egg from stool, with no spine you can find and measuring well under 100 micrometers, is the pattern of S. japonicum. Its spine is a tiny knob that is usually hidden, so the size and shape carry the identification.'
+          },
+          {
+            id: 'b',
+            label: 'Schistosoma mansoni: large and elongated, with a prominent spine on its side.',
+            correct: false,
+            feedback:
+              'S. mansoni eggs are much larger and elongated, with a lateral spine that is hard to miss. This egg is small and broad, and nothing projects from its side.'
+          },
+          {
+            id: 'c',
+            label: 'Not a schistosome: an egg with no visible spine cannot be one.',
+            correct: false,
+            feedback:
+              'This is the trap the egg sets. S. japonicum has a spine so small it is usually invisible, so a missing spine does not rule out a schistosome. The size and the short, broad shape point straight at one.'
+          }
+        ],
+        teachingPoint:
+          'When there is no spine to see, measure. Size and shape identify S. japonicum when its spine cannot.'
+      }
+    ],
+    finalAnswer: 'Schistosoma japonicum eggs seen in stool',
+    reportingNote:
+      'Report the species and the specimen it was found in. Because eggs pass irregularly, follow your laboratory\'s policy on how many specimens are examined before reporting no eggs seen. A hatching test for egg viability needs fresh, unpreserved stool, so it has to be planned before the specimen goes into fixative.',
+    takeaways: [
+      'Look for schistosome eggs where the adults send them: the intestinal species in stool, S. haematobium in urine, and never on a blood film.',
+      'Eggs pass irregularly, so a single negative stool does not exclude schistosomiasis.',
+      'S. japonicum is small, broadly oval, and usually shows no spine, so measure it rather than waiting to see one.'
+    ],
+    relatedLinks: [
+      { label: 'Schistosoma eggs by spine', path: '/visuals/schistosoma-egg' },
+      { label: 'Stool ova and parasite', path: '/learn/stool-ova-and-parasite' },
+      { label: 'Helminths', path: '/learn/helminths' }
+    ]
   }
 ];
 
