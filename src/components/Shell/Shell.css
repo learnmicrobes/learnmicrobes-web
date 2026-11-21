@@ -874,8 +874,17 @@ body:has(.study-quiz-actions) .app-container .persistent-feedback-btn {
 }
 
 /* The sign-in nudge covered the takeaway mid-question. A quiz already offers
-   sign-in at its guest limit, so the nudge waits for the next non-quiz page. */
-body:has(.study-quiz-actions) .app-container .depth-nudge {
+   sign-in at its guest limit, so the nudge waits for the next non-quiz page.
+
+   A case study has the same problem and is worse for it: the nudge is fixed
+   near the bottom of the phone screen, which is exactly where the first answer
+   choice sits once the findings have been read, so a guest taps the nudge
+   instead of their answer. It is hidden for the runner and for the wrap-up,
+   where the takeaways would be covered the same way. The case picker keeps the
+   nudge, because a list of cards has nothing to read underneath it. */
+body:has(.study-quiz-actions) .app-container .depth-nudge,
+body:has(.case-runner) .app-container .depth-nudge,
+body:has(.case-result) .app-container .depth-nudge {
   display: none;
 }
 
