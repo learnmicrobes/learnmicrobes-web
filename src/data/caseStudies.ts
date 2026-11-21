@@ -1452,6 +1452,329 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Entamoeba compared', path: '/visuals/entamoeba-comparison-panel' },
       { label: 'Intestinal protozoa', path: '/learn/intestinal-protozoa' }
     ]
+  },
+  {
+    id: 'pneumococcus-blood-culture',
+    title: 'Pneumonia with a positive blood culture',
+    area: 'analytic-bacteriology',
+    difficulty: 'intermediate',
+    specimen: 'Blood culture, two sets',
+    presentation:
+      'A 68-year-old is admitted with three days of fever, productive cough, and shortness of breath. The chest film shows right lower lobe consolidation. Two sets of blood cultures are drawn before antibiotics, and one aerobic bottle signals positive at 18 hours.',
+    stages: [
+      {
+        id: 'gram',
+        stageLabel: 'Gram stain from the bottle',
+        findings: [
+          'Gram-positive cocci in pairs and short chains',
+          'Many of the pairs are elongated, with pointed outer ends'
+        ],
+        question: 'What can you say from this Gram stain?',
+        choices: [
+          {
+            id: 'a',
+            label: 'A streptococcal pattern. The pointed pairs suggest S. pneumoniae, but the stain cannot confirm it.',
+            correct: true,
+            feedback:
+              'Correct. Pairs and chains put this in the streptococcal lane, and lancet-shaped pairs fit S. pneumoniae. But pneumococci often form short chains in broth, and other streptococci can pair up, so the stain narrows the lane without naming the organism.'
+          },
+          {
+            id: 'b',
+            label: 'Report Streptococcus pneumoniae now, since lancet-shaped pairs on a Gram stain are diagnostic of it.',
+            correct: false,
+            feedback:
+              'Lancet-shaped pairs are a strong hint, not proof. Report what the stain shows, Gram-positive cocci in pairs and chains, and let culture and testing name the organism.'
+          },
+          {
+            id: 'c',
+            label: 'Gram-positive cocci, so it is probably Staphylococcus. Set up a coagulase test.',
+            correct: false,
+            feedback:
+              'Staphylococci grow in clusters. Pairs and chains point to streptococci, and coagulase is a staphylococcal test that does not belong in this lane.'
+          }
+        ],
+        teachingPoint:
+          'Read the arrangement, not just the color. Clusters mean the staphylococcal lane; pairs and chains mean the streptococcal one.'
+      },
+      {
+        id: 'culture',
+        stageLabel: 'Subculture',
+        findings: [
+          'Blood agar and chocolate agar, overnight in 5% CO2',
+          'Small grey colonies with a green zone of partial hemolysis around them',
+          'Some colonies have a flattened, sunken center',
+          'Catalase: negative'
+        ],
+        question: 'Which test is the right next step?',
+        choices: [
+          {
+            id: 'a',
+            label: 'An optochin (P) disk, to separate S. pneumoniae from viridans streptococci.',
+            correct: true,
+            feedback:
+              'Correct. A catalase-negative, alpha-hemolytic coccus is either S. pneumoniae or a viridans group streptococcus, and optochin is the standard first split. The sunken centers are a hint too: pneumococcal colonies often collapse in the middle as they begin to lyse themselves.'
+          },
+          {
+            id: 'b',
+            label: 'Bacitracin and PYR, to look for Streptococcus pyogenes and the other beta-hemolytic streptococci.',
+            correct: false,
+            feedback:
+              'Bacitracin and PYR belong to the beta-hemolytic lane. These colonies show partial, green hemolysis, which is alpha, so the question is pneumococcus or viridans, not group A.'
+          },
+          {
+            id: 'c',
+            label: 'A coagulase test, to rule out Staphylococcus aureus.',
+            correct: false,
+            feedback:
+              'The negative catalase has already moved this out of the staphylococcal lane. Coagulase answers a question nobody is asking here.'
+          }
+        ],
+        teachingPoint:
+          'Catalase negative plus alpha hemolysis leaves two main answers, S. pneumoniae or viridans streptococci, and optochin is the test that splits them.'
+      },
+      {
+        id: 'optochin',
+        stageLabel: 'A borderline zone',
+        findings: [
+          'Optochin disk, 6 mm, on blood agar in 5% CO2 overnight',
+          'Zone of inhibition: 11 mm'
+        ],
+        question: 'How do you read an 11 mm zone?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Equivocal: confirm with bile solubility before calling it either way.',
+            correct: true,
+            feedback:
+              'Correct. With a 6 mm disk in CO2, a zone of 14 mm or more is presumptive S. pneumoniae. A smaller zone is not a clean answer either way, because some pneumococci give small zones, so bile solubility settles it.'
+          },
+          {
+            id: 'b',
+            label: 'Resistant: any zone under 14 mm means a viridans streptococcus.',
+            correct: false,
+            feedback:
+              'A zone below 14 mm is not the same as no zone. Optochin-resistant and borderline pneumococci exist, and calling this viridans would miss one in a patient with pneumonia.'
+          },
+          {
+            id: 'c',
+            label: 'Susceptible: any zone at all around the disk means S. pneumoniae.',
+            correct: false,
+            feedback:
+              'Some viridans streptococci show a small zone, especially when the plate is not incubated in CO2. The 14 mm cutoff exists because a small zone cannot be trusted.'
+          }
+        ],
+        teachingPoint:
+          'A test with a cutoff has a gray zone. When a result lands in it, confirm with a second method instead of rounding it to the answer you expected.'
+      },
+      {
+        id: 'significance',
+        stageLabel: 'Is it significant?',
+        findings: [
+          'Bile solubility: colonies dissolve under 10% sodium desoxycholate',
+          'Only one of the four bottles has grown so far'
+        ],
+        question: 'What is the identification, and how much weight does one bottle carry?',
+        choices: [
+          {
+            id: 'a',
+            label: 'S. pneumoniae, and significant even in one bottle, since it is not skin flora.',
+            correct: true,
+            feedback:
+              'Correct. Bile solubility confirms S. pneumoniae. Contamination arguments rest on organisms that live on skin, such as coagulase-negative staphylococci. Pneumococcus does not, so one positive bottle in a patient with pneumonia is a real bacteremia.'
+          },
+          {
+            id: 'b',
+            label: 'S. pneumoniae, but probably a contaminant, since only one of the four bottles has grown.',
+            correct: false,
+            feedback:
+              'The one-bottle rule of thumb is for skin organisms. S. pneumoniae is not a skin contaminant, and treating it as one would leave a bacteremia unreported.'
+          },
+          {
+            id: 'c',
+            label: 'S. pneumoniae, but hold the identification until the susceptibility results are ready to release with it.',
+            correct: false,
+            feedback:
+              'The identification changes treatment now. Release it as soon as it is confirmed and add the susceptibility results when they finish.'
+          }
+        ],
+        teachingPoint:
+          'How many bottles grew matters only for organisms that could be contamination. Know which ones those are before you count.'
+      }
+    ],
+    finalAnswer: 'Streptococcus pneumoniae isolated from blood',
+    reportingNote:
+      'Release the identification as soon as it is confirmed and follow with susceptibility results. Penicillin results for S. pneumoniae are interpreted with different breakpoints for meningitis and non-meningitis infections, so follow your laboratory\'s current standard and report the interpretation that fits the source.',
+    takeaways: [
+      'Pairs and chains put a Gram-positive coccus in the streptococcal lane; lancet-shaped pairs raise pneumococcus but do not prove it.',
+      'For a catalase-negative, alpha-hemolytic coccus, optochin is the first split, and a zone under 14 mm needs bile solubility to settle it.',
+      'S. pneumoniae in blood is significant even in one bottle, because it is not a skin contaminant.'
+    ],
+    relatedLinks: [
+      { label: 'Optochin test', path: '/visuals/optochin-test' },
+      { label: 'Bile solubility', path: '/visuals/bile-solubility' },
+      { label: 'Streptococcus and Enterococcus', path: '/learn/streptococcus-enterococcus' }
+    ]
+  },
+  {
+    id: 'brucella-blood-culture',
+    title: 'Weeks of fever after work abroad',
+    area: 'analytic-bacteriology',
+    difficulty: 'advanced',
+    specimen: 'Blood culture, two sets',
+    presentation:
+      'A 41-year-old returned three months ago from working on a livestock farm in the Middle East, where raw camel and goat milk was part of the daily diet. For four weeks there has been fever that comes and goes, drenching night sweats, and low back pain. The clinician lists brucellosis among the possibilities and orders blood cultures.',
+    stages: [
+      {
+        id: 'warning',
+        stageLabel: 'Before the bottles signal',
+        findings: [
+          'Two sets of blood cultures received',
+          'The clinician phones to say brucellosis is suspected'
+        ],
+        question: 'What should the laboratory do with that phone call?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Flag the specimens so any growth is worked in a biosafety cabinet, and follow the policy for suspected Brucella.',
+            correct: true,
+            feedback:
+              'Correct. The warning is most useful before anyone opens a plate. A flag on the specimen means the first Gram stain and subculture are already done in the cabinet, and some laboratories hold suspected Brucella bottles longer than the routine protocol.'
+          },
+          {
+            id: 'b',
+            label: 'Nothing changes: every blood culture is processed the same way, whatever the clinician suspects.',
+            correct: false,
+            feedback:
+              'Routine processing is exactly the risk. Brucella is a leading cause of laboratory-acquired infection, and most of those infections began with routine open-bench work on an isolate nobody had flagged.'
+          },
+          {
+            id: 'c',
+            label: 'Suggest cancelling the blood cultures and sending serology instead, so the laboratory never handles live organisms.',
+            correct: false,
+            feedback:
+              'Serology helps, but blood culture is still one of the main ways brucellosis is proven. The answer to a dangerous organism is safer handling, not refusing the specimen.'
+          }
+        ],
+        teachingPoint:
+          'Clinical history is part of the specimen. A warning that reaches the bench before the bottle signals protects everyone who handles it.'
+      },
+      {
+        id: 'gram',
+        stageLabel: 'A bottle signals',
+        findings: [
+          'Aerobic bottle signals positive on day 4',
+          'Gram stain: very small, faintly staining Gram-negative coccobacilli, scattered like fine sand'
+        ],
+        question: 'What is the safest next step?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Treat it as possible Brucella: tell the supervisor and do all further work in a biosafety cabinet.',
+            correct: true,
+            feedback:
+              'Correct. Tiny, faint Gram-negative coccobacilli from a slow-signaling bottle, with this history, is the pattern that should stop routine work. From here every step happens in the cabinet, with no open-bench handling.'
+          },
+          {
+            id: 'b',
+            label: 'Set the subculture up on the open bench as usual, since Gram-negative rods from blood are routine work.',
+            correct: false,
+            feedback:
+              'These are not the plump rods of an enteric. Tiny, faint coccobacilli are the warning sign, and open-bench work is how laboratory Brucella infections happen.'
+          },
+          {
+            id: 'c',
+            label: 'Put the growth straight onto the automated identification system to get a name quickly.',
+            correct: false,
+            feedback:
+              'Automated panels, and some mass spectrometry databases, do not reliably identify Brucella and have named it as something harmless such as Ochrobactrum. The setup also means extra handling. A few simple tests in the cabinet are safer and more useful.'
+          }
+        ],
+        teachingPoint:
+          'Some Gram stains are a safety finding before they are an identification finding. Tiny, faint Gram-negative coccobacilli from blood mean stop and contain.'
+      },
+      {
+        id: 'ruleout',
+        stageLabel: 'Rule-out tests',
+        findings: [
+          'Blood agar and chocolate agar at 48 hours: tiny, non-hemolytic, grey-white colonies',
+          'MacConkey agar: no growth',
+          'Tests done in the cabinet: oxidase positive, catalase positive, urease positive'
+        ],
+        question: 'What do these results support?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Brucella cannot be ruled out: stop and refer the isolate to the reference laboratory.',
+            correct: true,
+            feedback:
+              'Correct. Slow, tiny colonies with no growth on MacConkey, plus positive oxidase, catalase, and urease, fit Brucella. A routine laboratory\'s job at this point is to recognize it and refer it; confirmation and speciation belong to the reference laboratory.'
+          },
+          {
+            id: 'b',
+            label: 'Francisella tularensis, another slow-growing Gram-negative coccobacillus.',
+            correct: false,
+            feedback:
+              'Francisella is also dangerous, but it is oxidase negative and grows poorly on blood agar compared with chocolate. A positive oxidase and good growth on blood agar point away from it.'
+          },
+          {
+            id: 'c',
+            label: 'Report Brucella melitensis, since the patient drank raw goat milk.',
+            correct: false,
+            feedback:
+              'Exposure history raises the suspicion, but it cannot name a species. Speciation needs reference testing, and a routine laboratory reports only that Brucella could not be ruled out.'
+          }
+        ],
+        teachingPoint:
+          'A routine laboratory rules Brucella out or refers it. It does not confirm it, and it does not keep working it to get a species.'
+      },
+      {
+        id: 'exposure',
+        stageLabel: 'A possible exposure',
+        findings: [
+          'A coworker says they opened the first subculture plate on the open bench and smelled it before the Gram stain was read',
+          'The coworker feels well'
+        ],
+        question: 'What should happen now?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Report it to the supervisor today, so occupational health can assess the exposure.',
+            correct: true,
+            feedback:
+              'Correct. Sniffing a plate or working it on the open bench is a high-risk Brucella exposure. Prompt reporting lets occupational health decide on preventive treatment and monitoring, and the laboratory checks who else handled the culture.'
+          },
+          {
+            id: 'b',
+            label: 'Nothing for now, since the coworker has no symptoms; report it only if a fever starts.',
+            correct: false,
+            feedback:
+              'Brucellosis can take weeks to months to show symptoms, so feeling well today says nothing about the exposure. Waiting for symptoms gives up the chance to prevent the infection.'
+          },
+          {
+            id: 'c',
+            label: 'Disinfect the bench and the incubator. Once the surfaces are clean the exposure is over.',
+            correct: false,
+            feedback:
+              'Cleaning matters, but the exposure already happened when the plate was opened and smelled. The person needs assessment, not just the bench.'
+          }
+        ],
+        teachingPoint:
+          'Never smell a culture plate. When an exposure happens anyway, report it the same day, because the window for preventive treatment is early.'
+      }
+    ],
+    finalAnswer: 'Brucella species could not be ruled out; isolate referred to the public health reference laboratory',
+    reportingNote:
+      'Report a preliminary result that Brucella could not be ruled out, notify the clinician and follow your laboratory\'s policy for notifiable organisms. Confirmation and speciation come from the reference laboratory. Any laboratory exposure is reported the same day under your occupational health policy.',
+    takeaways: [
+      'A clinical warning is most useful before the bottle signals, so growth is contained from the first step.',
+      'Tiny, faint Gram-negative coccobacilli from blood are a stop sign: biosafety cabinet, no open bench, no automated identification.',
+      'A routine laboratory rules Brucella out or refers it, and never smells a plate.'
+    ],
+    relatedLinks: [
+      { label: 'Do not routine culture', path: '/do-not-routine-culture' },
+      { label: 'Zoonotic Gram-negative agents', path: '/learn/zoonotic-and-safety-sensitive-gram-negative-agents' },
+      { label: 'Special pathogens hub', path: '/special-pathogens' }
+    ]
   }
 ];
 
