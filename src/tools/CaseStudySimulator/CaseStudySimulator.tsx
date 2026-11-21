@@ -18,6 +18,7 @@ import {
 } from '../../data/caseStudies';
 import { trackEvent } from '../../utils/analytics';
 import { subjectStainClass } from '../../data/subjectStains';
+import { benchAreaKey, benchAreaLabel } from '../../data/benchAreas';
 import './CaseStudySimulator.css';
 
 const difficultyOrder: CaseDifficulty[] = ['beginner', 'intermediate', 'advanced'];
@@ -159,7 +160,9 @@ export default function CaseStudySimulator() {
             {visibleCases.map((item) => (
               <button type="button" className="case-card" key={item.id} onClick={() => startCase(item)}>
                 <span className="case-card-tags">
-                  <small className={subjectStainClass(item.area) || undefined}>{item.area}</small>
+                  <small className={subjectStainClass(benchAreaKey[item.area]) || undefined}>
+                    {benchAreaLabel[item.area]}
+                  </small>
                   <span className="case-level">
                     <span className="case-level-dots" aria-hidden="true">
                       {difficultyOrder.map((level) => (
@@ -248,10 +251,13 @@ export default function CaseStudySimulator() {
 
         <div className="case-runner-head">
           <span className="case-label">
-            {subjectStainClass(activeCase.area) && (
-              <i className={`subject-stain-drop ${subjectStainClass(activeCase.area)}`} aria-hidden="true" />
+            {subjectStainClass(benchAreaKey[activeCase.area]) && (
+              <i
+                className={`subject-stain-drop ${subjectStainClass(benchAreaKey[activeCase.area])}`}
+                aria-hidden="true"
+              />
             )}
-            {activeCase.area} / {difficultyLabels[activeCase.difficulty]}
+            {benchAreaLabel[activeCase.area]} / {difficultyLabels[activeCase.difficulty]}
           </span>
           <h1 id="case-runner-title">{activeCase.title}</h1>
           <p className="case-presentation">{activeCase.presentation}</p>

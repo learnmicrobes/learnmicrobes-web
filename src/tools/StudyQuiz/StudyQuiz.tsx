@@ -21,6 +21,7 @@ import { obligateAnaerobeRoadmap } from '../ObligateAnaerobeRoadmap/anaerobedata
 import { escalationCards } from '../DoNotRoutineCulture/DoNotRoutineCulture';
 import type { RoadmapStep } from '../RoadmapExperience/RoadmapExperience';
 import { questionBank } from '../../data/questionBank';
+import { benchAreaKey } from '../../data/benchAreas';
 import type { QuestionBankArea } from '../../data/questionBank';
 import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
@@ -348,15 +349,8 @@ const buildQuizQuestions = (): QuizQuestion[] => {
     source: 'Do Not Routine Culture'
   }]);
 
-  const questionBankCategoryMap: Record<QuestionBankArea, Exclude<QuizCategory, 'all'>> = {
-    'preanalytic-procedures': 'preanalytics',
-    'analytic-bacteriology': 'bacteriology',
-    'analytic-mycobacteriology': 'mycobacteriology',
-    'analytic-virology': 'virology',
-    'analytic-parasitology': 'parasitology',
-    'analytic-mycology': 'mycology',
-    'postanalytic-procedures': 'postanalytics'
-  };
+  // Shared with the case studies so the two surfaces cannot drift apart.
+  const questionBankCategoryMap: Record<QuestionBankArea, Exclude<QuizCategory, 'all'>> = benchAreaKey;
 
   const authoredQuestions = questionBank
     .filter((question) => question.status === 'published')

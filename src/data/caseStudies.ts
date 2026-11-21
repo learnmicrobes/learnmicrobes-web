@@ -1,4 +1,5 @@
 import type { AtlasPhoto } from './atlasPages';
+import type { QuestionBankArea } from './questionBank';
 
 export type CaseDifficulty = 'beginner' | 'intermediate' | 'advanced';
 
@@ -49,7 +50,12 @@ export type CaseStage = {
 export type CaseStudy = {
   id: string;
   title: string;
-  area: string;
+  /**
+   * The same union the question bank uses, so a case and a quiz question can
+   * be filtered, counted or gated by one rule. See data/benchAreas.ts for the
+   * display label and the short key the subject stains match on.
+   */
+  area: QuestionBankArea;
   difficulty: CaseDifficulty;
   specimen: string;
   presentation: string;
@@ -70,7 +76,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'staph-wound',
     title: 'Purulent wound after a minor injury',
-    area: 'Bacteriology',
+    area: 'analytic-bacteriology',
     difficulty: 'beginner',
     specimen: 'Wound swab, deep tissue',
     presentation:
@@ -197,7 +203,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'ecoli-uti',
     title: 'Burning urination in an outpatient',
-    area: 'Bacteriology',
+    area: 'analytic-bacteriology',
     difficulty: 'beginner',
     specimen: 'Clean-catch midstream urine',
     presentation:
@@ -325,7 +331,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'crypto-meningitis',
     title: 'Headache and fever in an immunocompromised patient',
-    area: 'Mycology',
+    area: 'analytic-mycology',
     difficulty: 'intermediate',
     specimen: 'Cerebrospinal fluid',
     presentation:
@@ -433,7 +439,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 'tb-escalation',
     title: 'Chronic cough with weight loss',
-    area: 'Mycobacteriology',
+    area: 'analytic-mycobacteriology',
     difficulty: 'advanced',
     specimen: 'Expectorated sputum',
     presentation:
