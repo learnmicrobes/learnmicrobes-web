@@ -562,6 +562,561 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Laboratory safety', path: '/learn/laboratory-safety' },
       { label: 'Special pathogens hub', path: '/special-pathogens' }
     ]
+  },
+  {
+    id: 'falciparum-traveler',
+    title: 'Fever after returning from West Africa',
+    area: 'analytic-parasitology',
+    difficulty: 'intermediate',
+    specimen: 'Whole blood, EDTA',
+    presentation:
+      'A 34-year-old returned nine days ago from a work contract in West Africa and did not take antimalarial prophylaxis. Three days of high fever with shaking chills, headache, and vomiting; today the family reports that the patient is increasingly drowsy. Blood is drawn for malaria films.',
+    stages: [
+      {
+        id: 'setup',
+        stageLabel: 'Specimen and setup',
+        findings: [
+          'EDTA tube received 20 minutes after collection',
+          'Order: thick and thin blood films for malaria parasites, marked STAT'
+        ],
+        question: 'How should this request be handled?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Make thick and thin films now and read them as a STAT, without waiting for a batch.',
+            correct: true,
+            feedback:
+              'Correct. Suspected malaria in a returned traveler is a laboratory emergency, because untreated falciparum can worsen within hours. Films are made promptly because parasites change shape the longer they sit in EDTA, which makes the species harder to call.'
+          },
+          {
+            id: 'b',
+            label: 'Refrigerate the tube and add it to the morning parasitology run.',
+            correct: false,
+            feedback:
+              'Blood films for malaria are not a routine stool O&P. Holding the tube delays a diagnosis this patient may not have hours to spare for, and storage in EDTA distorts the parasites.'
+          },
+          {
+            id: 'c',
+            label: 'Make a thin film only, since that is the one used to identify the species.',
+            correct: false,
+            feedback:
+              'The thin film names the species, but the thick film stacks many layers of blood under one field and is far more sensitive when parasites are scarce. A thin film alone can miss a real infection. Both are made.'
+          }
+        ],
+        teachingPoint:
+          'The thick film finds parasites; the thin film names and counts them. Make both, and treat the request as a STAT.'
+      },
+      {
+        id: 'thick',
+        stageLabel: 'Thick film',
+        findings: [
+          'Thick film, Giemsa: numerous ring-shaped parasites',
+          'No mature trophozoites, schizonts, or gametocytes seen so far'
+        ],
+        question: 'Parasites are on the thick film. What happens now?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Tell the clinician now that malaria parasites are seen, then go straight to the thin film for species and parasitemia.',
+            correct: true,
+            feedback:
+              'Correct. A positive thick film is already actionable. The species and the parasitemia come from the thin film, but the clinician does not wait for them to learn that parasites are present.'
+          },
+          {
+            id: 'b',
+            label: 'Wait until the species is confirmed on the thin film before telling anyone.',
+            correct: false,
+            feedback:
+              'Holding a positive result while you work out the species costs the patient time. Say that parasites are present now, then follow up with the species and the count.'
+          },
+          {
+            id: 'c',
+            label: 'Report "malaria positive" and stop, since the diagnosis is made.',
+            correct: false,
+            feedback:
+              'Positive is not the whole answer. The species drives the choice of drug and the level of concern, and the parasitemia measures severity and is followed to judge response. The thin film is still needed.'
+          }
+        ],
+        teachingPoint:
+          'Report in steps. "Parasites seen" goes out immediately; the species and the parasitemia follow from the thin film.'
+      },
+      {
+        id: 'thin',
+        stageLabel: 'Thin film',
+        findings: [
+          'Thin film, Giemsa, shown below',
+          'After scanning the whole film, rings are the only stage found'
+        ],
+        image: {
+          src: '/visual-atlas/photos/parasitology/plasmodium-falciparum-rings-cdc-dpdx.jpg',
+          // Describes the field without naming the species the stage is asking
+          // for - a screen-reader user gets the same question everyone else does.
+          alt:
+            'Giemsa-stained thin blood film: small, delicate ring-shaped parasites inside red cells, some cells holding more than one ring and some rings carrying two dots of chromatin.',
+          caption: 'Thin blood film, Giemsa. Look at the host cells as well as the parasites.',
+          credit: 'Source: CDC / DPDx',
+          license: 'Public domain (U.S. federal government work)',
+          sourceUrl: 'https://www.cdc.gov/dpdx/malaria/index.html',
+          width: 300,
+          height: 300
+        },
+        question: 'Which species does this film support?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Plasmodium falciparum: small delicate rings, often several in one cell, in red cells of normal size.',
+            correct: true,
+            feedback:
+              'Correct. Small delicate rings, more than one in a single cell, double chromatin dots, host cells that are not enlarged, and nothing on the film but rings: every feature points at falciparum. A banana-shaped gametocyte, if you find one, settles it outright.'
+          },
+          {
+            id: 'b',
+            label: 'Plasmodium vivax: larger rings in enlarged red cells that carry fine Schuffner\'s stippling.',
+            correct: false,
+            feedback:
+              'Vivax enlarges the cells it infects and fills them with fine, even Schuffner\'s stippling. The cells here are normal size and unstippled, and several rings share one cell, which points away from vivax.'
+          },
+          {
+            id: 'c',
+            label: 'Plasmodium malariae: compact rings and band-shaped forms in red cells of normal or small size.',
+            correct: false,
+            feedback:
+              'Malariae makes compact rings and band forms stretched across the cell. These rings are delicate, several sit in one cell, and there are no band forms anywhere on the film.'
+          }
+        ],
+        teachingPoint:
+          'Read the host cell before the parasite. Whether it is enlarged and stippled separates falciparum from vivax faster than the ring itself does.'
+      },
+      {
+        id: 'report',
+        stageLabel: 'Parasitemia and reporting',
+        findings: [
+          'Species: Plasmodium falciparum',
+          '62 infected red cells counted among 1,000 red cells on the thin film'
+        ],
+        question: 'What goes in the report, and how does it leave the lab?',
+        choices: [
+          {
+            id: 'a',
+            label: 'P. falciparum, parasitemia 6.2%, phoned to the clinician now as a critical result.',
+            correct: true,
+            feedback:
+              'Correct. 62 infected cells out of 1,000 is 6.2%. A positive malaria film is a critical result in most laboratories, and a parasitemia of 5% or more is one of the CDC criteria for severe malaria, so this call is made immediately and documented.'
+          },
+          {
+            id: 'b',
+            label: 'P. falciparum, parasitemia 0.62%, phoned to the clinician now as a critical result.',
+            correct: false,
+            feedback:
+              'Check the arithmetic: 62 out of 1,000 is 6.2%, not 0.62%. A tenfold slip makes a severe infection look mild, and the number feeds straight into treatment decisions.'
+          },
+          {
+            id: 'c',
+            label: 'Plasmodium seen, species to follow; hold the parasitemia until a second set of films is read.',
+            correct: false,
+            feedback:
+              'Both answers are already in hand. The parasitemia guides treatment and is the baseline later films are compared against, so holding it back delays care for nothing.'
+          }
+        ],
+        teachingPoint:
+          'Count infected cells, not parasites: a cell holding three rings is one infected cell. With falciparum that matters, because multiply infected cells are common.'
+      }
+    ],
+    finalAnswer: 'Plasmodium falciparum, parasitemia 6.2%',
+    reportingNote:
+      'Follow your facility\'s critical-result procedure. Parasitemia is repeated once treatment starts, to confirm it is falling. In the opposite situation, one negative set never excludes malaria: films are repeated every 12 to 24 hours until three sets in total have been read.',
+    takeaways: [
+      'Suspected malaria is a STAT request: make thick and thin films promptly and read them without batching.',
+      'Report in steps: parasites seen now, then species and parasitemia from the thin film.',
+      'Host cell size and stippling separate the species; a banana-shaped gametocyte settles falciparum outright.'
+    ],
+    relatedLinks: [
+      { label: 'P. falciparum on a thin film', path: '/visuals/plasmodium-falciparum-smear' },
+      { label: 'Plasmodium species compared', path: '/visuals/plasmodium-species-comparison' },
+      { label: 'Malaria and blood films', path: '/learn/malaria-blood-films' }
+    ]
+  },
+  {
+    id: 'sputum-rejection',
+    title: 'Productive cough on the medical ward',
+    area: 'preanalytic-procedures',
+    difficulty: 'beginner',
+    specimen: 'Expectorated sputum',
+    presentation:
+      'A 71-year-old admitted with fever and a productive cough has sputum sent for routine bacterial culture. The ward note says the patient was handed a cup and asked to provide a sample.',
+    stages: [
+      {
+        id: 'receipt',
+        stageLabel: 'Receipt',
+        findings: [
+          'Labeled with two patient identifiers that match the requisition',
+          'Collected 50 minutes ago and kept at room temperature',
+          'Thin and watery, with no visible purulence'
+        ],
+        question: 'Is there a reason to stop before this goes any further?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Accept it at the counter, but screen it with a Gram stain before plating, since a watery specimen may be mostly saliva.',
+            correct: true,
+            feedback:
+              'Correct. The labeling and the 50-minute transport are both fine, so there is no reason to refuse it at the counter. Its appearance is a warning, though, and the Gram stain is how you find out whether it came from the lungs or the mouth.'
+          },
+          {
+            id: 'b',
+            label: 'Reject it on sight, since watery sputum is never acceptable.',
+            correct: false,
+            feedback:
+              'Appearance raises the question but does not answer it. Rejecting on sight throws away specimens that a Gram stain would have shown to be perfectly adequate.'
+          },
+          {
+            id: 'c',
+            label: 'Plate it straight away; the label and transport time are acceptable, so quality is not in question.',
+            correct: false,
+            feedback:
+              'Labels and transport are only half of acceptability. A correctly labeled, promptly delivered cup of saliva still produces a misleading culture.'
+          }
+        ],
+        teachingPoint:
+          'Acceptability has two halves: was it labeled and transported correctly, and did it come from the site requested. The second half needs a microscope.'
+      },
+      {
+        id: 'screen',
+        stageLabel: 'Quality screen',
+        findings: [
+          'Gram stain, low-power fields: more than 25 squamous epithelial cells per field',
+          'Fewer than 10 neutrophils per field',
+          'Bacteria of many shapes, none predominant'
+        ],
+        question: 'What does this screen tell you?',
+        choices: [
+          {
+            id: 'a',
+            label: 'The specimen is mostly saliva, so it should not be set up as a lower respiratory culture.',
+            correct: true,
+            feedback:
+              'Correct. Many squamous cells with few neutrophils is the pattern of oral contamination under every common screening scheme. A culture would report mouth flora as if it had come from the lungs.'
+          },
+          {
+            id: 'b',
+            label: 'Many kinds of bacteria means a mixed infection, so plate it and identify each one.',
+            correct: false,
+            feedback:
+              'Mixed shapes with no inflammation is the signature of the mouth, not of a polymicrobial pneumonia. Identifying each organism would produce a long and misleading report.'
+          },
+          {
+            id: 'c',
+            label: 'Some neutrophils are present, so the specimen is adequate and culture should go ahead.',
+            correct: false,
+            feedback:
+              'A few neutrophils do not outweigh this many squamous cells. The screen weighs both: plenty of inflammatory cells and few squamous cells is what makes a specimen worth culturing.'
+          }
+        ],
+        teachingPoint:
+          'Squamous cells measure contamination from the mouth; neutrophils measure inflammation. The exact cut-offs belong to your laboratory, but this pattern fails under all of them.'
+      },
+      {
+        id: 'recollect',
+        stageLabel: 'Rejection and recollection',
+        findings: [
+          'Decision: not acceptable for routine culture',
+          'The patient is still on the ward'
+        ],
+        question: 'What happens next?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Call the ward, explain the rejection, and ask for a new specimen coached for a deep cough after rinsing the mouth with water; document the rejection and the call.',
+            correct: true,
+            feedback:
+              'Correct. A rejection only helps the patient if a better specimen follows. Telling the ward how to collect it - rinse with water, cough deeply, bring up material from the chest - is what makes the second sample better than the first.'
+          },
+          {
+            id: 'b',
+            label: 'Discard the specimen without telling anyone, since nothing was cultured.',
+            correct: false,
+            feedback:
+              'A silent rejection leaves the team waiting for a result that will never arrive, and the patient goes without a culture at all. Rejections have to be communicated.'
+          },
+          {
+            id: 'c',
+            label: 'Culture it anyway and add a comment that it may be contaminated.',
+            correct: false,
+            feedback:
+              'A disclaimer does not stop a culture of mouth flora from being read as a result. Reporting it with a caveat still risks treatment the patient does not need.'
+          }
+        ],
+        teachingPoint:
+          'Rejecting a specimen starts a conversation rather than ending the work. The goal is a better specimen, quickly.'
+      }
+    ],
+    finalAnswer: 'Rejected as oral contamination; recollection requested with instructions',
+    reportingNote:
+      'Follow your laboratory\'s acceptance criteria and rejection policy. Most laboratories document the reason for rejection, who was told, and when, and many post the rejection to the patient record so the team can see why no culture result will follow.',
+    takeaways: [
+      'Labeling and transport are only half of acceptability; the other half is whether the specimen came from the site requested.',
+      'Many squamous cells with few neutrophils means saliva, and saliva cultures mislead.',
+      'A rejection is only useful if a better specimen follows, so call and explain how to collect it.'
+    ],
+    relatedLinks: [
+      { label: 'Respiratory specimen quality', path: '/learn/respiratory-specimen-quality' },
+      { label: 'Specimen collection and transport', path: '/learn/specimen-collection-transport' },
+      { label: 'Gram stain', path: '/learn/gram-stain' }
+    ]
+  },
+  {
+    id: 'blood-culture-callback',
+    title: 'Overnight fever in a patient with a central line',
+    area: 'postanalytic-procedures',
+    difficulty: 'intermediate',
+    specimen: 'Blood culture, two sets',
+    presentation:
+      'A 58-year-old with a central venous catheter for chemotherapy spikes a high fever overnight. Two sets of blood cultures are drawn: one through the catheter and one from a peripheral vein.',
+    stages: [
+      {
+        id: 'call',
+        stageLabel: 'The critical call',
+        findings: [
+          'Catheter set, aerobic bottle: flagged positive at 14 hours',
+          'Gram stain: gram-positive cocci in clusters',
+          'Peripheral set: no growth so far'
+        ],
+        question: 'How does this result leave the lab?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Phone it to the responsible clinician now, have them read it back, and document who took the call and when.',
+            correct: true,
+            feedback:
+              'Correct. A positive blood culture Gram stain is a critical result in almost every laboratory. Read-back closes the loop: the person receiving it repeats it, so a misheard "rods" for "cocci" is caught on the call instead of in the treatment.'
+          },
+          {
+            id: 'b',
+            label: 'Release it to the record and let the team see it on morning rounds.',
+            correct: false,
+            feedback:
+              'Results that drive urgent treatment are not left for someone to find. Critical-result policies exist so that the right person hears it within a defined time.'
+          },
+          {
+            id: 'c',
+            label: 'Phone it, but skip the read-back, since the result is only a short phrase.',
+            correct: false,
+            feedback:
+              'Short phrases are exactly the ones that get misheard. Read-back is required for critical results because "cocci" and "rods", or "positive" and "negative", are easy to confuse over the phone.'
+          }
+        ],
+        teachingPoint:
+          'A critical result has not been delivered until it has been heard, repeated back, and written down.'
+      },
+      {
+        id: 'contaminant',
+        stageLabel: 'Contaminant or infection',
+        findings: [
+          'Preliminary identification: coagulase-negative staphylococcus',
+          'Peripheral set: still no growth at 48 hours',
+          'The patient is still febrile, with the catheter in place'
+        ],
+        question: 'A clinician asks whether this is just a skin contaminant. What is the laboratory\'s honest answer?',
+        choices: [
+          {
+            id: 'a',
+            label: 'It cannot be called from the identification alone: one positive catheter set fits contamination or catheter infection, and the clinical picture decides which.',
+            correct: true,
+            feedback:
+              'Correct. Coagulase-negative staphylococci are both the commonest blood culture contaminant and a leading cause of catheter infection. A positive catheter set with a negative peripheral set leans away from true bloodstream infection, but the decision rests on the whole picture, and the laboratory\'s job is to supply all of the data for it.'
+          },
+          {
+            id: 'b',
+            label: 'Yes. Coagulase-negative staphylococci are always skin contaminants.',
+            correct: false,
+            feedback:
+              'They are common contaminants, and they are also a leading cause of infections of catheters and implanted devices. "Always" is how real infections get dismissed.'
+          },
+          {
+            id: 'c',
+            label: 'No. Any organism recovered from a blood culture is a true infection.',
+            correct: false,
+            feedback:
+              'Contaminants are real and common. Treating every positive bottle as infection leads to antibiotics and hospital days the patient did not need.'
+          }
+        ],
+        teachingPoint:
+          'The laboratory reports what grew and in which sets. Whether it matters depends on how many sets, which ones, and the patient, so the clinician needs all of it.'
+      },
+      {
+        id: 'correction',
+        stageLabel: 'Corrected report',
+        findings: [
+          'Final identification by MALDI-TOF: Staphylococcus aureus',
+          'The preliminary report of coagulase-negative staphylococcus has already been released'
+        ],
+        question: 'A released identification was wrong. What is the right way to fix it?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Issue a corrected report that keeps the original visible and marked as corrected, and phone the change, since S. aureus in blood is never treated as a contaminant.',
+            correct: true,
+            feedback:
+              'Correct. A corrected report shows what was released, what replaced it, and when, so anyone who acted on the first version can see that it changed. This correction also changes care: Staphylococcus aureus in a blood culture is treated as a true infection, so the change is phoned rather than just posted.'
+          },
+          {
+            id: 'b',
+            label: 'Edit the original result to read S. aureus so the record stays clean.',
+            correct: false,
+            feedback:
+              'Overwriting a released result hides the fact that a clinician may already have acted on it. A correction has to leave the original visible and flagged.'
+          },
+          {
+            id: 'c',
+            label: 'Release the new identification as a separate report and leave the old one as it is.',
+            correct: false,
+            feedback:
+              'Two unlinked reports leave the reader to guess which one is true. A corrected report replaces the old result explicitly and says that it did.'
+          }
+        ],
+        teachingPoint:
+          'Never erase a released result. Correct it in the open, and phone when the correction changes what the clinician should do.'
+      }
+    ],
+    finalAnswer: 'Staphylococcus aureus from the catheter set; corrected report issued and phoned',
+    reportingNote:
+      'Follow your facility\'s critical-result and corrected-report procedures, including read-back for every verbal result. A corrected report should show the original result, the new result, the reason for the change, and who was told.',
+    takeaways: [
+      'A critical result is delivered only once it has been read back and documented.',
+      'Coagulase-negative staphylococci can be contamination or catheter infection; the laboratory supplies the data and the context decides.',
+      'Released results are corrected in the open, never overwritten, and a correction that changes care is phoned.'
+    ],
+    relatedLinks: [
+      { label: 'Blood cultures and sterile fluids', path: '/learn/blood-cultures-and-sterile-fluids' },
+      { label: 'QC and reporting basics', path: '/learn/quality-control-reporting-basics' },
+      { label: 'Gram stain', path: '/learn/gram-stain' }
+    ]
+  },
+  {
+    id: 'hiv-acute-window',
+    title: 'Fever and rash two weeks after a new exposure',
+    area: 'analytic-virology',
+    difficulty: 'advanced',
+    specimen: 'Serum',
+    presentation:
+      'A 26-year-old presents with fever, sore throat, swollen lymph nodes, and a faint rash, about two weeks after condomless sex with a new partner. HIV testing is ordered.',
+    stages: [
+      {
+        id: 'screen',
+        stageLabel: 'Screening assay',
+        findings: [
+          'HIV-1/2 antigen/antibody combination immunoassay (fourth generation): reactive',
+          'The assay detects HIV-1 p24 antigen as well as antibodies to HIV-1 and HIV-2'
+        ],
+        question: 'What does this reactive screen establish?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Only that the algorithm continues: it is a screening result, and the next step is the supplemental differentiation assay.',
+            correct: true,
+            feedback:
+              'Correct. A reactive screen is the start of the algorithm, not the answer. It is tuned to be highly sensitive, so it is followed by supplemental testing before anything is reported as a diagnosis.'
+          },
+          {
+            id: 'b',
+            label: 'The patient has HIV, and the result can be reported as positive.',
+            correct: false,
+            feedback:
+              'A screen on its own is never reported as an HIV diagnosis. False reactive results happen, and the supplemental steps exist to sort them from true infection.'
+          },
+          {
+            id: 'c',
+            label: 'Very little, since screening assays give too many false positives to act on.',
+            correct: false,
+            feedback:
+              'Reactive screens are followed up, not dismissed. The algorithm exists precisely to separate true reactives from false ones, and skipping it would miss real infections.'
+          }
+        ],
+        teachingPoint:
+          'A screen is tuned to miss nothing, so it is allowed to be wrong in the other direction. That is why the algorithm has more than one step.'
+      },
+      {
+        id: 'differentiation',
+        stageLabel: 'Differentiation assay',
+        findings: [
+          'HIV-1/HIV-2 antibody differentiation immunoassay: HIV-1 negative, HIV-2 negative',
+          'Fourth-generation screen: still reactive'
+        ],
+        question: 'The screen is reactive, but no antibodies are detected. How should this be read?',
+        choices: [
+          {
+            id: 'a',
+            label: 'As discordant: a false-reactive screen, or acute infection caught by antigen before antibodies form. HIV-1 nucleic acid testing is next.',
+            correct: true,
+            feedback:
+              'Correct. The fourth-generation screen detects p24 antigen, which appears before antibodies do. A reactive screen with a negative differentiation assay is the pattern of very early infection - or of a false reactive - and an HIV-1 nucleic acid test tells the two apart.'
+          },
+          {
+            id: 'b',
+            label: 'As negative, since the differentiation assay is the more specific test.',
+            correct: false,
+            feedback:
+              'The differentiation assay looks only for antibodies. In the first weeks of infection there may not be any yet, so a negative antibody result cannot overrule a reactive antigen/antibody screen.'
+          },
+          {
+            id: 'c',
+            label: 'As a false positive, and repeat the screen in three months.',
+            correct: false,
+            feedback:
+              'Waiting three months would leave a possible acute infection undiagnosed through the period when it is most transmissible. Discordant results are resolved now, with nucleic acid testing.'
+          }
+        ],
+        teachingPoint:
+          'Each assay answers a narrower question. Antibodies take weeks to appear; antigen and RNA come first. A discordant pattern soon after exposure is a reason to look harder, not to stop.'
+      },
+      {
+        id: 'nat',
+        stageLabel: 'Nucleic acid test',
+        findings: [
+          'HIV-1 RNA, nucleic acid test: detected',
+          'Differentiation assay: HIV-1 negative, HIV-2 negative'
+        ],
+        question: 'What does this combination of results mean?',
+        choices: [
+          {
+            id: 'a',
+            label: 'Acute HIV-1 infection: viral RNA is present before antibodies have formed.',
+            correct: true,
+            feedback:
+              'Correct. A reactive antigen/antibody screen, a negative antibody differentiation assay, and detectable HIV-1 RNA is the classic pattern of acute HIV-1 infection, caught in the window before antibodies appear. Antibodies are expected on later testing.'
+          },
+          {
+            id: 'b',
+            label: 'A false-reactive screen, since no antibodies were found.',
+            correct: false,
+            feedback:
+              'A false-reactive screen would leave the nucleic acid test negative. Detectable HIV-1 RNA confirms that the reactivity was real.'
+          },
+          {
+            id: 'c',
+            label: 'HIV-2 infection, since the HIV-1 antibody result was negative.',
+            correct: false,
+            feedback:
+              'The differentiation assay was negative for HIV-2 as well, and the nucleic acid test detected HIV-1. Nothing here points at HIV-2.'
+          }
+        ],
+        teachingPoint:
+          'In the window period RNA turns positive first, antigen soon after, and antibodies last. Reading the results in that order is what makes acute infection visible.'
+      }
+    ],
+    finalAnswer: 'Acute HIV-1 infection',
+    reportingNote:
+      'Report each result as your validated algorithm defines it, and follow local procedures for communicating a new HIV diagnosis and for any public health reporting. Acute infection carries very high viral loads, which makes prompt communication especially important.',
+    takeaways: [
+      'A reactive screen starts the algorithm; it is never reported as a diagnosis on its own.',
+      'Soon after exposure, a negative antibody differentiation assay cannot overrule a reactive antigen/antibody screen.',
+      'RNA appears first, then antigen, then antibodies, so a discordant early pattern calls for nucleic acid testing.'
+    ],
+    relatedLinks: [
+      { label: 'HIV screening algorithm', path: '/visuals/hiv-screening-algorithm' },
+      { label: 'HIV basics', path: '/learn/hiv-basics' },
+      { label: 'Serology interpretation', path: '/learn/serology-interpretation' }
+    ]
   }
 ];
 
