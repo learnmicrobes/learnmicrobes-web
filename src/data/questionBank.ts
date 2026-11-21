@@ -31,12 +31,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture', 'blood volume', 'collection'],
     prompt: 'A student is setting up adult blood cultures and asks why bottle fill volume matters so much. Which principle is the best answer?',
     choices: [
-      'Adequate blood volume improves organism recovery while broth dilution helps reduce inhibitory effects in the specimen.',
-      'Blood culture bottles are filled lightly so organisms remain concentrated at the top of the bottle.',
-      'The exact volume is mainly cosmetic as long as the bottle enters the instrument.',
-      'Adult blood cultures should be diluted with sterile saline before inoculation.'
+      'Enough blood raises recovery, and the broth dilutes inhibitors.',
+      'Underfilling is preferred, since less blood means fewer inhibitors in the bottle.',
+      'Overfilling is harmless, since extra blood always improves recovery.',
+      'Volume is mainly cosmetic as long as the bottle enters the instrument.'
     ],
-    answer: 'Adequate blood volume improves organism recovery while broth dilution helps reduce inhibitory effects in the specimen.',
+    answer: 'Enough blood raises recovery, and the broth dilutes inhibitors.',
     explanation: 'Blood volume is one of the strongest preanalytic drivers of blood culture yield. The goal is enough patient blood for detection while using broth conditions that support recovery and dilute inhibitors.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -49,12 +49,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['urine culture', 'catheter', 'specimen quality'],
     prompt: 'A urine culture is requested from a patient with an indwelling urinary catheter. Which collection approach best protects specimen quality?',
     choices: [
-      'Collect aseptically from the catheter sampling port after disinfecting it.',
+      'Collect aseptically from the disinfected sampling port.',
       'Pour urine from the bedside drainage bag into a sterile cup.',
       'Cut the catheter tip and submit it for routine urine culture.',
-      'Collect from the floor of the collection chamber after the bag has filled.'
+      'Disconnect the catheter from the bag and collect from the open end.'
     ],
-    answer: 'Collect aseptically from the catheter sampling port after disinfecting it.',
+    answer: 'Collect aseptically from the disinfected sampling port.',
     explanation: 'For catheterized patients, the sampling port is used because drainage bag urine may be old, colonized, or contaminated and can misrepresent the bladder specimen.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -67,12 +67,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['anaerobe', 'specimen quality', 'aspirate', 'tissue'],
     prompt: 'Which specimen type is most appropriate when anaerobic infection is suspected?',
     choices: [
-      'Aspirated abscess material or deep tissue transported to protect anaerobes.',
-      'A superficial swab from intact skin near the wound.',
-      'A formed stool specimen submitted for routine anaerobic culture.',
-      'A dried swab kept at room air for several hours.'
+      'Aspirated abscess material or deep tissue in anaerobic transport.',
+      'A swab of the draining wound surface, sent in routine aerobic transport.',
+      'A formed stool specimen submitted for routine anaerobic bacterial culture.',
+      'A sputum specimen, since the mouth is rich in anaerobes.'
     ],
-    answer: 'Aspirated abscess material or deep tissue transported to protect anaerobes.',
+    answer: 'Aspirated abscess material or deep tissue in anaerobic transport.',
     explanation: 'Anaerobic cultures are most useful from properly collected deep specimens such as aspirates, tissue, or sterile fluids. Superficial swabs and oxygen-exposed specimens are common preanalytic traps.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -85,12 +85,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture', 'SPS', 'anticoagulant'],
     prompt: 'Sodium polyanethol sulfonate is included in many blood culture systems. Which function best explains its usefulness?',
     choices: [
-      'It acts as an anticoagulant and helps reduce some inhibitory effects that can interfere with organism recovery.',
-      'It selectively kills Gram-positive organisms so Gram-negative rods can be isolated faster.',
-      'It replaces the need for aseptic venipuncture technique.',
+      'It is an anticoagulant that also reduces some inhibitory effects.',
+      'It selectively kills Gram-positive organisms so Gram-negative rods grow faster.',
+      'It neutralizes all antibiotics in the blood, so resin bottles are unnecessary.',
       'It confirms that a positive bottle contains anaerobes.'
     ],
-    answer: 'It acts as an anticoagulant and helps reduce some inhibitory effects that can interfere with organism recovery.',
+    answer: 'It is an anticoagulant that also reduces some inhibitory effects.',
     explanation: 'SPS is used in blood culture collection because it prevents clotting and can counter some antimicrobial or host inhibitory effects. It does not replace proper collection technique or identify the organism.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -121,12 +121,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['sputum', 'Gram stain', 'specimen quality'],
     prompt: 'A sputum Gram stain shows many squamous epithelial cells and very few inflammatory cells. What is the most appropriate interpretation?',
     choices: [
-      'The specimen likely represents oropharyngeal contamination and may not be acceptable for routine lower respiratory culture.',
-      'The specimen is ideal because epithelial cells prove lower airway origin.',
-      'The finding confirms bacterial pneumonia even before culture is set up.',
-      'The specimen should automatically be processed for anaerobic culture.'
+      'Likely oropharyngeal contamination; it may be unacceptable for culture.',
+      'Ideal specimen, since epithelial cells prove lower airway origin.',
+      'It confirms bacterial pneumonia before the culture is set up.',
+      'It should be processed for anaerobic culture instead.'
     ],
-    answer: 'The specimen likely represents oropharyngeal contamination and may not be acceptable for routine lower respiratory culture.',
+    answer: 'Likely oropharyngeal contamination; it may be unacceptable for culture.',
     explanation: 'Many squamous epithelial cells suggest upper airway contamination. Respiratory specimen screening helps avoid reporting colonizing flora as if it came from the lower airway.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -139,12 +139,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Legionella', 'BCYE', 'respiratory culture', 'special media'],
     prompt: 'A lower respiratory specimen is submitted with a specific request to recover Legionella. Which processing decision best matches that request?',
     choices: [
-      'Include a validated Legionella medium such as BCYE-based media in the culture setup.',
-      'Use only MacConkey agar because Legionella is a lactose-fermenting enteric rod.',
-      'Use only CNA agar because Legionella is best recovered as a Gram-positive rod.',
-      'Reject the specimen because Legionella cannot be cultured under any circumstances.'
+      'Include BCYE-based media in the culture setup.',
+      'Add MacConkey agar, since Legionella grows as a lactose fermenter.',
+      'Add CNA agar, since Legionella is best recovered as a Gram-positive rod.',
+      'Reject the specimen, since Legionella cannot be cultured.'
     ],
-    answer: 'Include a validated Legionella medium such as BCYE-based media in the culture setup.',
+    answer: 'Include BCYE-based media in the culture setup.',
     explanation: 'Legionella recovery requires specialized media and workflow. Routine respiratory plates alone may not answer the clinical question.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -157,12 +157,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['stool culture', 'selective media', 'Vibrio', 'Campylobacter'],
     prompt: 'A stool culture request includes concern for a water-associated curved Gram-negative rod after seafood exposure. What is the best preanalytic lesson?',
     choices: [
-      'The suspected organism and exposure should guide whether special selective media or incubation conditions are needed.',
-      'All stool pathogens grow equally well on sheep blood agar incubated in ambient air.',
-      'Stool specimens are the preferred source for routine anaerobic culture.',
-      'Selective media are avoided because they always suppress pathogens.'
+      'The exposure should guide whether special media, such as TCBS, are added.',
+      'All stool pathogens grow well on routine plates, so exposure history adds nothing.',
+      'Stool is the preferred source for routine anaerobic culture.',
+      'Selective media are avoided, since they always suppress pathogens.'
     ],
-    answer: 'The suspected organism and exposure should guide whether special selective media or incubation conditions are needed.',
+    answer: 'The exposure should guide whether special media, such as TCBS, are added.',
     explanation: 'Stool culture is not one universal setup. Organisms such as Vibrio, Campylobacter, Yersinia, and routine enteric pathogens may require different media or atmospheres depending on the request and local protocol.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -175,12 +175,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['mixed culture', 'subculture', 'isolate purity'],
     prompt: 'A wound culture plate has several colony types, but one colony morphology is predominant and clinically plausible. What is the safest next bench move before biochemical identification?',
     choices: [
-      'Subculture a representative colony to obtain a pure isolate before interpreting identification reactions.',
-      'Pool all colony types together so the biochemical panel represents the whole wound.',
-      'Report the organism as mixed flora without looking at source or Gram stain information.',
-      'Skip purity checks because automated systems correct for mixed inocula.'
+      'Subculture a representative colony to get a pure isolate first.',
+      'Pool all colony types so the biochemical panel represents the whole wound.',
+      'Report mixed flora without looking at source or Gram stain information.',
+      'Skip purity checks, since automated systems correct for mixed inocula.'
     ],
-    answer: 'Subculture a representative colony to obtain a pure isolate before interpreting identification reactions.',
+    answer: 'Subculture a representative colony to get a pure isolate first.',
     explanation: 'Identification reactions require a pure isolate. Mixed inocula can create impossible patterns and misleading IDs, so colony selection and purity are core preanalytic safeguards.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -193,12 +193,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB stain', 'mycobacteria', 'stain principle'],
     prompt: 'Why are acid-fast staining methods used when mycobacterial infection is a concern?',
     choices: [
-      'The cell envelope resists ordinary decolorization, allowing acid-fast organisms to retain the primary stain under the correct method.',
-      'Acid-fast stains convert all bacteria into Gram-negative rods for easier screening.',
-      'The stain proves antimicrobial susceptibility directly from the smear.',
-      'Acid-fast staining is used only to evaluate epithelial cell contamination.'
+      'The cell envelope resists acid-alcohol, so the primary stain is retained.',
+      'Acid-fast stains turn all bacteria gram negative for easier screening.',
+      'The stain shows antimicrobial susceptibility directly from the smear.',
+      'Acid-fast stains highlight epithelial cells to judge contamination.'
     ],
-    answer: 'The cell envelope resists ordinary decolorization, allowing acid-fast organisms to retain the primary stain under the correct method.',
+    answer: 'The cell envelope resists acid-alcohol, so the primary stain is retained.',
     explanation: 'Acid-fast stains exploit the waxy, lipid-rich cell envelope of mycobacteria and related organisms. A smear result supports workflow decisions but does not replace culture, NAAT, or full identification when indicated.',
     source: 'Learn Microbes original question bank: Preanalytic Procedures',
     status: 'published'
@@ -211,12 +211,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture', 'skin antisepsis', 'contamination', 'preanalytics'],
     prompt: 'During blood culture collection, why should the skin antiseptic remain on the site for the required contact time and dry before the draw?',
     choices: [
-      'The contact time helps reduce skin flora that could contaminate the culture.',
-      'The wet antiseptic keeps organisms concentrated near the puncture site.',
-      'The contact time prevents blood from clotting inside the bottle.',
-      'The wet antiseptic improves recovery of anaerobic organisms.'
+      'Contact time reduces skin flora that could contaminate the culture.',
+      'Wet antiseptic keeps organisms concentrated near the puncture site.',
+      'Contact time prevents blood from clotting inside the bottle.',
+      'Drying the site helps the antiseptic enter the bottle and act as a preservative.'
     ],
-    answer: 'The contact time helps reduce skin flora that could contaminate the culture.',
+    answer: 'Contact time reduces skin flora that could contaminate the culture.',
     explanation: 'Blood culture contamination often comes from skin flora. Proper antiseptic contact time and drying reduce organisms at the puncture site before collection.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -229,12 +229,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture', 'SPS', 'broth dilution', 'preanalytics'],
     prompt: 'A student asks why blood culture bottles contain more than plain nutrient broth. Which principle best explains the use of additives such as anticoagulants in blood culture systems?',
     choices: [
-      'They help prevent clotting and reduce some specimen-related inhibitory effects that can interfere with recovery.',
-      'They convert all organisms into spores so they survive transport.',
-      'They eliminate the need for adequate blood volume.',
-      'They make the bottle selective only for anaerobic organisms.'
+      'They prevent clotting and reduce some inhibitory effects of blood.',
+      'They convert organisms into spores so they survive transport to the lab.',
+      'They remove the need to collect an adequate volume of blood per bottle.',
+      'They make the bottle selective for anaerobic organisms only.'
     ],
-    answer: 'They help prevent clotting and reduce some specimen-related inhibitory effects that can interfere with recovery.',
+    answer: 'They prevent clotting and reduce some inhibitory effects of blood.',
     explanation: 'Blood culture additives support recovery by limiting clot formation and reducing inhibitory effects from blood components. Adequate blood volume is still one of the most important recovery factors.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'draft'
@@ -247,12 +247,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['anaerobes', 'abscess', 'aspirate', 'transport'],
     prompt: 'Which specimen approach best supports recovery of anaerobic bacteria from a deep abscess?',
     choices: [
-      'Aspirated material or tissue from the deep site placed into anaerobic transport.',
+      'Aspirated material or tissue from the deep site in anaerobic transport.',
       'A dry surface swab from the skin over the abscess.',
       'A throat swab placed into routine aerobic transport.',
-      'A refrigerated urine cup filled with drainage from the dressing.'
+      'Drainage from the dressing poured into a refrigerated urine cup.'
     ],
-    answer: 'Aspirated material or tissue from the deep site placed into anaerobic transport.',
+    answer: 'Aspirated material or tissue from the deep site in anaerobic transport.',
     explanation: 'Anaerobes are easily missed when specimens are exposed to oxygen or collected from superficial mixed-flora sites. Deep aspirates or tissue in anaerobic transport give the lab a better chance of recovery.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -265,12 +265,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['CSF', 'specimen handling', 'fastidious organisms', 'preanalytics'],
     prompt: 'A cerebrospinal fluid specimen is collected for bacterial culture, but plating will be delayed. What is the safest general handling principle?',
     choices: [
-      'Treat the specimen as urgent, avoid unnecessary cold exposure for bacterial culture, and follow the laboratory delay protocol.',
-      'Freeze the specimen so bacterial cells remain unchanged until the next shift.',
-      'Refrigerate the specimen routinely because all meningitis pathogens tolerate cold storage well.',
-      'Hold the specimen at room temperature for several days before setup.'
+      'Treat it as urgent and avoid refrigerating it before plating.',
+      'Freeze it so bacterial cells stay unchanged until the next shift.',
+      'Refrigerate it, since all meningitis pathogens tolerate cold storage well.',
+      'Hold it at room temperature for several days before setup.'
     ],
-    answer: 'Treat the specimen as urgent, avoid unnecessary cold exposure for bacterial culture, and follow the laboratory delay protocol.',
+    answer: 'Treat it as urgent and avoid refrigerating it before plating.',
     explanation: 'CSF for bacterial culture should be processed urgently because some pathogens are fragile. Handling delays should follow the lab SOP, and unnecessary refrigeration can reduce recovery of fastidious bacteria.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -283,12 +283,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Bordetella', 'pertussis', 'nasopharyngeal specimen', 'preanalytics'],
     prompt: 'A provider wants testing for suspected Bordetella pertussis. Which collection principle is most important for culture or molecular testing?',
     choices: [
-      'Collect a properly obtained nasopharyngeal swab or aspirate using the required swab and transport system.',
-      'Submit expectorated sputum because it contains the highest organism burden.',
-      'Use a routine throat swab because it is easier and equivalent for recovery.',
-      'Place any respiratory swab into stool transport medium to preserve fastidious organisms.'
+      'A nasopharyngeal swab or aspirate in the required transport system.',
+      'Expectorated sputum, since it holds the highest organism burden.',
+      'A routine throat swab, since it is easier and equivalent for recovery.',
+      'A cotton-tipped swab, since cotton best preserves Bordetella.'
     ],
-    answer: 'Collect a properly obtained nasopharyngeal swab or aspirate using the required swab and transport system.',
+    answer: 'A nasopharyngeal swab or aspirate in the required transport system.',
     explanation: 'Bordetella testing depends heavily on proper nasopharyngeal collection and the correct transport system. Poor collection can cause a false-negative result even when the test method is appropriate.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -319,12 +319,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture', 'Gram-positive cocci', 'clusters', 'coagulase'],
     prompt: 'A blood culture grows Gram-positive cocci in clusters. The isolate is catalase positive. Which result would most strongly support Staphylococcus aureus in a routine workup?',
     choices: [
-      'Positive coagulase or approved S. aureus latex/agglutination testing.',
-      'Failure to grow on blood agar.',
-      'Oxidase positivity with curved rod morphology.',
-      'Strict anaerobic growth only.'
+      'Positive coagulase or S. aureus latex agglutination.',
+      'Catalase repeated on a fresh colony.',
+      'Pink lactose-fermenting colonies on MacConkey agar.',
+      'Oxidase positivity with curved rod morphology on the Gram stain.'
     ],
-    answer: 'Positive coagulase or approved S. aureus latex/agglutination testing.',
+    answer: 'Positive coagulase or S. aureus latex agglutination.',
     explanation: 'Catalase-positive cocci in clusters suggest a Staphylococcus-like branch. Coagulase or validated rapid identification methods help separate S. aureus from many coagulase-negative staphylococci.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -337,12 +337,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['endocarditis', 'nutritionally variant streptococci', 'Abiotrophia', 'Granulicatella'],
     prompt: 'A patient with suspected endocarditis has slow-growing Gram-positive cocci that require special growth support and do not behave like routine beta-hemolytic streptococci. Which group should be considered?',
     choices: [
-      'Nutritionally variant streptococci such as Abiotrophia or Granulicatella.',
-      'Strictly lactose-fermenting Enterobacterales.',
-      'Dermatophyte molds.',
-      'Acid-fast mycobacteria only.'
+      'Nutritionally variant streptococci (Abiotrophia, Granulicatella).',
+      'Group A streptococci whose capsule slows growth on routine media.',
+      'Enterococci, which need added pyridoxal to grow from blood cultures.',
+      'Lactose-fermenting Enterobacterales that grow slowly in blood broth.'
     ],
-    answer: 'Nutritionally variant streptococci such as Abiotrophia or Granulicatella.',
+    answer: 'Nutritionally variant streptococci (Abiotrophia, Granulicatella).',
     explanation: 'Fastidious Gram-positive cocci associated with endocarditis can require special media or pyridoxal support. They should not be forced into routine streptococcal assumptions.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -373,12 +373,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['CSF', 'meningitis', 'Streptococcus pneumoniae', 'optochin'],
     prompt: 'An adult CSF isolate is alpha-hemolytic and appears as Gram-positive lancet-shaped diplococci. Which test direction best supports the classic pneumococcal branch?',
     choices: [
-      'Optochin susceptibility or bile solubility using validated methods.',
-      'Growth on TCBS agar with yellow colonies.',
-      'Urease rapid positivity with swarming.',
-      'Modified acid-fast staining as the only confirmatory test.'
+      'Optochin susceptibility or bile solubility.',
+      'Bacitracin susceptibility with a positive PYR reaction.',
+      'Growth in 6.5% NaCl broth and a positive bile esculin.',
+      'A positive CAMP test and hippurate hydrolysis.'
     ],
-    answer: 'Optochin susceptibility or bile solubility using validated methods.',
+    answer: 'Optochin susceptibility or bile solubility.',
     explanation: 'Alpha-hemolytic diplococci from CSF should raise Streptococcus pneumoniae concern. Optochin and bile solubility are classic branch tests when interpreted with source and morphology.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -409,12 +409,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Legionella', 'BCYE', 'respiratory culture', 'urinary antigen'],
     prompt: 'A patient with severe pneumonia has compatible exposure history and no growth on routine respiratory plates. Which next step best matches Legionella-focused laboratory logic?',
     choices: [
-      'Use Legionella-specific testing such as BCYE culture setup and/or validated antigen or molecular methods as appropriate.',
-      'Assume routine MacConkey agar excludes Legionella.',
-      'Report normal flora because all pneumonia agents grow on sheep blood agar.',
-      'Use a coagulase test as the primary screen.'
+      'Legionella-specific testing: BCYE culture plus antigen or molecular tests.',
+      'Hold sheep blood agar for 7 days, since Legionella grows on it slowly.',
+      'Treat no growth on MacConkey agar as excluding Legionella.',
+      'Rely on the sputum Gram stain, since Legionella stains as Gram-positive rods.'
     ],
-    answer: 'Use Legionella-specific testing such as BCYE culture setup and/or validated antigen or molecular methods as appropriate.',
+    answer: 'Legionella-specific testing: BCYE culture plus antigen or molecular tests.',
     explanation: 'Legionella requires targeted diagnostic thinking. Routine culture can miss it, so BCYE-based culture and nonculture tests may be needed depending on the clinical question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -427,12 +427,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Campylobacter', 'microaerophilic', 'stool culture', 'curved rods'],
     prompt: 'A stool workup is focused on curved Gram-negative rods associated with inflammatory diarrhea. Which growth condition is most relevant for the classic Campylobacter branch?',
     choices: [
-      'Microaerophilic incubation with appropriate selective media and temperature conditions.',
-      'Strict ambient-air incubation on MacConkey agar only.',
-      'Routine Sabouraud agar at room temperature.',
-      'Anaerobic blood agar only for 7 days.'
+      'Microaerophilic incubation on selective media at 42C.',
+      'Ambient-air incubation on MacConkey agar, read at 24 hours.',
+      'Anaerobic incubation on blood agar, held for 7 days before reading.',
+      'Room-temperature incubation on Sabouraud agar for several days.'
     ],
-    answer: 'Microaerophilic incubation with appropriate selective media and temperature conditions.',
+    answer: 'Microaerophilic incubation on selective media at 42C.',
     explanation: 'Campylobacter-style recovery depends on microaerophilic conditions and appropriate media/temperature. It is a good example of matching setup to the suspected organism.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -445,12 +445,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Shigella', 'stool culture', 'biochemical screening', 'serology'],
     prompt: 'A non-lactose-fermenting stool isolate has reactions suspicious for Shigella. What is the best next principle before final reporting?',
     choices: [
-      'Correlate biochemical screening with approved serologic or identification methods and local reporting policy.',
-      'Report any non-lactose fermenter as Shigella immediately.',
-      'Ignore biochemical results and report normal flora.',
-      'Use oxidase positivity as the defining feature of Shigella.'
+      'Confirm with serologic grouping and a full biochemical identification first.',
+      'Report it as Shigella once it is non-lactose fermenting and H2S negative.',
+      'Call it Shigella if it is motile and lysine decarboxylase positive.',
+      'Rule out Shigella if the colony is oxidase negative.'
     ],
-    answer: 'Correlate biochemical screening with approved serologic or identification methods and local reporting policy.',
+    answer: 'Confirm with serologic grouping and a full biochemical identification first.',
     explanation: 'Shigella workups require careful biochemical screening and confirmatory identification/serologic logic. Non-lactose fermentation alone is not enough.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -463,12 +463,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Yersinia', 'cold enrichment', 'CIN agar', 'stool culture'],
     prompt: 'A child has appendicitis-like abdominal pain, and Yersinia is in the differential. Which culture concept is most relevant?',
     choices: [
-      'Selective media and temperature-aware methods may be needed because routine enteric setup may not optimize recovery.',
-      'Yersinia is excluded if the stool is not cultured anaerobically.',
-      'Yersinia is identified by coagulase positivity.',
-      'All Yersinia isolates are lactose-fermenting colonies on MacConkey agar.'
+      'Use CIN agar incubated at room temperature, which routine stool plating may lack.',
+      'Rule out Yersinia if the stool shows no growth on anaerobic culture plates.',
+      'Incubate MacConkey agar at 42C, since Yersinia grows best when hot.',
+      'Rely on routine MacConkey, since Yersinia forms pink lactose-fermenting colonies.'
     ],
-    answer: 'Selective media and temperature-aware methods may be needed because routine enteric setup may not optimize recovery.',
+    answer: 'Use CIN agar incubated at room temperature, which routine stool plating may lack.',
     explanation: 'Yersinia-focused stool workups may use selective/differential media and temperature-aware protocols depending on the lab. The clinical syndrome should guide the request.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'draft'
@@ -535,12 +535,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['GBS', 'pregnancy', 'screening', 'enrichment broth'],
     prompt: 'A prenatal screen is ordered to detect group B Streptococcus colonization. Which principle best supports the usual laboratory approach?',
     choices: [
-      'Use validated enrichment and subculture methods because screening aims to recover colonization that may be present at low levels.',
-      'Use MacConkey agar alone because GBS is a lactose-fermenting Gram-negative rod.',
-      'Reject all vaginal-rectal specimens because GBS cannot colonize mucosal sites.',
-      'Report only if acid-fast bacilli are seen.'
+      'Enrich in selective broth before subculture, since colonization may be low level.',
+      'Plate directly to MacConkey agar, since GBS grows there as a lactose-fermenting rod.',
+      'Reject vaginal-rectal swabs, since only cervical swabs are acceptable for screening.',
+      'Report GBS only when acid-fast bacilli are seen on the direct smear.'
     ],
-    answer: 'Use validated enrichment and subculture methods because screening aims to recover colonization that may be present at low levels.',
+    answer: 'Enrich in selective broth before subculture, since colonization may be low level.',
     explanation: 'GBS screening is a colonization-detection workflow. Enrichment improves recovery and supports prevention decisions in pregnancy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -553,12 +553,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Neisseria gonorrhoeae', 'NAAT', 'genital tract'],
     prompt: 'For routine adult genital tract testing when Neisseria gonorrhoeae infection is suspected, which method is commonly used because of sensitivity and workflow practicality?',
     choices: [
-      'Validated nucleic acid amplification testing from an approved specimen type.',
-      'Routine anaerobic culture of stool.',
-      'Coagulase testing from blood agar.',
-      'India ink examination of urine sediment.'
+      'Nucleic acid amplification testing (NAAT).',
+      'Culture on sheep blood agar incubated in ambient air.',
+      'A Gram stain of an endocervical swab as the only test.',
+      'Serum antibody testing for prior gonococcal infection.'
     ],
-    answer: 'Validated nucleic acid amplification testing from an approved specimen type.',
+    answer: 'Nucleic acid amplification testing (NAAT).',
     explanation: 'NAAT is commonly used for routine gonorrhea diagnosis from validated specimen types. Culture remains important in selected circumstances such as susceptibility or medicolegal/public health needs.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -571,12 +571,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['urine culture', 'colony count', 'calibrated loop'],
     prompt: 'A clean-catch urine culture is plated with a calibrated loop and grows a single uropathogen in a count considered significant by the laboratory policy. What should the student recognize first?',
     choices: [
-      'Colony count interpretation depends on loop volume, collection method, organism burden, and local reporting rules.',
-      'Any colony on any urine plate is automatically reported as a urinary tract infection.',
-      'A colony count can identify the organism without biochemical or MALDI-style workup.',
-      'Urine cultures should be interpreted without considering collection method.'
+      'Interpretation depends on loop volume, collection method, and local rules.',
+      'Any colony on any urine plate is reported as a urinary tract infection.',
+      'The colony count identifies the organism, so no further identification is needed.',
+      'Collection method stops mattering once the count reaches the significant range.'
     ],
-    answer: 'Colony count interpretation depends on loop volume, collection method, organism burden, and local reporting rules.',
+    answer: 'Interpretation depends on loop volume, collection method, and local rules.',
     explanation: 'Urine culture interpretation combines quantitative growth, collection quality, organism identity, and symptoms or policy context. Count alone is not the same as infection.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -589,12 +589,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Proteeae', 'urease', 'PAD', 'urine culture'],
     prompt: 'A urine isolate is a Gram-negative rod that is urease positive and phenylalanine deaminase positive. Which group should be considered early in the workup?',
     choices: [
-      'Proteus, Morganella, or Providencia-like organisms.',
-      'Group B Streptococcus.',
-      'Neisseria lactamica.',
-      'Bacteroides fragilis group.'
+      'Proteus, Morganella, or Providencia.',
+      'Klebsiella or Enterobacter species.',
+      'Escherichia coli or Citrobacter freundii.',
+      'Pseudomonas aeruginosa or another nonfermenter.'
     ],
-    answer: 'Proteus, Morganella, or Providencia-like organisms.',
+    answer: 'Proteus, Morganella, or Providencia.',
     explanation: 'PAD positivity is a high-yield branch point for the Proteeae group. Urease, motility, indole, ornithine, and H2S patterns then help separate members.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -607,12 +607,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus saprophyticus', 'novobiocin', 'UTI'],
     prompt: 'A young adult with cystitis has a coagulase-negative staphylococcal urine isolate. Which classic bench clue supports Staphylococcus saprophyticus?',
     choices: [
-      'Novobiocin resistance in the correct organism and source context.',
-      'Strong oxidase positivity.',
-      'Bile solubility positivity.',
-      'Requirement for X and V factors.'
+      'Novobiocin resistance.',
+      'Novobiocin susceptibility.',
+      'A positive tube coagulase test.',
+      'Bacitracin susceptibility.'
     ],
-    answer: 'Novobiocin resistance in the correct organism and source context.',
+    answer: 'Novobiocin resistance.',
     explanation: 'S. saprophyticus is a classic coagulase-negative staphylococcus associated with uncomplicated UTI and novobiocin resistance. The result should be interpreted with source and policy context.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -623,14 +623,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Staphylococcus differentiation',
     difficulty: 'advanced',
     tags: ['Micrococcus', 'Staphylococcus', 'modified oxidase', 'bacitracin'],
-    prompt: 'A catalase-positive Gram-positive coccus from skin flora workup appears in tetrads and has a colony pattern suggestive of Micrococcus-like organisms. Which principle is most useful?',
+    prompt: 'A catalase-positive Gram-positive coccus from a skin flora workup appears in tetrads and has a colony pattern suggestive of Micrococcus. Which result pattern supports Micrococcus over Staphylococcus?',
     choices: [
-      'Use a validated Micrococcus-versus-Staphylococcus differentiation scheme such as modified oxidase and susceptibility patterns.',
-      'Report it as Streptococcus pneumoniae because it is a coccus.',
-      'Use MacConkey lactose reaction as the primary discriminator.',
-      'Assume all catalase-positive cocci are coagulase-positive staphylococci.'
+      'Modified oxidase positive and bacitracin susceptible.',
+      'Coagulase positive and novobiocin resistant on the same isolate.',
+      'Lactose fermentation on MacConkey agar, which staphylococci lack.',
+      'Tetrads on the Gram stain, which confirm Micrococcus without other tests.'
     ],
-    answer: 'Use a validated Micrococcus-versus-Staphylococcus differentiation scheme such as modified oxidase and susceptibility patterns.',
+    answer: 'Modified oxidase positive and bacitracin susceptible.',
     explanation: 'Micrococcus-like organisms can overlap morphologically with staphylococci. Differentiation depends on validated tests and clinical significance, not morphology alone.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'draft'
@@ -643,12 +643,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Streptococcus pyogenes', 'bacitracin', 'PYR', 'beta hemolysis'],
     prompt: 'A beta-hemolytic Streptococcus from throat culture is being screened for group A Streptococcus. Which result pattern supports that branch?',
     choices: [
-      'PYR positivity with a compatible group A identification workflow.',
-      'Growth only on MacConkey agar.',
-      'Strict anaerobic growth with bile resistance.',
-      'Requirement for X and V factors.'
+      'PYR positive and bacitracin susceptible.',
+      'CAMP positive and hippurate hydrolysis positive.',
+      'Bile esculin positive with growth in 6.5% NaCl.',
+      'Optochin susceptible and bile soluble.'
     ],
-    answer: 'PYR positivity with a compatible group A identification workflow.',
+    answer: 'PYR positive and bacitracin susceptible.',
     explanation: 'Group A Streptococcus screening may use PYR and other validated methods. Beta hemolysis and source guide the branch, but confirmation follows lab policy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -661,12 +661,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Enterococcus', 'bile esculin', 'salt tolerance', 'group D'],
     prompt: 'A Gram-positive coccus is bile esculin positive. Which additional result helps support Enterococcus rather than a non-enterococcal group D streptococcus?',
     choices: [
-      'Growth in 6.5% NaCl broth when validated by the laboratory method.',
-      'Optochin susceptibility.',
-      'Yellow colonies on TCBS agar.',
-      'Acid-fast positivity.'
+      'Growth in 6.5% NaCl broth.',
+      'Optochin susceptibility with bile solubility.',
+      'A positive catalase reaction with bubbling.',
+      'Bacitracin susceptibility on a blood agar plate.'
     ],
-    answer: 'Growth in 6.5% NaCl broth when validated by the laboratory method.',
+    answer: 'Growth in 6.5% NaCl broth.',
     explanation: 'Bile esculin positivity is not by itself enough to call Enterococcus. Salt tolerance is a classic differentiating clue in the correct Gram-positive cocci workflow.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -680,9 +680,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'An alpha-hemolytic streptococcal isolate must be separated from pneumococcus-like organisms. Which test pair is classically useful?',
     choices: [
       'Optochin susceptibility and bile solubility.',
-      'Urease and phenylalanine deaminase.',
-      'Coagulase and novobiocin.',
-      'TCBS sucrose and salt requirement.'
+      'Urease and phenylalanine deaminase reactions.',
+      'Bacitracin and PYR on the same blood agar plate.',
+      'CAMP reaction and hippurate hydrolysis.'
     ],
     answer: 'Optochin susceptibility and bile solubility.',
     explanation: 'Optochin and bile solubility are classic tools for the pneumococcal branch. Results must still be interpreted with colony morphology, source, and local policy.',
@@ -697,12 +697,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HACEK', 'endocarditis', 'fastidious Gram-negative rods'],
     prompt: 'A slow-growing Gram-negative organism is recovered from blood culture in a patient with suspected endocarditis. Which concept best fits HACEK-style reasoning?',
     choices: [
-      'Fastidious oral flora can cause endocarditis and may require careful incubation and identification workflow.',
-      'All HACEK organisms are strict anaerobic spore-formers.',
-      'HACEK organisms are best identified by coagulase positivity.',
-      'A negative oxidase test excludes all fastidious Gram-negative organisms.'
+      'Fastidious oral flora can cause endocarditis and grow slowly.',
+      'They are strict anaerobic spore-formers from soil.',
+      'They are skin flora best identified by coagulase testing.',
+      'A negative oxidase test excludes HACEK organisms from the differential.'
     ],
-    answer: 'Fastidious oral flora can cause endocarditis and may require careful incubation and identification workflow.',
+    answer: 'Fastidious oral flora can cause endocarditis and grow slowly.',
     explanation: 'HACEK organisms connect oral flora, slow or fastidious growth, and endocarditis. The bench lesson is to match growth characteristics and clinical source before forcing routine enteric logic.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -715,12 +715,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Neisseria', 'carbohydrate utilization', 'oxidase', 'Thayer-Martin'],
     prompt: 'A pathogenic Neisseria isolate is oxidase positive and requires species-level differentiation. Which principle is most appropriate?',
     choices: [
-      'Use validated identification methods that may include carbohydrate utilization patterns and source context.',
-      'Use bile esculin and salt tolerance as the primary tests.',
-      'Report all oxidase-positive diplococci as Moraxella catarrhalis.',
-      'Use H2S on TSI as the defining test.'
+      'Carbohydrate utilization patterns read alongside the specimen source.',
+      'Bile esculin hydrolysis and growth in 6.5% NaCl broth.',
+      'Reporting every oxidase-positive diplococcus as Moraxella catarrhalis.',
+      'H2S production on TSI agar as the defining species-level test.'
     ],
-    answer: 'Use validated identification methods that may include carbohydrate utilization patterns and source context.',
+    answer: 'Carbohydrate utilization patterns read alongside the specimen source.',
     explanation: 'Neisseria identification depends on approved methods and source context. Oxidase positivity is an early clue, not a complete species identification.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -733,12 +733,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Moraxella catarrhalis', 'butyrate', 'DNase', 'respiratory culture'],
     prompt: 'A respiratory isolate is an oxidase-positive Gram-negative diplococcus with colony behavior suggesting Moraxella catarrhalis. Which supporting reaction is commonly useful?',
     choices: [
-      'Butyrate esterase or DNase positivity in a compatible respiratory-source isolate.',
-      'CAMP positivity with beta hemolysis.',
-      'Indole positivity with swarming.',
+      'Butyrate esterase or DNase positivity.',
+      'CAMP positivity with a narrow zone of beta-hemolysis.',
+      'Glucose and maltose utilization in carbohydrate tests.',
       'Growth only under strict anaerobic conditions.'
     ],
-    answer: 'Butyrate esterase or DNase positivity in a compatible respiratory-source isolate.',
+    answer: 'Butyrate esterase or DNase positivity.',
     explanation: 'Moraxella catarrhalis can resemble Neisseria microscopically. Respiratory source, colony behavior, and tests such as butyrate esterase or DNase help support the branch.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'draft'
@@ -770,9 +770,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A slender Gram-positive rod from a patient with animal or fish exposure is catalase negative and produces H2S in an appropriate medium. Which organism is a classic consideration?',
     choices: [
       'Erysipelothrix rhusiopathiae.',
-      'Pseudomonas aeruginosa.',
-      'Neisseria gonorrhoeae.',
-      'Shigella sonnei.'
+      'Listeria monocytogenes.',
+      'Arcanobacterium haemolyticum.',
+      'Corynebacterium pseudodiphtheriticum.'
     ],
     answer: 'Erysipelothrix rhusiopathiae.',
     explanation: 'Erysipelothrix connects slender Gram-positive rods, catalase negativity, H2S production in the right method, and animal or fish exposure.',
@@ -787,12 +787,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['anaerobe', 'reverse CAMP', 'lecithinase', 'Clostridium'],
     prompt: 'An anaerobic Gram-positive rod workup includes lecithinase and reverse CAMP-style reactions. Which concept is being tested?',
     choices: [
-      'Differentiation among selected Clostridium-like anaerobic Gram-positive rods.',
-      'Routine confirmation of Neisseria gonorrhoeae.',
-      'Primary screening for lactose fermentation.',
-      'Detection of beta-lactamase in Haemophilus only.'
+      'Identifying Clostridium perfringens among anaerobic rods.',
+      'Separating group B streptococci from other beta-hemolytic streptococci.',
+      'Confirming Neisseria gonorrhoeae from a genital culture.',
+      'Detecting beta-lactamase production in Haemophilus influenzae.'
     ],
-    answer: 'Differentiation among selected Clostridium-like anaerobic Gram-positive rods.',
+    answer: 'Identifying Clostridium perfringens among anaerobic rods.',
     explanation: 'Anaerobic Gram-positive rod identification can use spore status, aerotolerance, lecithinase, lipase, reverse CAMP, and colony features in an organism-appropriate workflow.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -805,12 +805,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['nonfermenters', 'oxidase', 'OF glucose', 'Pseudomonas'],
     prompt: 'A Gram-negative rod grows on MacConkey but does not ferment lactose. Which early test combination helps separate nonfermenters from enteric-style organisms?',
     choices: [
-      'Oxidase reaction plus oxidative-fermentative glucose or equivalent metabolism testing.',
-      'Bile esculin plus salt tolerance.',
-      'CAMP plus bacitracin.',
-      'Germ tube plus chromogenic yeast agar.'
+      'Oxidase plus a glucose oxidation-fermentation test.',
+      'Bile esculin hydrolysis plus growth in 6.5% NaCl broth.',
+      'CAMP reaction plus bacitracin susceptibility.',
+      'Indole plus methyl red, since nonfermenters are all indole positive.'
     ],
-    answer: 'Oxidase reaction plus oxidative-fermentative glucose or equivalent metabolism testing.',
+    answer: 'Oxidase plus a glucose oxidation-fermentation test.',
     explanation: 'Nonfermenter logic often begins with oxidase, glucose utilization, pigment, odor, motility, growth temperature, and source. MacConkey growth alone is not enough.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -823,12 +823,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Burkholderia', 'Stenotrophomonas', 'nonfermenters', 'oxidase'],
     prompt: 'A nonfermenting Gram-negative rod from a respiratory specimen needs separation of Burkholderia-like and Stenotrophomonas-like branches. Which principle is safest?',
     choices: [
-      'Use a validated nonfermenter identification panel or MALDI/biochemical workflow and interpret with source and safety context.',
-      'Call all nonfermenters Pseudomonas aeruginosa.',
+      'MALDI-TOF or a full nonfermenter panel, with safety in mind.',
+      'Call every nonfermenter Pseudomonas aeruginosa.',
       'Use coagulase and novobiocin as the main tests.',
-      'Report normal flora if the isolate grows on MacConkey.'
+      'Report normal flora, since any isolate growing on MacConkey is a contaminant.'
     ],
-    answer: 'Use a validated nonfermenter identification panel or MALDI/biochemical workflow and interpret with source and safety context.',
+    answer: 'MALDI-TOF or a full nonfermenter panel, with safety in mind.',
     explanation: 'Nonfermenters can be clinically important and sometimes safety-relevant. They require validated ID methods, not one isolated reaction.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -841,12 +841,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['quality control', 'oxidase', 'bench tests'],
     prompt: 'A new oxidase reagent lot is opened. Which QC principle is most appropriate?',
     choices: [
-      'Verify the reagent with expected positive and negative control organisms before relying on patient isolate results.',
-      'Use patient isolates as the only controls because QC organisms are unnecessary.',
-      'Accept any purple color after several hours as positive.',
-      'Skip QC if the reagent bottle is unopened.'
+      'Test known positive and negative control organisms before patient use.',
+      'Use the day\'s patient isolates as controls, since QC organisms add nothing.',
+      'Read any purple color that develops within several hours as positive.',
+      'Skip QC, because a sealed, in-date bottle is assumed to perform correctly.'
     ],
-    answer: 'Verify the reagent with expected positive and negative control organisms before relying on patient isolate results.',
+    answer: 'Test known positive and negative control organisms before patient use.',
     explanation: 'Bench reagents require QC with appropriate controls. Oxidase is especially timing-sensitive, so method and interpretation time matter.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -859,12 +859,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['satellitism', 'Haemophilus', 'X factor', 'V factor'],
     prompt: 'A tiny Gram-negative coccobacillus grows better around a helper organism that supplies growth factors. Which identification concept does this demonstrate?',
     choices: [
-      'Satellitism supporting a Haemophilus-like growth-factor requirement.',
-      'Swarming motility of Proteus.',
-      'Bile solubility of pneumococcus.',
-      'Reverse CAMP of anaerobic rods.'
+      'Satellitism, pointing to a Haemophilus-type growth-factor need.',
+      'Swarming motility, the spreading growth typical of Proteus.',
+      'Bile solubility, the autolysis that marks pneumococcus colonies.',
+      'Reverse CAMP, the arrowhead hemolysis seen with Clostridium perfringens.'
     ],
-    answer: 'Satellitism supporting a Haemophilus-like growth-factor requirement.',
+    answer: 'Satellitism, pointing to a Haemophilus-type growth-factor need.',
     explanation: 'Satellitism reflects growth enhancement near organisms that provide required factors, classically supporting Haemophilus-like reasoning in the right context.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'draft'
@@ -877,12 +877,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Enterococcus', 'synergy', 'aminoglycoside', 'AST'],
     prompt: 'An Enterococcus faecalis isolate from endocarditis is being evaluated for therapy support. Which AST concept is most relevant to aminoglycoside combination therapy?',
     choices: [
-      'High-level aminoglycoside resistance testing because resistance can eliminate expected synergy.',
-      'Optochin testing because it predicts gentamicin synergy.',
-      'Coagulase testing because it predicts vancomycin resistance.',
-      'Lactose fermentation because it predicts beta-lactamase production.'
+      'High-level aminoglycoside resistance (HLAR) testing.',
+      'Optochin testing, which predicts synergy.',
+      'Vancomycin MIC, which predicts synergy.',
+      'Lactose fermentation, which predicts beta-lactamase.'
     ],
-    answer: 'High-level aminoglycoside resistance testing because resistance can eliminate expected synergy.',
+    answer: 'High-level aminoglycoside resistance (HLAR) testing.',
     explanation: 'Enterococcal endocarditis therapy may rely on synergistic combinations. High-level aminoglycoside resistance can defeat that synergy and must be detected by appropriate methods.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -895,12 +895,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['S. aureus', 'mecA', 'cefoxitin', 'oxacillin', 'MRSA'],
     prompt: 'A Staphylococcus aureus isolate needs evaluation for methicillin resistance. Which principle is most accurate?',
     choices: [
-      'Use an approved method that detects mecA-mediated resistance, such as cefoxitin/oxacillin-based or molecular approaches depending on the lab.',
-      'Assume penicillin susceptibility predicts methicillin susceptibility.',
-      'Use optochin susceptibility as the primary MRSA screen.',
-      'Ignore resistance testing if the isolate came from blood culture.'
+      'Cefoxitin disk or MIC testing, or a mecA/PBP2a assay.',
+      'Optochin susceptibility, which screens staphylococci for methicillin resistance.',
+      'Vancomycin disk diffusion, which detects mecA-mediated resistance.',
+      'Skip resistance testing for blood isolates, since all are treated as MRSA.'
     ],
-    answer: 'Use an approved method that detects mecA-mediated resistance, such as cefoxitin/oxacillin-based or molecular approaches depending on the lab.',
+    answer: 'Cefoxitin disk or MIC testing, or a mecA/PBP2a assay.',
     explanation: 'Methicillin resistance in S. aureus is tied to mecA/mecC-mediated altered penicillin-binding protein activity. Detection must follow current approved methods and breakpoints.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -913,12 +913,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['D-test', 'inducible clindamycin resistance', 'Staphylococcus aureus', 'erythromycin'],
     prompt: 'A Staphylococcus aureus isolate is erythromycin resistant and clindamycin susceptible by routine disk results. Which additional test detects inducible clindamycin resistance?',
     choices: [
-      'D-zone test using erythromycin and clindamycin disks placed at the correct distance.',
-      'Optochin disk test.',
-      'Bile solubility test.',
-      'Urease test.'
+      'D-zone test using erythromycin and clindamycin disks.',
+      'Repeat clindamycin disk diffusion with a heavier inoculum.',
+      'Cefoxitin disk test read after a full 24 hours.',
+      'Vancomycin agar screen plate incubated a full 24 hours.'
     ],
-    answer: 'D-zone test using erythromycin and clindamycin disks placed at the correct distance.',
+    answer: 'D-zone test using erythromycin and clindamycin disks.',
     explanation: 'The D-zone test detects inducible clindamycin resistance. A positive result changes how clindamycin is reported because apparent susceptibility may be misleading.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -931,12 +931,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['ESBL', 'Enterobacterales', 'cephalosporin', 'clavulanate'],
     prompt: 'An Enterobacterales isolate shows a pattern suspicious for extended-spectrum beta-lactamase production. Which confirmation principle is classic?',
     choices: [
-      'Compare cephalosporin activity with and without a beta-lactamase inhibitor such as clavulanate using an approved method.',
-      'Use catalase alone to confirm ESBL production.',
-      'Perform a germ tube test.',
-      'Use optochin susceptibility as the confirmatory method.'
+      'Compare cephalosporin zones with and without clavulanate.',
+      'Catalase, which confirms ESBL when strongly positive.',
+      'Carbapenem resistance alone, which confirms an ESBL.',
+      'Repeat cephalosporin testing at room temperature to see if zones grow.'
     ],
-    answer: 'Compare cephalosporin activity with and without a beta-lactamase inhibitor such as clavulanate using an approved method.',
+    answer: 'Compare cephalosporin zones with and without clavulanate.',
     explanation: 'ESBL confirmation historically relies on demonstrating inhibitor effect with clavulanate or equivalent approved algorithms. Current reporting may depend on instrument, organism, and standards.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Bacteriology',
     status: 'published'
@@ -949,12 +949,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Chlamydia', 'obligate intracellular', 'cell culture', 'NAAT'],
     prompt: 'Why is Chlamydia not recovered on routine blood or chocolate agar like many other bacteria?',
     choices: [
-      'It is an obligate intracellular organism and requires host-cell based methods or molecular detection.',
-      'It grows only when the plate is incubated without carbon dioxide.',
-      'It is too large to pass through routine agar pores.',
-      'It is inhibited by all protein-containing transport media.'
+      'It is obligately intracellular and needs host cells or NAAT.',
+      'It grows only without carbon dioxide.',
+      'It needs X and V factors, which chocolate agar lacks.',
+      'Protein in transport media inhibits it before plating.'
     ],
-    answer: 'It is an obligate intracellular organism and requires host-cell based methods or molecular detection.',
+    answer: 'It is obligately intracellular and needs host cells or NAAT.',
     explanation: 'Chlamydia depends on host cells for replication, so routine agar culture is not the recovery method. The key bench idea is to match the organism biology to the correct test system.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -967,12 +967,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Campylobacter', 'stool culture', 'microaerophilic', 'selective media'],
     prompt: 'A stool culture workup needs to include Campylobacter recovery. Which setup best matches this organism\'s culture requirements?',
     choices: [
-      'Selective Campylobacter medium incubated under microaerophilic conditions.',
-      'Routine blood agar incubated in ambient air only.',
-      'Sabouraud agar incubated at room temperature.',
-      'Lowenstein-Jensen medium incubated for several weeks.'
+      'Selective Campylobacter agar under microaerophilic conditions.',
+      'Routine sheep blood agar incubated in ambient air for 24 hours.',
+      'Sabouraud agar incubated at room temperature for several days.',
+      'Lowenstein-Jensen medium incubated for several weeks in CO2.'
     ],
-    answer: 'Selective Campylobacter medium incubated under microaerophilic conditions.',
+    answer: 'Selective Campylobacter agar under microaerophilic conditions.',
     explanation: 'Campylobacter recovery requires the right atmosphere and selective setup. Routine enteric plating alone may miss it because the organism does not behave like typical Enterobacterales.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'draft'
@@ -986,9 +986,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A stool specimen is being evaluated for possible Vibrio species. Which medium is commonly used as a selective and differential option for this group?',
     choices: [
       'Thiosulfate-citrate-bile salts-sucrose agar.',
-      'Chocolate agar with hemin and NAD only.',
-      'Lowenstein-Jensen medium.',
-      'Bile esculin agar.'
+      'Chocolate agar supplemented with hemin and NAD only.',
+      'Hektoen enteric agar, which is designed specifically for Vibrio.',
+      'Bile esculin agar, read for blackening at 24 hours.'
     ],
     answer: 'Thiosulfate-citrate-bile salts-sucrose agar.',
     explanation: 'TCBS agar is designed to help recover and differentiate Vibrio species from stool or other appropriate specimens. It supports the bench branch toward oxidase-positive curved gram-negative rods.',
@@ -1003,12 +1003,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['CNA', 'selective media', 'gram-positive cocci', 'mixed flora'],
     prompt: 'Why would a lab include colistin-nalidixic acid agar when working up a specimen with heavy mixed flora?',
     choices: [
-      'It suppresses many gram-negative rods and helps recover gram-positive organisms.',
-      'It selects only for acid-fast bacilli.',
-      'It converts lactose fermenters into nonfermenters.',
-      'It prevents all hemolysis on blood-containing media.'
+      'It suppresses many gram-negative rods, helping gram-positives grow.',
+      'It selects only for acid-fast bacilli by inhibiting all other bacteria.',
+      'It turns lactose fermenters into nonfermenters so they are easier to spot.',
+      'It prevents hemolysis, so mixed colonies are easier to tell apart.'
     ],
-    answer: 'It suppresses many gram-negative rods and helps recover gram-positive organisms.',
+    answer: 'It suppresses many gram-negative rods, helping gram-positives grow.',
     explanation: 'CNA is useful when gram-positive organisms may be obscured by gram-negative flora. The medium supports recovery by reducing competing gram-negative growth.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -1021,12 +1021,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['chocolate agar', 'modified Thayer-Martin', 'Haemophilus', 'Neisseria'],
     prompt: 'A student sees both chocolate agar and modified Thayer-Martin agar on a bench setup. Which distinction is most accurate?',
     choices: [
-      'Chocolate agar supports fastidious organisms broadly, while modified Thayer-Martin is selective for pathogenic Neisseria from mixed sites.',
-      'Chocolate agar is selective only for anaerobes, while modified Thayer-Martin is used only for stool pathogens.',
-      'Chocolate agar is used only for fungi, while modified Thayer-Martin is used only for mycobacteria.',
-      'Both media are identical except for plate color.'
+      'Chocolate supports fastidious organisms; MTM selects for pathogenic Neisseria.',
+      'Both share a chocolate base, but MTM adds antimicrobials to select for Haemophilus.',
+      'Chocolate is selective for anaerobes; MTM is used mainly for stool pathogens.',
+      'Chocolate is used mainly for fungi; MTM is used mainly for mycobacteria.'
     ],
-    answer: 'Chocolate agar supports fastidious organisms broadly, while modified Thayer-Martin is selective for pathogenic Neisseria from mixed sites.',
+    answer: 'Chocolate supports fastidious organisms; MTM selects for pathogenic Neisseria.',
     explanation: 'Chocolate agar provides growth factors for fastidious organisms such as Haemophilus and Neisseria. Modified Thayer-Martin adds selective agents to help recover pathogenic Neisseria from specimens with competing flora.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -1039,12 +1039,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Clostridioides difficile', 'CCFA', 'anaerobes', 'stool culture'],
     prompt: 'A lab uses a selective medium designed to recover Clostridioides difficile from stool. Which principle explains why selective agents are included?',
     choices: [
-      'They reduce competing stool flora so C. difficile has a better chance of being recovered.',
-      'They make the specimen safe by sterilizing all non-spore-forming organisms.',
-      'They replace the need for anaerobic incubation.',
-      'They identify toxin production without any additional testing or workflow.'
+      'They suppress competing stool flora so C. difficile is easier to recover.',
+      'They make the specimen safe by killing every organism that does not form spores.',
+      'They let the plate be incubated in room air instead of anaerobically.',
+      'They show toxin production directly, so no toxin assay is needed afterward.'
     ],
-    answer: 'They reduce competing stool flora so C. difficile has a better chance of being recovered.',
+    answer: 'They suppress competing stool flora so C. difficile is easier to recover.',
     explanation: 'Selective C. difficile media are designed to suppress competing stool organisms. Recovery still depends on the correct specimen, atmosphere, incubation conditions, and the lab\'s identification or toxin workflow.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -1057,12 +1057,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['XLD', 'Salmonella', 'H2S', 'enteric pathogens'],
     prompt: 'On an enteric differential plate, a non-lactose fermenting colony has a black center from hydrogen sulfide production. Which bench interpretation is most appropriate?',
     choices: [
-      'It is a screening clue that should prompt further workup for organisms such as Salmonella.',
-      'It confirms Shigella without any additional testing.',
-      'It proves the organism is a gram-positive anaerobe.',
-      'It rules out all stool pathogens because black centers are normal flora only.'
+      'A screening clue for Salmonella that still needs further workup.',
+      'It confirms Shigella, the main H2S producer on XLD.',
+      'It means the organism is a gram-positive anaerobe.',
+      'It rules out pathogens, since black centers are normal flora.'
     ],
-    answer: 'It is a screening clue that should prompt further workup for organisms such as Salmonella.',
+    answer: 'A screening clue for Salmonella that still needs further workup.',
     explanation: 'H2S production on enteric media is a useful screening clue, especially for Salmonella-like colonies. It is not a final identification by itself and must be interpreted with the full bench workflow.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -1093,12 +1093,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['sorbitol MacConkey', 'E coli O157', 'stool culture', 'screening'],
     prompt: 'A stool isolate is colorless on sorbitol MacConkey agar. What is the best way to interpret this finding in a screening workflow?',
     choices: [
-      'It is a clue for possible non-sorbitol fermenting E. coli O157:H7 and needs confirmatory workup.',
-      'It confirms every Shiga toxin-producing E. coli strain without further testing.',
-      'It proves the isolate is normal lactose-fermenting fecal flora.',
-      'It rules out E. coli because all E. coli ferment sorbitol rapidly.'
+      'A clue for possible E. coli O157:H7 that needs confirmation.',
+      'It confirms every Shiga toxin-producing E. coli.',
+      'It marks normal lactose-fermenting fecal flora.',
+      'It rules out E. coli, because all E. coli strains ferment sorbitol quickly.'
     ],
-    answer: 'It is a clue for possible non-sorbitol fermenting E. coli O157:H7 and needs confirmatory workup.',
+    answer: 'A clue for possible E. coli O157:H7 that needs confirmation.',
     explanation: 'Sorbitol MacConkey is a screening tool, not a complete identification. Non-sorbitol fermentation raises suspicion for E. coli O157:H7, but confirmation follows the laboratory workflow.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'draft'
@@ -1111,12 +1111,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['oxidase', 'Aeromonas', 'Vibrio', 'Plesiomonas', 'gram-negative rods'],
     prompt: 'A stool isolate is a gram-negative rod that is oxidase positive. Why does that result matter early in the bench workflow?',
     choices: [
-      'It pushes the workup away from typical Enterobacterales and toward organisms such as Vibrio, Aeromonas, or Plesiomonas.',
-      'It confirms the isolate is Escherichia coli.',
-      'It proves the isolate is a gram-positive coccus.',
-      'It means biochemical testing is unnecessary.'
+      'It points toward Vibrio, Aeromonas, or Plesiomonas, not Enterobacterales.',
+      'It confirms Escherichia coli, the most common oxidase-positive stool isolate.',
+      'It shows the Gram stain was wrong and the isolate is a gram-positive coccus.',
+      'It means biochemical testing can be skipped and the isolate reported as flora.'
     ],
-    answer: 'It pushes the workup away from typical Enterobacterales and toward organisms such as Vibrio, Aeromonas, or Plesiomonas.',
+    answer: 'It points toward Vibrio, Aeromonas, or Plesiomonas, not Enterobacterales.',
     explanation: 'Most Enterobacterales are oxidase negative. An oxidase-positive gram-negative rod changes the branch and should trigger a different identification pathway.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -1129,12 +1129,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['beta-lactamase', 'nitrocefin', 'antimicrobial susceptibility', 'bench tests'],
     prompt: 'A rapid beta-lactamase test uses a chromogenic cephalosporin substrate. What does a positive color change indicate?',
     choices: [
-      'The organism produced an enzyme that hydrolyzed the beta-lactam ring of the substrate.',
-      'The organism is unable to grow in the presence of oxygen.',
-      'The organism fermented lactose within the test reagent.',
-      'The organism produced urease from urea in the reagent.'
+      'The organism made an enzyme that hydrolyzed the beta-lactam ring.',
+      'The organism is susceptible to penicillin, since the dye shows drug uptake.',
+      'The organism fermented lactose in the reagent, lowering its pH.',
+      'The organism produced urease, which split urea in the reagent.'
     ],
-    answer: 'The organism produced an enzyme that hydrolyzed the beta-lactam ring of the substrate.',
+    answer: 'The organism made an enzyme that hydrolyzed the beta-lactam ring.',
     explanation: 'Chromogenic beta-lactamase tests detect enzymatic hydrolysis of a beta-lactam substrate. The result supports antimicrobial interpretation but must be used according to organism-specific guidance.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
     status: 'published'
@@ -1147,12 +1147,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['MIC', 'breakpoint', 'susceptibility testing', 'AST'],
     prompt: 'In antimicrobial susceptibility testing, what is the role of a breakpoint?',
     choices: [
-      'It is an interpretive threshold used to relate an MIC or zone result to categories such as susceptible, intermediate, or resistant.',
-      'It is the exact time when a broth culture becomes visibly turbid.',
-      'It is the number of colonies required before a plate can be called pure.',
-      'It is the temperature at which an antibiotic stops diffusing through agar.'
+      'A threshold that places an MIC or zone size into S, I, or R categories.',
+      'The exact time at which a broth culture first becomes visibly turbid.',
+      'The colony count needed before a plate can be called a pure culture.',
+      'The temperature at which an antibiotic stops diffusing through agar.'
     ],
-    answer: 'It is an interpretive threshold used to relate an MIC or zone result to categories such as susceptible, intermediate, or resistant.',
+    answer: 'A threshold that places an MIC or zone size into S, I, or R categories.',
     explanation: 'Breakpoints connect standardized test results to interpretive categories. They are not just raw numbers; they depend on organism, drug, method, and current interpretive standards.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
     status: 'published'
@@ -1165,12 +1165,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Kirby-Bauer', 'disk diffusion', 'zone measurement', 'AST'],
     prompt: 'A Kirby-Bauer disk diffusion plate shows a clear inhibition zone around an antibiotic disk. What should the bench reader generally measure?',
     choices: [
-      'The diameter of the inhibition zone using the method-specific reading rules.',
-      'Only the distance from the disk edge to the first colony.',
-      'The thickness of the agar after incubation.',
-      'The color intensity of the antibiotic disk.'
+      'The diameter of the zone of complete inhibition, including the disk.',
+      'Only the distance from the disk edge to the first colony on one side.',
+      'The thickness of the agar beneath the disk after overnight incubation.',
+      'The color change of the antibiotic disk after overnight incubation.'
     ],
-    answer: 'The diameter of the inhibition zone using the method-specific reading rules.',
+    answer: 'The diameter of the zone of complete inhibition, including the disk.',
     explanation: 'Disk diffusion interpretation depends on standardized zone diameter measurement and method-specific rules. Reading the plate consistently is essential before comparing the result with breakpoints.',
     source: 'Learn Microbes original question bank: Antimicrobial Susceptibility Methods',
     status: 'published'
@@ -1183,12 +1183,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Enterobacterales', 'enterics', 'gram-negative rods', 'oxidase'],
     prompt: 'A bench learner asks what first separates most Enterobacterales from many other gram-negative rods. Which pattern is the best starting screen?',
     choices: [
-      'Gram-negative rods that usually ferment glucose, reduce nitrate, and are oxidase negative.',
-      'Gram-positive cocci that grow only in anaerobic jars.',
-      'Curved gram-negative rods that are always oxidase positive and microaerophilic.',
-      'Acid-fast rods that require mycobacterial media for primary recovery.'
+      'Glucose fermenters that reduce nitrate and are oxidase negative.',
+      'Glucose nonfermenters that are oxidase positive and grow on MacConkey.',
+      'Curved rods that are oxidase positive and need microaerophilic conditions.',
+      'Lactose fermenters that are oxidase positive and fail to reduce nitrate.'
     ],
-    answer: 'Gram-negative rods that usually ferment glucose, reduce nitrate, and are oxidase negative.',
+    answer: 'Glucose fermenters that reduce nitrate and are oxidase negative.',
     explanation: 'Most Enterobacterales are screened as glucose-fermenting, oxidase-negative gram-negative rods. That early branch helps separate them from oxidase-positive nonfermenters and curved gram-negative rods.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1201,12 +1201,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['ONPG', 'beta-galactosidase', 'lactose fermentation', 'enterics'],
     prompt: 'An enteric isolate looks like a non-lactose fermenter on primary media, but the lab wants to check for delayed lactose metabolism. Which test principle is most useful?',
     choices: [
-      'ONPG detects beta-galactosidase activity even when visible lactose fermentation is delayed.',
-      'Oxidase testing detects lactose permease inside the cell membrane.',
-      'Catalase testing confirms delayed lactose fermentation by releasing acid.',
-      'Urease testing directly measures beta-galactosidase activity.'
+      'ONPG detects beta-galactosidase even when lactose fermentation is slow.',
+      'ONPG detects lactose permease, the enzyme missing in late fermenters.',
+      'Catalase confirms delayed lactose fermentation by releasing acid.',
+      'Urease directly measures beta-galactosidase activity in the colony.'
     ],
-    answer: 'ONPG detects beta-galactosidase activity even when visible lactose fermentation is delayed.',
+    answer: 'ONPG detects beta-galactosidase even when lactose fermentation is slow.',
     explanation: 'ONPG helps identify organisms that have beta-galactosidase but may not show prompt lactose fermentation on routine media. It is a useful support test, not a complete identification by itself.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1219,12 +1219,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['MR', 'VP', 'glucose fermentation', 'enterics'],
     prompt: 'Why are methyl red and Voges-Proskauer often taught as a paired concept in enteric identification?',
     choices: [
-      'They help separate mixed-acid fermentation from acetoin production after glucose metabolism.',
-      'They determine whether an organism is acid-fast.',
-      'They measure oxygen tolerance in anaerobic jars.',
-      'They identify beta-lactamase production directly.'
+      'They separate mixed-acid fermenters from acetoin producers.',
+      'They show whether an organism ferments lactose or only glucose.',
+      'They measure oxygen tolerance of isolates grown in anaerobic jars.',
+      'They detect beta-lactamase production directly from the broth.'
     ],
-    answer: 'They help separate mixed-acid fermentation from acetoin production after glucose metabolism.',
+    answer: 'They separate mixed-acid fermenters from acetoin producers.',
     explanation: 'MR detects stable acid production, while VP detects acetoin from the butanediol pathway. The paired pattern helps separate common enteric groups during biochemical identification.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1255,12 +1255,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['TSI', 'KIA', 'H2S', 'gas', 'enterics'],
     prompt: 'What is the main bench value of reading both the slant and butt of a TSI or KIA tube?',
     choices: [
-      'The pattern screens carbohydrate use, gas production, and possible hydrogen sulfide production.',
-      'The pattern confirms species-level identification without any additional testing.',
-      'The pattern replaces Gram stain review for enteric isolates.',
-      'The pattern determines whether the isolate is acid-fast.'
+      'Together they show carbohydrate use, gas production, and H2S in one tube.',
+      'It confirms species-level identification without further testing.',
+      'It replaces the Gram stain for enteric isolates on MacConkey.',
+      'It shows whether the isolate is motile by growth along the stab.'
     ],
-    answer: 'The pattern screens carbohydrate use, gas production, and possible hydrogen sulfide production.',
+    answer: 'Together they show carbohydrate use, gas production, and H2S in one tube.',
     explanation: 'TSI and KIA reactions are pattern-recognition tools. They help guide the next branch by showing acid production in different oxygen zones, gas, and H2S clues.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1273,12 +1273,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['KIA', 'TSI', 'glucose fermentation', 'enterics'],
     prompt: 'A TSI-style tube shows an alkaline slant and acid butt. What is the best general interpretation?',
     choices: [
-      'The organism fermented glucose only, with no sustained lactose or sucrose fermentation on the slant.',
-      'The organism fermented lactose strongly but did not use glucose.',
-      'The organism is confirmed as Escherichia coli.',
-      'The organism cannot metabolize any carbohydrate in the tube.'
+      'Glucose was fermented, but not lactose or sucrose.',
+      'Lactose was fermented strongly, but glucose was not used.',
+      'It confirms Escherichia coli, a typical K/A organism.',
+      'No carbohydrate in the tube was used.'
     ],
-    answer: 'The organism fermented glucose only, with no sustained lactose or sucrose fermentation on the slant.',
+    answer: 'Glucose was fermented, but not lactose or sucrose.',
     explanation: 'An alkaline slant with an acid butt is a classic glucose-only fermentation pattern. It narrows the branch but does not identify the organism alone.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1291,12 +1291,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['H2S', 'Salmonella', 'Proteus', 'enterics'],
     prompt: 'An enteric screening tube develops blackening in the butt. How should a learner use that result?',
     choices: [
-      'As a hydrogen sulfide clue that should be combined with motility, lactose reaction, and other biochemical tests.',
-      'As final proof that the isolate is Shigella.',
-      'As evidence that the organism is gram positive.',
-      'As a reason to skip all remaining identification steps.'
+      'As an H2S clue to combine with motility, lactose, and other tests.',
+      'As final proof of Shigella, the classic H2S-positive enteric.',
+      'As evidence of a gram-positive anaerobe growing deep in the butt.',
+      'As a reason to skip the remaining identification steps.'
     ],
-    answer: 'As a hydrogen sulfide clue that should be combined with motility, lactose reaction, and other biochemical tests.',
+    answer: 'As an H2S clue to combine with motility, lactose, and other tests.',
     explanation: 'Blackening suggests H2S production, which can point toward organisms such as Salmonella or Proteus. It is a branch clue, not a final identification.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1309,12 +1309,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['LIA', 'lysine decarboxylase', 'Salmonella', 'Proteus'],
     prompt: 'A non-lactose fermenting enteric isolate is H2S positive. Why might lysine iron agar help the bench separate Salmonella-like organisms from Proteus-like organisms?',
     choices: [
-      'Salmonella commonly keeps an alkaline lysine pattern, while Proteus-like organisms may show lysine deamination.',
-      'Salmonella is always urease positive, while Proteus is always urease negative.',
-      'LIA replaces serologic or molecular confirmation for all enteric pathogens.',
-      'LIA only detects beta-lactamase production.'
+      'Salmonella decarboxylates lysine; Proteus deaminates it.',
+      'Salmonella is urease positive in LIA, while Proteus is urease negative.',
+      'LIA replaces serologic confirmation for all enteric pathogens.',
+      'LIA detects beta-lactamase, which Proteus makes and Salmonella lacks.'
     ],
-    answer: 'Salmonella commonly keeps an alkaline lysine pattern, while Proteus-like organisms may show lysine deamination.',
+    answer: 'Salmonella decarboxylates lysine; Proteus deaminates it.',
     explanation: 'LIA helps sort non-lactose fermenting, H2S-producing enterics by showing lysine decarboxylation or deamination patterns. It supports the branch before final identification.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1382,9 +1382,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A mucoid lactose-fermenting gram-negative rod is nonmotile, citrate positive, and indole negative. Which organism is the best match among common enterics?',
     choices: [
       'Klebsiella pneumoniae.',
-      'Proteus mirabilis.',
-      'Shigella sonnei.',
-      'Salmonella enterica.'
+      'Klebsiella oxytoca.',
+      'Enterobacter cloacae complex.',
+      'Escherichia coli.'
     ],
     answer: 'Klebsiella pneumoniae.',
     explanation: 'Klebsiella pneumoniae commonly appears as a mucoid lactose fermenter and is nonmotile. Indole negativity helps separate it from Klebsiella oxytoca in many teaching workflows.',
@@ -1399,12 +1399,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Klebsiella oxytoca', 'Klebsiella pneumoniae', 'indole', 'enterics'],
     prompt: 'Two nonmotile, mucoid lactose-fermenting Klebsiella-like isolates look similar. Which result most commonly helps separate Klebsiella oxytoca from Klebsiella pneumoniae?',
     choices: [
-      'Klebsiella oxytoca is typically indole positive, while Klebsiella pneumoniae is typically indole negative.',
-      'Klebsiella oxytoca is oxidase positive, while Klebsiella pneumoniae is oxidase negative.',
-      'Klebsiella oxytoca is acid-fast, while Klebsiella pneumoniae is not.',
-      'Klebsiella oxytoca swarms across blood agar, while Klebsiella pneumoniae does not.'
+      'K. oxytoca is usually indole positive; K. pneumoniae is indole negative.',
+      'K. oxytoca is oxidase positive; K. pneumoniae is oxidase negative.',
+      'K. oxytoca is motile; K. pneumoniae is nonmotile.',
+      'K. oxytoca swarms on blood agar; K. pneumoniae forms mucoid colonies.'
     ],
-    answer: 'Klebsiella oxytoca is typically indole positive, while Klebsiella pneumoniae is typically indole negative.',
+    answer: 'K. oxytoca is usually indole positive; K. pneumoniae is indole negative.',
     explanation: 'Indole is a useful bench separator for common Klebsiella species. The final call still depends on the full biochemical or instrument-supported identification workflow.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1435,12 +1435,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Citrobacter freundii', 'Salmonella', 'H2S', 'enterics'],
     prompt: 'Why can Citrobacter freundii create confusion during an enteric stool workup?',
     choices: [
-      'It may produce H2S and resemble Salmonella-like colonies before the full workup is complete.',
+      'It can produce H2S and look like Salmonella on screening media.',
       'It is always oxidase positive and grows only under microaerophilic conditions.',
-      'It is a gram-positive coccus that mimics staphylococci.',
-      'It cannot grow on routine enteric media.'
+      'It is a gram-positive coccus that mimics staphylococci on blood agar.',
+      'It fails to grow on enteric media, so its absence mimics a negative stool.'
     ],
-    answer: 'It may produce H2S and resemble Salmonella-like colonies before the full workup is complete.',
+    answer: 'It can produce H2S and look like Salmonella on screening media.',
     explanation: 'Citrobacter freundii can share some screening features with Salmonella-like organisms. That is why biochemical pattern, serologic workflow, and lab SOP matter before final interpretation.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1471,12 +1471,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Shigella sonnei', 'ONPG', 'late lactose', 'enterics'],
     prompt: 'A suspected Shigella isolate gives a delayed lactose-related reaction. What is the best bench interpretation?',
     choices: [
-      'Delayed lactose activity does not automatically rule out Shigella, especially Shigella sonnei.',
-      'Any lactose-related activity proves the isolate is normal fecal flora.',
-      'Delayed lactose activity confirms Proteus mirabilis.',
-      'Shigella species are always rapid lactose fermenters within the first reading period.'
+      'Delayed lactose activity does not rule out Shigella, especially S. sonnei.',
+      'Any lactose-related activity at all proves the isolate is normal fecal flora.',
+      'Delayed lactose activity confirms Proteus mirabilis, a late fermenter.',
+      'Shigella species are always rapid lactose fermenters within the first reading.'
     ],
-    answer: 'Delayed lactose activity does not automatically rule out Shigella, especially Shigella sonnei.',
+    answer: 'Delayed lactose activity does not rule out Shigella, especially S. sonnei.',
     explanation: 'Some Shigella patterns are not perfectly textbook negative on every lactose-related test. A learner should use the full organism pattern instead of excluding Shigella from one delayed reaction.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1489,12 +1489,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Salmonella', 'serotyping', 'H2S', 'enterics'],
     prompt: 'A stool isolate has a Salmonella-like biochemical pattern. What is the safest next concept in the bench workflow?',
     choices: [
-      'Use the laboratory confirmation pathway, which may include serologic grouping or referral according to SOP.',
+      'Confirm through serologic grouping or referral, as the SOP directs.',
       'Report Salmonella based only on blackening in a screening tube.',
-      'Discard the isolate because all H2S producers are normal fecal flora.',
-      'Convert the isolate to a viral transport workflow.'
+      'Discard the isolate, since all H2S producers are normal fecal flora.',
+      'Report it as Salmonella once the colony is lactose negative on MacConkey.'
     ],
-    answer: 'Use the laboratory confirmation pathway, which may include serologic grouping or referral according to SOP.',
+    answer: 'Confirm through serologic grouping or referral, as the SOP directs.',
     explanation: 'A Salmonella-like pattern should trigger confirmation steps. H2S and non-lactose fermentation are useful clues, but they are not enough for a final public-health-relevant organism call.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1507,12 +1507,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Salmonella', 'O antigen', 'H antigen', 'Vi antigen', 'serotyping'],
     prompt: 'In a Salmonella serotyping workflow, what do O and H antigen reactions generally represent?',
     choices: [
-      'Somatic cell-wall antigen and flagellar antigen patterns used for grouping or serotype workup.',
-      'Beta-lactamase and carbapenemase enzyme patterns.',
-      'Capsule stain color and acid-fast stain color.',
-      'Urease and indole reaction intensity.'
+      'Somatic cell wall antigens and flagellar antigens.',
+      'Capsular antigens and flagellar antigens.',
+      'Flagellar antigens and somatic cell wall antigens, in that order.',
+      'Beta-lactamase and carbapenemase enzyme patterns on the isolate.'
     ],
-    answer: 'Somatic cell-wall antigen and flagellar antigen patterns used for grouping or serotype workup.',
+    answer: 'Somatic cell wall antigens and flagellar antigens.',
     explanation: 'Salmonella serology uses antigen patterns to support grouping and serotype-level workup. It sits after the organism has already fit the appropriate biochemical branch.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1525,12 +1525,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Yersinia enterocolitica', 'motility', 'temperature', 'enterics'],
     prompt: 'A suspected Yersinia enterocolitica isolate is being checked for motility. Which teaching point is most useful?',
     choices: [
-      'Motility may be seen at room temperature but not at typical body-temperature incubation.',
-      'Yersinia is always strongly motile at 37C and never motile at room temperature.',
-      'Yersinia motility is read by coagulase testing.',
-      'Motility is irrelevant because all enteric gram-negative rods are nonmotile.'
+      'It is motile at room temperature but not at 37C.',
+      'It is motile at 37C but not at room temperature.',
+      'Its motility is read with a coagulase test at 37C.',
+      'Motility is irrelevant, since enteric gram-negative rods are all nonmotile.'
     ],
-    answer: 'Motility may be seen at room temperature but not at typical body-temperature incubation.',
+    answer: 'It is motile at room temperature but not at 37C.',
     explanation: 'Yersinia enterocolitica has temperature-dependent motility that can help the workup when the organism is suspected. The result should be interpreted with colony pattern and biochemical reactions.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1561,12 +1561,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Proteus mirabilis', 'Proteus vulgaris', 'indole', 'enterics'],
     prompt: 'Two Proteus-like isolates swarm on blood agar. Which result is commonly used to help separate Proteus vulgaris from Proteus mirabilis?',
     choices: [
-      'Proteus vulgaris is commonly indole positive, while Proteus mirabilis is commonly indole negative.',
-      'Proteus vulgaris is oxidase positive, while Proteus mirabilis is acid-fast.',
-      'Proteus vulgaris is coagulase positive, while Proteus mirabilis is catalase negative.',
-      'Proteus vulgaris never produces urease, while Proteus mirabilis never swarms.'
+      'P. vulgaris is usually indole positive; P. mirabilis is indole negative.',
+      'P. vulgaris is oxidase positive; P. mirabilis is oxidase negative.',
+      'P. vulgaris is urease negative; P. mirabilis is urease positive.',
+      'P. vulgaris is H2S negative, while P. mirabilis is strongly H2S positive.'
     ],
-    answer: 'Proteus vulgaris is commonly indole positive, while Proteus mirabilis is commonly indole negative.',
+    answer: 'P. vulgaris is usually indole positive; P. mirabilis is indole negative.',
     explanation: 'Indole is a useful separator within Proteus-like isolates. The bench still checks the whole pattern because single-test shortcuts can mislead.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1597,12 +1597,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['ESBL', 'Enterobacterales', 'antimicrobial susceptibility', 'beta-lactamase'],
     prompt: 'A learner sees possible ESBL in an Enterobacterales susceptibility workflow. What is the best educational meaning of that flag?',
     choices: [
-      'The organism may produce a beta-lactamase that affects expanded-spectrum beta-lactam interpretation and requires lab-specific confirmation or reporting rules.',
+      'A beta-lactamase may affect extended-spectrum cephalosporin results.',
       'The organism is confirmed as Salmonella based on serology alone.',
-      'The organism is unable to ferment glucose.',
-      'The organism must be an anaerobe and should be moved to anaerobic culture only.'
+      'The isolate is resistant to every beta-lactam, including carbapenems.',
+      'The organism should be moved to anaerobic culture only, as a precaution.'
     ],
-    answer: 'The organism may produce a beta-lactamase that affects expanded-spectrum beta-lactam interpretation and requires lab-specific confirmation or reporting rules.',
+    answer: 'A beta-lactamase may affect extended-spectrum cephalosporin results.',
     explanation: 'ESBL is a resistance-mechanism concept, not an organism name. Learners should connect the flag to the lab\'s AST algorithm and reporting standards rather than guessing from colony appearance.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1615,12 +1615,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AmpC', 'Enterobacter cloacae complex', 'Citrobacter freundii', 'Serratia marcescens', 'AST'],
     prompt: 'Why do organisms such as Enterobacter cloacae complex, Citrobacter freundii, and Serratia marcescens require careful beta-lactam result interpretation in many AST workflows?',
     choices: [
-      'Some members can have inducible AmpC-type beta-lactamase behavior, so species context and lab reporting rules matter.',
-      'They are always gram-positive cocci and should be interpreted with staphylococcal rules.',
-      'They cannot grow in routine aerobic culture.',
-      'They are identified only by acid-fast staining.'
+      'Some can have inducible AmpC beta-lactamase, so species context matters.',
+      'They are gram-positive cocci and should follow staphylococcal rules.',
+      'They produce ESBLs in every isolate, so all cephalosporins are reported resistant.',
+      'They cannot grow in routine aerobic culture.'
     ],
-    answer: 'Some members can have inducible AmpC-type beta-lactamase behavior, so species context and lab reporting rules matter.',
+    answer: 'Some can have inducible AmpC beta-lactamase, so species context matters.',
     explanation: 'Certain Enterobacterales have resistance mechanisms that make AST interpretation more than a simple species-name lookup. The safe bench habit is to follow current lab rules and organism-specific AST guidance.',
     source: 'Learn Microbes original question bank: Enterics and Enterobacterales',
     status: 'published'
@@ -1634,9 +1634,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A gram-negative rod grows on blood agar and MacConkey agar but does not ferment lactose. Which early clue would push the bench workflow toward a nonfermenter instead of a typical Enterobacterales workup?',
     choices: [
       'An oxidase-positive result or an oxidative-only glucose pattern.',
-      'A coagulase-positive result from the colony.',
-      'A beta-hemolytic gram-positive coccus on Gram stain.',
-      'A positive acid-fast stain from the colony.'
+      'A coagulase-positive result from a colony on blood agar.',
+      'Strong acid and gas in the butt of a TSI or KIA tube.',
+      'Beta-hemolytic gram-positive cocci on the Gram stain.'
     ],
     answer: 'An oxidase-positive result or an oxidative-only glucose pattern.',
     explanation: 'Nonfermenters are often separated from Enterobacterales by oxidase testing and oxidative-fermentative carbohydrate patterns. The early goal is to choose the right identification branch.',
@@ -1651,12 +1651,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['OF glucose', 'nonfermenters', 'oxidative metabolism', 'bench tests'],
     prompt: 'In an OF glucose setup, acid develops only in the open tube and not in the sealed tube. What does this pattern suggest?',
     choices: [
-      'The organism uses glucose oxidatively rather than fermentatively.',
-      'The organism ferments glucose under anaerobic conditions only.',
-      'The organism is unable to use oxygen.',
-      'The organism is confirmed as a gram-positive anaerobe.'
+      'Glucose is used oxidatively, not fermentatively.',
+      'Glucose is fermented, but only under anaerobic conditions.',
+      'The organism cannot use oxygen and grows only in the sealed tube.',
+      'The organism is a gram-positive anaerobe.'
     ],
-    answer: 'The organism uses glucose oxidatively rather than fermentatively.',
+    answer: 'Glucose is used oxidatively, not fermentatively.',
     explanation: 'Oxidative organisms need oxygen to produce acid from carbohydrate use, so the open tube changes first. This helps separate nonfermenters from true fermenters.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1669,12 +1669,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['TSI', 'KIA', 'nonfermenters', 'gram-negative rods'],
     prompt: 'A gram-negative rod gives little or no acid reaction on a TSI or KIA tube. Why does that matter in the bench workflow?',
     choices: [
-      'It supports considering a nonfermenter branch when combined with colony appearance and other screening tests.',
-      'It confirms Salmonella without further workup.',
-      'It proves the organism is a yeast.',
-      'It means the Gram stain result can be ignored.'
+      'It points toward a nonfermenter branch, alongside other screens.',
+      'It confirms Salmonella, which typically leaves TSI unchanged.',
+      'It proves the organism is a yeast rather than a bacterium.',
+      'It means the Gram stain result can be set aside for this isolate.'
     ],
-    answer: 'It supports considering a nonfermenter branch when combined with colony appearance and other screening tests.',
+    answer: 'It points toward a nonfermenter branch, alongside other screens.',
     explanation: 'Nonfermenters may show minimal carbohydrate fermentation on TSI or KIA. This is a branch clue, not a final identification.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1687,12 +1687,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['oxidase', 'nonfermenters', 'Acinetobacter', 'Stenotrophomonas'],
     prompt: 'A learner says, "All nonfermenters are oxidase positive." What is the best correction?',
     choices: [
-      'Many are oxidase positive, but important nonfermenters such as Acinetobacter and Stenotrophomonas are oxidase negative.',
+      'Many are, but Acinetobacter and Stenotrophomonas are oxidase negative.',
       'All nonfermenters are oxidase negative by definition.',
-      'Oxidase is used only for gram-positive cocci.',
+      'That is correct, so a negative oxidase rules out a nonfermenter.',
       'Oxidase positivity confirms Pseudomonas aeruginosa every time.'
     ],
-    answer: 'Many are oxidase positive, but important nonfermenters such as Acinetobacter and Stenotrophomonas are oxidase negative.',
+    answer: 'Many are, but Acinetobacter and Stenotrophomonas are oxidase negative.',
     explanation: 'Oxidase is helpful, but it is not a one-test answer. Nonfermenter identification depends on a pattern that includes oxidase, motility, pigment, growth conditions, and biochemical reactions.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1741,12 +1741,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pseudomonas aeruginosa', '42C growth', 'nonfermenters', 'identification'],
     prompt: 'A Pseudomonas-like isolate grows at 42C, is oxidase positive, and reduces nitrate. Which teaching point best fits this pattern?',
     choices: [
-      'Growth at 42C supports Pseudomonas aeruginosa when the rest of the pattern fits.',
-      'Growth at 42C confirms Acinetobacter baumannii complex.',
-      'Growth at 42C rules out all nonfermenters.',
-      'Growth at 42C proves the isolate is an Enterobacterales organism.'
+      'It supports P. aeruginosa when the rest of the pattern fits.',
+      'It confirms Acinetobacter baumannii complex as the identification.',
+      'It rules out all nonfermenters, since they cannot grow at 42C.',
+      'It proves the isolate belongs to the Enterobacterales.'
     ],
-    answer: 'Growth at 42C supports Pseudomonas aeruginosa when the rest of the pattern fits.',
+    answer: 'It supports P. aeruginosa when the rest of the pattern fits.',
     explanation: 'Growth at 42C is a useful support clue for P. aeruginosa. It should be read with oxidase, pigment, nitrate, colony morphology, and the lab\'s identification system.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1759,12 +1759,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['cetrimide agar', 'Pseudomonas aeruginosa', 'selective media', 'pigment'],
     prompt: 'Why might a lab use cetrimide agar when Pseudomonas aeruginosa is suspected?',
     choices: [
-      'It inhibits many competing organisms and can enhance pigment expression by P. aeruginosa.',
-      'It is the primary medium for acid-fast bacilli.',
-      'It is used to confirm coagulase production.',
-      'It makes all nonfermenters lactose positive.'
+      'It inhibits many competitors and enhances P. aeruginosa pigment.',
+      'It is the primary medium for recovering acid-fast bacilli.',
+      'It confirms coagulase production by colonies that turn blue.',
+      'It makes nonfermenters ferment lactose so they show up pink.'
     ],
-    answer: 'It inhibits many competing organisms and can enhance pigment expression by P. aeruginosa.',
+    answer: 'It inhibits many competitors and enhances P. aeruginosa pigment.',
     explanation: 'Cetrimide agar is useful as a selective medium for P. aeruginosa. It supports recovery and pigment-based recognition when interpreted in the full bench workflow.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1777,12 +1777,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pseudomonas aeruginosa', 'cystic fibrosis', 'mucoid colony', 'alginate'],
     prompt: 'A respiratory culture from a patient with chronic lung disease grows a mucoid Pseudomonas aeruginosa. What does the mucoid appearance usually reflect?',
     choices: [
-      'Alginate production that supports a biofilm-like growth pattern.',
-      'Endospore formation by the organism.',
-      'Conversion into a yeast form.',
-      'Loss of all gram-negative cell wall structure.'
+      'Alginate production linked to biofilm growth.',
+      'Endospore formation by the organism under stress.',
+      'Conversion into a yeast-like form in the airway.',
+      'Loss of the gram-negative outer membrane.'
     ],
-    answer: 'Alginate production that supports a biofilm-like growth pattern.',
+    answer: 'Alginate production linked to biofilm growth.',
     explanation: 'Mucoid P. aeruginosa is associated with alginate production, especially in chronic airway settings. For learners, the bench clue is colony texture plus organism pattern, not diagnosis from morphology alone.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1795,12 +1795,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pseudomonas fluorescens', 'fluorescent pigment', 'Pseudomonas', 'nonfermenters'],
     prompt: 'A Pseudomonas-like isolate produces fluorescent pigment but does not show the classic blue-green pyocyanin pattern of P. aeruginosa. Which interpretation is most appropriate?',
     choices: [
-      'Consider a fluorescent Pseudomonas species and continue the species-level workup.',
-      'Report P. aeruginosa based on fluorescence alone.',
-      'Rule out Pseudomonas because fluorescence is never seen in the genus.',
-      'Move the isolate to an acid-fast bacilli workflow.'
+      'Consider another fluorescent Pseudomonas and continue the workup.',
+      'Report P. aeruginosa, since fluorescence alone identifies it.',
+      'Rule out Pseudomonas, since fluorescence is never seen in the genus.',
+      'Move the isolate to an acid-fast bacilli workflow for staining.'
     ],
-    answer: 'Consider a fluorescent Pseudomonas species and continue the species-level workup.',
+    answer: 'Consider another fluorescent Pseudomonas and continue the workup.',
     explanation: 'Fluorescent pigment can occur in more than one Pseudomonas species. It is useful for branching, but species identification needs the complete reaction pattern.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1834,7 +1834,7 @@ export const questionBank: QuestionBankItem[] = [
       'Stenotrophomonas maltophilia.',
       'Pseudomonas aeruginosa.',
       'Vibrio parahaemolyticus.',
-      'Salmonella enterica.'
+      'Elizabethkingia meningoseptica.'
     ],
     answer: 'Stenotrophomonas maltophilia.',
     explanation: 'Stenotrophomonas maltophilia is an important oxidase-negative nonfermenter. Maltose use and other biochemical features help separate it from Pseudomonas-like organisms.',
@@ -1849,12 +1849,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Stenotrophomonas maltophilia', 'Pseudomonas', 'oxidase', 'AST'],
     prompt: 'Why should Stenotrophomonas maltophilia not be treated as just another Pseudomonas-like isolate in the bench workflow?',
     choices: [
-      'It has a different biochemical pattern and important antimicrobial susceptibility interpretation considerations.',
-      'It is a gram-positive coccus that forms chains.',
-      'It is always acid-fast and must be incubated for weeks.',
-      'It is identified only by coagulase testing.'
+      'Its biochemical pattern and AST rules differ from Pseudomonas.',
+      'It is a gram-positive coccus that forms chains in broth.',
+      'It is acid-fast and must be incubated for several weeks.',
+      'It is always carbapenem susceptible, so AST can be skipped entirely.'
     ],
-    answer: 'It has a different biochemical pattern and important antimicrobial susceptibility interpretation considerations.',
+    answer: 'Its biochemical pattern and AST rules differ from Pseudomonas.',
     explanation: 'Stenotrophomonas is a distinct nonfermenter with its own identification and AST considerations. The bench should follow organism-specific rules instead of assuming it behaves like P. aeruginosa.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1867,12 +1867,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Burkholderia cepacia complex', 'cystic fibrosis', 'nonfermenters', 'selective media'],
     prompt: 'A respiratory culture from a cystic fibrosis workup requires targeted recovery of Burkholderia cepacia complex. Which bench principle is most important?',
     choices: [
-      'Use the laboratory\'s selective media or targeted workflow because routine plates may not be enough.',
-      'Use only chocolate agar because Burkholderia cannot grow on any other medium.',
-      'Use acid-fast culture only because Burkholderia is acid-fast.',
-      'Skip identification because all nonfermenters from respiratory specimens are contaminants.'
+      'Use the lab\'s selective Burkholderia media, since routine plates may miss it.',
+      'Use only chocolate agar, because Burkholderia cannot grow on any other medium.',
+      'Use acid-fast culture only, because Burkholderia is acid-fast.',
+      'Skip identification, since nonfermenters from respiratory specimens are contaminants.'
     ],
-    answer: 'Use the laboratory\'s selective media or targeted workflow because routine plates may not be enough.',
+    answer: 'Use the lab\'s selective Burkholderia media, since routine plates may miss it.',
     explanation: 'Burkholderia cepacia complex can require targeted recovery and careful identification, especially in cystic fibrosis respiratory workflows. The safest habit is to follow the lab\'s specific culture protocol.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1885,12 +1885,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Burkholderia pseudomallei', 'melioidosis', 'lab safety', 'nonfermenters'],
     prompt: 'A nonfermenting gram-negative rod from a patient with relevant travel history has wrinkled colonies and a Burkholderia-like pattern. Why should the bench pause before doing extra open-bench manipulation?',
     choices: [
-      'Some Burkholderia species are significant laboratory safety concerns and should be handled according to the lab\'s escalation protocol.',
+      'Some Burkholderia species are lab safety risks needing escalation.',
       'All Burkholderia species are harmless water contaminants.',
-      'Wrinkled colonies prove the organism is a yeast.',
+      'Extra manipulation is fine once the isolate grows on MacConkey agar.',
       'Travel history means the culture no longer needs identification.'
     ],
-    answer: 'Some Burkholderia species are significant laboratory safety concerns and should be handled according to the lab\'s escalation protocol.',
+    answer: 'Some Burkholderia species are lab safety risks needing escalation.',
     explanation: 'Certain Burkholderia species, including B. pseudomallei, require careful laboratory handling. Bench learners should know when an unusual nonfermenter pattern needs escalation instead of extra manipulation.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -1939,12 +1939,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['motility', 'Acinetobacter', 'Alcaligenes', 'Bordetella'],
     prompt: 'A learner is comparing Acinetobacter with other oxidase-variable or oxidase-positive nonfermenters. Why is motility useful?',
     choices: [
-      'Acinetobacter is nonmotile, while several similar nonfermenters are motile.',
-      'Motility confirms lactose fermentation.',
+      'Acinetobacter is nonmotile; many lookalikes are motile.',
+      'Acinetobacter is the only motile nonfermenter, so motility confirms it.',
       'Motility replaces oxidase testing for all gram-negative rods.',
       'Motility proves the isolate is a spore-forming anaerobe.'
     ],
-    answer: 'Acinetobacter is nonmotile, while several similar nonfermenters are motile.',
+    answer: 'Acinetobacter is nonmotile; many lookalikes are motile.',
     explanation: 'Motility is a simple but useful separator in nonfermenter workups. Acinetobacter nonmotility helps distinguish it from organisms such as Alcaligenes-like or Bordetella-like nonfermenters.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'draft'
@@ -1958,9 +1958,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'In a nitrate reduction test, no red color appears after nitrate reagents are added. Zinc is then added and the tube turns red. What does that final red color mean?',
     choices: [
       'Nitrate was still present, so the organism did not reduce nitrate.',
-      'The organism reduced nitrate completely to nitrogen gas.',
-      'The organism is automatically Pseudomonas aeruginosa.',
-      'The test is positive for indole production.'
+      'The organism reduced nitrate all the way to nitrogen gas, a positive.',
+      'The organism is automatically Pseudomonas aeruginosa, a nitrate reducer.',
+      'The zinc step shows the organism produced indole as well.'
     ],
     answer: 'Nitrate was still present, so the organism did not reduce nitrate.',
     explanation: 'Zinc reduces remaining nitrate to nitrite, causing red color in a true negative nitrate test. If no color appears even after zinc, nitrate may have been reduced beyond nitrite.',
@@ -1975,12 +1975,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['MacConkey agar', 'nonfermenters', 'lactose negative', 'colony morphology'],
     prompt: 'A colony on MacConkey agar is pale and lactose negative. Why should the bench avoid jumping straight to Shigella or Salmonella?',
     choices: [
-      'Nonfermenters can also appear lactose negative, so oxidase, OF glucose, and full bench context are needed.',
-      'Pale colonies on MacConkey always indicate yeast.',
-      'MacConkey agar prevents all nonfermenters from growing.',
-      'Lactose-negative colonies are never clinically relevant.'
+      'Nonfermenters are also pale, so oxidase and OF glucose come first.',
+      'Pale colonies on MacConkey always indicate yeast, not bacteria, in stool.',
+      'MacConkey agar prevents all nonfermenters from growing on it.',
+      'Lactose-negative colonies are never clinically relevant in stool.'
     ],
-    answer: 'Nonfermenters can also appear lactose negative, so oxidase, OF glucose, and full bench context are needed.',
+    answer: 'Nonfermenters are also pale, so oxidase and OF glucose come first.',
     explanation: 'Lactose-negative growth is a broad clue. Enteric pathogens and nonfermenters can both be pale on MacConkey, so the next branch depends on screening tests and specimen context.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'draft'
@@ -2011,12 +2011,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['nonfermenters', 'water sources', 'opportunistic organisms', 'bench interpretation'],
     prompt: 'Why are nonfermenting gram-negative rods often discussed in connection with water, devices, wounds, and hospital environments?',
     choices: [
-      'Many are environmental opportunists that can persist in moist settings and become important in the right specimen context.',
-      'They are all strict anaerobes that die in water.',
-      'They are all normal throat flora with no laboratory significance.',
-      'They cannot survive outside the human intestine.'
+      'Many persist in moist settings and act as opportunists.',
+      'They are all strict anaerobes that die quickly once exposed to water.',
+      'They are normal throat flora with no laboratory significance.',
+      'They cannot survive outside the human intestine for more than hours.'
     ],
-    answer: 'Many are environmental opportunists that can persist in moist settings and become important in the right specimen context.',
+    answer: 'Many persist in moist settings and act as opportunists.',
     explanation: 'Nonfermenters often live in environmental or moist reservoirs. Their significance depends on source, quantity, patient context, culture purity, and lab workup rules.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -2029,12 +2029,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['nonfermenters', 'AST', 'resistance', 'Pseudomonas', 'Acinetobacter'],
     prompt: 'Why should antimicrobial susceptibility interpretation for nonfermenters be handled carefully instead of assumed from the organism name alone?',
     choices: [
-      'Nonfermenters often have important intrinsic or acquired resistance patterns and require organism-specific AST rules.',
-      'Nonfermenters never require susceptibility testing.',
-      'All nonfermenters have the same predictable susceptibility pattern.',
-      'AST results are based only on colony color.'
+      'Intrinsic and acquired resistance are common, so rules are organism-specific.',
+      'They never need susceptibility testing, since they are usually contaminants.',
+      'All nonfermenters share one predictable susceptibility pattern.',
+      'Their AST results are read from colony color on the plate.'
     ],
-    answer: 'Nonfermenters often have important intrinsic or acquired resistance patterns and require organism-specific AST rules.',
+    answer: 'Intrinsic and acquired resistance are common, so rules are organism-specific.',
     explanation: 'Nonfermenters such as Pseudomonas, Acinetobacter, Stenotrophomonas, and Burkholderia can have complex AST considerations. The safe bench habit is to follow current laboratory and organism-specific guidance.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -2045,14 +2045,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Nonfermenter identification workflow',
     difficulty: 'intermediate',
     tags: ['nonfermenters', 'pattern recognition', 'bench workflow', 'identification'],
-    prompt: 'Which approach best matches Learn Microbes bench-first identification of a nonfermenting gram-negative rod?',
+    prompt: 'A wound isolate is a lactose-negative gram-negative rod on MacConkey agar, and its colonies on blood agar have a metallic sheen. Which approach to identification is safest?',
     choices: [
-      'Combine source, Gram stain, colony appearance, MacConkey reaction, oxidase, OF glucose, motility, pigment, and key biochemical tests.',
-      'Identify the organism from colony color alone.',
-      'Skip Gram stain because nonfermenters all look identical.',
-      'Report every nonfermenter as Pseudomonas aeruginosa.'
+      'Combine oxidase, OF glucose, motility, pigment, and key biochemicals.',
+      'Report Pseudomonas aeruginosa from the metallic sheen alone.',
+      'Skip the Gram stain, since nonfermenters all look identical.',
+      'Identify it from colony color, since nonfermenter pigments are unique.'
     ],
-    answer: 'Combine source, Gram stain, colony appearance, MacConkey reaction, oxidase, OF glucose, motility, pigment, and key biochemical tests.',
+    answer: 'Combine oxidase, OF glucose, motility, pigment, and key biochemicals.',
     explanation: 'Nonfermenter identification is pattern-based. Each clue narrows the branch, but the safest answer comes from matching the full workflow rather than relying on a single feature.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -2065,12 +2065,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pseudomonas aeruginosa', 'virulence', 'alginate', 'exotoxin A'],
     prompt: 'Which pair of features is commonly associated with Pseudomonas aeruginosa pathogenic potential in teaching workflows?',
     choices: [
-      'Alginate-associated biofilm behavior and toxin/enzyme production.',
-      'Coagulase production and spore formation.',
-      'Acid-fast cell wall and obligate intracellular growth.',
+      'Alginate biofilm and toxin or enzyme production.',
+      'Coagulase production and heat-resistant spore formation.',
+      'An acid-fast cell wall and obligate intracellular growth.',
       'Urease-only identification and capsule swelling reaction.'
     ],
-    answer: 'Alginate-associated biofilm behavior and toxin/enzyme production.',
+    answer: 'Alginate biofilm and toxin or enzyme production.',
     explanation: 'P. aeruginosa has several virulence-associated features, including biofilm-related alginate production in some settings and toxin or enzyme production. These are educational concepts, not standalone diagnostic claims.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'published'
@@ -2083,12 +2083,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['nonfermenters', 'lab safety', 'Burkholderia', 'unusual isolate'],
     prompt: 'An unusual nonfermenting gram-negative rod has an uncommon colony pattern and epidemiologic details that do not fit routine bench isolates. What is the best learner-safe next step?',
     choices: [
-      'Stop extra open-bench work and follow the laboratory escalation or identification safety protocol.',
-      'Sniff the plate to check for odor before deciding.',
-      'Perform every manual test available before notifying anyone.',
-      'Discard the isolate because unusual nonfermenters are never important.'
+      'Stop extra open-bench work and follow the escalation protocol.',
+      'Sniff the plate to check for odor before deciding on tests.',
+      'Perform every manual test available before notifying anyone else.',
+      'Discard the isolate, since unusual nonfermenters are never important.'
     ],
-    answer: 'Stop extra open-bench work and follow the laboratory escalation or identification safety protocol.',
+    answer: 'Stop extra open-bench work and follow the escalation protocol.',
     explanation: 'Some unusual nonfermenters require safety-aware handling. The bench-first habit is not just "do more tests." It is knowing when to pause, protect staff, and follow escalation procedures.',
     source: 'Learn Microbes original question bank: Nonfermentative Bacilli',
     status: 'draft'
@@ -2119,12 +2119,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Vibrio', 'marine exposure', 'halophilic', 'specimen context'],
     prompt: 'A wound culture follows seawater exposure and grows a curved oxidase-positive gram-negative rod. Which bench concept should move Vibrio higher in the differential?',
     choices: [
-      'Some Vibrio species are associated with marine or brackish water exposure and may need salt-aware recovery conditions.',
-      'Vibrio species are strict anaerobes recovered only from deep tissue in anaerobic transport.',
-      'Vibrio species are gram-positive cocci that require bile esculin agar.',
-      'Vibrio species are acid-fast rods that require mycobacterial media.'
+      'Some Vibrio species follow seawater exposure and may need added salt.',
+      'Vibrio species are strict anaerobes recovered only from deep tissue.',
+      'Vibrio species are gram-positive cocci that need bile esculin agar.',
+      'Vibrio species grow only on Lowenstein-Jensen medium after weeks.'
     ],
-    answer: 'Some Vibrio species are associated with marine or brackish water exposure and may need salt-aware recovery conditions.',
+    answer: 'Some Vibrio species follow seawater exposure and may need added salt.',
     explanation: 'Specimen source matters. Marine exposure plus a curved oxidase-positive gram-negative rod should trigger a Vibrio-aware branch instead of a routine Enterobacterales-only mindset.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2138,9 +2138,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A stool workup includes recovery for Campylobacter. Which culture condition best matches the organism\'s usual recovery needs?',
     choices: [
       'Selective medium incubated in a microaerophilic atmosphere.',
-      'Routine blood agar incubated in ambient air only.',
-      'Lowenstein-Jensen medium incubated for several weeks.',
-      'Sabouraud agar incubated at room temperature.'
+      'Routine blood agar incubated in ambient air for 24 hours.',
+      'Lowenstein-Jensen medium incubated for several weeks in CO2.',
+      'Sabouraud agar incubated at room temperature for a week.'
     ],
     answer: 'Selective medium incubated in a microaerophilic atmosphere.',
     explanation: 'Campylobacter recovery depends on the right atmosphere and media. Routine aerobic enteric plates alone may miss the organism.',
@@ -2191,12 +2191,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Aeromonas', 'oxidase', 'Enterobacterales', 'water exposure'],
     prompt: 'A lactose-negative gram-negative rod from a wound culture grows on MacConkey agar and is oxidase positive. Why should Aeromonas stay in the differential?',
     choices: [
-      'Aeromonas can resemble enteric gram-negative rods on media but is oxidase positive.',
-      'Aeromonas is a gram-positive coccus that forms chains.',
-      'Aeromonas is always acid-fast and slow-growing.',
-      'Aeromonas cannot grow on routine aerobic media.'
+      'It grows on MacConkey like an enteric but is oxidase positive.',
+      'Aeromonas is oxidase negative, so the positive result rules it out.',
+      'Aeromonas grows only on TCBS agar, never on MacConkey agar.',
+      'Aeromonas is a gram-positive coccus that can resemble enterics.'
     ],
-    answer: 'Aeromonas can resemble enteric gram-negative rods on media but is oxidase positive.',
+    answer: 'It grows on MacConkey like an enteric but is oxidase positive.',
     explanation: 'Oxidase positivity is a key branch point. Aeromonas may overlap with enteric-looking gram-negative rods but should not be forced into an Enterobacterales pathway.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2211,8 +2211,8 @@ export const questionBank: QuestionBankItem[] = [
     choices: [
       'Plesiomonas shigelloides.',
       'Shigella dysenteriae.',
-      'Klebsiella pneumoniae.',
-      'Enterococcus faecalis.'
+      'Enteroinvasive Escherichia coli.',
+      'Salmonella enterica serovar Typhi.'
     ],
     answer: 'Plesiomonas shigelloides.',
     explanation: 'Plesiomonas can create confusion in stool workflows because some features overlap with enteric pathogens. Oxidase positivity and motility help move the branch away from classic Shigella.',
@@ -2299,12 +2299,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HACEK', 'blood culture', 'fastidious gram-negative rods', 'bench workflow'],
     prompt: 'A blood culture grows small fastidious gram-negative rods after incubation. Why is the HACEK group useful as a learning category?',
     choices: [
-      'It reminds learners to consider slow or fastidious gram-negative rods that may need careful identification from sterile-site cultures.',
-      'It identifies all lactose-fermenting Enterobacterales.',
-      'It refers only to acid-fast bacilli.',
-      'It is a group of gram-positive cocci that are coagulase positive.'
+      'It flags fastidious gram-negative rods that need careful identification.',
+      'It identifies the lactose-fermenting Enterobacterales seen in blood cultures.',
+      'It refers only to acid-fast bacilli recovered from blood culture bottles.',
+      'It names gram-positive cocci that are coagulase positive and grow quickly.'
     ],
-    answer: 'It reminds learners to consider slow or fastidious gram-negative rods that may need careful identification from sterile-site cultures.',
+    answer: 'It flags fastidious gram-negative rods that need careful identification.',
     explanation: 'HACEK is a practical memory bucket for fastidious gram-negative organisms. The bench still uses Gram stain, culture behavior, source, and identification workflow rather than the acronym alone.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'draft'
@@ -2317,12 +2317,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HACEK', 'Aggregatibacter', 'taxonomy', 'fastidious gram-negative rods'],
     prompt: 'A learner sees older HACEK teaching material that lists Actinobacillus, while newer material uses Aggregatibacter for some organisms. What is the safest study approach?',
     choices: [
-      'Recognize that taxonomy changed, but keep the bench concept: fastidious gram-negative rods needing careful identification.',
-      'Ignore the organisms because renamed bacteria are no longer clinically relevant.',
-      'Report all HACEK organisms as Haemophilus influenzae.',
+      'Accept the name change but keep the concept: fastidious gram-negative rods.',
+      'Ignore the organisms, since renamed bacteria are no longer clinically relevant.',
+      'Report every HACEK organism as Haemophilus influenzae, the group\'s current name.',
       'Move all HACEK organisms into the acid-fast bacilli workflow.'
     ],
-    answer: 'Recognize that taxonomy changed, but keep the bench concept: fastidious gram-negative rods needing careful identification.',
+    answer: 'Accept the name change but keep the concept: fastidious gram-negative rods.',
     explanation: 'Names can change, but the bench pattern still matters. HACEK learning should connect taxonomy awareness with source, growth behavior, and organism-specific ID.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2336,9 +2336,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A slow-growing HACEK-like isolate appears as pleomorphic gram-negative rods with rosette-like arrangements and is indole positive. Which organism should be considered?',
     choices: [
       'Cardiobacterium hominis.',
-      'Campylobacter jejuni.',
-      'Shigella sonnei.',
-      'Bordetella pertussis.'
+      'Eikenella corrodens.',
+      'Aggregatibacter aphrophilus.',
+      'Kingella kingae.'
     ],
     answer: 'Cardiobacterium hominis.',
     explanation: 'Cardiobacterium hominis is a fastidious HACEK organism with pleomorphic morphology. Indole positivity and growth behavior can support the branch during identification.',
@@ -2353,12 +2353,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Bordetella pertussis', 'nasopharyngeal specimen', 'special media', 'fastidious'],
     prompt: 'A provider requests testing for Bordetella pertussis. Which specimen and setup principle is most important for the bench learner?',
     choices: [
-      'Use a properly collected nasopharyngeal specimen and the laboratory\'s Bordetella-specific transport or culture workflow.',
-      'Use a clean-catch urine specimen on MacConkey agar.',
-      'Use a stool specimen on TCBS agar.',
-      'Use a throat swab left dry at room temperature overnight.'
+      'A nasopharyngeal swab in Bordetella-specific transport or culture media.',
+      'A throat swab on a cotton-tipped applicator left dry overnight.',
+      'A clean-catch urine specimen plated on MacConkey agar.',
+      'A sputum specimen plated only on routine sheep blood agar.'
     ],
-    answer: 'Use a properly collected nasopharyngeal specimen and the laboratory\'s Bordetella-specific transport or culture workflow.',
+    answer: 'A nasopharyngeal swab in Bordetella-specific transport or culture media.',
     explanation: 'Bordetella testing is highly dependent on correct nasopharyngeal collection and the right transport or culture system. Poor collection can undermine even a good test method.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2389,12 +2389,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Brucella', 'lab safety', 'slow-growing gram-negative coccobacilli', 'blood culture'],
     prompt: 'A blood culture grows tiny gram-negative coccobacilli slowly, and Brucella is in the differential based on history and colony behavior. What is the learner-safe bench response?',
     choices: [
-      'Pause extra open-bench manipulation and follow the laboratory safety escalation protocol.',
+      'Stop open-bench work and follow the lab\'s safety escalation steps.',
       'Sniff the plate to check for a characteristic odor.',
       'Perform every manual biochemical test before notifying anyone.',
-      'Assume it is normal skin flora and discard it.'
+      'Assume it is skin flora and discard it.'
     ],
-    answer: 'Pause extra open-bench manipulation and follow the laboratory safety escalation protocol.',
+    answer: 'Stop open-bench work and follow the lab\'s safety escalation steps.',
     explanation: 'Brucella species are important laboratory-acquired infection risks. The safest bench habit is to recognize concerning patterns and escalate according to SOP.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2407,12 +2407,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Francisella tularensis', 'cysteine', 'fastidious gram-negative coccobacilli', 'lab safety'],
     prompt: 'A tiny gram-negative coccobacillus is suspected to be Francisella tularensis. Which culture concept best fits this organism?',
     choices: [
-      'It is fastidious and requires cysteine-enriched media or a laboratory-specific recovery workflow.',
-      'It grows as a rapid lactose fermenter on MacConkey agar.',
-      'It is recovered only on Sabouraud agar as a mold.',
-      'It is identified by coagulase production.'
+      'It is fastidious and needs cysteine-enriched media.',
+      'It grows quickly as a lactose fermenter on MacConkey agar.',
+      'It grows only on Sabouraud agar, where it forms a mold.',
+      'It is identified by coagulase production from colonies.'
     ],
-    answer: 'It is fastidious and requires cysteine-enriched media or a laboratory-specific recovery workflow.',
+    answer: 'It is fastidious and needs cysteine-enriched media.',
     explanation: 'Francisella tularensis is fastidious and safety-sensitive. Learners should connect cysteine requirement, tiny coccobacillary morphology, and escalation protocols.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2425,12 +2425,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Francisella tularensis', 'lab safety', 'fastidious organisms', 'biothreat awareness'],
     prompt: 'Why should an unusual tiny gram-negative coccobacillus with Francisella-like features trigger a safety-aware workflow?',
     choices: [
-      'Francisella can pose a laboratory safety risk and should not be over-manipulated on the open bench.',
-      'Francisella is always a harmless contaminant.',
+      'It poses a lab safety risk, so open-bench work should be limited.',
+      'Francisella is a harmless contaminant that needs no special handling.',
       'Francisella is a gram-positive coccus that requires coagulase testing.',
-      'Francisella is ruled out if the colony is small.'
+      'Francisella is ruled out whenever the colonies are very small.'
     ],
-    answer: 'Francisella can pose a laboratory safety risk and should not be over-manipulated on the open bench.',
+    answer: 'It poses a lab safety risk, so open-bench work should be limited.',
     explanation: 'Some fastidious gram-negative coccobacilli are not just ID puzzles. They require safe handling, limited manipulation, and escalation under the lab protocol.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2443,12 +2443,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Legionella pneumophila', 'BCYE', 'cysteine', 'fastidious'],
     prompt: 'A respiratory specimen is being cultured for possible Legionella. Which medium concept is most appropriate?',
     choices: [
-      'Buffered charcoal yeast extract agar with required growth supplements.',
-      'MacConkey agar only.',
-      'Bile esculin agar only.',
-      'Lowenstein-Jensen medium only.'
+      'Buffered charcoal yeast extract agar with L-cysteine.',
+      'MacConkey agar, since Legionella is a gram-negative rod.',
+      'Bile esculin agar incubated in ambient air.',
+      'Lowenstein-Jensen medium held for several weeks.'
     ],
-    answer: 'Buffered charcoal yeast extract agar with required growth supplements.',
+    answer: 'Buffered charcoal yeast extract agar with L-cysteine.',
     explanation: 'Legionella requires specialized media such as BCYE. Routine blood or MacConkey agar is not the correct primary recovery strategy.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'draft'
@@ -2461,12 +2461,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Legionella pneumophila', 'Gram stain', 'BCYE', 'fastidious gram-negative rods'],
     prompt: 'Why can Legionella be missed if a learner relies only on routine Gram stain and routine plate growth?',
     choices: [
-      'It may stain poorly and requires specialized culture conditions rather than routine media alone.',
-      'It always appears as large gram-positive cocci in clusters.',
-      'It grows rapidly as a lactose fermenter on MacConkey agar.',
-      'It is always visible as budding yeast on direct smear.'
+      'It stains poorly and needs specialized media, not routine plates.',
+      'It appears as large gram-positive cocci in clusters on every smear.',
+      'It grows rapidly as a lactose fermenter, hiding among enterics.',
+      'It is always seen as budding yeast on the direct smear.'
     ],
-    answer: 'It may stain poorly and requires specialized culture conditions rather than routine media alone.',
+    answer: 'It stains poorly and needs specialized media, not routine plates.',
     explanation: 'Legionella is a fastidious organism. The bench workflow has to match the suspected organism with the correct stain expectations, media, and incubation approach.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2479,12 +2479,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Haemophilus', 'X factor', 'V factor', 'chocolate agar'],
     prompt: 'Why does chocolate agar support many Haemophilus species better than routine sheep blood agar?',
     choices: [
-      'Heating releases growth factors such as X factor and V factor from red blood cells.',
-      'Chocolate agar is anaerobic and removes all oxygen.',
-      'Chocolate agar contains acid-fast stain reagents.',
-      'Chocolate agar makes all organisms lactose fermenters.'
+      'Heating lyses red cells, releasing X and V factors.',
+      'Chocolate agar is anaerobic and removes all oxygen from the plate.',
+      'Chocolate agar contains antibiotics that select for Haemophilus.',
+      'Heating adds lactose, which Haemophilus ferments for energy.'
     ],
-    answer: 'Heating releases growth factors such as X factor and V factor from red blood cells.',
+    answer: 'Heating lyses red cells, releasing X and V factors.',
     explanation: 'Haemophilus identification often begins with X and V factor requirements. Chocolate agar makes these factors more available than intact sheep blood agar.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2497,12 +2497,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Haemophilus', 'satellitism', 'V factor', 'Staphylococcus aureus'],
     prompt: 'Tiny colonies grow near a Staphylococcus aureus streak on sheep blood agar but not farther away. What Haemophilus-related concept does this demonstrate?',
     choices: [
-      'Satellitism from V factor availability near the helper organism.',
-      'Acid-fast growth around the helper organism.',
-      'Coagulase production by Haemophilus.',
-      'Strict anaerobic growth only near oxygen.'
+      'Satellitism from V factor released near the helper organism.',
+      'Acid-fast growth that appears only around the helper organism.',
+      'Coagulase production by Haemophilus near the staphylococci.',
+      'X factor diffusing from the sheep blood only near the streak.'
     ],
-    answer: 'Satellitism from V factor availability near the helper organism.',
+    answer: 'Satellitism from V factor released near the helper organism.',
     explanation: 'Some Haemophilus species need V factor, which can be supplied near organisms such as S. aureus. Satellitism is a classic bench demonstration of that requirement.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2534,9 +2534,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A Haemophilus-like isolate grows with V factor but does not require X factor. Which organism is the best teaching match?',
     choices: [
       'Haemophilus parainfluenzae.',
-      'Haemophilus influenzae.',
-      'Francisella tularensis.',
-      'Vibrio cholerae.'
+      'Haemophilus influenzae type b.',
+      'Haemophilus haemolyticus.',
+      'Haemophilus ducreyi.'
     ],
     answer: 'Haemophilus parainfluenzae.',
     explanation: 'H. parainfluenzae is commonly taught as V factor dependent but not X factor dependent. This separates it from H. influenzae in classic factor-requirement workflows.',
@@ -2551,12 +2551,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Haemophilus influenzae', 'beta-lactamase', 'ampicillin resistance', 'AST'],
     prompt: 'A Haemophilus influenzae isolate is flagged for beta-lactamase production. What is the best educational interpretation?',
     choices: [
-      'The organism may hydrolyze certain beta-lactam drugs, so the result affects susceptibility interpretation under lab rules.',
-      'The organism is confirmed as Legionella.',
-      'The organism no longer requires X or V factors.',
-      'The result proves the organism is a yeast.'
+      'It can hydrolyze ampicillin, which changes how ampicillin is reported.',
+      'It means the isolate is resistant to every beta-lactam, including ceftriaxone.',
+      'The organism no longer requires X or V factors once it makes beta-lactamase.',
+      'It confirms the isolate is Legionella rather than Haemophilus.'
     ],
-    answer: 'The organism may hydrolyze certain beta-lactam drugs, so the result affects susceptibility interpretation under lab rules.',
+    answer: 'It can hydrolyze ampicillin, which changes how ampicillin is reported.',
     explanation: 'Beta-lactamase is a resistance mechanism, not an organism name. Learners should connect it to AST interpretation and current laboratory reporting guidance.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2587,12 +2587,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Haemophilus influenzae', 'capsule', 'serotype b', 'serotyping'],
     prompt: 'What does capsular serotyping add to a Haemophilus influenzae workup?',
     choices: [
-      'It characterizes capsule antigen type, such as type b, after the organism is identified.',
-      'It replaces Gram stain and culture setup.',
-      'It determines whether the organism is acid-fast.',
-      'It proves the isolate is a nonfermenter.'
+      'It assigns the capsule type, such as type b, after identification.',
+      'It replaces the Gram stain and culture setup for Haemophilus influenzae.',
+      'It determines whether the organism needs X factor, V factor, or both.',
+      'It shows whether the isolate is a nonfermenter or a fermenter.'
     ],
-    answer: 'It characterizes capsule antigen type, such as type b, after the organism is identified.',
+    answer: 'It assigns the capsule type, such as type b, after identification.',
     explanation: 'Serotyping addresses capsule antigen identity. It is not the same as primary organism recovery or basic species identification.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2605,12 +2605,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['fastidious gram-negative rods', 'MacConkey agar', 'chocolate agar', 'bench workflow'],
     prompt: 'A tiny gram-negative rod grows on chocolate agar but not on MacConkey agar. What is the best learner interpretation?',
     choices: [
-      'Fastidious gram-negative rods may require enriched media, so lack of MacConkey growth does not rule out importance.',
-      'The isolate must be a lactose-fermenting Enterobacterales organism.',
-      'The isolate is automatically a fungus.',
-      'The Gram stain can be ignored because MacConkey was negative.'
+      'Many fastidious gram-negative rods skip MacConkey but still matter.',
+      'It must be a lactose-fermenting Enterobacterales organism.',
+      'It is automatically a fungus, since all bacteria grow on MacConkey agar.',
+      'No MacConkey growth means it is a contaminant and can be ignored.'
     ],
-    answer: 'Fastidious gram-negative rods may require enriched media, so lack of MacConkey growth does not rule out importance.',
+    answer: 'Many fastidious gram-negative rods skip MacConkey but still matter.',
     explanation: 'Some fastidious gram-negative rods do not grow well on MacConkey agar. The bench should use source, Gram stain, media requirements, atmosphere, and key tests together.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2621,14 +2621,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Fastidious gram-negative rod workflow',
     difficulty: 'intermediate',
     tags: ['fastidious gram-negative rods', 'bench workflow', 'source', 'media', 'atmosphere'],
-    prompt: 'Which approach best matches a bench-first workup for miscellaneous fastidious gram-negative rods?',
+    prompt: 'A tiny gram-negative coccobacillus from a cat-bite wound grows on blood and chocolate agar but not on MacConkey agar. Which workup approach fits a bench-first habit?',
     choices: [
-      'Start with specimen source and Gram stain, then connect colony growth, media needs, atmosphere, and key biochemical clues.',
-      'Identify the organism from one colony color alone.',
-      'Treat all tiny gram-negative rods as normal flora without review.',
-      'Use only MacConkey agar for every fastidious organism.'
+      'Connect the bite source and Gram stain with oxidase, indole, and media growth.',
+      'Report normal skin flora, since tiny gram-negative rods from wounds rarely matter.',
+      'Repeat MacConkey agar only, since every true pathogen grows on it.',
+      'Identify it from colony color alone, since bite isolates look distinctive.'
     ],
-    answer: 'Start with specimen source and Gram stain, then connect colony growth, media needs, atmosphere, and key biochemical clues.',
+    answer: 'Connect the bite source and Gram stain with oxidase, indole, and media growth.',
     explanation: 'Fastidious gram-negative rods require workflow thinking. The safest learning path is source to Gram stain to media and atmosphere to key tests, not memorizing isolated names.',
     source: 'Learn Microbes original question bank: Miscellaneous and Fastidious Gram-Negative Rods',
     status: 'published'
@@ -2677,12 +2677,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Micrococcus', 'Staphylococcus', 'OF glucose', 'gram-positive cocci'],
     prompt: 'A catalase-positive gram-positive coccus could be Micrococcus or Staphylococcus. Which concept helps separate them in a classic teaching workflow?',
     choices: [
-      'Staphylococcus can ferment glucose, while Micrococcus is typically oxidative or nonfermentative.',
-      'Micrococcus is always coagulase positive, while Staphylococcus is always coagulase negative.',
-      'Micrococcus is acid-fast, while Staphylococcus is not.',
-      'Staphylococcus grows only on mycobacterial media.'
+      'Staphylococcus ferments glucose; Micrococcus is oxidative.',
+      'Micrococcus is coagulase positive, while Staphylococcus is coagulase negative.',
+      'Micrococcus ferments glucose; Staphylococcus is oxidative.',
+      'Micrococcus is acid-fast, while Staphylococcus is not.'
     ],
-    answer: 'Staphylococcus can ferment glucose, while Micrococcus is typically oxidative or nonfermentative.',
+    answer: 'Staphylococcus ferments glucose; Micrococcus is oxidative.',
     explanation: 'Micrococcus and Staphylococcus can both be catalase positive. Glucose metabolism pattern helps move the learner into the correct branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2695,12 +2695,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['lysostaphin', 'Micrococcus', 'Staphylococcus', 'bench tests'],
     prompt: 'A lab uses lysostaphin to help separate Staphylococcus from Micrococcus. Which result pattern is the classic teaching point?',
     choices: [
-      'Staphylococcus is usually susceptible to lysostaphin, while Micrococcus is resistant.',
-      'Micrococcus is usually susceptible to lysostaphin, while Staphylococcus is resistant.',
-      'Both organisms are identified by lysostaphin as acid-fast rods.',
+      'Staphylococcus is lysostaphin susceptible; Micrococcus is resistant.',
+      'Micrococcus is usually lysostaphin susceptible, while Staphylococcus resists it.',
+      'Both organisms are identified by lysostaphin, which stains them as acid-fast rods.',
       'Lysostaphin detects lactose fermentation on MacConkey agar.'
     ],
-    answer: 'Staphylococcus is usually susceptible to lysostaphin, while Micrococcus is resistant.',
+    answer: 'Staphylococcus is lysostaphin susceptible; Micrococcus is resistant.',
     explanation: 'Lysostaphin targets features of the staphylococcal cell wall. It is a useful advanced separator when catalase-positive gram-positive cocci overlap.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2713,12 +2713,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['coagulase', 'Staphylococcus aureus', 'clumping factor', 'tube coagulase'],
     prompt: 'A slide coagulase test is negative on a Staphylococcus-like isolate, but S. aureus is still suspected. What is the best bench principle?',
     choices: [
-      'Perform or follow the tube coagulase workflow because slide testing detects bound coagulase and can miss some isolates.',
-      'Report the isolate as Micrococcus immediately.',
-      'Move the isolate to an acid-fast bacilli culture workflow.',
-      'Use only MacConkey agar to confirm coagulase.'
+      'Do a tube coagulase test, since slide testing can miss some S. aureus.',
+      'Report Micrococcus, since slide coagulase was negative.',
+      'Repeat the slide test with more colony until it clumps.',
+      'Report coagulase-negative staphylococcus, since slide testing is definitive.'
     ],
-    answer: 'Perform or follow the tube coagulase workflow because slide testing detects bound coagulase and can miss some isolates.',
+    answer: 'Do a tube coagulase test, since slide testing can miss some S. aureus.',
     explanation: 'Slide coagulase screens for bound coagulase or clumping factor. Tube coagulase detects free coagulase and is useful when the slide result does not fit the suspected pattern.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2731,12 +2731,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus aureus', 'latex agglutination', 'protein A', 'clumping factor'],
     prompt: 'A rapid latex agglutination test is used on a Staphylococcus-like colony. What does this type of test commonly detect for S. aureus screening?',
     choices: [
-      'Surface markers such as clumping factor, protein A, or capsular antigen depending on the kit.',
-      'Acid-fast cell wall mycolic acids.',
-      'Indole production from tryptophan.',
-      'Lactose fermentation on MacConkey agar.'
+      'Clumping factor, protein A, or capsular antigen, depending on the kit.',
+      'Free coagulase released into the latex reagent over several hours.',
+      'Mycolic acids in the cell wall that bind to the latex beads.',
+      'DNase activity that breaks down DNA coating the latex particles.'
     ],
-    answer: 'Surface markers such as clumping factor, protein A, or capsular antigen depending on the kit.',
+    answer: 'Clumping factor, protein A, or capsular antigen, depending on the kit.',
     explanation: 'Latex agglutination tests support rapid S. aureus screening by detecting surface-associated targets. Results should still fit the organism source, morphology, and laboratory workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2749,12 +2749,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus aureus', 'mannitol salt agar', 'salt tolerance', 'fermentation'],
     prompt: 'A salt-tolerant gram-positive coccus grows on mannitol salt agar and turns the medium yellow. Which interpretation best fits the teaching workflow?',
     choices: [
-      'The organism tolerated high salt and fermented mannitol, supporting a Staphylococcus aureus-like pattern.',
-      'The organism is confirmed as Streptococcus pneumoniae.',
-      'The organism is acid-fast.',
-      'The organism is a lactose-fermenting gram-negative rod.'
+      'It tolerated salt and fermented mannitol, fitting an S. aureus pattern.',
+      'It confirms Streptococcus pneumoniae, which ferments mannitol in salt.',
+      'It is a lactose-fermenting gram-negative rod growing through the salt.',
+      'The organism is acid-fast, so the yellow comes from mycolic acid.'
     ],
-    answer: 'The organism tolerated high salt and fermented mannitol, supporting a Staphylococcus aureus-like pattern.',
+    answer: 'It tolerated salt and fermented mannitol, fitting an S. aureus pattern.',
     explanation: 'Mannitol salt agar combines salt selection with mannitol differentiation. A yellow reaction supports mannitol fermentation but still belongs in the full Staphylococcus workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2767,12 +2767,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['MRSA', 'mecA', 'PBP2a', 'cefoxitin', 'AST'],
     prompt: 'A Staphylococcus aureus isolate is flagged as methicillin resistant. What is the best educational meaning of this result?',
     choices: [
-      'The isolate may carry mecA or a related mechanism that produces altered penicillin-binding protein activity.',
-      'The isolate is confirmed as Streptococcus pyogenes.',
-      'The isolate can no longer be tested by any susceptibility method.',
-      'The isolate became acid-fast after exposure to antibiotics.'
+      'It may carry mecA, which makes an altered penicillin-binding protein.',
+      'It is resistant only to methicillin, so other beta-lactams can be reported as tested.',
+      'It can no longer be tested by any susceptibility method in the laboratory.',
+      'It became acid-fast after exposure to antibiotics.'
     ],
-    answer: 'The isolate may carry mecA or a related mechanism that produces altered penicillin-binding protein activity.',
+    answer: 'It may carry mecA, which makes an altered penicillin-binding protein.',
     explanation: 'MRSA is an antimicrobial resistance concept tied to altered beta-lactam targets such as PBP2a. Bench interpretation follows the lab’s current AST method and reporting rules.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2803,12 +2803,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus epidermidis', 'coagulase-negative staphylococci', 'biofilm', 'catheter'],
     prompt: 'A coagulase-negative Staphylococcus isolate is repeatedly recovered from a catheter-associated specimen. Which concept explains why the lab does not dismiss the pattern automatically?',
     choices: [
-      'Some coagulase-negative staphylococci can form biofilm on devices and may be significant in the right context.',
-      'All coagulase-negative staphylococci are always contaminants.',
-      'Coagulase-negative staphylococci are acid-fast rods.',
-      'Coagulase-negative staphylococci cannot grow on blood agar.'
+      'Some coagulase-negative staphylococci form biofilm on devices.',
+      'All coagulase-negative staphylococci are contaminants, whatever the source.',
+      'Coagulase-negative staphylococci cannot grow on blood agar.',
+      'Repeat isolation proves the organism is actually S. aureus, not a CoNS.'
     ],
-    answer: 'Some coagulase-negative staphylococci can form biofilm on devices and may be significant in the right context.',
+    answer: 'Some coagulase-negative staphylococci form biofilm on devices.',
     explanation: 'Coagulase-negative staphylococci often represent skin flora, but source and repeat recovery matter. Device-associated contexts require careful interpretation under the lab’s rules.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2823,8 +2823,8 @@ export const questionBank: QuestionBankItem[] = [
     choices: [
       'Staphylococcus saprophyticus.',
       'Staphylococcus epidermidis.',
-      'Streptococcus pneumoniae.',
-      'Neisseria meningitidis.'
+      'Staphylococcus haemolyticus.',
+      'Staphylococcus pseudintermedius.'
     ],
     answer: 'Staphylococcus saprophyticus.',
     explanation: 'S. saprophyticus is classically novobiocin resistant, while S. epidermidis is usually novobiocin susceptible. This is a useful separator in the correct specimen context.',
@@ -2839,12 +2839,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus lugdunensis', 'coagulase-negative staphylococci', 'bench interpretation', 'sterile site'],
     prompt: 'Why should Staphylococcus lugdunensis not be treated casually as just another low-significance coagulase-negative Staphylococcus in every situation?',
     choices: [
-      'It can behave more aggressively than many coagulase-negative staphylococci, so source and significance need careful review.',
-      'It is always an acid-fast rod.',
-      'It is always a harmless environmental mold.',
-      'It cannot grow in routine aerobic culture.'
+      'It can act more like S. aureus, so its significance needs careful review.',
+      'It is always a skin contaminant, so it never needs identification to species.',
+      'It is always an acid-fast rod that has been mislabeled as a staphylococcus.',
+      'It cannot grow in routine aerobic culture on blood agar.'
     ],
-    answer: 'It can behave more aggressively than many coagulase-negative staphylococci, so source and significance need careful review.',
+    answer: 'It can act more like S. aureus, so its significance needs careful review.',
     explanation: 'S. lugdunensis is coagulase-negative in many workflows but can be more clinically significant than typical skin-flora CoNS. Learners should interpret it with source, purity, and lab guidance.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2857,12 +2857,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['coagulase-negative staphylococci', 'contamination', 'sterile site', 'bench interpretation'],
     prompt: 'A coagulase-negative Staphylococcus grows from one of several blood culture bottles. What is the best bench-first interpretation habit?',
     choices: [
-      'Evaluate source, number of positive cultures, timing, organism identity, and lab criteria before deciding significance.',
+      'Weigh the number of positive sets, timing, and identity before deciding.',
       'Report every coagulase-negative Staphylococcus as S. aureus.',
       'Ignore all coagulase-negative staphylococci from sterile-site cultures.',
-      'Identify it only by colony color.'
+      'Call it significant, since any blood culture growth means bacteremia.'
     ],
-    answer: 'Evaluate source, number of positive cultures, timing, organism identity, and lab criteria before deciding significance.',
+    answer: 'Weigh the number of positive sets, timing, and identity before deciding.',
     explanation: 'Coagulase-negative staphylococci are common skin organisms but can be significant in the right context. Interpretation depends on the full culture pattern, not one label.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2913,8 +2913,8 @@ export const questionBank: QuestionBankItem[] = [
     choices: [
       'Group B Streptococcus.',
       'Group A Streptococcus.',
-      'Viridans streptococci.',
-      'Moraxella catarrhalis.'
+      'Streptococcus pneumoniae.',
+      'Enterococcus faecalis.'
     ],
     answer: 'Group B Streptococcus.',
     explanation: 'Group B Streptococcus is classically CAMP positive and hippurate positive. The bench uses these reactions with hemolysis and grouping methods.',
@@ -2929,12 +2929,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['group C strep', 'group G strep', 'beta hemolysis', 'streptococci'],
     prompt: 'A beta-hemolytic Streptococcus-like isolate is not group A or group B by the lab’s screening workflow. What is the best next concept?',
     choices: [
-      'Consider other beta-hemolytic groups such as C or G and follow the laboratory grouping method.',
+      'Consider groups C or G and follow the lab\'s grouping method.',
       'Report it as Streptococcus pneumoniae based on beta hemolysis.',
-      'Move it to a Neisseria carbohydrate workflow.',
-      'Assume it is a mold because group A and B are negative.'
+      'Report it as viridans streptococci, since it is not group A or B.',
+      'Assume it is a mold because group A and B tests are negative.'
     ],
-    answer: 'Consider other beta-hemolytic groups such as C or G and follow the laboratory grouping method.',
+    answer: 'Consider groups C or G and follow the lab\'s grouping method.',
     explanation: 'Not all beta-hemolytic streptococci are group A or B. Grouping and organism context keep the workup accurate and prevent oversimplified identification.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2965,12 +2965,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['viridans streptococci', 'optochin resistant', 'bile insoluble', 'alpha hemolysis'],
     prompt: 'An alpha-hemolytic Streptococcus-like isolate is optochin resistant and bile insoluble. Which group best fits this teaching pattern?',
     choices: [
-      'Viridans group streptococci.',
+      'Viridans streptococci.',
       'Streptococcus pneumoniae.',
-      'Staphylococcus aureus.',
-      'Moraxella catarrhalis.'
+      'Streptococcus agalactiae.',
+      'Streptococcus pyogenes.'
     ],
-    answer: 'Viridans group streptococci.',
+    answer: 'Viridans streptococci.',
     explanation: 'Viridans group streptococci are classically optochin resistant and bile insoluble. This pattern helps keep them separate from S. pneumoniae.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -2983,12 +2983,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['bile esculin', 'group D streptococci', 'Enterococcus', 'bench tests'],
     prompt: 'A catalase-negative gram-positive coccus hydrolyzes esculin in the presence of bile. What does this result support?',
     choices: [
-      'A group D or Enterococcus branch that needs additional separation.',
-      'A final identification of Streptococcus pyogenes.',
-      'A Neisseria carbohydrate utilization pattern.',
-      'A Staphylococcus aureus coagulase reaction.'
+      'A group D or Enterococcus branch needing further separation.',
+      'A final identification of Streptococcus pyogenes from one test.',
+      'A Neisseria carbohydrate utilization pattern in the broth.',
+      'A coagulase reaction that points to Staphylococcus aureus.'
     ],
-    answer: 'A group D or Enterococcus branch that needs additional separation.',
+    answer: 'A group D or Enterococcus branch needing further separation.',
     explanation: 'Bile esculin positivity supports the group D or Enterococcus branch. Additional tests such as salt tolerance and PYR help separate organisms within that branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3019,12 +3019,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Streptococcus gallolyticus', 'Streptococcus bovis group', 'bile esculin', '6.5% NaCl'],
     prompt: 'A group D-like Streptococcus isolate is bile esculin positive but does not grow in 6.5 percent NaCl. Which teaching interpretation is most appropriate?',
     choices: [
-      'A nonenterococcal group D organism such as the Streptococcus bovis or gallolyticus group should be considered.',
-      'The result confirms Enterococcus faecalis.',
-      'The result confirms Staphylococcus aureus.',
-      'The result rules out all streptococci.'
+      'Nonenterococcal group D streptococci, such as S. gallolyticus.',
+      'Enterococcus faecalis, since salt testing is unreliable for it.',
+      'Staphylococcus aureus, which is bile esculin positive and salt sensitive.',
+      'A result that rules out all streptococci from the differential.'
     ],
-    answer: 'A nonenterococcal group D organism such as the Streptococcus bovis or gallolyticus group should be considered.',
+    answer: 'Nonenterococcal group D streptococci, such as S. gallolyticus.',
     explanation: 'Salt tolerance helps separate Enterococcus from nonenterococcal group D streptococci. Bile esculin alone is not enough to finalize the branch.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3037,12 +3037,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['nutritionally variant streptococci', 'Abiotrophia', 'Granulicatella', 'satellitism'],
     prompt: 'Tiny colonies appear only near a Staphylococcus aureus streak on blood agar, suggesting a nutritionally variant Streptococcus-like organism. What does this pattern reflect?',
     choices: [
-      'The organism needs a growth factor supplied near the helper organism.',
-      'The organism is acid-fast and requires mycobacterial media.',
+      'The organism needs a growth factor supplied by the helper.',
+      'The organism is acid-fast and needs mycobacterial media to grow well.',
       'The organism is a lactose-fermenting gram-negative rod.',
-      'The organism is coagulase positive.'
+      'The organism makes coagulase that the staphylococcus activates.'
     ],
-    answer: 'The organism needs a growth factor supplied near the helper organism.',
+    answer: 'The organism needs a growth factor supplied by the helper.',
     explanation: 'Nutritionally variant streptococci, such as Abiotrophia or Granulicatella, may require additional nutrients and show satellite growth. This is a bench clue for a more specialized identification workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3055,12 +3055,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['PYR', 'Streptococcus pyogenes', 'Enterococcus', 'bench tests'],
     prompt: 'Why is PYR useful in the gram-positive cocci workflow?',
     choices: [
-      'It helps support organisms such as Streptococcus pyogenes and Enterococcus in the right branch.',
+      'It supports S. pyogenes and Enterococcus in the right branch.',
       'It confirms all alpha-hemolytic streptococci as S. pneumoniae.',
-      'It detects lactose fermentation.',
-      'It replaces Gram stain review.'
+      'It detects lactose fermentation by gram-positive cocci.',
+      'It separates Staphylococcus from Streptococcus in place of catalase.'
     ],
-    answer: 'It helps support organisms such as Streptococcus pyogenes and Enterococcus in the right branch.',
+    answer: 'It supports S. pyogenes and Enterococcus in the right branch.',
     explanation: 'PYR is a practical support test. It is useful for specific branches, especially group A Streptococcus and Enterococcus, but it is not a universal final identification test.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3073,12 +3073,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['streptococcal grouping', 'Lancefield group', 'bench workflow', 'beta hemolysis'],
     prompt: 'A beta-hemolytic Streptococcus-like isolate gives a Lancefield group reaction. What is the safest learning interpretation?',
     choices: [
-      'Grouping supports the identification branch but should be interpreted with colony morphology, hemolysis, and lab workflow.',
-      'Grouping replaces culture and Gram stain.',
-      'Grouping identifies Neisseria species.',
-      'Grouping proves the isolate is a Staphylococcus.'
+      'Grouping supports the branch but is read with morphology and hemolysis.',
+      'Grouping replaces culture and the Gram stain for streptococci.',
+      'Grouping identifies Neisseria species from the same colony.',
+      'A group reaction proves the isolate is a Staphylococcus.'
     ],
-    answer: 'Grouping supports the identification branch but should be interpreted with colony morphology, hemolysis, and lab workflow.',
+    answer: 'Grouping supports the branch but is read with morphology and hemolysis.',
     explanation: 'Lancefield grouping is powerful but still part of a workflow. Bench identification stays strongest when grouping matches the rest of the organism pattern.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3091,12 +3091,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus aureus', 'toxins', 'superantigen', 'virulence'],
     prompt: 'In a teaching workflow, why is Staphylococcus aureus associated with several toxin-mediated syndromes?',
     choices: [
-      'Some strains produce toxins such as superantigens, exfoliative toxins, or enterotoxins.',
-      'All S. aureus isolates produce acid-fast spores.',
-      'S. aureus is an obligate intracellular organism.',
+      'Some strains make superantigens, exfoliative toxins, or enterotoxins.',
+      'All S. aureus isolates produce acid-fast spores that release toxins in tissue.',
+      'S. aureus is an obligate intracellular organism that releases toxin on lysis.',
       'S. aureus is identified only by carbohydrate use on CTA media.'
     ],
-    answer: 'Some strains produce toxins such as superantigens, exfoliative toxins, or enterotoxins.',
+    answer: 'Some strains make superantigens, exfoliative toxins, or enterotoxins.',
     explanation: 'S. aureus has multiple virulence-associated factors. The educational point is organism capability, not diagnosing a syndrome from a culture result alone.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'published'
@@ -3109,12 +3109,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Staphylococcus', 'beta-lactamase', 'penicillinase', 'AST'],
     prompt: 'A Staphylococcus isolate produces beta-lactamase. What is the best educational interpretation?',
     choices: [
-      'The organism can hydrolyze certain beta-lactam drugs, affecting susceptibility interpretation under lab rules.',
-      'The organism is confirmed as a Streptococcus.',
+      'It can hydrolyze penicillin, so penicillin is not reported susceptible.',
+      'It is resistant to all beta-lactams, so it must be reported as MRSA.',
       'The organism no longer has a gram-positive cell wall.',
-      'The result proves the isolate requires viral transport medium.'
+      'It confirms the organism is a Streptococcus rather than a Staphylococcus.'
     ],
-    answer: 'The organism can hydrolyze certain beta-lactam drugs, affecting susceptibility interpretation under lab rules.',
+    answer: 'It can hydrolyze penicillin, so penicillin is not reported susceptible.',
     explanation: 'Beta-lactamase is a resistance mechanism. Learners should connect it to AST interpretation rather than treating it as an organism identification test.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'draft'
@@ -3145,12 +3145,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['modified Thayer-Martin', 'Neisseria gonorrhoeae', 'Neisseria meningitidis', 'selective media'],
     prompt: 'Why is modified Thayer-Martin medium useful when pathogenic Neisseria is suspected from a mixed-flora site?',
     choices: [
-      'It contains selective agents that suppress competing flora while supporting pathogenic Neisseria recovery.',
-      'It is the primary medium for acid-fast bacilli.',
-      'It selects only for anaerobic gram-positive rods.',
-      'It turns all Neisseria species into lactose fermenters.'
+      'Its antimicrobials suppress competing flora while Neisseria grows.',
+      'It is the primary medium for recovering acid-fast bacilli from genital swabs.',
+      'It selects only for anaerobic gram-positive rods from genital sites.',
+      'It turns Neisseria into lactose fermenters that are easy to spot.'
     ],
-    answer: 'It contains selective agents that suppress competing flora while supporting pathogenic Neisseria recovery.',
+    answer: 'Its antimicrobials suppress competing flora while Neisseria grows.',
     explanation: 'Modified Thayer-Martin is used to recover pathogenic Neisseria from specimens with competing organisms. It supports the source-to-media logic of the bench workflow.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'draft'
@@ -3235,12 +3235,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Neisseria', 'CTA', 'carbohydrate utilization', 'bench tests'],
     prompt: 'Why are carbohydrate utilization patterns useful in classic Neisseria identification?',
     choices: [
-      'Different Neisseria species use different carbohydrates, which supports species-level separation.',
-      'They detect coagulase production.',
-      'They determine whether the organism is acid-fast.',
-      'They replace oxidase testing and source review.'
+      'Species differ in which sugars they use, which helps separate them.',
+      'They detect coagulase production by Neisseria colonies.',
+      'They show whether the organism is acid-fast.',
+      'They replace oxidase testing and specimen source review entirely.'
     ],
-    answer: 'Different Neisseria species use different carbohydrates, which supports species-level separation.',
+    answer: 'Species differ in which sugars they use, which helps separate them.',
     explanation: 'Classic Neisseria workups use carbohydrate patterns as one layer of identification. The results should match Gram stain, oxidase reaction, source, and growth behavior.',
     source: 'Learn Microbes original question bank: Gram-Positive and Gram-Negative Cocci',
     status: 'draft'
@@ -4784,9 +4784,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A respiratory specimen from an immunocompromised patient shows delicate branching Gram-positive rods that are weakly acid-fast by a modified stain. Which organism group should be considered?',
     choices: [
       'Nocardia and related aerobic actinomycetes.',
-      'Enterococcus species.',
-      'Vibrio species.',
-      'Dermatophyte molds only.'
+      'Actinomyces israelii, an anaerobic branching rod.',
+      'Streptomyces, which is strongly acid-fast.',
+      'Mycobacterium tuberculosis complex.'
     ],
     answer: 'Nocardia and related aerobic actinomycetes.',
     explanation: 'Branching, beaded Gram-positive rods with modified acid-fast staining support a Nocardia-like branch, especially from pulmonary or disseminated disease contexts.',
@@ -4801,12 +4801,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB culture', 'NALC-NaOH', 'decontamination', 'sputum'],
     prompt: 'A sputum specimen is processed for mycobacterial culture. Which reagent concept best describes the purpose of NALC with NaOH?',
     choices: [
-      'Mucolysis plus decontamination to liquefy sputum and reduce competing flora.',
+      'NALC thins mucus while NaOH reduces competing flora.',
       'Selective enhancement of routine Enterobacterales on MacConkey agar.',
       'Direct confirmation of rifampin resistance by color change.',
-      'Permanent staining of acid-fast bacilli on the smear.'
+      'Permanent staining of AFB on the smear.'
     ],
-    answer: 'Mucolysis plus decontamination to liquefy sputum and reduce competing flora.',
+    answer: 'NALC thins mucus while NaOH reduces competing flora.',
     explanation: 'NALC helps digest mucus, while NaOH helps reduce contaminating flora. Processing must balance decontamination with preserving mycobacterial viability.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
     status: 'published'
@@ -4819,12 +4819,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['mycobacteria', 'media handling', 'culture conditions'],
     prompt: 'A technologist prepares mycobacterial culture media that must be protected from excessive light and improper storage. What is the main bench principle?',
     choices: [
-      'Culture conditions and media handling can affect recovery and must follow validated mycobacteriology protocols.',
-      'Mycobacteria grow best when routine plates are held open at room temperature.',
-      'Light exposure is used to sterilize all inoculated mycobacterial cultures.',
+      'Light and poor storage can degrade the media and reduce recovery.',
+      'Mycobacteria grow best on plates held open at room temperature.',
+      'Light exposure sterilizes inoculated mycobacterial cultures.',
       'Mycobacterial recovery is independent of incubation temperature and atmosphere.'
     ],
-    answer: 'Culture conditions and media handling can affect recovery and must follow validated mycobacteriology protocols.',
+    answer: 'Light and poor storage can degrade the media and reduce recovery.',
     explanation: 'Mycobacteriology media and incubation conditions are method-dependent. Improper storage, light exposure, or incubation conditions can compromise recovery or interpretation.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
     status: 'published'
@@ -4837,12 +4837,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB culture', 'liquid media', 'solid media', 'rapid growers'],
     prompt: 'An AFB liquid culture flags positive early, while solid media show no visible colonies yet. Which interpretation is most appropriate?',
     choices: [
-      'Liquid systems may detect mycobacterial growth before colonies are visible on solid media.',
-      'The result proves the organism cannot be acid-fast.',
-      'Solid media should always grow before liquid systems.',
+      'Liquid systems often detect growth before colonies appear on solid media.',
+      'It proves the organism cannot be acid-fast, since AFB grow slowly.',
+      'Solid media should always grow first, so the liquid flag is a false positive.',
       'The culture can be discarded without smear or identification workup.'
     ],
-    answer: 'Liquid systems may detect mycobacterial growth before colonies are visible on solid media.',
+    answer: 'Liquid systems often detect growth before colonies appear on solid media.',
     explanation: 'Liquid mycobacterial systems can detect growth earlier than solid media. Positive signals still require smear, identification, contamination checks, and appropriate follow-up.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
     status: 'published'
@@ -4855,12 +4855,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['MTB complex', 'NAAT', 'AFB smear', 'respiratory specimen'],
     prompt: 'An AFB smear-positive respiratory specimen is being evaluated for possible tuberculosis. Which same-day method can support rapid detection of Mycobacterium tuberculosis complex?',
     choices: [
-      'A validated nucleic acid amplification test for MTB complex.',
-      'Coagulase testing from sheep blood agar.',
-      'Germ tube testing.',
-      'Optochin susceptibility alone.'
+      'A nucleic acid amplification test for MTB complex.',
+      'A rapid antigen card test performed directly on the sputum.',
+      'Niacin testing performed directly on the smear-positive sputum.',
+      'An IGRA performed on the same day from a blood sample.'
     ],
-    answer: 'A validated nucleic acid amplification test for MTB complex.',
+    answer: 'A nucleic acid amplification test for MTB complex.',
     explanation: 'NAAT can rapidly support detection of MTB complex from appropriate specimens. Smear, culture, molecular testing, and biosafety workflow each answer different parts of the question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycobacteriology',
     status: 'published'
@@ -4876,7 +4876,7 @@ export const questionBank: QuestionBankItem[] = [
       'Photochromogen.',
       'Scotochromogen.',
       'Nonchromogen.',
-      'Dermatophyte.'
+      'Rapidly growing mycobacterium.'
     ],
     answer: 'Photochromogen.',
     explanation: 'Photochromogens develop pigment after light exposure. Scotochromogens produce pigment in the dark, and nonchromogens do not produce strong pigment under those conditions.',
@@ -4927,12 +4927,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['mycobacteria', 'AFB culture', 'special media', 'incubation'],
     prompt: 'Why should suspected mycobacteria not be evaluated only by routine 24 to 48 hour blood agar culture?',
     choices: [
-      'Many mycobacteria require special media and longer incubation than routine bacterial cultures.',
+      'Many need special media and incubation lasting weeks.',
       'Mycobacteria grow only on chocolate agar overnight.',
-      'Routine blood agar changes acid-fast organisms into gram-positive cocci.',
-      'Mycobacteria are always recovered faster than Enterobacterales.'
+      'Blood agar turns acid-fast organisms into gram-positive cocci.',
+      'Mycobacteria always grow faster than Enterobacterales.'
     ],
-    answer: 'Many mycobacteria require special media and longer incubation than routine bacterial cultures.',
+    answer: 'Many need special media and incubation lasting weeks.',
     explanation: 'Mycobacteria have different growth requirements and often grow slowly. AFB culture workflows use special media, processing steps, and longer incubation expectations.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'published'
@@ -4945,12 +4945,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB culture', 'sputum', 'specimen quality', 'preanalytics'],
     prompt: 'A sputum specimen is submitted for AFB culture. Which collection principle best supports recovery of mycobacteria?',
     choices: [
-      'Collect a true lower respiratory specimen according to the lab protocol, often using early-morning specimens when requested.',
-      'Submit saliva because it is easier for the patient to produce.',
-      'Submit a dry throat swab because mycobacteria grow best from swabs.',
-      'Hold the specimen uncovered at room temperature until batching is convenient.'
+      'Collect true lower respiratory sputum, often early-morning specimens.',
+      'Submit saliva, since it is easier for the patient to produce.',
+      'Submit a dry throat swab, since mycobacteria grow best from swabs.',
+      'Pool several days of sputum in one container for more volume.'
     ],
-    answer: 'Collect a true lower respiratory specimen according to the lab protocol, often using early-morning specimens when requested.',
+    answer: 'Collect true lower respiratory sputum, often early-morning specimens.',
     explanation: 'AFB recovery depends heavily on specimen quality. Saliva or poorly collected material can lower yield and add contaminating flora.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -4963,12 +4963,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['NALC-NaOH', 'digestion decontamination', 'AFB culture', 'specimen processing'],
     prompt: 'Why are many nonsterile respiratory specimens digested and decontaminated before mycobacterial culture?',
     choices: [
-      'To liquefy mucus and reduce competing normal flora while preserving mycobacteria as much as possible.',
+      'To thin mucus and reduce normal flora while sparing mycobacteria.',
       'To make all bacteria acid-fast before staining.',
-      'To replace the need for mycobacterial media.',
-      'To convert mycobacteria into lactose fermenters.'
+      'To kill mycobacteria so the specimen is safe to culture.',
+      'To concentrate only gram-negative rods for the AFB smear.'
     ],
-    answer: 'To liquefy mucus and reduce competing normal flora while preserving mycobacteria as much as possible.',
+    answer: 'To thin mucus and reduce normal flora while sparing mycobacteria.',
     explanation: 'Digestion-decontamination helps process thick respiratory material and suppress faster-growing contaminants. The step must be controlled because harsh exposure can also reduce mycobacterial recovery.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -4981,12 +4981,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['NaOH', 'decontamination', 'AFB culture', 'preanalytics'],
     prompt: 'A learner asks why the decontamination step cannot simply use stronger alkali for a longer time. What is the best answer?',
     choices: [
-      'Overexposure can kill or injure mycobacteria and cause false-negative cultures.',
+      'Overexposure can kill mycobacteria and cause false-negative cultures.',
       'Longer alkali exposure makes mycobacteria grow overnight.',
-      'Stronger alkali converts all contaminants into mycobacteria.',
-      'The alkali step confirms species identification.'
+      'Stronger alkali is fine, since mycobacteria are fully resistant to NaOH.',
+      'Longer exposure raises contamination rates instead of lowering them.'
     ],
-    answer: 'Overexposure can kill or injure mycobacteria and cause false-negative cultures.',
+    answer: 'Overexposure can kill mycobacteria and cause false-negative cultures.',
     explanation: 'Decontamination is a balance. It must reduce normal flora without destroying the target organism, so timing and concentration are controlled by SOP.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -4999,12 +4999,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['acid-fast stain', 'mycolic acids', 'AFB', 'cell wall'],
     prompt: 'Why do mycobacteria retain acid-fast stains after acid-alcohol decolorization?',
     choices: [
-      'Their lipid-rich, mycolic acid-containing cell wall retains the primary stain.',
-      'They have no cell wall at all.',
-      'They produce coagulase on blood agar.',
-      'They ferment lactose rapidly on MacConkey agar.'
+      'Their mycolic acid-rich cell wall holds the primary stain.',
+      'They have no cell wall at all, so dye stays inside.',
+      'Their thick peptidoglycan layer traps crystal violet like gram positives.',
+      'They produce acid that neutralizes the acid-alcohol decolorizer.'
     ],
-    answer: 'Their lipid-rich, mycolic acid-containing cell wall retains the primary stain.',
+    answer: 'Their mycolic acid-rich cell wall holds the primary stain.',
     explanation: 'The mycobacterial cell wall is waxy and lipid rich. That structure explains acid-fast staining and why mycobacteria do not behave like routine gram-positive or gram-negative bacteria.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5018,9 +5018,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'In a classic carbol fuchsin acid-fast stain, what does a positive AFB smear generally show?',
     choices: [
       'Red or fuchsia slender rods against a contrasting background.',
-      'Purple cocci in clusters only.',
-      'Green yeast cells with budding.',
-      'Colorless rods that disappear after counterstain.'
+      'Blue slender rods against a red background after decolorizing.',
+      'Purple cocci in clusters standing out against a pink background.',
+      'Colorless rods that disappear after the counterstain is applied.'
     ],
     answer: 'Red or fuchsia slender rods against a contrasting background.',
     explanation: 'Carbol fuchsin stains acid-fast bacilli red or fuchsia after decolorization. The smear result supports AFB detection, but it does not provide species-level identification by itself.',
@@ -5035,12 +5035,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['auramine-rhodamine', 'fluorochrome stain', 'AFB microscopy', 'screening'],
     prompt: 'Why do many labs use fluorochrome staining as an AFB smear screening method?',
     choices: [
-      'Fluorescent AFB can be scanned efficiently at lower magnification than traditional brightfield acid-fast stains.',
-      'Fluorochrome staining confirms drug susceptibility.',
+      'Fluorescent AFB can be scanned faster at lower magnification.',
+      'Fluorochrome staining also confirms drug susceptibility.',
       'Fluorochrome staining replaces all culture and molecular testing.',
-      'Fluorochrome staining detects coagulase production.'
+      'Fluorochrome stains separate MTB from NTM by their color.'
     ],
-    answer: 'Fluorescent AFB can be scanned efficiently at lower magnification than traditional brightfield acid-fast stains.',
+    answer: 'Fluorescent AFB can be scanned faster at lower magnification.',
     explanation: 'Fluorochrome stains help screen smears efficiently. Positive smears still require correlation with culture, NAAT, and the laboratory identification workflow.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5053,12 +5053,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB smear', 'microscopy', 'species identification', 'bench interpretation'],
     prompt: 'An AFB smear is positive from a respiratory specimen. What is the safest learning interpretation?',
     choices: [
-      'Acid-fast bacilli are present, but smear microscopy alone does not identify the species.',
+      'AFB are present, but the smear cannot identify the species.',
       'The organism is definitively Mycobacterium tuberculosis based on smear alone.',
-      'The organism is confirmed as a rapid-growing nontuberculous mycobacterium.',
-      'The specimen no longer needs culture or molecular follow-up.'
+      'It confirms a rapid-growing NTM.',
+      'The specimen no longer needs culture.'
     ],
-    answer: 'Acid-fast bacilli are present, but smear microscopy alone does not identify the species.',
+    answer: 'AFB are present, but the smear cannot identify the species.',
     explanation: 'AFB smear positivity is an important finding, but it is not species identification. Culture, NAAT, or other ID methods are needed to determine what organism is present.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5071,12 +5071,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB smear grading', 'microscopy', 'semiquantitative reporting', 'bench interpretation'],
     prompt: 'What is the main purpose of grading an AFB smear as rare, few, moderate, or numerous according to the lab method?',
     choices: [
-      'To communicate the approximate organism burden seen microscopically.',
+      'To convey the approximate organism burden seen.',
       'To identify the exact mycobacterial species.',
-      'To determine the final antimicrobial susceptibility pattern.',
-      'To replace culture incubation.'
+      'To set the final antimicrobial susceptibility pattern.',
+      'To decide whether culture incubation is needed at all.'
     ],
-    answer: 'To communicate the approximate organism burden seen microscopically.',
+    answer: 'To convey the approximate organism burden seen.',
     explanation: 'AFB smear grading is semiquantitative. It tells the team how many organisms were seen by microscopy, but it does not replace identification or susceptibility testing.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5089,12 +5089,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB culture', 'NAAT', 'Mycobacterium tuberculosis complex', 'susceptibility testing'],
     prompt: 'A NAAT detects Mycobacterium tuberculosis complex from a respiratory specimen. Why is culture still important?',
     choices: [
-      'Culture supports organism recovery, full identification workflow, and susceptibility testing.',
-      'Culture is unnecessary because NAAT always gives complete susceptibility results.',
+      'Culture allows recovery, full identification, and susceptibility testing.',
+      'Culture is unnecessary, since NAAT always gives complete susceptibility results.',
       'Culture converts mycobacteria into visible gram-positive cocci.',
-      'Culture is used only for viruses.'
+      'Culture is kept only for infection-control billing records.'
     ],
-    answer: 'Culture supports organism recovery, full identification workflow, and susceptibility testing.',
+    answer: 'Culture allows recovery, full identification, and susceptibility testing.',
     explanation: 'Molecular tests can provide rapid information, but culture remains important for recovery, confirmation, epidemiology, and susceptibility workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5108,9 +5108,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which medium is classically used as an egg-based medium for mycobacterial culture?',
     choices: [
       'Lowenstein-Jensen medium.',
-      'MacConkey agar.',
-      'Chocolate agar only.',
-      'Sabouraud agar.'
+      'Middlebrook 7H11 selective agar.',
+      'Loeffler serum medium.',
+      'Chocolate agar.'
     ],
     answer: 'Lowenstein-Jensen medium.',
     explanation: 'Lowenstein-Jensen is a classic solid medium for mycobacteria. Mycobacterial culture usually requires special media and longer incubation than routine bacterial culture.',
@@ -5125,12 +5125,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Middlebrook agar', '7H10', '7H11', 'colony morphology', 'AFB culture'],
     prompt: 'Why are Middlebrook 7H10 or 7H11 agar plates useful in mycobacterial culture workflows?',
     choices: [
-      'They are transparent agar-based media that allow earlier observation of mycobacterial colony morphology.',
-      'They are selective only for Neisseria species.',
-      'They are used to ferment lactose for enteric identification.',
-      'They are viral transport media.'
+      'Their clear agar lets colony shape be seen earlier.',
+      'They are egg-based, which gives them a green opaque look.',
+      'They select for Nocardia while suppressing all mycobacteria.',
+      'They grow mycobacteria overnight, like routine blood agar.'
     ],
-    answer: 'They are transparent agar-based media that allow earlier observation of mycobacterial colony morphology.',
+    answer: 'Their clear agar lets colony shape be seen earlier.',
     explanation: 'Middlebrook media support mycobacterial growth and allow colony review on solid media. They are part of a specialized AFB culture workflow, not routine aerobic plating.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5144,9 +5144,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Why are mycobacterial cultures held longer than routine bacterial cultures before being called negative?',
     choices: [
       'Many mycobacteria grow slowly and may take weeks to become detectable.',
-      'Mycobacteria grow only after routine plates dry out completely.',
-      'Mycobacteria must first become fungal colonies.',
-      'Routine bacteria and mycobacteria always grow at the same speed.'
+      'Plates must dry out fully before mycobacteria can start growing.',
+      'Mycobacteria must first convert into fungal colonies.',
+      'Routine bacteria and mycobacteria grow at the same speed.'
     ],
     answer: 'Many mycobacteria grow slowly and may take weeks to become detectable.',
     explanation: 'Mycobacterial culture timelines are much longer than routine aerobic culture timelines. Slow growth is a core concept in AFB bench workflow.',
@@ -5161,12 +5161,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['rapid growers', 'nontuberculous mycobacteria', 'Runyon group IV', 'culture growth rate'],
     prompt: 'In mycobacteriology, what does “rapid grower” generally mean?',
     choices: [
-      'A mycobacterium that can produce visible growth within about 7 days under appropriate conditions.',
-      'A mycobacterium that grows faster than Escherichia coli on routine MacConkey agar.',
-      'A mycobacterium that cannot stain acid-fast.',
-      'A mycobacterium that grows only inside host cells.'
+      'Visible growth within about 7 days under the right conditions.',
+      'Growth that outpaces Escherichia coli on routine MacConkey agar.',
+      'Visible growth within 24 hours on routine blood agar.',
+      'Any mycobacterium that grows at 42C instead of 37C.'
     ],
-    answer: 'A mycobacterium that can produce visible growth within about 7 days under appropriate conditions.',
+    answer: 'Visible growth within about 7 days under the right conditions.',
     explanation: 'Rapid-growing mycobacteria grow faster than classic slow growers, but they are still acid-fast organisms with specialized identification and susceptibility workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5179,12 +5179,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Runyon classification', 'photochromogen', 'scotochromogen', 'nonchromogen'],
     prompt: 'What does the Runyon pigment-based classification help learners organize?',
     choices: [
-      'Nontuberculous mycobacteria by pigment production and growth rate patterns.',
-      'Enterobacterales by lactose fermentation only.',
-      'Staphylococci by coagulase reaction only.',
-      'Fungi by germ tube production only.'
+      'NTM grouped by pigment production and growth rate.',
+      'M. tuberculosis complex members grouped by drug resistance.',
+      'NTM grouped by the body site they most often infect.',
+      'Mycobacteria grouped by how strongly they take up acid-fast stain.'
     ],
-    answer: 'Nontuberculous mycobacteria by pigment production and growth rate patterns.',
+    answer: 'NTM grouped by pigment production and growth rate.',
     explanation: 'Runyon groups are a classic way to organize nontuberculous mycobacteria. The system uses pigment behavior and growth rate as learning anchors.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5251,12 +5251,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium tuberculosis complex', 'MTBC', 'identification', 'bench workflow'],
     prompt: 'A report says Mycobacterium tuberculosis complex. What is the best learning interpretation?',
     choices: [
-      'The result refers to a related group that includes M. tuberculosis and other complex members.',
-      'The result always means the isolate is Mycobacterium gordonae.',
-      'The result means the smear was negative for acid-fast bacilli.',
-      'The result identifies a gram-positive coccus.'
+      'A related group including M. tuberculosis, M. bovis, and others.',
+      'The isolate is definitely M. tuberculosis, the only member of the complex.',
+      'The isolate is a mix of NTM species growing together.',
+      'The smear was negative, so only a group-level name could be given.'
     ],
-    answer: 'The result refers to a related group that includes M. tuberculosis and other complex members.',
+    answer: 'A related group including M. tuberculosis, M. bovis, and others.',
     explanation: 'MTB complex is a group-level term. Depending on the lab workflow, further differentiation or public health handling may follow.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5269,12 +5269,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium bovis', 'MTBC', 'niacin', 'nitrate', 'PZA resistance'],
     prompt: 'Why does Mycobacterium bovis matter as a separate teaching point inside the M. tuberculosis complex?',
     choices: [
-      'It can differ from M. tuberculosis in biochemical and susceptibility patterns, so complex members are not always interchangeable.',
-      'It is a rapid-growing scotochromogen recovered only from tap water.',
-      'It is a yeast that requires fungal media.',
-      'It is identified by coagulase testing.'
+      'It differs in biochemicals and susceptibility, such as pyrazinamide.',
+      'It is a rapid-growing scotochromogen recovered mostly from tap water.',
+      'It is identical to M. tuberculosis in every test, so the name is only historical.',
+      'It is a nontuberculous mycobacterium outside the complex.'
     ],
-    answer: 'It can differ from M. tuberculosis in biochemical and susceptibility patterns, so complex members are not always interchangeable.',
+    answer: 'It differs in biochemicals and susceptibility, such as pyrazinamide.',
     explanation: 'M. bovis belongs to the MTB complex but has distinguishing laboratory features. The learner should avoid treating every complex member as identical in advanced workflows.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5289,8 +5289,8 @@ export const questionBank: QuestionBankItem[] = [
     choices: [
       'Mycobacterium avium complex.',
       'Mycobacterium kansasii.',
-      'Mycobacterium marinum.',
-      'Mycobacterium gordonae.'
+      'Mycobacterium scrofulaceum.',
+      'Mycobacterium abscessus complex.'
     ],
     answer: 'Mycobacterium avium complex.',
     explanation: 'MAC is classically taught as a slow-growing nonchromogenic nontuberculous mycobacterial group. Clinical significance depends on source, quantity, repeat recovery, and lab criteria.',
@@ -5305,12 +5305,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['NTM', 'culture interpretation', 'contamination', 'clinical significance'],
     prompt: 'A single nontuberculous mycobacterium is recovered from a nonsterile respiratory specimen. What is the best bench-first interpretation habit?',
     choices: [
-      'Interpret significance using source, smear status, quantity, repeat recovery, organism identity, and lab criteria.',
-      'Assume every NTM isolate is always Mycobacterium tuberculosis.',
-      'Ignore all NTM isolates because they are never important.',
-      'Report species based only on colony color.'
+      'Weigh source, smear result, and repeat recovery before calling it significant.',
+      'Report it as significant, since any NTM from sputum means disease.',
+      'Ignore it, since NTM from respiratory specimens are never important.',
+      'Report the species from colony color alone, then close the case.'
     ],
-    answer: 'Interpret significance using source, smear status, quantity, repeat recovery, organism identity, and lab criteria.',
+    answer: 'Weigh source, smear result, and repeat recovery before calling it significant.',
     explanation: 'NTM may represent contamination, colonization, or clinically relevant infection depending on the situation. The lab workflow should not overcall or dismiss them from one clue alone.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5341,12 +5341,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium marinum', 'cool temperature', 'fish tank', 'photochromogen'],
     prompt: 'A skin specimen after aquarium exposure is submitted for AFB culture. Why should the lab know if Mycobacterium marinum is suspected?',
     choices: [
-      'It grows better at lower incubation temperatures than many routine mycobacterial cultures.',
-      'It requires only MacConkey agar in ambient air.',
-      'It is a gram-negative diplococcus recovered on modified Thayer-Martin medium.',
-      'It grows only as an obligate intracellular organism.'
+      'It grows best near 30C, below routine incubation.',
+      'It grows only on MacConkey agar incubated in ambient air.',
+      'It grows best at 42C, like Pseudomonas aeruginosa.',
+      'It needs 8 weeks at 37C, longer than any other mycobacterium.'
     ],
-    answer: 'It grows better at lower incubation temperatures than many routine mycobacterial cultures.',
+    answer: 'It grows best near 30C, below routine incubation.',
     explanation: 'M. marinum is associated with aquatic exposure and lower-temperature growth. Correct suspicion helps the lab select the right incubation conditions.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5359,12 +5359,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium gordonae', 'tap water bacillus', 'scotochromogen', 'contamination'],
     prompt: 'Mycobacterium gordonae is often nicknamed the “tap water bacillus.” What does this teach learners?',
     choices: [
-      'Some mycobacteria are environmental and must be interpreted carefully with specimen source and repeat recovery.',
-      'It is always the cause of tuberculosis.',
-      'It is a rapid lactose fermenter on MacConkey agar.',
-      'It is identified by coagulase positivity.'
+      'Environmental mycobacteria need careful interpretation.',
+      'It is always significant, since it is the main cause of NTM lung disease.',
+      'It is a rapid lactose fermenter found in household water.',
+      'Tap water is the preferred specimen for AFB culture.'
     ],
-    answer: 'Some mycobacteria are environmental and must be interpreted carefully with specimen source and repeat recovery.',
+    answer: 'Environmental mycobacteria need careful interpretation.',
     explanation: 'M. gordonae is commonly environmental and may represent contamination. Interpretation depends on the full culture context, not the organism name alone.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5395,12 +5395,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium ulcerans', 'lower temperature', 'skin specimen', 'NTM'],
     prompt: 'Why might Mycobacterium ulcerans require special attention to incubation temperature?',
     choices: [
-      'It grows best at lower temperatures than standard 37C incubation.',
-      'It grows only on TCBS agar.',
-      'It is a coagulase-positive gram-positive coccus.',
-      'It is always recovered overnight on blood agar.'
+      'It grows best below 37C, so lower incubation is needed.',
+      'It grows only on TCBS agar at high salt.',
+      'It grows best at 42C, so warmer incubation is needed.',
+      'It is always recovered overnight on blood agar at 37C.'
     ],
-    answer: 'It grows best at lower temperatures than standard 37C incubation.',
+    answer: 'It grows best below 37C, so lower incubation is needed.',
     explanation: 'Some mycobacteria need nonroutine incubation temperatures. If the organism is suspected, the lab must set up conditions that support recovery.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5414,9 +5414,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A wound culture grows acid-fast colonies within a week. Which group should the learner consider?',
     choices: [
       'Rapidly growing nontuberculous mycobacteria.',
-      'Mycobacterium tuberculosis complex only.',
-      'Treponema pallidum.',
-      'Neisseria gonorrhoeae.'
+      'Mycobacterium tuberculosis complex, which grows in days.',
+      'Nocardia, which is strongly acid-fast on Ziehl-Neelsen.',
+      'Mycobacterium avium complex, a rapid grower.'
     ],
     answer: 'Rapidly growing nontuberculous mycobacteria.',
     explanation: 'Visible AFB growth within about a week supports the rapid-growing mycobacteria branch. These organisms have their own identification and AST considerations.',
@@ -5431,12 +5431,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Mycobacterium leprae', 'culture limitation', 'AFB', 'molecular testing'],
     prompt: 'Why is Mycobacterium leprae not worked up by routine artificial mycobacterial culture like many other AFB?',
     choices: [
-      'It cannot be grown on routine artificial culture media used in clinical laboratories.',
-      'It is a rapid lactose fermenter on MacConkey agar.',
-      'It is identified by coagulase testing.',
-      'It grows only as a yeast on Sabouraud agar.'
+      'It cannot be grown on artificial media in clinical labs.',
+      'It grows only on Lowenstein-Jensen after 12 weeks at 37C.',
+      'It grows overnight on blood agar, so AFB media are unnecessary.',
+      'It is a fungus that grows only on Sabouraud agar.'
     ],
-    answer: 'It cannot be grown on routine artificial culture media used in clinical laboratories.',
+    answer: 'It cannot be grown on artificial media in clinical labs.',
     explanation: 'M. leprae does not fit the standard AFB culture workflow. Identification relies on specialized clinical, histologic, molecular, or reference methods depending on the setting.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5449,12 +5449,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['PPD', 'IGRA', 'tuberculosis testing', 'immune response'],
     prompt: 'What is the best educational interpretation of a positive PPD or IGRA result?',
     choices: [
-      'It shows an immune response to TB-related antigens but does not by itself prove active disease.',
-      'It identifies the exact mycobacterial species growing in culture.',
-      'It replaces AFB smear, culture, and NAAT in every situation.',
-      'It confirms antimicrobial susceptibility.'
+      'An immune response to TB antigens, not proof of active disease.',
+      'Proof of active tuberculosis that needs no further testing at all.',
+      'A test identifying the exact mycobacterial species in culture.',
+      'A result that rules out latent infection if the chest film is clear.'
     ],
-    answer: 'It shows an immune response to TB-related antigens but does not by itself prove active disease.',
+    answer: 'An immune response to TB antigens, not proof of active disease.',
     explanation: 'PPD and IGRA are immune-response tests. They are interpreted in clinical context and are not the same as direct organism detection from a specimen.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5467,12 +5467,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB safety', 'aerosols', 'Mycobacterium tuberculosis complex', 'lab protocol'],
     prompt: 'An AFB-positive respiratory specimen raises concern for Mycobacterium tuberculosis complex. What is the best learner-safe bench principle?',
     choices: [
-      'Follow the laboratory biosafety and escalation protocol before additional manipulation.',
+      'Follow the biosafety and escalation protocol before more manipulation.',
       'Open the culture repeatedly on the open bench to inspect colony odor.',
-      'Handle it like routine E. coli because all AFB are low-risk contaminants.',
-      'Skip notification because smear positivity is never important.'
+      'Handle it like routine E. coli, since all AFB are low-risk contaminants.',
+      'Skip notification, since smear positivity is never important.'
     ],
-    answer: 'Follow the laboratory biosafety and escalation protocol before additional manipulation.',
+    answer: 'Follow the biosafety and escalation protocol before more manipulation.',
     explanation: 'AFB workflows include aerosol and biosafety considerations. Learners should know when to pause, protect staff, and follow the laboratory’s TB safety pathway.',
     source: 'Learn Microbes original question bank: Mycobacteria',
     status: 'published'
@@ -5485,12 +5485,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['AFB smear', 'NAAT', 'culture', 'Mycobacterium tuberculosis complex'],
   prompt: 'A respiratory specimen is AFB smear positive and NAAT positive for Mycobacterium tuberculosis complex. Why should culture still continue?',
   choices: [
-  'Culture supports organism recovery, confirmation, and susceptibility workflow.',
+  'Culture allows recovery, confirmation, and susceptibility testing.',
   'Culture is unnecessary because smear gives species and susceptibility.',
-  'Culture converts AFB into gram-positive cocci.',
-  'Culture is used only for viruses.'
+  'Culture is needed only if the NAAT result is negative.',
+  'Culture converts AFB into gram-positive cocci for easier ID.'
   ],
-  answer: 'Culture supports organism recovery, confirmation, and susceptibility workflow.',
+  answer: 'Culture allows recovery, confirmation, and susceptibility testing.',
   explanation: 'AFB smear and NAAT can provide rapid information, but culture remains important for recovery, additional identification, and susceptibility testing.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'draft'
@@ -5521,12 +5521,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['viral culture', 'CPE', 'cell culture'],
     prompt: 'A cell culture monolayer develops rounding, detachment, and other visible cellular changes after inoculation with a patient specimen. What does this most directly suggest?',
     choices: [
-      'Cytopathic effect that may support viral growth in culture.',
-      'A confirmed bacterial susceptibility result.',
-      'A positive germ tube test.',
-      'A direct ova and parasite concentration result.'
+      'Cytopathic effect, suggesting viral growth.',
+      'Bacterial contamination confirmed as the cause of the change.',
+      'A positive germ tube test from yeast in the specimen.',
+      'Normal monolayer aging that is unrelated to the specimen.'
     ],
-    answer: 'Cytopathic effect that may support viral growth in culture.',
+    answer: 'Cytopathic effect, suggesting viral growth.',
     explanation: 'Cytopathic effect describes virus-associated changes in cultured cells. It is a presumptive culture clue and must be interpreted with the method and confirmatory testing.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
     status: 'published'
@@ -5539,12 +5539,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['RSV', 'respiratory virus', 'specimen selection'],
     prompt: 'A test for RSV is ordered on an infant with bronchiolitis. Which specimen direction best matches routine respiratory virus testing principles?',
     choices: [
-      'Collect an appropriate upper respiratory specimen validated for the assay, such as a nasopharyngeal specimen when required.',
-      'Submit a stool specimen because RSV primarily infects the intestinal tract.',
-      'Submit a urine culture plate after overnight incubation.',
-      'Use a blood culture bottle as the preferred RSV specimen.'
+      'An upper respiratory specimen, such as a nasopharyngeal swab.',
+      'A stool specimen, since RSV mainly infects the intestinal tract.',
+      'A urine specimen, since RSV is shed mostly in the urine of infants.',
+      'A blood culture bottle, the preferred RSV specimen.'
     ],
-    answer: 'Collect an appropriate upper respiratory specimen validated for the assay, such as a nasopharyngeal specimen when required.',
+    answer: 'An upper respiratory specimen, such as a nasopharyngeal swab.',
     explanation: 'Respiratory virus testing depends heavily on specimen type, collection quality, timing, and the assay validation. RSV is usually approached with respiratory specimens.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
     status: 'published'
@@ -5558,9 +5558,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which virus group is classically associated with anogenital warts and cervical dysplasia screening workflows?',
     choices: [
       'Human papillomavirus.',
-      'Epstein-Barr virus.',
-      'Rotavirus.',
-      'Hantavirus.'
+      'Herpes simplex virus.',
+      'Molluscum contagiosum virus.',
+      'Epstein-Barr virus.'
     ],
     answer: 'Human papillomavirus.',
     explanation: 'HPV is linked to anogenital warts and cervical dysplasia/cancer screening. Different HPV types and assays answer different clinical questions.',
@@ -5612,9 +5612,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which laboratory test is commonly used to monitor response to antiretroviral therapy in a patient with HIV?',
     choices: [
       'Quantitative HIV RNA viral load.',
-      'Routine throat culture.',
-      'Oxidase reagent QC.',
-      'Ova and parasite wet mount.'
+      'HIV-1/2 antibody differentiation assay.',
+      'Fourth-generation antigen/antibody screen.',
+      'Routine throat culture.'
     ],
     answer: 'Quantitative HIV RNA viral load.',
     explanation: 'HIV viral load measures circulating viral RNA and is used to monitor therapy response. CD4 count answers immune status rather than viral replication directly.',
@@ -5629,12 +5629,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['influenza', 'antigenic drift', 'antigenic shift'],
     prompt: 'Which statement best summarizes influenza antigenic drift versus shift?',
     choices: [
-      'Drift is gradual mutation; shift is major reassortment that can create new pandemic-risk strains.',
-      'Drift only occurs in DNA viruses; shift only occurs in bacteria.',
-      'Both terms mean the same thing as antiviral susceptibility.',
-      'Shift describes the normal daily change in viral load during therapy.'
+      'Drift is gradual mutation; shift is reassortment that can spark pandemics.',
+      'Drift is reassortment between strains; shift is gradual point mutation.',
+      'Both terms describe changes in antiviral susceptibility over time.',
+      'Shift is the normal daily change in viral load during therapy.'
     ],
-    answer: 'Drift is gradual mutation; shift is major reassortment that can create new pandemic-risk strains.',
+    answer: 'Drift is gradual mutation; shift is reassortment that can spark pandemics.',
     explanation: 'Influenza drift reflects accumulating mutations, while shift reflects reassortment with a major antigenic change. This distinction matters for epidemiology and vaccine strategy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Virology',
     status: 'published'
@@ -5648,9 +5648,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A patient has compatible pulmonary syndrome after cleaning a rodent-infested cabin. Which exposure is most relevant to hantavirus risk?',
     choices: [
       'Aerosolized excreta from infected rodents.',
-      'Mosquito bite during coastal travel.',
-      'Eating undercooked pork containing larvae.',
-      'Freshwater snail exposure.'
+      'Mosquito bites during the cabin stay.',
+      'Tick bites while cleaning the woodpile.',
+      'Drinking untreated water from the cabin well.'
     ],
     answer: 'Aerosolized excreta from infected rodents.',
     explanation: 'Hantavirus risk is classically linked to rodent exposure, especially aerosolized urine, droppings, or nesting material in enclosed spaces.',
@@ -5665,12 +5665,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['virology', 'viral transport medium', 'specimen handling', 'cold chain'],
     prompt: 'A swab is collected for viral testing and cannot be processed immediately. Which handling choice best preserves the specimen for many routine viral studies?',
     choices: [
-      'Place the swab in viral transport medium and keep it cold according to the laboratory protocol.',
-      'Place the swab dry on the counter until batching is convenient.',
+      'Put it in viral transport medium and refrigerate it per protocol.',
+      'Leave the swab dry on the counter until batching is convenient.',
       'Put the swab into thioglycollate broth to increase viral replication.',
-      'Add routine bacterial colony material to maintain cell culture viability.'
+      'Freeze it at -20C in a dry tube, since freezing always preserves viruses.'
     ],
-    answer: 'Place the swab in viral transport medium and keep it cold according to the laboratory protocol.',
+    answer: 'Put it in viral transport medium and refrigerate it per protocol.',
     explanation: 'Viral specimens are vulnerable to drying and poor transport conditions. Viral transport medium and cold handling help preserve specimen integrity until testing.',
     source: 'Learn Microbes original question bank: Specimen Collection, Media, and Methods',
     status: 'draft'
@@ -5701,12 +5701,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['viral transport medium', 'specimen handling', 'cold chain', 'virology'],
     prompt: 'A respiratory swab is collected for viral testing and cannot be processed immediately. Which handling choice best protects specimen integrity?',
     choices: [
-      'Place the swab in viral transport medium and keep it cold according to the laboratory protocol.',
-      'Place the swab dry on the counter until the next batch.',
-      'Place the swab into thioglycollate broth to grow the virus.',
-      'Plate the swab directly to MacConkey agar.'
+      'Put it in viral transport medium and refrigerate it per protocol.',
+      'Leave the swab dry on the counter until the next batch.',
+      'Place it in thioglycollate broth to grow the virus.',
+      'Plate the swab directly to MacConkey agar to preserve it.'
     ],
-    answer: 'Place the swab in viral transport medium and keep it cold according to the laboratory protocol.',
+    answer: 'Put it in viral transport medium and refrigerate it per protocol.',
     explanation: 'Many viral specimens are sensitive to drying and poor transport. Viral transport medium and cold handling help preserve the sample for the validated test method.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5719,12 +5719,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['RSV', 'bronchiolitis', 'respiratory virus', 'NAAT'],
     prompt: 'A young child has a respiratory illness pattern consistent with bronchiolitis. Which virus is a classic teaching cause, and what specimen logic matters?',
     choices: [
-      'RSV; use an appropriate respiratory specimen for the lab assay.',
-      'Rotavirus; use a clean-catch urine specimen.',
-      'Hepatitis B virus; use a stool culture plate.',
-      'BK virus; use a dermatophyte culture.'
+      'RSV; collect a respiratory specimen suited to the assay.',
+      'Rotavirus; collect a clean-catch urine specimen.',
+      'Hepatitis B virus; collect stool for viral culture.',
+      'Mumps virus; collect a throat swab on chocolate agar.'
     ],
-    answer: 'RSV; use an appropriate respiratory specimen for the lab assay.',
+    answer: 'RSV; collect a respiratory specimen suited to the assay.',
     explanation: 'Respiratory syncytial virus is a classic cause of bronchiolitis in young children. Testing depends on validated respiratory specimen collection and the lab method, such as antigen detection or NAAT.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5737,12 +5737,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['influenza', 'NAAT', 'rapid antigen', 'respiratory virus'],
     prompt: 'A nasal swab is submitted for influenza testing. Why should a learner know the difference between rapid antigen testing and NAAT?',
     choices: [
-      'They detect different targets and may differ in sensitivity, so results must be interpreted by the lab method used.',
-      'Both tests culture influenza on blood agar.',
-      'Rapid antigen testing identifies bacterial beta-lactamase.',
-      'NAAT is used only for fungal culture.'
+      'They detect different targets, and antigen tests are less sensitive.',
+      'Both tests culture influenza on blood agar before reading.',
+      'Rapid antigen tests are more sensitive, so a negative result rules out influenza.',
+      'NAAT detects only antibodies, so it cannot be used in early illness.'
     ],
-    answer: 'They detect different targets and may differ in sensitivity, so results must be interpreted by the lab method used.',
+    answer: 'They detect different targets, and antigen tests are less sensitive.',
     explanation: 'Influenza testing may use antigen detection or nucleic acid amplification. The specimen, timing, and method affect how the result is interpreted.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5755,12 +5755,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['adenovirus', 'DNA virus', 'respiratory infection', 'conjunctivitis'],
     prompt: 'Which teaching point best fits adenovirus in a virology study workflow?',
     choices: [
-      'It is a nonenveloped DNA virus associated with respiratory, ocular, and gastrointestinal syndromes.',
-      'It is a spore-forming gram-positive rod.',
-      'It is a lactose-fermenting Enterobacterales organism.',
-      'It is a dermatophyte that invades hair shafts.'
+      'A nonenveloped DNA virus causing respiratory, eye, and GI illness.',
+      'An enveloped RNA virus that causes only respiratory illness in children.',
+      'A spore-forming gram-positive rod found in soil and dust.',
+      'A nonenveloped RNA virus best known for causing acute liver disease.'
     ],
-    answer: 'It is a nonenveloped DNA virus associated with respiratory, ocular, and gastrointestinal syndromes.',
+    answer: 'A nonenveloped DNA virus causing respiratory, eye, and GI illness.',
     explanation: 'Adenovirus is a DNA virus with several clinical patterns. The lab approach depends on specimen source and validated viral detection method.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5791,12 +5791,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['enterovirus', 'CSF', 'PCR', 'aseptic meningitis'],
     prompt: 'A CSF specimen is submitted for suspected viral meningitis. Which test concept commonly supports rapid enterovirus detection?',
     choices: [
-      'Nucleic acid amplification testing on an appropriate CSF specimen.',
-      'Coagulase testing from a blood agar colony.',
-      'Bile esculin hydrolysis.',
-      'Germ tube testing in serum.'
+      'NAAT on the CSF specimen.',
+      'Bacterial culture on chocolate agar.',
+      'A CSF Gram stain to look for viral inclusions.',
+      'Serum antibody testing on a single sample.'
     ],
-    answer: 'Nucleic acid amplification testing on an appropriate CSF specimen.',
+    answer: 'NAAT on the CSF specimen.',
     explanation: 'Enteroviruses are common causes of viral meningitis, and molecular testing can provide rapid detection from validated specimens. This is different from routine bacterial colony identification.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5809,12 +5809,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['rotavirus', 'stool antigen', 'viral gastroenteritis', 'children'],
     prompt: 'A stool specimen from a child with suspected viral gastroenteritis is tested for rotavirus. Which lab concept best fits this workflow?',
     choices: [
-      'Detection of viral antigen or nucleic acid from stool, depending on the lab method.',
-      'Blood agar culture for beta-hemolytic colonies.',
-      'Acid-fast culture on Lowenstein-Jensen medium.',
-      'Coagulase testing from a gram-positive coccus.'
+      'Stool antigen or nucleic acid detection.',
+      'Blood agar culture of stool for beta-hemolytic colonies.',
+      'Viral culture of stool on routine cell lines.',
+      'Serum antibody testing during the acute illness.'
     ],
-    answer: 'Detection of viral antigen or nucleic acid from stool, depending on the lab method.',
+    answer: 'Stool antigen or nucleic acid detection.',
     explanation: 'Rotavirus testing uses stool-based viral methods rather than routine bacterial culture. The learner should match the syndrome, specimen, and assay target.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5827,12 +5827,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['norovirus', 'outbreaks', 'stool PCR', 'viral gastroenteritis'],
     prompt: 'Several people develop acute vomiting and diarrhea after a shared event. Which virus is a classic outbreak-associated cause, and what specimen is commonly useful for lab testing?',
     choices: [
-      'Norovirus; stool submitted for a validated viral assay.',
-      'HSV-1; throat swab on chocolate agar.',
-      'HIV; dermatophyte culture from skin.',
-      'CMV; coagulase test from blood agar.'
+      'Norovirus; stool for a molecular assay.',
+      'Rotavirus; serum for antibody testing.',
+      'Hepatitis A virus; stool culture on blood agar.',
+      'HSV-1; throat swab on chocolate agar.'
     ],
-    answer: 'Norovirus; stool submitted for a validated viral assay.',
+    answer: 'Norovirus; stool for a molecular assay.',
     explanation: 'Norovirus is a classic cause of acute gastroenteritis outbreaks. Stool-based molecular or antigen methods may be used depending on the laboratory workflow.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5846,9 +5846,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A child has a classic “slapped cheek” rash pattern in a virology review case. Which virus is the classic teaching association?',
     choices: [
       'Parvovirus B19.',
-      'Rotavirus.',
-      'Adenovirus.',
-      'BK virus.'
+      'Measles virus.',
+      'Rubella virus.',
+      'Human herpesvirus 6.'
     ],
     answer: 'Parvovirus B19.',
     explanation: 'Parvovirus B19 is classically associated with fifth disease and can also be important in aplastic crisis or congenital infection discussions. Lab testing may involve serology or molecular methods depending on the question.',
@@ -5863,12 +5863,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['varicella-zoster virus', 'vesicle lesion', 'PCR', 'herpesviruses'],
     prompt: 'A vesicular rash specimen is collected for suspected varicella-zoster virus. Which testing principle is most appropriate?',
     choices: [
-      'Use a properly collected lesion specimen for a validated molecular assay when available.',
-      'Use stool culture on TCBS agar.',
-      'Use a coagulase test from a blood agar colony.',
-      'Use a KOH prep to look for dermatophytes.'
+      'A lesion specimen for a molecular assay.',
+      'A stool specimen for viral culture.',
+      'A serum IgG level from the acute phase.',
+      'A KOH prep of the lesion for dermatophytes.'
     ],
-    answer: 'Use a properly collected lesion specimen for a validated molecular assay when available.',
+    answer: 'A lesion specimen for a molecular assay.',
     explanation: 'VZV testing often depends on lesion specimen quality and molecular detection. Direct cytology findings can be nonspecific and do not reliably separate herpesviruses.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5881,12 +5881,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HSV', 'lesion swab', 'PCR', 'herpesviruses'],
     prompt: 'A fresh vesicular lesion is submitted for herpes simplex virus testing. Which specimen principle best supports detection?',
     choices: [
-      'Collect material from the lesion base using the collection system validated for the assay.',
-      'Submit a dry stool swab because HSV grows best from stool.',
-      'Submit a routine urine culture plate.',
-      'Submit sputum for acid-fast bacilli culture.'
+      'Swab the base of an unroofed lesion into the assay\'s transport.',
+      'Swab the dry crusted surface of an older lesion, since it holds more virus.',
+      'Submit serum IgG, since antibody best detects an active lesion.',
+      'Swab intact skin next to the lesion to avoid touching the vesicle.'
     ],
-    answer: 'Collect material from the lesion base using the collection system validated for the assay.',
+    answer: 'Swab the base of an unroofed lesion into the assay\'s transport.',
     explanation: 'HSV detection depends on good lesion sampling and the correct transport or assay system. Molecular testing is commonly used in many workflows.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5899,12 +5899,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Epstein-Barr virus', 'heterophile antibody', 'VCA IgM', 'mononucleosis'],
     prompt: 'A mono-like illness is being evaluated, but the heterophile antibody screen is negative. What is the best lab-learning concept?',
     choices: [
-      'EBV-specific serology such as viral capsid antigen antibodies can help when the screening result does not fit the case.',
-      'A negative heterophile screen always rules out EBV in every patient.',
-      'EBV is confirmed by lactose fermentation.',
-      'EBV is identified by germ tube formation.'
+      'EBV-specific serology, such as VCA antibodies, can clarify the result.',
+      'A negative heterophile screen rules out EBV in every patient, including children.',
+      'Repeat the heterophile screen daily until it turns positive.',
+      'An EBV culture on blood agar confirms infection within 48 hours.'
     ],
-    answer: 'EBV-specific serology such as viral capsid antigen antibodies can help when the screening result does not fit the case.',
+    answer: 'EBV-specific serology, such as VCA antibodies, can clarify the result.',
     explanation: 'Heterophile antibody tests are screening tools and can be negative early or in some populations. EBV-specific serology provides a more detailed interpretation path.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5917,12 +5917,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['CMV', 'PCR', 'viral load', 'immunocompromised host'],
     prompt: 'A transplant-associated virology workflow monitors cytomegalovirus over time. Which lab concept best fits that use case?',
     choices: [
-      'Quantitative molecular testing can track CMV viral load trends in appropriate specimens.',
-      'Coagulase testing identifies CMV from blood agar colonies.',
-      'MacConkey lactose fermentation confirms CMV.',
-      'KOH preparation is the standard CMV viral load method.'
+      'Quantitative PCR to follow CMV viral load trends.',
+      'A single CMV IgG result, repeated weekly to track activity.',
+      'Viral culture read only at 4 weeks, as the preferred trend method.',
+      'KOH preparation, the standard method for CMV viral load.'
     ],
-    answer: 'Quantitative molecular testing can track CMV viral load trends in appropriate specimens.',
+    answer: 'Quantitative PCR to follow CMV viral load trends.',
     explanation: 'CMV monitoring commonly uses quantitative molecular methods in selected patient groups. The result is a lab trend that must be interpreted through the clinical and laboratory protocol.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5935,12 +5935,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['CMV', 'congenital infection', 'urine', 'saliva', 'PCR'],
     prompt: 'A congenital CMV evaluation is ordered. Which preanalytic point is most important for the bench learner?',
     choices: [
-      'Use the specimen type and collection timing required by the validated congenital CMV protocol.',
-      'Use routine throat culture on blood agar only.',
-      'Use a stool parasite concentration method.',
-      'Use a dermatophyte culture plate.'
+      'Test newborn urine or saliva within the first 3 weeks of life.',
+      'Test maternal IgG at delivery, since a positive result proves congenital infection.',
+      'Test the infant at 6 months, once maternal antibody has cleared.',
+      'Use a routine throat culture on blood agar only.'
     ],
-    answer: 'Use the specimen type and collection timing required by the validated congenital CMV protocol.',
+    answer: 'Test newborn urine or saliva within the first 3 weeks of life.',
     explanation: 'Congenital CMV testing is sensitive to specimen type and timing. The lab should follow its validated protocol rather than treating all specimens as interchangeable.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5953,12 +5953,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['hepatitis B', 'HBsAg', 'anti-HBs', 'anti-HBc', 'serology'],
     prompt: 'Why is hepatitis B interpretation usually taught as a pattern of markers rather than one isolated result?',
     choices: [
-      'Different markers reflect infection, immunity, exposure history, or phase of infection depending on the pattern.',
-      'All hepatitis B markers mean the same thing.',
-      'Hepatitis B is identified by growth on MacConkey agar.',
-      'Hepatitis B serology detects fungal hyphae.'
+      'Each marker reflects infection, immunity, or phase, so the pattern matters.',
+      'All hepatitis B markers mean the same thing, so one is enough.',
+      'A positive anti-HBs alone always means current infection.',
+      'A positive HBsAg alone always means immunity from vaccination.'
     ],
-    answer: 'Different markers reflect infection, immunity, exposure history, or phase of infection depending on the pattern.',
+    answer: 'Each marker reflects infection, immunity, or phase, so the pattern matters.',
     explanation: 'Hepatitis B serology uses combinations such as surface antigen, surface antibody, and core antibody. The pattern matters more than memorizing one marker alone.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5971,12 +5971,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['hepatitis C', 'antibody screen', 'RNA testing', 'molecular testing'],
     prompt: 'A hepatitis C antibody screen is reactive. What is the best lab-learning next concept?',
     choices: [
-      'RNA testing helps determine whether viral nucleic acid is detected after a reactive antibody screen.',
-      'A reactive antibody screen identifies bacterial colony morphology.',
-      'Hepatitis C is confirmed by coagulase testing.',
-      'Hepatitis C grows as a mold on Sabouraud agar.'
+      'HCV RNA testing shows whether current infection is present.',
+      'A reactive antibody screen proves current infection, so RNA is unnecessary.',
+      'A reactive screen always means a false positive, so repeat the antibody.',
+      'Hepatitis C is confirmed by culture on Sabouraud agar.'
     ],
-    answer: 'RNA testing helps determine whether viral nucleic acid is detected after a reactive antibody screen.',
+    answer: 'HCV RNA testing shows whether current infection is present.',
     explanation: 'HCV antibody testing shows exposure or immune response, while RNA testing detects viral nucleic acid. The two result types answer different lab questions.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -5989,12 +5989,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HIV', 'fourth-generation screen', 'supplemental testing', 'NAAT'],
     prompt: 'A fourth-generation HIV screening test is repeatedly reactive. What is the safest lab-learning principle?',
     choices: [
-      'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
-      'Report HIV infection from the screening result alone without the algorithm.',
-      'Use MacConkey agar to confirm the virus.',
-      'Use a germ tube test to separate HIV-1 from HIV-2.'
+      'Run the supplemental differentiation assay, then NAAT if needed.',
+      'Report HIV infection from the repeatedly reactive screen result alone.',
+      'Use Western blot alone, since it is the current first supplemental test.',
+      'Repeat the screen monthly until it turns negative.'
     ],
-    answer: 'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
+    answer: 'Run the supplemental differentiation assay, then NAAT if needed.',
     explanation: 'HIV testing is algorithm-based. Screening, supplemental differentiation, and nucleic acid testing answer different questions and must follow the validated workflow.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6007,12 +6007,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HIV', 'viral load', 'RNA', 'quantitative PCR'],
     prompt: 'In HIV laboratory monitoring, what does a viral load test measure?',
     choices: [
-      'The amount of HIV RNA detected in the specimen by a quantitative molecular method.',
-      'The number of colonies growing on blood agar.',
-      'The coagulase activity of the virus.',
-      'The presence of fungal arthroconidia.'
+      'The amount of HIV RNA in the specimen, by quantitative molecular test.',
+      'The number of CD4 T cells per microliter of blood.',
+      'The level of HIV antibody, which rises as the virus multiplies.',
+      'The amount of p24 antigen detected by the fourth-generation screen.'
     ],
-    answer: 'The amount of HIV RNA detected in the specimen by a quantitative molecular method.',
+    answer: 'The amount of HIV RNA in the specimen, by quantitative molecular test.',
     explanation: 'HIV viral load is a molecular measurement of viral RNA. It is different from antibody screening or CD4 cell enumeration.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6025,12 +6025,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HIV', 'genotypic resistance', 'sequencing', 'antiviral resistance'],
     prompt: 'What is the main purpose of HIV genotypic resistance testing?',
     choices: [
-      'To look for viral genetic mutations associated with resistance to antiretroviral drug classes.',
-      'To identify HIV by Gram stain morphology.',
-      'To determine fungal colony texture.',
-      'To confirm beta-lactamase production by bacteria.'
+      'To find viral mutations linked to antiretroviral drug resistance.',
+      'To measure how much HIV RNA is present in the plasma.',
+      'To confirm HIV infection after a reactive screening test.',
+      'To separate HIV-1 from HIV-2 by the antibodies they produce.'
     ],
-    answer: 'To look for viral genetic mutations associated with resistance to antiretroviral drug classes.',
+    answer: 'To find viral mutations linked to antiretroviral drug resistance.',
     explanation: 'Genotypic resistance testing examines viral sequence changes linked to resistance. It is a lab interpretation tool, not a treatment recommendation by itself.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6043,12 +6043,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['HPV', 'high-risk HPV', 'DNA testing', 'cervical screening'],
     prompt: 'What does high-risk HPV molecular testing detect in a cervical screening workflow?',
     choices: [
-      'Nucleic acid from HPV types associated with higher oncogenic risk.',
-      'Coagulase activity from gram-positive cocci.',
-      'Acid-fast bacilli in sputum.',
-      'Dermatophyte invasion of hair shafts.'
+      'DNA or RNA from HPV types with higher cancer risk.',
+      'Antibodies to HPV that show past vaccination.',
+      'Abnormal cervical cells seen on the cytology slide.',
+      'Any HPV type, including low-risk wart types, in one result.'
     ],
-    answer: 'Nucleic acid from HPV types associated with higher oncogenic risk.',
+    answer: 'DNA or RNA from HPV types with higher cancer risk.',
     explanation: 'High-risk HPV testing detects viral nucleic acid from selected HPV types. It is part of a screening algorithm and should be interpreted by the validated lab workflow.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6062,9 +6062,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'An animal specimen is submitted for rabies testing. Which lab method is a classic confirmatory approach on appropriate brain tissue?',
     choices: [
       'Direct fluorescent antibody testing.',
-      'Coagulase testing.',
-      'Germ tube testing.',
-      'Bile esculin hydrolysis.'
+      'Serum antibody testing on the animal.',
+      'Viral culture of saliva in cell lines.',
+      'Routine H&E histology for Negri bodies.'
     ],
     answer: 'Direct fluorescent antibody testing.',
     explanation: 'Rabies testing is a public health and safety-sensitive workflow. Direct fluorescent antibody testing on appropriate tissue is a classic method, and handling follows strict protocols.',
@@ -6079,12 +6079,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['West Nile virus', 'arbovirus', 'IgM', 'CSF'],
     prompt: 'A patient with suspected neuroinvasive arboviral infection has serum and CSF submitted. Which result type is commonly used in West Nile virus testing workflows?',
     choices: [
-      'Virus-specific IgM antibody detection in appropriate specimens.',
-      'Routine blood agar colony morphology.',
-      'Urease testing from a yeast colony.',
-      'CAMP testing for beta-hemolytic streptococci.'
+      'Virus-specific IgM antibody detection in serum or CSF.',
+      'Bacterial culture of CSF on chocolate agar.',
+      'A single IgG titer from the first day of illness.',
+      'Viral culture of whole blood held for 4 weeks.'
     ],
-    answer: 'Virus-specific IgM antibody detection in appropriate specimens.',
+    answer: 'Virus-specific IgM antibody detection in serum or CSF.',
     explanation: 'West Nile virus testing often relies on serologic detection of IgM in serum or CSF, depending on the clinical question and lab protocol. Routine viral culture is not the usual first teaching workflow.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6115,12 +6115,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['coronavirus', 'NAAT', 'respiratory specimen', 'molecular testing'],
     prompt: 'A respiratory specimen is submitted for coronavirus detection. Which lab concept best fits many routine diagnostic workflows?',
     choices: [
-      'Molecular detection from a validated respiratory specimen.',
-      'Growth on MacConkey agar with lactose fermentation.',
-      'Coagulase testing from blood agar.',
-      'KOH preparation for fungal hyphae.'
+      'Molecular detection from a respiratory specimen.',
+      'Viral culture on routine blood agar plates.',
+      'Serum antibody testing during the first days of illness.',
+      'Gram stain of sputum to see viral inclusions.'
     ],
-    answer: 'Molecular detection from a validated respiratory specimen.',
+    answer: 'Molecular detection from a respiratory specimen.',
     explanation: 'Coronavirus testing commonly uses molecular detection from respiratory specimens. Routine culture is not the usual front-line diagnostic workflow in clinical labs.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6133,12 +6133,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['rubella', 'IgG', 'IgM', 'pregnancy screening', 'serology'],
     prompt: 'A rubella serology panel is ordered to evaluate immune status or possible recent infection. Which concept is most important?',
     choices: [
-      'IgG and IgM answer different serologic questions and must be interpreted in context.',
-      'Rubella is identified by coagulase testing.',
-      'Rubella grows as a dermatophyte on skin scrapings.',
-      'Rubella is confirmed by lactose fermentation.'
+      'IgG and IgM answer different questions and need context.',
+      'A positive IgG always means recent infection, not immunity.',
+      'A positive IgM alone always proves infection, even without symptoms.',
+      'IgG and IgM are interchangeable, so either one answers both questions.'
     ],
-    answer: 'IgG and IgM answer different serologic questions and must be interpreted in context.',
+    answer: 'IgG and IgM answer different questions and need context.',
     explanation: 'Rubella serology is pattern-based. IgG may support immunity or past exposure, while IgM is used in recent-infection evaluation with appropriate caution and confirmation rules.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6151,12 +6151,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['TORCH', 'congenital infection', 'serology', 'molecular testing'],
     prompt: 'Why are TORCH organisms grouped together in many study workflows?',
     choices: [
-      'They are organisms associated with congenital or perinatal infection evaluation.',
-      'They are all acid-fast bacilli.',
-      'They are all dermatophytes.',
-      'They are all coagulase-positive bacteria.'
+      'They are organisms evaluated in congenital or perinatal infection.',
+      'They are all viruses spread by respiratory droplets in the newborn nursery.',
+      'They are all sexually transmitted bacteria found in the genital tract.',
+      'They are organisms screened for in every routine adult blood culture.'
     ],
-    answer: 'They are organisms associated with congenital or perinatal infection evaluation.',
+    answer: 'They are organisms evaluated in congenital or perinatal infection.',
     explanation: 'TORCH is a learning bucket for congenital infection evaluation. Testing depends on the organism, specimen, timing, and whether serology or molecular detection is appropriate.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6169,12 +6169,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['BK virus', 'transplant', 'polyomavirus', 'urine', 'plasma PCR'],
     prompt: 'A kidney transplant monitoring workflow includes BK virus testing. Which lab concept best fits this use case?',
     choices: [
-      'Molecular testing of urine or plasma can be used to monitor BK virus in the appropriate protocol.',
-      'BK virus is identified by germ tube testing.',
-      'BK virus grows as a beta-hemolytic colony on blood agar.',
-      'BK virus is confirmed by dermatophyte hair perforation testing.'
+      'PCR of urine or plasma can monitor BK virus after transplant.',
+      'BK virus is monitored by routine bacterial urine culture counts.',
+      'BK virus is identified by germ tube testing of the urine.',
+      'BK virus is tracked by CMV IgG levels, since the two cross-react.'
     ],
-    answer: 'Molecular testing of urine or plasma can be used to monitor BK virus in the appropriate protocol.',
+    answer: 'PCR of urine or plasma can monitor BK virus after transplant.',
     explanation: 'BK virus is a polyomavirus important in transplant-associated monitoring. Testing is protocol-driven and often uses molecular methods rather than routine culture.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6187,12 +6187,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['hemagglutination', 'hemagglutination inhibition', 'influenza', 'serology'],
     prompt: 'What is the basic principle behind a hemagglutination inhibition assay in virology?',
     choices: [
-      'Antibody can block a virus from agglutinating red blood cells.',
-      'Antibody makes bacteria produce coagulase.',
-      'Antibody forces fungi to form germ tubes.',
-      'Antibody converts RNA viruses into DNA viruses.'
+      'Antibody blocks the virus from agglutinating red blood cells.',
+      'Antibody causes the virus to agglutinate red blood cells faster.',
+      'Antibody lyses red blood cells once the virus has bound to their surface.',
+      'Virus blocks antibody from agglutinating the red blood cells in the well.'
     ],
-    answer: 'Antibody can block a virus from agglutinating red blood cells.',
+    answer: 'Antibody blocks the virus from agglutinating red blood cells.',
     explanation: 'Some viruses can agglutinate red blood cells. If specific antibody prevents that reaction, the inhibition pattern can support serologic interpretation in selected workflows.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6203,14 +6203,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Virology workflow',
     difficulty: 'beginner',
     tags: ['virology', 'bench workflow', 'specimen source', 'NAAT', 'serology'],
-    prompt: 'Which approach best matches a bench-first virology workflow?',
+    prompt: 'An infant with fever in late summer has a CSF pleocytosis, and viral meningitis is suspected. Which approach fits a bench-first virology workflow?',
     choices: [
-      'Start with syndrome and specimen source, then match the virus, timing, specimen type, and validated test method.',
-      'Use bacterial colony color as the main viral identification method.',
-      'Use coagulase testing for all respiratory viruses.',
-      'Assume all viruses grow on routine blood agar overnight.'
+      'Match the syndrome and season to enterovirus and send CSF for NAAT.',
+      'Culture CSF on blood agar, since viruses grow there overnight.',
+      'Send serum IgG only, since CSF is not a useful viral specimen.',
+      'Gram stain the CSF, since a negative smear rules out a virus.'
     ],
-    answer: 'Start with syndrome and specimen source, then match the virus, timing, specimen type, and validated test method.',
+    answer: 'Match the syndrome and season to enterovirus and send CSF for NAAT.',
     explanation: 'Virology is heavily specimen- and method-dependent. Learners should connect the clinical question to the correct specimen and test type, such as antigen detection, NAAT, serology, or culture when appropriate.',
     source: 'Learn Microbes original question bank: Virology',
     status: 'published'
@@ -6223,12 +6223,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['HSV', 'vesicle lesion', 'PCR', 'specimen collection'],
   prompt: 'A fresh vesicular lesion is submitted for herpes simplex virus testing. Which specimen principle best supports detection?',
   choices: [
-  'Collect material from the lesion base using the collection system validated for the assay.',
+  'Swab the base of an unroofed lesion into the assay\'s transport.',
+  'Swab the dry crusted surface of an older lesion, which holds more virus.',
   'Submit a dry stool swab for viral culture.',
-  'Use a routine urine culture plate.',
-  'Use sputum for acid-fast bacilli culture.'
+  'Send serum IgG to detect the active lesion directly.'
   ],
-  answer: 'Collect material from the lesion base using the collection system validated for the assay.',
+  answer: 'Swab the base of an unroofed lesion into the assay\'s transport.',
   explanation: 'HSV detection depends on good lesion sampling and correct transport or assay conditions. Lesion base sampling is a key preanalytic point.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'draft'
@@ -6241,12 +6241,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['Epstein-Barr virus', 'heterophile antibody', 'VCA IgM', 'mononucleosis'],
   prompt: 'A mono-like illness is suspected, but the heterophile antibody screen is negative. What is the best lab-learning next concept?',
   choices: [
-  'EBV-specific serology can help when the screening result does not fit the suspected pattern.',
-  'A negative heterophile screen always excludes EBV.',
-  'EBV is confirmed by lactose fermentation.',
-  'EBV is identified by germ tube production.'
+  'EBV-specific serology can clarify a negative heterophile screen.',
+  'A negative heterophile screen always excludes EBV, even in young children.',
+  'Repeat the heterophile screen every few days until it becomes positive.',
+  'EBV is confirmed by culturing throat swabs on routine blood agar.'
   ],
-  answer: 'EBV-specific serology can help when the screening result does not fit the suspected pattern.',
+  answer: 'EBV-specific serology can clarify a negative heterophile screen.',
   explanation: 'Heterophile tests are screening tools and may be negative in some cases. EBV-specific serology provides a more detailed interpretation path.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'draft'
@@ -6260,9 +6260,9 @@ export const questionBank: QuestionBankItem[] = [
   prompt: 'A transplant monitoring workflow follows cytomegalovirus results over time. Which lab test concept best fits this use case?',
   choices: [
   'Quantitative molecular testing to track CMV viral load trends.',
-  'Coagulase testing from a blood agar colony.',
-  'KOH preparation for fungal hyphae.',
-  'Bile esculin testing for enterococci.'
+  'A single CMV IgG result repeated weekly to follow activity.',
+  'Viral culture read at 4 weeks, the preferred trend method.',
+  'CMV IgM alone, which rises and falls with viral load.'
   ],
   answer: 'Quantitative molecular testing to track CMV viral load trends.',
   explanation: 'CMV monitoring often uses quantitative molecular methods. Trends should be interpreted through the laboratory and clinical protocol.',
@@ -6277,12 +6277,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['HIV', 'fourth-generation screen', 'supplemental testing', 'NAAT'],
   prompt: 'A fourth-generation HIV screening test is repeatedly reactive. What is the safest lab-learning principle?',
   choices: [
-  'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
-  'Report infection from the screen alone without the algorithm.',
-  'Use MacConkey agar to confirm the virus.',
-  'Use a germ tube test to separate HIV-1 from HIV-2.'
+  'Run the supplemental differentiation assay, then NAAT if needed.',
+  'Report infection from the repeatedly reactive screen alone, without the algorithm.',
+  'Use Western blot alone, since it is the current first supplemental test.',
+  'Repeat the screen monthly until it turns negative, then report it.'
   ],
-  answer: 'Follow the laboratory HIV algorithm with supplemental differentiation testing or nucleic acid testing as required.',
+  answer: 'Run the supplemental differentiation assay, then NAAT if needed.',
   explanation: 'HIV testing is algorithm-based. Screening, supplemental differentiation, and nucleic acid testing answer different questions and must follow the validated workflow.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'draft'
@@ -6296,9 +6296,9 @@ export const questionBank: QuestionBankItem[] = [
   prompt: 'An animal specimen is submitted for rabies testing after an exposure investigation. Which classic confirmatory method is used on appropriate tissue?',
   choices: [
   'Direct fluorescent antibody testing.',
-  'Coagulase testing.',
-  'Germ tube testing.',
-  'Bile esculin hydrolysis.'
+  'Serum antibody testing on the animal before euthanasia.',
+  'Routine H&E histology for Negri bodies.',
+  'Viral culture of saliva in cell lines.'
   ],
   answer: 'Direct fluorescent antibody testing.',
   explanation: 'Rabies testing is safety-sensitive and public-health-linked. Direct fluorescent antibody testing on appropriate tissue is a classic method handled under strict protocols.',
@@ -6313,12 +6313,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['O&P', 'artifact', 'microscopy'],
     prompt: 'A stool wet mount contains plant material and pollen-like structures that could be mistaken for ova or cysts. What is the best student lesson?',
     choices: [
-      'Artifacts can mimic parasites, so morphology, size, internal structures, and stain quality must be evaluated carefully.',
-      'All round objects in stool are clinically significant parasite ova.',
-      'Artifacts prove the specimen is unacceptable for all testing.',
-      'Parasite identification is based only on the color of the background.'
+      'Artifacts can mimic parasites, so check size and internal structure.',
+      'All round objects in a stool mount should be reported as parasite ova.',
+      'Pollen in the mount proves the specimen is unacceptable for O&P.',
+      'Artifacts can be told apart from parasites by background color alone.'
     ],
-    answer: 'Artifacts can mimic parasites, so morphology, size, internal structures, and stain quality must be evaluated carefully.',
+    answer: 'Artifacts can mimic parasites, so check size and internal structure.',
     explanation: 'O&P microscopy requires separating true diagnostic structures from artifacts. Size, shape, internal detail, and preparation method all matter.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6331,12 +6331,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['trichrome stain', 'permanent smear', 'protozoa'],
     prompt: 'Why are permanently stained fecal smears useful in ova and parasite examination?',
     choices: [
-      'They enhance internal protozoan morphology and allow more detailed review than a wet mount alone.',
-      'They replace the need for any concentration method in every specimen.',
-      'They are used only to identify bacterial lactose fermentation.',
-      'They destroy all protozoan structures so helminth eggs are easier to see.'
+      'They show internal protozoan detail better than a wet mount.',
+      'They replace the need for any concentration method.',
+      'They make helminth eggs easier to see by dissolving protozoa first.',
+      'They show trophozoite motility more clearly than a fresh mount.'
     ],
-    answer: 'They enhance internal protozoan morphology and allow more detailed review than a wet mount alone.',
+    answer: 'They show internal protozoan detail better than a wet mount.',
     explanation: 'Permanent stains such as trichrome help visualize protozoan nuclear and cytoplasmic detail. They complement, rather than universally replace, concentration and wet mount methods.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6349,12 +6349,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Naegleria fowleri', 'CSF', 'free-living amoeba', 'urgent reporting'],
     prompt: 'Motile amoebae are suspected in a fresh CSF specimen from a patient with rapidly progressive meningoencephalitis after warm freshwater exposure. What should the laboratory prioritize?',
     choices: [
-      'Urgent escalation and appropriate confirmatory workflow because free-living amoebae can be rapidly fatal.',
-      'Holding the specimen at room temperature overnight before notifying anyone.',
-      'Reporting normal flora because amoebae are expected in CSF.',
-      'Using urine culture colony counts as the confirmatory test.'
+      'Urgent escalation, since free-living amoebae can be rapidly fatal.',
+      'Refrigerate the CSF overnight and notify the clinician in the morning.',
+      'Report contamination, since amoebae are expected in CSF from swimmers.',
+      'Wait for a Gram stain, since amoebae stain well as gram-positive rods.'
     ],
-    answer: 'Urgent escalation and appropriate confirmatory workflow because free-living amoebae can be rapidly fatal.',
+    answer: 'Urgent escalation, since free-living amoebae can be rapidly fatal.',
     explanation: 'Suspected Naegleria or other free-living amoebae in CSF is a high-consequence finding. Rapid communication and reference/confirmatory workflow are critical.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6367,12 +6367,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['malaria', 'Plasmodium', 'blood smear'],
     prompt: 'A blood smear shows intraerythrocytic parasites. Which features help separate Plasmodium species during microscopy?',
     choices: [
-      'Infected cell size, parasite forms, pigment, parasitemia pattern, and special forms such as gametocytes.',
-      'MacConkey lactose reaction and oxidase result.',
-      'Bile solubility and optochin susceptibility.',
-      'CAMP reaction and bacitracin susceptibility.'
+      'Red cell size, parasite forms, pigment, stippling, and gametocyte shape.',
+      'Red cell size alone, since every species enlarges infected cells.',
+      'Parasitemia level alone, since each species has a fixed percentage.',
+      'Staining with Gram\'s method, which colors each species differently.'
     ],
-    answer: 'Infected cell size, parasite forms, pigment, parasitemia pattern, and special forms such as gametocytes.',
+    answer: 'Red cell size, parasite forms, pigment, stippling, and gametocyte shape.',
     explanation: 'Malaria microscopy uses multiple smear features, not one visual clue alone. Species-level interpretation affects urgency and therapy.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6385,12 +6385,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Enterobius vermicularis', 'pinworm', 'tape test'],
     prompt: 'A child has nocturnal perianal itching and pinworm infection is suspected. Which specimen collection method is most appropriate?',
     choices: [
-      'Morning perianal tape preparation before bathing or toileting.',
-      'Routine sputum culture.',
-      'Blood culture bottle inoculation.',
-      'Clean-catch urine colony count.'
+      'Perianal tape preparation first thing in the morning.',
+      'A stool O&P, since pinworm eggs are usually abundant in stool.',
+      'A perianal tape taken at bedtime, after the evening bath.',
+      'A blood film for eosinophils and circulating larvae.'
     ],
-    answer: 'Morning perianal tape preparation before bathing or toileting.',
+    answer: 'Perianal tape preparation first thing in the morning.',
     explanation: 'Enterobius eggs are best recovered from the perianal area using a tape preparation, typically collected in the morning before washing or bowel movement.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'draft'
@@ -6403,12 +6403,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Taenia saginata', 'Taenia solium', 'proglottid', 'uterine branches'],
     prompt: 'A Taenia proglottid is being evaluated to separate T. saginata from T. solium. Which feature is classically used?',
     choices: [
-      'Number and pattern of uterine branches in the gravid proglottid.',
-      'Oxidase positivity.',
-      'Coagulase tube clot formation.',
-      'Growth on chocolate agar.'
+      'Number of lateral uterine branches in a gravid proglottid.',
+      'The shape of the egg, which differs between the two species.',
+      'The color of the proglottid after staining with India ink.',
+      'Proglottid length, since T. solium segments are twice as long.'
     ],
-    answer: 'Number and pattern of uterine branches in the gravid proglottid.',
+    answer: 'Number of lateral uterine branches in a gravid proglottid.',
     explanation: 'Taenia species differentiation often uses proglottid morphology, especially uterine branch pattern. Egg morphology alone is not enough for reliable species separation.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6421,12 +6421,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Schistosoma haematobium', 'urine', 'trematode'],
     prompt: 'A patient has hematuria after freshwater exposure in an endemic area. Which specimen is most relevant for suspected Schistosoma haematobium?',
     choices: [
-      'Urine collected and processed according to the parasite testing protocol.',
-      'Throat swab for beta-hemolytic streptococci.',
-      'Blood culture for anaerobes only.',
-      'MacConkey plate from stool only.'
+      'Urine, ideally collected around midday for egg detection.',
+      'Stool, since S. haematobium eggs are mainly passed in feces.',
+      'Blood, since eggs circulate freely in the bloodstream.',
+      'A first-morning urine, since egg output peaks overnight.'
     ],
-    answer: 'Urine collected and processed according to the parasite testing protocol.',
+    answer: 'Urine, ideally collected around midday for egg detection.',
     explanation: 'S. haematobium is associated with urinary schistosomiasis. Specimen choice depends on the species and disease site.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'draft'
@@ -6439,12 +6439,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Cryptosporidium', 'modified acid-fast', 'coccidia', 'diarrhea'],
     prompt: 'A patient with watery diarrhea has tiny oocyst-like structures suspected on stool exam. Which stain direction is classically useful for Cryptosporidium-like organisms?',
     choices: [
-      'Modified acid-fast or equivalent validated coccidian parasite staining method.',
-      'Gram stain for beta-hemolytic colonies.',
-      'India ink for encapsulated yeast only.',
-      'Coagulase tube testing.'
+      'Modified acid-fast stain.',
+      'Routine Gram stain of the stool smear.',
+      'Trichrome stain, which shows oocysts clearly.',
+      'Iodine wet mount, which stains oocysts brown.'
     ],
-    answer: 'Modified acid-fast or equivalent validated coccidian parasite staining method.',
+    answer: 'Modified acid-fast stain.',
     explanation: 'Cryptosporidium and related coccidia may require special stains or antigen/molecular methods. Routine O&P alone may not answer every coccidian parasite question.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Parasitology',
     status: 'published'
@@ -6455,14 +6455,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Stool ova and parasite workflow',
     difficulty: 'beginner',
     tags: ['stool O&P', 'parasite diagnosis', 'concentration', 'permanent stain'],
-    prompt: 'A stool specimen is submitted for ova and parasite examination. Which approach best matches a bench-first parasitology workflow?',
+    prompt: 'A formalin-preserved stool arrives for O&P from a traveler with diarrhea. Which processing approach fits a bench-first parasitology workflow?',
     choices: [
-      'Use specimen quality, concentration, wet mount, and permanent stain findings together.',
-      'Identify all parasites from stool odor alone.',
-      'Use Gram stain as the only required parasite method.',
-      'Plate the specimen on MacConkey agar to recover helminth eggs.'
+      'Run a concentration and wet mount, plus a permanent stained smear.',
+      'Run only a direct wet mount, since formalin keeps trophozoites motile.',
+      'Plate the stool on MacConkey agar to recover helminth eggs.',
+      'Gram stain the sediment as the only required parasite method.'
     ],
-    answer: 'Use specimen quality, concentration, wet mount, and permanent stain findings together.',
+    answer: 'Run a concentration and wet mount, plus a permanent stained smear.',
     explanation: 'Stool parasitology depends on source, preservation, concentration, and microscopic morphology. A single observation rarely carries the whole identification.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6475,12 +6475,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['permanent stain', 'trichrome stain', 'intestinal protozoa', 'trophozoites'],
     prompt: 'Why is a permanent stained smear useful when identifying many intestinal protozoa?',
     choices: [
-      'It preserves nuclear and cytoplasmic details needed for protozoan identification.',
-      'It hatches helminth eggs to prove viability.',
-      'It detects malaria parasites in red blood cells.',
+      'It preserves nuclear and cytoplasmic detail for protozoa.',
+      'It hatches helminth eggs to show they are viable.',
+      'It shows malaria parasites inside red blood cells.',
       'It replaces all concentration methods for helminth eggs.'
     ],
-    answer: 'It preserves nuclear and cytoplasmic details needed for protozoan identification.',
+    answer: 'It preserves nuclear and cytoplasmic detail for protozoa.',
     explanation: 'Permanent stains such as trichrome help show protozoan internal morphology. This is especially important when trophozoites or small cysts could be confused with debris or cells.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6493,12 +6493,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['formalin ethyl acetate', 'concentration', 'helminth eggs', 'protozoan cysts'],
     prompt: 'What is the main purpose of a stool concentration method in parasitology?',
     choices: [
-      'To increase recovery of ova, cysts, and larvae that may be present in low numbers.',
-      'To make trophozoites more motile after preservation.',
-      'To identify malaria species in blood.',
-      'To convert protozoan cysts into bacterial colonies.'
+      'To recover ova, cysts, and larvae present in low numbers.',
+      'To keep trophozoites motile after preservation.',
+      'To identify protozoa by internal nuclear detail.',
+      'To convert protozoan cysts into countable bacterial colonies.'
     ],
-    answer: 'To increase recovery of ova, cysts, and larvae that may be present in low numbers.',
+    answer: 'To recover ova, cysts, and larvae present in low numbers.',
     explanation: 'Concentration methods help recover parasite stages that may be missed on direct exam. They are paired with permanent stains and wet mounts depending on the requested workup.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6511,12 +6511,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Charcot-Leyden crystals', 'eosinophils', 'stool microscopy', 'parasites'],
     prompt: 'Charcot-Leyden crystals are seen in a stool specimen. What is the best educational interpretation?',
     choices: [
-      'They are breakdown products associated with eosinophils and may support a parasitic or allergic inflammatory context.',
-      'They are diagnostic eggs of Enterobius vermicularis.',
-      'They are acid-fast oocysts of Cryptosporidium.',
-      'They are malaria pigment inside red blood cells.'
+      'Eosinophil breakdown products, often seen with parasites or allergy.',
+      'Diagnostic eggs of Enterobius vermicularis in the stool.',
+      'Acid-fast oocysts of Cryptosporidium seen on wet mount.',
+      'Crystallized bile salts that have no clinical meaning in stool specimens.'
     ],
-    answer: 'They are breakdown products associated with eosinophils and may support a parasitic or allergic inflammatory context.',
+    answer: 'Eosinophil breakdown products, often seen with parasites or allergy.',
     explanation: 'Charcot-Leyden crystals are not a parasite identification by themselves. They are supportive microscopic clues that must be interpreted with the full specimen findings.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6530,9 +6530,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A trophozoite in a permanent stained stool smear contains ingested red blood cells. Which organism is classically supported by this finding?',
     choices: [
       'Entamoeba histolytica.',
-      'Entamoeba dispar.',
-      'Giardia duodenalis.',
-      'Iodamoeba butschlii.'
+      'Dientamoeba fragilis.',
+      'Entamoeba hartmanni.',
+      'Endolimax nana.'
     ],
     answer: 'Entamoeba histolytica.',
     explanation: 'Ingested red blood cells are a key teaching clue for E. histolytica trophozoites. E. dispar is morphologically similar but is not associated with ingested RBCs.',
@@ -6547,12 +6547,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Entamoeba histolytica', 'Entamoeba dispar', 'morphology limits', 'stool microscopy'],
     prompt: 'Why should a learner be cautious when reporting Entamoeba histolytica-like cysts from stool microscopy alone?',
     choices: [
-      'E. histolytica and E. dispar can look identical by cyst morphology, so lab-specific confirmation may be needed.',
-      'E. dispar always contains ingested red blood cells.',
-      'E. histolytica cysts are visible only in blood smears.',
-      'Entamoeba species are identified by coagulase testing.'
+      'E. histolytica and E. dispar cysts look identical by microscopy.',
+      'E. dispar always contains ingested red blood cells, which separates it.',
+      'E. histolytica cysts have eight nuclei, unlike E. dispar cysts.',
+      'E. dispar cysts are much larger, so size alone separates them.'
     ],
-    answer: 'E. histolytica and E. dispar can look identical by cyst morphology, so lab-specific confirmation may be needed.',
+    answer: 'E. histolytica and E. dispar cysts look identical by microscopy.',
     explanation: 'Some Entamoeba species overlap morphologically. The bench should avoid overcalling pathogenicity from cyst appearance alone when confirmatory methods are required.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6583,12 +6583,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Giardia', 'Cryptosporidium', 'fecal immunoassay', 'stool testing'],
     prompt: 'Why are fecal immunoassays commonly discussed for Giardia and Cryptosporidium?',
     choices: [
-      'They can detect parasite antigens in stool and may be more practical than relying only on routine O&P microscopy.',
-      'They hatch helminth eggs to prove viability.',
-      'They identify malaria species on thick blood films.',
-      'They detect adult tapeworms in blood culture bottles.'
+      'They detect parasite antigen in stool and can be easier than O&P alone.',
+      'They detect every intestinal parasite, so a full O&P is never needed afterward.',
+      'They identify Giardia by watching for its motility inside the antigen well.',
+      'They detect antibody in serum, which shows current intestinal infection.'
     ],
-    answer: 'They can detect parasite antigens in stool and may be more practical than relying only on routine O&P microscopy.',
+    answer: 'They detect parasite antigen in stool and can be easier than O&P alone.',
     explanation: 'Giardia and Cryptosporidium are common targets for stool antigen or molecular workflows. The test choice depends on the lab’s algorithm and requested evaluation.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6620,9 +6620,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A stool specimen contains larger coccidian oocysts that show variable modified acid-fast staining and may autofluoresce. Which organism is the classic teaching match?',
     choices: [
       'Cyclospora cayetanensis.',
+      'Cryptosporidium parvum.',
       'Giardia duodenalis.',
-      'Enterobius vermicularis.',
-      'Plasmodium falciparum.'
+      'Blastocystis hominis.'
     ],
     answer: 'Cyclospora cayetanensis.',
     explanation: 'Cyclospora oocysts are larger than Cryptosporidium and can show variable acid-fast staining. Autofluorescence can help support the identification in some workflows.',
@@ -6655,12 +6655,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['microsporidia', 'modified trichrome stain', 'spores', 'immunocompromised host'],
     prompt: 'A stool specimen from an immunocompromised patient is being evaluated for microsporidia. Which stain concept is most appropriate?',
     choices: [
-      'Modified trichrome or another specialized stain to demonstrate tiny spores.',
-      'Routine Gram stain only for helminth eggs.',
-      'India ink to show a yeast capsule.',
-      'Thick blood film to detect oocysts.'
+      'Modified trichrome stain to show the tiny spores.',
+      'A routine trichrome stain, which shows spores well.',
+      'India ink, which outlines a capsule around each spore.',
+      'A thick blood film, which detects spores in the plasma.'
     ],
-    answer: 'Modified trichrome or another specialized stain to demonstrate tiny spores.',
+    answer: 'Modified trichrome stain to show the tiny spores.',
     explanation: 'Microsporidia are tiny and can be missed with routine stool methods. Specialized stains or molecular methods are used depending on the lab workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6673,12 +6673,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Trichomonas vaginalis', 'vaginal discharge', 'wet mount', 'NAAT'],
     prompt: 'Which specimen source is classically most useful for direct detection of motile Trichomonas vaginalis trophozoites?',
     choices: [
-      'Fresh vaginal discharge or an appropriate urogenital specimen handled promptly.',
-      'Formalin-fixed stool sediment only.',
-      'Thick blood film only.',
-      'Skin scraping from the forearm.'
+      'Fresh vaginal discharge examined promptly.',
+      'A first-void urine refrigerated overnight before the wet mount.',
+      'Formalin-fixed stool sediment from a concentration.',
+      'A dried vaginal swab, since drying concentrates trophozoites.'
     ],
-    answer: 'Fresh vaginal discharge or an appropriate urogenital specimen handled promptly.',
+    answer: 'Fresh vaginal discharge examined promptly.',
     explanation: 'Trichomonas trophozoites are fragile, and motility is easiest to observe in fresh specimens. Many labs now use molecular methods, but specimen source still matters.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6764,9 +6764,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A child has suspected pinworm infection. Which specimen collection method is the classic teaching choice?',
     choices: [
       'Early-morning perianal adhesive tape preparation.',
-      'Routine sputum concentration.',
-      'Thick blood film.',
-      'Modified acid-fast stool stain only.'
+      'A stool concentration, since pinworm eggs are common in feces.',
+      'A perianal tape collected at bedtime after a bath.',
+      'Modified acid-fast stain of a stool smear.'
     ],
     answer: 'Early-morning perianal adhesive tape preparation.',
     explanation: 'Enterobius eggs are deposited in the perianal area, so adhesive tape collection is more useful than routine stool O&P for many cases.',
@@ -6782,9 +6782,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A stool specimen shows rhabditiform larvae with a short buccal cavity and prominent genital primordium. Which organism is the classic teaching match?',
     choices: [
       'Strongyloides stercoralis.',
-      'Enterobius vermicularis.',
-      'Taenia solium.',
-      'Diphyllobothrium latum.'
+      'Hookworm (Necator americanus).',
+      'Ascaris lumbricoides.',
+      'Enterobius vermicularis.'
     ],
     answer: 'Strongyloides stercoralis.',
     explanation: 'Strongyloides rhabditiform larvae have characteristic morphology. Recognizing larvae rather than eggs is important in stool parasite workflow.',
@@ -6799,12 +6799,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Strongyloides stercoralis', 'autoinfection', 'larvae', 'life cycle'],
     prompt: 'Why is Strongyloides stercoralis important in life-cycle teaching?',
     choices: [
-      'It can maintain infection through autoinfection within the human host.',
+      'It can persist for decades through autoinfection.',
       'It requires a freshwater snail as the only human infective stage.',
       'It is transmitted by eating undercooked freshwater fish only.',
       'It is diagnosed by finding malaria pigment in red blood cells.'
     ],
-    answer: 'It can maintain infection through autoinfection within the human host.',
+    answer: 'It can persist for decades through autoinfection.',
     explanation: 'Strongyloides has an autoinfection cycle, which separates it from many intestinal helminths. This life-cycle feature affects specimen expectations and clinical significance.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'draft'
@@ -6854,9 +6854,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A stool specimen shows barrel-shaped eggs with bipolar plugs. Which helminth is the classic teaching match?',
     choices: [
       'Trichuris trichiura.',
-      'Taenia saginata.',
-      'Schistosoma mansoni.',
-      'Fasciola hepatica.'
+      'Ascaris lumbricoides.',
+      'Enterobius vermicularis.',
+      'Hookworm species.'
     ],
     answer: 'Trichuris trichiura.',
     explanation: 'Trichuris eggs are classically barrel-shaped with bipolar plugs. Egg morphology is a core bench skill in helminth identification.',
@@ -6907,12 +6907,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Schistosoma', 'miracidial hatching', 'egg viability', 'fresh specimen'],
     prompt: 'A lab needs to demonstrate Schistosoma egg viability. Which principle best fits the classic workflow?',
     choices: [
-      'Use a fresh, appropriate specimen for a hatching or viability method according to protocol.',
-      'Use formalin-fixed stool because it preserves larval movement.',
-      'Use a coagulase test from a blood agar colony.',
-      'Use a germ tube test after serum incubation.'
+      'Use fresh, unpreserved specimen for a hatching test.',
+      'Use formalin-fixed stool, since it preserves miracidial movement.',
+      'Count eggs on a stained smear, since stain uptake shows viability.',
+      'Freeze the specimen first so eggs hatch faster when thawed.'
     ],
-    answer: 'Use a fresh, appropriate specimen for a hatching or viability method according to protocol.',
+    answer: 'Use fresh, unpreserved specimen for a hatching test.',
     explanation: 'Viability testing depends on live egg or larval behavior, so preservation can interfere. The lab must follow the specific specimen and timing protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6925,12 +6925,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Taenia', 'eggs', 'proglottids', 'cestodes'],
     prompt: 'Taenia eggs are seen in stool. Why is species-level identification not usually made from the egg alone?',
     choices: [
-      'Taenia solium and Taenia saginata eggs are morphologically indistinguishable.',
-      'Taenia eggs are only found in blood smears.',
-      'Taenia eggs are acid-fast oocysts.',
-      'Taenia eggs prove the parasite is a trematode.'
+      'T. solium and T. saginata eggs look the same.',
+      'Taenia eggs are found only in blood smears.',
+      'Taenia eggs are acid-fast oocysts that lose shape in formalin.',
+      'Taenia eggs show the parasite is a trematode, not a cestode.'
     ],
-    answer: 'Taenia solium and Taenia saginata eggs are morphologically indistinguishable.',
+    answer: 'T. solium and T. saginata eggs look the same.',
     explanation: 'Taenia eggs do not reliably separate species. Proglottid or scolex morphology, epidemiology, or other methods may be needed depending on the lab workflow.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -6962,9 +6962,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which exposure is classically associated with Diphyllobothrium latum infection?',
     choices: [
       'Eating raw or undercooked freshwater fish.',
+      'Eating undercooked pork containing cysticerci.',
       'Skin penetration by larvae in soil.',
-      'Mosquito transmission of sporozoites.',
-      'Perianal egg deposition at night.'
+      'Eating raw crabs or crayfish.'
     ],
     answer: 'Eating raw or undercooked freshwater fish.',
     explanation: 'Diphyllobothrium latum is the broad fish tapeworm. Freshwater fish exposure is a key life-cycle clue.',
@@ -6979,12 +6979,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Echinococcus granulosus', 'hydatid cyst', 'scolices', 'lab safety'],
     prompt: 'Hydatid cyst material is submitted with concern for Echinococcus. What is the safest bench-learning principle?',
     choices: [
-      'Handle according to laboratory safety and specimen-processing protocol because cyst fluid can contain infectious protoscolices.',
-      'Perform routine stool concentration first because adult worms are usually recovered in human stool.',
-      'Use a thick blood film to find adult tapeworms.',
-      'Report the organism from colony color on blood agar.'
+      'Follow safety protocol, since cyst fluid can hold infectious protoscolices.',
+      'Concentrate it like stool, since adult worms are usually recovered in human stool.',
+      'Stain it with India ink, since protoscolices look like yeast.',
+      'Process it on the open bench, since protoscolices are not infectious.'
     ],
-    answer: 'Handle according to laboratory safety and specimen-processing protocol because cyst fluid can contain infectious protoscolices.',
+    answer: 'Follow safety protocol, since cyst fluid can hold infectious protoscolices.',
     explanation: 'Humans are accidental intermediate hosts in echinococcosis. Hydatid material is not a routine stool O&P problem and should be handled by protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7034,9 +7034,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A parasite review case highlights eosinophilic meningitis after ingestion of contaminated raw produce or intermediate hosts. Which parasite is a classic teaching association?',
     choices: [
       'Angiostrongylus cantonensis.',
+      'Naegleria fowleri.',
       'Enterobius vermicularis.',
-      'Giardia duodenalis.',
-      'Cryptosporidium parvum.'
+      'Cryptococcus neoformans.'
     ],
     answer: 'Angiostrongylus cantonensis.',
     explanation: 'Angiostrongylus cantonensis is classically associated with eosinophilic meningitis. The educational focus is life cycle, exposure, and specimen-test logic rather than routine stool identification.',
@@ -7087,12 +7087,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['filariae', 'microfilariae', 'blood collection timing', 'periodicity'],
     prompt: 'Why does collection timing matter for some blood microfilariae exams?',
     choices: [
-      'Some species show periodic circulation in peripheral blood, so timing affects detection.',
+      'Some species circulate on a daily cycle, so timing affects detection.',
       'Microfilariae are visible only after stool concentration.',
-      'Timing determines whether the organism becomes a dermatophyte.',
-      'Blood timing is irrelevant for every parasite.'
+      'Microfilariae appear in blood only after the patient eats.',
+      'Timing is irrelevant, since microfilariae circulate at a constant level.'
     ],
-    answer: 'Some species show periodic circulation in peripheral blood, so timing affects detection.',
+    answer: 'Some species circulate on a daily cycle, so timing affects detection.',
     explanation: 'Some filarial microfilariae circulate more predictably at certain times. The lab should collect specimens according to organism suspicion and protocol.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7105,12 +7105,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['malaria', 'thick blood film', 'thin blood film', 'Plasmodium'],
     prompt: 'Why are both thick and thin blood films used in malaria microscopy?',
     choices: [
-      'Thick films improve detection sensitivity, while thin films help with species identification and parasite morphology.',
+      'Thick films detect parasites; thin films show species morphology.',
       'Thick films identify helminth eggs, while thin films identify adult worms.',
       'Thick films are for fungi, while thin films are for bacteria.',
       'Thick films replace the need for blood collection timing and travel history.'
     ],
-    answer: 'Thick films improve detection sensitivity, while thin films help with species identification and parasite morphology.',
+    answer: 'Thick films detect parasites; thin films show species morphology.',
     explanation: 'Malaria microscopy uses thick and thin films for different purposes. Good smear quality and patient history are essential for interpretation.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7123,12 +7123,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['malaria', 'STAT procedure', 'blood parasites', 'travel history'],
     prompt: 'Why are malaria smears usually treated as urgent laboratory work?',
     choices: [
-      'Delay can affect patient management and parasite morphology, so prompt smear preparation and review are important.',
+      'Delay can affect patient care and parasite morphology.',
       'Malaria parasites become helminth eggs after 24 hours.',
-      'Malaria can only be detected after routine stool O&P.',
-      'Malaria smears are used only for dermatophyte identification.'
+      'Malaria can only be detected after a routine stool O&P.',
+      'Smears must be read within 1 hour or the stain fades completely.'
     ],
-    answer: 'Delay can affect patient management and parasite morphology, so prompt smear preparation and review are important.',
+    answer: 'Delay can affect patient care and parasite morphology.',
     explanation: 'Malaria evaluation is time-sensitive. The lab needs proper blood films, repeat testing when indicated, and key history such as travel and prophylaxis information.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7177,12 +7177,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Plasmodium vivax', 'Plasmodium ovale', 'Schuffner dots', 'hypnozoites'],
     prompt: 'A malaria smear shows enlarged infected red cells with fine stippling. Which teaching concept fits Plasmodium vivax and Plasmodium ovale?',
     choices: [
-      'They can show Schuffner-type stippling and have dormant liver stages that may relapse.',
-      'They always infect only banana-shaped red cells.',
-      'They are diagnosed by perianal tape preparation.',
-      'They are adult cestodes recovered from stool.'
+      'They show Schuffner stippling and can relapse from liver hypnozoites.',
+      'They infect only old red cells and never relapse after successful treatment.',
+      'They form banana-shaped gametocytes in the peripheral blood, like P. falciparum.',
+      'They show Maurer clefts and readily infect red blood cells of every age.'
     ],
-    answer: 'They can show Schuffner-type stippling and have dormant liver stages that may relapse.',
+    answer: 'They show Schuffner stippling and can relapse from liver hypnozoites.',
     explanation: 'P. vivax and P. ovale are classically associated with enlarged infected RBCs and stippling. Their hypnozoite stage is an important life-cycle concept.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7195,12 +7195,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Plasmodium knowlesi', 'malaria', 'species mimic', 'thin blood film'],
     prompt: 'Why is Plasmodium knowlesi important in malaria morphology teaching?',
     choices: [
-      'Its blood stages can resemble other Plasmodium species, so exposure history and reference confirmation may matter.',
+      'It can resemble other species, so exposure history matters.',
       'It is detected by modified acid-fast stain of stool.',
       'It is a tapeworm transmitted by freshwater fish.',
-      'It is identified by finding eggs on perianal tape.'
+      'It always shows enlarged red cells with stippling, like P. vivax.'
     ],
-    answer: 'Its blood stages can resemble other Plasmodium species, so exposure history and reference confirmation may matter.',
+    answer: 'It can resemble other species, so exposure history matters.',
     explanation: 'P. knowlesi can resemble P. falciparum or P. malariae depending on stage. Travel or exposure context and confirmatory testing may be needed.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7267,12 +7267,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Toxoplasma gondii', 'serology', 'IgG', 'IgM', 'congenital infection'],
     prompt: 'Why is Toxoplasma gondii testing often interpreted with serologic patterns rather than one isolated result?',
     choices: [
-      'IgG, IgM, timing, and clinical context affect whether results suggest past exposure or possible recent infection.',
-      'Toxoplasma is identified by finding adult worms in stool.',
-      'Toxoplasma grows as lactose-fermenting colonies on MacConkey agar.',
-      'Toxoplasma is confirmed by coagulase testing.'
+      'IgG, IgM, and timing together separate past from recent infection.',
+      'A positive IgM alone always proves recent infection, even years later.',
+      'A positive IgG always means current active infection in the patient.',
+      'Toxoplasma is diagnosed by culture on MacConkey agar.'
     ],
-    answer: 'IgG, IgM, timing, and clinical context affect whether results suggest past exposure or possible recent infection.',
+    answer: 'IgG, IgM, and timing together separate past from recent infection.',
     explanation: 'Toxoplasma serology is pattern-based and can be complex. The lab follows its validated algorithm, especially in pregnancy or immunocompromised contexts.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7285,12 +7285,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Toxoplasma gondii', 'cats', 'oocysts', 'undercooked meat'],
     prompt: 'Which life-cycle concept is central to Toxoplasma gondii teaching?',
     choices: [
-      'Cats are the definitive host, and humans may acquire infection from oocysts or tissue cysts.',
-      'Mosquitoes inject adult worms into the blood.',
-      'Humans acquire infection only from freshwater fish tapeworm larvae.',
-      'The organism is transmitted only by perianal eggs.'
+      'Cats are the definitive host; humans ingest oocysts or tissue cysts.',
+      'Dogs are the definitive host, and humans are infected by mosquito bites.',
+      'Humans are the definitive host and shed oocysts in their stool.',
+      'Infection comes only from eating freshwater fish larvae.'
     ],
-    answer: 'Cats are the definitive host, and humans may acquire infection from oocysts or tissue cysts.',
+    answer: 'Cats are the definitive host; humans ingest oocysts or tissue cysts.',
     explanation: 'Toxoplasma life-cycle learning centers on feline definitive hosts, environmental oocysts, tissue cysts, and congenital or immunocompromised testing concerns.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7301,14 +7301,14 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Parasitology specimen selection',
     difficulty: 'beginner',
     tags: ['specimen selection', 'parasite diagnosis', 'bench workflow', 'source'],
-    prompt: 'Which approach best matches Learn Microbes bench-first parasitology?',
+    prompt: 'A traveler has a painless skin ulcer, and cutaneous leishmaniasis is suspected. Which approach matches the parasite stage to the right specimen?',
     choices: [
-      'Match the suspected parasite stage to the right specimen source and detection method.',
-      'Use the same stool O&P method for every parasite in the body.',
-      'Identify every parasite by colony color on blood agar.',
-      'Ignore life cycle because morphology is always enough.'
+      'Sample the ulcer edge to look for amastigotes in tissue.',
+      'Submit stool for O&P, since amastigotes are passed in feces.',
+      'Collect a thick blood film at midnight for circulating forms.',
+      'Swab the ulcer center for bacterial culture on blood agar.'
     ],
-    answer: 'Match the suspected parasite stage to the right specimen source and detection method.',
+    answer: 'Sample the ulcer edge to look for amastigotes in tissue.',
     explanation: 'Parasitology is stage-and-source dependent. Eggs, larvae, trophozoites, cysts, oocysts, and blood stages require different specimens and methods.',
     source: 'Learn Microbes original question bank: Parasitology',
     status: 'published'
@@ -7324,7 +7324,7 @@ export const questionBank: QuestionBankItem[] = [
   'Entamoeba histolytica.',
   'Entamoeba dispar.',
   'Entamoeba coli.',
-  'Iodamoeba butschlii.'
+  'Entamoeba hartmanni.'
   ],
   answer: 'Entamoeba histolytica.',
   explanation: 'Ingested RBCs are a key teaching clue for E. histolytica trophozoites. Cyst morphology alone may not separate E. histolytica from E. dispar.',
@@ -7341,8 +7341,8 @@ export const questionBank: QuestionBankItem[] = [
   choices: [
   'Cryptosporidium species.',
   'Giardia duodenalis.',
-  'Enterobius vermicularis.',
-  'Balantidium coli.'
+  'Cystoisospora belli.',
+  'Blastocystis hominis.'
   ],
   answer: 'Cryptosporidium species.',
   explanation: 'Cryptosporidium oocysts are small and acid-fast variable to positive with modified acid-fast methods. Many labs also use antigen or molecular assays.',
@@ -7358,9 +7358,9 @@ export const questionBank: QuestionBankItem[] = [
   prompt: 'A pediatric case raises concern for pinworm infection. Which specimen collection method is the classic teaching choice?',
   choices: [
   'Early-morning perianal adhesive tape preparation.',
-  'Thick blood film.',
-  'CSF wet mount.',
-  'Modified acid-fast stool stain only.'
+  'A stool concentration, since pinworm eggs are common in feces.',
+  'A thick blood film for circulating larvae.',
+  'Modified acid-fast stain of a stool smear.'
   ],
   answer: 'Early-morning perianal adhesive tape preparation.',
   explanation: 'Enterobius eggs are deposited in the perianal area. Adhesive tape collection is usually more useful than routine stool O&P for this organism.',
@@ -7375,12 +7375,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['malaria', 'thick blood film', 'thin blood film', 'Plasmodium'],
   prompt: 'A malaria evaluation is ordered. Why should both thick and thin blood films be prepared?',
   choices: [
-  'Thick films improve detection sensitivity, while thin films help with species morphology.',
+  'Thick films improve detection; thin films show species morphology.',
   'Thick films identify helminth eggs, while thin films identify adult worms.',
   'Thick films are for fungi, while thin films are for bacteria.',
   'Thin films replace the need for travel history.'
   ],
-  answer: 'Thick films improve detection sensitivity, while thin films help with species morphology.',
+  answer: 'Thick films improve detection; thin films show species morphology.',
   explanation: 'Thick and thin films answer different malaria microscopy questions. Proper smear preparation, timing, and travel history all matter.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'published'
@@ -7447,12 +7447,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['KOH', 'fungal elements', 'direct exam'],
     prompt: 'A skin scraping is examined for fungal elements. What is the main purpose of potassium hydroxide in a direct preparation?',
     choices: [
-      'Clear keratin and cellular debris so fungal elements are easier to see.',
-      'Confirm bacterial beta-lactamase production.',
-      'Selectively grow mycobacteria.',
-      'Measure viral load.'
+      'To clear keratin and debris so fungal elements show.',
+      'To stain fungal cell walls purple for easier detection.',
+      'To kill fungi so the slide is safe, then culture is unnecessary.',
+      'To make hyphae grow out of the scraping on the slide.'
     ],
-    answer: 'Clear keratin and cellular debris so fungal elements are easier to see.',
+    answer: 'To clear keratin and debris so fungal elements show.',
     explanation: 'KOH helps dissolve host keratin and background material, improving visualization of hyphae or yeast-like structures in direct fungal exams.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7465,12 +7465,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Cryptococcus', 'capsule', 'CSF', 'antigen'],
     prompt: 'An encapsulated yeast is suspected in CSF from an immunocompromised patient. Which testing direction best supports cryptococcal disease workup?',
     choices: [
-      'Cryptococcal antigen testing and appropriate microscopy/culture correlation.',
-      'Oxidase testing alone.',
-      'Routine urine colony count only.',
-      'CAMP testing for group B streptococci.'
+      'Cryptococcal antigen testing, correlated with microscopy and culture.',
+      'Gram stain alone, since Cryptococcus stains strongly gram negative.',
+      'Germ tube testing, since a positive result identifies Cryptococcus.',
+      'Acid-fast staining, since the capsule is acid-fast.'
     ],
-    answer: 'Cryptococcal antigen testing and appropriate microscopy/culture correlation.',
+    answer: 'Cryptococcal antigen testing, correlated with microscopy and culture.',
     explanation: 'Cryptococcus workup often includes antigen detection plus microscopy and culture correlation. Encapsulated yeast in CSF is a high-yield clinical association.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7483,12 +7483,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Candida albicans', 'germ tube', 'yeast'],
     prompt: 'A yeast isolate produces germ tubes under appropriate test conditions. Which organism group is classically supported by this finding?',
     choices: [
-      'Candida albicans/Candida dubliniensis group.',
+      'Candida albicans or C. dubliniensis.',
+      'Candida tropicalis, which forms true germ tubes.',
       'Cryptococcus neoformans.',
-      'Aspergillus fumigatus.',
-      'Trichophyton rubrum.'
+      'Candida glabrata, the most common germ tube-positive yeast.'
     ],
-    answer: 'Candida albicans/Candida dubliniensis group.',
+    answer: 'Candida albicans or C. dubliniensis.',
     explanation: 'Germ tube positivity supports the C. albicans/C. dubliniensis group in the right workflow. It is not a universal yeast identification method.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7501,12 +7501,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['dimorphic fungi', 'Histoplasma', 'Blastomyces', 'Coccidioides'],
     prompt: 'A mold from a respiratory specimen raises concern for a thermally dimorphic pathogen. What is the safest general principle?',
     choices: [
-      'Handle according to fungal safety policy and use validated identification or reference methods rather than casual open-bench manipulation.',
-      'Open the culture freely because dimorphic fungi are never infectious in the lab.',
-      'Identify it by lactose fermentation on MacConkey agar.',
-      'Discard the culture because molds cannot cause pulmonary disease.'
+      'Follow fungal safety policy and use reference identification.',
+      'Open the culture freely, since dimorphic fungi are not infectious in the lab.',
+      'Do a slide culture on the open bench to see conidia faster.',
+      'Discard it, since molds from respiratory sites are contaminants.'
     ],
-    answer: 'Handle according to fungal safety policy and use validated identification or reference methods rather than casual open-bench manipulation.',
+    answer: 'Follow fungal safety policy and use reference identification.',
     explanation: 'Dimorphic fungi can pose laboratory exposure risks. Suspicious molds should be handled with appropriate biosafety precautions and confirmatory workflows.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7519,12 +7519,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['dermatophytes', 'macroconidia', 'microconidia', 'hyphae'],
     prompt: 'A mold from a skin specimen is being evaluated as a possible dermatophyte. Which features are most useful microscopically?',
     choices: [
-      'Hyphal morphology plus macroconidia and microconidia arrangement.',
-      'Coagulase and catalase only.',
-      'Urease and indole only.',
-      'Acid-fast bacilli count only.'
+      'Hyphae plus macroconidia and microconidia arrangement.',
+      'Germ tube formation and chlamydospores on cornmeal agar.',
+      'Capsule size and shape measured on an India ink preparation.',
+      'Sporangia and rhizoids forming at the tips of the hyphae.'
     ],
-    answer: 'Hyphal morphology plus macroconidia and microconidia arrangement.',
+    answer: 'Hyphae plus macroconidia and microconidia arrangement.',
     explanation: 'Dermatophyte identification uses colony features and microscopic morphology, including macroconidia, microconidia, and hyphal structures.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7537,12 +7537,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Coccidioides', 'arthroconidia', 'biosafety', 'dimorphic fungi'],
     prompt: 'A mold culture from a patient with desert Southwest exposure develops suspicious barrel-shaped arthroconidia. What is the best laboratory response?',
     choices: [
-      'Stop routine manipulation and follow laboratory safety and confirmatory identification policy.',
-      'Perform vigorous tape prep on the open bench to make more spores.',
-      'Report it as normal skin flora.',
-      'Use a urine colony count to confirm the mold.'
+      'Stop routine manipulation and follow safety and confirmation policy.',
+      'Make a tape prep on the open bench to see more arthroconidia.',
+      'Report it as a contaminant, since arthroconidia are common in soil molds.',
+      'Subculture it to several plates to get a purer growth first.'
     ],
-    answer: 'Stop routine manipulation and follow laboratory safety and confirmatory identification policy.',
+    answer: 'Stop routine manipulation and follow safety and confirmation policy.',
     explanation: 'Coccidioides is a major laboratory-acquired infection concern. Suspicious morphology and exposure history should trigger safety-aware handling.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7573,12 +7573,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Cryptococcus gattii', 'CBG agar', 'environmental exposure'],
     prompt: 'A Cryptococcus isolate is being evaluated for species complex differentiation, and the lab uses a medium that detects glycine and canavanine-related reactions. Which purpose best fits this workflow?',
     choices: [
-      'Differentiating Cryptococcus gattii complex from Cryptococcus neoformans complex in a validated workflow.',
-      'Confirming Streptococcus pyogenes from throat culture.',
-      'Detecting inducible clindamycin resistance.',
-      'Counting urine colony-forming units.'
+      'Separating C. gattii complex from C. neoformans complex.',
+      'Separating Cryptococcus from Candida species by urease activity.',
+      'Detecting melanin production by Cryptococcus colonies on the plate.',
+      'Confirming capsule size before any India ink testing is done.'
     ],
-    answer: 'Differentiating Cryptococcus gattii complex from Cryptococcus neoformans complex in a validated workflow.',
+    answer: 'Separating C. gattii complex from C. neoformans complex.',
     explanation: 'Selected media such as CGB-type agar can help separate Cryptococcus gattii complex from C. neoformans complex when used in an appropriate identification algorithm.',
     source: 'Learn Microbes original question bank: Analytic Procedures for Mycology',
     status: 'published'
@@ -7591,12 +7591,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['mycology', 'specimen handling', 'fungal culture', 'preanalytics'],
     prompt: 'A skin scraping is submitted for fungal culture. Which handling principle best protects recovery and interpretation?',
     choices: [
-      'Keep the specimen in the collection container recommended by the lab and avoid contamination or drying when inappropriate.',
-      'Place the specimen in routine viral transport medium for all fungal cultures.',
-      'Flood the specimen with formalin before culture setup.',
-      'Leave the specimen open on the bench until the next batch is ready.'
+      'Use the lab\'s recommended container and avoid contamination.',
+      'Place it in viral transport medium, as for all fungal cultures.',
+      'Flood it with formalin before culture setup to preserve hyphae.',
+      'Moisten it with saline and refrigerate it for several days.'
     ],
-    answer: 'Keep the specimen in the collection container recommended by the lab and avoid contamination or drying when inappropriate.',
+    answer: 'Use the lab\'s recommended container and avoid contamination.',
     explanation: 'Fungal recovery depends on source and collection quality. The lab’s collection instructions help preserve viable fungus and reduce environmental contamination.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7609,12 +7609,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['KOH prep', 'dermatophytes', 'skin scraping', 'hair', 'nails'],
     prompt: 'Why is a potassium hydroxide preparation useful for skin, hair, or nail specimens submitted for possible fungal elements?',
     choices: [
-      'KOH clears keratin and debris so fungal hyphae or yeast forms can be seen more easily.',
-      'KOH makes all fungi grow faster in culture.',
-      'KOH stains bacteria acid-fast.',
-      'KOH confirms species-level identification by itself.'
+      'KOH clears keratin so hyphae or yeast are easier to see.',
+      'KOH makes all fungi grow faster once the specimen is cultured.',
+      'KOH stains hyphae blue so they stand out from skin cells.',
+      'KOH confirms the species without any culture.'
     ],
-    answer: 'KOH clears keratin and debris so fungal hyphae or yeast forms can be seen more easily.',
+    answer: 'KOH clears keratin so hyphae or yeast are easier to see.',
     explanation: 'KOH direct exam is a screening tool. It helps reveal fungal elements in keratinized tissue, but culture or other identification methods may still be needed.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7627,12 +7627,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['India ink', 'Cryptococcus', 'capsule', 'CSF'],
     prompt: 'An India ink preparation is performed on a CSF specimen. What does the classic positive finding demonstrate?',
     choices: [
-      'Encapsulated yeast with a clear halo against the dark background.',
-      'Septate hyphae with acute-angle branching.',
-      'Broad aseptate hyphae with right-angle branching.',
-      'Acid-fast bacilli with beaded staining.'
+      'Encapsulated yeast with a clear halo on a dark background.',
+      'Septate hyphae with acute-angle branching seen against the ink.',
+      'Budding yeast with pseudohyphae and no halo around the cells.',
+      'A clear halo around white blood cells, which is diagnostic.'
     ],
-    answer: 'Encapsulated yeast with a clear halo against the dark background.',
+    answer: 'Encapsulated yeast with a clear halo on a dark background.',
     explanation: 'India ink is a negative stain that can show the capsule of Cryptococcus-like yeast. It is a direct exam clue, not a full identification workflow by itself.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7663,12 +7663,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Sabouraud agar', 'fungal culture', 'molds', 'yeasts'],
     prompt: 'Why is Sabouraud dextrose agar commonly used in fungal culture workflows?',
     choices: [
-      'Its formulation supports many yeasts and molds while helping reduce some bacterial competition.',
+      'It supports yeasts and molds while limiting some bacteria.',
       'It is selective only for acid-fast bacilli.',
-      'It is used to identify Neisseria by carbohydrate utilization.',
-      'It confirms toxin production by Clostridium species.'
+      'Its high pH kills bacteria and enhances fungal pigment production.',
+      'It identifies yeast species by color, like a chromogenic agar.'
     ],
-    answer: 'Its formulation supports many yeasts and molds while helping reduce some bacterial competition.',
+    answer: 'It supports yeasts and molds while limiting some bacteria.',
     explanation: 'Sabouraud agar is a basic fungal recovery medium. The final workflow still depends on specimen source, colony morphology, microscopic morphology, and additional tests.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7681,12 +7681,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Candida albicans', 'germ tube', 'yeast identification', 'Candida dubliniensis'],
     prompt: 'A yeast isolate forms true germ tubes after incubation in serum. Which interpretation best fits a classic teaching workflow?',
     choices: [
-      'The result supports Candida albicans or Candida dubliniensis and should be interpreted with the full ID workflow.',
-      'The result confirms Cryptococcus neoformans.',
-      'The result proves the isolate is a dermatophyte.',
-      'The result identifies a Mucorales mold.'
+      'It supports C. albicans or C. dubliniensis, pending full identification.',
+      'It confirms Cryptococcus neoformans, which forms germ tubes in serum.',
+      'It proves the isolate is C. glabrata, the classic germ tube-positive yeast.',
+      'It identifies a Mucorales mold growing from the yeast inoculum.'
     ],
-    answer: 'The result supports Candida albicans or Candida dubliniensis and should be interpreted with the full ID workflow.',
+    answer: 'It supports C. albicans or C. dubliniensis, pending full identification.',
     explanation: 'A positive germ tube test is a classic rapid clue for C. albicans and C. dubliniensis. It should not be treated as a complete modern yeast identification by itself.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7699,12 +7699,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['germ tube', 'pseudohyphae', 'Candida', 'yeast morphology'],
     prompt: 'What is the key morphology distinction between a true germ tube and a pseudohyphal constriction?',
     choices: [
-      'A true germ tube lacks constriction at its point of origin from the yeast cell.',
-      'A true germ tube is always pigmented black on niger seed agar.',
-      'A true germ tube is a bacterial spore.',
+      'A true germ tube has no constriction where it leaves the yeast cell.',
+      'A true germ tube shows a clear constriction at its point of origin.',
+      'A true germ tube turns black on niger seed agar.',
       'A true germ tube appears only in molds and never in yeasts.'
     ],
-    answer: 'A true germ tube lacks constriction at its point of origin from the yeast cell.',
+    answer: 'A true germ tube has no constriction where it leaves the yeast cell.',
     explanation: 'True germ tubes arise without a constriction at the base. Pseudohyphae can mimic germ tubes, so careful microscopic reading matters.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7717,12 +7717,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['cornmeal agar', 'Tween 80', 'yeast morphology', 'chlamydospores'],
     prompt: 'Why might cornmeal agar with Tween 80 be used in a yeast identification workflow?',
     choices: [
-      'It encourages structures such as pseudohyphae, blastoconidia, arthroconidia, or chlamydospores that help with identification.',
-      'It is the main medium for acid-fast bacilli.',
-      'It confirms bacterial beta-lactamase production.',
-      'It replaces all carbohydrate assimilation testing.'
+      'It promotes pseudohyphae, blastoconidia, and chlamydospores for ID.',
+      'It is the main medium for acid-fast bacilli in respiratory specimens.',
+      'It confirms bacterial beta-lactamase production in mixed fungal cultures.',
+      'It replaces carbohydrate assimilation testing for every clinical yeast.'
     ],
-    answer: 'It encourages structures such as pseudohyphae, blastoconidia, arthroconidia, or chlamydospores that help with identification.',
+    answer: 'It promotes pseudohyphae, blastoconidia, and chlamydospores for ID.',
     explanation: 'Cornmeal morphology is a classic yeast ID tool. It helps learners connect microscopic structures with yeast groups, but it may be supplemented by modern ID systems.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7737,8 +7737,8 @@ export const questionBank: QuestionBankItem[] = [
     choices: [
       'Cryptococcus neoformans.',
       'Candida albicans.',
-      'Geotrichum candidum.',
-      'Aspergillus fumigatus.'
+      'Rhodotorula mucilaginosa.',
+      'Trichosporon asahii.'
     ],
     answer: 'Cryptococcus neoformans.',
     explanation: 'Cryptococcus neoformans is classically urease positive and can produce brown pigment on niger seed agar through phenol oxidase activity. The bench pattern should fit the full workflow.',
@@ -7771,12 +7771,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Candida albicans', 'Candida dubliniensis', 'chlamydospores', 'cornmeal agar'],
     prompt: 'A yeast forms chlamydospores on cornmeal agar and has a Candida albicans-like pattern. Which interpretation is most appropriate?',
     choices: [
-      'Chlamydospores support the C. albicans or C. dubliniensis branch and should be interpreted with other ID results.',
-      'Chlamydospores confirm Rhizopus species.',
-      'Chlamydospores prove the isolate is a dermatophyte.',
-      'Chlamydospores rule out Candida species.'
+      'They support the C. albicans or C. dubliniensis branch.',
+      'They confirm Rhizopus species growing with the yeast.',
+      'They prove the isolate is C. glabrata, which forms them readily.',
+      'They rule out Candida, since only molds form chlamydospores.'
     ],
-    answer: 'Chlamydospores support the C. albicans or C. dubliniensis branch and should be interpreted with other ID results.',
+    answer: 'They support the C. albicans or C. dubliniensis branch.',
     explanation: 'Chlamydospore production is a classic Candida morphology clue. It supports a branch but does not replace the full yeast identification workflow.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7826,9 +7826,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A yeast-like isolate shows blastoconidia, pseudohyphae, and arthroconidia on morphology media. Which organism group should be considered?',
     choices: [
       'Trichosporon species.',
-      'Cryptococcus species.',
-      'Mucorales.',
-      'Dermatophytes only.'
+      'Cryptococcus neoformans.',
+      'Geotrichum species.',
+      'Candida species.'
     ],
     answer: 'Trichosporon species.',
     explanation: 'Trichosporon can produce a mixture of yeast-like and hyphal elements, including arthroconidia. Morphology helps guide the yeast-like fungus branch.',
@@ -7861,12 +7861,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['carbohydrate assimilation', 'yeast identification', 'biochemical tests'],
     prompt: 'What is the purpose of carbohydrate assimilation testing in yeast identification?',
     choices: [
-      'It checks which carbon sources a yeast can use to support identification.',
-      'It detects acid-fast staining.',
+      'It shows which carbon sources a yeast can use.',
+      'It shows which sugars a yeast ferments to acid and gas.',
       'It confirms bacterial coagulase production.',
       'It identifies dermatophytes by hair invasion only.'
     ],
-    answer: 'It checks which carbon sources a yeast can use to support identification.',
+    answer: 'It shows which carbon sources a yeast can use.',
     explanation: 'Yeast assimilation patterns are biochemical fingerprints. They support identification when morphology alone is not enough.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7879,12 +7879,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['dimorphic fungi', 'mold phase', 'yeast phase', 'temperature'],
     prompt: 'What does thermal dimorphism mean in medical mycology?',
     choices: [
-      'A fungus can grow as a mold at lower temperature and as a yeast or yeast-like form at body temperature.',
-      'A fungus changes from gram positive to gram negative during Gram stain.',
-      'A fungus becomes acid-fast only after culture.',
-      'A fungus grows only as a virus inside host cells.'
+      'Mold at room temperature, yeast or yeast-like form at 37C.',
+      'Yeast form at room temperature and mold form at body temperature.',
+      'A fungus that changes its Gram reaction during the staining step.',
+      'A fungus that grows only at body temperature, never in the soil.'
     ],
-    answer: 'A fungus can grow as a mold at lower temperature and as a yeast or yeast-like form at body temperature.',
+    answer: 'Mold at room temperature, yeast or yeast-like form at 37C.',
     explanation: 'Thermal dimorphism is a key mycology concept. It connects culture temperature, mold morphology, tissue morphology, and organism identification.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -7918,7 +7918,7 @@ export const questionBank: QuestionBankItem[] = [
       'Blastomyces dermatitidis.',
       'Histoplasma capsulatum.',
       'Cryptococcus neoformans.',
-      'Geotrichum candidum.'
+      'Paracoccidioides brasiliensis.'
     ],
     answer: 'Blastomyces dermatitidis.',
     explanation: 'Broad-based budding yeast is a classic morphology clue for Blastomyces. Learners should connect the tissue form with dimorphic fungal workflow.',
@@ -7934,9 +7934,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A yeast form shows multiple narrow-neck buds arranged around a larger parent cell. Which dimorphic fungus is the classic teaching match?',
     choices: [
       'Paracoccidioides brasiliensis.',
-      'Sporothrix schenckii.',
-      'Aspergillus fumigatus.',
-      'Candida glabrata.'
+      'Blastomyces dermatitidis.',
+      'Histoplasma capsulatum.',
+      'Talaromyces (Penicillium) marneffei.'
     ],
     answer: 'Paracoccidioides brasiliensis.',
     explanation: 'Paracoccidioides is classically associated with multiple budding yeast forms, sometimes described as a pilot-wheel appearance. This is an advanced morphology clue.',
@@ -7970,9 +7970,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A tissue specimen shows large spherules filled with endospores. Which dimorphic fungus is the classic teaching match?',
     choices: [
       'Coccidioides species.',
-      'Candida albicans.',
-      'Aspergillus niger.',
-      'Rhodotorula species.'
+      'Rhinosporidium seeberi.',
+      'Blastomyces dermatitidis.',
+      'Candida albicans.'
     ],
     answer: 'Coccidioides species.',
     explanation: 'Coccidioides forms spherules with endospores in tissue. This tissue form is a key clue and should trigger the correct fungal workflow.',
@@ -7987,12 +7987,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Coccidioides', 'arthroconidia', 'lab safety', 'dimorphic fungi'],
     prompt: 'A mold culture is suspected to be Coccidioides. What is the safest bench-learning principle?',
     choices: [
-      'Avoid extra open-bench manipulation and follow the laboratory safety escalation protocol.',
+      'Avoid open-bench manipulation and follow the safety protocol.',
       'Make a heavy tease mount on the open bench to confirm arthroconidia.',
       'Sniff the culture to check for a characteristic odor.',
-      'Handle it like a routine dermatophyte because all molds have the same safety risk.'
+      'Handle it like a routine dermatophyte, since all molds carry the same risk.'
     ],
-    answer: 'Avoid extra open-bench manipulation and follow the laboratory safety escalation protocol.',
+    answer: 'Avoid open-bench manipulation and follow the safety protocol.',
     explanation: 'Coccidioides mold cultures can pose a laboratory exposure risk because of infectious arthroconidia. The safe next step is escalation and controlled handling, not extra manipulation.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'draft'
@@ -8006,8 +8006,8 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A respiratory specimen is stained with GMS and shows cup-shaped cyst forms. Which organism is the classic teaching match?',
     choices: [
       'Pneumocystis jirovecii.',
-      'Histoplasma capsulatum.',
-      'Mucor species.',
+      'Histoplasma capsulatum yeast.',
+      'Candida glabrata.',
       'Trichophyton rubrum.'
     ],
     answer: 'Pneumocystis jirovecii.',
@@ -8062,7 +8062,7 @@ export const questionBank: QuestionBankItem[] = [
       'Epidermophyton.',
       'Microsporum.',
       'Trichophyton.',
-      'Candida.'
+      'Malassezia.'
     ],
     answer: 'Epidermophyton.',
     explanation: 'Epidermophyton is classically taught as producing macroconidia but no microconidia. This is a useful genus-level morphology clue.',
@@ -8113,12 +8113,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['dematiaceous molds', 'melanin', 'dark pigment', 'mold identification'],
     prompt: 'A mold colony is dark brown to black, and the reverse of the colony is also pigmented. What does this suggest?',
     choices: [
-      'A dematiaceous mold with melanin-like pigment in the cell wall.',
-      'A nonpigmented hyaline mold.',
-      'A germ tube-positive yeast.',
-      'A gram-positive anaerobe.'
+      'A dematiaceous mold with melanin in the cell wall.',
+      'A hyaline mold whose dark pigment comes only from the agar.',
+      'A germ tube-positive yeast with pigmented colonies.',
+      'A Mucorales mold, since these always form black colonies.'
     ],
-    answer: 'A dematiaceous mold with melanin-like pigment in the cell wall.',
+    answer: 'A dematiaceous mold with melanin in the cell wall.',
     explanation: 'Dematiaceous molds are darkly pigmented molds. Colony pigment and microscopic morphology guide the next identification step.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -8132,9 +8132,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A dematiaceous mold shows flask-shaped phialides with a collarette and conidia collecting at the tips. Which genus is the classic teaching match?',
     choices: [
       'Phialophora.',
-      'Rhizopus.',
-      'Candida.',
-      'Geotrichum.'
+      'Cladosporium.',
+      'Exophiala.',
+      'Fonsecaea.'
     ],
     answer: 'Phialophora.',
     explanation: 'Phialophora is classically recognized by vase-shaped phialides with collarettes. This is a microscopic morphology clue in the dematiaceous mold branch.',
@@ -8183,12 +8183,12 @@ export const questionBank: QuestionBankItem[] = [
     topic: 'Aspergillus identification',
     difficulty: 'intermediate',
     tags: ['Aspergillus fumigatus', 'uniseriate phialides', 'conidial head', 'hyaline mold'],
-    prompt: 'A hyaline mold has columnar conidial heads with phialides mostly on the upper portion of the vesicle. Which Aspergillus species is the classic teaching match?',
+    prompt: 'A hyaline mold has columnar conidial heads with a single row of phialides on the upper portion of the vesicle. Which Aspergillus species is the classic teaching match?',
     choices: [
       'Aspergillus fumigatus.',
       'Aspergillus niger.',
       'Aspergillus terreus.',
-      'Rhizopus arrhizus.'
+      'Aspergillus nidulans.'
     ],
     answer: 'Aspergillus fumigatus.',
     explanation: 'A. fumigatus is classically associated with compact columnar conidial heads and phialides on the upper portion of the vesicle. Microscopic morphology supports species-level branching.',
@@ -8222,9 +8222,9 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A hyaline mold produces annelloconidia from annellides and does not fit the typical Aspergillus conidial-head pattern. Which genus should be considered?',
     choices: [
       'Scedosporium.',
-      'Candida.',
-      'Microsporum.',
-      'Rhizopus.'
+      'Fusarium.',
+      'Acremonium.',
+      'Purpureocillium.'
     ],
     answer: 'Scedosporium.',
     explanation: 'Scedosporium-like molds can produce annelloconidia rather than Aspergillus-type conidial heads. Microscopic structures guide the branch.',
@@ -8293,12 +8293,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Aspergillus', 'galactomannan', 'antigen testing', 'fungal diagnostics'],
     prompt: 'A learner asks why Aspergillus antigen testing may be discussed separately from mold colony identification. What is the best educational answer?',
     choices: [
-      'Antigen testing detects fungal components in selected specimen types, while colony identification uses culture and morphology.',
-      'Antigen testing replaces all fungal culture and microscopy in every situation.',
-      'Antigen testing identifies dermatophytes by hair invasion.',
-      'Antigen testing confirms bacterial coagulase production.'
+      'Antigen tests detect fungal components; culture identifies the colony.',
+      'Antigen testing replaces all fungal culture and microscopy in every case.',
+      'Antigen testing is done on colonies to confirm the species.',
+      'Galactomannan is specific to Aspergillus and never cross-reacts with others.'
     ],
-    answer: 'Antigen testing detects fungal components in selected specimen types, while colony identification uses culture and morphology.',
+    answer: 'Antigen tests detect fungal components; culture identifies the colony.',
     explanation: 'Aspergillus workflows may include culture, microscopy, histopathology, antigen testing, or molecular methods depending on the question. Learners should connect the test method to what it actually detects.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -8349,8 +8349,8 @@ export const questionBank: QuestionBankItem[] = [
   choices: [
   'Cryptococcus neoformans.',
   'Candida glabrata.',
-  'Geotrichum candidum.',
-  'Trichophyton rubrum.'
+  'Rhodotorula mucilaginosa.',
+  'Trichosporon asahii.'
   ],
   answer: 'Cryptococcus neoformans.',
   explanation: 'Cryptococcus neoformans is classically urease positive and produces brown pigment on niger seed agar. CSF source supports the same teaching branch.',
@@ -8401,12 +8401,12 @@ export const questionBank: QuestionBankItem[] = [
   tags: ['Coccidioides', 'arthroconidia', 'lab safety', 'dimorphic fungi'],
   prompt: 'A mold culture from a respiratory specimen is suspected to be Coccidioides based on colony and preliminary morphology. What is the safest bench-learning response?',
   choices: [
-  'Avoid extra open-bench manipulation and follow the laboratory safety escalation protocol.',
-  'Prepare multiple open-bench tease mounts to look for arthroconidia.',
+  'Avoid open-bench manipulation and follow the safety protocol.',
+  'Prepare several open-bench tease mounts to look for arthroconidia.',
   'Sniff the culture to check for a characteristic odor.',
-  'Handle it like a routine skin dermatophyte because all molds have the same risk.'
+  'Handle it like a routine skin dermatophyte, since all molds share one risk.'
   ],
-  answer: 'Avoid extra open-bench manipulation and follow the laboratory safety escalation protocol.',
+  answer: 'Avoid open-bench manipulation and follow the safety protocol.',
   explanation: 'Coccidioides mold cultures can pose a laboratory exposure risk. The safest next step is controlled handling and escalation, not extra manipulation.',
   source: 'Learn Microbes original question bank: Microbiology and Parasitology Problem Solving',
   status: 'draft'
@@ -8419,12 +8419,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['interim report', 'documentation', 'culture reporting'],
     prompt: 'A blood culture Gram stain result is available before final identification and susceptibility testing. What is the best postanalytic principle?',
     choices: [
-      'Release an appropriate interim report according to policy so clinicians can act on timely preliminary information.',
-      'Suppress all preliminary information until every susceptibility result is final.',
-      'Report a final organism name from Gram stain alone.',
+      'Release a preliminary report per policy so clinicians can act sooner.',
+      'Hold all preliminary information until every susceptibility result is final.',
+      'Report a final organism name from the Gram stain alone.',
       'Delete the preliminary result once the final report is issued.'
     ],
-    answer: 'Release an appropriate interim report according to policy so clinicians can act on timely preliminary information.',
+    answer: 'Release a preliminary report per policy so clinicians can act sooner.',
     explanation: 'Interim reports communicate clinically useful preliminary information while final identification and susceptibility work continues. They should be clearly labeled and policy-driven.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8437,12 +8437,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['no growth', 'interim report', 'culture reporting'],
     prompt: 'A clinician is following a blood culture that remains negative at an interim time point. Which reporting concept is most appropriate?',
     choices: [
-      'Report timed interim no-growth updates only as allowed by laboratory policy and the culture workflow.',
+      'Release timed no-growth updates as lab policy allows.',
       'Change every interim no-growth update to a final negative report.',
-      'Never communicate no-growth information under any circumstance.',
-      'Report a contaminant organism even when no growth has occurred.'
+      'Never share no-growth information until the culture is finalized.',
+      'Report a likely contaminant even when no growth has occurred.'
     ],
-    answer: 'Report timed interim no-growth updates only as allowed by laboratory policy and the culture workflow.',
+    answer: 'Release timed no-growth updates as lab policy allows.',
     explanation: 'No-growth updates can be clinically useful, but timing and wording must follow validated culture workflow and reporting policy. Interim and final reports are not the same.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8455,12 +8455,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['critical value', 'blood culture', 'Gram stain', 'notification'],
     prompt: 'A positive blood culture Gram stain is reported from a patient with suspected sepsis. Which postanalytic action is most important?',
     choices: [
-      'Notify the appropriate clinical contact using the laboratory critical-result policy and document the communication.',
-      'Wait for complete susceptibility testing before contacting anyone.',
-      'Post the result only on a paper worksheet.',
-      'Release no result because Gram stain is not a final identification.'
+      'Notify the clinical contact under the critical-result policy and document it.',
+      'Wait for full susceptibility results before contacting anyone.',
+      'Post the result in the LIS and let the clinician find it.',
+      'Release nothing, since a Gram stain is not a final identification.'
     ],
-    answer: 'Notify the appropriate clinical contact using the laboratory critical-result policy and document the communication.',
+    answer: 'Notify the clinical contact under the critical-result policy and document it.',
     explanation: 'Positive blood culture Gram stain results can be urgent. Critical-result policies define who is notified, how quickly, and how read-back or documentation occurs.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8473,12 +8473,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['AFB smear', 'critical result', 'biosafety', 'notification'],
     prompt: 'An AFB smear from a respiratory specimen is positive. Which response best reflects postanalytic responsibility?',
     choices: [
-      'Follow urgent notification and infection-control reporting policy because the result can affect isolation and public health actions.',
-      'Ignore the result until the organism is fully speciated months later.',
-      'Report only to the instrument vendor.',
-      'Convert the smear result into an antimicrobial susceptibility report.'
+      'Follow urgent notification and infection-control reporting policy.',
+      'Hold the result until the organism is identified.',
+      'Report it only to the ordering provider, since isolation is not a lab concern.',
+      'Convert the smear result into a susceptibility report.'
     ],
-    answer: 'Follow urgent notification and infection-control reporting policy because the result can affect isolation and public health actions.',
+    answer: 'Follow urgent notification and infection-control reporting policy.',
     explanation: 'AFB smear results may affect airborne isolation, additional testing, and public health workflows. Communication requirements are laboratory and jurisdiction policy driven.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8491,12 +8491,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['autoverification', 'result review', 'quality assurance'],
     prompt: 'A laboratory wants to autoverify selected microbiology results. Which design principle is safest?',
     choices: [
-      'Use defined rules with exception handling for results that need human review, such as critical, discordant, or unusual findings.',
-      'Autoverify every microbiology result regardless of source, organism, or patient context.',
-      'Disable audit trails because automated reports do not need review history.',
-      'Use autoverification to bypass quality control failures.'
+      'Use defined rules that route critical or unusual results to human review.',
+      'Autoverify every microbiology result regardless of source or organism.',
+      'Disable audit trails, since automated reports need no review history.',
+      'Use autoverification to release results when QC has failed.'
     ],
-    answer: 'Use defined rules with exception handling for results that need human review, such as critical, discordant, or unusual findings.',
+    answer: 'Use defined rules that route critical or unusual results to human review.',
     explanation: 'Autoverification can support efficiency only when rules, exceptions, QC status, and audit trails are controlled. Microbiology results often require source and clinical-context awareness.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8509,12 +8509,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['blood culture contamination', 'quality indicator', 'outreach'],
     prompt: 'A laboratory tracks blood culture contamination rates by collection location and shares summaries with outreach sites. What is the main purpose?',
     choices: [
-      'To identify collection-quality problems and support targeted education or process improvement.',
-      'To prove all coagulase-negative staphylococci are pathogens.',
-      'To eliminate the need for aseptic collection technique.',
-      'To replace all organism identification testing.'
+      'To find collection-quality problems and target education.',
+      'To prove all coagulase-negative staphylococci are true pathogens.',
+      'To rank individual phlebotomists for disciplinary action only.',
+      'To replace organism identification for contaminated bottles.'
     ],
-    answer: 'To identify collection-quality problems and support targeted education or process improvement.',
+    answer: 'To find collection-quality problems and target education.',
     explanation: 'Contamination-rate monitoring is a quality indicator. Trending by location, collector group, or process can guide education and reduce avoidable false-positive cultures.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8527,12 +8527,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['discordant result', 'corrected report', 'problem action form'],
     prompt: 'A preliminary urine report was released, but later review shows the result was entered under the wrong patient. What is the best postanalytic response?',
     choices: [
-      'Follow the laboratory corrected-report and problem-resolution policy, notify affected parties, and document the investigation.',
-      'Silently edit the result without traceability.',
-      'Ignore it because the culture is already final.',
+      'Issue a corrected report, notify affected parties, and document it.',
+      'Silently edit the result in the LIS without leaving a trace.',
+      'Leave it, since the culture is already final and cannot change.',
       'Ask the clinician to delete the result from the medical record.'
     ],
-    answer: 'Follow the laboratory corrected-report and problem-resolution policy, notify affected parties, and document the investigation.',
+    answer: 'Issue a corrected report, notify affected parties, and document it.',
     explanation: 'Patient-result errors require controlled correction, communication, and documentation. The goal is patient safety, traceability, and process improvement.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8545,12 +8545,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['problem action form', 'corrective action', 'quality documentation'],
     prompt: 'A problem action form is opened for a microbiology reporting error. Which content is most useful for quality improvement?',
     choices: [
-      'Description of the event, investigation, corrective action, outcome, and follow-up when needed.',
-      'Only the employee birth date and favorite instrument.',
-      'A blank note saying the issue was handled.',
-      'A list of unrelated patient results.'
+      'The event, investigation, corrective action, and follow-up.',
+      'Only the name of the employee involved, for performance review.',
+      'A brief note saying the issue was handled verbally with staff.',
+      'The patient\'s full result history for the past year.'
     ],
-    answer: 'Description of the event, investigation, corrective action, outcome, and follow-up when needed.',
+    answer: 'The event, investigation, corrective action, and follow-up.',
     explanation: 'Useful quality documentation captures what happened, why it happened, how it was corrected, and whether the fix worked. Requirements vary by policy and accrediting framework.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8563,12 +8563,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['infection prevention', 'cluster detection', 'public health'],
     prompt: 'Several ICU patients grow the same unusual multidrug-resistant Gram-negative organism over a short period. Which group is the microbiology laboratory most likely to alert first inside the hospital?',
     choices: [
-      'Infection prevention or infection control according to facility policy.',
-      'The cafeteria manager.',
-      'The textbook publisher.',
-      'No one until the annual report.'
+      'Infection prevention, per facility policy.',
+      'The hospital pharmacy, to change formulary drugs.',
+      'The state reference lab, before anyone in the hospital.',
+      'Only the ordering physicians for each patient.'
     ],
-    answer: 'Infection prevention or infection control according to facility policy.',
+    answer: 'Infection prevention, per facility policy.',
     explanation: 'Clusters of resistant or unusual organisms may signal transmission. Timely communication with infection prevention supports investigation and containment.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -8581,12 +8581,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['public health', 'reportable disease', 'laboratory notification'],
     prompt: 'A laboratory identifies an organism or result that is reportable by jurisdictional public health rules. What is the best postanalytic principle?',
     choices: [
-      'Report through the required channel and timeframe according to law, regulation, and laboratory policy.',
+      'Report through the required channel and timeframe set by law.',
       'Report only if the patient personally requests it.',
-      'Avoid reporting because public health results are never laboratory responsibilities.',
-      'Wait until the organism appears in three unrelated patients.'
+      'Leave reporting to the clinician, since labs never report to public health.',
+      'Wait until the organism appears in three unrelated patients this month.'
     ],
-    answer: 'Report through the required channel and timeframe according to law, regulation, and laboratory policy.',
+    answer: 'Report through the required channel and timeframe set by law.',
     explanation: 'Public health reporting is jurisdiction-specific and policy-driven. The laboratory must know which results are reportable and how notification is documented.',
     source: 'Learn Microbes original question bank: Postanalytic Procedures',
     status: 'published'
@@ -9139,12 +9139,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pneumocystis jirovecii', 'Histoplasma capsulatum', 'GMS stain', 'differentiation'],
     prompt: 'On a GMS-stained lavage smear, which feature separates Pneumocystis jirovecii cysts from Histoplasma capsulatum yeast cells of similar size?',
     choices: [
-      'Pneumocystis cysts show broad-based budding.',
-      'Pneumocystis cysts are always found inside macrophages.',
-      'Pneumocystis cysts do not bud and often appear cup shaped or crescent shaped.',
+      'Pneumocystis cysts show broad-based budding like Blastomyces.',
+      'Pneumocystis cysts are always found inside macrophages, unlike Histoplasma.',
+      'Pneumocystis cysts do not bud and often look cup or crescent shaped.',
       'Pneumocystis cysts have a thick mucicarmine-positive capsule.'
     ],
-    answer: 'Pneumocystis cysts do not bud and often appear cup shaped or crescent shaped.',
+    answer: 'Pneumocystis cysts do not bud and often look cup or crescent shaped.',
     explanation: 'Pneumocystis never buds. Collapsed cup and crescent forms, plus a comma-like thickening inside the cyst, separate it from small budding yeasts.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9158,11 +9158,11 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which statement describes Pneumocystis jirovecii on a Giemsa-type stain?',
     choices: [
       'The cyst wall stains black and the contents are not visible.',
-      'Only the capsule stains, as a red halo.',
+      'Only the capsule stains, appearing as a red halo around each cyst.',
       'Nothing stains, so Giemsa has no use for this organism.',
-      'The cyst wall does not stain, but trophic forms and intracystic bodies do.'
+      'Trophic forms and intracystic bodies stain; the cyst wall does not.'
     ],
-    answer: 'The cyst wall does not stain, but trophic forms and intracystic bodies do.',
+    answer: 'Trophic forms and intracystic bodies stain; the cyst wall does not.',
     explanation: 'Giemsa-type stains show clusters of small trophic forms and up to 8 intracystic bodies in foamy material. Silver stains show the cyst wall instead.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9175,12 +9175,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Pneumocystis jirovecii', 'culture', 'test selection', 'PCR'],
     prompt: 'A fungal culture is requested to rule out Pneumocystis jirovecii. Which statement about testing is correct?',
     choices: [
-      'Routine culture does not recover this organism; a stain, fluorescent antibody test, or PCR on a respiratory specimen is used.',
-      'It grows on Sabouraud agar within 48 hours.',
-      'It requires an olive oil overlay to grow.',
-      'It grows only on non-nutrient agar with a bacterial lawn.'
+      'Routine culture fails; use a stain, DFA, or PCR instead.',
+      'It grows on Sabouraud agar within 48 hours, like most clinical yeasts.',
+      'It grows with an olive oil overlay, like Malassezia.',
+      'It grows only on non-nutrient agar covered with a bacterial lawn.'
     ],
-    answer: 'Routine culture does not recover this organism; a stain, fluorescent antibody test, or PCR on a respiratory specimen is used.',
+    answer: 'Routine culture fails; use a stain, DFA, or PCR instead.',
     explanation: 'Pneumocystis jirovecii is not grown in routine culture. Detection relies on microscopy with special stains, direct fluorescent antibody, or molecular testing.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9211,12 +9211,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Candida albicans', 'chlamydospores', 'incubation temperature', 'quality control'],
     prompt: 'A known Candida albicans control fails to form chlamydospores on cornmeal agar incubated at 37 C. What is the most likely explanation?',
     choices: [
-      'The control must be incubated anaerobically.',
-      'Candida albicans never forms chlamydospores.',
-      'The plate was incubated too warm; chlamydospores form best at about 25-30 C.',
-      'The agar needs added blood for chlamydospores.'
+      'The control must be incubated anaerobically in a jar.',
+      'C. albicans never forms chlamydospores, so the control is wrong.',
+      'It was incubated too warm; chlamydospores form best near 25-30 C.',
+      'The agar needs added blood before chlamydospores can form.'
     ],
-    answer: 'The plate was incubated too warm; chlamydospores form best at about 25-30 C.',
+    answer: 'It was incubated too warm; chlamydospores form best near 25-30 C.',
     explanation: 'Cornmeal agar with Tween 80 is incubated at room temperature for 48-72 hours. Chlamydospore production drops at body temperature, so a failed control points to incubation conditions first.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9247,12 +9247,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['Malassezia', 'lipid requirement', 'olive oil overlay', 'blood culture'],
     prompt: 'A yeast seen in a blood culture smear from an infant receiving intravenous lipid nutrition fails to grow on routine subculture. What should be done to recover it?',
     choices: [
-      'Subculture to a medium overlaid with sterile olive oil or another lipid source.',
-      'Subculture to MacConkey agar.',
-      'Incubate the routine plates anaerobically.',
+      'Subculture to a medium overlaid with olive oil.',
+      'Subculture to chocolate agar, which supplies the needed lipid.',
+      'Incubate the routine plates anaerobically for a week.',
       'Add X and V factor disks to the plate.'
     ],
-    answer: 'Subculture to a medium overlaid with sterile olive oil or another lipid source.',
+    answer: 'Subculture to a medium overlaid with olive oil.',
     explanation: 'Most Malassezia species need long-chain fatty acids. An olive oil overlay supplies them, which is why a lipid-dependent yeast can look nonviable on plain media.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9266,11 +9266,11 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'Which description fits Malassezia yeast cells from culture?',
     choices: [
       'Large round cells with a thick capsule and narrow-based buds.',
-      'Small bottle-shaped cells that bud from one end on a broad base with a collarette.',
+      'Small bottle-shaped cells with broad-based buds and a collarette.',
       'Rectangular cells formed by fragmenting hyphae.',
-      'Cigar-shaped cells with multiple buds.'
+      'Cigar-shaped cells with multiple buds, like Sporothrix.'
     ],
-    answer: 'Small bottle-shaped cells that bud from one end on a broad base with a collarette.',
+    answer: 'Small bottle-shaped cells with broad-based buds and a collarette.',
     explanation: 'Malassezia buds repeatedly from one pole through a broad base, leaving a collar. The other choices describe Cryptococcus, arthroconidia-forming yeasts, and the Sporothrix yeast phase.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9283,12 +9283,12 @@ export const questionBank: QuestionBankItem[] = [
     tags: ['KOH preparation', 'dermatophyte', 'Malassezia', 'skin scraping'],
     prompt: 'A KOH preparation of skin scales shows long, branching, septate hyphae and no yeast clusters. Which interpretation is best?',
     choices: [
-      'Malassezia, because any hyphae in skin scales are Malassezia.',
-      'A Mucorales mold, because the hyphae are septate.',
-      'A dermatophyte pattern; Malassezia shows short hyphae together with round yeast clusters.',
-      'Candida, because yeast clusters are absent.'
+      'Malassezia, since any hyphae in skin scales are Malassezia.',
+      'A Mucorales mold, since its hyphae are long and septate.',
+      'A dermatophyte; Malassezia shows short hyphae with yeast clusters.',
+      'Candida, since Candida forms septate hyphae without yeast cells.'
     ],
-    answer: 'A dermatophyte pattern; Malassezia shows short hyphae together with round yeast clusters.',
+    answer: 'A dermatophyte; Malassezia shows short hyphae with yeast clusters.',
     explanation: 'Dermatophytes appear as long, branching, septate hyphae in keratin. Malassezia gives the short hyphae and round yeast clusters often described as spaghetti and meatballs.',
     source: 'Learn Microbes original question bank: Mycology',
     status: 'published'
@@ -9302,8 +9302,8 @@ export const questionBank: QuestionBankItem[] = [
     prompt: 'A fast-growing mold has broad, sparsely septate hyphae, rhizoids located between the sporangiophores, and pear-shaped sporangia on a funnel-shaped apophysis. Which genus fits?',
     choices: [
       'Rhizopus.',
-      'Mucor.',
-      'Aspergillus.',
+      'Rhizomucor.',
+      'Cunninghamella.',
       'Lichtheimia.'
     ],
     answer: 'Lichtheimia.',

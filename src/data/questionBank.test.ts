@@ -94,6 +94,29 @@ describe('questionBank authored content', () => {
     });
   });
 
+  // Guards the answer-length rewrites: editing a choice without editing `answer`
+  // to match, character for character, silently makes a question unanswerable.
+  it('keeps every answer identical to one of exactly four choices, with unique ids', () => {
+    const wrongChoiceCount = questionBank
+      .filter((question) => question.choices.length !== 4)
+      .map((question) => question.id);
+    const answerNotAChoice = questionBank
+      .filter((question) => !question.choices.includes(question.answer))
+      .map((question) => question.id);
+    const seenIds = new Set<string>();
+    const duplicateIds = questionBank
+      .map((question) => question.id)
+      .filter((id) => {
+        const duplicate = seenIds.has(id);
+        seenIds.add(id);
+        return duplicate;
+      });
+
+    expect(wrongChoiceCount).toEqual([]);
+    expect(answerNotAChoice).toEqual([]);
+    expect(duplicateIds).toEqual([]);
+  });
+
   it('reports a non-brittle question bank summary', () => {
     const summary = {
       total: questionBank.length,
