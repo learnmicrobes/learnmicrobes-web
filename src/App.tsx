@@ -22,6 +22,7 @@ import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
 import { contentCounts, learnIndex, visualIndex } from './data/contentIndex.generated';
 import SEO from './components/SEO/SEO';
+import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
 import { MobileBackButton } from './components/Shell/MobileNav';
@@ -1157,6 +1158,8 @@ export default function App() {
                 </Link>
               </div>
             </section>
+
+            <StudentTestimonials />
 
             <section className="home-about" aria-labelledby="home-about-title">
               <div className="home-about-panel lm-panel">
