@@ -1551,7 +1551,7 @@ export const atlasPages: AtlasPage[] = [
       'E. coli is MR positive, VP negative; Klebsiella pneumoniae is MR negative, VP positive.'
     ],
     remember: 'Best mental model: MR asks if the organism makes and keeps mixed acids; VP asks if it converts those acids to a neutral product (acetoin/2,3-butanediol).',
-    biochemicalTestId: 'methyl-red',
+    biochemicalTestId: 'mrvp',
     relatedLearnSlug: 'enterobacterales'
   },
   {
@@ -1720,7 +1720,7 @@ export const atlasPages: AtlasPage[] = [
       'Gas in the Durham tube = heterofermentative (Leuconostoc pattern); no gas = homofermentative (Lactobacillus pattern).'
     ],
     remember: 'Best mental model: If the Durham tube has a clear space at its sealed top, the organism is a heterofermentor and made CO2; if it is fully submerged and filled, the organism ferments without making gas.',
-    biochemicalTestId: 'mrs-broth',
+    biochemicalTestId: 'mrs',
     relatedLearnSlug: 'gram-positive-bacilli-overview'
   },
   {
@@ -1774,7 +1774,7 @@ export const atlasPages: AtlasPage[] = [
       'Most E. coli (90–95%) are MUG-positive, but verotoxin-producing strains (VTEC/O157:H7) are characteristically MUG-negative.'
     ],
     remember: 'Best mental model: If the disk glows blue under UV, β-glucuronidase is present and the organism behaves like E. coli. If the disk stays dark, look for other organisms — or be alert for VTEC.',
-    biochemicalTestId: 'mug-test',
+    biochemicalTestId: 'mug',
     relatedLearnSlug: 'enterobacterales'
   },
   {
@@ -1848,7 +1848,7 @@ export const atlasPages: AtlasPage[] = [
       'Enterobacteriaceae typically reduce nitrate to nitrite. Non-fermenters like Pseudomonas aeruginosa often perform complete denitrification to nitrogen gas.'
     ],
     remember: 'Best mental model: Reagents A & B detect nitrite (red = positive). Zinc dust detects nitrate (red = negative). If neither is detected, nitrate was reduced completely beyond nitrite (colorless = positive).',
-    biochemicalTestId: 'nitrate-reduction',
+    biochemicalTestId: 'nitrate',
     relatedLearnSlug: 'enterobacterales'
   },
   {
@@ -1903,7 +1903,7 @@ export const atlasPages: AtlasPage[] = [
       'A colorless broth with gas means nitrite was completely reduced to nitrogen gas (Positive).'
     ],
     remember: 'Nitrite test logic: Red means the starting ingredient (nitrite) is still there, so the organism didn\'t use it. Red = Negative.',
-    biochemicalTestId: 'nitrite-reduction',
+    biochemicalTestId: 'nitrite',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
   },
   {
@@ -2014,7 +2014,7 @@ export const atlasPages: AtlasPage[] = [
       'The test is specifically used to differentiate S. pneumoniae from other alpha-hemolytic viridans streptococci.'
     ],
     remember: 'P is for Pneumoniae (and P-disk). Susceptible = Pneumoniae. Resistant = Other viridans strep.',
-    biochemicalTestId: 'optochin-susceptibility',
+    biochemicalTestId: 'optochin',
     relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
@@ -2066,7 +2066,7 @@ export const atlasPages: AtlasPage[] = [
       'This test is a cornerstone for separating Enterobacteriaceae (all are oxidase negative) from aerobic Gram-negative rods like Pseudomonas (oxidase positive).'
     ],
     remember: 'Purple in 10s = Positive. Enterobacteriaceae are all oxidase-negative (like E. coli). Pseudomonas is oxidase-positive.',
-    biochemicalTestId: 'oxidase',
+    biochemicalTestId: 'oxidase-kovacs',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
   },
   {
@@ -2148,7 +2148,7 @@ export const atlasPages: AtlasPage[] = [
       'Oxidizers turn only the open tube yellow at the top, leaving the overlaid tube red (e.g., Pseudomonas aeruginosa).'
     ],
     remember: 'F is for Fermentation = both yellow. O is for Oxidation = open top yellow only. Non-utilizer = both red.',
-    biochemicalTestId: 'of-glucose',
+    biochemicalTestId: 'of-medium',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
   },
   {
@@ -2200,7 +2200,7 @@ export const atlasPages: AtlasPage[] = [
       'This test is a classic tool for identifying the Proteus-Morganella-Providencia tribe within Enterobacteriaceae.'
     ],
     remember: 'P is for Proteus (and Providencia/Phenylalanine). Green = Positive. Yellow = Negative (like E. coli).',
-    biochemicalTestId: 'phenylalanine-deaminase',
+    biochemicalTestId: 'pad',
     relatedLearnSlug: 'enterobacterales'
   },
   {
@@ -2307,7 +2307,7 @@ export const atlasPages: AtlasPage[] = [
       'It is highly specific for separating Enterococcus species in clinical diagnostic paths.'
     ],
     remember: 'Pyruvate = Yellow (Positive) for Enterococcus faecalis. Green = Negative for Enterococcus faecium.',
-    biochemicalTestId: 'pyruvate-utilization',
+    biochemicalTestId: 'pyruvate',
     relatedLearnSlug: 'streptococcus-enterococcus'
   },
   {
@@ -2546,7 +2546,7 @@ export const atlasPages: AtlasPage[] = [
       'It is highly specific for separating Proteus (rapidly positive) from other lactose non-fermenting Gram-negative rods.'
     ],
     remember: 'Pink = Positive (rapid Proteus). Orange = Negative (E. coli). Ammonia makes it basic (pink).',
-    biochemicalTestId: 'urease',
+    biochemicalTestId: 'urease-christensen',
     relatedLearnSlug: 'enterobacterales'
   },
   {
@@ -2618,7 +2618,7 @@ export const atlasPages: AtlasPage[] = [
       'XV disks contain both hemin and NAD; therefore, any factor-requiring species will grow around the XV disk.'
     ],
     remember: 'XV disk supports all Haemophilus. V disk supports parainfluenzae. X disk supports ducreyi. Negative means growth everywhere.',
-    biochemicalTestId: 'xv-factor',
+    biochemicalTestId: 'x-v-factor',
     relatedLearnSlug: 'nonfermenting-gram-negative-rods'
   },
   {
