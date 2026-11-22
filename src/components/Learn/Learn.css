@@ -2031,6 +2031,19 @@
   text-decoration: underline;
 }
 
+/* The kicker, the drawing labels and "Open full visual" used the fixed
+   --primary teal, which is not redefined for dark mode: dark teal on the dark
+   stage measured 1.6-1.8:1. The accent tokens are the same colours in light
+   mode and switch to the readable mint in dark. */
+.learn-visual-section .mini-atlas-copy span,
+.learn-visual-section .mini-atlas-link {
+  color: var(--accent);
+}
+
+.learn-visual-section .mini-atlas-stage .lia-tube-card strong {
+  color: var(--accent-strong);
+}
+
 .learn-table-scroll {
   width: 100%;
   overflow-x: auto;
