@@ -853,10 +853,10 @@ export const biochemicalTestsData: BiochemicalTest[] = [
     "category": "Differential Media",
     "principle": "Determines fermentation of glucose, lactose, sucrose, and H2S production.",
     "reagents": "TSI slant.",
-    "procedure": "1. Stab butt, streak slant.\n2. Incubate 18-24 hours.",
+    "procedure": "1. Stab butt, streak slant.\n2. Incubate at 35–37°C for 18–24 hours with the cap loosened where appropriate.",
     "qcPositive": "E. coli (A/A, gas)",
     "qcNegative": "P. aeruginosa (K/K)",
-    "expectedResults": "A/A (acid/acid): Carbohydrate ferm. K/A: glucose, lactose, or sucrose fermentation. H2S production."
+    "expectedResults": "A/A: Acid yellow slant and butt. Glucose plus lactose and/or sucrose are fermented.\nK/A: Alkaline red slant, acid yellow butt. Glucose is fermented; lactose and sucrose are not.\nH2S production."
   },
   {
     "id": "tinsdale-tellurite",
