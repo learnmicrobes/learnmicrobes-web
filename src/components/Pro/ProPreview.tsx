@@ -10,6 +10,12 @@ import './ProPreview.css';
  * day and asks which of them people would actually want, so the answer comes
  * from learners rather than from a guess. No prices, no checkout, no promises
  * about any certification exam.
+ *
+ * List only ideas that do not exist yet. Unlimited quizzes, saved progress with
+ * weak-area review, and case study practice were removed from this list because
+ * they are already free; a free feature offered here reads as one about to be
+ * taken away. Keep each option's id when rewording it, so stored answers in
+ * pro_waitlist still match.
  */
 
 type Interest = {
@@ -23,21 +29,6 @@ const INTERESTS: Interest[] = [
     id: 'adaptive_mock_exam',
     label: 'Timed adaptive mock exam',
     detail: 'A 100-question microbiology practice exam on a real clock, where each question adjusts to how you are doing. Modeled on the adaptive format, not an official exam or a pass predictor.'
-  },
-  {
-    id: 'unlimited_quizzes',
-    label: 'Unlimited quizzes',
-    detail: 'Practice past the guest limit without the question count running out.'
-  },
-  {
-    id: 'saved_progress',
-    label: 'Saved progress and weak-area tracking',
-    detail: 'Your history in one place, with the categories you keep missing surfaced.'
-  },
-  {
-    id: 'case_practice',
-    label: 'Case study practice',
-    detail: 'Worked bench cases that follow a specimen from Gram stain to next step.'
   },
   {
     id: 'study_packs',
@@ -112,7 +103,7 @@ export default function ProPreview() {
     // Counts only, never the address or what anyone typed.
     trackEvent('pro_waitlist_submitted', { interest_count: interests.length, has_note: Boolean(note.trim()) });
     setStatus('done');
-    setMessage('Thanks. Your answers go straight into what gets built next.');
+    setMessage('Thanks. Your answers help decide what gets built.');
     setEmail('');
     setInterests([]);
     setNote('');
@@ -121,17 +112,18 @@ export default function ProPreview() {
   return (
     <div className="pro-page">
       <header className="pro-hero">
-        <span className="pro-kicker">Learn Microbes</span>
+        <span className="pro-kicker">Learn Microbes Pro</span>
         <h1>What's next for Learn Microbes</h1>
         <p>
-          Learn Microbes is an educational resource for clinical microbiology, and the
-          core of it stays free: the Atlas, the Learn topics, the roadmaps, and the
-          bench tools. That is not changing.
+          Every learning resource on Learn Microbes is free today, including the Learn
+          topics, the Atlas, the roadmaps and bench tools, the practice quiz, and the
+          case studies. A free account saves your quiz history, Learn progress, and
+          bookmarks. That is not changing.
         </p>
         <p>
-          We are exploring a small set of optional extras for people who study here
-          often. Nothing below is built or priced yet, and this page is how we find out
-          which of them is worth building at all.
+          Learn Microbes Pro is in development: a small set of optional extras for
+          people who study here often. Nothing below is built or priced yet, and this
+          page is how we find out which of them, if any, is worth building.
         </p>
       </header>
 
@@ -150,7 +142,7 @@ export default function ProPreview() {
       <section className="pro-form-panel" aria-labelledby="pro-form-title">
         <h2 id="pro-form-title">Tell us what you would want</h2>
         <p className="pro-form-intro">
-          Leave your email to hear when any of this is ready, and tick whatever you
+          Leave your email to hear if any of this gets built, and tick whatever you
           would actually use. Everything here is optional except the email.
         </p>
 

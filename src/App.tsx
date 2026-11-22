@@ -710,7 +710,7 @@ export default function App() {
       },
       '/pro': {
         title: "What's Next for Learn Microbes | Learn Microbes",
-        description: 'The core of Learn Microbes stays free. See the optional extras we are considering for people who study here often, and tell us which ones would actually help.'
+        description: 'Every learning resource on Learn Microbes is free today. Learn Microbes Pro is in development: see the optional extras we are considering and tell us which would help.'
       },
       '/about': {
         title: 'About Learn Microbes | Clinical Microbiology Study Platform',
