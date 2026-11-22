@@ -20,9 +20,8 @@ import { FEEDBACK_FORM_URL } from './config/forms';
 import { trackEvent } from './utils/analytics';
 import { buildAuthRedirectPath } from './utils/authRedirect';
 import { useAuth } from './context/AuthContext';
-import { learnIndex, visualIndex } from './data/contentIndex.generated';
+import { contentCounts, learnIndex, visualIndex } from './data/contentIndex.generated';
 import SEO from './components/SEO/SEO';
-import StudentTestimonials from './components/Testimonials/StudentTestimonials';
 import SiteHeader from './components/Shell/SiteHeader';
 import SiteFooter from './components/Shell/SiteFooter';
 import { MobileBackButton } from './components/Shell/MobileNav';
@@ -247,6 +246,15 @@ const homeTasks = [
     path: '/unknown-isolate-workup',
     accent: 'var(--lm-gram-pos)'
   }
+];
+
+// Figures for the home About block. scripts/build-content-index.cjs counts them
+// from the data on every build; never type a number here.
+const homeAboutCounts = [
+  { label: 'Learn topics', value: contentCounts.learnTopics },
+  { label: 'Atlas bench cards', value: contentCounts.atlasCards },
+  { label: 'Reviewed practice questions', value: contentCounts.reviewedQuestions },
+  { label: 'Case studies', value: contentCounts.caseStudies }
 ];
 
 // Pulls in the Visual Atlas renderer, so it loads only when the featured card
@@ -1150,7 +1158,48 @@ export default function App() {
               </div>
             </section>
 
-            <StudentTestimonials />
+            <section className="home-about" aria-labelledby="home-about-title">
+              <div className="home-about-panel lm-panel">
+                <div className="home-about-intro">
+                  <span className="lm-kicker">About Learn Microbes</span>
+                  <h2 id="home-about-title">Built by a working medical technologist</h2>
+                  <p>
+                    Learn Microbes is written by Franz, a medical technologist with a decade of experience at the bench. He is a lead technologist in a large microbiology reference lab at a major hospital in Louisiana, where he also trains new techs and students.
+                  </p>
+                  <Link className="home-about-link" to="/about#founder">
+                    Read about Franz
+                    <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+                  </Link>
+                </div>
+
+                <dl className="home-about-counts">
+                  {homeAboutCounts.map((item) => (
+                    <div key={item.label} className="home-about-count">
+                      <dt>{item.label}</dt>
+                      <dd>{item.value.toLocaleString()}</dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <ul className="home-about-facts">
+                  <li>
+                    <strong>Free to use</strong>
+                    <p>Every learning resource is free. A free account saves your quiz history, Learn progress, and bookmarks.</p>
+                  </li>
+                  <li>
+                    <strong>Independent</strong>
+                    <p>Learn Microbes is a personal project. It is not affiliated with or endorsed by the ASCP or the author's employer.</p>
+                  </li>
+                  <li>
+                    <strong>Photos credited</strong>
+                    <p>
+                      The Atlas drawings are original. Each photo from an outside source is listed on the{' '}
+                      <Link to="/image-credits">Image Credits</Link> page, with who made it and the terms it is used under.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </section>
           </div>
         ) : (
           <Suspense fallback={<div className="route-loading" aria-busy="true" style={{ minHeight: '60vh' }} />}>

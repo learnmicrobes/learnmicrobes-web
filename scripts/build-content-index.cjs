@@ -6,6 +6,10 @@
  * the full Learn and atlas data there would put several hundred KB into the first
  * download of every page, so the shell reads this index instead.
  *
+ * It also writes contentCounts, the figures the home page's About block shows.
+ * They are counted here so the page never carries a hand-typed number that
+ * drifts, and so the home page does not import the question bank or case data.
+ *
  * Runs automatically before `npm start` and `npm run build`. Commit the output.
  */
 const fs = require('fs');
@@ -28,6 +32,19 @@ require.extensions['.ts'] = (module, filename) => {
 
 const { learnTopics } = require(path.join(ROOT, 'src', 'data', 'learnTopics.ts'));
 const { atlasPages } = require(path.join(ROOT, 'src', 'data', 'atlasPages.ts'));
+const { questionBank } = require(path.join(ROOT, 'src', 'data', 'questionBank.ts'));
+const { caseStudies } = require(path.join(ROOT, 'src', 'data', 'caseStudies.ts'));
+
+// "Reviewed" questions are the published ones: the same filter StudyQuiz uses
+// to choose what a student is served. Drafts are hidden rewrites of live
+// questions, and the quiz's runtime-generated questions are a separate set that
+// is never counted here.
+const contentCounts = {
+  learnTopics: learnTopics.length,
+  atlasCards: atlasPages.length,
+  reviewedQuestions: questionBank.filter((question) => question.status === 'published').length,
+  caseStudies: caseStudies.length
+};
 
 // Only the fields the app shell needs. searchTitle/searchDescription are
 // omitted when a page does not set them, so the generated file stays small and
@@ -55,6 +72,15 @@ const output = [
   `export const learnIndex: ContentIndexEntry[] = ${JSON.stringify(learnTopics.map(pick), null, 2)};`,
   '',
   `export const visualIndex: ContentIndexEntry[] = ${JSON.stringify(atlasPages.map(pick), null, 2)};`,
+  '',
+  'export type ContentCounts = {',
+  '  learnTopics: number;',
+  '  atlasCards: number;',
+  '  reviewedQuestions: number;',
+  '  caseStudies: number;',
+  '};',
+  '',
+  `export const contentCounts: ContentCounts = ${JSON.stringify(contentCounts, null, 2)};`,
   ''
 ].join('\n');
 
@@ -63,4 +89,8 @@ if (current !== output) {
   fs.writeFileSync(TARGET, output);
 }
 
-console.log(`content index: ${learnTopics.length} Learn topics, ${atlasPages.length} atlas cards${current === output ? ' (unchanged)' : ' (written)'}`);
+console.log(
+  `content index: ${contentCounts.learnTopics} Learn topics, ${contentCounts.atlasCards} atlas cards, ` +
+    `${contentCounts.reviewedQuestions} reviewed questions, ${contentCounts.caseStudies} case studies` +
+    `${current === output ? ' (unchanged)' : ' (written)'}`
+);

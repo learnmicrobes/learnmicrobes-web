@@ -1111,3 +1111,17 @@ export const visualIndex: ContentIndexEntry[] = [
     "summary": "Original bench-card visuals for reading a KOH preparation of an infected hair: arthroconidia forming a sheath outside the shaft (ectothrix), arthroconidia packed inside the shaft (endothrix), and hyphae with air spaces (favus)."
   }
 ];
+
+export type ContentCounts = {
+  learnTopics: number;
+  atlasCards: number;
+  reviewedQuestions: number;
+  caseStudies: number;
+};
+
+export const contentCounts: ContentCounts = {
+  "learnTopics": 82,
+  "atlasCards": 123,
+  "reviewedQuestions": 460,
+  "caseStudies": 12
+};
