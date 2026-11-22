@@ -9,6 +9,8 @@
  * Checked:
  * - every Atlas card's biochemicalTestId (a Biochemical Tests id)
  * - every Atlas card's relatedLearnSlug (a Learn topic slug)
+ * - every entry in src/data/learnAtlasLinks.ts: a real Learn topic, real Atlas
+ *   cards, no card listed twice or under the topic it already calls home
  * - every Learn topic's and case study's relatedLinks path: the route must be
  *   registered in src/Routes.tsx, /learn/<slug> and /visuals/<slug> must name a
  *   real topic or card, and /biochemical-tests?test=<id> a real test.
@@ -37,6 +39,7 @@ const { learnTopics } = require(path.join(ROOT, 'src', 'data', 'learnTopics.ts')
 const { atlasPages } = require(path.join(ROOT, 'src', 'data', 'atlasPages.ts'));
 const { caseStudies } = require(path.join(ROOT, 'src', 'data', 'caseStudies.ts'));
 const { biochemicalTestsData } = require(path.join(ROOT, 'src', 'tools', 'BiochemicalTests', 'biochemicalData.ts'));
+const { extraAtlasCardsByLearnTopic } = require(path.join(ROOT, 'src', 'data', 'learnAtlasLinks.ts'));
 
 // Read a list out of a .tsx file that cannot be required here. If the source
 // changes shape and nothing matches, stop rather than check against nothing.
@@ -112,6 +115,30 @@ for (const page of atlasPages) {
     if (!learnSlugs.has(page.relatedLearnSlug)) {
       problems.push(`Atlas card "${page.slug}": relatedLearnSlug "${page.relatedLearnSlug}" is not a Learn topic`);
     }
+  }
+}
+
+// The extra Atlas cards each Learn topic shows (src/data/learnAtlasLinks.ts).
+// A card listed under its own home topic would show anyway, so a repeat there
+// means the entry is dead weight or the card's home changed.
+const homeTopicByCard = new Map(atlasPages.map((page) => [page.slug, page.relatedLearnSlug]));
+for (const [topicSlug, cardSlugs] of Object.entries(extraAtlasCardsByLearnTopic)) {
+  checked += 1;
+  if (!learnSlugs.has(topicSlug)) {
+    problems.push(`Learn-Atlas link: "${topicSlug}" is not a Learn topic`);
+  }
+  const seen = new Set();
+  for (const cardSlug of cardSlugs) {
+    checked += 1;
+    if (!homeTopicByCard.has(cardSlug)) {
+      problems.push(`Learn-Atlas link "${topicSlug}": "${cardSlug}" is not an Atlas card`);
+    } else if (homeTopicByCard.get(cardSlug) === topicSlug) {
+      problems.push(`Learn-Atlas link "${topicSlug}": "${cardSlug}" already names this topic as its relatedLearnSlug`);
+    }
+    if (seen.has(cardSlug)) {
+      problems.push(`Learn-Atlas link "${topicSlug}": "${cardSlug}" is listed twice`);
+    }
+    seen.add(cardSlug);
   }
 }
 

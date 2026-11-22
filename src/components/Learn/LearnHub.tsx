@@ -11,7 +11,8 @@ import {
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
 import { learnTopics, getLearnTopicBySlug } from '../../data/learnTopics';
-import { atlasPages, MiniAtlasVisual, type AtlasPage } from '../VisualAtlas/VisualAtlas';
+import { atlasPages, MiniAtlasVisual } from '../VisualAtlas/VisualAtlas';
+import { getLearnTopicAtlasCards } from '../../data/learnAtlasLinks';
 import AlphaValidationCTA from '../AlphaValidationCTA/AlphaValidationCTA';
 import { useAuth } from '../../context/AuthContext';
 import { useBookmarks } from '../../hooks/useBookmarks';
@@ -166,37 +167,6 @@ const useMasteredTopics = () => {
   }, []);
 
   return { masteredTopicSet, toggleMasteredTopic };
-};
-
-const normalizeLookupText = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-
-const getLearnArticleVisuals = (topic: (typeof learnTopics)[number]): AtlasPage[] => {
-  const normalizedTopicTitle = normalizeLookupText(topic.title);
-  const normalizedTopicText = normalizeLookupText([
-    topic.slug,
-    topic.title,
-    ...topic.keywords
-  ].join(' '));
-
-  return atlasPages.filter((page) => {
-    const normalizedPageTitle = normalizeLookupText(page.title);
-    const normalizedPageText = normalizeLookupText([
-      page.slug,
-      page.title,
-      page.summary,
-      page.biochemicalTestId ?? ''
-    ].join(' '));
-
-    return (
-      page.relatedLearnSlug === topic.slug
-      || page.slug === topic.slug
-      || page.biochemicalTestId === topic.slug
-      || (normalizedTopicTitle.length > 8 && normalizedPageTitle.includes(normalizedTopicTitle))
-      || (topic.category === 'Core Methods' && normalizedTopicText.includes(normalizeLookupText(page.slug)))
-      || (page.biochemicalTestId ? normalizedTopicText.includes(normalizeLookupText(page.biochemicalTestId)) : false)
-      || normalizedPageText.includes(normalizedTopicTitle)
-    );
-  });
 };
 
 const getTopicBadges = (topic: (typeof learnTopics)[number]) => {
@@ -1005,7 +975,7 @@ export const LearnArticle: React.FC = () => {
   }, [markTopicStarted, topic, user]);
 
   const articleVisuals = useMemo(() => (
-    topic ? getLearnArticleVisuals(topic) : []
+    topic ? getLearnTopicAtlasCards(topic.slug, atlasPages) : []
   ), [topic]);
   const hasTaxonomyMap = topic?.slug === 'microbial-taxonomy';
   const hasBacterialBiologyMap = topic?.slug === 'bacterial-structure-genetics-metabolism';
