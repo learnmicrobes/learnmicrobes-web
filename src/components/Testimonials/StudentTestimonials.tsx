@@ -1,6 +1,4 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import './StudentTestimonials.css';
 
 type Testimonial = {
@@ -77,9 +75,6 @@ const testimonials: Testimonial[] = [
   }
 ];
 
-// Must match the testimonialsLoop duration in StudentTestimonials.css.
-const LOOP_SECONDS = 95;
-
 // Phones never drift (the CSS gives them a swipeable row at this width), and
 // neither does anyone who has asked their system for reduced motion.
 const NARROW_QUERY = '(max-width: 640px)';
@@ -102,16 +97,9 @@ const useMediaQuery = (query: string) => {
 const StudentTestimonials: React.FC = () => {
   const isNarrow = useMediaQuery(NARROW_QUERY);
   const prefersReducedMotion = useMediaQuery(REDUCED_MOTION_QUERY);
-  const [isPaused, setIsPaused] = useState(false);
-  const [resumeDelay, setResumeDelay] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  // Where the drift stood when it was paused, so the row stops in place
-  // instead of jumping back to the first card.
-  const pausedOffsetRef = useRef<number | null>(null);
 
-  const canDrift = !isNarrow && !prefersReducedMotion;
-  const isDrifting = canDrift && !isPaused;
+  const isDrifting = !isNarrow && !prefersReducedMotion;
 
   // The drift needs the cards twice to loop without a visible seam. A row that
   // is not moving shows each card once, so swiping or arrowing through it
@@ -119,88 +107,35 @@ const StudentTestimonials: React.FC = () => {
   const cards = isDrifting ? [...testimonials, ...testimonials] : testimonials;
 
   useLayoutEffect(() => {
-    const list = listRef.current;
-    if (!list) {
-      return;
-    }
-
-    if (isDrifting) {
-      // A row with overflow hidden keeps any scroll position it had, which
-      // would add to the animation's own offset.
-      list.scrollLeft = 0;
-      return;
-    }
-
-    if (pausedOffsetRef.current !== null) {
-      list.scrollLeft = pausedOffsetRef.current;
-      pausedOffsetRef.current = null;
+    // Widening a phone-width window starts the drift. A row with overflow
+    // hidden keeps any scroll position it had, which would add to the
+    // animation's own offset.
+    if (isDrifting && listRef.current) {
+      listRef.current.scrollLeft = 0;
     }
   }, [isDrifting]);
-
-  const pause = () => {
-    const grid = gridRef.current;
-    if (grid) {
-      const { transform } = window.getComputedStyle(grid);
-      pausedOffsetRef.current = transform && transform !== 'none' ? -new DOMMatrixReadOnly(transform).m41 : 0;
-    }
-    setIsPaused(true);
-  };
-
-  const play = () => {
-    const list = listRef.current;
-    const grid = gridRef.current;
-    if (list && grid) {
-      // One loop is a full set of cards plus the gap before the repeat. A
-      // negative delay starts the drift that far into its cycle, so it picks up
-      // from wherever the reader left the row.
-      const gap = parseFloat(window.getComputedStyle(grid).columnGap) || 0;
-      const loopWidth = grid.scrollWidth + gap;
-      setResumeDelay(loopWidth > 0 ? -(list.scrollLeft / loopWidth) * LOOP_SECONDS : 0);
-    }
-    setIsPaused(false);
-  };
 
   return (
     <section className="testimonials-section" aria-labelledby="testimonials-title">
       <div className="testimonials-shell">
-        <div className="testimonials-top">
-          <div className="testimonials-header">
-            <span className="testimonials-kicker">Early feedback</span>
-            <h2 id="testimonials-title">What early users say</h2>
-            <p className="testimonials-disclosure">
-              From early users, including friends and colleagues of the creator. First names only, shared with permission.
-            </p>
-          </div>
-
-          {canDrift && (
-            <button
-              type="button"
-              className="lm-btn lm-btn--ghost lm-btn--sm testimonials-toggle"
-              onClick={isPaused ? play : pause}
-              aria-controls="testimonials-track"
-              aria-label={isPaused ? 'Play the moving feedback row' : 'Pause the moving feedback row'}
-            >
-              <FontAwesomeIcon icon={isPaused ? faPlay : faPause} aria-hidden="true" />
-              {isPaused ? 'Play' : 'Pause'}
-            </button>
-          )}
+        <div className="testimonials-header">
+          <span className="testimonials-kicker">Early feedback</span>
+          <h2 id="testimonials-title">What early users say</h2>
+          <p className="testimonials-disclosure">
+            From early users, including friends and colleagues of the creator. First names only, shared with permission.
+          </p>
         </div>
 
-        {/* Stopped, the row scrolls natively: swipe, trackpad, or arrow keys
-            once it has focus. While it drifts there is nothing to focus. */}
+        {/* Not drifting, the row scrolls natively: swipe, trackpad, or arrow
+            keys once it has focus. While it drifts, hovering pauses it. */}
         <div
           ref={listRef}
-          id="testimonials-track"
           className={`testimonials-list ${isDrifting ? '' : 'testimonials-list--browse'}`.trim()}
           role="region"
           aria-label="Early feedback quotes"
           tabIndex={isDrifting ? undefined : 0}
         >
-          <div
-            ref={gridRef}
-            className="testimonials-grid"
-            style={isDrifting && resumeDelay ? { animationDelay: `${resumeDelay}s` } : undefined}
-          >
+          <div className="testimonials-grid">
             {cards.map((testimonial, index) => (
               <article
                 key={`${testimonial.name}-${index}`}
