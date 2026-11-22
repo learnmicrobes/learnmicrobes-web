@@ -1220,7 +1220,7 @@ export default function App() {
       {showDepthNudge && !isNudgeDismissed && !user && (
         <div className="depth-nudge" role="status" aria-live="polite">
           <div className="depth-nudge-inner">
-            <span>Sign in to save your progress and study history.</span>
+            <span>Sign in to save your quiz history, Learn progress, and bookmarks.</span>
             <button
               type="button"
               className="depth-nudge-cta"

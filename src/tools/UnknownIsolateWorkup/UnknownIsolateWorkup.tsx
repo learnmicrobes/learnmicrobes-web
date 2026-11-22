@@ -725,7 +725,7 @@ const UnknownIsolateWorkup: React.FC = () => {
             </span>
             <h2 id="unknown-guest-modal-title">Continue exploring with a free account.</h2>
             <p>
-              You have built 3 workup paths as a guest. Sign in to keep going and save your workup history and progress.
+              You have built 3 workup paths as a guest. A free account saves your quiz history, Learn progress, and bookmarks. Workup paths are not saved, with or without an account.
             </p>
             <div className="unknown-guest-modal-actions">
               <button
@@ -735,7 +735,7 @@ const UnknownIsolateWorkup: React.FC = () => {
                   navigate(buildAuthRedirectPath('/register', currentAuthRedirect));
                 }}
               >
-                Create free account to save your progress
+                Create a free account
               </button>
               <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in

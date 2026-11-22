@@ -1019,7 +1019,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
             </span>
             <h2 id="roadmap-guest-modal-title">Continue exploring with a free account.</h2>
             <p>
-              You have reached 5 identification endpoints in this roadmap. Sign in to keep going and track your progress.
+              You have reached 5 identification endpoints in this roadmap. A free account saves your quiz history, Learn progress, and bookmarks. Roadmap progress stays in this browser, with or without an account.
             </p>
             <div className="roadmap-guest-modal-actions">
               <button
@@ -1029,7 +1029,7 @@ const RoadmapExperience: React.FC<RoadmapExperienceProps> = ({
                   navigate(buildAuthRedirectPath('/register', currentAuthRedirect));
                 }}
               >
-                Create free account to save your progress
+                Create a free account
               </button>
               <button type="button" onClick={() => navigate(buildAuthRedirectPath('/login', currentAuthRedirect))}>
                 Sign in
