@@ -1973,6 +1973,15 @@
   scroll-snap-type: none;
 }
 
+/* The "Learn Microbes | learnmicrobes.com" watermark is absolutely positioned
+   in the stage's bottom-right corner, but nothing kept that corner free, so it
+   printed over whichever caption ended there ("ninhydrin" on Hippurate,
+   "chain-like growth" on Germ Tube). A bottom band the height of the
+   watermark gives it its own row below the captions. */
+.learn-visual-section .mini-atlas-stage.lia-stage {
+  padding-bottom: 1.75rem;
+}
+
 .mini-atlas-stage.disk-stage {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.45rem;
