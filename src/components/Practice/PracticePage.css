@@ -1,11 +1,12 @@
 /* Practice hub, Learn Microbes 1.0 ("Review and practice" screen in the Web and
-   Mobile design files). Sections are layout wrappers; the panels and tiles
-   inside them carry the boundaries. */
+   Mobile design files). One quick-start panel, then the subject grid as the
+   page's main feature, then the other study modes. Sections are layout
+   wrappers; the panels and tiles inside them carry the boundaries. */
 
 .practice-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
+  gap: 28px;
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
@@ -21,31 +22,33 @@
 .practice-page h2 {
   margin: 0;
   color: var(--ink);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
-/* ---------- Hero ---------- */
-.practice-hero {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
-  align-items: end;
+/* One focus ring for every control on the page, in the accent colour so it
+   reads in both themes, instead of the browser's thin default outline. */
+.practice-page :is(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
+/* ---------- Hero ---------- */
+/* Two counts in the line, not two stat tiles: the tiles cost a full row on a
+   phone and repeated what the subject grid already shows. */
 .practice-hero h1 {
-  margin: 8px 0 10px;
+  margin: 6px 0 8px;
   color: var(--ink);
-  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.1;
+  line-height: 1.12;
 }
 
 .practice-hero p {
-  max-width: 52ch;
+  max-width: 68ch;
   margin: 0;
   color: var(--ink-muted);
   font-size: var(--text-md);
@@ -53,40 +56,146 @@
   line-height: 1.5;
 }
 
-.practice-hero-stats {
+/* ---------- Quick start ---------- */
+.practice-start {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 20px 24px;
+}
+
+/* A returning student's session sits on top, separated by a rule, so it
+   reads as its own thing: it resumes the saved area and difficulty, and the
+   difficulty control underneath belongs to new quizzes only. */
+.practice-resume {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.practice-resume-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.practice-resume-copy strong {
+  color: var(--ink);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.practice-resume-copy small {
+  max-width: 56ch;
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+.practice-resume-btn {
+  flex-shrink: 0;
+}
+
+/* Copy on the left; difficulty and the button it controls side by side on the
+   right, so the choice and the action read as one. */
+.practice-start-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 28px;
+}
+
+.practice-start-copy {
+  min-width: 0;
+  max-width: 40ch;
+}
+
+.practice-page .practice-start-copy h2 {
+  font-size: var(--text-lg);
+}
+
+.practice-start-copy p {
+  margin: 4px 0 0;
+  color: var(--ink-muted);
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+.practice-start-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
   gap: 12px;
 }
 
-/* ---------- Resume / start ---------- */
-.practice-resume-panel {
+.practice-levels-field {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  align-items: center;
-  padding: 24px;
+  gap: 6px;
 }
 
-.practice-resume-copy h2 {
-  margin: 10px 0 6px;
-  font-size: 1.3rem;
-}
-
-.practice-resume-copy p {
-  max-width: 56ch;
-  margin: 0;
+.practice-levels-label {
   color: var(--ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.practice-levels {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.practice-levels button {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
   font-size: var(--text-base);
-  font-weight: 500;
-  line-height: 1.5;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.practice-levels button:hover {
+  background: var(--surface-card);
+  color: var(--ink);
+}
+
+/* A solid fill, not a white chip: on the paper ground a white "selected"
+   segment read the same as the unselected ones. */
+.practice-levels button.active {
+  background: var(--accent-fill);
+  box-shadow: var(--shadow-xs);
+  color: var(--accent-fill-ink);
+}
+
+.practice-mixed-btn {
+  min-height: 54px;
+}
+
+.practice-start-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
 }
 
 .practice-streak-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
 }
 
 .practice-streak-row span {
@@ -106,19 +215,11 @@
   color: var(--gold-500);
 }
 
-.practice-resume-actions {
-  display: grid;
-  gap: 8px;
-  justify-self: end;
-  width: 100%;
-  max-width: 280px;
-}
-
-.practice-resume-actions small {
+.practice-signin-note {
+  margin-left: auto;
   color: var(--ink-muted);
   font-size: var(--text-sm);
   font-weight: 600;
-  text-align: center;
 }
 
 /* ---------- Weak areas ---------- */
@@ -142,76 +243,22 @@
   font-weight: 600;
 }
 
-/* ---------- Quick start ---------- */
-.practice-quick-heading {
+/* ---------- Subjects ---------- */
+.practice-subjects-heading {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px 20px;
+  align-items: baseline;
+  gap: 4px 14px;
 }
 
-.practice-levels-label {
+.practice-subjects-heading p {
+  margin: 0;
   color: var(--ink-muted);
   font-size: var(--text-base);
-  font-weight: 600;
-}
-
-/* Qualified: .practice-page h2 sets margin: 0 and would otherwise win. */
-.practice-page .practice-quick-title {
-  margin-top: 22px;
-}
-
-.practice-levels {
-  display: flex;
-  gap: 6px;
-  padding: 5px;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  background: var(--surface-sunken);
-}
-
-.practice-levels button {
-  min-height: 40px;
-  padding: 0 18px;
-  border: 0;
-  border-radius: 9px;
-  background: transparent;
-  color: var(--ink-muted);
-  font: inherit;
-  font-size: 0.86rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-
-.practice-levels button:hover {
-  background: var(--surface-card);
-  color: var(--ink);
-}
-
-/* A solid fill, not a white chip: on the paper ground a white "selected"
-   segment read the same as the unselected ones. */
-.practice-levels button.active {
-  background: var(--accent-fill);
-  box-shadow: var(--shadow-xs);
-  color: var(--accent-fill-ink);
-}
-
-/* One line of help above the one button that always makes sense. Most people
-   arriving here cannot name the area they are weakest in - that is the thing
-   they came to find out - so the mixed set leads and the grid below it is
-   the "or pick one" path. It is a secondary button: "Start practicing" above
-   is the page's one primary action. */
-.practice-quick-lead {
-  margin: 14px 0 0;
-  color: var(--ink-muted);
-  font-size: var(--text-base);
-  line-height: 1.45;
 }
 
 .practice-category-group {
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .practice-group-title {
@@ -240,17 +287,18 @@
   margin-top: 10px;
 }
 
-/* Compact rows: icon beside the label so ten areas scan as a list.
-   Explicit columns: a global mobile rule centres button content. */
+/* Rows with the icon beside the label so ten areas scan as a list, and a
+   chevron so each reads as something to press. Explicit columns: a global
+   mobile rule centres button content. */
 .practice-category {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   justify-items: start;
   gap: 12px;
   width: 100%;
   min-width: 0;
-  min-height: 60px;
+  min-height: 64px;
   padding: 10px 14px;
   border: 1px solid var(--rule);
   border-radius: var(--radius-md);
@@ -260,7 +308,7 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
 .practice-category:hover,
@@ -269,19 +317,30 @@
   box-shadow: var(--shadow-md);
 }
 
+.practice-category:hover {
+  transform: translateY(-1px);
+}
+
 /* Subject stains show as a tinted icon well and icon colour, never a solid
    fill, so they stay a signal (see subjectStains.ts). */
 .practice-category-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
   background: var(--accent-wash);
   background: color-mix(in oklab, var(--lm-accent, var(--accent-fill)) 18%, transparent);
   color: var(--lm-accent, var(--accent));
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+}
+
+/* Stretch, not start: sized to its content, a long name ("Mycobacteriology"
+   on a phone) ran under the chevron instead of wrapping. */
+.practice-category-copy {
+  justify-self: stretch;
+  min-width: 0;
 }
 
 .practice-category-copy strong {
@@ -302,112 +361,56 @@
   font-weight: 600;
 }
 
-.practice-mix {
-  margin-top: 16px;
-}
-
-/* ---------- Study modes ---------- */
-.practice-modes,
-.practice-more {
-  display: grid;
-  gap: 18px;
-}
-
-.practice-mode-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 10px;
-}
-
-.practice-mode {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 0;
-  padding: 14px 16px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-xs);
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-}
-
-.practice-mode:hover,
-.practice-mode:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.practice-mode .lm-icon-sq {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-}
-
-.practice-mode-copy {
-  flex: 1;
-  min-width: 0;
-}
-
-.practice-mode-copy strong {
-  display: block;
-  font-size: 1.08rem;
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-
-.practice-mode-copy small {
-  display: block;
-  margin-top: 3px;
-  color: var(--ink-muted);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.practice-mode-arrow {
-  flex-shrink: 0;
+.practice-category-arrow {
   color: var(--accent);
   font-size: 0.8rem;
 }
 
-/* ---------- Study alongside ---------- */
-.practice-more h2 {
-  font-size: 1.3rem;
+/* ---------- More ways to study ---------- */
+.practice-more {
+  display: grid;
+  gap: 14px;
 }
 
 .practice-more-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
+.practice-more-grid--modes {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* Neutral cards: the accent colours the icon only, so these read as quieter
+   than the subject grid above them. */
 .practice-more-grid a {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 16px;
+  min-height: 44px;
+  padding: 14px 16px;
   border: 1px solid var(--rule);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: var(--surface-card);
   color: var(--ink);
   text-decoration: none;
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .practice-more-grid a:hover,
 .practice-more-grid a:focus-visible {
   border-color: var(--rule-strong);
+  box-shadow: var(--shadow-sm);
   color: var(--ink);
   text-decoration: none;
 }
 
 .practice-more-grid svg {
+  flex-shrink: 0;
   margin-top: 3px;
-  color: var(--accent);
+  color: var(--lm-accent, var(--accent));
 }
 
 .practice-more-grid strong {
@@ -420,27 +423,23 @@
   display: block;
   margin-top: 4px;
   color: var(--ink-muted);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   line-height: 1.4;
 }
 
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
   .practice-page {
-    gap: 22px;
+    gap: 20px;
   }
 
   .practice-page h2 {
-    font-size: 1.12rem;
-  }
-
-  .practice-hero {
-    gap: 14px;
+    font-size: 1.15rem;
   }
 
   .practice-hero h1 {
-    margin: 6px 0 8px;
-    font-size: 1.5rem;
+    margin: 4px 0 6px;
+    font-size: 1.4rem;
     line-height: 1.15;
   }
 
@@ -448,81 +447,97 @@
     font-size: var(--text-base);
   }
 
-  .practice-resume-panel {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+  .practice-start {
+    gap: 14px;
     padding: 14px;
   }
 
-  .practice-resume-copy h2 {
-    font-size: 1.02rem;
+  .practice-resume {
+    padding-bottom: 14px;
   }
 
-  .practice-resume-actions {
-    justify-self: stretch;
-    max-width: none;
+  .practice-resume-btn {
+    width: 100%;
   }
 
-  .practice-quick-heading {
+  /* With a session to resume, the "or start a new quiz" line only repeats the
+     heading and the grid below, so phones skip it. */
+  .practice-start--resuming .practice-start-copy p {
+    display: none;
+  }
+
+  .practice-start-row,
+  .practice-start-controls {
     display: grid;
-    gap: 10px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
   }
 
   .practice-levels {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    padding: 4px;
   }
 
   .practice-levels button {
     padding: 0 6px;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
+  }
+
+  .practice-mixed-btn {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .practice-signin-note {
+    margin-left: 0;
   }
 
   .practice-category-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
-    margin-top: 12px;
   }
 
+  /* An odd tile out (Postanalytics, Safety) takes the full row instead of
+     sitting alone beside an empty cell. */
+  .practice-category-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  /* A 168px tile cannot hold an icon, "Mycobacteriology" and a chevron
+     column, so on phones the chevron moves inline after the count. The
+     button's aria-label carries the name, so the glyph is not read out. */
   .practice-category {
-    min-height: 54px;
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 58px;
     gap: 8px;
-    padding: 8px 10px;
+    padding: 8px;
   }
 
   .practice-category-icon {
     width: 28px;
     height: 28px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-size: 0.75rem;
   }
 
   .practice-category-copy strong {
-    font-size: 0.88rem;
+    font-size: 0.875rem;
   }
 
-  .practice-category-copy small {
-    font-size: var(--text-xs);
+  .practice-category-copy small::after {
+    content: ' \203A';
+    color: var(--accent);
+    font-weight: 700;
   }
 
-  .practice-mix {
-    display: flex;
-    width: 100%;
+  .practice-category-arrow {
+    display: none;
   }
 
-  .practice-mode-grid {
+  .practice-more-grid,
+  .practice-more-grid--modes {
     grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
-  }
-
-  .practice-mode {
-    gap: 12px;
-    padding: 12px 14px;
-  }
-
-  .practice-mode-copy strong {
-    font-size: 0.94rem;
+    gap: 8px;
   }
 }
 
@@ -535,6 +550,6 @@
   }
 
   .practice-page {
-    padding-top: 20px;
+    padding-top: 16px;
   }
 }

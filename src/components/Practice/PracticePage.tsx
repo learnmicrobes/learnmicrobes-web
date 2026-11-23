@@ -6,7 +6,7 @@ import {
   faArrowRight,
   faBacteria,
   faBacterium,
-  faBolt,
+  faChevronRight,
   faClipboardList,
   faClockRotateLeft,
   faFileLines,
@@ -31,6 +31,7 @@ import {
   type StudyQuizCategory,
   type StudyQuizDifficulty
 } from '../../tools/StudyQuiz/StudyQuiz';
+import { questionBank } from '../../data/questionBank';
 import { useAuth } from '../../context/AuthContext';
 import { useQuizHistory } from '../../hooks/useQuizHistory';
 import { trackEvent } from '../../utils/analytics';
@@ -85,6 +86,11 @@ const readSavedQuiz = (): SavedQuizSnapshot | null => {
     return null;
   }
 };
+
+// The quiz serves every published question-bank entry; the rest of its pool is
+// drills generated from the bench-test reference. Counted the same way here so
+// the intro never disagrees with what the quiz actually serves.
+const reviewedQuestionCount = questionBank.filter((question) => question.status === 'published').length;
 
 /**
  * Two lists, because these are two different kinds of thing.
@@ -141,12 +147,22 @@ type QuickStartGroup = {
 
 const difficultyOrder: StudyQuizDifficulty[] = ['beginner', 'intermediate', 'advanced'];
 
-// Accents are study-mode categories from the design system, not organism subjects.
-const studyModes = [
+type StudyLink = {
+  icon: IconDefinition;
+  label: string;
+  detail: string;
+  path: string;
+  accent?: string;
+};
+
+// Accents are study-mode categories from the design system, not organism
+// subjects. They colour the icon only: the cards stay neutral so the subject
+// grid above stays the page's main feature.
+const studyModes: StudyLink[] = [
   {
     icon: faClipboardList,
     label: 'Study Quiz',
-    detail: 'Exam-style questions with an explanation for every answer.',
+    detail: 'The full quiz screen, with timed mode and a round that replays only the questions you missed.',
     path: '/study-quiz',
     accent: 'var(--sage-600)'
   },
@@ -173,6 +189,29 @@ const studyModes = [
   }
 ];
 
+const studyReferences: StudyLink[] = [
+  {
+    icon: faRoute,
+    label: 'Certification study paths',
+    detail: 'Map ASCP content areas into study passes.',
+    path: '/certification-study-paths'
+  },
+  {
+    icon: faFlaskVial,
+    label: 'Biochemical tests',
+    detail: 'Reactions, QC organisms, and reading traps.',
+    path: '/biochemical-tests'
+  },
+  {
+    icon: faLayerGroup,
+    label: 'Learn library',
+    detail: 'Read the topic behind a question you missed.',
+    path: '/learn'
+  }
+];
+
+const pluralize = (count: number, word: string) => `${count.toLocaleString()} ${word}${count === 1 ? '' : 's'}`;
+
 export default function PracticePage() {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -191,6 +230,7 @@ export default function PracticePage() {
   }, []);
 
   const lastAttempt = quizAttempts[0] ?? null;
+  const difficultyLabel = studyQuizDifficultyLabels[difficulty];
 
   const quickStartGroups = useMemo<QuickStartGroup[]>(() => {
     const build = (categories: StudyQuizCategory[]) => categories
@@ -216,6 +256,9 @@ export default function PracticePage() {
     ].filter((group) => group.tiles.length > 0);
   }, [quizStats.categoryCounts]);
 
+  const areaCount = quickStartGroups.reduce((total, group) => total + group.tiles.length, 0);
+  const generatedQuestionCount = Math.max(quizStats.totalQuestions - reviewedQuestionCount, 0);
+
   const startQuiz = (category: StudyQuizCategory, source: string) => {
     trackEvent('practice_quick_start', {
       category,
@@ -226,87 +269,125 @@ export default function PracticePage() {
     navigate(`/study-quiz?category=${category}&difficulty=${difficulty}`);
   };
 
+  // One button replaces "Start practicing" and "Mix every area", which opened
+  // the same mixed quiz. It sends both of their events so existing reports
+  // keep counting.
+  const startMixedQuiz = () => {
+    trackEvent('practice_start_click', { resumed: false });
+    startQuiz('all', 'mixed_button');
+  };
+
+  const hasStats = streak > 0 || bestStreak > 0 || Boolean(lastAttempt);
+
   return (
     <main className="practice-page">
       <section className="practice-hero" aria-labelledby="practice-title">
-        <div className="practice-hero-copy">
-          <span className="lm-kicker">Review and practice</span>
-          <h1 id="practice-title">Test what you actually remember.</h1>
-          <p>
-            Active recall for MedTech students, board reviewees, and ASCP prep. Pick an area, answer a
-            few questions, and read the explanation for every miss.
-          </p>
-        </div>
-        <div className="practice-hero-stats" aria-label="Practice library summary">
-          <div className="lm-stat">
-            <span className="lm-stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faClipboardList} /></span>
-            <div>
-              <strong>{quizStats.totalQuestions.toLocaleString()}</strong>
-              <small>Practice questions</small>
-            </div>
-          </div>
-          <div className="lm-stat">
-            <span className="lm-stat-icon" aria-hidden="true"><FontAwesomeIcon icon={faLayerGroup} /></span>
-            <div>
-              <strong>{quickStartGroups.reduce((total, group) => total + group.tiles.length, 0)}</strong>
-              <small>Content areas</small>
-            </div>
-          </div>
-        </div>
+        <span className="lm-kicker">Review and practice</span>
+        <h1 id="practice-title">Test what you actually remember.</h1>
+        <p>
+          {pluralize(reviewedQuestionCount, 'reviewed question')} and{' '}
+          {pluralize(generatedQuestionCount, 'generated drill')} across {areaCount} areas. Pick one, answer a
+          few, and read the explanation for every miss.
+        </p>
       </section>
 
-      <section className="practice-resume" aria-labelledby="practice-start-title">
-        <div className="practice-resume-panel lm-panel">
-          <div className="practice-resume-copy">
-            <span className="lm-kicker">
-              {savedQuiz ? 'Pick up where you left off' : 'Start here'}
-            </span>
-            <h2 id="practice-start-title">
-              {savedQuiz
-                ? `${studyQuizCategoryLabels[savedQuiz.category]} / ${studyQuizDifficultyLabels[savedQuiz.difficulty]}`
-                : 'A few questions is enough to start.'}
-            </h2>
-            <p>
-              {savedQuiz
-                ? `You have answered ${savedQuiz.answeredCount} question${savedQuiz.answeredCount === 1 ? '' : 's'} in this session. Continue, or choose a different area below.`
-                : 'No sign-up needed. Answer one question and you will see how the explanations work.'}
-            </p>
-            {(streak > 0 || bestStreak > 0 || lastAttempt) && (
-              <div className="practice-streak-row" aria-label="Your practice stats">
-                {streak > 0 && (
-                  <span>
-                    <FontAwesomeIcon icon={faFire} aria-hidden="true" />
-                    {streak} answer streak
-                  </span>
-                )}
-                {bestStreak > 0 && (
-                  <span>
-                    <FontAwesomeIcon icon={faTrophy} aria-hidden="true" />
-                    Best {bestStreak}
-                  </span>
-                )}
-                {lastAttempt && (
-                  <span>
-                    <FontAwesomeIcon icon={faClockRotateLeft} aria-hidden="true" />
-                    Last score {Math.round(lastAttempt.score_percent)}%
-                  </span>
-                )}
+      <section className="practice-start-section" aria-labelledby="practice-start-title">
+        <div className={`practice-start lm-panel ${savedQuiz ? 'practice-start--resuming' : ''}`.trim()}>
+          {savedQuiz && (
+            <div className="practice-resume">
+              <div className="practice-resume-copy">
+                <span className="lm-kicker">Pick up where you left off</span>
+                <strong>
+                  {studyQuizCategoryLabels[savedQuiz.category]} · {studyQuizDifficultyLabels[savedQuiz.difficulty]}
+                </strong>
+                <small>
+                  {pluralize(savedQuiz.answeredCount, 'question')} answered. Resume keeps this area and difficulty,
+                  whatever is picked below.
+                </small>
               </div>
-            )}
+              <Link
+                className="lm-btn lm-btn--primary practice-resume-btn"
+                to="/study-quiz"
+                onClick={() => trackEvent('practice_start_click', { resumed: true })}
+                aria-label={`Resume quiz: ${studyQuizCategoryLabels[savedQuiz.category]}, ${studyQuizDifficultyLabels[savedQuiz.difficulty]}`}
+              >
+                Resume quiz
+                <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+              </Link>
+            </div>
+          )}
+
+          <div className="practice-start-row">
+            <div className="practice-start-copy">
+              <h2 id="practice-start-title">{savedQuiz ? 'Or start a new quiz' : 'Quick start'}</h2>
+              <p>
+                {savedQuiz
+                  ? 'A mixed set from every area, or pick one subject below.'
+                  : 'A mixed set from every area. No sign-up needed.'}
+              </p>
+            </div>
+
+            <div className="practice-start-controls">
+              <div className="practice-levels-field">
+                <span id="practice-levels-label" className="practice-levels-label">
+                  {savedQuiz ? 'New quiz difficulty' : 'Difficulty'}
+                </span>
+                <div className="practice-levels" role="group" aria-labelledby="practice-levels-label">
+                  {difficultyOrder.map((level) => (
+                    <button
+                      type="button"
+                      key={level}
+                      className={difficulty === level ? 'active' : ''}
+                      onClick={() => setDifficulty(level)}
+                      aria-pressed={difficulty === level}
+                      title={studyQuizDifficultyDescriptions[level]}
+                    >
+                      {studyQuizDifficultyLabels[level]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className={`lm-btn ${savedQuiz ? 'lm-btn--secondary' : 'lm-btn--primary'} practice-mixed-btn`}
+                onClick={startMixedQuiz}
+              >
+                Start a mixed quiz
+                <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
+              </button>
+            </div>
           </div>
-          <div className="practice-resume-actions">
-            <Link
-              className="lm-btn lm-btn--primary lm-btn--block"
-              to={savedQuiz ? '/study-quiz' : `/study-quiz?difficulty=${difficulty}`}
-              onClick={() => trackEvent('practice_start_click', { resumed: Boolean(savedQuiz) })}
-            >
-              {savedQuiz ? 'Resume quiz' : 'Start practicing'}
-              <FontAwesomeIcon icon={faArrowRight} aria-hidden="true" />
-            </Link>
-            {!user && (
-              <small>Sign in later to save history and track weak areas.</small>
-            )}
-          </div>
+
+          {(hasStats || !user) && (
+            <div className="practice-start-foot">
+              {hasStats && (
+                <div className="practice-streak-row" aria-label="Your practice stats">
+                  {streak > 0 && (
+                    <span>
+                      <FontAwesomeIcon icon={faFire} aria-hidden="true" />
+                      {streak} answer streak
+                    </span>
+                  )}
+                  {bestStreak > 0 && (
+                    <span>
+                      <FontAwesomeIcon icon={faTrophy} aria-hidden="true" />
+                      Best {bestStreak}
+                    </span>
+                  )}
+                  {lastAttempt && (
+                    <span>
+                      <FontAwesomeIcon icon={faClockRotateLeft} aria-hidden="true" />
+                      Last score {Math.round(lastAttempt.score_percent)}%
+                    </span>
+                  )}
+                </div>
+              )}
+              {!user && (
+                <small className="practice-signin-note">Sign in later to save history and track weak areas.</small>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -324,39 +405,13 @@ export default function PracticePage() {
         </section>
       )}
 
-      <section className="practice-quick" aria-labelledby="practice-quick-title">
-        {/* Difficulty first, then the areas it applies to. The selector carries
-            a plain label rather than the section heading, which used to read
-            "Choose an area" while sitting on top of the difficulty buttons. */}
-        <div className="practice-quick-heading">
-          <span id="practice-levels-label" className="practice-levels-label">Pick a difficulty</span>
-          <div className="practice-levels" role="group" aria-labelledby="practice-levels-label">
-            {difficultyOrder.map((level) => (
-              <button
-                type="button"
-                key={level}
-                className={difficulty === level ? 'active' : ''}
-                onClick={() => setDifficulty(level)}
-                aria-pressed={difficulty === level}
-                title={studyQuizDifficultyDescriptions[level]}
-              >
-                {studyQuizDifficultyLabels[level]}
-              </button>
-            ))}
-          </div>
+      <section className="practice-subjects" aria-labelledby="practice-subjects-title">
+        <div className="practice-subjects-heading">
+          <h2 id="practice-subjects-title">Choose a subject</h2>
+          <p aria-live="polite">
+            Each starts {/^[aeiou]/i.test(difficultyLabel) ? 'an' : 'a'} {difficultyLabel.toLowerCase()} quiz.
+          </p>
         </div>
-        <h2 id="practice-quick-title" className="practice-quick-title">Choose an area to drill</h2>
-        <p className="practice-quick-lead">
-          Not sure where to start?
-        </p>
-        <button
-          type="button"
-          className="lm-btn lm-btn--secondary practice-mix"
-          onClick={() => startQuiz('all', 'mixed_button')}
-        >
-          <FontAwesomeIcon icon={faBolt} aria-hidden="true" />
-          Mix every area ({quizStats.totalQuestions.toLocaleString()} questions)
-        </button>
 
         {quickStartGroups.map((group) => (
           <div className="practice-category-group" key={group.id}>
@@ -367,6 +422,7 @@ export default function PracticePage() {
             <div className="practice-category-grid">
               {group.tiles.map((tile) => {
                 const stainClass = subjectStainClass(tile.category);
+                const label = studyQuizCategoryLabels[tile.category];
 
                 return (
                   <button
@@ -375,14 +431,16 @@ export default function PracticePage() {
                     className={`practice-category ${stainClass}`.trim()}
                     style={stainClass ? ({ '--lm-accent': 'var(--stain)' } as React.CSSProperties) : undefined}
                     onClick={() => startQuiz(tile.category, 'category_grid')}
+                    aria-label={`Start ${label} quiz, ${difficultyLabel}, ${pluralize(tile.count, 'question')}`}
                   >
                     <span className="practice-category-icon" aria-hidden="true">
                       <FontAwesomeIcon icon={categoryIcons[tile.category] ?? faClipboardList} />
                     </span>
                     <span className="practice-category-copy">
-                      <strong>{studyQuizCategoryLabels[tile.category]}</strong>
-                      <small>{tile.count} question{tile.count === 1 ? '' : 's'}</small>
+                      <strong>{label}</strong>
+                      <small>{pluralize(tile.count, 'question')}</small>
                     </span>
+                    <FontAwesomeIcon className="practice-category-arrow" icon={faChevronRight} aria-hidden="true" />
                   </button>
                 );
               })}
@@ -391,53 +449,41 @@ export default function PracticePage() {
         ))}
       </section>
 
-      <section className="practice-modes" aria-labelledby="practice-tools-title">
-        <h2 id="practice-tools-title">Full study modes</h2>
-        <div className="practice-mode-grid">
-          {studyModes.map((mode) => (
-            <Link
-              className="practice-mode lm-tinted"
-              to={mode.path}
-              key={mode.path}
-              style={{ '--lm-accent': mode.accent } as React.CSSProperties}
-            >
-              <span className="lm-icon-sq" aria-hidden="true">
-                <FontAwesomeIcon icon={mode.icon} />
-              </span>
-              <span className="practice-mode-copy">
-                <strong>{mode.label}</strong>
-                <small>{mode.detail}</small>
-              </span>
-              <FontAwesomeIcon className="practice-mode-arrow" icon={faArrowRight} aria-hidden="true" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
       <section className="practice-more" aria-labelledby="practice-more-title">
-        <h2 id="practice-more-title">Study alongside your practice</h2>
-        <div className="practice-more-grid">
-          <Link to="/certification-study-paths">
-            <FontAwesomeIcon icon={faRoute} aria-hidden="true" />
-            <span>
-              <strong>Certification study paths</strong>
-              <small>Map ASCP content areas into study passes.</small>
-            </span>
-          </Link>
-          <Link to="/biochemical-tests">
-            <FontAwesomeIcon icon={faFlaskVial} aria-hidden="true" />
-            <span>
-              <strong>Biochemical tests</strong>
-              <small>Reactions, QC organisms, and reading traps.</small>
-            </span>
-          </Link>
-          <Link to="/learn">
-            <FontAwesomeIcon icon={faLayerGroup} aria-hidden="true" />
-            <span>
-              <strong>Learn library</strong>
-              <small>Read the topic behind a question you missed.</small>
-            </span>
-          </Link>
+        <h2 id="practice-more-title">More ways to study</h2>
+
+        <div className="practice-more-group">
+          <h3 className="practice-group-title">Study modes</h3>
+          <div className="practice-more-grid practice-more-grid--modes">
+            {studyModes.map((mode) => (
+              <Link
+                to={mode.path}
+                key={mode.path}
+                style={mode.accent ? ({ '--lm-accent': mode.accent } as React.CSSProperties) : undefined}
+              >
+                <FontAwesomeIcon icon={mode.icon} aria-hidden="true" />
+                <span>
+                  <strong>{mode.label}</strong>
+                  <small>{mode.detail}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="practice-more-group">
+          <h3 className="practice-group-title">References</h3>
+          <div className="practice-more-grid">
+            {studyReferences.map((reference) => (
+              <Link to={reference.path} key={reference.path}>
+                <FontAwesomeIcon icon={reference.icon} aria-hidden="true" />
+                <span>
+                  <strong>{reference.label}</strong>
+                  <small>{reference.detail}</small>
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </main>
