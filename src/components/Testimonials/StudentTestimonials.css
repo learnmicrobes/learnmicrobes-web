@@ -1,4 +1,6 @@
 .testimonials-section {
+  /* Star gold reads as a rating everywhere; teal would read as tappable. */
+  --testimonial-star: #b7791f;
   width: 100%;
   max-width: 1100px;
   margin: 1rem auto 0;
@@ -30,15 +32,6 @@
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   font-weight: 500;
   letter-spacing: 0;
-}
-
-/* The early feedback comes partly from people who know the creator. Quiet,
-   but always shown with the quotes. */
-.testimonials-disclosure {
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: var(--text-sm);
-  line-height: 1.45;
 }
 
 /* The cards carry the boundary, so the scrolling row itself is just space. */
@@ -76,17 +69,22 @@
   overflow: hidden;
 }
 
-/* A curly opening quote in a serif face. The UI font's straight " is two
-   short vertical ticks, which at this size and tint read as a pause icon. */
-.testimonial-quote-mark {
-  height: 1.75rem;
-  color: var(--accent);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 3.25rem;
-  font-weight: 400;
+/* The score the person gave, out of 5. Unearned stars stay as faint outlines
+   of the same shape so a 4 reads as 4 of 5, not as a short row. */
+.testimonial-rating {
+  display: flex;
+  gap: 0.2rem;
+  margin: 0 0 0.6rem;
+  font-size: var(--text-sm);
   line-height: 1;
-  opacity: 0.35;
-  margin-bottom: 0.35rem;
+}
+
+.testimonial-star {
+  color: var(--rule-strong);
+}
+
+.testimonial-star.is-filled {
+  color: var(--testimonial-star);
 }
 
 .testimonial-quote {
@@ -199,7 +197,10 @@ body.dark-mode .testimonial-quote {
   color: #eff6fb;
 }
 
-body.dark-mode .testimonial-quote-mark,
+body.dark-mode .testimonials-section {
+  --testimonial-star: #e3b04b;
+}
+
 body.dark-mode .testimonial-meta strong,
 body.dark-mode .testimonials-kicker {
   color: #74d4c6;
