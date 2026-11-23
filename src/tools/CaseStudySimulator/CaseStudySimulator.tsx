@@ -12,7 +12,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
   caseStudies,
-  getCaseStudyStats,
   type CaseDifficulty,
   type CaseStudy
 } from '../../data/caseStudies';
@@ -103,7 +102,6 @@ type StageAnswer = {
 };
 
 export default function CaseStudySimulator() {
-  const stats = useMemo(() => getCaseStudyStats(), []);
   const [difficulty, setDifficulty] = useState<CaseDifficulty | 'all'>('all');
   const [activeCase, setActiveCase] = useState<CaseStudy | null>(null);
   const [stageIndex, setStageIndex] = useState(0);
@@ -114,16 +112,30 @@ export default function CaseStudySimulator() {
   // The array is in the order cases happened to be written, which put
   // preanalytics sixth and virology after postanalytics. A student should meet
   // the cases the way a specimen meets the lab: before the bench, at it, after.
-  const visibleCases = useMemo(() => {
-    const filtered = difficulty === 'all'
-      ? caseStudies
-      : caseStudies.filter((item) => item.difficulty === difficulty);
+  // Case numbers come from that full order, before any filter, so "Case 7" is
+  // the same case whichever difficulty is showing.
+  const numberedCases = useMemo(() => (
+    [...caseStudies]
+      .sort((first, second) => (
+        benchAreaOrder.indexOf(first.area) - benchAreaOrder.indexOf(second.area)
+        || difficultyOrder.indexOf(first.difficulty) - difficultyOrder.indexOf(second.difficulty)
+      ))
+      .map((item, index) => ({ item, number: index + 1 }))
+  ), []);
 
-    return [...filtered].sort((first, second) => (
-      benchAreaOrder.indexOf(first.area) - benchAreaOrder.indexOf(second.area)
-      || difficultyOrder.indexOf(first.difficulty) - difficultyOrder.indexOf(second.difficulty)
-    ));
-  }, [difficulty]);
+  const visibleCases = useMemo(() => (
+    difficulty === 'all'
+      ? numberedCases
+      : numberedCases.filter(({ item }) => item.difficulty === difficulty)
+  ), [difficulty, numberedCases]);
+
+  // One section per bench area, in bench order, beginner to advanced inside
+  // each. An area with nothing at the chosen difficulty is left out.
+  const caseGroups = useMemo(() => (
+    benchAreaOrder
+      .map((area) => ({ area, cases: visibleCases.filter(({ item }) => item.area === area) }))
+      .filter((group) => group.cases.length > 0)
+  ), [visibleCases]);
 
   const startCase = (caseStudy: CaseStudy) => {
     trackEvent('case_study_started', { caseId: caseStudy.id, difficulty: caseStudy.difficulty });
@@ -192,20 +204,12 @@ export default function CaseStudySimulator() {
             Start from the specimen, read what comes back at each step, and choose the next move.
             Every answer explains itself, including the wrong ones.
           </p>
-          <div className="case-stats" aria-label="Case library summary">
-            <span><strong>{stats.total}</strong>Cases</span>
-            <span><strong>{stats.decisionPoints}</strong>Decision points</span>
-            <span><strong>{difficultyOrder.length}</strong>Levels</span>
-          </div>
         </section>
 
         <section className="case-picker" aria-labelledby="case-picker-title">
           <div className="case-picker-heading">
-            <div>
-              <span className="case-label">Choose a case</span>
-              <h2 id="case-picker-title">Pick your level</h2>
-            </div>
-            <div className="case-difficulty" role="group" aria-label="Case difficulty">
+            <h2 id="case-picker-title">Choose a clinical case</h2>
+            <div className="case-difficulty" role="group" aria-label="Filter cases by difficulty">
               <button
                 type="button"
                 className={difficulty === 'all' ? 'active' : ''}
@@ -233,34 +237,31 @@ export default function CaseStudySimulator() {
             <p className="case-difficulty-note">{difficultyDescriptions[difficulty]}</p>
           )}
 
-          <div className="case-grid">
-            {visibleCases.map((item) => (
-              <button type="button" className="case-card" key={item.id} onClick={() => startCase(item)}>
-                <span className="case-card-tags">
-                  <small className={subjectStainClass(benchAreaKey[item.area]) || undefined}>
-                    {benchAreaLabel[item.area]}
-                  </small>
-                  <span className="case-level">
-                    <span className="case-level-dots" aria-hidden="true">
-                      {difficultyOrder.map((level) => (
-                        <i
-                          key={level}
-                          className={difficultyOrder.indexOf(level) <= difficultyOrder.indexOf(item.difficulty) ? 'on' : ''}
-                        />
-                      ))}
+          {caseGroups.map(({ area, cases }) => (
+            <div className="case-group" key={area} role="group" aria-labelledby={`case-group-${area}`}>
+              <h3 id={`case-group-${area}`}>
+                {benchAreaLabel[area]}
+                <span>{cases.length} {cases.length === 1 ? 'case' : 'cases'}</span>
+              </h3>
+              <div className="case-grid">
+                {cases.map(({ item, number }) => (
+                  <button
+                    type="button"
+                    className="case-card"
+                    key={item.id}
+                    onClick={() => startCase(item)}
+                    aria-label={`Case ${number}: ${item.title}. ${difficultyLabels[item.difficulty]}, ${item.stages.length} steps.`}
+                  >
+                    <span className="case-card-number">Case {number}</span>
+                    <strong>{item.title}</strong>
+                    <span className="case-card-meta">
+                      {difficultyLabels[item.difficulty]} · {item.stages.length} steps
                     </span>
-                    {difficultyLabels[item.difficulty]}
-                  </span>
-                </span>
-                <strong>{item.title}</strong>
-                <span className="case-card-specimen">
-                  <FontAwesomeIcon icon={faVial} aria-hidden="true" />
-                  {item.specimen}
-                </span>
-                <small className="case-card-steps">{item.stages.length} decision points</small>
-              </button>
-            ))}
-          </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
       </main>
     );

@@ -1,6 +1,8 @@
 .case-page {
   width: 100%;
-  max-width: 900px;
+  /* Wide enough for three roomy case cards. The runner and result cards keep
+     their own 744px cap below, so a case in progress is unaffected. */
+  max-width: 1080px;
   margin: 0 auto;
   color: var(--ink);
   text-align: left;
@@ -48,32 +50,6 @@
   line-height: 1.5;
 }
 
-.case-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-top: 1rem;
-}
-
-.case-stats span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.7rem;
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  background: var(--surface-sunken);
-  color: var(--ink-muted);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.case-stats strong {
-  color: var(--accent);
-  font-size: var(--text-md);
-}
-
 /* Picker */
 .case-picker {
   padding: 1.05rem 1.2rem;
@@ -82,15 +58,15 @@
 .case-picker-heading {
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
 }
 
 .case-picker-heading h2 {
-  margin: 0.25rem 0 0;
+  margin: 0;
   color: var(--ink);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   line-height: 1.2;
 }
 
@@ -101,7 +77,7 @@
 }
 
 .case-difficulty button {
-  min-height: 2.2rem;
+  min-height: 2.75rem;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--rule);
   border-radius: 10px;
@@ -125,23 +101,61 @@
   font-size: var(--text-base);
 }
 
+/* Three columns only when there is room for them; two on tablets and narrow
+   laptops; one on phones (see the mobile block). */
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 0.6rem;
-  margin-top: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
 }
 
-/* The explicit full-width column matters: a global mobile rule centers button
+/* One section per bench area. The heading carries the area name, so the
+   cards below it only say level and length. */
+.case-group {
+  margin-top: 1.4rem;
+}
+
+.case-group h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.case-group h3 span {
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+@media (max-width: 1099px) {
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* A card is three lines and nothing else: which case, what it is, and one
+   quiet line of area, level and length.
+
+   The explicit full-width column matters: a global mobile rule centers button
    content, which shrink-wraps an auto grid track and indents each card by a
-   different amount depending on its title length. */
+   different amount depending on its title length.
+
+   Only the border animates. Animating the background made every card flash
+   white for a moment when the page loaded in dark mode. */
 .case-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 0.4rem;
+  align-content: start;
+  gap: 0.3rem;
   justify-items: start;
   min-width: 0;
-  padding: 0.9rem;
+  padding: 1rem 1.15rem;
   border: 1px solid var(--rule);
   border-radius: 6px;
   background: var(--surface);
@@ -149,95 +163,35 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.025);
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  transition: border-color 0.15s ease;
 }
 
-.case-card:hover,
+.case-card:hover {
+  border-color: var(--accent);
+}
+
 .case-card:focus-visible {
-  transform: translateY(-1px);
-  background: var(--surface-sunken);
-  border-color: var(--rule-strong);
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
 }
 
-.case-card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-}
-
-.case-card-tags small {
-  padding: 0.2rem 0.45rem;
-  border-radius: 5px;
-  background: rgba(36, 92, 105, 0.08);
-  color: var(--accent-strong);
-  font-size: var(--text-xs);
+.case-card-number {
+  color: var(--accent);
+  font-size: var(--text-sm);
   font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-/* Area tag takes its subject stain (see src/data/subjectStains.ts). Qualified so
-   it outranks the dark-mode tag override further down. */
-.case-grid .case-card-tags small.subject-stain {
-  background: rgba(36, 92, 105, 0.08);
-  background: color-mix(in srgb, var(--stain) 14%, transparent);
-  color: var(--stain);
-}
-
-/* Difficulty is an order, not a subject: three neutral dots instead of traffic
-   lights, so red and green never sit beside fuchsin and fluorescein. */
-.case-level {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--ink-muted);
-  font-size: var(--text-xs);
-  font-weight: 500;
-}
-
-.case-level-dots {
-  display: inline-flex;
-  gap: 3px;
-}
-
-.case-level-dots i {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px var(--ink-muted);
-}
-
-.case-level-dots i.on {
-  background: var(--ink-muted);
 }
 
 .case-card strong {
   color: var(--ink);
-  font-size: var(--text-md);
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-}
-
-.case-card-specimen {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--ink-muted);
-  font-size: var(--text-sm);
-}
-
-.case-card-specimen svg {
-  color: var(--accent);
-  font-size: var(--text-sm);
-}
-
-.case-card-steps {
-  color: var(--ink-muted);
-  font-size: var(--text-xs);
+  font-size: 1.0625rem;
   font-weight: 600;
-  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+.case-card-meta {
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
 }
 
 /* Runner */
@@ -737,11 +691,6 @@ body.dark-mode .case-feedback.incorrect strong { color: #f2a291; }
 body.dark-mode .case-choice.correct svg { color: #8fd6a8; }
 body.dark-mode .case-choice.incorrect svg { color: #f2a291; }
 
-body.dark-mode .case-card-tags small {
-  background: rgba(94, 234, 212, 0.12);
-  color: #9decdf;
-}
-
 /* Mobile */
 @media (max-width: 720px) {
   .case-hero {
@@ -767,7 +716,7 @@ body.dark-mode .case-card-tags small {
      pills wrap instead of clipping. */
   .case-difficulty button {
     flex: 1 1 auto;
-    min-height: 2.6rem;
+    min-height: 2.75rem;
     padding: 0.4rem 0.6rem;
     white-space: nowrap;
   }
