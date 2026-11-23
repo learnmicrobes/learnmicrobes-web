@@ -62,8 +62,6 @@ export default function SiteFooter() {
 
         <p className="lm-footer-note">
           &copy; 2026 LearnMicrobes.com
-          <br />
-          Built by a <Link to="/about#founder">working micro lab tech</Link>. Free to use.
         </p>
       </div>
     </footer>

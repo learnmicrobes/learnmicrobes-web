@@ -163,6 +163,11 @@
   font-size: var(--text-sm);
 }
 
+.about-founder-copy .about-founder-note a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .about-founder-card {
     grid-template-columns: 1fr;

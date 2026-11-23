@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './About.css';
 
 export default function About() {
@@ -63,6 +63,8 @@ export default function About() {
           </a>
           <p className="about-founder-note">
             Learn Microbes is my personal project. It is not affiliated with or endorsed by my employer or the ASCP.
+            The Atlas drawings are original, and every outside photo is listed on the{' '}
+            <Link to="/image-credits">Image credits</Link> page.
           </p>
         </div>
       </section>
