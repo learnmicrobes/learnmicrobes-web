@@ -16,16 +16,6 @@
   text-align: left;
 }
 
-.testimonials-kicker {
-  display: inline-block;
-  margin-bottom: 0.35rem;
-  color: var(--primary-color);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
 .testimonials-header h2 {
   margin: 0 0 0.35rem;
   color: var(--dark-color);
@@ -201,7 +191,6 @@ body.dark-mode .testimonials-section {
   --testimonial-star: #e3b04b;
 }
 
-body.dark-mode .testimonial-meta strong,
-body.dark-mode .testimonials-kicker {
+body.dark-mode .testimonial-meta strong {
   color: #74d4c6;
 }

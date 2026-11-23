@@ -136,8 +136,7 @@ const StudentTestimonials: React.FC = () => {
     <section className="testimonials-section" aria-labelledby="testimonials-title">
       <div className="testimonials-shell">
         <div className="testimonials-header">
-          <span className="testimonials-kicker">Early feedback</span>
-          <h2 id="testimonials-title">What early users say</h2>
+          <h2 id="testimonials-title">Early feedback</h2>
         </div>
 
         {/* Not drifting, the row scrolls natively: swipe, trackpad, or arrow

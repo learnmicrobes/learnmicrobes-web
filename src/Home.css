@@ -562,12 +562,6 @@ body.dark-mode .home-hero-media::after {
   margin-top: 12px;
 }
 
-.home-v1 .testimonials-kicker {
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
 .home-v1 .testimonials-header h2 {
   font-size: 1.6rem;
   font-weight: 700;
